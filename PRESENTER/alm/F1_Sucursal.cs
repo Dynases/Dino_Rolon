@@ -289,14 +289,21 @@ namespace PRESENTER.alm
 
         public override bool MH_NuevoRegistro()
         {
-            var response = true;
-
-            return base.MH_NuevoRegistro();
+            if (this.MH_Validar())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool MH_Validar()
         {
-            return base.MH_Validar();
+            return string.IsNullOrEmpty(this.Tb_Descrip.Text) &&
+                   string.IsNullOrEmpty(this.Tb_Direcc.Text) &&
+                   string.IsNullOrEmpty(this.Tb_Telef.Text) ? false : true;
         }
 
         #endregion
