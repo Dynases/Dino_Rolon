@@ -35,7 +35,7 @@
             this.MetroTilePanel6 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
             this.btInvDeposito = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.btInvSucursal = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btInvMovimiento = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btInvTraspaso = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.Metro_Transformacion = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.SideNavPanel6 = new DevComponents.DotNetBar.Controls.SideNavPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
@@ -189,7 +189,7 @@
             this.MetroTilePanel6.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btInvDeposito,
             this.btInvSucursal,
-            this.btInvMovimiento,
+            this.btInvTraspaso,
             this.Metro_Transformacion});
             this.MetroTilePanel6.ItemSpacing = 10;
             this.MetroTilePanel6.Location = new System.Drawing.Point(0, 0);
@@ -242,26 +242,27 @@
             this.btInvSucursal.TitleTextColor = System.Drawing.Color.Red;
             this.btInvSucursal.Click += new System.EventHandler(this.btInvSucursal_Click);
             // 
-            // btInvMovimiento
+            // btInvTraspaso
             // 
-            this.btInvMovimiento.Image = ((System.Drawing.Image)(resources.GetObject("btInvMovimiento.Image")));
-            this.btInvMovimiento.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btInvMovimiento.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.btInvMovimiento.Name = "btInvMovimiento";
-            this.btInvMovimiento.SymbolColor = System.Drawing.Color.Empty;
-            this.btInvMovimiento.Text = "MOVIMIENTOS";
-            this.btInvMovimiento.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish;
-            this.btInvMovimiento.TileSize = new System.Drawing.Size(250, 135);
+            this.btInvTraspaso.Image = ((System.Drawing.Image)(resources.GetObject("btInvTraspaso.Image")));
+            this.btInvTraspaso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btInvTraspaso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.btInvTraspaso.Name = "btInvTraspaso";
+            this.btInvTraspaso.SymbolColor = System.Drawing.Color.Empty;
+            this.btInvTraspaso.Text = "MOVIMIENTOS";
+            this.btInvTraspaso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish;
+            this.btInvTraspaso.TileSize = new System.Drawing.Size(250, 135);
             // 
             // 
             // 
-            this.btInvMovimiento.TileStyle.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btInvMovimiento.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btInvMovimiento.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btInvMovimiento.TileStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btInvMovimiento.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
-            this.btInvMovimiento.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btInvMovimiento.TitleTextColor = System.Drawing.Color.Red;
+            this.btInvTraspaso.TileStyle.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btInvTraspaso.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btInvTraspaso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btInvTraspaso.TileStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInvTraspaso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.btInvTraspaso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btInvTraspaso.TitleTextColor = System.Drawing.Color.Red;
+            this.btInvTraspaso.Click += new System.EventHandler(this.btInvTraspaso_Click);
             // 
             // Metro_Transformacion
             // 
@@ -1358,7 +1359,7 @@
         internal DevComponents.DotNetBar.Metro.MetroTilePanel MetroTilePanel6;
         internal DevComponents.DotNetBar.Metro.MetroTileItem btInvDeposito;
         internal DevComponents.DotNetBar.Metro.MetroTileItem btInvSucursal;
-        internal DevComponents.DotNetBar.Metro.MetroTileItem btInvMovimiento;
+        internal DevComponents.DotNetBar.Metro.MetroTileItem btInvTraspaso;
         private DevComponents.DotNetBar.Controls.SideNavPanel sideNavPanel7;
         internal DevComponents.DotNetBar.Metro.MetroTilePanel metroTilePanel2;
         internal DevComponents.DotNetBar.Metro.MetroTileItem metroTileItem6;

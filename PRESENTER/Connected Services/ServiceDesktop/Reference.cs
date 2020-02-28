@@ -285,7 +285,7 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITY.com.Seleccion.View.VSeleccionLista))]
         PRESENTER.ServiceDesktop.Seleccion_GuardarResponse Seleccion_Guardar(PRESENTER.ServiceDesktop.Seleccion_GuardarRequest request);
         
-        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_GuardarResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_GuardarResponse> Seleccion_GuardarAsync(PRESENTER.ServiceDesktop.Seleccion_GuardarRequest request);
         

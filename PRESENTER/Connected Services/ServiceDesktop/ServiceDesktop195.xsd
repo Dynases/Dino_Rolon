@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVPrecioCategoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VPrecioCategoria" nillable="true" type="tns:VPrecioCategoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVPrecioCategoria" nillable="true" type="tns:ArrayOfVPrecioCategoria" />
+  <xs:complexType name="VPrecioCategoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Margen" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NombreTipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VPrecioCategoria" nillable="true" type="tns:VPrecioCategoria" />
+</xs:schema>

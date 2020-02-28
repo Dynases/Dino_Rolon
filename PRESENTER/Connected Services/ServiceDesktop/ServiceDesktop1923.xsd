@@ -31,6 +31,7 @@
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdCompraIng" type="xs:int" />
       <xs:element minOccurs="0" name="IdSucur" type="xs:int" />
+      <xs:element minOccurs="0" name="Merma" type="xs:decimal" />
       <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />

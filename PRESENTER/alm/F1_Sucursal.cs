@@ -287,9 +287,20 @@ namespace PRESENTER.alm
             this.MP_Reiniciar();
         }
 
+        public override bool MH_NuevoRegistro()
+        {
+            var response = true;
+
+            return base.MH_NuevoRegistro();
+        }
+
+        public override bool MH_Validar()
+        {
+            return base.MH_Validar();
+        }
+
         #endregion
         //===========
-
 
         #endregion
 
@@ -298,7 +309,7 @@ namespace PRESENTER.alm
 
         private void F1_Sucursal_Load(object sender, EventArgs e)
         {
-            LblTitulo.Text = "SUCURSALES";
+            this.LblTitulo.Text = "SUCURSALES";
         }
 
         private void BtAdicionar_Click(object sender, EventArgs e)
@@ -308,6 +319,5 @@ namespace PRESENTER.alm
         }
 
         #endregion
-
     }
 }

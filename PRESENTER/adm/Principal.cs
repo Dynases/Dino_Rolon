@@ -73,5 +73,11 @@ namespace PRESENTER.adm
             F1_Sucursal frm = new F1_Sucursal();
             frm.Show();
         }
+
+        private void btInvTraspaso_Click(object sender, EventArgs e)
+        {
+            F1_Traspaso frm = new F1_Traspaso();
+            frm.Show();
+        }
     }
 }
