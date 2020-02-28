@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4DA0EF0B-B34C-42D6-A5E7-E4CCB37B5358}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>REPOSITORY</RootNamespace>
+    <AssemblyName>REPOSITORY</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseConexion.cs" />
+    <Compile Include="Base\BaseConexionPrincipal.cs" />
+    <Compile Include="Base\BD.cs" />
+    <Compile Include="Clase\RCliente.cs" />
+    <Compile Include="Clase\RCompra.cs" />
+    <Compile Include="Clase\RCompraIngreso.cs" />
+    <Compile Include="Clase\RCompraIngreso_01.cs" />
+    <Compile Include="Clase\RCompra_01.cs" />
+    <Compile Include="Clase\RLibreria.cs" />
+    <Compile Include="Clase\RPrecio.cs" />
+    <Compile Include="Clase\RPrecioCategoria.cs" />
+    <Compile Include="Clase\RProducto.cs" />
+    <Compile Include="Clase\RProvedor.cs" />
+    <Compile Include="Clase\RProveedor_01.cs" />
+    <Compile Include="Clase\RSeleccion.cs" />
+    <Compile Include="Clase\RSucursal.cs" />
+    <Compile Include="Clase\RSeleccion_01.cs" />
+    <Compile Include="Clase\RTransformacion.cs" />
+    <Compile Include="Clase\RTransformacion_01.cs" />
+    <Compile Include="Interface\ICliente.cs" />
+    <Compile Include="Interface\ICompra.cs" />
+    <Compile Include="Interface\ICompraIngreso.cs" />
+    <Compile Include="Interface\ICompraIngreso_01.cs" />
+    <Compile Include="Interface\ILibreria.cs" />
+    <Compile Include="Interface\IPrecio.cs" />
+    <Compile Include="Interface\IPrecioCategoria.cs" />
+    <Compile Include="Interface\IProducto.cs" />
+    <Compile Include="Interface\IProveedor.cs" />
+    <Compile Include="Interface\IProveedor_01.cs" />
+    <Compile Include="Interface\ISeleccion.cs" />
+    <Compile Include="Interface\ISeleccion_01.cs" />
+    <Compile Include="Interface\ISucursal.cs" />
+    <Compile Include="Interface\ITransformacion.cs" />
+    <Compile Include="Interface\ITransformacion_01.cs" />
+    <Compile Include="Interface\ICompra_01.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DATA\DATA.csproj">
+      <Project>{A316E756-A89D-4239-BEEA-B5476AA4912F}</Project>
+      <Name>DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ENTITY\ENTITY.csproj">
+      <Project>{526ae2dd-10b8-48dc-a338-f1466bb00b33}</Project>
+      <Name>ENTITY</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTILITY\UTILITY.csproj">
+      <Project>{895af898-502b-4ff5-81c8-6642f4aa6e5e}</Project>
+      <Name>UTILITY</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

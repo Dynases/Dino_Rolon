@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVTransformacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacion" nillable="true" type="tns:VTransformacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTransformacion" nillable="true" type="tns:ArrayOfVTransformacion" />
+  <xs:complexType name="VTransformacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSucIngreso" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSucSalida" type="xs:int" />
+      <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sucursal1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sucursal2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VTransformacion" nillable="true" type="tns:VTransformacion" />
+</xs:schema>
