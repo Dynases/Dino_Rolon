@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
+  <xs:import schemaLocation="http://localhost/ServicioDiAvi/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -498,8 +498,8 @@
   <xs:element name="Seleccion_Guardar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" minOccurs="0" name="vSeleccion" nillable="true" type="q30:VSeleccion" />
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="detalle" nillable="true" type="q31:ArrayOfVSeleccion_01" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" minOccurs="0" name="vSeleccion" nillable="true" type="q31:VSeleccion" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="detalle" nillable="true" type="q32:ArrayOfVSeleccion_01" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -521,8 +521,7 @@
   <xs:element name="Seleccion_01_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-<<<<<<< HEAD
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListaResult" nillable="true" type="q32:ArrayOfVSeleccion_01_Lista" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListaResult" nillable="true" type="q33:ArrayOfVSeleccion_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -536,10 +535,7 @@
   <xs:element name="Seleccion_01_ListarXId_VacioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListarXId_VacioResult" nillable="true" type="q33:ArrayOfVSeleccion_01_Lista" />
-=======
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListaResult" nillable="true" type="q31:ArrayOfVSeleccion_01_Lista" />
->>>>>>> dcayo
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListarXId_VacioResult" nillable="true" type="q34:ArrayOfVSeleccion_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -551,11 +547,7 @@
   <xs:element name="Transformacion_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-<<<<<<< HEAD
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="Transformacion_ListaResult" nillable="true" type="q34:ArrayOfVTransformacion" />
-=======
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="Transformacion_ListaResult" nillable="true" type="q32:ArrayOfVTransformacion" />
->>>>>>> dcayo
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="Transformacion_ListaResult" nillable="true" type="q35:ArrayOfVTransformacion" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -567,11 +559,7 @@
   <xs:element name="Transformacion_01_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-<<<<<<< HEAD
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_ListaResult" nillable="true" type="q35:ArrayOfVTransformacion_01_Lista" />
-=======
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_ListaResult" nillable="true" type="q33:ArrayOfVTransformacion_01_Lista" />
->>>>>>> dcayo
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_ListaResult" nillable="true" type="q36:ArrayOfVTransformacion_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -583,11 +571,7 @@
   <xs:element name="Compra_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-<<<<<<< HEAD
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" minOccurs="0" name="Compra_ListaResult" nillable="true" type="q36:ArrayOfVCompraLista" />
-=======
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" minOccurs="0" name="Compra_ListaResult" nillable="true" type="q34:ArrayOfVCompraLista" />
->>>>>>> dcayo
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" minOccurs="0" name="Compra_ListaResult" nillable="true" type="q37:ArrayOfVCompraLista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -599,11 +583,7 @@
   <xs:element name="Compra_01_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-<<<<<<< HEAD
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q37:ArrayOfVCompra_01_Lista" />
-=======
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q35:ArrayOfVCompra_01_Lista" />
->>>>>>> dcayo
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q38:ArrayOfVCompra_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

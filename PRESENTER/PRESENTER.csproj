@@ -47,13 +47,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\librerias\Bunifu\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Bunifu\Bunifu_UI_v1.52.dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>C:\librerias\Bunifu\Bunifu\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -111,40 +109,37 @@
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Gma.QrCodeNet.Encoding">
-      <HintPath>..\..\..\..\DINASES\Librerias\QrCode\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>C:\librerias\QrCode\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core">
-      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\GMap.NET.Core.dll</HintPath>
+      <HintPath>C:\librerias\Gmap\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms">
-      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\GMap.NET.WindowsForms.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\itextsharp.dll</HintPath>
+      <HintPath>C:\librerias\Gmap\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Data.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Data.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.CalendarCombo.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.CalendarCombo.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.CalendarCombo.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Common.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.Common.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.Common.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.GridEX.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.GridEX.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Ribbon.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.Ribbon.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.Ribbon.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.UI.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.UI.v3.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\ModernUI.1.3.0.0\lib\net45\MetroFramework.dll</HintPath>
@@ -160,7 +155,7 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OnBarcode.Barcode.WinForms">
-      <HintPath>..\..\..\..\DINASES\Librerias\QrCode\OnBarcode.Barcode.WinForms.dll</HintPath>
+      <HintPath>C:\librerias\QrCode\OnBarcode.Barcode.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -192,6 +187,12 @@
     </Compile>
     <Compile Include="alm\F1_Sucursal.Designer.cs">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="alm\F1_Traspaso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F1_Traspaso.Designer.cs">
+      <DependentUpon>F1_Traspaso.cs</DependentUpon>
     </Compile>
     <Compile Include="com\F1_Compra.cs">
       <SubType>Form</SubType>
@@ -271,6 +272,9 @@
     <EmbeddedResource Include="alm\F1_Sucursal.resx">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="alm\F1_Traspaso.resx">
+      <DependentUpon>F1_Traspaso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="com\F1_Compra.resx">
       <DependentUpon>F1_Compra.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,62 +331,120 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
+    <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop191.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop10.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1910.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1911.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop12.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1912.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop13.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1913.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop14.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1914.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop15.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1915.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop16.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1916.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop17.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1917.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop18.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1918.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1919.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop192.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1920.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop5.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1921.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop6.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1922.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop7.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1923.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop8.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1924.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop9.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1925.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1926.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1927.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1928.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1929.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1930.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1931.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1932.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1933.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1934.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1935.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1936.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1937.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop194.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop195.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop196.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop197.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop198.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop199.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -457,7 +519,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.disco" />
     <Content Include="MetroFramework.txt" />
     <None Include="Resource\PANTALLA.png" />
     <None Include="Resource\LIBRERIA.png" />

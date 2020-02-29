@@ -287,9 +287,27 @@ namespace PRESENTER.alm
             this.MP_Reiniciar();
         }
 
+        public override bool MH_NuevoRegistro()
+        {
+            if (this.MH_Validar())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool MH_Validar()
+        {
+            return string.IsNullOrEmpty(this.Tb_Descrip.Text) &&
+                   string.IsNullOrEmpty(this.Tb_Direcc.Text) &&
+                   string.IsNullOrEmpty(this.Tb_Telef.Text) ? false : true;
+        }
+
         #endregion
         //===========
-
 
         #endregion
 
@@ -298,7 +316,7 @@ namespace PRESENTER.alm
 
         private void F1_Sucursal_Load(object sender, EventArgs e)
         {
-            LblTitulo.Text = "SUCURSALES";
+            this.LblTitulo.Text = "SUCURSALES";
         }
 
         private void BtAdicionar_Click(object sender, EventArgs e)
@@ -308,6 +326,5 @@ namespace PRESENTER.alm
         }
 
         #endregion
-
     }
 }

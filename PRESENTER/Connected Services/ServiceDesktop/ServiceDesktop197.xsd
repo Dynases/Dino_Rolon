@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VProveedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" type="xs:int" />
+      <xs:element minOccurs="0" name="Contacto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacto2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSpyre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Longittud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoProveeedor" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VProveedor" nillable="true" type="tns:VProveedor" />
+  <xs:complexType name="ArrayOfVProveedor_01Lista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProveedor_01Lista" nillable="true" type="tns:VProveedor_01Lista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProveedor_01Lista" nillable="true" type="tns:ArrayOfVProveedor_01Lista" />
+  <xs:complexType name="VProveedor_01Lista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EdadSeman" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaNac" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLinea" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipoAloja" type="xs:int" />
+      <xs:element minOccurs="0" name="Linea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoAlojamiento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VProveedor_01Lista" nillable="true" type="tns:VProveedor_01Lista" />
+  <xs:complexType name="ArrayOfVProveedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProveedor" nillable="true" type="tns:VProveedor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProveedor" nillable="true" type="tns:ArrayOfVProveedor" />
+  <xs:complexType name="ArrayOfVProveedorLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProveedorLista" nillable="true" type="tns:VProveedorLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProveedorLista" nillable="true" type="tns:ArrayOfVProveedorLista" />
+  <xs:complexType name="VProveedorLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" type="xs:int" />
+      <xs:element minOccurs="0" name="Contacto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VProveedorLista" nillable="true" type="tns:VProveedorLista" />
+</xs:schema>

@@ -20,8 +20,7 @@ namespace REPOSITORY.Base
         public static DataSet EjecutarConsulta(string DML, params SqlParameter[] parametros)
         {
             DataSet result = new DataSet();
-            result = PrepararConsulta(DML, parametros);
-            int av = 1;
+            result = PrepararConsulta(DML, parametros);            
             return result;
         }
 
