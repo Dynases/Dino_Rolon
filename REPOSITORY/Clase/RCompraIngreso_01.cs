@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY.com.CompraIngreso_01;
 using DATA.EntityDataModel.DiAvi;
+using System.Data.Entity;
+using UTILITY.Enum.EnEstado;
 
 namespace REPOSITORY.Clase
 {
@@ -50,7 +52,48 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public bool GuardarModificar(List<VCompraIngreso_01> Lista, int Id, string usuario)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                   
 
+                    foreach (var vCompraIngreso_01 in Lista)
+                    {
+                        if (vCompraIngreso_01.Estado == (int)ENEstado.MODIFICAR)
+                        {
+                            var compraIng_01 = db.CompraIng_01
+                                             .Where(d => d.Id.Equals(vCompraIngreso_01.Id))
+                                             .FirstOrDefault();
+
+                            compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
+                            compraIng_01.Estado = 1; //Estatico                       
+                            compraIng_01.Caja = vCompraIngreso_01.Caja;
+                            compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
+                            compraIng_01.Grupo = vCompraIngreso_01.Grupo;
+                            compraIng_01.Maple = vCompraIngreso_01.Maple;
+                            compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
+                            compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
+                            compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
+                            compraIng_01.Total = vCompraIngreso_01.Total;
+                            compraIng_01.Fecha = DateTime.Now.Date;
+                            compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
+                            compraIng_01.Usuario = usuario;
+                            db.CompraIng_01.Attach(compraIng_01);
+                            db.Entry(compraIng_01).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }                        
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VCompraIngreso_01> ListarXId(int id)
         {
 
@@ -81,7 +124,8 @@ namespace REPOSITORY.Clase
                                           Cantidad = a.Cantidad,
                                           TotalCant = a.TotalCant,
                                           PrecioCost = a.PrecioCost,
-                                          Total = a.Total                                  
+                                          Total = a.Total  ,
+                                          Estado =a.Estado
                                       }).ToList();
                     return listResult;
                 }
@@ -122,7 +166,8 @@ namespace REPOSITORY.Clase
                                           Cantidad = 0,
                                           TotalCant = 0,
                                           PrecioCost = b.Prrecio,
-                                          Total = 0
+                                          Total = 0,
+                                          Estado = 0
                                       }).ToList();
                     return listResult;
                 }
