@@ -109,7 +109,7 @@ namespace SERVICE
         bool SucursalGuardar(VSucursal vSucursal);
 
         #endregion
-        #region
+        #region Deposito
         [OperationContract]
         List<VDepositoCombo> DepositoListarCombo();
         #endregion
@@ -148,8 +148,7 @@ namespace SERVICE
         List<VSeleccionLista> Seleccion_Lista();
 
         [OperationContract]
-        bool  Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
-        bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01> detalle, ref int id, string usuario);
+        bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
         #endregion
         #region Seleccion_01
         [OperationContract]
@@ -171,7 +170,7 @@ namespace SERVICE
         #endregion
         #region Compra_01
         [OperationContract]
-        List<VCompra_01_Lista> Compra_01_Lista();        
+        List<VCompra_01_Lista> Compra_01_Lista();
         #endregion
         // TODO: agregue aquí sus operaciones de servicio
     }

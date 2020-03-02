@@ -336,7 +336,6 @@ namespace SERVICE
             }
         }
         #endregion
-
         #region Deposito
 
         public List<VDepositoCombo> DepositoListarCombo()
@@ -353,6 +352,7 @@ namespace SERVICE
         }
 
         #endregion
+
         #region Precio Categoria
 
         public List<VPrecioCategoria> PrecioCategoriaListar()
