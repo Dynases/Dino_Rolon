@@ -9,6 +9,7 @@ namespace REPOSITORY.Interface
 {
    public  interface ISucursal
     {
+        bool Guardar(VSucursal vSucursal);
         List<VSucursalCombo> Listar();
         List<VSucursalLista> ListarSucursales();
     }

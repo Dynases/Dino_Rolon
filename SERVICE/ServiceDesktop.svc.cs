@@ -22,6 +22,7 @@ using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
 using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
+using ENTITY.inv.Deposito;
 
 namespace SERVICE
 {
@@ -297,6 +298,19 @@ namespace SERVICE
 
         #region Sucursal        
 
+        public bool SucursalGuardar(VSucursal vSucursal)
+        {
+            try
+            {
+                var result = new LSucursal().Guardar(vSucursal);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<VSucursalCombo> SucursalListarCombo()
         {
             try
@@ -315,6 +329,22 @@ namespace SERVICE
             try
             {
                 return new LSucursal().ListarSucursales();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Deposito
+
+        public List<VDepositoCombo> DepositoListarCombo()
+        {
+            try
+            {
+                var listResult = new LDeposito().Listar();
+                return listResult;
             }
             catch (Exception ex)
             {

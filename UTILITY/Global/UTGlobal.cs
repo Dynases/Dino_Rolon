@@ -13,19 +13,20 @@ using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Windows.Forms;
 using ENTITY.inv.Sucursal.View;
+using ENTITY.inv.Deposito;
 
 namespace UTILITY.Global
 {
     public class UTGlobal
     {
         public static string Usuario = "DEFAULT";
-        public static int Mayusculas =0;
+        public static int Mayusculas = 0;
         public static int UsuarioRol = 0;
         public static string NombreButton = "";
         public static Visualizador visualizador;
         //**Carpetas
         #region Carpetas
-        public static  string RutaTemporal = @"C:\Temporal";
+        public static string RutaTemporal = @"C:\Temporal";
         #endregion
 
         #region Metodos Globales
@@ -50,8 +51,9 @@ namespace UTILITY.Global
             catch (Exception)
             {
                 throw new Exception();
-            }           
+            }
         }
+
         public static void MG_ArmarComboSucursal(MultiColumnCombo combo, List<VSucursalCombo> lSucursal)
         {
             try
@@ -76,6 +78,32 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }
+
+        public static void MG_ArmarComboDeposito(MultiColumnCombo combo, List<VDepositoCombo> lDeposito)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 70;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = lDeposito;
+                combo.DropDownList.Refresh();
+                combo.Value = 2;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
         public static void MG_SeleccionarCombo(MultiColumnCombo combo)
         {
             try
@@ -92,14 +120,14 @@ namespace UTILITY.Global
             catch (Exception)
             {
                 throw new Exception();
-            }           
+            }
         }
         public static void MG_CrearCarpetaImagenes(string _CarpetaRaiz, string _NombreCarpeta)
         {
             try
             {
                 string[] ScarpetaRaiz = { ConexionGlobal.gs_CarpetaRaiz, _CarpetaRaiz };
-                string carpetaRaiz = Path.Combine(ScarpetaRaiz);              
+                string carpetaRaiz = Path.Combine(ScarpetaRaiz);
                 if (System.IO.Directory.Exists(Path.Combine(carpetaRaiz, _NombreCarpeta)) == false)
                 {
                     if (System.IO.Directory.Exists(carpetaRaiz) == false)
@@ -119,16 +147,16 @@ namespace UTILITY.Global
                     }
                 }
             }
-            catch ( Exception)
+            catch (Exception)
             {
 
                 throw new Exception();
             }
-           
+
         }
         public static void MG_CrearCarpetaTemporal()
         {
-            if (System.IO.Directory.Exists(RutaTemporal)==false)
+            if (System.IO.Directory.Exists(RutaTemporal) == false)
             {
                 System.IO.Directory.CreateDirectory(RutaTemporal);
             }
@@ -137,7 +165,7 @@ namespace UTILITY.Global
                 try
                 {
                     //this.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                    System.IO.Directory.Delete(RutaTemporal,true);
+                    System.IO.Directory.Delete(RutaTemporal, true);
                     System.IO.Directory.CreateDirectory(RutaTemporal);
                 }
                 catch (Exception)
@@ -147,7 +175,7 @@ namespace UTILITY.Global
                 }
             }
         }
-        public static void MG_MoverImagenRuta(string _Folder, string _Nombre, PictureBox imagen )
+        public static void MG_MoverImagenRuta(string _Folder, string _Nombre, PictureBox imagen)
         {
             try
             {
@@ -173,7 +201,7 @@ namespace UTILITY.Global
 
                 throw new Exception();
             }
-        
+
         }
         #endregion
     }

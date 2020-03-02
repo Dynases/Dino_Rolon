@@ -79,5 +79,11 @@ namespace PRESENTER.adm
             F1_Traspaso frm = new F1_Traspaso();
             frm.Show();
         }
+
+        private void btInvDeposito_Click(object sender, EventArgs e)
+        {
+            F1_Deposito frm = new F1_Deposito();
+            frm.Show();
+        }
     }
 }
