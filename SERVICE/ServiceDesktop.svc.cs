@@ -476,11 +476,11 @@ namespace SERVICE
         #endregion
         #region Seleccion
 
-        public bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01> detalle, ref int id, string usuario)
+        public bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id)
         {
             try
             {
-                var result = new LSeleccion().Guardar(vSeleccion, detalle, ref id, usuario);
+                var result = new LSeleccion().Guardar(vSeleccion, detalle_Seleccion, detalle_Ingreso, ref id);
                 return result;
             }
             catch (Exception ex)
@@ -516,11 +516,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public List<VSeleccion_01_Lista> Seleccion_01_ListarXId_Vacio(int IdCompraIngreso_01)
+        public List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01(int IdCompraInreso_01, int tipo)
         {
             try
             {
-                var listResult = new LSeleccion_01().ListarXId_Vacio(IdCompraIngreso_01);
+                var listResult = new LSeleccion_01().ListarXId_CompraIng(IdCompraInreso_01, tipo);
                 return listResult;
             }
             catch (Exception ex)
@@ -530,7 +530,7 @@ namespace SERVICE
         }
         #endregion
 
-        #region Seleccion
+        #region Transaformacion
         public List<VTransformacion> Transformacion_Lista()
         {
             try
@@ -546,12 +546,12 @@ namespace SERVICE
 
 
         #endregion
-        #region Seleccion_01
-        public List<VTransformacion_01_Lista> Transformacion_01_Lista()
+        #region Transaformacion_01
+        public List<VTransformacion_01> Transformacion_01_Lista(int idTransformacion)
         {
             try
             {
-                var listResult = new LTransformacion_01().Listar();
+                var listResult = new LTransformacion_01().Listar(idTransformacion);
                 return listResult;
             }
             catch (Exception ex)

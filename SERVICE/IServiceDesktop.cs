@@ -148,13 +148,14 @@ namespace SERVICE
         List<VSeleccionLista> Seleccion_Lista();
 
         [OperationContract]
+        bool  Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
         bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01> detalle, ref int id, string usuario);
         #endregion
         #region Seleccion_01
         [OperationContract]
         List<VSeleccion_01_Lista> Seleccion_01_Lista();
         [OperationContract]
-        List<VSeleccion_01_Lista> Seleccion_01_ListarXId_Vacio(int IdCompraInreso_01);
+        List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01(int IdCompraInreso_01, int tipo);
         #endregion
         #region Transformacion
         [OperationContract]
@@ -162,7 +163,7 @@ namespace SERVICE
         #endregion
         #region Transformacion_01
         [OperationContract]
-        List<VTransformacion_01_Lista> Transformacion_01_Lista();
+        List<VTransformacion_01> Transformacion_01_Lista(int idTransformacion);
         #endregion
         #region Compra
         [OperationContract]

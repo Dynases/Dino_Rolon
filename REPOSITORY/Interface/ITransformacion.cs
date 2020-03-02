@@ -9,6 +9,7 @@ namespace REPOSITORY.Interface
 {
     public interface ITransformacion
     {
+        bool Guardar(VTransformacion vTransformacion, ref int id);
         List<VTransformacion> Listar();
     }
 }

@@ -18,13 +18,45 @@ namespace LOGIC.Class
             iSeleccion_01 = new RSeleccion_01();
         }
         #region TRANSACCIONES
-        public bool Guardar(List<VSeleccion_01> lista, int Id)
+        public bool Guardar(List<VSeleccion_01_Lista> lista, int Id)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
                     var result = iSeleccion_01.Guardar(lista, Id);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool GuardarModificar(List<VSeleccion_01_Lista> lista, int Id)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = iSeleccion_01.GuardarModificar(lista, Id);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool GuardarModificar_CompraIngreso(List<VSeleccion_01_Lista> lista, int IdCompraIngreso)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = iSeleccion_01.GuardarModificar_CompraIngreso(lista, IdCompraIngreso);
                     scope.Complete();
                     return result;
                 }
@@ -47,11 +79,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public List<VSeleccion_01_Lista> ListarXId_Vacio(int Id)
+        public List<VSeleccion_01_Lista> ListarXId_CompraIng(int Id, int tipo)
         {
             try
             {
-                return iSeleccion_01.ListarXId_Vacio(Id);
+                return iSeleccion_01.ListarXId_CompraIng(Id, tipo);
             }
             catch (Exception ex)
             {

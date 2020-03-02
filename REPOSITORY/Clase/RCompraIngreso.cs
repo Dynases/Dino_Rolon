@@ -208,7 +208,9 @@ namespace REPOSITORY.Clase
 	                                a.IdSucur
                                 FROM 
 	                                COM.CompraIng a JOIN
-	                                COM.Proveed b ON b.Id = a.IdProvee ";
+	                                COM.Proveed b ON b.Id = a.IdProvee 
+                                WHERE
+                                    a.Estado <> 3";
                 return tabla = BD.EjecutarConsulta(consulta).Tables[0];
             }
             catch (Exception ex)

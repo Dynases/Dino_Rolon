@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY.com.Seleccion_01.View;
 using DATA.EntityDataModel.DiAvi;
+using UTILITY.Enum.EnEstado;
+using System.Data.Entity;
 
 namespace REPOSITORY.Clase
 {
     public class RSeleccion_01 : BaseConexion, ISeleccion_01
     {
         #region TRANSACCIONES
-        public bool Guardar(List<VSeleccion_01> Lista, int Id_Seleccion)
+        public bool Guardar(List<VSeleccion_01_Lista> Lista, int Id_Seleccion)
         {
             try
             {
@@ -28,11 +30,72 @@ namespace REPOSITORY.Clase
                         var seleccion_01 = new Seleccion_01();
                         seleccion_01.IdSeleccion = Id_Seleccion;
                         seleccion_01.IdProducto = vSeleccion_01.IdProducto;
-                        seleccion_01.Estado = 1; //Estatico                       
+                        seleccion_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
                         seleccion_01.Cantidad = vSeleccion_01.Cantidad;
                         seleccion_01.Precio = vSeleccion_01.Precio;
                         seleccion_01.Total = vSeleccion_01.Total;
                         db.Seleccion_01.Add(seleccion_01);
+                    }
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool GuardarModificar(List<VSeleccion_01_Lista> Lista, int Id )
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    foreach (var vSeleccion_01 in Lista)
+                    {
+                        if (vSeleccion_01.Estado == (int)ENEstado.MODIFICAR)
+                        {
+                            var seleccion_01 = db.Seleccion_01
+                                             .Where(d => d.Id.Equals(vSeleccion_01.Id))
+                                             .FirstOrDefault();
+
+                            seleccion_01.IdProducto = vSeleccion_01.IdProducto;
+                            seleccion_01.Estado = (int)ENEstado.GUARDADO; //Estatico                     
+                            seleccion_01.Cantidad = vSeleccion_01.Cantidad;
+                            seleccion_01.Precio = vSeleccion_01.Precio;
+                            seleccion_01.Total = vSeleccion_01.Total;                           
+                            db.Seleccion_01.Attach(seleccion_01);
+                            db.Entry(seleccion_01).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool GuardarModificar_CompraIngreso(List<VSeleccion_01_Lista> Lista, int IdCompraIngreso)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var compraIng = db.CompraIng.Where(c => c.Id.Equals(IdCompraIngreso)).FirstOrDefault();
+                    compraIng.Estado = (int)ENEstado.COMPLETADO;
+                    db.CompraIng.Attach(compraIng);
+                    db.Entry(compraIng).State = EntityState.Modified;                 
+                    foreach (var vCompraIng_01 in Lista)
+                    {
+                        var compraIng_01 = db.CompraIng_01
+                                             .Where(d =>d.Id.Equals(vCompraIng_01.Id))
+                                             .FirstOrDefault();
+                        compraIng_01.Estado = (int)ENEstado.COMPLETADO; //Estatico                     
+                        db.CompraIng_01.Attach(compraIng_01);
+                        db.Entry(compraIng_01).State = EntityState.Modified;
                     }
                     db.SaveChanges();
                     return true;
@@ -60,6 +123,7 @@ namespace REPOSITORY.Clase
                                           Id = a.Id,
                                           IdSeleccion = a.IdSeleccion,
                                           Producto = b.Descrip,
+                                          Estado = a.Estado,
                                           Cantidad = a.Cantidad,
                                           Precio = a.Precio,
                                           Total = a.Total
@@ -99,9 +163,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public List<VSeleccion_01_Lista> ListarXId_Vacio(int id)
+        public List<VSeleccion_01_Lista> ListarXId_CompraIng(int id,int  tipo)
         {
-
             try
             {
                 using (var db = GetEsquema())
@@ -123,10 +186,11 @@ namespace REPOSITORY.Clase
                                           Id = a.Id,
                                           IdSeleccion = 0,
                                           IdProducto = a.IdProduc,
+                                          Estado = tipo == 1 ? (int)ENEstado.COMPLETADO : a.Estado,
                                           Producto = c.Descrip,
-                                          Cantidad = 0,
+                                          Cantidad = tipo == 1 ? 0 : a.TotalCant,
                                           Precio = a.PrecioCost,
-                                          Total = 0
+                                          Total = tipo == 1 ? 0 : a.Total                                         
                                       }).ToList();
                     return listResult;
                 }

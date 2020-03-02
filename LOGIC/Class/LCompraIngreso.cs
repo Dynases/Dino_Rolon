@@ -25,12 +25,19 @@ namespace LOGIC.Class
         {
             try
             {
+                bool result = false;
                 using (var scope =new TransactionScope())
                 {
-                    var result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
-
-                    var resultDetalle = new LCompraIngreso_01().Guardar(detalle, Id,usuario);
-
+                    if (Id == 0) //Nuevo
+                    {
+                        result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
+                        var resultDetalle = new LCompraIngreso_01().Guardar(detalle, Id, usuario);                       
+                    }
+                    else
+                    {
+                        result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
+                        var resultDetalle = new LCompraIngreso_01().GuardarModificado(detalle, Id, usuario);
+                    }
                     scope.Complete();
                     return result;
                 }

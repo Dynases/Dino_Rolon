@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UTILITY;
+using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
 using UTILITY.Global;
 
@@ -73,7 +74,7 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.Message, GLMensaje.Error);
             }
         }
-       
+
         private void Cb_Tipo_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -87,7 +88,7 @@ namespace PRESENTER.com
             {
                 MP_MostrarMensajeError(ex.Message);
             }
-        }      
+        }
         private void Dgv_GBuscador_SelectionChanged(object sender, EventArgs e)
         {
             if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
@@ -117,8 +118,37 @@ namespace PRESENTER.com
                 e.Cancel = true;
             }
         }
-      
+
         private void Dgv_Detalle_CellEdited(object sender, ColumnActionEventArgs e)
+        {
+            try
+            {
+                Dgv_Detalle.UpdateData();
+                int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[10].Value);
+                if (estado == (int)ENEstado.COMPLETADO)
+                {
+                    throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
+                }
+                if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
+                {
+                    CalcularFila();
+                }
+                else
+                {
+                    if (estado == (int)ENEstado.GUARDADO)
+                    {
+                        CalcularFila();
+                        Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }           
+        }
+        private void CalcularFila()
         {
             Double caja, grupo, maple, cantidad, subTotal, precio, total;
             caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * 360;
@@ -131,8 +161,8 @@ namespace PRESENTER.com
             total = subTotal * precio;
             Dgv_Detalle.CurrentRow.Cells[9].Value = total;
             MP_ObtenerCalculo();
-
         }
+
         private void Dgv_Detalle_CellValueChanged(object sender, ColumnActionEventArgs e)
         {
         }
@@ -174,6 +204,63 @@ namespace PRESENTER.com
                 Dgv_GBuscador.Row = _MPos;
             }
         }
+        private void tb_Proveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            //yea
+            if (Tb_FechaEnt.IsInputReadOnly == false)
+            {
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                {
+                    var lista = new ServiceDesktop.ServiceDesktopClient().ProveedorListarEncabezado();
+                    List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
+                        new GLCelda() { campo = "Descrip", visible = true, titulo = "DESCRIPCION", tamano = 150 },
+                        new GLCelda() { campo = "Contacto", visible = true, titulo = "CONTACTO", tamano = 100 },
+                        new GLCelda() { campo = "Ciudad", visible = false, titulo = "IDCIUDAD", tamano = 80 },
+                        new GLCelda() { campo = "CiudadNombre", visible = true, titulo = "CIUDAD", tamano = 120 },
+                        new GLCelda() { campo = "Telfon", visible = true, titulo = "TELEFONO", tamano = 100 },
+                        new GLCelda() { campo = "EdadSemana", visible = true, titulo = "EDAD EN SEMANAS", tamano = 100 }
+                    };
+                    Efecto efecto = new Efecto();
+                    efecto.Tipo = 3;
+                    efecto.Tabla = lista;
+                    efecto.SelectCol = 2;
+                    efecto.listaCelda = listEstCeldas;
+                    efecto.Alto = 50;
+                    efecto.Ancho = 350;
+                    efecto.Context = "SELECCIONE UN PROVEEDOR";
+                    efecto.ShowDialog();
+                    bool bandera = false;
+                    bandera = efecto.Band;
+                    if (bandera)
+                    {
+                        Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                        _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
+                        tb_Proveedor.Text = Row.Cells["Descrip"].Value.ToString();
+                        Tb_Edad.Text = Row.Cells["Id"].Value.ToString();
+                    }
+                }
+            }
+        }
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (Tb_Cod.ReadOnly == true)
+            {
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
+                var ObjetoReport = new RCompraIngreso();
+                ObjetoReport.SetDataSource(lista);
+                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                UTGlobal.visualizador.ShowDialog();
+                UTGlobal.visualizador.BringToFront();
+            }
+        }
+
         #endregion
 
         #region Metodos privados
@@ -186,7 +273,7 @@ namespace PRESENTER.com
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
-               
+
             }
             catch (Exception ex)
             {
@@ -237,7 +324,7 @@ namespace PRESENTER.com
                     Dgv_GBuscador.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_GBuscador.RootTable.Columns[4].CellStyle.FontSize = 8;
                     Dgv_GBuscador.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_GBuscador.RootTable.Columns[4].Visible = true;                   
+                    Dgv_GBuscador.RootTable.Columns[4].Visible = true;
 
                     Dgv_GBuscador.RootTable.Columns[5].Key = "Total";
                     Dgv_GBuscador.RootTable.Columns[5].Caption = "Total";
@@ -283,7 +370,7 @@ namespace PRESENTER.com
                 }
                 else
                 {
-                   //Consulta segun un Categoria 
+                    //Consulta segun un Categoria 
                     lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id).ToList();
                 }
 
@@ -294,7 +381,7 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
 
-        }        
+        }
         private void MP_ArmarDetalle(List<VCompraIngreso_01> lresult)
         {
             if (lresult.Count() > 0)
@@ -381,6 +468,10 @@ namespace PRESENTER.com
                 Dgv_Detalle.RootTable.Columns[9].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_Detalle.RootTable.Columns[9].Visible = true;
 
+
+                Dgv_Detalle.RootTable.Columns[10].Key = "Estado";
+                Dgv_Detalle.RootTable.Columns[10].Visible = false;
+
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                 Dgv_Detalle.GroupByBoxVisible = false;
@@ -394,7 +485,7 @@ namespace PRESENTER.com
             UTGlobal.MG_ArmarCombo(Cb_Tipo,
                                    new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
                                                                                                  Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2)).ToList());
-          
+
 
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
@@ -436,8 +527,8 @@ namespace PRESENTER.com
                 }
                 tabla.Rows.Add(fila);
             }
-           return (tabla);
-        }        
+            return (tabla);
+        }
         private void MP_Habilitar()
         {
             Tb_Cod.ReadOnly = false;
@@ -447,12 +538,12 @@ namespace PRESENTER.com
             tb_Proveedor.ReadOnly = false;
             Tb_Observacion.ReadOnly = false;
             Tb_Edad.ReadOnly = false;
-            Tb_Entregado.ReadOnly = false;           
+            Tb_Entregado.ReadOnly = false;
             Tb_FechaEnt.Value = DateTime.Now;
             Tb_FechaRec.Value = DateTime.Now;
-            Tb_Recibido.ReadOnly = false;  
-            Dgv_Detalle.Enabled = true;            
-           
+            Tb_Recibido.ReadOnly = false;
+            Dgv_Detalle.Enabled = true;
+
         }
         private void MP_InHabilitar()
         {
@@ -460,15 +551,15 @@ namespace PRESENTER.com
             Tb_NUmGranja.ReadOnly = true;
             Tb_Placa.ReadOnly = true;
             Cb_Tipo.Enabled = false;
-            tb_Proveedor.ReadOnly = true;           
+            tb_Proveedor.ReadOnly = true;
             Tb_Observacion.ReadOnly = true;
             Tb_Observacion.ReadOnly = true;
             Tb_Entregado.ReadOnly = true;
             Tb_Edad.ReadOnly = true;
             _Limpiar = false;
-            Tb_Recibido.ReadOnly = true;          
-            Dgv_Detalle.Enabled = false;           
-           
+            Tb_Recibido.ReadOnly = true;
+            Dgv_Detalle.Enabled = false;
+
         }
         private void MP_Limpiar()
         {
@@ -487,8 +578,8 @@ namespace PRESENTER.com
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
-                Tb_TotalVendido.Value = 0;             
-                Tb_TotalEnviado.Value = 0;                
+                Tb_TotalVendido.Value = 0;
+                Tb_TotalEnviado.Value = 0;
                 Tb_TotalMaples.Value = 0;
                 Tb_TotalFisico.Value = 0;
                 Tb_TPrecio.Value = 0;
@@ -501,13 +592,14 @@ namespace PRESENTER.com
 
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
-           
-        }        
+
+        }
         private void MP_MostrarRegistro(int _Pos)
         {
             Dgv_GBuscador.Row = _Pos;
             _idOriginal = (int)Dgv_GBuscador.GetValue("id");
-            if (_idOriginal != 0)            {
+            if (_idOriginal != 0)
+            {
                 var tabla = new ServiceDesktop.ServiceDesktopClient().CmmpraIngresoListarXId(_idOriginal).ToArray();
                 var registro = tabla.First();
                 if (tabla.Length > 0)
@@ -519,16 +611,17 @@ namespace PRESENTER.com
                     Tb_Placa.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Placa)).Count() > 0 ? tabla.Select(x => x.Placa).First().ToString() : "";
                     tb_Proveedor.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Proveedor)).Count() > 0 ? tabla.Select(x => x.Proveedor).First().ToString() : "";
                     _idProveedor = tabla.Select(x => x.IdProvee).First();
-                    Tb_Observacion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Observacion)).Count() > 0 ? tabla.Select(x => x.Observacion).First().ToString() : "";                  
+                    Tb_Observacion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Observacion)).Count() > 0 ? tabla.Select(x => x.Observacion).First().ToString() : "";
                     Cb_Tipo.Value = tabla.Select(x => x.Tipo).First();
                     Tb_Recibido.Text = registro.Recibido.ToString();
                     Tb_Edad.Text = tabla.Select(x => x.CantidadSemanas).First().ToString();
                     Tb_Entregado.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Entregado)).Count() > 0 ? tabla.Select(x => x.Entregado).First().ToString() : "";
-                    Tb_TotalEnviado.Value =  Convert.ToDouble(registro.TotalRecibido);
+                    Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
                     Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
                     Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
                     MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                     MP_ObtenerCalculo();
+                    BtnModificar.Enabled = registro.estado == (int)ENEstado.COMPLETADO ? false : true;
                 }
                 LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
             }
@@ -576,65 +669,65 @@ namespace PRESENTER.com
 
         #region Metodo heredados
         public override bool MH_NuevoRegistro()
-        {           
+        {
             bool resultado = false;
             string mensaje = "";
-           
-                VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
-                {
-                    IdSucur = 2,
-                    IdProvee = _idProveedor,
-                    estado = 1,
-                    NumNota = Tb_NUmGranja.Text,
-                    FechaEnt = Tb_FechaEnt.Value,
-                    FechaRec = Tb_FechaRec.Value,
-                    Placa = Tb_Placa.Text,
-                    CantidadSemanas= Tb_Edad.Text,
-                    Tipo = Convert.ToInt32(Cb_Tipo.Value),
-                    Observacion = Tb_Observacion.Text,
-                    Entregado = Tb_Entregado.Text,
-                    Recibido = Tb_Recibido.Text,
-                    TotalRecibido = Convert.ToDecimal( Tb_TotalEnviado.Value),
-                    TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
-                    Total = Convert.ToDecimal(Tb_TSaldoTo.Value),                    
-                    Fecha = DateTime.Now.Date,
-                    Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario,
-                };
-                int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
-                int idAux = id;
-                var detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
 
-                resultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_Guardar(CompraIngreso, detalle, ref id,TxtNombreUsu.Text);
-                if (resultado)
+            VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
+            {
+                IdSucur = 2,
+                IdProvee = _idProveedor,
+                estado = 1,
+                NumNota = Tb_NUmGranja.Text,
+                FechaEnt = Tb_FechaEnt.Value,
+                FechaRec = Tb_FechaRec.Value,
+                Placa = Tb_Placa.Text,
+                CantidadSemanas = Tb_Edad.Text,
+                Tipo = Convert.ToInt32(Cb_Tipo.Value),
+                Observacion = Tb_Observacion.Text,
+                Entregado = Tb_Entregado.Text,
+                Recibido = Tb_Recibido.Text,
+                TotalRecibido = Convert.ToDecimal(Tb_TotalEnviado.Value),
+                TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
+                Total = Convert.ToDecimal(Tb_TSaldoTo.Value),
+                Fecha = DateTime.Now.Date,
+                Hora = DateTime.Now.ToString("hh:mm"),
+                Usuario = UTGlobal.Usuario,
+            };
+            int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
+            int idAux = id;
+            var detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
+
+            resultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_Guardar(CompraIngreso, detalle, ref id, TxtNombreUsu.Text);
+            if (resultado)
+            {
+                if (idAux == 0)//Registar
                 {
-                    if (idAux == 0)//Registar
-                    {
-                        Tb_NUmGranja.Focus();
-                        MP_CargarEncabezado();
-                        MP_Limpiar();
-                        _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
-                    }
-                    else//Modificar
-                    {
-                        MP_Filtrar(1);
-                        MP_InHabilitar();//El formulario
-                        _Limpiar = true;
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
-                    }
+                    Tb_NUmGranja.Focus();
+                    MP_CargarEncabezado();
+                    MP_Limpiar();
+                    _Limpiar = true;
+                    mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
                 }
-                //Resultado
-                if (resultado)
+                else//Modificar
                 {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    MP_Filtrar(1);
+                    MP_InHabilitar();//El formulario
+                    _Limpiar = true;
+                    mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                    MH_Habilitar();//El menu                   
                 }
-                else
-                {
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                }
+            }
+            //Resultado
+            if (resultado)
+            {
+                ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+            }
+            else
+            {
+                mensaje = GLMensaje.Registro_Error(_NombreFormulario);
+                ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+            }
             return resultado;
         }
 
@@ -653,8 +746,8 @@ namespace PRESENTER.com
         {
             MP_InHabilitar();
             MP_Filtrar(1);
-        }    
-      
+        }
+
         public override bool MH_Validar()
         {
             bool _Error = false;
@@ -683,64 +776,5 @@ namespace PRESENTER.com
             return _Error;
         }
         #endregion
-
-        private void tb_Proveedor_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Tb_FechaEnt.IsInputReadOnly == false)
-            {
-                if(e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                {
-                    var lista = new ServiceDesktop.ServiceDesktopClient().ProveedorListarEncabezado();
-                    List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
-                        new GLCelda() { campo = "Descrip", visible = true, titulo = "DESCRIPCION", tamano = 150 },
-                        new GLCelda() { campo = "Contacto", visible = true, titulo = "CONTACTO", tamano = 100 },
-                        new GLCelda() { campo = "Ciudad", visible = false, titulo = "IDCIUDAD", tamano = 80 },
-                        new GLCelda() { campo = "CiudadNombre", visible = true, titulo = "CIUDAD", tamano = 120 },
-                        new GLCelda() { campo = "Telfon", visible = true, titulo = "TELEFONO", tamano = 100 },
-                        new GLCelda() { campo = "EdadSemana", visible = true, titulo = "EDAD EN SEMANAS", tamano = 100 }
-                    };
-                    Efecto efecto = new Efecto();
-                    efecto.Tipo = 3;
-                    efecto.Tabla = lista;
-                    efecto.SelectCol = 2;
-                    efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
-                    efecto.Context = "SELECCIONE UN PROVEEDOR";
-                    efecto.ShowDialog();
-                    bool bandera = false;
-                    bandera = efecto.Band;
-                    if (bandera)
-                    {
-                        Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                        _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
-                        tb_Proveedor.Text =Row.Cells["Descrip"].Value.ToString();
-                        Tb_Edad.Text = Row.Cells["Id"].Value.ToString();
-                    }
-                }              
-            }
-        }
-
-        private void BtnImprimir_Click(object sender, EventArgs e)
-        {
-            if (Tb_Cod.ReadOnly == true)
-            {
-                if (UTGlobal.visualizador != null)
-                {
-                    UTGlobal.visualizador.Close();
-                }
-                UTGlobal.visualizador = new Visualizador();
-                var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
-                var ObjetoReport = new RCompraIngreso();
-                ObjetoReport.SetDataSource(lista);
-                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                UTGlobal.visualizador.ShowDialog();
-                UTGlobal.visualizador.BringToFront();
-            }
-        }
-
-     
     }
 }

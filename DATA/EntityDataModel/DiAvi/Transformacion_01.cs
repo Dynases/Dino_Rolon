@@ -17,12 +17,12 @@ namespace DATA.EntityDataModel.DiAvi
         public int Id { get; set; }
         public int IdTransformacion { get; set; }
         public int IdProducto { get; set; }
+        public int IdProducto_Mat { get; set; }
         public int Estado { get; set; }
         public decimal TotalProd { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Total { get; set; }
     
         public virtual Transformacion Transformacion { get; set; }
-        public virtual Producto Producto { get; set; }
     }
 }

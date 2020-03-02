@@ -13,5 +13,7 @@ namespace REPOSITORY.Interface
 
         List<VCompraIngreso_01> ListarXId2(int IdGrupo2);
         bool Guardar(List<VCompraIngreso_01> Lista, int Id,string usuario);
+
+        bool GuardarModificar(List<VCompraIngreso_01> Lista, int Id, string usuario);
     }
 }

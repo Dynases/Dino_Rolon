@@ -340,7 +340,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
     <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
@@ -414,28 +416,25 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop194.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1930.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop195.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1931.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop196.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1932.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop197.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1933.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop198.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1934.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop199.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1935.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop20.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1936.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
@@ -474,6 +473,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreria.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProducto.datasource" />
@@ -533,7 +533,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.disco" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
     <Content Include="MetroFramework.txt" />
     <None Include="Resource\PANTALLA.png" />
     <None Include="Resource\LIBRERIA.png" />
