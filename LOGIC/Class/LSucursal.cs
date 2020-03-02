@@ -3,12 +3,14 @@ using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Transactions;
 
 namespace LOGIC.Class
 {
     public class LSucursal
     {
         protected ISucursal iSucursal;
+
         public LSucursal()
         {
             iSucursal = new RSucursal();
@@ -41,6 +43,29 @@ namespace LOGIC.Class
         }
 
         #endregion
+
+        #region Transacciones
+
+        public bool Guardar(VSucursal vSucursal)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = iSucursal.Guardar(vSucursal);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        #endregion
+
 
     }
 }

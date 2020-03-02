@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VCliente" nillable="true" type="tns:VCliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVCliente" nillable="true" type="tns:ArrayOfVCliente" />
+  <xs:complexType name="VCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" type="xs:int" />
+      <xs:element minOccurs="0" name="Contacto1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacto2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direcccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Facturacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSpyre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Longittud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Nit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telfono1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telfono2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCliente" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VCliente" nillable="true" type="tns:VCliente" />
+  <xs:complexType name="ArrayOfVClienteLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VClienteLista" nillable="true" type="tns:VClienteLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVClienteLista" nillable="true" type="tns:ArrayOfVClienteLista" />
+  <xs:complexType name="VClienteLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" type="xs:int" />
+      <xs:element minOccurs="0" name="Contacto1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacto2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VClienteLista" nillable="true" type="tns:VClienteLista" />
+</xs:schema>

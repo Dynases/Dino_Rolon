@@ -1,16 +1,49 @@
-﻿using ENTITY.inv.Sucursal.View;
+﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.inv.Sucursal.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace REPOSITORY.Clase
 {
     public class RSucursal : BaseConexion, ISucursal
     {
+
+        public bool Guardar(VSucursal vSucursal)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var sucursal = new Sucursal
+                    {
+                        Descrip = vSucursal.Descripcion,
+                        Direcc = vSucursal.Direccion,
+                        Fecha = DateTime.Now,
+                        Hora = DateTime.Now.ToShortTimeString(),
+                        Latit = vSucursal.Latitud,
+                        Longi = vSucursal.Longitud,
+                        Telef = vSucursal.Telefono,
+                        Usuario = vSucursal.Usuario,
+                        IdDepos = vSucursal.IdDeposito,
+                        Id = vSucursal.Id,
+                        Imagen = vSucursal.Imagen
+                    };
+
+                    db.Sucursal.Add(sucursal);
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<VSucursalCombo> Listar()
         {
             try
@@ -43,7 +76,8 @@ namespace REPOSITORY.Clase
                         Id = s.Id,
                         Descripcion = s.Descrip,
                         Direccion = s.Direcc,
-                        Telefono = s.Telef
+                        Telefono = s.Telef,
+                        Deposito = s.Deposito.Descrip
                     }).ToList();
 
                     return listResult;

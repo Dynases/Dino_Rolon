@@ -5,6 +5,7 @@ using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
+using ENTITY.inv.Deposito;
 using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
@@ -97,10 +98,20 @@ namespace SERVICE
         bool ProductoExisteEnCompra(int id);
         #endregion
         #region Sucursal
+
         [OperationContract]
         List<VSucursalCombo> SucursalListarCombo();
+
         [OperationContract]
         List<VSucursalLista> SucursalListar();
+
+        [OperationContract]
+        bool SucursalGuardar(VSucursal vSucursal);
+
+        #endregion
+        #region Deposito
+        [OperationContract]
+        List<VDepositoCombo> DepositoListarCombo();
         #endregion
         #region Precio Categoria
         [OperationContract]
@@ -137,7 +148,7 @@ namespace SERVICE
         List<VSeleccionLista> Seleccion_Lista();
 
         [OperationContract]
-        bool  Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
+        bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
         #endregion
         #region Seleccion_01
         [OperationContract]

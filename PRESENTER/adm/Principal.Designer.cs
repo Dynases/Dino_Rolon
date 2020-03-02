@@ -219,6 +219,7 @@
             this.btInvDeposito.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
             this.btInvDeposito.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btInvDeposito.TitleTextColor = System.Drawing.Color.Red;
+            this.btInvDeposito.Click += new System.EventHandler(this.btInvDeposito_Click);
             // 
             // btInvSucursal
             // 
@@ -249,7 +250,7 @@
             this.btInvTraspaso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
             this.btInvTraspaso.Name = "btInvTraspaso";
             this.btInvTraspaso.SymbolColor = System.Drawing.Color.Empty;
-            this.btInvTraspaso.Text = "MOVIMIENTOS";
+            this.btInvTraspaso.Text = "TRASPASOS";
             this.btInvTraspaso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish;
             this.btInvTraspaso.TileSize = new System.Drawing.Size(250, 135);
             // 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Sucursal));
+            Janus.Windows.GridEX.GridEXLayout Cb_Depositos_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelDerecha = new System.Windows.Forms.Panel();
             this.GPanel_Sucursales = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -57,6 +58,9 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Descrip = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.btn_TipoProveedor = new DevComponents.DotNetBar.ButtonX();
+            this.Cb_Depositos = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -84,6 +88,7 @@
             this.SuperTabControlPanel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Depositos)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
@@ -287,6 +292,9 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.btn_TipoProveedor);
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_Depositos);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX16);
             this.GPanel_DatosGenerales.Controls.Add(this.lblId);
             this.GPanel_DatosGenerales.Controls.Add(this.GPanel_InfoAdicional);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Telef);
@@ -342,7 +350,7 @@
             this.lblId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblId.Location = new System.Drawing.Point(194, 148);
+            this.lblId.Location = new System.Drawing.Point(165, 3);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
             this.lblId.Size = new System.Drawing.Size(40, 20);
@@ -595,10 +603,11 @@
             // 
             this.Tb_Telef.Border.Class = "TextBoxBorder";
             this.Tb_Telef.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Telef.Location = new System.Drawing.Point(194, 116);
+            this.Tb_Telef.Location = new System.Drawing.Point(368, 28);
+            this.Tb_Telef.Multiline = true;
             this.Tb_Telef.Name = "Tb_Telef";
             this.Tb_Telef.PreventEnterBeep = true;
-            this.Tb_Telef.Size = new System.Drawing.Size(168, 27);
+            this.Tb_Telef.Size = new System.Drawing.Size(168, 56);
             this.Tb_Telef.TabIndex = 344;
             // 
             // labelX2
@@ -611,7 +620,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX2.Location = new System.Drawing.Point(194, 90);
+            this.labelX2.Location = new System.Drawing.Point(368, 3);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX2.Size = new System.Drawing.Size(58, 20);
@@ -629,7 +638,7 @@
             this.Tb_Direcc.Multiline = true;
             this.Tb_Direcc.Name = "Tb_Direcc";
             this.Tb_Direcc.PreventEnterBeep = true;
-            this.Tb_Direcc.Size = new System.Drawing.Size(174, 52);
+            this.Tb_Direcc.Size = new System.Drawing.Size(264, 52);
             this.Tb_Direcc.TabIndex = 342;
             // 
             // labelX1
@@ -680,6 +689,54 @@
             this.labelX10.TabIndex = 339;
             this.labelX10.Text = "Descripción";
             // 
+            // btn_TipoProveedor
+            // 
+            this.btn_TipoProveedor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btn_TipoProveedor.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btn_TipoProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_TipoProveedor.Image")));
+            this.btn_TipoProveedor.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btn_TipoProveedor.Location = new System.Drawing.Point(508, 111);
+            this.btn_TipoProveedor.Name = "btn_TipoProveedor";
+            this.btn_TipoProveedor.Size = new System.Drawing.Size(28, 29);
+            this.btn_TipoProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btn_TipoProveedor.TabIndex = 349;
+            this.btn_TipoProveedor.Visible = false;
+            // 
+            // Cb_Depositos
+            // 
+            this.Cb_Depositos.BackColor = System.Drawing.Color.White;
+            Cb_Depositos_DesignTimeLayout.LayoutString = resources.GetString("Cb_Depositos_DesignTimeLayout.LayoutString");
+            this.Cb_Depositos.DesignTimeLayout = Cb_Depositos_DesignTimeLayout;
+            this.Cb_Depositos.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Depositos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Depositos.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Depositos.Location = new System.Drawing.Point(276, 116);
+            this.Cb_Depositos.Name = "Cb_Depositos";
+            this.Cb_Depositos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Depositos.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Depositos.SelectedIndex = -1;
+            this.Cb_Depositos.SelectedItem = null;
+            this.Cb_Depositos.Size = new System.Drawing.Size(226, 24);
+            this.Cb_Depositos.TabIndex = 347;
+            this.Cb_Depositos.Tag = "1";
+            this.Cb_Depositos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX16
+            // 
+            this.labelX16.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX16.Location = new System.Drawing.Point(276, 87);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX16.Size = new System.Drawing.Size(125, 23);
+            this.labelX16.TabIndex = 348;
+            this.labelX16.Text = "Depósito";
+            // 
             // F1_Sucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,6 +774,7 @@
             this.SuperTabControlPanel3.PerformLayout();
             this.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Depositos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -751,5 +809,8 @@
         internal GMap.NET.WindowsForms.GMapControl Gmc_Sucursal;
         internal DevComponents.DotNetBar.SuperTabItem SuperTabItem2;
         internal DevComponents.DotNetBar.LabelX lblId;
+        internal DevComponents.DotNetBar.ButtonX btn_TipoProveedor;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Depositos;
+        internal DevComponents.DotNetBar.LabelX labelX16;
     }
 }

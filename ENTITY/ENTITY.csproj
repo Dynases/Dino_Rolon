@@ -56,6 +56,8 @@
     <Compile Include="com\Seleccion_01\View\VSeleccion_01.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_Lista.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_ListaDet.cs" />
+    <Compile Include="inv\Deposito\VDepositoCombo.cs" />
+    <Compile Include="inv\Sucursal\View\VSucursal.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalCombo.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalLista.cs" />
     <Compile Include="inv\Transformacion\View\VTransformacion.cs" />

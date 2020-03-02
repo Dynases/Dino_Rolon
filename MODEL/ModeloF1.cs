@@ -108,13 +108,13 @@ namespace MODEL
         private void BtnGrabar_Click(object sender, EventArgs e)
         {
             if (MH_Validar() == true)
-                return;                     
+                return;
             MH_NuevoRegistro();
             if (VM_Nuevo)
                 MH_Habilitar();
             else
                 MH_Inhanbilitar();
-  
+
         }
         private void BtnAtras_Click(object sender, EventArgs e)
         {
@@ -140,7 +140,7 @@ namespace MODEL
             BtnNuevo.Enabled = false;
             BtnModificar.Enabled = false;
             BtnEliminar.Enabled = false;
-            BtnGrabar.Enabled = true;            
+            BtnGrabar.Enabled = true;
             BtnImprimir.Enabled = false;
             BtnExportar.Enabled = false;
             PanelNavegacion.Enabled = false;
@@ -151,7 +151,7 @@ namespace MODEL
             BtnNuevo.Enabled = true;
             BtnModificar.Enabled = true;
             BtnEliminar.Enabled = true;
-            BtnGrabar.Enabled = false;           
+            BtnGrabar.Enabled = false;
             BtnImprimir.Enabled = true;
             PanelNavegacion.Enabled = true;
             SuperTabBuscar.Enabled = true;
@@ -169,11 +169,13 @@ namespace MODEL
         public virtual bool MH_Grabar() { return true; }
         public virtual bool MH_Validar() { return true; }
         public virtual bool MH_Eliminar() { return true; }
-        public virtual void MH_Habilitar() {
+        public virtual void MH_Habilitar()
+        {
             MP_Habilitar();
         }
-        public virtual void MH_Inhanbilitar() {
-           
+        public virtual void MH_Inhanbilitar()
+        {
+
         }
         public virtual void MH_Salir() { }
         public virtual void MH_Limpiar() { }
@@ -181,5 +183,5 @@ namespace MODEL
         #endregion
 
 
-    } 
+    }
 }

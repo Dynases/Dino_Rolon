@@ -182,6 +182,12 @@
     <Compile Include="adm\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="alm\F1_Deposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F1_Deposito.Designer.cs">
+      <DependentUpon>F1_Deposito.cs</DependentUpon>
+    </Compile>
     <Compile Include="alm\F1_Sucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     <EmbeddedResource Include="adm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="alm\F1_Deposito.resx">
+      <DependentUpon>F1_Deposito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Sucursal.resx">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +342,8 @@
     </None>
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd" />
+    <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -405,25 +416,25 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop194.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1930.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop195.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1931.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop196.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1932.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop197.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1933.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop198.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1934.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop199.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1935.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1936.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
@@ -458,6 +469,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
