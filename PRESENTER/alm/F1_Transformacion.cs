@@ -113,11 +113,11 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-        private void MP_CargarDetalle(int id)
+        private void MP_CargarDetalle(int idTransformacion)
         {
             try
             {          
-                var lresult = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_Lista().Where(a => a.IdTransformacion == id).ToList();      
+                var lresult = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_Lista(idTransformacion).ToList();      
                 if (lresult.Count() > 0)
                 {
                     Dgv_Detalle.DataSource = lresult;

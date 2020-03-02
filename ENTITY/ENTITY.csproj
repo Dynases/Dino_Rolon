@@ -60,7 +60,6 @@
     <Compile Include="inv\Sucursal\View\VSucursalLista.cs" />
     <Compile Include="inv\Transformacion\View\VTransformacion.cs" />
     <Compile Include="inv\Transformacion_01\View\VTransformacion_01.cs" />
-    <Compile Include="inv\Transformacion_01\View\VTransformacion_01_Lista.cs" />
     <Compile Include="Libreria\View\VLibreria.cs" />
     <Compile Include="Libreria\View\VLibreriaLista.cs" />
     <Compile Include="Producto\View\VProducto.cs" />

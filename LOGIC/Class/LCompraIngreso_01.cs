@@ -34,6 +34,22 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public bool GuardarModificado(List<VCompraIngreso_01> lista, int Id, string usuario)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = iCompraIngreso_01.GuardarModificar(lista, Id, usuario);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Consulta
 

@@ -9,6 +9,10 @@ namespace REPOSITORY.Interface
 {
    public interface ITransformacion_01
     {
-        List<VTransformacion_01_Lista> Listar();
+        bool Nuevo(List<VTransformacion_01> Lista, int idTransformacion);
+        bool Modificar(List<VTransformacion_01> Lista, int idTransformacion);
+        List<VTransformacion_01> Listar(int idTransformacion);
+
+        VTransformacion_01 TraerTransaformacion_01(int idIdProducto, int idProducto_Mat);
     }
 }

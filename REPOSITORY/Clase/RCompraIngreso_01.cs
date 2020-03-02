@@ -29,7 +29,7 @@ namespace REPOSITORY.Clase
                         var compraIng_01 = new CompraIng_01();
                         compraIng_01.IdCompra = Id;
                         compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                        compraIng_01.Estado = 1; //Estatico                       
+                        compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
                         compraIng_01.Caja = vCompraIngreso_01.Caja;
                         compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
                         compraIng_01.Grupo = vCompraIngreso_01.Grupo;
@@ -42,8 +42,9 @@ namespace REPOSITORY.Clase
                         compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
                         compraIng_01.Usuario = usuario;
                         db.CompraIng_01.Add(compraIng_01);
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
+                    
                     return true;
                 }
             }
@@ -57,11 +58,9 @@ namespace REPOSITORY.Clase
             try
             {
                 using (var db = GetEsquema())
-                {
-                   
-
+                {                  
                     foreach (var vCompraIngreso_01 in Lista)
-                    {
+                    {                   
                         if (vCompraIngreso_01.Estado == (int)ENEstado.MODIFICAR)
                         {
                             var compraIng_01 = db.CompraIng_01
@@ -69,9 +68,8 @@ namespace REPOSITORY.Clase
                                              .FirstOrDefault();
 
                             compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                            compraIng_01.Estado = 1; //Estatico                       
+                            compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
                             compraIng_01.Caja = vCompraIngreso_01.Caja;
-                            compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
                             compraIng_01.Grupo = vCompraIngreso_01.Grupo;
                             compraIng_01.Maple = vCompraIngreso_01.Maple;
                             compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;

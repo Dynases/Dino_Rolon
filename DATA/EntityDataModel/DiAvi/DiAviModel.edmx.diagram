@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2e67f559ef5643d4851e2f7d82dfb436" Name="Diagram1">
-        <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="2.75" PointY="2.75" />
+        <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="2.625" PointY="3.75" />
         <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="3.75" PointY="27.125" />
         <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="6" PointY="10.125" />
         <EntityTypeShape EntityType="DiAviModel.Proveed" Width="1.5" PointX="1.5" PointY="26.375" />
@@ -29,9 +29,6 @@
         <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK__Precio_Product" />
-        <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="3" PointY="11" />
-        <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
-        <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Producto" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="6" PointY="15.875" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
         <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="8.375" PointY="5.75" />
@@ -43,6 +40,8 @@
         <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="6" PointY="21.625" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
+        <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="4.125" PointY="0.5" />
+        <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -209,11 +209,11 @@ namespace PRESENTER.alm
             }
         }
 
-        private void MP_CargarDetalle(int id)
+        private void MP_CargarDetalle(int idTransdormacion)
         {
             try
             {
-                var lresult = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_Lista().Where(a => a.IdTransformacion == id).ToList();
+                var lresult = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_Lista(idTransdormacion).ToList();
                 if (lresult.Count() > 0)
                 {
                     Dgv_Sucursales.DataSource = lresult;

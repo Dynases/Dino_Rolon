@@ -202,6 +202,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+       
         public bool ExisteEnCompra(int IdProducto)
         {
             try

@@ -121,19 +121,32 @@ namespace PRESENTER.com
 
         private void Dgv_Detalle_CellEdited(object sender, ColumnActionEventArgs e)
         {
-            int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[10].Value);
-            if (estado == (int)ENEstado.NUEVO)
+            try
             {
-                CalcularFila();
-            }
-            else  
-            {
-                if (estado == (int)ENEstado.MODIFICAR)
+                Dgv_Detalle.UpdateData();
+                int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[10].Value);
+                if (estado == (int)ENEstado.COMPLETADO)
+                {
+                    throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
+                }
+                if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                 {
                     CalcularFila();
-                    Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
+                }
+                else
+                {
+                    if (estado == (int)ENEstado.GUARDADO)
+                    {
+                        CalcularFila();
+                        Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void CalcularFila()
         {
@@ -230,7 +243,6 @@ namespace PRESENTER.com
                 }
             }
         }
-
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
             if (Tb_Cod.ReadOnly == true)
@@ -609,6 +621,7 @@ namespace PRESENTER.com
                     Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
                     MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                     MP_ObtenerCalculo();
+                    BtnModificar.Enabled = registro.estado == (int)ENEstado.COMPLETADO ? false : true;
                 }
                 LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
             }

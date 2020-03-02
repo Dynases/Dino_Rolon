@@ -18,11 +18,11 @@ namespace LOGIC.Class
             ITransformacion_01 = new RTransformacion_01();
         }
         #region Consulta
-        public List<VTransformacion_01_Lista> Listar()
+        public List<VTransformacion_01> Listar(int idTransformacion)
         {
             try
             {
-                return ITransformacion_01.Listar();
+                return ITransformacion_01.Listar(idTransformacion);
             }
             catch (Exception ex)
             {

@@ -39,11 +39,11 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Estaticos> Estaticos { get; set; }
         public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
-        public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
         public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
         public virtual DbSet<Seleccion> Seleccion { get; set; }
+        public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
     }
 }
