@@ -231,6 +231,18 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarComboResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoCombo[]> DepositoListarComboAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarResponse")]
+        ENTITY.inv.Deposito.VDepositoLista[] DepositoListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoLista[]> DepositoListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse")]
+        ENTITY.inv.Sucursal.View.VSucursalLista[] ListarSucursalXDepositoId(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioCategoriaListarResponse")]
         ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar();
         
@@ -819,6 +831,22 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoCombo[]> DepositoListarComboAsync() {
             return base.Channel.DepositoListarComboAsync();
+        }
+        
+        public ENTITY.inv.Deposito.VDepositoLista[] DepositoListar() {
+            return base.Channel.DepositoListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoLista[]> DepositoListarAsync() {
+            return base.Channel.DepositoListarAsync();
+        }
+        
+        public ENTITY.inv.Sucursal.View.VSucursalLista[] ListarSucursalXDepositoId(int Id) {
+            return base.Channel.ListarSucursalXDepositoId(Id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id) {
+            return base.Channel.ListarSucursalXDepositoIdAsync(Id);
         }
         
         public ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar() {

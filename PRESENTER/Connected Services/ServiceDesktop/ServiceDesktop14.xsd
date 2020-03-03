@@ -13,4 +13,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VDepositoCombo" nillable="true" type="tns:VDepositoCombo" />
+  <xs:complexType name="ArrayOfVDepositoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VDepositoLista" nillable="true" type="tns:VDepositoLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVDepositoLista" nillable="true" type="tns:ArrayOfVDepositoLista" />
+  <xs:complexType name="VDepositoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VDepositoLista" nillable="true" type="tns:VDepositoLista" />
 </xs:schema>

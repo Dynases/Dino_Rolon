@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Deposito));
             this.PanelFondo = new System.Windows.Forms.Panel();
+            this.PanelAbajo = new System.Windows.Forms.Panel();
+            this.GPanel_Detalle = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Dgv_Sucursales = new Janus.Windows.GridEX.GridEX();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lblId = new DevComponents.DotNetBar.LabelX();
@@ -39,9 +42,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Descrip = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.PanelAbajo = new System.Windows.Forms.Panel();
-            this.GPanel_Detalle = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.Dgv_Sucursales = new Janus.Windows.GridEX.GridEX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -57,11 +57,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
             this.PanelFondo.SuspendLayout();
-            this.PanelArriba.SuspendLayout();
-            this.GPanel_DatosGenerales.SuspendLayout();
             this.PanelAbajo.SuspendLayout();
             this.GPanel_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Sucursales)).BeginInit();
+            this.PanelArriba.SuspendLayout();
+            this.GPanel_DatosGenerales.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
@@ -194,6 +194,65 @@
             this.PanelFondo.Size = new System.Drawing.Size(947, 489);
             this.PanelFondo.TabIndex = 70;
             // 
+            // PanelAbajo
+            // 
+            this.PanelAbajo.Controls.Add(this.GPanel_Detalle);
+            this.PanelAbajo.Location = new System.Drawing.Point(3, 164);
+            this.PanelAbajo.Name = "PanelAbajo";
+            this.PanelAbajo.Size = new System.Drawing.Size(947, 314);
+            this.PanelAbajo.TabIndex = 1;
+            // 
+            // GPanel_Detalle
+            // 
+            this.GPanel_Detalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
+            this.GPanel_Detalle.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_Detalle.Controls.Add(this.Dgv_Sucursales);
+            this.GPanel_Detalle.DisabledBackColor = System.Drawing.Color.Empty;
+            this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
+            this.GPanel_Detalle.Name = "GPanel_Detalle";
+            this.GPanel_Detalle.Size = new System.Drawing.Size(947, 314);
+            // 
+            // 
+            // 
+            this.GPanel_Detalle.Style.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.GPanel_Detalle.Style.BackColor2 = System.Drawing.SystemColors.ButtonHighlight;
+            this.GPanel_Detalle.Style.BackColorGradientAngle = 90;
+            this.GPanel_Detalle.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Detalle.Style.BorderBottomWidth = 1;
+            this.GPanel_Detalle.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.GPanel_Detalle.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Detalle.Style.BorderLeftWidth = 1;
+            this.GPanel_Detalle.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Detalle.Style.BorderRightWidth = 1;
+            this.GPanel_Detalle.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Detalle.Style.BorderTopWidth = 1;
+            this.GPanel_Detalle.Style.CornerDiameter = 4;
+            this.GPanel_Detalle.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.GPanel_Detalle.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.GPanel_Detalle.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.GPanel_Detalle.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.GPanel_Detalle.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.GPanel_Detalle.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.GPanel_Detalle.TabIndex = 0;
+            this.GPanel_Detalle.Text = "SUCURSALES";
+            // 
+            // Dgv_Sucursales
+            // 
+            this.Dgv_Sucursales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Sucursales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Dgv_Sucursales.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Sucursales.Name = "Dgv_Sucursales";
+            this.Dgv_Sucursales.Size = new System.Drawing.Size(941, 286);
+            this.Dgv_Sucursales.TabIndex = 1;
+            // 
             // PanelArriba
             // 
             this.PanelArriba.Controls.Add(this.GPanel_DatosGenerales);
@@ -274,7 +333,7 @@
             // 
             this.Tb_Telef.Border.Class = "TextBoxBorder";
             this.Tb_Telef.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Telef.Location = new System.Drawing.Point(614, 39);
+            this.Tb_Telef.Location = new System.Drawing.Point(673, 39);
             this.Tb_Telef.Multiline = true;
             this.Tb_Telef.Name = "Tb_Telef";
             this.Tb_Telef.PreventEnterBeep = true;
@@ -291,7 +350,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX2.Location = new System.Drawing.Point(614, 14);
+            this.labelX2.Location = new System.Drawing.Point(673, 13);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX2.Size = new System.Drawing.Size(58, 20);
@@ -305,7 +364,7 @@
             // 
             this.Tb_Direcc.Border.Class = "TextBoxBorder";
             this.Tb_Direcc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Direcc.Location = new System.Drawing.Point(340, 39);
+            this.Tb_Direcc.Location = new System.Drawing.Point(366, 39);
             this.Tb_Direcc.Multiline = true;
             this.Tb_Direcc.Name = "Tb_Direcc";
             this.Tb_Direcc.PreventEnterBeep = true;
@@ -322,7 +381,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(340, 13);
+            this.labelX1.Location = new System.Drawing.Point(366, 13);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX1.Size = new System.Drawing.Size(61, 20);
@@ -360,65 +419,6 @@
             this.labelX10.TabIndex = 349;
             this.labelX10.Text = "Descripción";
             // 
-            // PanelAbajo
-            // 
-            this.PanelAbajo.Controls.Add(this.GPanel_Detalle);
-            this.PanelAbajo.Location = new System.Drawing.Point(3, 164);
-            this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(947, 314);
-            this.PanelAbajo.TabIndex = 1;
-            // 
-            // GPanel_Detalle
-            // 
-            this.GPanel_Detalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
-            this.GPanel_Detalle.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GPanel_Detalle.Controls.Add(this.Dgv_Sucursales);
-            this.GPanel_Detalle.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
-            this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(947, 314);
-            // 
-            // 
-            // 
-            this.GPanel_Detalle.Style.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.GPanel_Detalle.Style.BackColor2 = System.Drawing.SystemColors.ButtonHighlight;
-            this.GPanel_Detalle.Style.BackColorGradientAngle = 90;
-            this.GPanel_Detalle.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Detalle.Style.BorderBottomWidth = 1;
-            this.GPanel_Detalle.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.GPanel_Detalle.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Detalle.Style.BorderLeftWidth = 1;
-            this.GPanel_Detalle.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Detalle.Style.BorderRightWidth = 1;
-            this.GPanel_Detalle.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Detalle.Style.BorderTopWidth = 1;
-            this.GPanel_Detalle.Style.CornerDiameter = 4;
-            this.GPanel_Detalle.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.GPanel_Detalle.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.GPanel_Detalle.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.GPanel_Detalle.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.GPanel_Detalle.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.GPanel_Detalle.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.GPanel_Detalle.TabIndex = 0;
-            this.GPanel_Detalle.Text = "SUCURSALES";
-            // 
-            // Dgv_Sucursales
-            // 
-            this.Dgv_Sucursales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Sucursales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.Dgv_Sucursales.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Sucursales.Name = "Dgv_Sucursales";
-            this.Dgv_Sucursales.Size = new System.Drawing.Size(941, 286);
-            this.Dgv_Sucursales.TabIndex = 1;
-            // 
             // F1_Deposito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,12 +443,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
-            this.PanelArriba.ResumeLayout(false);
-            this.GPanel_DatosGenerales.ResumeLayout(false);
-            this.GPanel_DatosGenerales.PerformLayout();
             this.PanelAbajo.ResumeLayout(false);
             this.GPanel_Detalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Sucursales)).EndInit();
+            this.PanelArriba.ResumeLayout(false);
+            this.GPanel_DatosGenerales.ResumeLayout(false);
+            this.GPanel_DatosGenerales.PerformLayout();
             this.ResumeLayout(false);
 
         }
