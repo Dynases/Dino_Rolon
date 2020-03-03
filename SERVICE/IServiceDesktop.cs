@@ -123,6 +123,12 @@ namespace SERVICE
         #region Deposito
         [OperationContract]
         List<VDepositoCombo> DepositoListarCombo();
+        [OperationContract]
+        List<VDepositoLista> DepositoListar();
+        [OperationContract]
+        List<VSucursalLista> ListarSucursalXDepositoId(int Id);
+        [OperationContract]
+        bool DepositoGuardar(VDeposito vDeposito);
         #endregion
         ///**********PRECIO**************************
         ///

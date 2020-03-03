@@ -335,6 +335,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
         #region Deposito
 
@@ -344,6 +345,42 @@ namespace SERVICE
             {
                 var listResult = new LDeposito().Listar();
                 return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VDepositoLista> DepositoListar()
+        {
+            try
+            {
+                return new LDeposito().ListarDepositos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VSucursalLista> ListarSucursalXDepositoId(int Id)
+        {
+            try
+            {
+                return new LDeposito().ListarSucursalXDepositoId(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool DepositoGuardar(VDeposito vDeposito)
+        {
+            try
+            {
+                return new LDeposito().Guardar(vDeposito);
             }
             catch (Exception ex)
             {

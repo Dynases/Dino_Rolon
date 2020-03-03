@@ -1,4 +1,5 @@
 ﻿using ENTITY.inv.Deposito;
+using ENTITY.inv.Sucursal.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace REPOSITORY.Interface
 {
     public interface IDeposito
     {
+        bool Guardar(VDeposito vDeposito);
         List<VDepositoCombo> Listar();
+        List<VDepositoLista> ListarDepositos();
+        List<VSucursalLista> ListarSucursalXDepositoId(int Id);
     }
 }

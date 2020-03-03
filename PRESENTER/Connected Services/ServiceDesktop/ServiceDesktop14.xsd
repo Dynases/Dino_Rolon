@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="ArrayOfVPrecioLista">
     <xs:sequence>
@@ -17,4 +18,50 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VPrecioLista" nillable="true" type="tns:VPrecioLista" />
+=======
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVDepositoCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VDepositoCombo" nillable="true" type="tns:VDepositoCombo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVDepositoCombo" nillable="true" type="tns:ArrayOfVDepositoCombo" />
+  <xs:complexType name="VDepositoCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VDepositoCombo" nillable="true" type="tns:VDepositoCombo" />
+  <xs:complexType name="ArrayOfVDepositoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VDepositoLista" nillable="true" type="tns:VDepositoLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVDepositoLista" nillable="true" type="tns:ArrayOfVDepositoLista" />
+  <xs:complexType name="VDepositoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VDepositoLista" nillable="true" type="tns:VDepositoLista" />
+  <xs:complexType name="VDeposito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Longitud" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VDeposito" nillable="true" type="tns:VDeposito" />
+>>>>>>> master
 </xs:schema>

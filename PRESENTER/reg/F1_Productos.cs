@@ -936,6 +936,9 @@ namespace PRESENTER.reg
 
         }
 
-     
+        private void F1_Productos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

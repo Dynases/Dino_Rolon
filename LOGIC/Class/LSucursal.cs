@@ -65,7 +65,5 @@ namespace LOGIC.Class
         }
 
         #endregion
-
-
     }
 }

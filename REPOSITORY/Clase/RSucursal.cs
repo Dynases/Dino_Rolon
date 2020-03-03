@@ -75,9 +75,9 @@ namespace REPOSITORY.Clase
                     {
                         Id = s.Id,
                         Descripcion = s.Descrip,
+                        Deposito = s.Deposito.Descrip,
                         Direccion = s.Direcc,
                         Telefono = s.Telef,
-                        Deposito = s.Deposito.Descrip
                     }).ToList();
 
                     return listResult;
