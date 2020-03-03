@@ -64,11 +64,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public VTransformacion_01 TraerTransformacion_01(int idIdProducto, int idProducto_Mat)
+        public VTransformacion_01 TraerFilaProducto(int idIdProducto, int idProducto_Mat)
         {
             try
             {
-                return ITransformacion_01.TraerTransaformacion_01(idIdProducto, idProducto_Mat);
+                return ITransformacion_01.TraerFilaProducto(idIdProducto, idProducto_Mat);
             }
             catch (Exception ex)
             {

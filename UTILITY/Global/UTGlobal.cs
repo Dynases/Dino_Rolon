@@ -79,6 +79,24 @@ namespace UTILITY.Global
             }
         }
 
+        public static void MG_SeleccionarCombo_Sucursal(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VSucursalCombo>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
         public static void MG_ArmarComboDeposito(MultiColumnCombo combo, List<VDepositoCombo> lDeposito)
         {
             try

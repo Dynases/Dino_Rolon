@@ -276,11 +276,23 @@
   <wsdl:message name="IServiceDesktop_Transformacion_Lista_OutputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_ListaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TransformacionGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TransformacionGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionGuardarResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Transformacion_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_01_Lista" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Transformacion_01_Lista_OutputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_01_ListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Transformacion_01_TraerFilaProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:Transformacion_01_TraerFilaProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Transformacion_01_TraerFilaProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Transformacion_01_TraerFilaProductoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Compra_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Compra_Lista" />
@@ -463,9 +475,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista" message="tns:IServiceDesktop_Transformacion_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse" message="tns:IServiceDesktop_Transformacion_Lista_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="TransformacionGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionGuardar" message="tns:IServiceDesktop_TransformacionGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionGuardarResponse" message="tns:IServiceDesktop_TransformacionGuardar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Transformacion_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista" message="tns:IServiceDesktop_Transformacion_01_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_ListaResponse" message="tns:IServiceDesktop_Transformacion_01_Lista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Transformacion_01_TraerFilaProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProducto" message="tns:IServiceDesktop_Transformacion_01_TraerFilaProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProductoResponse" message="tns:IServiceDesktop_Transformacion_01_TraerFilaProducto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_Lista" message="tns:IServiceDesktop_Compra_Lista_InputMessage" />
@@ -856,8 +876,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TransformacionGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TransformacionGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Transformacion_01_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transformacion_01_TraerFilaProducto">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProducto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

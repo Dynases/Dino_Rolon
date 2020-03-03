@@ -107,7 +107,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public VTransformacion_01 TraerTransaformacion_01(int idIdProducto, int idProducto_Mat)
+        public VTransformacion_01 TraerFilaProducto(int idIdProducto, int idProducto_Mat)
         {
             try
             {

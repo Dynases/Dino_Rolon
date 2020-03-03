@@ -36,7 +36,7 @@ namespace SERVICE
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        ///**********INICIO******************
+        ///**********INICIO**************************
         #region Libreria
         [OperationContract]
         List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden);
@@ -44,6 +44,8 @@ namespace SERVICE
         [OperationContract]
         bool LibreriaGuardar(VLibreriaLista vlibreria);
         #endregion
+        ///**********CLIENTE*************************
+        
         #region Cliente
 
         [OperationContract]
@@ -64,6 +66,8 @@ namespace SERVICE
 
 
         #endregion
+        ///**********PROVEEDOR***********************
+        ///
         #region Proveedor
         [OperationContract]
         bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario);
@@ -76,10 +80,13 @@ namespace SERVICE
         [OperationContract]
         DataTable ProveedorListarEncabezado();
         #endregion
+
         #region Proveedor_01
         [OperationContract]
         List<VProveedor_01Lista> Proveedor_01ListarXId(int Id);
         #endregion
+        ///**********PRODUCTO************************
+        ///
         #region Producto
         [OperationContract]
         bool ProductoGuardar(VProducto proveedor, ref int id);
@@ -97,6 +104,8 @@ namespace SERVICE
         [OperationContract]
         bool ProductoExisteEnCompra(int id);
         #endregion
+        ///**********SUCURSAL************************
+        ///
         #region Sucursal
 
         [OperationContract]
@@ -109,6 +118,8 @@ namespace SERVICE
         bool SucursalGuardar(VSucursal vSucursal);
 
         #endregion
+        ///**********DEPOSITO************************
+        ///
         #region Deposito
         [OperationContract]
         List<VDepositoCombo> DepositoListarCombo();
@@ -119,6 +130,8 @@ namespace SERVICE
         [OperationContract]
         bool DepositoGuardar(VDeposito vDeposito);
         #endregion
+        ///**********PRECIO**************************
+        ///
         #region Precio Categoria
         [OperationContract]
         List<VPrecioCategoria> PrecioCategoriaListar();
@@ -127,6 +140,8 @@ namespace SERVICE
         [OperationContract]
         List<VPrecioLista> PrecioProductoListar(int idSucursal);
         #endregion
+        ///**********COMPRA INGRESO******************
+        ///
         #region Compra Ingreso 
         [OperationContract]
         List<VCompraIngreso> CmmpraIngresoListar();
@@ -149,6 +164,8 @@ namespace SERVICE
         [OperationContract]
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2);
         #endregion
+        ///**********SELECCION**********************
+        ///
         #region Seleccion
         [OperationContract]
         List<VSeleccionLista> Seleccion_Lista();
@@ -162,14 +179,25 @@ namespace SERVICE
         [OperationContract]
         List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01(int IdCompraInreso_01, int tipo);
         #endregion
+        ///**********TRANSFORMACION******************
+        ///
         #region Transformacion
         [OperationContract]
         List<VTransformacion> Transformacion_Lista();
+
+        [OperationContract]
+        bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
+
+   
         #endregion
         #region Transformacion_01
         [OperationContract]
         List<VTransformacion_01> Transformacion_01_Lista(int idTransformacion);
+        [OperationContract]
+        VTransformacion_01 Transformacion_01_TraerFilaProducto( int IdProducto, int idProducto_Mat);
         #endregion
+        ///**********COMPRA******************
+        ///
         #region Compra
         [OperationContract]
         List<VCompraLista> Compra_Lista();

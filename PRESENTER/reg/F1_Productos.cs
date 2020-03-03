@@ -494,6 +494,9 @@ namespace PRESENTER.reg
                     Dgv_Buscardor.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_Buscardor.RootTable.Columns[5].Visible = true;
 
+                    Dgv_Buscardor.RootTable.Columns[6].Key = "Tipo";
+                    Dgv_Buscardor.RootTable.Columns[6].Visible = false;
+
                     //Dgv_Buscardor.RootTable.Columns[6].Key = "Contacto2";
                     //Dgv_Buscardor.RootTable.Columns[6].Caption = "Contacto2";
                     //Dgv_Buscardor.RootTable.Columns[6].Width = 200;
@@ -502,14 +505,14 @@ namespace PRESENTER.reg
                     //Dgv_Buscardor.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     //Dgv_Buscardor.RootTable.Columns[6].Visible = true;
 
-                    Dgv_Buscardor.RootTable.Columns[6].Key = "Usuario";
-                    Dgv_Buscardor.RootTable.Columns[6].Visible = false;
-
-                    Dgv_Buscardor.RootTable.Columns[7].Key = "Hora";
+                    Dgv_Buscardor.RootTable.Columns[7].Key = "Usuario";
                     Dgv_Buscardor.RootTable.Columns[7].Visible = false;
 
-                    Dgv_Buscardor.RootTable.Columns[8].Key = "Fecha";
+                    Dgv_Buscardor.RootTable.Columns[8].Key = "Hora";
                     Dgv_Buscardor.RootTable.Columns[8].Visible = false;
+
+                    Dgv_Buscardor.RootTable.Columns[9].Key = "Fecha";
+                    Dgv_Buscardor.RootTable.Columns[9].Visible = false;
 
                     //Habilitar filtradores
                     Dgv_Buscardor.DefaultFilterRowComparison = FilterConditionOperator.Contains;

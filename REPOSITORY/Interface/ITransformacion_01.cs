@@ -13,6 +13,6 @@ namespace REPOSITORY.Interface
         bool Modificar(List<VTransformacion_01> Lista, int idTransformacion);
         List<VTransformacion_01> Listar(int idTransformacion);
 
-        VTransformacion_01 TraerTransaformacion_01(int idIdProducto, int idProducto_Mat);
+        VTransformacion_01 TraerFilaProducto(int idIdProducto, int idProducto_Mat);
     }
 }
