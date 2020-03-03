@@ -342,7 +342,6 @@
     </None>
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd" />
     <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
@@ -413,9 +412,6 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop192.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1922.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -441,6 +437,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop22.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">

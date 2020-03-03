@@ -1,4 +1,5 @@
 ﻿using ENTITY.inv.Deposito;
+using ENTITY.inv.Sucursal.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -29,12 +30,35 @@ namespace LOGIC.Class
             }
         }
 
+        public List<VDepositoLista> ListarDepositos()
+        {
+            try
+            {
+                return iDeposito.ListarDepositos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VSucursalLista> ListarSucursalXDepositoId(int Id)
+        {
+            try
+            {
+                return iDeposito.ListarSucursalXDepositoId(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Transaccion
 
 
         #endregion
-
     }
 }

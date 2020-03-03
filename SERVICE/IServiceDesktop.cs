@@ -112,6 +112,10 @@ namespace SERVICE
         #region Deposito
         [OperationContract]
         List<VDepositoCombo> DepositoListarCombo();
+        [OperationContract]
+        List<VDepositoLista> DepositoListar();
+        [OperationContract]
+        List<VSucursalLista> ListarSucursalXDepositoId(int Id);
         #endregion
         #region Precio Categoria
         [OperationContract]
@@ -170,7 +174,7 @@ namespace SERVICE
         #endregion
         #region Compra_01
         [OperationContract]
-        List<VCompra_01_Lista> Compra_01_Lista();
+        List<VCompra_01_Lista> Compra_01_Lista();        
         #endregion
         // TODO: agregue aquí sus operaciones de servicio
     }

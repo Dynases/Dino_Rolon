@@ -178,27 +178,27 @@ namespace PRESENTER.alm
                     Dgv_Sucursales.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Sucursales.RootTable.Columns[1].CellStyle.FontSize = 8;
                     Dgv_Sucursales.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[1].Visible = true;
+                    Dgv_Sucursales.RootTable.Columns[1].Visible = true;                    
 
-                    Dgv_Sucursales.RootTable.Columns[2].Key = "Deposito";
-                    Dgv_Sucursales.RootTable.Columns[2].Caption = "Deposito";
+                    Dgv_Sucursales.RootTable.Columns[2].Key = "Direccion";
+                    Dgv_Sucursales.RootTable.Columns[2].Caption = "Direccion";
                     Dgv_Sucursales.RootTable.Columns[2].Width = 250;
                     Dgv_Sucursales.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Sucursales.RootTable.Columns[2].CellStyle.FontSize = 8;
                     Dgv_Sucursales.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_Sucursales.RootTable.Columns[2].Visible = true;
 
-                    Dgv_Sucursales.RootTable.Columns[3].Key = "Direccion";
-                    Dgv_Sucursales.RootTable.Columns[3].Caption = "Direccion";
-                    Dgv_Sucursales.RootTable.Columns[3].Width = 250;
+                    Dgv_Sucursales.RootTable.Columns[3].Key = "Telefono";
+                    Dgv_Sucursales.RootTable.Columns[3].Caption = "Telefono";
+                    Dgv_Sucursales.RootTable.Columns[3].Width = 150;
                     Dgv_Sucursales.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Sucursales.RootTable.Columns[3].CellStyle.FontSize = 8;
                     Dgv_Sucursales.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_Sucursales.RootTable.Columns[3].Visible = true;
 
-                    Dgv_Sucursales.RootTable.Columns[4].Key = "Telefono";
-                    Dgv_Sucursales.RootTable.Columns[4].Caption = "Telefono";
-                    Dgv_Sucursales.RootTable.Columns[4].Width = 150;
+                    Dgv_Sucursales.RootTable.Columns[4].Key = "Deposito";
+                    Dgv_Sucursales.RootTable.Columns[4].Caption = "Deposito";
+                    Dgv_Sucursales.RootTable.Columns[4].Width = 250;
                     Dgv_Sucursales.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Sucursales.RootTable.Columns[4].CellStyle.FontSize = 8;
                     Dgv_Sucursales.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
