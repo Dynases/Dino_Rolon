@@ -243,6 +243,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse")]
+        bool DepositoGuardar(ENTITY.inv.Deposito.VDeposito vDeposito);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse")]
+        System.Threading.Tasks.Task<bool> DepositoGuardarAsync(ENTITY.inv.Deposito.VDeposito vDeposito);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioCategoriaListarResponse")]
         ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar();
         
@@ -847,6 +853,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id) {
             return base.Channel.ListarSucursalXDepositoIdAsync(Id);
+        }
+        
+        public bool DepositoGuardar(ENTITY.inv.Deposito.VDeposito vDeposito) {
+            return base.Channel.DepositoGuardar(vDeposito);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DepositoGuardarAsync(ENTITY.inv.Deposito.VDeposito vDeposito) {
+            return base.Channel.DepositoGuardarAsync(vDeposito);
         }
         
         public ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar() {

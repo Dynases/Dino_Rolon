@@ -376,6 +376,18 @@ namespace SERVICE
             }
         }
 
+        public bool DepositoGuardar(VDeposito vDeposito)
+        {
+            try
+            {
+                return new LDeposito().Guardar(vDeposito);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Precio Categoria

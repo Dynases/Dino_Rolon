@@ -177,6 +177,58 @@ namespace PRESENTER.alm
             this.MP_CargarListaDepositos();
         }
 
+        public override bool MH_NuevoRegistro()
+        {
+            var deposito = new VDeposito
+            {
+                Descripcion = Tb_Descrip.Text,
+                Direccion = Tb_Direcc.Text,
+                Estado = 1,
+                //Imagen = _imagen,
+                //Latitud = Convert.ToDecimal(_latitud),
+                //Longitud = Convert.ToDecimal(_longitud),
+                Telefono = Tb_Telef.Text,
+                Usuario = UTGlobal.Usuario
+            };
+
+            var mensaje = "";
+
+            try
+            {
+                if (new ServiceDesktop.ServiceDesktopClient().DepositoGuardar(deposito))
+                {
+                    this.MP_CargarListaDepositos();
+                    mensaje = GLMensaje.Modificar_Exito("SUCURSALES", Tb_Descrip.Text);
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    return true;
+                }
+                else
+                {
+                    mensaje = GLMensaje.Registro_Error("SUCURSALES");
+                    this.MP_MostrarMensajeError(mensaje);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
+
+        public override bool MH_Validar()
+        {
+            if (string.IsNullOrEmpty(Tb_Descrip.Text))
+            {
+                Tb_Descrip.BackColor = Color.Red;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region Eventos

@@ -10,6 +10,7 @@ namespace REPOSITORY.Interface
 {
     public interface IDeposito
     {
+        bool Guardar(VDeposito vDeposito);
         List<VDepositoCombo> Listar();
         List<VDepositoLista> ListarDepositos();
         List<VSucursalLista> ListarSucursalXDepositoId(int Id);

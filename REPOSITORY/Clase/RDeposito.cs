@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Deposito;
+﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.inv.Deposito;
 using ENTITY.inv.Sucursal.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
@@ -73,6 +74,39 @@ namespace REPOSITORY.Clase
                         .ToList();
 
                     return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool Guardar(VDeposito vDeposito)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var deposito = new Deposito
+                    {
+                        Descrip = vDeposito.Descripcion,
+                        Direcc = vDeposito.Direccion,
+                        Fecha = DateTime.Now,
+                        Hora = DateTime.Now.ToShortTimeString(),
+                        Latit = vDeposito.Latitud,
+                        Longi = vDeposito.Longitud,
+                        Telef = vDeposito.Telefono,
+                        Usuario = vDeposito.Usuario,
+                        Estado = vDeposito.Estado,
+                        Id = vDeposito.Id,
+                        Imagen = vDeposito.Imagen
+                    };
+
+                    db.Deposito.Add(deposito);
+                    db.SaveChanges();
+
+                    return true;
                 }
             }
             catch (Exception ex)

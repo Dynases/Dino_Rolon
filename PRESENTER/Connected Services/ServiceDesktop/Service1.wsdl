@@ -186,6 +186,12 @@
   <wsdl:message name="IServiceDesktop_ListarSucursalXDepositoId_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarSucursalXDepositoIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_DepositoGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:DepositoGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_DepositoGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DepositoGuardarResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_PrecioCategoriaListar_InputMessage">
     <wsdl:part name="parameters" element="tns:PrecioCategoriaListar" />
   </wsdl:message>
@@ -396,6 +402,10 @@
     <wsdl:operation name="ListarSucursalXDepositoId">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId" message="tns:IServiceDesktop_ListarSucursalXDepositoId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse" message="tns:IServiceDesktop_ListarSucursalXDepositoId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DepositoGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoGuardar" message="tns:IServiceDesktop_DepositoGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse" message="tns:IServiceDesktop_DepositoGuardar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrecioCategoriaListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar" message="tns:IServiceDesktop_PrecioCategoriaListar_InputMessage" />
@@ -704,6 +714,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarSucursalXDepositoId">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositoGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/DepositoGuardar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

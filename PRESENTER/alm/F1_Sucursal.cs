@@ -36,7 +36,7 @@ namespace PRESENTER.alm
         #endregion
 
         //==================================
-        #region Metodos
+        #region Metodos Privados
 
         private void MP_IniciarMapa()
         {
@@ -178,7 +178,7 @@ namespace PRESENTER.alm
                     Dgv_Sucursales.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Sucursales.RootTable.Columns[1].CellStyle.FontSize = 8;
                     Dgv_Sucursales.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[1].Visible = true;                    
+                    Dgv_Sucursales.RootTable.Columns[1].Visible = true;
 
                     Dgv_Sucursales.RootTable.Columns[2].Key = "Direccion";
                     Dgv_Sucursales.RootTable.Columns[2].Caption = "Direccion";
@@ -232,6 +232,8 @@ namespace PRESENTER.alm
                 throw;
             }
         }
+
+        #endregion
 
         //===========
         #region Metodos Heredados
@@ -299,10 +301,7 @@ namespace PRESENTER.alm
             }
         }
 
-        #endregion
-        //===========
-
-        #endregion
+        #endregion        
 
         //==================================
         #region Eventos

@@ -58,6 +58,17 @@ namespace LOGIC.Class
 
         #region Transaccion
 
+        public bool Guardar(VDeposito deposito)
+        {
+            try
+            {
+                return iDeposito.Guardar(deposito);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
     }
