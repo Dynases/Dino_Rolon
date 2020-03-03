@@ -93,6 +93,22 @@
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
             // TxtNombreUsu
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);
@@ -177,7 +193,7 @@
             // 
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSubtitulo.Size = new System.Drawing.Size(950, 36);
-            this.LblSubtitulo.Text = "DEPOSITOS";
+            this.LblSubtitulo.Text = "GESTION DE DEPOSITOS";
             // 
             // PanelMenu
             // 
@@ -242,7 +258,7 @@
             // 
             this.GPanel_Detalle.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_Detalle.TabIndex = 0;
-            this.GPanel_Detalle.Text = "SUCURSALES";
+            this.GPanel_Detalle.Text = "SUCURSALES DE DEPOSITO";
             // 
             // Dgv_Sucursales
             // 

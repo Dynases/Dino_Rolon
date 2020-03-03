@@ -20,7 +20,7 @@ namespace PRESENTER.alm
         {
             InitializeComponent();
             this.MP_InHabilitar();
-            this.MP_CargarDepositos();
+            this.MP_CargarListaDepositos();
         }
 
         #region Variables globales        
@@ -44,6 +44,7 @@ namespace PRESENTER.alm
             this.Tb_Direcc.ReadOnly = true;
             this.Tb_Telef.ReadOnly = true;
             this.lblId.Visible = false;
+            Dgv_Sucursales.Enabled = false;
         }
 
         private void MP_Habilitar()
@@ -51,9 +52,21 @@ namespace PRESENTER.alm
             this.Tb_Descrip.ReadOnly = false;
             this.Tb_Direcc.ReadOnly = false;
             this.Tb_Telef.ReadOnly = false;
+            Dgv_Sucursales.Enabled = true;
         }
 
-        private void MP_CargarDepositos()
+        private void MP_Limpiar()
+        {
+            this.Tb_Descrip.Text = "";
+            this.Tb_Direcc.Text = "";
+            this.Tb_Telef.Text = "";
+            this.lblId.Text = "";
+            this.LblPaginacion.Text = "";
+
+            Dgv_Sucursales.DataSource = "";
+        }
+
+        private void MP_CargarListaDepositos()
         {
             index = 0;
             try
@@ -79,6 +92,8 @@ namespace PRESENTER.alm
             Tb_Telef.Text = deposito.Telefono;
 
             this.MP_CargarDetalleRegistro(deposito.Id);
+
+            this.LblPaginacion.Text = (index + 1) + "/" + listaDeposito.Count;
         }
 
         private void MP_CargarDetalleRegistro(int id)
@@ -151,7 +166,15 @@ namespace PRESENTER.alm
         public override void MH_Nuevo()
         {
             base.MH_Nuevo();
+            this.MP_Limpiar();
             this.MP_Habilitar();
+        }
+
+        public override void MH_Salir()
+        {
+            base.MH_Salir();
+            this.MP_InHabilitar();
+            this.MP_CargarListaDepositos();
         }
 
         #endregion
@@ -160,9 +183,39 @@ namespace PRESENTER.alm
 
         private void F1_Deposito_Load(object sender, EventArgs e)
         {
-            this.LblTitulo.Text = "Depositos";
+            this.LblTitulo.Text = "DEPOSITOS";
         }
 
-        #endregion
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            index = 0;
+            this.MP_MostrarRegistro(index);
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (index > 0)
+            {
+                index -= 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (index < listaDeposito.Count - 1)
+            {
+                index += 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            index = listaDeposito.Count - 1;
+            this.MP_MostrarRegistro(index);
+        }
+
+        #endregion        
     }
 }
