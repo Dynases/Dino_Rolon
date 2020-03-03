@@ -389,6 +389,9 @@ namespace SERVICE
         }
 
         #endregion
+        #region Traspasos
+
+        #endregion
 
         #region Precio Categoria
 

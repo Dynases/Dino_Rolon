@@ -49,17 +49,6 @@
             this.btnAnterior = new DevComponents.DotNetBar.ButtonX();
             this.btnPrimero = new DevComponents.DotNetBar.ButtonX();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
-            this.PanelContenidoBuscar = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.GMPanel_Buscardor = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.Dgv_GBuscador = new Janus.Windows.GridEX.GridEX();
-            this.PanelUsuario = new System.Windows.Forms.Panel();
-            this.lbHora = new System.Windows.Forms.Label();
-            this.lbFecha = new System.Windows.Forms.Label();
-            this.lbUsuario = new System.Windows.Forms.Label();
-            this.lblHora = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.SuperTabBuscar = new DevComponents.DotNetBar.SuperTabItem();
             this.PanelContenidoRegistro = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.LblSubtitulo = new System.Windows.Forms.Label();
             this.PanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -73,6 +62,17 @@
             this.BtnNuevo = new DevComponents.DotNetBar.ButtonX();
             this.PictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.SuperTalRegistro = new DevComponents.DotNetBar.SuperTabItem();
+            this.PanelContenidoBuscar = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.GMPanel_Buscardor = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Dgv_GBuscador = new Janus.Windows.GridEX.GridEX();
+            this.PanelUsuario = new System.Windows.Forms.Panel();
+            this.lbHora = new System.Windows.Forms.Label();
+            this.lbFecha = new System.Windows.Forms.Label();
+            this.lbUsuario = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.SuperTabBuscar = new DevComponents.DotNetBar.SuperTabItem();
             this.MFlyoutUsuario = new DevComponents.DotNetBar.Controls.Flyout(this.components);
             this.MEP = new System.Windows.Forms.ErrorProvider(this.components);
             this.MHighlighterFocus = new DevComponents.DotNetBar.Validator.Highlighter();
@@ -87,13 +87,13 @@
             this.PanelNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).BeginInit();
             this.PanelContenidoBuscar.SuspendLayout();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelUsuario.SuspendLayout();
-            this.PanelContenidoRegistro.SuspendLayout();
-            this.PanelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -373,150 +373,6 @@
             this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.OfficeMobile2014;
             this.superTabControl1.Text = "superTabControl1";
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Controls.Add(this.GMPanel_Buscardor);
-            this.PanelContenidoBuscar.Controls.Add(this.PanelUsuario);
-            this.PanelContenidoBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 34);
-            this.PanelContenidoBuscar.Name = "PanelContenidoBuscar";
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 515);
-            this.PanelContenidoBuscar.TabIndex = 0;
-            this.PanelContenidoBuscar.TabItem = this.SuperTabBuscar;
-            // 
-            // GMPanel_Buscardor
-            // 
-            this.GMPanel_Buscardor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
-            this.GMPanel_Buscardor.CanvasColor = System.Drawing.SystemColors.Control;
-            this.GMPanel_Buscardor.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GMPanel_Buscardor.Controls.Add(this.Dgv_GBuscador);
-            this.GMPanel_Buscardor.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GMPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 0);
-            this.GMPanel_Buscardor.Name = "GMPanel_Buscardor";
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 515);
-            // 
-            // 
-            // 
-            this.GMPanel_Buscardor.Style.BackColor = System.Drawing.SystemColors.Control;
-            this.GMPanel_Buscardor.Style.BackColor2 = System.Drawing.Color.White;
-            this.GMPanel_Buscardor.Style.BackColorGradientAngle = 90;
-            this.GMPanel_Buscardor.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GMPanel_Buscardor.Style.BorderBottomWidth = 1;
-            this.GMPanel_Buscardor.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.GMPanel_Buscardor.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GMPanel_Buscardor.Style.BorderLeftWidth = 1;
-            this.GMPanel_Buscardor.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GMPanel_Buscardor.Style.BorderRightWidth = 1;
-            this.GMPanel_Buscardor.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GMPanel_Buscardor.Style.BorderTopWidth = 1;
-            this.GMPanel_Buscardor.Style.CornerDiameter = 4;
-            this.GMPanel_Buscardor.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.GMPanel_Buscardor.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.GMPanel_Buscardor.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.GMPanel_Buscardor.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.GMPanel_Buscardor.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.GMPanel_Buscardor.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.GMPanel_Buscardor.TabIndex = 284;
-            this.GMPanel_Buscardor.Text = "BUSCADOR";
-            // 
-            // Dgv_GBuscador
-            // 
-            this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_GBuscador.Name = "Dgv_GBuscador";
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 487);
-            this.Dgv_GBuscador.TabIndex = 0;
-            // 
-            // PanelUsuario
-            // 
-            this.PanelUsuario.Controls.Add(this.lbHora);
-            this.PanelUsuario.Controls.Add(this.lbFecha);
-            this.PanelUsuario.Controls.Add(this.lbUsuario);
-            this.PanelUsuario.Controls.Add(this.lblHora);
-            this.PanelUsuario.Controls.Add(this.lblFecha);
-            this.PanelUsuario.Controls.Add(this.lblUsuario);
-            this.PanelUsuario.Location = new System.Drawing.Point(50, 22);
-            this.PanelUsuario.Name = "PanelUsuario";
-            this.PanelUsuario.Size = new System.Drawing.Size(220, 100);
-            this.PanelUsuario.TabIndex = 72;
-            this.PanelUsuario.TabStop = true;
-            this.PanelUsuario.Visible = false;
-            // 
-            // lbHora
-            // 
-            this.lbHora.AutoSize = true;
-            this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHora.Location = new System.Drawing.Point(115, 65);
-            this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(89, 20);
-            this.lbHora.TabIndex = 6;
-            this.lbHora.Text = "USUARIO:";
-            // 
-            // lbFecha
-            // 
-            this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFecha.Location = new System.Drawing.Point(115, 42);
-            this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(89, 20);
-            this.lbFecha.TabIndex = 5;
-            this.lbFecha.Text = "USUARIO:";
-            // 
-            // lbUsuario
-            // 
-            this.lbUsuario.AutoSize = true;
-            this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsuario.Location = new System.Drawing.Point(115, 19);
-            this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(89, 20);
-            this.lbUsuario.TabIndex = 4;
-            this.lbUsuario.Text = "USUARIO:";
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(31, 65);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(68, 20);
-            this.lblHora.TabIndex = 2;
-            this.lblHora.Text = "HORA:";
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(31, 43);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(77, 20);
-            this.lblFecha.TabIndex = 1;
-            this.lblFecha.Text = "FECHA:";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(31, 19);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(97, 20);
-            this.lblUsuario.TabIndex = 0;
-            this.lblUsuario.Text = "USUARIO:";
-            // 
-            // SuperTabBuscar
-            // 
-            this.SuperTabBuscar.AttachedControl = this.PanelContenidoBuscar;
-            this.SuperTabBuscar.GlobalItem = false;
-            this.SuperTabBuscar.Name = "SuperTabBuscar";
-            this.SuperTabBuscar.Text = "BUSCAR";
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.LblSubtitulo);
@@ -730,6 +586,150 @@
             this.SuperTalRegistro.Name = "SuperTalRegistro";
             this.SuperTalRegistro.Text = "REGISTRO";
             // 
+            // PanelContenidoBuscar
+            // 
+            this.PanelContenidoBuscar.Controls.Add(this.GMPanel_Buscardor);
+            this.PanelContenidoBuscar.Controls.Add(this.PanelUsuario);
+            this.PanelContenidoBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 34);
+            this.PanelContenidoBuscar.Name = "PanelContenidoBuscar";
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 515);
+            this.PanelContenidoBuscar.TabIndex = 0;
+            this.PanelContenidoBuscar.TabItem = this.SuperTabBuscar;
+            // 
+            // GMPanel_Buscardor
+            // 
+            this.GMPanel_Buscardor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
+            this.GMPanel_Buscardor.CanvasColor = System.Drawing.SystemColors.Control;
+            this.GMPanel_Buscardor.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GMPanel_Buscardor.Controls.Add(this.Dgv_GBuscador);
+            this.GMPanel_Buscardor.DisabledBackColor = System.Drawing.Color.Empty;
+            this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GMPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 0);
+            this.GMPanel_Buscardor.Name = "GMPanel_Buscardor";
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 515);
+            // 
+            // 
+            // 
+            this.GMPanel_Buscardor.Style.BackColor = System.Drawing.SystemColors.Control;
+            this.GMPanel_Buscardor.Style.BackColor2 = System.Drawing.Color.White;
+            this.GMPanel_Buscardor.Style.BackColorGradientAngle = 90;
+            this.GMPanel_Buscardor.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GMPanel_Buscardor.Style.BorderBottomWidth = 1;
+            this.GMPanel_Buscardor.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.GMPanel_Buscardor.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GMPanel_Buscardor.Style.BorderLeftWidth = 1;
+            this.GMPanel_Buscardor.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GMPanel_Buscardor.Style.BorderRightWidth = 1;
+            this.GMPanel_Buscardor.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GMPanel_Buscardor.Style.BorderTopWidth = 1;
+            this.GMPanel_Buscardor.Style.CornerDiameter = 4;
+            this.GMPanel_Buscardor.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.GMPanel_Buscardor.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.GMPanel_Buscardor.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.GMPanel_Buscardor.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.GMPanel_Buscardor.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.GMPanel_Buscardor.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.GMPanel_Buscardor.TabIndex = 284;
+            this.GMPanel_Buscardor.Text = "BUSCADOR";
+            // 
+            // Dgv_GBuscador
+            // 
+            this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_GBuscador.Name = "Dgv_GBuscador";
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 487);
+            this.Dgv_GBuscador.TabIndex = 0;
+            // 
+            // PanelUsuario
+            // 
+            this.PanelUsuario.Controls.Add(this.lbHora);
+            this.PanelUsuario.Controls.Add(this.lbFecha);
+            this.PanelUsuario.Controls.Add(this.lbUsuario);
+            this.PanelUsuario.Controls.Add(this.lblHora);
+            this.PanelUsuario.Controls.Add(this.lblFecha);
+            this.PanelUsuario.Controls.Add(this.lblUsuario);
+            this.PanelUsuario.Location = new System.Drawing.Point(50, 22);
+            this.PanelUsuario.Name = "PanelUsuario";
+            this.PanelUsuario.Size = new System.Drawing.Size(220, 100);
+            this.PanelUsuario.TabIndex = 72;
+            this.PanelUsuario.TabStop = true;
+            this.PanelUsuario.Visible = false;
+            // 
+            // lbHora
+            // 
+            this.lbHora.AutoSize = true;
+            this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHora.Location = new System.Drawing.Point(115, 65);
+            this.lbHora.Name = "lbHora";
+            this.lbHora.Size = new System.Drawing.Size(89, 20);
+            this.lbHora.TabIndex = 6;
+            this.lbHora.Text = "USUARIO:";
+            // 
+            // lbFecha
+            // 
+            this.lbFecha.AutoSize = true;
+            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.Location = new System.Drawing.Point(115, 42);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Size = new System.Drawing.Size(89, 20);
+            this.lbFecha.TabIndex = 5;
+            this.lbFecha.Text = "USUARIO:";
+            // 
+            // lbUsuario
+            // 
+            this.lbUsuario.AutoSize = true;
+            this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsuario.Location = new System.Drawing.Point(115, 19);
+            this.lbUsuario.Name = "lbUsuario";
+            this.lbUsuario.Size = new System.Drawing.Size(89, 20);
+            this.lbUsuario.TabIndex = 4;
+            this.lbUsuario.Text = "USUARIO:";
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(31, 65);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(68, 20);
+            this.lblHora.TabIndex = 2;
+            this.lblHora.Text = "HORA:";
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(31, 43);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(77, 20);
+            this.lblFecha.TabIndex = 1;
+            this.lblFecha.Text = "FECHA:";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(31, 19);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(97, 20);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Text = "USUARIO:";
+            // 
+            // SuperTabBuscar
+            // 
+            this.SuperTabBuscar.AttachedControl = this.PanelContenidoBuscar;
+            this.SuperTabBuscar.GlobalItem = false;
+            this.SuperTabBuscar.Name = "SuperTabBuscar";
+            this.SuperTabBuscar.Text = "BUSCAR";
+            // 
             // MFlyoutUsuario
             // 
             this.MFlyoutUsuario.DropShadow = false;
@@ -770,14 +770,14 @@
             this.PanelNavegacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).EndInit();
             this.PanelContenidoBuscar.ResumeLayout(false);
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
             this.PanelUsuario.PerformLayout();
-            this.PanelContenidoRegistro.ResumeLayout(false);
-            this.PanelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             this.ResumeLayout(false);
 
