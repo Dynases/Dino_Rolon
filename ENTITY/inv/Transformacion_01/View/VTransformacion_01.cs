@@ -12,6 +12,7 @@ namespace ENTITY.inv.Transformacion_01.View
         public int IdTransformacion { get; set; }
         public int Estado { get; set; }
         public int IdProducto { get; set; }
+
         public string Producto { get; set; }
         public int IdProducto_Mat_Prima { get; set; }
         public string Producto_Mat_Prima { get; set; }    

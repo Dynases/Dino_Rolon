@@ -235,7 +235,6 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
         }
-
         private void MP_Habilitar()
         {
             Tb_Id.ReadOnly = false;
@@ -343,6 +342,7 @@ namespace PRESENTER.com
                 LblPaginacion.Text = "0/0";
             }
         }
+   
         void MP_MostrarMensajeError(string mensaje)
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);

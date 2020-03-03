@@ -139,6 +139,7 @@ namespace REPOSITORY.Clase
                                           Grupo1 = grupo1.Descrip,
                                           Grupo2 = grupo2.Descrip,
                                           Grupo3 = grupo3.Descrip,
+                                          Tipo = a.Tipo,
                                           Usuario = a.Usuario,
                                           Hora = a.Hora,
                                           Fecha =a.Fecha                                          

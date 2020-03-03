@@ -319,11 +319,24 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Transformacion.View.VTransformacion[]> Transformacion_ListaAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionGuardarResponse")]
+        PRESENTER.ServiceDesktop.TransformacionGuardarResponse TransformacionGuardar(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request);
+        
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionGuardarResponse")]
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TransformacionGuardarResponse> TransformacionGuardarAsync(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_ListaResponse")]
         ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_ListaResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Transformacion_01.View.VTransformacion_01[]> Transformacion_01_ListaAsync(int idTransformacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProducto", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProductoResponse")]
+        ENTITY.inv.Transformacion_01.View.VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProducto", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProductoResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Transformacion_01.View.VTransformacion_01> Transformacion_01_TraerFilaProductoAsync(int IdProducto, int idProducto_Mat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
         ENTITY.com.Compra.View.VCompraLista[] Compra_Lista();
@@ -559,6 +572,50 @@ namespace PRESENTER.ServiceDesktop {
         public Seleccion_GuardarResponse(bool Seleccion_GuardarResult, int id) {
             this.Seleccion_GuardarResult = Seleccion_GuardarResult;
             this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransformacionGuardar", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TransformacionGuardarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ENTITY.inv.Transformacion.View.VTransformacion vSeleccion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int Id;
+        
+        public TransformacionGuardarRequest() {
+        }
+        
+        public TransformacionGuardarRequest(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, int Id) {
+            this.vSeleccion = vSeleccion;
+            this.detalle = detalle;
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TransformacionGuardarResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TransformacionGuardarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool TransformacionGuardarResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int Id;
+        
+        public TransformacionGuardarResponse() {
+        }
+        
+        public TransformacionGuardarResponse(bool TransformacionGuardarResult, int Id) {
+            this.TransformacionGuardarResult = TransformacionGuardarResult;
+            this.Id = Id;
         }
     }
     
@@ -957,12 +1014,39 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.Transformacion_ListaAsync();
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.TransformacionGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.TransformacionGuardar(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request) {
+            return base.Channel.TransformacionGuardar(request);
+        }
+        
+        public bool TransformacionGuardar(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, ref int Id) {
+            PRESENTER.ServiceDesktop.TransformacionGuardarRequest inValue = new PRESENTER.ServiceDesktop.TransformacionGuardarRequest();
+            inValue.vSeleccion = vSeleccion;
+            inValue.detalle = detalle;
+            inValue.Id = Id;
+            PRESENTER.ServiceDesktop.TransformacionGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).TransformacionGuardar(inValue);
+            Id = retVal.Id;
+            return retVal.TransformacionGuardarResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TransformacionGuardarResponse> TransformacionGuardarAsync(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request) {
+            return base.Channel.TransformacionGuardarAsync(request);
+        }
+        
         public ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion) {
             return base.Channel.Transformacion_01_Lista(idTransformacion);
         }
         
         public System.Threading.Tasks.Task<ENTITY.inv.Transformacion_01.View.VTransformacion_01[]> Transformacion_01_ListaAsync(int idTransformacion) {
             return base.Channel.Transformacion_01_ListaAsync(idTransformacion);
+        }
+        
+        public ENTITY.inv.Transformacion_01.View.VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat) {
+            return base.Channel.Transformacion_01_TraerFilaProducto(IdProducto, idProducto_Mat);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion_01.View.VTransformacion_01> Transformacion_01_TraerFilaProductoAsync(int IdProducto, int idProducto_Mat) {
+            return base.Channel.Transformacion_01_TraerFilaProductoAsync(IdProducto, idProducto_Mat);
         }
         
         public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista() {

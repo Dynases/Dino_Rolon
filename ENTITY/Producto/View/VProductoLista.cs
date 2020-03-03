@@ -16,6 +16,7 @@ namespace ENTITY.Producto.View
         public string Grupo1 { get; set; }
         public string Grupo2 { get; set; }
         public string Grupo3 { get; set; }
+        public int Tipo { get; set; }
         public string Usuario { get; set; }
         public string Hora { get; set; }
         public DateTime Fecha { get; set; }
