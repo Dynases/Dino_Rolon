@@ -44,13 +44,10 @@
         <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="8.25" PointY="16" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
-<<<<<<< HEAD
-=======
         <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="8.375" PointY="11.75" />
         <EntityTypeShape EntityType="DiAviModel.TI002" Width="1.5" PointX="10.625" PointY="0.75" />
         <EntityTypeShape EntityType="DiAviModel.TI0021" Width="1.5" PointX="9" PointY="0.75" />
->>>>>>> master
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

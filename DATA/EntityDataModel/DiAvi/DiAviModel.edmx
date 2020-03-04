@@ -5,8 +5,8 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Estaticos">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,12 +178,10 @@ warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key d
           <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-<<<<<<< HEAD
           <Property Name="Porcen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-=======
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiAvi.dbo.TI002' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.TI002' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="TI002">
           <Key>
             <PropertyRef Name="ibid" />
@@ -200,20 +198,6 @@ warning 6002: The table/view 'DiAvi.dbo.TI002' does not have a primary key defin
           <Property Name="ibfact" Type="date" />
           <Property Name="ibhact" Type="nvarchar" MaxLength="5" />
           <Property Name="ibuact" Type="nvarchar" MaxLength="10" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiAvi.dbo.TI0021' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TI0021">
-          <Key>
-            <PropertyRef Name="icid" />
-          </Key>
-          <Property Name="icid" Type="int" Nullable="false" />
-          <Property Name="icibid" Type="int" />
-          <Property Name="iccprod" Type="int" />
-          <Property Name="iccant" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="iclot" Type="nvarchar" MaxLength="20" />
-          <Property Name="icfvenc" Type="date" />
->>>>>>> master
         </EntityType>
         <EntityType Name="Deposito">
           <Key>
@@ -296,6 +280,8 @@ warning 6002: The table/view 'DiAvi.dbo.TI0021' does not have a primary key defi
           <Property Name="Latitud" Type="decimal" Precision="18" Scale="14" Nullable="false" />
           <Property Name="Longit" Type="decimal" Precision="18" Scale="14" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="TotalCred" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Dias" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Hora" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="25" Nullable="false" />
@@ -355,8 +341,8 @@ warning 6002: The table/view 'DiAvi.dbo.TI0021' does not have a primary key defi
           <Property Name="Hora" Type="nvarchar" MaxLength="5" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiAvi.dbo.V_NotaCompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="V_NotaCompraIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -385,8 +371,8 @@ warning 6002: The table/view 'DiAvi.dbo.V_NotaCompraIngreso' does not have a pri
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vr_CompraIngreso">
           <Key>
             <PropertyRef Name="NotaRecepcion" />
@@ -409,6 +395,48 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalCant" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vr_TransformacionIngreso">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SucursalIngreso" />
+            <PropertyRef Name="SucursalSalida" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="TotalProd" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SucursalIngreso" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="SucursalSalida" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Observ" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalProd" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vr_TransformacionSalida">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SucursalIngreso" />
+            <PropertyRef Name="SucursalSalida" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdProducto_Mat" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SucursalIngreso" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="SucursalSalida" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Observ" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="IdProducto_Mat" Type="int" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK__CompraIng__IdCom__45BE5BA9">
@@ -657,16 +685,6 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
     [TI002].[ibuact] AS [ibuact]
     FROM [dbo].[TI002] AS [TI002]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="TI0021" EntityType="Self.TI0021" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TI0021].[icid] AS [icid], 
-    [TI0021].[icibid] AS [icibid], 
-    [TI0021].[iccprod] AS [iccprod], 
-    [TI0021].[iccant] AS [iccant], 
-    [TI0021].[iclot] AS [iclot], 
-    [TI0021].[icfvenc] AS [icfvenc]
-    FROM [dbo].[TI0021] AS [TI0021]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="V_NotaCompraIngreso" EntityType="Self.V_NotaCompraIngreso" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_NotaCompraIngreso].[Id] AS [Id], 
@@ -696,6 +714,30 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
     [Vr_CompraIngreso].[PrecioCost] AS [PrecioCost], 
     [Vr_CompraIngreso].[Total] AS [Total]
     FROM [dbo].[Vr_CompraIngreso] AS [Vr_CompraIngreso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vr_TransformacionIngreso" EntityType="Self.Vr_TransformacionIngreso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vr_TransformacionIngreso].[Id] AS [Id], 
+    [Vr_TransformacionIngreso].[SucursalIngreso] AS [SucursalIngreso], 
+    [Vr_TransformacionIngreso].[SucursalSalida] AS [SucursalSalida], 
+    [Vr_TransformacionIngreso].[Observ] AS [Observ], 
+    [Vr_TransformacionIngreso].[Fecha] AS [Fecha], 
+    [Vr_TransformacionIngreso].[IdProducto] AS [IdProducto], 
+    [Vr_TransformacionIngreso].[Descrip] AS [Descrip], 
+    [Vr_TransformacionIngreso].[TotalProd] AS [TotalProd]
+    FROM [dbo].[Vr_TransformacionIngreso] AS [Vr_TransformacionIngreso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vr_TransformacionSalida" EntityType="Self.Vr_TransformacionSalida" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vr_TransformacionSalida].[Id] AS [Id], 
+    [Vr_TransformacionSalida].[SucursalIngreso] AS [SucursalIngreso], 
+    [Vr_TransformacionSalida].[SucursalSalida] AS [SucursalSalida], 
+    [Vr_TransformacionSalida].[Observ] AS [Observ], 
+    [Vr_TransformacionSalida].[Fecha] AS [Fecha], 
+    [Vr_TransformacionSalida].[IdProducto_Mat] AS [IdProducto_Mat], 
+    [Vr_TransformacionSalida].[Descrip] AS [Descrip], 
+    [Vr_TransformacionSalida].[Total] AS [Total]
+    FROM [dbo].[Vr_TransformacionSalida] AS [Vr_TransformacionSalida]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CompraIng__IdCom__45BE5BA9" Association="Self.FK__CompraIng__IdCom__45BE5BA9">
             <End Role="CompraIng" EntitySet="CompraIng" />
@@ -779,6 +821,7 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <EntitySet Name="Deposito" EntityType="DiAviModel.Deposito" />
           <EntitySet Name="Sucursal" EntityType="DiAviModel.Sucursal" />
           <EntitySet Name="Transformacion" EntityType="DiAviModel.Transformacion" />
+          <EntitySet Name="Cliente" EntityType="DiAviModel.Cliente" />
           <EntitySet Name="Precio" EntityType="DiAviModel.Precio" />
           <EntitySet Name="PrecioCat" EntityType="DiAviModel.PrecioCat" />
           <EntitySet Name="Estaticos" EntityType="DiAviModel.Estaticos" />
@@ -810,14 +853,28 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             <End Role="PrecioCat" EntitySet="PrecioCat" />
             <End Role="Precio" EntitySet="Precio" />
           </AssociationSet>
+          <EntitySet Name="Seleccion_01" EntityType="DiAviModel.Seleccion_01" />
           <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
           <AssociationSet Name="FK_Compra_01_Producto" Association="DiAviModel.FK_Compra_01_Producto">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Compra_01" EntitySet="Compra_01" />
           </AssociationSet>
+          <AssociationSet Name="FK_Seleccion_01_Producto" Association="DiAviModel.FK_Seleccion_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Seleccion_01" EntitySet="Seleccion_01" />
+          </AssociationSet>
           <AssociationSet Name="FK__Precio_Product" Association="DiAviModel.FK__Precio_Product">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <EntitySet Name="Transformacion_01" EntityType="DiAviModel.Transformacion_01" />
+          <AssociationSet Name="FK_Transformacion_01_Transformacion" Association="DiAviModel.FK_Transformacion_01_Transformacion">
+            <End Role="Transformacion" EntitySet="Transformacion" />
+            <End Role="Transformacion_01" EntitySet="Transformacion_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transformacion_01_Producto" Association="DiAviModel.FK_Transformacion_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Transformacion_01" EntitySet="Transformacion_01" />
           </AssociationSet>
           <EntitySet Name="CompraIng_01" EntityType="DiAviModel.CompraIng_01" />
           <AssociationSet Name="FK__CompraIng__IdPro__46B27FE2" Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2">
@@ -844,31 +901,14 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             <End Role="CompraIng" EntitySet="CompraIng" />
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
-          <EntitySet Name="Transformacion_01" EntityType="DiAviModel.Transformacion_01" />
-          <AssociationSet Name="FK_Transformacion_01_Transformacion" Association="DiAviModel.FK_Transformacion_01_Transformacion">
-            <End Role="Transformacion" EntitySet="Transformacion" />
-            <End Role="Transformacion_01" EntitySet="Transformacion_01" />
-          </AssociationSet>
-          <EntitySet Name="Cliente" EntityType="DiAviModel.Cliente" />
-          <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
-          <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
-          <EntitySet Name="Seleccion_01" EntityType="DiAviModel.Seleccion_01" />
           <AssociationSet Name="FK_Seleccion_01_Seleccion" Association="DiAviModel.FK_Seleccion_01_Seleccion">
             <End Role="Seleccion" EntitySet="Seleccion" />
             <End Role="Seleccion_01" EntitySet="Seleccion_01" />
           </AssociationSet>
-          <AssociationSet Name="FK_Seleccion_01_Producto" Association="DiAviModel.FK_Seleccion_01_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Seleccion_01" EntitySet="Seleccion_01" />
-          </AssociationSet>
-<<<<<<< HEAD
-=======
           <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
           <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
           <EntitySet Name="TI002" EntityType="DiAviModel.TI002" />
-          <EntitySet Name="TI0021" EntityType="DiAviModel.TI0021" />
->>>>>>> master
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="Libreria">
           <Key>
             <PropertyRef Name="Id" />
@@ -1020,6 +1060,35 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Transformacion_01" Relationship="DiAviModel.FK_Transformacion_01_Transformacion" FromRole="Transformacion" ToRole="Transformacion_01" />
         </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="RazonSo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Nit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TipoCli" Type="Int32" Nullable="false" />
+          <Property Name="Direcc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contac1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Contac2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telfo1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telfo2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="Int32" Nullable="false" />
+          <Property Name="Factur" Type="Int32" Nullable="false" />
+          <Property Name="Latitud" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
+          <Property Name="Longit" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
+          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hora" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCred" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Dias" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="Precio">
           <Key>
             <PropertyRef Name="Id" />
@@ -1146,6 +1215,21 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Seleccion_01">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdSeleccion" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_Seleccion_01_Producto" FromRole="Seleccion_01" ToRole="Producto" />
+          <NavigationProperty Name="Seleccion" Relationship="DiAviModel.FK_Seleccion_01_Seleccion" FromRole="Seleccion_01" ToRole="Seleccion" />
+          <Property Name="Porcen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="Id" />
@@ -1173,9 +1257,10 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <Property Name="Hora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Compra_01" Relationship="DiAviModel.FK_Compra_01_Producto" FromRole="Producto" ToRole="Compra_01" />
-          <NavigationProperty Name="Precio" Relationship="DiAviModel.FK__Precio_Product" FromRole="Producto" ToRole="Precio" />
-          <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdPro__46B27FE2" FromRole="Producto" ToRole="CompraIng_01" />
           <NavigationProperty Name="Seleccion_01" Relationship="DiAviModel.FK_Seleccion_01_Producto" FromRole="Producto" ToRole="Seleccion_01" />
+          <NavigationProperty Name="Precio" Relationship="DiAviModel.FK__Precio_Product" FromRole="Producto" ToRole="Precio" />
+          <NavigationProperty Name="Transformacion_01" Relationship="DiAviModel.FK_Transformacion_01_Producto" FromRole="Producto" ToRole="Transformacion_01" />
+          <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdPro__46B27FE2" FromRole="Producto" ToRole="CompraIng_01" />
         </EntityType>
         <Association Name="FK_Compra_01_Producto">
           <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
@@ -1189,6 +1274,18 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Seleccion_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seleccion_01">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Precio_Product">
           <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
           <End Type="DiAviModel.Precio" Role="Precio" Multiplicity="*" />
@@ -1198,6 +1295,45 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             </Principal>
             <Dependent Role="Precio">
               <PropertyRef Name="IdProduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Transformacion_01">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTransformacion" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="TotalProd" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Transformacion" Relationship="DiAviModel.FK_Transformacion_01_Transformacion" FromRole="Transformacion_01" ToRole="Transformacion" />
+          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_Transformacion_01_Producto" FromRole="Transformacion_01" ToRole="Producto" />
+          <Property Name="IdProducto_Mat" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Transformacion_01_Transformacion">
+          <End Type="DiAviModel.Transformacion" Role="Transformacion" Multiplicity="1" />
+          <End Type="DiAviModel.Transformacion_01" Role="Transformacion_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transformacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transformacion_01">
+              <PropertyRef Name="IdTransformacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transformacion_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Transformacion_01" Role="Transformacion_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transformacion_01">
+              <PropertyRef Name="IdProducto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1380,61 +1516,18 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Transformacion_01">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdTransformacion" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto_Mat" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="TotalProd" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="Transformacion" Relationship="DiAviModel.FK_Transformacion_01_Transformacion" FromRole="Transformacion_01" ToRole="Transformacion" />
-        </EntityType>
-        <Association Name="FK_Transformacion_01_Transformacion">
-          <End Type="DiAviModel.Transformacion" Role="Transformacion" Multiplicity="1" />
-          <End Type="DiAviModel.Transformacion_01" Role="Transformacion_01" Multiplicity="*" />
+        <Association Name="FK_Seleccion_01_Seleccion">
+          <End Type="DiAviModel.Seleccion" Role="Seleccion" Multiplicity="1" />
+          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Transformacion">
+            <Principal Role="Seleccion">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Transformacion_01">
-              <PropertyRef Name="IdTransformacion" />
+            <Dependent Role="Seleccion_01">
+              <PropertyRef Name="IdSeleccion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="RazonSo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Nit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="TipoCli" Type="Int32" Nullable="false" />
-          <Property Name="Direcc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Contac1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Contac2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Telfo1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Telfo2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Email1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Email2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Ciudad" Type="Int32" Nullable="false" />
-          <Property Name="Factur" Type="Int32" Nullable="false" />
-          <Property Name="Latitud" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
-          <Property Name="Longit" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
-          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCred" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Dias" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Hora" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Vr_TransformacionIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -1473,47 +1566,6 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-<<<<<<< HEAD
-        <EntityType Name="Seleccion_01">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdSeleccion" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Porcen" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="Seleccion" Relationship="DiAviModel.FK_Seleccion_01_Seleccion" FromRole="Seleccion_01" ToRole="Seleccion" />
-          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_Seleccion_01_Producto" FromRole="Seleccion_01" ToRole="Producto" />
-        </EntityType>
-        <Association Name="FK_Seleccion_01_Seleccion">
-          <End Type="DiAviModel.Seleccion" Role="Seleccion" Multiplicity="1" />
-          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Seleccion">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Seleccion_01">
-              <PropertyRef Name="IdSeleccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Seleccion_01_Producto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Seleccion_01">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-=======
         <EntityType Name="TI002">
           <Key>
             <PropertyRef Name="ibid" />
@@ -1531,19 +1583,7 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
           <Property Name="ibhact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="ibuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TI0021">
-          <Key>
-            <PropertyRef Name="icid" />
-          </Key>
-          <Property Name="icid" Type="Int32" Nullable="false" />
-          <Property Name="icibid" Type="Int32" />
-          <Property Name="iccprod" Type="Int32" />
-          <Property Name="iccant" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="icfvenc" Type="DateTime" Precision="0" />
-        </EntityType>
->>>>>>> master
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1693,6 +1733,36 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="DiAviModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="TotalCred" ColumnName="TotalCred" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Longit" ColumnName="Longit" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Factur" ColumnName="Factur" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Telfo2" ColumnName="Telfo2" />
+                <ScalarProperty Name="Telfo1" ColumnName="Telfo1" />
+                <ScalarProperty Name="Contac2" ColumnName="Contac2" />
+                <ScalarProperty Name="Contac1" ColumnName="Contac1" />
+                <ScalarProperty Name="Direcc" ColumnName="Direcc" />
+                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="RazonSo" ColumnName="RazonSo" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdSpyre" ColumnName="IdSpyre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Precio">
             <EntityTypeMapping TypeName="DiAviModel.Precio">
               <MappingFragment StoreEntitySet="Precio">
@@ -1733,6 +1803,20 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Seleccion_01">
+            <EntityTypeMapping TypeName="DiAviModel.Seleccion_01">
+              <MappingFragment StoreEntitySet="Seleccion_01">
+                <ScalarProperty Name="Porcen" ColumnName="Porcen" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdSeleccion" ColumnName="IdSeleccion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="DiAviModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
@@ -1757,6 +1841,20 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
                 <ScalarProperty Name="Granja" ColumnName="Granja" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdProd" ColumnName="IdProd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transformacion_01">
+            <EntityTypeMapping TypeName="DiAviModel.Transformacion_01">
+              <MappingFragment StoreEntitySet="Transformacion_01">
+                <ScalarProperty Name="IdProducto_Mat" ColumnName="IdProducto_Mat" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="TotalProd" ColumnName="TotalProd" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdTransformacion" ColumnName="IdTransformacion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1857,60 +1955,30 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Transformacion_01">
-            <EntityTypeMapping TypeName="DiAviModel.Transformacion_01">
-              <MappingFragment StoreEntitySet="Transformacion_01">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <EntitySetMapping Name="Vr_TransformacionIngreso">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionIngreso">
+              <MappingFragment StoreEntitySet="Vr_TransformacionIngreso">
                 <ScalarProperty Name="TotalProd" ColumnName="TotalProd" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdProducto_Mat" ColumnName="IdProducto_Mat" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdTransformacion" ColumnName="IdTransformacion" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-<<<<<<< HEAD
-=======
-          <EntitySetMapping Name="Seleccion_01">
-            <EntityTypeMapping TypeName="DiAviModel.Seleccion_01">
-              <MappingFragment StoreEntitySet="Seleccion_01">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdSeleccion" ColumnName="IdSeleccion" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
->>>>>>> master
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="DiAviModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Longit" ColumnName="Longit" />
-                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
-                <ScalarProperty Name="Factur" ColumnName="Factur" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Email2" ColumnName="Email2" />
-                <ScalarProperty Name="Email1" ColumnName="Email1" />
-                <ScalarProperty Name="Telfo2" ColumnName="Telfo2" />
-                <ScalarProperty Name="Telfo1" ColumnName="Telfo1" />
-                <ScalarProperty Name="Contac2" ColumnName="Contac2" />
-                <ScalarProperty Name="Contac1" ColumnName="Contac1" />
-                <ScalarProperty Name="Direcc" ColumnName="Direcc" />
-                <ScalarProperty Name="TipoCli" ColumnName="TipoCli" />
-                <ScalarProperty Name="Nit" ColumnName="Nit" />
-                <ScalarProperty Name="RazonSo" ColumnName="RazonSo" />
                 <ScalarProperty Name="Descrip" ColumnName="Descrip" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdSpyre" ColumnName="IdSpyre" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Observ" ColumnName="Observ" />
+                <ScalarProperty Name="SucursalSalida" ColumnName="SucursalSalida" />
+                <ScalarProperty Name="SucursalIngreso" ColumnName="SucursalIngreso" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vr_TransformacionSalida">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionSalida">
+              <MappingFragment StoreEntitySet="Vr_TransformacionSalida">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="IdProducto_Mat" ColumnName="IdProducto_Mat" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Observ" ColumnName="Observ" />
+                <ScalarProperty Name="SucursalSalida" ColumnName="SucursalSalida" />
+                <ScalarProperty Name="SucursalIngreso" ColumnName="SucursalIngreso" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1933,37 +2001,7 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TI0021">
-            <EntityTypeMapping TypeName="DiAviModel.TI0021">
-              <MappingFragment StoreEntitySet="TI0021">
-                <ScalarProperty Name="icfvenc" ColumnName="icfvenc" />
-                <ScalarProperty Name="iclot" ColumnName="iclot" />
-                <ScalarProperty Name="iccant" ColumnName="iccant" />
-                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
-                <ScalarProperty Name="icibid" ColumnName="icibid" />
-                <ScalarProperty Name="icid" ColumnName="icid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-<<<<<<< HEAD
-          <EntitySetMapping Name="Seleccion_01">
-            <EntityTypeMapping TypeName="DiAviModel.Seleccion_01">
-              <MappingFragment StoreEntitySet="Seleccion_01">
-                <ScalarProperty Name="Porcen" ColumnName="Porcen" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdSeleccion" ColumnName="IdSeleccion" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
-=======
-          </EntityContainerMapping>
->>>>>>> master
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
