@@ -226,10 +226,9 @@ namespace PRESENTER.alm
                 UTGlobal.MG_ArmarComboDeposito(Cb_Depositos,
                                                 new ServiceDesktop.ServiceDesktopClient().DepositoListarCombo().ToList());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                this.MP_MostrarMensajeError(ex.Message);
             }
         }
 
@@ -277,13 +276,13 @@ namespace PRESENTER.alm
                 else
                 {
                     mensaje = GLMensaje.Registro_Error("SUCURSALES");
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    this.MP_MostrarMensajeError(mensaje);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                this.MP_MostrarMensajeError(ex.Message);
                 return false;
             }
         }

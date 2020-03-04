@@ -30,6 +30,7 @@
   <xs:complexType name="ArrayOfVProducto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VProducto" nillable="true" type="tns:VProducto" />
+<<<<<<< HEAD
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVProducto" nillable="true" type="tns:ArrayOfVProducto" />
@@ -41,6 +42,19 @@
   <xs:element name="ArrayOfVProductoLista" nillable="true" type="tns:ArrayOfVProductoLista" />
   <xs:complexType name="VProductoLista">
     <xs:sequence>
+=======
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProducto" nillable="true" type="tns:ArrayOfVProducto" />
+  <xs:complexType name="ArrayOfVProductoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProductoLista" nillable="true" type="tns:VProductoLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProductoLista" nillable="true" type="tns:ArrayOfVProductoLista" />
+  <xs:complexType name="VProductoLista">
+    <xs:sequence>
+>>>>>>> master
       <xs:element minOccurs="0" name="Cod_Producto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
@@ -49,7 +63,10 @@
       <xs:element minOccurs="0" name="Grupo3" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+<<<<<<< HEAD
       <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+=======
+>>>>>>> master
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

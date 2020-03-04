@@ -54,7 +54,7 @@ namespace REPOSITORY.Clase
                                       select new VSucursalCombo
                                       {
                                           IdLibreria = a.Id,
-                                          Descripcion = a.Descrip
+                                          Descripcion = a.Descrip + " | " + a.Deposito.Descrip
                                       }).ToList();
                     return listResult;
                 }

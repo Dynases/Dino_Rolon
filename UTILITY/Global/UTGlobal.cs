@@ -63,7 +63,7 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = false;
 
-                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns.Add("Descripcion").Width = 300;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
 

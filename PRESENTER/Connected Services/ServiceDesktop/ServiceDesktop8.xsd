@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="ArrayOfVSeleccion_01_Lista">
+=======
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVSeleccionLista">
+>>>>>>> master
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VSeleccion_01_Lista" nillable="true" type="tns:VSeleccion_01_Lista" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VSeleccionLista" nillable="true" type="tns:VSeleccionLista" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVSeleccion_01_Lista" nillable="true" type="tns:ArrayOfVSeleccion_01_Lista" />
-  <xs:complexType name="VSeleccion_01_Lista">
+  <xs:element name="ArrayOfVSeleccionLista" nillable="true" type="tns:ArrayOfVSeleccionLista" />
+  <xs:complexType name="VSeleccionLista">
     <xs:complexContent mixed="false">
-      <xs:extension base="tns:VSeleccion_01">
+      <xs:extension base="tns:VSeleccion">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Edad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaEntrega" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FechaRecepcion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Granja" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Placa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tipo" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="VSeleccion_01_Lista" nillable="true" type="tns:VSeleccion_01_Lista" />
-  <xs:complexType name="VSeleccion_01">
+  <xs:element name="VSeleccionLista" nillable="true" type="tns:VSeleccionLista" />
+  <xs:complexType name="VSeleccion">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
+<<<<<<< HEAD
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
       <xs:element minOccurs="0" name="IdSeleccion" type="xs:int" />
@@ -28,4 +40,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VSeleccion_01" nillable="true" type="tns:VSeleccion_01" />
+=======
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCompraIng" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSucur" type="xs:int" />
+      <xs:element minOccurs="0" name="Merma" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VSeleccion" nillable="true" type="tns:VSeleccion" />
+>>>>>>> master
 </xs:schema>
