@@ -12,11 +12,13 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Estaticos
+    public partial class TI0021
     {
-        public int Id { get; set; }
-        public string Grupo { get; set; }
-        public int Orden { get; set; }
-        public string Descrip { get; set; }
+        public int icid { get; set; }
+        public Nullable<int> icibid { get; set; }
+        public Nullable<int> iccprod { get; set; }
+        public Nullable<decimal> iccant { get; set; }
+        public string iclot { get; set; }
+        public Nullable<System.DateTime> icfvenc { get; set; }
     }
 }

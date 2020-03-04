@@ -5,8 +5,8 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Estaticos">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,7 +178,42 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+<<<<<<< HEAD
           <Property Name="Porcen" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+=======
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.TI002' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TI002">
+          <Key>
+            <PropertyRef Name="ibid" />
+          </Key>
+          <Property Name="ibid" Type="int" Nullable="false" />
+          <Property Name="ibfdoc" Type="date" />
+          <Property Name="ibconcep" Type="int" />
+          <Property Name="ibobs" Type="nvarchar" MaxLength="100" />
+          <Property Name="ibest" Type="int" />
+          <Property Name="ibalm" Type="int" />
+          <Property Name="ibdepdest" Type="int" />
+          <Property Name="ididdestino" Type="int" />
+          <Property Name="ibiddc" Type="int" />
+          <Property Name="ibfact" Type="date" />
+          <Property Name="ibhact" Type="nvarchar" MaxLength="5" />
+          <Property Name="ibuact" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.TI0021' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TI0021">
+          <Key>
+            <PropertyRef Name="icid" />
+          </Key>
+          <Property Name="icid" Type="int" Nullable="false" />
+          <Property Name="icibid" Type="int" />
+          <Property Name="iccprod" Type="int" />
+          <Property Name="iccant" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="iclot" Type="nvarchar" MaxLength="20" />
+          <Property Name="icfvenc" Type="date" />
+>>>>>>> master
         </EntityType>
         <EntityType Name="Deposito">
           <Key>
@@ -261,8 +296,6 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Latitud" Type="decimal" Precision="18" Scale="14" Nullable="false" />
           <Property Name="Longit" Type="decimal" Precision="18" Scale="14" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
-          <Property Name="TotalCred" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Dias" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Hora" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="25" Nullable="false" />
@@ -322,8 +355,8 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Hora" Type="nvarchar" MaxLength="5" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.V_NotaCompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_NotaCompraIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -352,8 +385,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene defi
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngreso">
           <Key>
             <PropertyRef Name="NotaRecepcion" />
@@ -376,48 +409,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definid
           <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalCant" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Vr_TransformacionIngreso">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="SucursalIngreso" />
-            <PropertyRef Name="SucursalSalida" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="IdProducto" />
-            <PropertyRef Name="Descrip" />
-            <PropertyRef Name="TotalProd" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="SucursalIngreso" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="SucursalSalida" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="Observ" Type="nvarchar" MaxLength="250" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="TotalProd" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Vr_TransformacionSalida">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="SucursalIngreso" />
-            <PropertyRef Name="SucursalSalida" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="IdProducto_Mat" />
-            <PropertyRef Name="Descrip" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="SucursalIngreso" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="SucursalSalida" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="Observ" Type="nvarchar" MaxLength="250" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="IdProducto_Mat" Type="int" Nullable="false" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK__CompraIng__IdCom__45BE5BA9">
@@ -650,6 +641,32 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [Estaticos].[Descrip] AS [Descrip]
     FROM [ADM].[Estaticos] AS [Estaticos]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="TI002" EntityType="Self.TI002" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TI002].[ibid] AS [ibid], 
+    [TI002].[ibfdoc] AS [ibfdoc], 
+    [TI002].[ibconcep] AS [ibconcep], 
+    [TI002].[ibobs] AS [ibobs], 
+    [TI002].[ibest] AS [ibest], 
+    [TI002].[ibalm] AS [ibalm], 
+    [TI002].[ibdepdest] AS [ibdepdest], 
+    [TI002].[ididdestino] AS [ididdestino], 
+    [TI002].[ibiddc] AS [ibiddc], 
+    [TI002].[ibfact] AS [ibfact], 
+    [TI002].[ibhact] AS [ibhact], 
+    [TI002].[ibuact] AS [ibuact]
+    FROM [dbo].[TI002] AS [TI002]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TI0021" EntityType="Self.TI0021" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TI0021].[icid] AS [icid], 
+    [TI0021].[icibid] AS [icibid], 
+    [TI0021].[iccprod] AS [iccprod], 
+    [TI0021].[iccant] AS [iccant], 
+    [TI0021].[iclot] AS [iclot], 
+    [TI0021].[icfvenc] AS [icfvenc]
+    FROM [dbo].[TI0021] AS [TI0021]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_NotaCompraIngreso" EntityType="Self.V_NotaCompraIngreso" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_NotaCompraIngreso].[Id] AS [Id], 
@@ -679,30 +696,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [Vr_CompraIngreso].[PrecioCost] AS [PrecioCost], 
     [Vr_CompraIngreso].[Total] AS [Total]
     FROM [dbo].[Vr_CompraIngreso] AS [Vr_CompraIngreso]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Vr_TransformacionIngreso" EntityType="Self.Vr_TransformacionIngreso" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Vr_TransformacionIngreso].[Id] AS [Id], 
-    [Vr_TransformacionIngreso].[SucursalIngreso] AS [SucursalIngreso], 
-    [Vr_TransformacionIngreso].[SucursalSalida] AS [SucursalSalida], 
-    [Vr_TransformacionIngreso].[Observ] AS [Observ], 
-    [Vr_TransformacionIngreso].[Fecha] AS [Fecha], 
-    [Vr_TransformacionIngreso].[IdProducto] AS [IdProducto], 
-    [Vr_TransformacionIngreso].[Descrip] AS [Descrip], 
-    [Vr_TransformacionIngreso].[TotalProd] AS [TotalProd]
-    FROM [dbo].[Vr_TransformacionIngreso] AS [Vr_TransformacionIngreso]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Vr_TransformacionSalida" EntityType="Self.Vr_TransformacionSalida" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Vr_TransformacionSalida].[Id] AS [Id], 
-    [Vr_TransformacionSalida].[SucursalIngreso] AS [SucursalIngreso], 
-    [Vr_TransformacionSalida].[SucursalSalida] AS [SucursalSalida], 
-    [Vr_TransformacionSalida].[Observ] AS [Observ], 
-    [Vr_TransformacionSalida].[Fecha] AS [Fecha], 
-    [Vr_TransformacionSalida].[IdProducto_Mat] AS [IdProducto_Mat], 
-    [Vr_TransformacionSalida].[Descrip] AS [Descrip], 
-    [Vr_TransformacionSalida].[Total] AS [Total]
-    FROM [dbo].[Vr_TransformacionSalida] AS [Vr_TransformacionSalida]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CompraIng__IdCom__45BE5BA9" Association="Self.FK__CompraIng__IdCom__45BE5BA9">
             <End Role="CompraIng" EntitySet="CompraIng" />
@@ -868,6 +861,13 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Seleccion_01" EntitySet="Seleccion_01" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
+          <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
+          <EntitySet Name="TI002" EntityType="DiAviModel.TI002" />
+          <EntitySet Name="TI0021" EntityType="DiAviModel.TI0021" />
+>>>>>>> master
           </EntityContainer>
         <EntityType Name="Libreria">
           <Key>
@@ -1473,6 +1473,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
+<<<<<<< HEAD
         <EntityType Name="Seleccion_01">
           <Key>
             <PropertyRef Name="Id" />
@@ -1512,6 +1513,36 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+=======
+        <EntityType Name="TI002">
+          <Key>
+            <PropertyRef Name="ibid" />
+          </Key>
+          <Property Name="ibid" Type="Int32" Nullable="false" />
+          <Property Name="ibfdoc" Type="DateTime" Precision="0" />
+          <Property Name="ibconcep" Type="Int32" />
+          <Property Name="ibobs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ibest" Type="Int32" />
+          <Property Name="ibalm" Type="Int32" />
+          <Property Name="ibdepdest" Type="Int32" />
+          <Property Name="ididdestino" Type="Int32" />
+          <Property Name="ibiddc" Type="Int32" />
+          <Property Name="ibfact" Type="DateTime" Precision="0" />
+          <Property Name="ibhact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ibuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TI0021">
+          <Key>
+            <PropertyRef Name="icid" />
+          </Key>
+          <Property Name="icid" Type="Int32" Nullable="false" />
+          <Property Name="icibid" Type="Int32" />
+          <Property Name="iccprod" Type="Int32" />
+          <Property Name="iccant" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="icfvenc" Type="DateTime" Precision="0" />
+        </EntityType>
+>>>>>>> master
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1840,14 +1871,28 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+=======
+          <EntitySetMapping Name="Seleccion_01">
+            <EntityTypeMapping TypeName="DiAviModel.Seleccion_01">
+              <MappingFragment StoreEntitySet="Seleccion_01">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdSeleccion" ColumnName="IdSeleccion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+>>>>>>> master
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="DiAviModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Dias" ColumnName="Dias" />
-                <ScalarProperty Name="TotalCred" ColumnName="TotalCred" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Longit" ColumnName="Longit" />
                 <ScalarProperty Name="Latitud" ColumnName="Latitud" />
@@ -1870,34 +1915,37 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vr_TransformacionIngreso">
-            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionIngreso">
-              <MappingFragment StoreEntitySet="Vr_TransformacionIngreso">
-                <ScalarProperty Name="TotalProd" ColumnName="TotalProd" />
-                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Observ" ColumnName="Observ" />
-                <ScalarProperty Name="SucursalSalida" ColumnName="SucursalSalida" />
-                <ScalarProperty Name="SucursalIngreso" ColumnName="SucursalIngreso" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="TI002">
+            <EntityTypeMapping TypeName="DiAviModel.TI002">
+              <MappingFragment StoreEntitySet="TI002">
+                <ScalarProperty Name="ibuact" ColumnName="ibuact" />
+                <ScalarProperty Name="ibhact" ColumnName="ibhact" />
+                <ScalarProperty Name="ibfact" ColumnName="ibfact" />
+                <ScalarProperty Name="ibiddc" ColumnName="ibiddc" />
+                <ScalarProperty Name="ididdestino" ColumnName="ididdestino" />
+                <ScalarProperty Name="ibdepdest" ColumnName="ibdepdest" />
+                <ScalarProperty Name="ibalm" ColumnName="ibalm" />
+                <ScalarProperty Name="ibest" ColumnName="ibest" />
+                <ScalarProperty Name="ibobs" ColumnName="ibobs" />
+                <ScalarProperty Name="ibconcep" ColumnName="ibconcep" />
+                <ScalarProperty Name="ibfdoc" ColumnName="ibfdoc" />
+                <ScalarProperty Name="ibid" ColumnName="ibid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vr_TransformacionSalida">
-            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionSalida">
-              <MappingFragment StoreEntitySet="Vr_TransformacionSalida">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
-                <ScalarProperty Name="IdProducto_Mat" ColumnName="IdProducto_Mat" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Observ" ColumnName="Observ" />
-                <ScalarProperty Name="SucursalSalida" ColumnName="SucursalSalida" />
-                <ScalarProperty Name="SucursalIngreso" ColumnName="SucursalIngreso" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="TI0021">
+            <EntityTypeMapping TypeName="DiAviModel.TI0021">
+              <MappingFragment StoreEntitySet="TI0021">
+                <ScalarProperty Name="icfvenc" ColumnName="icfvenc" />
+                <ScalarProperty Name="iclot" ColumnName="iclot" />
+                <ScalarProperty Name="iccant" ColumnName="iccant" />
+                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
+                <ScalarProperty Name="icibid" ColumnName="icibid" />
+                <ScalarProperty Name="icid" ColumnName="icid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
           <EntitySetMapping Name="Seleccion_01">
             <EntityTypeMapping TypeName="DiAviModel.Seleccion_01">
               <MappingFragment StoreEntitySet="Seleccion_01">
@@ -1913,6 +1961,9 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
+=======
+          </EntityContainerMapping>
+>>>>>>> master
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
