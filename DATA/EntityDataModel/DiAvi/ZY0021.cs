@@ -12,18 +12,14 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Seleccion_01
+    public partial class ZY0021
     {
-        public int Id { get; set; }
-        public int IdSeleccion { get; set; }
-        public int IdProducto { get; set; }
-        public int Estado { get; set; }
-        public decimal Cantidad { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Total { get; set; }
-        public decimal Porcen { get; set; }
-    
-        public virtual Seleccion Seleccion { get; set; }
-        public virtual Producto Producto { get; set; }
+        public int ycline { get; set; }
+        public Nullable<int> ycnumi { get; set; }
+        public Nullable<int> ycyanumi { get; set; }
+        public Nullable<bool> ycshow { get; set; }
+        public Nullable<bool> ycadd { get; set; }
+        public Nullable<bool> ycmod { get; set; }
+        public Nullable<bool> ycdel { get; set; }
     }
 }

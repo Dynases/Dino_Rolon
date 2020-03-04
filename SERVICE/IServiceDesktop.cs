@@ -11,6 +11,7 @@ using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
+using ENTITY.inv.Traspaso.View;
 using ENTITY.Libreria.View;
 using ENTITY.Producto.View;
 using ENTITY.Proveedor.View;
@@ -47,7 +48,7 @@ namespace SERVICE
         bool LibreriaGuardar(VLibreriaLista vlibreria);
         #endregion
         ///**********CLIENTE*************************
-        
+
         #region Cliente
 
         [OperationContract]
@@ -132,6 +133,22 @@ namespace SERVICE
         [OperationContract]
         bool DepositoGuardar(VDeposito vDeposito);
         #endregion
+        ///**********TRASPASO************************
+        ///
+        #region Traspaso
+        [OperationContract]
+        bool TraspasoGuardar(VTraspaso vTraspaso);
+
+        [OperationContract]
+        bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId);
+
+        [OperationContract]
+        List<VTraspaso> TraspasosListar();
+
+        [OperationContract]
+        List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId);
+
+        #endregion       
         ///**********PRECIO**************************
         ///
         #region Precio Categoria
@@ -175,7 +192,7 @@ namespace SERVICE
         [OperationContract]
         bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
 
-       
+
         #endregion
         #region Seleccion_01
         [OperationContract]
@@ -202,7 +219,7 @@ namespace SERVICE
         [OperationContract]
         List<VTransformacion_01> Transformacion_01_Lista(int idTransformacion);
         [OperationContract]
-        VTransformacion_01 Transformacion_01_TraerFilaProducto( int IdProducto, int idProducto_Mat);
+        VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat);
         #endregion
         ///**********COMPRA******************
         ///

@@ -14,6 +14,40 @@ namespace REPOSITORY.Clase
     {
         #region CONSULTAS
 
+        public List<VTraspaso> ListarTraspasos()
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.TI002
+                        .Where(ti => ti.ibconcep == 11)
+                        .Select(ti => new VTraspaso
+                        {
+                            Concepto = ti.ibconcep.Value,
+                            Destino = ti.ibdepdest.Value,
+                            Estado = ti.ibest.Value,
+                            Fecha = ti.ibfact.Value,
+                            Hora = ti.ibhact,
+                            Id = ti.ibid,
+                            Observaciones = ti.ibobs,
+                            Origen = ti.ibalm.Value,
+                            Usuario = ti.ibuact
+                        }).ToList();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region TRANSACCIONES
+
         public bool Guardar(VTraspaso vTraspaso)
         {
             try
@@ -28,11 +62,12 @@ namespace REPOSITORY.Clase
                         ibest = vTraspaso.Estado,
                         ibfact = vTraspaso.Fecha,
                         ibfdoc = vTraspaso.Fecha,
-                        ibhact = vTraspaso.Hora.ToShortTimeString(),
+                        ibhact = vTraspaso.Hora,
                         ibiddc = vTraspaso.Id,
                         ibobs = vTraspaso.Observaciones,
                         ibuact = vTraspaso.Usuario,
-                        ididdestino = 0
+                        ididdestino = 0,
+                        ibid = vTraspaso.Id
                     };
 
                     db.TI002.Add(traspaso);
@@ -47,9 +82,6 @@ namespace REPOSITORY.Clase
             }
         }
 
-        #endregion
-
-        #region TRANSACCIONES
         #endregion
 
     }

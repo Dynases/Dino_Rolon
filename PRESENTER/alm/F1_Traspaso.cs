@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using ENTITY.inv.Traspaso.View;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,15 @@ namespace PRESENTER.alm
             InitializeComponent();
             this.MP_InHabilitar();
             this.MP_CargarSucursales();
+            this.MP_CargarListaTraspasos();
         }
 
         //===============
         #region Variables de entorno
 
         public static List<Producto> detalleProductos;
+        private static List<VTraspaso> listaTraspasos;
+        private static int index;
 
         #endregion
 
@@ -167,11 +171,138 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.VisualStyle = VisualStyle.Office2007;
                 }
 
-                detalleProductos = new List<Producto>();                                                
+                detalleProductos = new List<Producto>();
             }
             catch (Exception ex)
             {
                 this.MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void MP_CargarListaTraspasos()
+        {
+            index = 0;
+            try
+            {
+                listaTraspasos = new ServiceDesktop.ServiceDesktopClient().TraspasosListar().ToList();
+                if (listaTraspasos != null && listaTraspasos.Count > 0)
+                {
+                    this.MP_MostrarRegistro(index);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void MP_MostrarRegistro(int index)
+        {
+            var traspaso = listaTraspasos[index];
+            lblId.Text = traspaso.Id.ToString();
+            Cb_Destino.Value = traspaso.Destino;
+            Cb_Origen.Value = traspaso.Origen;
+            Tb_UsuarioEnvio.Text = traspaso.Usuario;
+            lblFechaEnvio.Text = traspaso.Fecha.ToShortDateString();
+            lblFechaRecepcion.Text = traspaso.Fecha.ToShortDateString();
+
+            this.MP_CargarDetalleRegistro(traspaso.Id);
+
+            this.LblPaginacion.Text = (index + 1) + "/" + listaTraspasos.Count;
+        }
+
+        private void MP_CargarDetalleRegistro(int id)
+        {
+            try
+            {
+                var result = new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleListar(id).ToList();
+
+                if (result.Count > 0)
+                {
+                    Dgv_DetalleTraspaso.DataSource = result;
+                    Dgv_DetalleTraspaso.RetrieveStructure();
+                    Dgv_DetalleTraspaso.AlternatingColors = true;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[0].Key = "Id";
+                    Dgv_DetalleTraspaso.RootTable.Columns[0].Caption = "Id";
+                    Dgv_DetalleTraspaso.RootTable.Columns[0].Visible = false;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].Key = "TraspasoId";
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].Caption = "TraspasoId";
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].Width = 250;
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].CellStyle.FontSize = 8;
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_DetalleTraspaso.RootTable.Columns[1].Visible = true;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].Key = "ProductoId";
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].Caption = "ProductoId";
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].Width = 250;
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].CellStyle.FontSize = 8;
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_DetalleTraspaso.RootTable.Columns[2].Visible = true;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].Key = "Cantidad";
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].Caption = "Cantidad";
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].Width = 150;
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].CellStyle.FontSize = 8;
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_DetalleTraspaso.RootTable.Columns[3].Visible = true;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Key = "Lote";
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Caption = "Lote";
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Width = 250;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].CellStyle.FontSize = 8;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Visible = true;
+
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Key = "Fecha";
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Caption = "Fecha";
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Width = 250;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].CellStyle.FontSize = 8;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_DetalleTraspaso.RootTable.Columns[4].Visible = true;
+
+                    //Habilitar filtradores
+                    Dgv_DetalleTraspaso.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                    Dgv_DetalleTraspaso.FilterMode = FilterMode.Automatic;
+                    Dgv_DetalleTraspaso.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
+                    Dgv_DetalleTraspaso.GroupByBoxVisible = false;
+                    Dgv_DetalleTraspaso.VisualStyle = VisualStyle.Office2007;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void MP_GuardarDetalleTraspaso(VTraspaso traspaso)
+        {
+            var listaDetalle = new List<VTraspaso_01>();
+            var mensaje = "";
+            foreach (var i in Dgv_DetalleNuevo.GetRows())
+            {
+                var detalle = new VTraspaso_01
+                {
+                    Cantidad = Convert.ToInt32(i.Cells[2].Value),
+                    Fecha = DateTime.Now,
+                    Lote = "",
+                    ProductoId = Convert.ToInt32(i.Cells[0].Value),
+                    TraspasoId = traspaso.Id
+                };
+
+                listaDetalle.Add(detalle);
+            }
+
+            if (!new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleGuardar(listaDetalle.ToArray(), traspaso.Id))
+            {
+                mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                this.MP_MostrarMensajeError(mensaje);
             }
         }
 
@@ -191,6 +322,58 @@ namespace PRESENTER.alm
         {
             base.MH_Salir();
             this.MP_Reiniciar();
+        }
+
+        public override bool MH_NuevoRegistro()
+        {
+            var guid = Guid.NewGuid();
+            var justNumbers = new String(guid.ToString().Where(Char.IsDigit).ToArray());
+            var seed = int.Parse(justNumbers.Substring(0, 4));
+            var random = new Random(seed);
+            var value = random.Next(0, 1000000);
+
+            var traspaso = new VTraspaso
+            {
+                Concepto = 11,
+                Destino = Convert.ToInt32(Cb_Destino.Value),
+                Estado = 11,
+                Fecha = DateTime.Now,
+                Hora = DateTime.Now.ToShortTimeString(),
+                Observaciones = Tb_Observaciones.Text,
+                Origen = Convert.ToInt32(Cb_Origen.Value),
+                Usuario = UTGlobal.Usuario,
+                Id = value
+            };
+
+            var mensaje = "";
+
+            try
+            {
+                if (new ServiceDesktop.ServiceDesktopClient().TraspasoGuardar(traspaso))
+                {
+                    this.MP_GuardarDetalleTraspaso(traspaso);
+                    mensaje = GLMensaje.Modificar_Exito("TRASPASOS", traspaso.Id.ToString());
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    return true;
+                }
+                else
+                {
+                    mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                    this.MP_MostrarMensajeError(mensaje);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+
+        }
+
+        public override bool MH_Validar()
+        {
+            return false;
         }
 
         #endregion

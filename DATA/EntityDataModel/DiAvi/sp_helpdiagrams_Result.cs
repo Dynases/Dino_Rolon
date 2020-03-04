@@ -10,16 +10,13 @@
 namespace DATA.EntityDataModel.DiAvi
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TI0021
+    public partial class sp_helpdiagrams_Result
     {
-        public int icid { get; set; }
-        public Nullable<int> icibid { get; set; }
-        public Nullable<int> iccprod { get; set; }
-        public Nullable<decimal> iccant { get; set; }
-        public string iclot { get; set; }
-        public Nullable<System.DateTime> icfvenc { get; set; }
-        public int id { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

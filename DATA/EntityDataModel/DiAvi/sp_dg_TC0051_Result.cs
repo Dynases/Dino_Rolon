@@ -10,16 +10,10 @@
 namespace DATA.EntityDataModel.DiAvi
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TI0021
+    public partial class sp_dg_TC0051_Result
     {
-        public int icid { get; set; }
-        public Nullable<int> icibid { get; set; }
-        public Nullable<int> iccprod { get; set; }
-        public Nullable<decimal> iccant { get; set; }
-        public string iclot { get; set; }
-        public Nullable<System.DateTime> icfvenc { get; set; }
-        public int id { get; set; }
+        public int cnnum { get; set; }
+        public string cndesc2 { get; set; }
     }
 }

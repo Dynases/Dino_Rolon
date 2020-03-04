@@ -18,7 +18,7 @@ namespace ENTITY.inv.Traspaso.View
 
         public int Destino { get; set; }
 
-        public DateTime Hora { get; set; }
+        public string Hora { get; set; }
 
         public string Usuario { get; set; }
     }

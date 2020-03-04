@@ -111,7 +111,31 @@
     <Compile Include="EntityDataModel\DiAvi\Seleccion_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_Marco_TI002_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\SY000.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sysdiagrams.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TB001.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\TI002.cs">
@@ -138,26 +162,31 @@
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="EntityDataModel\DiAvi\DiAviModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DiAviModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="EntityDataModel\DiAvi\DiAviModel.edmx.diagram">
       <DependentUpon>DiAviModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="EntityDataModel\DiAvi\DiAviModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DiAviModel.Context.cs</LastGenOutput>
       <DependentUpon>DiAviModel.edmx</DependentUpon>
+      <LastGenOutput>DiAviModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="EntityDataModel\DiAvi\DiAviModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -165,9 +194,5 @@
       <LastGenOutput>DiAviModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

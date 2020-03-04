@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace REPOSITORY.Interface
 {
-    public interface ITraspaso
+    public interface ITraspaso_01
     {
-        bool Guardar(VTraspaso vTraspaso);
-        List<VTraspaso> ListarTraspasos();
+        bool Guardar(List<VTraspaso_01> lista, int TraspasoId);
+        List<VTraspaso_01> ListarDetalleTraspaso(int TraspasoId);
     }
 }

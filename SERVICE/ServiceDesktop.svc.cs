@@ -25,6 +25,7 @@ using ENTITY.com.Compra_01.View;
 using ENTITY.inv.Deposito;
 using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.Transformacion.Report;
+using ENTITY.inv.Traspaso.View;
 
 namespace SERVICE
 {
@@ -393,6 +394,54 @@ namespace SERVICE
         #endregion
         #region Traspasos
 
+        public bool TraspasoGuardar(VTraspaso vTraspaso)
+        {
+            try
+            {
+                return new LTraspaso().Guardar(vTraspaso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId)
+        {
+            try
+            {
+                return new LTraspaso_01().Guardar(lista, TraspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTraspaso> TraspasosListar()
+        {
+            try
+            {
+                return new LTraspaso().Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId)
+        {
+            try
+            {
+                return new LTraspaso_01().ListarDetalleTraspaso(TraspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Precio Categoria
@@ -541,7 +590,7 @@ namespace SERVICE
             {
                 throw new Exception(ex.Message);
             }
-        }      
+        }
 
 
         #endregion

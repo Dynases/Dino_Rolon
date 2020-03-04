@@ -65,6 +65,8 @@
     <Compile Include="Class\LSeleccion_01.cs" />
     <Compile Include="Class\LTransformacion.cs" />
     <Compile Include="Class\LTransformacion_01.cs" />
+    <Compile Include="Class\LTraspaso.cs" />
+    <Compile Include="Class\LTraspaso_01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
