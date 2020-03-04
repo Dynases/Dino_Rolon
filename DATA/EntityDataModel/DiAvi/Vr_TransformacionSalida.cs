@@ -12,7 +12,7 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Vr_SeleccionSalida
+    public partial class Vr_TransformacionSalida
     {
         public int Id { get; set; }
         public string SucursalIngreso { get; set; }

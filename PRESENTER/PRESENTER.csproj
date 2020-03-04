@@ -272,6 +272,12 @@
       <DependentUpon>RCompraIngreso.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\RTransformacionIngreso.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RTransformacionIngreso.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="adm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +327,10 @@
     <EmbeddedResource Include="Report\RCompraIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RCompraIngreso.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RTransformacionIngreso.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ClienteGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -494,6 +504,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Transformacion.Report.VTransformacionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01_Lista.datasource" />

@@ -15,6 +15,8 @@ using UTILITY.Global;
 using ENTITY.inv.Transformacion_01.View;
 using ENTITY.inv.Transformacion.View;
 using UTILITY.Enum.EnEstado;
+using PRESENTER.Report;
+using UTILITY;
 
 namespace PRESENTER.com
 {
@@ -735,6 +737,65 @@ namespace PRESENTER.com
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+
+            if (Tb_Id.ReadOnly == true)
+            {
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().SeleccionIngreso(Convert.ToInt32(Tb_Id.Text));
+                var ObjetoReport = new RTransformacionIngreso();
+                ObjetoReport.SetDataSource(lista);
+                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                UTGlobal.visualizador.ShowDialog();
+                UTGlobal.visualizador.BringToFront();
+            }
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = 0;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            _MPos = Dgv_GBuscador.Row;
+            if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = _MPos - 1;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
+            _MPos = Dgv_GBuscador.Row;
+            if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+            {
+                _MPos = Dgv_GBuscador.Row + 1;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            _MPos = Dgv_GBuscador.Row;
+            if (Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = Dgv_GBuscador.RowCount - 1;
+                Dgv_GBuscador.Row = _MPos;
             }
         }
     }

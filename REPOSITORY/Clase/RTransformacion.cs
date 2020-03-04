@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using ENTITY.inv.Transformacion.View;
 using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum.EnEstado;
+using ENTITY.inv.Transformacion.Report;
+using ENTITY.com.Seleccion.Report;
 
 namespace REPOSITORY.Clase
 {
@@ -73,6 +75,60 @@ namespace REPOSITORY.Clase
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
                                           Usuario = a.Usuario
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VTransformacionReport> ListarIngreso(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_TransformacionIngreso
+                                      where a.Id.Equals(Id)
+                                      select new VTransformacionReport
+                                      {
+                                          Id = a.Id,
+                                          SucursalIngreso = a.SucursalIngreso,
+                                          SucursalSalida = a.SucursalSalida,
+                                          IdProducto = a.IdProducto,
+                                          Descrip = a.Descrip,
+                                          Observ = a.Observ,
+                                          TotalProd = a.TotalProd,
+                                          Fecha = a.Fecha
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VTransformacionReport> ListarSalida(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_TransformacionSalida
+                                      where a.Id.Equals(Id)
+                                      select new VTransformacionReport
+                                      {
+                                          //Id = a.Id,
+                                          //SucursalIngreso = a.SucursalIngreso,
+                                          //SucursalSalida = a.SucursalSalida,
+                                          //IdProducto = a.IdProducto_Mat,
+                                          //Descripcion = a.Descrip,
+                                          //Observ = a.Observ,
+                                          //Total = a.Total,
+                                          //Fecha = a.Fecha
                                       }).ToList();
                     return listResult;
                 }

@@ -45,7 +45,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Vr_SeleccionIngreso> Vr_SeleccionIngreso { get; set; }
-        public virtual DbSet<Vr_SeleccionSalida> Vr_SeleccionSalida { get; set; }
+        public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
+        public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
     }
 }

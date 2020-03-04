@@ -138,6 +138,10 @@
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);

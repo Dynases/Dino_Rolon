@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Transformacion.View;
+﻿using ENTITY.inv.Transformacion.Report;
+using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
@@ -53,6 +54,28 @@ namespace LOGIC.Class
             try
             {
                 return iTransformacion.Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VTransformacionReport> ListarIngreso(int Id)
+        {
+            try
+            {
+                return iTransformacion.ListarIngreso(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VTransformacionReport> ListarSalida(int Id)
+        {
+            try
+            {
+                return iTransformacion.ListarSalida(Id);
             }
             catch (Exception ex)
             {

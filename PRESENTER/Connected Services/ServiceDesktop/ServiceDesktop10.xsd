@@ -1,49 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVTransformacion_01">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVTransformacionReport">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacion_01" nillable="true" type="tns:VTransformacion_01" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacionReport" nillable="true" type="tns:VTransformacionReport" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVTransformacion_01" nillable="true" type="tns:ArrayOfVTransformacion_01" />
-  <xs:complexType name="VTransformacion_01">
+  <xs:element name="ArrayOfVTransformacionReport" nillable="true" type="tns:ArrayOfVTransformacionReport" />
+  <xs:complexType name="VTransformacionReport">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto_Mat_Prima" type="xs:int" />
-      <xs:element minOccurs="0" name="IdTransformacion" type="xs:int" />
-      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Producto_Mat_Prima" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalProd" type="xs:decimal" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VTransformacion_01" nillable="true" type="tns:VTransformacion_01" />
-=======
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVTransformacion">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacion" nillable="true" type="tns:VTransformacion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVTransformacion" nillable="true" type="tns:ArrayOfVTransformacion" />
-  <xs:complexType name="VTransformacion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
-      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSucIngreso" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSucSalida" type="xs:int" />
       <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Sucursal1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Sucursal2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SucursalIngreso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SucursalSalida" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VTransformacion" nillable="true" type="tns:VTransformacion" />
->>>>>>> master
+  <xs:element name="VTransformacionReport" nillable="true" type="tns:VTransformacionReport" />
 </xs:schema>

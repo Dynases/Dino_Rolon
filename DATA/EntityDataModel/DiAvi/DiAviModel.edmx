@@ -379,8 +379,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definid
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Vr_SeleccionIngreso">
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vr_TransformacionIngreso">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="SucursalIngreso" />
@@ -400,8 +400,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionIngreso' no tiene defi
           <Property Name="TotalProd" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Vr_SeleccionSalida">
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vr_TransformacionSalida">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="SucursalIngreso" />
@@ -680,29 +680,29 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
     [Vr_CompraIngreso].[Total] AS [Total]
     FROM [dbo].[Vr_CompraIngreso] AS [Vr_CompraIngreso]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Vr_SeleccionIngreso" EntityType="Self.Vr_SeleccionIngreso" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="Vr_TransformacionIngreso" EntityType="Self.Vr_TransformacionIngreso" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Vr_SeleccionIngreso].[Id] AS [Id], 
-    [Vr_SeleccionIngreso].[SucursalIngreso] AS [SucursalIngreso], 
-    [Vr_SeleccionIngreso].[SucursalSalida] AS [SucursalSalida], 
-    [Vr_SeleccionIngreso].[Observ] AS [Observ], 
-    [Vr_SeleccionIngreso].[Fecha] AS [Fecha], 
-    [Vr_SeleccionIngreso].[IdProducto] AS [IdProducto], 
-    [Vr_SeleccionIngreso].[Descrip] AS [Descrip], 
-    [Vr_SeleccionIngreso].[TotalProd] AS [TotalProd]
-    FROM [dbo].[Vr_SeleccionIngreso] AS [Vr_SeleccionIngreso]</DefiningQuery>
+    [Vr_TransformacionIngreso].[Id] AS [Id], 
+    [Vr_TransformacionIngreso].[SucursalIngreso] AS [SucursalIngreso], 
+    [Vr_TransformacionIngreso].[SucursalSalida] AS [SucursalSalida], 
+    [Vr_TransformacionIngreso].[Observ] AS [Observ], 
+    [Vr_TransformacionIngreso].[Fecha] AS [Fecha], 
+    [Vr_TransformacionIngreso].[IdProducto] AS [IdProducto], 
+    [Vr_TransformacionIngreso].[Descrip] AS [Descrip], 
+    [Vr_TransformacionIngreso].[TotalProd] AS [TotalProd]
+    FROM [dbo].[Vr_TransformacionIngreso] AS [Vr_TransformacionIngreso]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Vr_SeleccionSalida" EntityType="Self.Vr_SeleccionSalida" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="Vr_TransformacionSalida" EntityType="Self.Vr_TransformacionSalida" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Vr_SeleccionSalida].[Id] AS [Id], 
-    [Vr_SeleccionSalida].[SucursalIngreso] AS [SucursalIngreso], 
-    [Vr_SeleccionSalida].[SucursalSalida] AS [SucursalSalida], 
-    [Vr_SeleccionSalida].[Observ] AS [Observ], 
-    [Vr_SeleccionSalida].[Fecha] AS [Fecha], 
-    [Vr_SeleccionSalida].[IdProducto_Mat] AS [IdProducto_Mat], 
-    [Vr_SeleccionSalida].[Descrip] AS [Descrip], 
-    [Vr_SeleccionSalida].[Total] AS [Total]
-    FROM [dbo].[Vr_SeleccionSalida] AS [Vr_SeleccionSalida]</DefiningQuery>
+    [Vr_TransformacionSalida].[Id] AS [Id], 
+    [Vr_TransformacionSalida].[SucursalIngreso] AS [SucursalIngreso], 
+    [Vr_TransformacionSalida].[SucursalSalida] AS [SucursalSalida], 
+    [Vr_TransformacionSalida].[Observ] AS [Observ], 
+    [Vr_TransformacionSalida].[Fecha] AS [Fecha], 
+    [Vr_TransformacionSalida].[IdProducto_Mat] AS [IdProducto_Mat], 
+    [Vr_TransformacionSalida].[Descrip] AS [Descrip], 
+    [Vr_TransformacionSalida].[Total] AS [Total]
+    FROM [dbo].[Vr_TransformacionSalida] AS [Vr_TransformacionSalida]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CompraIng__IdCom__45BE5BA9" Association="Self.FK__CompraIng__IdCom__45BE5BA9">
             <End Role="CompraIng" EntitySet="CompraIng" />
@@ -866,8 +866,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Seleccion_01" EntitySet="Seleccion_01" />
           </AssociationSet>
-          <EntitySet Name="Vr_SeleccionIngreso" EntityType="DiAviModel.Vr_SeleccionIngreso" />
-          <EntitySet Name="Vr_SeleccionSalida" EntityType="DiAviModel.Vr_SeleccionSalida" />
+          <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
+          <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
           </EntityContainer>
         <EntityType Name="Libreria">
           <Key>
@@ -1474,7 +1474,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Vr_SeleccionIngreso">
+        <EntityType Name="Vr_TransformacionIngreso">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="SucursalIngreso" />
@@ -1493,7 +1493,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
           <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TotalProd" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="Vr_SeleccionSalida">
+        <EntityType Name="Vr_TransformacionSalida">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="SucursalIngreso" />
@@ -1884,9 +1884,9 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vr_SeleccionIngreso">
-            <EntityTypeMapping TypeName="DiAviModel.Vr_SeleccionIngreso">
-              <MappingFragment StoreEntitySet="Vr_SeleccionIngreso">
+          <EntitySetMapping Name="Vr_TransformacionIngreso">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionIngreso">
+              <MappingFragment StoreEntitySet="Vr_TransformacionIngreso">
                 <ScalarProperty Name="TotalProd" ColumnName="TotalProd" />
                 <ScalarProperty Name="Descrip" ColumnName="Descrip" />
                 <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
@@ -1898,9 +1898,9 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionSalida' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vr_SeleccionSalida">
-            <EntityTypeMapping TypeName="DiAviModel.Vr_SeleccionSalida">
-              <MappingFragment StoreEntitySet="Vr_SeleccionSalida">
+          <EntitySetMapping Name="Vr_TransformacionSalida">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_TransformacionSalida">
+              <MappingFragment StoreEntitySet="Vr_TransformacionSalida">
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Descrip" ColumnName="Descrip" />
                 <ScalarProperty Name="IdProducto_Mat" ColumnName="IdProducto_Mat" />

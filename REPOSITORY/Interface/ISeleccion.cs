@@ -12,7 +12,6 @@ namespace REPOSITORY.Interface
     {
         bool Guardar(VSeleccion vSeleccion, ref int id);
         List<VSeleccionLista> Listar();
-        List<VSeleccionReport> ListarSalida();
-        List<VSeleccionReport> ListarIngreso();
+       
     }
 }

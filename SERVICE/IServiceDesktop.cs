@@ -8,6 +8,7 @@ using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
 using ENTITY.inv.Deposito;
 using ENTITY.inv.Sucursal.View;
+using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
 using ENTITY.Libreria.View;
@@ -174,11 +175,7 @@ namespace SERVICE
         [OperationContract]
         bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
 
-        [OperationContract]
-        List<VSeleccionReport> SeleccionIngreso();
-
-        [OperationContract]
-        List<VSeleccionReport> SeleccionSalida();
+       
         #endregion
         #region Seleccion_01
         [OperationContract]
@@ -194,8 +191,12 @@ namespace SERVICE
 
         [OperationContract]
         bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
+        [OperationContract]
+        List<VTransformacionReport> SeleccionIngreso(int id);
 
-   
+        [OperationContract]
+        List<VTransformacionReport> SeleccionSalida(int id);
+
         #endregion
         #region Transformacion_01
         [OperationContract]

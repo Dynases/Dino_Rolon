@@ -123,10 +123,10 @@
     <Compile Include="EntityDataModel\DiAvi\Vr_CompraIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\Vr_SeleccionIngreso.cs">
+    <Compile Include="EntityDataModel\DiAvi\Vr_TransformacionIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\Vr_SeleccionSalida.cs">
+    <Compile Include="EntityDataModel\DiAvi\Vr_TransformacionSalida.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">

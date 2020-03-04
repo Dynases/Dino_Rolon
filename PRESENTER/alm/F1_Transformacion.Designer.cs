@@ -112,6 +112,26 @@
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
             // TxtNombreUsu
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);

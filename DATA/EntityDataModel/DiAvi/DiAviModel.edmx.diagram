@@ -42,8 +42,8 @@
         <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="10.375" PointY="4.75" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionIngreso" Width="1.5" PointX="5.375" PointY="5.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionSalida" Width="1.5" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="8.375" PointY="11.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,8 @@ using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.Seleccion_01.View;
 using PRESENTER.frm;
 using UTILITY.Enum.EnEstado;
+using UTILITY;
+using PRESENTER.Report;
 
 namespace PRESENTER.com
 {
@@ -711,8 +713,11 @@ namespace PRESENTER.com
             }          
         }
 
+
         #endregion
 
- 
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
