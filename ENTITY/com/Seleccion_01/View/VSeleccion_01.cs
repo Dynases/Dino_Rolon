@@ -14,7 +14,9 @@ namespace ENTITY.com.Seleccion_01.View
         public int IdProducto { get; set; }
         public int Estado { get; set; }
         public decimal Cantidad { get; set; }
+        public decimal Porcen { get; set; }
         public decimal Precio { get; set; }
         public decimal Total { get; set; }
+
     }
 }

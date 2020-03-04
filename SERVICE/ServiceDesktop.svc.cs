@@ -585,7 +585,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public List<VTransformacionReport> SeleccionIngreso(int id)
+        public List<VTransformacionReport> TransformacionIngreso(int id)
         {
             try
             {
@@ -598,7 +598,7 @@ namespace SERVICE
             }
         }
 
-        public List<VTransformacionReport> SeleccionSalida(int id)
+        public List<VTransformacionReport> TransformacionSalida(int id)
         {
             try
             {

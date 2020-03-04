@@ -283,17 +283,17 @@
   <wsdl:message name="IServiceDesktop_TransformacionGuardar_OutputMessage">
     <wsdl:part name="parameters" element="tns:TransformacionGuardarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_SeleccionIngreso_InputMessage">
-    <wsdl:part name="parameters" element="tns:SeleccionIngreso" />
+  <wsdl:message name="IServiceDesktop_TransformacionIngreso_InputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionIngreso" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_SeleccionIngreso_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SeleccionIngresoResponse" />
+  <wsdl:message name="IServiceDesktop_TransformacionIngreso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionIngresoResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_SeleccionSalida_InputMessage">
-    <wsdl:part name="parameters" element="tns:SeleccionSalida" />
+  <wsdl:message name="IServiceDesktop_TransformacionSalida_InputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionSalida" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_SeleccionSalida_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SeleccionSalidaResponse" />
+  <wsdl:message name="IServiceDesktop_TransformacionSalida_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransformacionSalidaResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Transformacion_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_01_Lista" />
@@ -492,13 +492,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionGuardar" message="tns:IServiceDesktop_TransformacionGuardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionGuardarResponse" message="tns:IServiceDesktop_TransformacionGuardar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SeleccionIngreso">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionIngreso" message="tns:IServiceDesktop_SeleccionIngreso_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionIngresoResponse" message="tns:IServiceDesktop_SeleccionIngreso_OutputMessage" />
+    <wsdl:operation name="TransformacionIngreso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionIngreso" message="tns:IServiceDesktop_TransformacionIngreso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionIngresoResponse" message="tns:IServiceDesktop_TransformacionIngreso_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SeleccionSalida">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionSalida" message="tns:IServiceDesktop_SeleccionSalida_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionSalidaResponse" message="tns:IServiceDesktop_SeleccionSalida_OutputMessage" />
+    <wsdl:operation name="TransformacionSalida">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionSalida" message="tns:IServiceDesktop_TransformacionSalida_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse" message="tns:IServiceDesktop_TransformacionSalida_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Transformacion_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista" message="tns:IServiceDesktop_Transformacion_01_Lista_InputMessage" />
@@ -906,8 +906,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SeleccionIngreso">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SeleccionIngreso" style="document" />
+    <wsdl:operation name="TransformacionIngreso">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TransformacionIngreso" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -915,8 +915,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SeleccionSalida">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SeleccionSalida" style="document" />
+    <wsdl:operation name="TransformacionSalida">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TransformacionSalida" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

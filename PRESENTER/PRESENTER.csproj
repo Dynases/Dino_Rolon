@@ -278,6 +278,12 @@
       <DependentUpon>RTransformacionIngreso.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\RTransformacionSalida.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RTransformacionSalida.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="adm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +337,10 @@
     <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionIngreso.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RTransformacionSalida.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RTransformacionSalida.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ClienteGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

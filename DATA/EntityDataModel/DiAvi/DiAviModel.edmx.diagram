@@ -38,12 +38,12 @@
         <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
         <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="4.125" PointY="0.5" />
         <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
-        <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="8.25" PointY="16" />
         <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="2" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="8.25" PointY="16" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="5.375" PointY="5.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="8.375" PointY="11.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

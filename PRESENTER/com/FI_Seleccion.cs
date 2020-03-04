@@ -30,6 +30,7 @@ namespace PRESENTER.com
         bool _Limpiar = false;
         int _idOriginal = 0;  
         int _MPos = 0;
+        List<VSeleccion_01_Lista> seleccion_01 = new List<VSeleccion_01_Lista>(); 
         #endregion
         public FI_Seleccion()
         {
@@ -165,6 +166,8 @@ namespace PRESENTER.com
                     Dgv_Detalle.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                     Dgv_Detalle.RootTable.Columns["Cantidad"].Visible = true;
 
+                    Dgv_Detalle.RootTable.Columns["Porcen"].Visible = false;
+
                     Dgv_Detalle.RootTable.Columns["Precio"].Caption = "PRECIO";
                     Dgv_Detalle.RootTable.Columns["Precio"].FormatString = "0.00";
                     Dgv_Detalle.RootTable.Columns["Precio"].Width = 70;
@@ -195,8 +198,8 @@ namespace PRESENTER.com
         {
             try
             {
-                List<VSeleccion_01_Lista> lresult = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_Lista().Where(a => a.IdSeleccion == id).ToList();
-                ArmarDetalle(lresult);
+                seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_Lista().Where(a => a.IdSeleccion == id).ToList();
+                ArmarDetalle(seleccion_01);
             }
             catch (Exception ex)
             {
@@ -233,6 +236,15 @@ namespace PRESENTER.com
                 Dgv_Seleccion.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_Seleccion.RootTable.Columns["Cantidad"].Visible = true;
 
+                Dgv_Seleccion.RootTable.Columns["Porcen"].Key = "Porcen";
+                Dgv_Seleccion.RootTable.Columns["Porcen"].Caption = "%";
+                Dgv_Seleccion.RootTable.Columns["Porcen"].FormatString = "0";
+                Dgv_Seleccion.RootTable.Columns["Porcen"].Width = 50;
+                Dgv_Seleccion.RootTable.Columns["Porcen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.FontSize = 9;
+                Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Seleccion.RootTable.Columns["Porcen"].Visible = true;
+
                 Dgv_Seleccion.RootTable.Columns["Precio"].Caption = "PRECIO";
                 Dgv_Seleccion.RootTable.Columns["Precio"].FormatString = "0.00";
                 Dgv_Seleccion.RootTable.Columns["Precio"].Width = 75;
@@ -258,10 +270,10 @@ namespace PRESENTER.com
         private void MP_CargarDetalle_Nuevo(int IdCompraIngreso_01)
         {
             try
-            {               
+            {
                 //Consulta segun un Categoria 
-                var lresult = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01,1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
-                ArmarDetalle(lresult);
+                seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01,1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+                ArmarDetalle(seleccion_01);
             }
             catch (Exception ex)
             {
@@ -435,6 +447,7 @@ namespace PRESENTER.com
                 Tb_TPrecio.Value = Convert.ToDouble(Precio);
                 //Tb_Selecc_TPrecio.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Precio"], AggregateFunction.Sum)) / Dgv_Seleccion.RowCount;
                 Tb_Total.Value = Tb_TCantidad.Value * Tb_TPrecio.Value;
+                
             }
             catch (Exception ex)
             {
@@ -478,8 +491,7 @@ namespace PRESENTER.com
 
         private void Dgv_Seleccion_EditingCell(object sender, EditingCellEventArgs e)
         {
-            if (Tb_IdCompraIngreso.ReadOnly == false)
-            {
+           
                 if (e.Column.Index == Dgv_Seleccion.RootTable.Columns["Cantidad"].Index)
                 {
                     e.Cancel = false;
@@ -487,12 +499,7 @@ namespace PRESENTER.com
                 else
                 {
                     e.Cancel = true;
-                }
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+                }            
         }
         private void Dgv_Seleccion_CellEdited(object sender, ColumnActionEventArgs e)
         {
@@ -505,6 +512,16 @@ namespace PRESENTER.com
                 total = cantidad * precio;
                 Dgv_Seleccion.CurrentRow.Cells["Total"].Value = total;
                 MP_ObtenerCalculo();
+                if (cantidad > 0)
+                {
+                    Dgv_Seleccion.UpdateData();
+                    foreach (var fila in seleccion_01)
+                    {
+                        fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                    }
+                    ArmarDetalle(seleccion_01);
+                }
+                
             }
             catch (Exception ex)
             {

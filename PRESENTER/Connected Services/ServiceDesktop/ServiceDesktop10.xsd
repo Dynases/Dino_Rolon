@@ -8,14 +8,16 @@
   <xs:element name="ArrayOfVTransformacionReport" nillable="true" type="tns:ArrayOfVTransformacionReport" />
   <xs:complexType name="VTransformacionReport">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto_Mat" type="xs:int" />
       <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SucursalIngreso" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SucursalSalida" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalProd" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VTransformacionReport" nillable="true" type="tns:VTransformacionReport" />
