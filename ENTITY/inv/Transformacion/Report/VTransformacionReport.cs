@@ -14,7 +14,11 @@ namespace ENTITY.inv.Transformacion.Report
         public string Observ { get; set; }
         public System.DateTime Fecha { get; set; }
         public int IdProducto { get; set; }
+        public int IdProducto_Mat { get; set; }
         public string Descrip { get; set; }
         public decimal TotalProd { get; set; }
+        public decimal Total { get; set; }
+
+
     }
 }

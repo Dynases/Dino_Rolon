@@ -368,17 +368,17 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionGuardarResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TransformacionGuardarResponse> TransformacionGuardarAsync(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SeleccionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/SeleccionIngresoResponse")]
-        ENTITY.inv.Transformacion.Report.VTransformacionReport[] SeleccionIngreso(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionIngresoResponse")]
+        ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionIngreso(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SeleccionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/SeleccionIngresoResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> SeleccionIngresoAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionIngresoResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionIngresoAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SeleccionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/SeleccionSalidaResponse")]
-        ENTITY.inv.Transformacion.Report.VTransformacionReport[] SeleccionSalida(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
+        ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SeleccionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/SeleccionSalidaResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> SeleccionSalidaAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_ListaResponse")]
         ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion);
@@ -1143,20 +1143,20 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TransformacionGuardarAsync(request);
         }
         
-        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] SeleccionIngreso(int id) {
-            return base.Channel.SeleccionIngreso(id);
+        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionIngreso(int id) {
+            return base.Channel.TransformacionIngreso(id);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> SeleccionIngresoAsync(int id) {
-            return base.Channel.SeleccionIngresoAsync(id);
+        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionIngresoAsync(int id) {
+            return base.Channel.TransformacionIngresoAsync(id);
         }
         
-        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] SeleccionSalida(int id) {
-            return base.Channel.SeleccionSalida(id);
+        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id) {
+            return base.Channel.TransformacionSalida(id);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> SeleccionSalidaAsync(int id) {
-            return base.Channel.SeleccionSalidaAsync(id);
+        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id) {
+            return base.Channel.TransformacionSalidaAsync(id);
         }
         
         public ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion) {

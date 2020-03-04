@@ -16,14 +16,14 @@ namespace PRESENTER.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RTransformacionIngreso : ReportClass {
+    public class RTransformacionSalida : ReportClass {
         
-        public RTransformacionIngreso() {
+        public RTransformacionSalida() {
         }
         
         public override string ResourceName {
             get {
-                return "RTransformacionIngreso.rpt";
+                return "RTransformacionSalida.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PRESENTER.Report {
         
         public override string FullResourceName {
             get {
-                return "PRESENTER.Report.RTransformacionIngreso.rpt";
+                return "PRESENTER.Report.RTransformacionSalida.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PRESENTER.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRTransformacionIngreso : Component, ICachedReport {
+    public class CachedRTransformacionSalida : Component, ICachedReport {
         
-        public CachedRTransformacionIngreso() {
+        public CachedRTransformacionSalida() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PRESENTER.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RTransformacionIngreso rpt = new RTransformacionIngreso();
+            RTransformacionSalida rpt = new RTransformacionSalida();
             rpt.Site = this.Site;
             return rpt;
         }

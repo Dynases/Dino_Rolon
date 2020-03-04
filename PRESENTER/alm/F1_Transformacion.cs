@@ -456,6 +456,19 @@ namespace PRESENTER.com
                 throw new Exception(ex.Message);
             }           
         }
+        private void MP_ObtenerPosicion(ref int pos, int IdDetalle)
+        {
+            for (int i = 0; i < ((List<VTransformacion_01>)Dgv_Detalle.DataSource).Count; i++)
+            {
+                int _IdDetalle = ((List<VTransformacion_01>)Dgv_Detalle.DataSource)[i].Id;
+                if (_IdDetalle == IdDetalle)
+                {
+                    pos = i;
+                    return;
+                }
+            }
+        }
+
         void MP_MostrarMensajeError(string mensaje)
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
@@ -537,6 +550,155 @@ namespace PRESENTER.com
             total = cantidad * totalProd;
             Dgv_Detalle.CurrentRow.Cells["Total"].Value = total;
             MP_ObtenerCalculo();
+        }
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = 0;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            _MPos = Dgv_GBuscador.Row;
+            if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = _MPos - 1;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
+            _MPos = Dgv_GBuscador.Row;
+            if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+            {
+                _MPos = Dgv_GBuscador.Row + 1;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            _MPos = Dgv_GBuscador.Row;
+            if (Dgv_GBuscador.RowCount > 0)
+            {
+                _MPos = Dgv_GBuscador.RowCount - 1;
+                Dgv_GBuscador.Row = _MPos;
+            }
+        }
+        private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            try
+            {
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+
+            if (Tb_Id.ReadOnly == true)
+            {
+                //TRANSAFORMACION INGRESO
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().TransformacionIngreso(Convert.ToInt32(Tb_Id.Text));
+                var ObjetoReport = new RTransformacionIngreso();
+                ObjetoReport.SetDataSource(lista);
+                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                UTGlobal.visualizador.ShowDialog();
+                UTGlobal.visualizador.BringToFront();
+
+                //TRANSFORMACION SALIDA
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Convert.ToInt32(Tb_Id.Text));
+                var ObjetoReport2 = new RTransformacionSalida();
+                ObjetoReport2.SetDataSource(lista2);
+                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport2;
+                UTGlobal.visualizador.ShowDialog();
+                UTGlobal.visualizador.BringToFront();
+            }
+        }
+        private void Dgv_Detalle_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Cb_Almacen1.ReadOnly == false)
+                {
+                    if (e.KeyData == Keys.Enter)
+                    {
+                        MP_VerificarSeleccion("Producto");
+                        MP_VerificarSeleccion("IdProducto_Mat_Prima");
+                        MP_VerificarSeleccion("TotalProd");
+                        MP_VerificarSeleccion("Cantidad");
+                    }
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter && Dgv_Detalle.Row >= 0
+                        && Dgv_Detalle.Col == Dgv_Detalle.RootTable.Columns["Producto"].Index)
+                    {
+                        MP_HabilitarProducto();
+                        MP_InsertarProducto();
+                    }
+                    if (e.KeyCode == Keys.Escape)
+                    {
+                        //Eliminar FIla
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
+
+        private void Dgv_Producto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Cb_Almacen1.ReadOnly == false)
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    if (_IdProducto == 0)
+                    {
+                        _IdProducto = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                        MP_InsertarProducto();
+                    }
+                    else
+                    {
+                        var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
+                        _idProducto_Mat = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                        var ProductoNombre = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_TraerFilaProducto(_IdProducto, _idProducto_Mat);
+                        ListaDetalle = (List<VTransformacion_01>)Dgv_Detalle.DataSource;
+                        foreach (var fila in ListaDetalle)
+                        {
+                            if (fila.Id == idDetalle)
+                            {
+                                fila.IdProducto = ProductoNombre.IdProducto;
+                                fila.Producto = ProductoNombre.Producto;
+                                fila.IdProducto_Mat_Prima = ProductoNombre.IdProducto_Mat_Prima;
+                                fila.Producto_Mat_Prima = ProductoNombre.Producto_Mat_Prima;
+                                fila.Cantidad = ProductoNombre.Cantidad;
+                            }
+                        }
+                        MP_ArmarDetalle();
+                        MP_InHabilitarProducto();
+                    }
+                }
+            }
         }
         #endregion
 
@@ -650,153 +812,9 @@ namespace PRESENTER.com
             
         }
 
-        private void Dgv_Detalle_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (Cb_Almacen1.ReadOnly == false)
-                {
-                    if (e.KeyData == Keys.Enter)
-                    {
-                        MP_VerificarSeleccion("Producto");
-                        MP_VerificarSeleccion("IdProducto_Mat_Prima");
-                        MP_VerificarSeleccion("TotalProd");
-                        MP_VerificarSeleccion("Cantidad");
-                    }
-                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter && Dgv_Detalle.Row >=0 
-                        && Dgv_Detalle.Col == Dgv_Detalle.RootTable.Columns["Producto"].Index)
-                    {
-                        MP_HabilitarProducto();
-                        MP_InsertarProducto();
-                    }
-                    if (e.KeyCode == Keys.Escape)
-                    {
-                        //Eliminar FIla
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-           
-        }
+     
+       
 
-        private void Dgv_Producto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Cb_Almacen1.ReadOnly == false)
-            {
-                if (e.KeyData == Keys.Enter)
-                {
-                    if (_IdProducto == 0)
-                    {
-                        _IdProducto = Convert.ToInt32(Dgv_Producto.GetValue("id"));
-                        MP_InsertarProducto();
-                    }
-                    else
-                    {
-                        var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
-                        _idProducto_Mat = Convert.ToInt32(Dgv_Producto.GetValue("id"));
-                       var ProductoNombre = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_TraerFilaProducto(_IdProducto, _idProducto_Mat);
-                        ListaDetalle = (List<VTransformacion_01>)Dgv_Detalle.DataSource;
-                        foreach (var fila in ListaDetalle)
-                        {
-                            if (fila.Id == idDetalle)
-                            {
-                                fila.IdProducto = ProductoNombre.IdProducto;
-                                fila.Producto = ProductoNombre.Producto;
-                                fila.IdProducto_Mat_Prima = ProductoNombre.IdProducto_Mat_Prima;
-                                fila.Producto_Mat_Prima = ProductoNombre.Producto_Mat_Prima;
-                                fila.Cantidad = ProductoNombre.Cantidad;
-                            }
-                        }
-                        MP_ArmarDetalle();
-                        MP_InHabilitarProducto();
-                    }                  
-                }
-            }
-        }
-        private void MP_ObtenerPosicion(ref int pos, int IdDetalle)
-        {
-            for (int i = 0; i < ((List<VTransformacion_01>)Dgv_Detalle.DataSource).Count; i++)
-            {
-                int _IdDetalle = ((List<VTransformacion_01>)Dgv_Detalle.DataSource)[i].Id;
-                if (_IdDetalle == IdDetalle)
-                {
-                    pos = i;
-                    return;
-                }
-            }
-        }
-        private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
-        {
-            try
-            {                
-                 e.Cancel = true;               
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-
-        private void BtnImprimir_Click(object sender, EventArgs e)
-        {
-
-            if (Tb_Id.ReadOnly == true)
-            {
-                if (UTGlobal.visualizador != null)
-                {
-                    UTGlobal.visualizador.Close();
-                }
-                UTGlobal.visualizador = new Visualizador();
-                var lista = new ServiceDesktop.ServiceDesktopClient().SeleccionIngreso(Convert.ToInt32(Tb_Id.Text));
-                var ObjetoReport = new RTransformacionIngreso();
-                ObjetoReport.SetDataSource(lista);
-                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                UTGlobal.visualizador.ShowDialog();
-                UTGlobal.visualizador.BringToFront();
-            }
-        }
-
-        private void btnPrimero_Click(object sender, EventArgs e)
-        {
-            if (Dgv_GBuscador.RowCount > 0)
-            {
-                _MPos = 0;
-                Dgv_GBuscador.Row = _MPos;
-            }
-        }
-
-        private void btnAnterior_Click(object sender, EventArgs e)
-        {
-            _MPos = Dgv_GBuscador.Row;
-            if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
-            {
-                _MPos = _MPos - 1;
-                Dgv_GBuscador.Row = _MPos;
-            }
-        }
-
-        private void btnSiguiente_Click(object sender, EventArgs e)
-        {
-
-            _MPos = Dgv_GBuscador.Row;
-            if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
-            {
-                _MPos = Dgv_GBuscador.Row + 1;
-                Dgv_GBuscador.Row = _MPos;
-            }
-        }
-
-        private void btnUltimo_Click(object sender, EventArgs e)
-        {
-            _MPos = Dgv_GBuscador.Row;
-            if (Dgv_GBuscador.RowCount > 0)
-            {
-                _MPos = Dgv_GBuscador.RowCount - 1;
-                Dgv_GBuscador.Row = _MPos;
-            }
-        }
+   
     }
 }

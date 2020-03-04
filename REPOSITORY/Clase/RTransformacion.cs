@@ -121,14 +121,14 @@ namespace REPOSITORY.Clase
                                       where a.Id.Equals(Id)
                                       select new VTransformacionReport
                                       {
-                                          //Id = a.Id,
-                                          //SucursalIngreso = a.SucursalIngreso,
-                                          //SucursalSalida = a.SucursalSalida,
-                                          //IdProducto = a.IdProducto_Mat,
-                                          //Descripcion = a.Descrip,
-                                          //Observ = a.Observ,
-                                          //Total = a.Total,
-                                          //Fecha = a.Fecha
+                                          Id = a.Id,
+                                          SucursalIngreso = a.SucursalIngreso,
+                                          SucursalSalida = a.SucursalSalida,
+                                          IdProducto_Mat = a.IdProducto_Mat,
+                                          Descrip = a.Descrip,
+                                          Observ = a.Observ,
+                                          Total = a.Total,
+                                          Fecha = a.Fecha
                                       }).ToList();
                     return listResult;
                 }

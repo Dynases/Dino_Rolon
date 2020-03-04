@@ -209,10 +209,10 @@ namespace SERVICE
         [OperationContract]
         bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
         [OperationContract]
-        List<VTransformacionReport> SeleccionIngreso(int id);
+        List<VTransformacionReport> TransformacionIngreso(int id);
 
         [OperationContract]
-        List<VTransformacionReport> SeleccionSalida(int id);
+        List<VTransformacionReport> TransformacionSalida(int id);
 
         #endregion
         #region Transformacion_01

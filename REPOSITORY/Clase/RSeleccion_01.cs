@@ -34,6 +34,7 @@ namespace REPOSITORY.Clase
                         seleccion_01.Cantidad = vSeleccion_01.Cantidad;
                         seleccion_01.Precio = vSeleccion_01.Precio;
                         seleccion_01.Total = vSeleccion_01.Total;
+                        seleccion_01.Porcen = vSeleccion_01.Porcen;
                         db.Seleccion_01.Add(seleccion_01);
                     }
                     db.SaveChanges();
@@ -63,7 +64,8 @@ namespace REPOSITORY.Clase
                             seleccion_01.Estado = (int)ENEstado.GUARDADO; //Estatico                     
                             seleccion_01.Cantidad = vSeleccion_01.Cantidad;
                             seleccion_01.Precio = vSeleccion_01.Precio;
-                            seleccion_01.Total = vSeleccion_01.Total;                           
+                            seleccion_01.Total = vSeleccion_01.Total;
+                            seleccion_01.Porcen = vSeleccion_01.Porcen;
                             db.Seleccion_01.Attach(seleccion_01);
                             db.Entry(seleccion_01).State = EntityState.Modified;
                             db.SaveChanges();
@@ -125,6 +127,7 @@ namespace REPOSITORY.Clase
                                           Producto = b.Descrip,
                                           Estado = a.Estado,
                                           Cantidad = a.Cantidad,
+                                          Porcen =a.Porcen,
                                           Precio = a.Precio,
                                           Total = a.Total
                                       }).ToList();
@@ -152,6 +155,7 @@ namespace REPOSITORY.Clase
                                           IdSeleccion = a.IdSeleccion,
                                           Producto = b.Descrip,
                                           Cantidad = a.Cantidad,
+                                          Porcen = a.Porcen,
                                           Precio = a.Precio,
                                           Total = a.Total
                                       }).ToList();
@@ -188,7 +192,7 @@ namespace REPOSITORY.Clase
                                           IdProducto = a.IdProduc,
                                           Estado = tipo == 1 ? (int)ENEstado.COMPLETADO : a.Estado,
                                           Producto = c.Descrip,
-                                          Cantidad = tipo == 1 ? 0 : a.TotalCant,
+                                          Cantidad = tipo == 1 ? 0 : a.TotalCant,                                         
                                           Precio = a.PrecioCost,
                                           Total = tipo == 1 ? 0 : a.Total                                         
                                       }).ToList();
