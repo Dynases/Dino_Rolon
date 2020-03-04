@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENTITY.inv.Traspaso.View
 {
@@ -10,6 +6,20 @@ namespace ENTITY.inv.Traspaso.View
     {
         public int Id { get; set; }
 
-        public int type { get; set; }
+        public DateTime Fecha { get; set; }
+
+        public int Concepto { get; set; }
+
+        public string Observaciones { get; set; }
+
+        public int Estado { get; set; }
+
+        public int Origen { get; set; }
+
+        public int Destino { get; set; }
+
+        public DateTime Hora { get; set; }
+
+        public string Usuario { get; set; }
     }
 }

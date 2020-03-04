@@ -114,6 +114,12 @@
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TI002.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TI0021.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Transformacion.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

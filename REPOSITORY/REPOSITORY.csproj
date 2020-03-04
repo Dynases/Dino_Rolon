@@ -68,6 +68,7 @@
     <Compile Include="Clase\RSeleccion_01.cs" />
     <Compile Include="Clase\RTransformacion.cs" />
     <Compile Include="Clase\RTransformacion_01.cs" />
+    <Compile Include="Clase\RTraspaso.cs" />
     <Compile Include="Interface\ICliente.cs" />
     <Compile Include="Interface\ICompra.cs" />
     <Compile Include="Interface\ICompraIngreso.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Interface\ITransformacion.cs" />
     <Compile Include="Interface\ITransformacion_01.cs" />
     <Compile Include="Interface\ICompra_01.cs" />
+    <Compile Include="Interface\ITraspaso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
