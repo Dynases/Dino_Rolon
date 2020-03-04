@@ -43,6 +43,8 @@ namespace REPOSITORY.Clase
                     cliente.Longit = vcliente.Longittud;
                     cliente.Latitud = vcliente.Latitud;
                     cliente.Imagen = vcliente.Imagen;
+                    cliente.TotalCred = vcliente.TotalCred;
+                    cliente.Dias = vcliente.Dias;
                     cliente.Fecha = vcliente.Fecha;
                     cliente.Hora = vcliente.Hora;
                     cliente.Usuario = vcliente.Usuario;
@@ -82,6 +84,8 @@ namespace REPOSITORY.Clase
                     cliente.Longit = vcliente.Longittud;
                     cliente.Latitud = vcliente.Latitud;
                     cliente.Imagen = vcliente.Imagen;
+                    cliente.TotalCred = vcliente.TotalCred;
+                    cliente.Dias = vcliente.Dias;
                     cliente.Fecha = vcliente.Fecha;
                     cliente.Hora = vcliente.Hora;
                     cliente.Usuario = vcliente.Usuario;
@@ -267,7 +271,9 @@ namespace REPOSITORY.Clase
                                           Facturacion = a.Factur,
                                           Latitud = a.Latitud,
                                           Longittud = a.Longit,
-                                          Imagen = a.Imagen
+                                          Imagen = a.Imagen,
+                                          TotalCred = a.TotalCred,
+                                          Dias = a.Dias
                                       }).ToList();
                     return listResult;
                 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY.com.Seleccion.View;
 using DATA.EntityDataModel.DiAvi;
+using ENTITY.com.Seleccion.Report;
 
 namespace REPOSITORY.Clase
 {
@@ -56,6 +57,7 @@ namespace REPOSITORY.Clase
 
 
         #endregion
+        #region CONSULTAS
         public List<VSeleccionLista> Listar()
         {
             try
@@ -92,5 +94,60 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VSeleccionReport> ListarIngreso()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_SeleccionIngreso                                     
+                                      select new VSeleccionReport
+                                      {
+                                          Id = a.Id,
+                                          SucursalIngreso= a.SucursalIngreso,
+                                          SucursalSalida= a.SucursalSalida,
+                                          IdProducto = a.IdProducto,
+                                          Descripcion = a.Descrip,
+                                          Observ = a.Observ,
+                                          Total = a.TotalProd,
+                                          Fecha = a.Fecha
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VSeleccionReport> ListarSalida()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_SeleccionSalida
+                                      select new VSeleccionReport
+                                      {
+                                          Id = a.Id,
+                                          SucursalIngreso = a.SucursalIngreso,
+                                          SucursalSalida = a.SucursalSalida,
+                                          IdProducto = a.IdProducto_Mat,
+                                          Descripcion = a.Descrip,
+                                          Observ = a.Observ,
+                                          Total = a.Total,
+                                          Fecha = a.Fecha
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
     }
 }

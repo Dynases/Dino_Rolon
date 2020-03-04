@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVLibreria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VLibreria" nillable="true" type="tns:VLibreria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVLibreria" nillable="true" type="tns:ArrayOfVLibreria" />
+  <xs:complexType name="VLibreria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdLibreria" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VLibreria" nillable="true" type="tns:VLibreria" />
+  <xs:complexType name="VLibreriaLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdGrupo" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLibrer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrden" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VLibreriaLista" nillable="true" type="tns:VLibreriaLista" />
+</xs:schema>

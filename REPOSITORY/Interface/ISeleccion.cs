@@ -1,4 +1,5 @@
-﻿using ENTITY.com.Seleccion.View;
+﻿using ENTITY.com.Seleccion.Report;
+using ENTITY.com.Seleccion.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace REPOSITORY.Interface
     {
         bool Guardar(VSeleccion vSeleccion, ref int id);
         List<VSeleccionLista> Listar();
+        List<VSeleccionReport> ListarSalida();
+        List<VSeleccionReport> ListarIngreso();
     }
 }

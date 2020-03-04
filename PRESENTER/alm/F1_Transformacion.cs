@@ -614,7 +614,7 @@ namespace PRESENTER.com
             try
             {
                
-                if (Cb_Almacen1.SelectedIndex == 0)
+                if (Cb_Almacen1.SelectedIndex == -1)
                 {
                     Cb_Almacen1.BackColor = Color.Red;
                     _Error = true;
@@ -622,7 +622,7 @@ namespace PRESENTER.com
                 else
                     Cb_Almacen1.BackColor = Color.White;
 
-                if (Cb_Almacen2.SelectedIndex == 0)
+                if (Cb_Almacen2.SelectedIndex == -1)
                 {
                     Cb_Almacen2.BackColor = Color.Red;
                     _Error = true;

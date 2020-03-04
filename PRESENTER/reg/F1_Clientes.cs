@@ -281,6 +281,8 @@ namespace PRESENTER.reg
             Txb_CliEmail2.ReadOnly = false;
             Cb_CliCiudad.Enabled = true;
             Cb_CliFacturacion.Enabled = true;
+            Tb_Dias.IsInputReadOnly = false;
+            Tb_TotalCred.IsInputReadOnly = false;
             BtAdicionar.Enabled = true;
             UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Imagen, ENSubCarpetas.ImagenesCliente);
             UTGlobal.MG_CrearCarpetaTemporal();
@@ -302,6 +304,8 @@ namespace PRESENTER.reg
             Txb_CliEmail1.ReadOnly = true;
             Txb_CliEmail2.ReadOnly = true;
             Cb_CliCiudad.Enabled = false;
+            Tb_Dias.IsInputReadOnly = true;
+            Tb_TotalCred.IsInputReadOnly = true;
             Cb_CliFacturacion.Enabled = false;
             BtAdicionar.Enabled = false;
             _Limpiar = false;
@@ -322,6 +326,8 @@ namespace PRESENTER.reg
             Txb_CliTel2.Clear();
             Txb_CliEmail1.Clear();
             Txb_CliEmail2.Clear();
+            Tb_Dias.Value = 0;
+            Tb_TotalCred.Value = 0;
             if (_Limpiar == false)
             {
                 UTGlobal.MG_SeleccionarCombo(Cb_CliCiudad);
@@ -334,30 +340,30 @@ namespace PRESENTER.reg
             {
                 Dgv_Buscador2.Row = _Pos;
                 _idOriginal = (int)Dgv_Buscador2.GetValue("id");
-                var tabla = new ServiceDesktop.ServiceDesktopClient().ClienteListar1(_idOriginal).ToArray();
-                Txb_CliCod.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Id.ToString())).Count() > 0 ? tabla.Select(x => x.Id).First().ToString() : "";
-                Txb_CliCodSpyre.Text = tabla.Where(x => !string.IsNullOrEmpty(x.IdSpyre)).Count() > 0 ? tabla.Select(x => x.IdSpyre).First().ToString() : "";
-                Txb_CliDescripcion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Descripcion)).Count() > 0 ? tabla.Select(x => x.Descripcion).First().ToString() : "";
-                Txb_CliRazonSoc.Text = tabla.Where(x => !string.IsNullOrEmpty(x.RazonSocial)).Count() > 0 ? tabla.Select(x => x.RazonSocial).First().ToString() : "";
-                Txb_CliNit.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Nit)).Count() > 0 ? tabla.Select(x => x.Nit).First().ToString() : "";
-                Chb_CliContado.Checked = tabla.Select(x => x.Id).First() == 1 ? true : false;
-                Chb_CliCredito.Checked = tabla.Select(x => x.Id).First() != 1 ? true : false;
-                //Chb_CliContado.Text = tabla.Select(x => x.Id).First().ToString();
-                //Chb_CliCredito.Text = tabla.Select(x => x.Id).First().ToString();
-                Txb_CliDireccion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Direcccion)).Count() > 0 ? tabla.Select(x => x.Direcccion).First().ToString() : "";
-                Txb_CliContacto1.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Contacto1)).Count() > 0 ? tabla.Select(x => x.Contacto1).First().ToString() : "";
-                Txb_CliContacto2.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Contacto2)).Count() > 0 ? tabla.Select(x => x.Contacto2).First().ToString() : "";
-                Txb_CliTel1.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Telfono1)).Count() > 0 ? tabla.Select(x => x.Telfono1).First().ToString() : "";
-                Txb_CliTel2.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Telfono2)).Count() > 0 ? tabla.Select(x => x.Telfono2).First().ToString() : "";
-                Txb_CliEmail1.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Email1)).Count() > 0 ? tabla.Select(x => x.Email1).First().ToString() : "";
-                Txb_CliEmail2.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Email2)).Count() > 0 ? tabla.Select(x => x.Email2).First().ToString() : "";        
-                Cb_CliCiudad.Value = tabla.Select(x => x.Ciudad).First();               
-                Cb_CliFacturacion.Value = tabla.Select(x => x.Facturacion).First();
-                _latitud = Convert.ToDouble(tabla.Select(x => x.Latitud).First());
-                _longitud = Convert.ToDouble(tabla.Select(x => x.Longittud).First());
+                var tabla = new ServiceDesktop.ServiceDesktopClient().ClienteListar1(_idOriginal).FirstOrDefault();
+                Txb_CliCod.Text = tabla.Id.ToString();
+                Txb_CliCodSpyre.Text = tabla.IdSpyre;
+                Txb_CliDescripcion.Text = tabla.Descripcion;
+                Txb_CliRazonSoc.Text = tabla.RazonSocial;
+                Txb_CliNit.Text = tabla.Nit;
+                Chb_CliContado.Checked = tabla.Id == 1 ? true : false;
+                Chb_CliCredito.Checked = tabla.Id != 1 ? true : false;
+                Txb_CliDireccion.Text = tabla.Direcccion;
+                Txb_CliContacto1.Text = tabla.Contacto1;
+                Txb_CliContacto2.Text = tabla.Contacto2;
+                Txb_CliTel1.Text = tabla.Telfono1;
+                Txb_CliTel2.Text = tabla.Telfono2;
+                Txb_CliEmail1.Text = tabla.Email1;
+                Txb_CliEmail2.Text = tabla.Email2;
+                Cb_CliCiudad.Value = tabla.Ciudad;
+                Cb_CliFacturacion.Value = tabla.Facturacion;
+                _latitud = Convert.ToDouble(tabla.Latitud);
+                _longitud = Convert.ToDouble(tabla.Longittud);
+                Tb_TotalCred.Value = Convert.ToDouble( tabla.TotalCred);
+                Tb_Dias.Value = Convert.ToDouble(tabla.Dias);
                 MP_DibujarUbicacion(Txb_CliDescripcion.Text, Txb_CliNit.Text);
                 //Mostrar Imagenes
-                MP_MostrarImagen(tabla.Select(x => x.Imagen).First());
+                MP_MostrarImagen(tabla.Imagen);
                 LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_Buscador2.RowCount.ToString();
             }
             catch (Exception EX)
@@ -462,9 +468,9 @@ namespace PRESENTER.reg
             int id = 0;
             bool resultado =false;
             string mensaje = "";
-            
+
             VCliente Cliente = new VCliente()
-            {               
+            {
                 IdSpyre = Txb_CliCodSpyre.Text,
                 Descripcion = Txb_CliDescripcion.Text,
                 RazonSocial = Txb_CliRazonSoc.Text,
@@ -476,12 +482,14 @@ namespace PRESENTER.reg
                 Telfono1 = Txb_CliTel1.Text,
                 Telfono2 = Txb_CliTel2.Text,
                 Email1 = Txb_CliEmail1.Text,
-                Email2 =  Txb_CliEmail2.Text,
+                Email2 = Txb_CliEmail2.Text,
                 Ciudad = Convert.ToInt32(Cb_CliCiudad.Value),
                 Facturacion = Convert.ToInt32(Cb_CliFacturacion.Value),
-                Latitud = Convert.ToDecimal( _latitud),
+                Latitud = Convert.ToDecimal(_latitud),
                 Longittud = Convert.ToDecimal(_longitud),
                 Imagen = _imagen,
+                TotalCred = Convert.ToDecimal(Tb_TotalCred.Value),
+                Dias = Convert.ToDecimal(Tb_Dias.Value),
                 Fecha = DateTime.Now.Date,
                 Hora = DateTime.Now.ToString("hh:mm"),
                 Usuario = UTGlobal.Usuario,
@@ -646,5 +654,20 @@ namespace PRESENTER.reg
 
         #endregion
 
+        private void Chb_CliCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            Tb_Dias.Visible = true;
+            Tb_TotalCred.Visible = true;
+            Lbl_TotalCred.Visible = true;
+            Lbl_Dias.Visible = true;
+        }
+
+        private void Chb_CliContado_CheckedChanged(object sender, EventArgs e)
+        {
+            Tb_Dias.Visible = false;
+            Tb_TotalCred.Visible = false;
+            Lbl_TotalCred.Visible = false;
+            Lbl_Dias.Visible = false;
+        }
     }
 }

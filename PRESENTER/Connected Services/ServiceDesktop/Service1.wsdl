@@ -18,10 +18,11 @@
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.Report" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceDesktop_GetData_InputMessage">
@@ -258,6 +259,18 @@
   <wsdl:message name="IServiceDesktop_Seleccion_Guardar_OutputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_GuardarResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_SeleccionIngreso_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeleccionIngreso" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_SeleccionIngreso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeleccionIngresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_SeleccionSalida_InputMessage">
+    <wsdl:part name="parameters" element="tns:SeleccionSalida" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_SeleccionSalida_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SeleccionSalidaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Seleccion_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_01_Lista" />
   </wsdl:message>
@@ -462,6 +475,14 @@
     <wsdl:operation name="Seleccion_Guardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_Guardar" message="tns:IServiceDesktop_Seleccion_Guardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_GuardarResponse" message="tns:IServiceDesktop_Seleccion_Guardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionIngreso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionIngreso" message="tns:IServiceDesktop_SeleccionIngreso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionIngresoResponse" message="tns:IServiceDesktop_SeleccionIngreso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionSalida">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionSalida" message="tns:IServiceDesktop_SeleccionSalida_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SeleccionSalidaResponse" message="tns:IServiceDesktop_SeleccionSalida_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Seleccion_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_Lista" message="tns:IServiceDesktop_Seleccion_01_Lista_InputMessage" />
@@ -842,6 +863,24 @@
     </wsdl:operation>
     <wsdl:operation name="Seleccion_Guardar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Seleccion_Guardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionIngreso">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SeleccionIngreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionSalida">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SeleccionSalida" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

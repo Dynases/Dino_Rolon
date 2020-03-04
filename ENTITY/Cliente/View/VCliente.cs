@@ -27,6 +27,9 @@ namespace ENTITY.Cliente.View
         public decimal Latitud { get; set; }
         public decimal Longittud { get; set; }
         public string Imagen { get; set; }
+
+        public decimal TotalCred { get; set; }
+        public decimal Dias { get; set; }
         public DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }

@@ -12,18 +12,15 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Seleccion_01
+    public partial class Vr_SeleccionIngreso
     {
         public int Id { get; set; }
-        public int IdSeleccion { get; set; }
+        public string SucursalIngreso { get; set; }
+        public string SucursalSalida { get; set; }
+        public string Observ { get; set; }
+        public System.DateTime Fecha { get; set; }
         public int IdProducto { get; set; }
-        public int Estado { get; set; }
-        public decimal Cantidad { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Total { get; set; }
-        public Nullable<decimal> Porcen { get; set; }
-    
-        public virtual Seleccion Seleccion { get; set; }
-        public virtual Producto Producto { get; set; }
+        public string Descrip { get; set; }
+        public decimal TotalProd { get; set; }
     }
 }

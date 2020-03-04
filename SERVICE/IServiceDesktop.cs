@@ -3,6 +3,7 @@ using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
 using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
+using ENTITY.com.Seleccion.Report;
 using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
 using ENTITY.inv.Deposito;
@@ -172,6 +173,12 @@ namespace SERVICE
 
         [OperationContract]
         bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
+
+        [OperationContract]
+        List<VSeleccionReport> SeleccionIngreso();
+
+        [OperationContract]
+        List<VSeleccionReport> SeleccionSalida();
         #endregion
         #region Seleccion_01
         [OperationContract]

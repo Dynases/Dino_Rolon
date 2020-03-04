@@ -87,6 +87,10 @@ namespace PRESENTER.reg
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.Dgv_Buscardor = new Janus.Windows.GridEX.GridEX();
+            this.Tb_TotalCred = new DevComponents.Editors.DoubleInput();
+            this.Lbl_TotalCred = new DevComponents.DotNetBar.LabelX();
+            this.Lbl_Dias = new DevComponents.DotNetBar.LabelX();
+            this.Tb_Dias = new DevComponents.Editors.DoubleInput();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -100,6 +104,7 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
+            this.PanelMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             this.GPanel_Buscador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).BeginInit();
@@ -116,12 +121,16 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliCiudad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliFacturacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalCred)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tb_Dias)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel3);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
@@ -196,6 +205,7 @@ namespace PRESENTER.reg
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
             // 
             // btnMin
@@ -252,6 +262,11 @@ namespace PRESENTER.reg
             this.LblSubtitulo.Size = new System.Drawing.Size(1043, 36);
             this.LblSubtitulo.Text = "Registre un nuevo cliente. Visualice y/o modifique la información de un cliente p" +
     "reviamente registrado. ";
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.Size = new System.Drawing.Size(1043, 72);
             // 
             // panel3
             // 
@@ -575,6 +590,10 @@ namespace PRESENTER.reg
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.Lbl_Dias);
+            this.GPanel_DatosGenerales.Controls.Add(this.Tb_Dias);
+            this.GPanel_DatosGenerales.Controls.Add(this.Lbl_TotalCred);
+            this.GPanel_DatosGenerales.Controls.Add(this.Tb_TotalCred);
             this.GPanel_DatosGenerales.Controls.Add(this.btnFacturacion);
             this.GPanel_DatosGenerales.Controls.Add(this.btn_Ciudad);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_CliCiudad);
@@ -718,6 +737,7 @@ namespace PRESENTER.reg
             this.Chb_CliContado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Chb_CliContado.TabIndex = 6;
             this.Chb_CliContado.Text = "Contado";
+            this.Chb_CliContado.CheckedChanged += new System.EventHandler(this.Chb_CliContado_CheckedChanged);
             // 
             // Chb_CliCredito
             // 
@@ -733,6 +753,7 @@ namespace PRESENTER.reg
             this.Chb_CliCredito.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Chb_CliCredito.TabIndex = 7;
             this.Chb_CliCredito.Text = "Crédito";
+            this.Chb_CliCredito.CheckedChanged += new System.EventHandler(this.Chb_CliCredito_CheckedChanged);
             // 
             // Txb_CliNit
             // 
@@ -1192,6 +1213,76 @@ namespace PRESENTER.reg
             this.Dgv_Buscardor.Size = new System.Drawing.Size(1043, 204);
             this.Dgv_Buscardor.TabIndex = 258;
             // 
+            // Tb_TotalCred
+            // 
+            // 
+            // 
+            // 
+            this.Tb_TotalCred.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.Tb_TotalCred.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_TotalCred.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.Tb_TotalCred.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tb_TotalCred.Increment = 1D;
+            this.Tb_TotalCred.Location = new System.Drawing.Point(403, 103);
+            this.Tb_TotalCred.MinValue = 0D;
+            this.Tb_TotalCred.Name = "Tb_TotalCred";
+            this.Tb_TotalCred.Size = new System.Drawing.Size(79, 22);
+            this.Tb_TotalCred.TabIndex = 331;
+            this.Tb_TotalCred.Visible = false;
+            this.Tb_TotalCred.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
+            // 
+            // Lbl_TotalCred
+            // 
+            this.Lbl_TotalCred.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Lbl_TotalCred.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Lbl_TotalCred.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TotalCred.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.Lbl_TotalCred.Location = new System.Drawing.Point(334, 102);
+            this.Lbl_TotalCred.Name = "Lbl_TotalCred";
+            this.Lbl_TotalCred.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.Lbl_TotalCred.Size = new System.Drawing.Size(68, 23);
+            this.Lbl_TotalCred.TabIndex = 332;
+            this.Lbl_TotalCred.Text = "Total Cred.";
+            this.Lbl_TotalCred.Visible = false;
+            // 
+            // Lbl_Dias
+            // 
+            this.Lbl_Dias.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Lbl_Dias.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Lbl_Dias.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Dias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.Lbl_Dias.Location = new System.Drawing.Point(488, 104);
+            this.Lbl_Dias.Name = "Lbl_Dias";
+            this.Lbl_Dias.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.Lbl_Dias.Size = new System.Drawing.Size(49, 23);
+            this.Lbl_Dias.TabIndex = 334;
+            this.Lbl_Dias.Text = "Dias";
+            this.Lbl_Dias.Visible = false;
+            // 
+            // Tb_Dias
+            // 
+            // 
+            // 
+            // 
+            this.Tb_Dias.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.Tb_Dias.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_Dias.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.Tb_Dias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tb_Dias.Increment = 1D;
+            this.Tb_Dias.Location = new System.Drawing.Point(543, 105);
+            this.Tb_Dias.MinValue = 0D;
+            this.Tb_Dias.Name = "Tb_Dias";
+            this.Tb_Dias.Size = new System.Drawing.Size(79, 22);
+            this.Tb_Dias.TabIndex = 333;
+            this.Tb_Dias.Visible = false;
+            this.Tb_Dias.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
+            // 
             // F1_Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1215,6 +1306,7 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
+            this.PanelMenu.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.GPanel_Buscador.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).EndInit();
@@ -1233,6 +1325,8 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliCiudad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliFacturacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalCred)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tb_Dias)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1293,6 +1387,10 @@ namespace PRESENTER.reg
         internal GMap.NET.WindowsForms.GMapControl Gmc_Cliente;
         internal DevComponents.DotNetBar.SuperTabItem SuperTabItem2;
         private System.Windows.Forms.PictureBox Pc_Img;
+        internal DevComponents.DotNetBar.LabelX Lbl_Dias;
+        internal DevComponents.Editors.DoubleInput Tb_Dias;
+        internal DevComponents.DotNetBar.LabelX Lbl_TotalCred;
+        internal DevComponents.Editors.DoubleInput Tb_TotalCred;
         //private BunifuCustomLabel bunifuCustomLabel1;
         //private BunifuTextbox bunifuTextbox1;
     }

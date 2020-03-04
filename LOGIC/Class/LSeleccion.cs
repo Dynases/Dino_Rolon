@@ -1,4 +1,5 @@
-﻿using ENTITY.com.Seleccion.View;
+﻿using ENTITY.com.Seleccion.Report;
+using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
@@ -55,6 +56,28 @@ namespace LOGIC.Class
             try
             {
                 return iSeleccion.Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VSeleccionReport> ListarIngreso()
+        {
+            try
+            {
+                return iSeleccion.ListarIngreso();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VSeleccionReport> ListarSalida()
+        {
+            try
+            {
+                return iSeleccion.ListarSalida();
             }
             catch (Exception ex)
             {

@@ -23,6 +23,7 @@ using ENTITY.inv.Transformacion_01.View;
 using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
 using ENTITY.inv.Deposito;
+using ENTITY.com.Seleccion.Report;
 
 namespace SERVICE
 {
@@ -537,6 +538,31 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<VSeleccionReport> SeleccionIngreso()
+        {
+            try
+            {
+                var listResult = new LSeleccion().ListarIngreso();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VSeleccionReport> SeleccionSalida()
+        {
+            try
+            {
+                var listResult = new LSeleccion().ListarSalida();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
         #endregion
@@ -650,8 +676,6 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
-     
         #endregion
 
     }
