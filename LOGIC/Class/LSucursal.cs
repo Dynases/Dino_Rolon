@@ -1,4 +1,6 @@
-﻿using ENTITY.inv.Sucursal.View;
+﻿
+using ENTITY.inv.Almacen.View;
+using ENTITY.inv.Sucursal.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -35,6 +37,18 @@ namespace LOGIC.Class
             try
             {
                 return iSucursal.ListarSucursales();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VAlmacenLista> ListarAlmacenXSucursalId(int Id)
+        {
+            try
+            {
+                return iSucursal.ListarAlmacenXSucursalId(Id);
             }
             catch (Exception ex)
             {

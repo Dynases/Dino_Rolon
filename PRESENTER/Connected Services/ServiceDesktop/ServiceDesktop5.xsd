@@ -5,8 +5,8 @@
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" />
+  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
+  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
@@ -326,6 +326,44 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AlmacenGuardar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" minOccurs="0" name="vAlmacen" nillable="true" type="q19:VAlmacen" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlmacenGuardarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AlmacenGuardarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlmacenListarCombo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlmacenListarComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" minOccurs="0" name="AlmacenListarComboResult" nillable="true" type="q20:ArrayOfVAlmacenCombo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlmacenListar">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlmacenListarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" minOccurs="0" name="AlmacenListarResult" nillable="true" type="q21:ArrayOfVAlmacenLista" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SucursalListarCombo">
     <xs:complexType>
       <xs:sequence />
@@ -334,7 +372,7 @@
   <xs:element name="SucursalListarComboResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="SucursalListarComboResult" nillable="true" type="q19:ArrayOfVSucursalCombo" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="SucursalListarComboResult" nillable="true" type="q22:ArrayOfVSucursalCombo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -346,14 +384,28 @@
   <xs:element name="SucursalListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="SucursalListarResult" nillable="true" type="q20:ArrayOfVSucursalLista" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="SucursalListarResult" nillable="true" type="q23:ArrayOfVSucursalLista" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAlmacenXSucursalId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAlmacenXSucursalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" minOccurs="0" name="ListarAlmacenXSucursalIdResult" nillable="true" type="q24:ArrayOfVAlmacenLista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SucursalGuardar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="vSucursal" nillable="true" type="q21:VSucursal" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="vSucursal" nillable="true" type="q25:VSucursal" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -361,58 +413,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SucursalGuardarResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoListarCombo">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoListarComboResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" minOccurs="0" name="DepositoListarComboResult" nillable="true" type="q22:ArrayOfVDepositoCombo" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoListar">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoListarResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" minOccurs="0" name="DepositoListarResult" nillable="true" type="q23:ArrayOfVDepositoLista" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListarSucursalXDepositoId">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="Id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListarSucursalXDepositoIdResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" minOccurs="0" name="ListarSucursalXDepositoIdResult" nillable="true" type="q24:ArrayOfVSucursalLista" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoGuardar">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" minOccurs="0" name="vDeposito" nillable="true" type="q25:VDeposito" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DepositoGuardarResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DepositoGuardarResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -693,31 +693,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SeleccionIngreso">
+  <xs:element name="TransformacionIngreso">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SeleccionIngresoResponse">
+  <xs:element name="TransformacionIngresoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="SeleccionIngresoResult" nillable="true" type="q48:ArrayOfVTransformacionReport" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionIngresoResult" nillable="true" type="q48:ArrayOfVTransformacionReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SeleccionSalida">
+  <xs:element name="TransformacionSalida">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SeleccionSalidaResponse">
+  <xs:element name="TransformacionSalidaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="SeleccionSalidaResult" nillable="true" type="q49:ArrayOfVTransformacionReport" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionSalidaResult" nillable="true" type="q49:ArrayOfVTransformacionReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

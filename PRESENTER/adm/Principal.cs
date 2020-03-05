@@ -80,9 +80,9 @@ namespace PRESENTER.adm
             frm.Show();
         }
 
-        private void btInvDeposito_Click(object sender, EventArgs e)
+        private void btInvAlmacen_Click(object sender, EventArgs e)
         {
-            F1_Deposito frm = new F1_Deposito();
+            F1_Almacen frm = new F1_Almacen();
             frm.Show();
         }
     }

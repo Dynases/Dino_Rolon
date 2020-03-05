@@ -207,6 +207,24 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
         System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse")]
+        bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse")]
+        System.Threading.Tasks.Task<bool> AlmacenGuardarAsync(ENTITY.inv.Almacen.View.VAlmacen vAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarComboResponse")]
+        ENTITY.inv.Almacen.View.VAlmacenCombo[] AlmacenListarCombo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarComboResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo[]> AlmacenListarComboAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarResponse")]
+        ENTITY.inv.Almacen.View.VAlmacenLista[] AlmacenListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SucursalListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/SucursalListarComboResponse")]
         ENTITY.inv.Sucursal.View.VSucursalCombo[] SucursalListarCombo();
         
@@ -219,35 +237,17 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SucursalListar", ReplyAction="http://tempuri.org/IServiceDesktop/SucursalListarResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> SucursalListarAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalIdResponse")]
+        ENTITY.inv.Almacen.View.VAlmacenLista[] ListarAlmacenXSucursalId(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalIdResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> ListarAlmacenXSucursalIdAsync(int Id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SucursalGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/SucursalGuardarResponse")]
         bool SucursalGuardar(ENTITY.inv.Sucursal.View.VSucursal vSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SucursalGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/SucursalGuardarResponse")]
         System.Threading.Tasks.Task<bool> SucursalGuardarAsync(ENTITY.inv.Sucursal.View.VSucursal vSucursal);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarComboResponse")]
-        ENTITY.inv.Deposito.VDepositoCombo[] DepositoListarCombo();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarComboResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoCombo[]> DepositoListarComboAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarResponse")]
-        ENTITY.inv.Deposito.VDepositoLista[] DepositoListar();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoListar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoLista[]> DepositoListarAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse")]
-        ENTITY.inv.Sucursal.View.VSucursalLista[] ListarSucursalXDepositoId(int Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse")]
-        bool DepositoGuardar(ENTITY.inv.Deposito.VDeposito vDeposito);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/DepositoGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse")]
-        System.Threading.Tasks.Task<bool> DepositoGuardarAsync(ENTITY.inv.Deposito.VDeposito vDeposito);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoGuardarResponse")]
         bool TraspasoGuardar(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso);
@@ -900,6 +900,30 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ProductoExisteEnCompraAsync(id);
         }
         
+        public bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen) {
+            return base.Channel.AlmacenGuardar(vAlmacen);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AlmacenGuardarAsync(ENTITY.inv.Almacen.View.VAlmacen vAlmacen) {
+            return base.Channel.AlmacenGuardarAsync(vAlmacen);
+        }
+        
+        public ENTITY.inv.Almacen.View.VAlmacenCombo[] AlmacenListarCombo() {
+            return base.Channel.AlmacenListarCombo();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo[]> AlmacenListarComboAsync() {
+            return base.Channel.AlmacenListarComboAsync();
+        }
+        
+        public ENTITY.inv.Almacen.View.VAlmacenLista[] AlmacenListar() {
+            return base.Channel.AlmacenListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync() {
+            return base.Channel.AlmacenListarAsync();
+        }
+        
         public ENTITY.inv.Sucursal.View.VSucursalCombo[] SucursalListarCombo() {
             return base.Channel.SucursalListarCombo();
         }
@@ -916,44 +940,20 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.SucursalListarAsync();
         }
         
+        public ENTITY.inv.Almacen.View.VAlmacenLista[] ListarAlmacenXSucursalId(int Id) {
+            return base.Channel.ListarAlmacenXSucursalId(Id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> ListarAlmacenXSucursalIdAsync(int Id) {
+            return base.Channel.ListarAlmacenXSucursalIdAsync(Id);
+        }
+        
         public bool SucursalGuardar(ENTITY.inv.Sucursal.View.VSucursal vSucursal) {
             return base.Channel.SucursalGuardar(vSucursal);
         }
         
         public System.Threading.Tasks.Task<bool> SucursalGuardarAsync(ENTITY.inv.Sucursal.View.VSucursal vSucursal) {
             return base.Channel.SucursalGuardarAsync(vSucursal);
-        }
-        
-        public ENTITY.inv.Deposito.VDepositoCombo[] DepositoListarCombo() {
-            return base.Channel.DepositoListarCombo();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoCombo[]> DepositoListarComboAsync() {
-            return base.Channel.DepositoListarComboAsync();
-        }
-        
-        public ENTITY.inv.Deposito.VDepositoLista[] DepositoListar() {
-            return base.Channel.DepositoListar();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.inv.Deposito.VDepositoLista[]> DepositoListarAsync() {
-            return base.Channel.DepositoListarAsync();
-        }
-        
-        public ENTITY.inv.Sucursal.View.VSucursalLista[] ListarSucursalXDepositoId(int Id) {
-            return base.Channel.ListarSucursalXDepositoId(Id);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.inv.Sucursal.View.VSucursalLista[]> ListarSucursalXDepositoIdAsync(int Id) {
-            return base.Channel.ListarSucursalXDepositoIdAsync(Id);
-        }
-        
-        public bool DepositoGuardar(ENTITY.inv.Deposito.VDeposito vDeposito) {
-            return base.Channel.DepositoGuardar(vDeposito);
-        }
-        
-        public System.Threading.Tasks.Task<bool> DepositoGuardarAsync(ENTITY.inv.Deposito.VDeposito vDeposito) {
-            return base.Channel.DepositoGuardarAsync(vDeposito);
         }
         
         public bool TraspasoGuardar(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso) {

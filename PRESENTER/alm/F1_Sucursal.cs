@@ -5,6 +5,7 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using Janus.Windows.GridEX;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,61 +19,23 @@ namespace PRESENTER.alm
         public F1_Sucursal()
         {
             InitializeComponent();
-            this.MP_IniciarMapa();
             this.MP_InHabilitar();
-            this.MP_CargarSucursales();
-            this.MP_CargarDepositos();
+            this.MP_CargarListaSucursales();
         }
 
-        //==================================
-        #region Variables de entorno
+        #region Variables globales        
 
-        private GMapOverlay _overlay;
-        private Double _latitud = 0;
-        private Double _longitud = 0;
-        private string _imagen = "Default.jpg";
-        private bool _modificarImagen = false;
+        private static int index;
+        private static List<VSucursalLista> listaSucursal;
 
         #endregion
 
-        //==================================
         #region Metodos Privados
 
-        private void MP_IniciarMapa()
+        private void MP_MostrarMensajeError(string mensaje)
         {
-            _overlay = new GMapOverlay("points");
-            Gmc_Sucursal.Overlays.Add(_overlay);
-            MP_Map();
-        }
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
 
-        private void MP_Map()
-        {
-            Gmc_Sucursal.DragButton = MouseButtons.Left;
-            Gmc_Sucursal.CanDragMap = true;
-            Gmc_Sucursal.MapProvider = GMapProviders.GoogleMap;
-            if (_latitud != 0 && _longitud != 0)
-            {
-                Gmc_Sucursal.Position = new PointLatLng(_latitud, _longitud);
-            }
-            else
-            {
-                _overlay.Markers.Clear();
-                Gmc_Sucursal.Position = new PointLatLng(-17.3931784, -66.1738852);
-            }
-            Gmc_Sucursal.MinZoom = 0;
-            Gmc_Sucursal.MaxZoom = 24;
-            Gmc_Sucursal.Zoom = 15.5;
-            Gmc_Sucursal.AutoScroll = true;
-            GMapProvider.Language = LanguageType.Spanish;
-        }
-
-        private void MP_Reiniciar()
-        {
-            this.Tb_Descrip.Text = "";
-            this.Tb_Direcc.Text = "";
-            this.Tb_Telef.Text = "";
-
-            this.MP_InHabilitar();
         }
 
         private void MP_InHabilitar()
@@ -80,9 +43,8 @@ namespace PRESENTER.alm
             this.Tb_Descrip.ReadOnly = true;
             this.Tb_Direcc.ReadOnly = true;
             this.Tb_Telef.ReadOnly = true;
-            this.BtAdicionar.Enabled = false;
-            this.Cb_Depositos.Enabled = false;
             this.lblId.Visible = false;
+            Dgv_Almacenes.Enabled = false;
         }
 
         private void MP_Habilitar()
@@ -90,141 +52,30 @@ namespace PRESENTER.alm
             this.Tb_Descrip.ReadOnly = false;
             this.Tb_Direcc.ReadOnly = false;
             this.Tb_Telef.ReadOnly = false;
-            this.Cb_Depositos.Enabled = true;
-            this.BtAdicionar.Enabled = true;
+            Dgv_Almacenes.Enabled = true;
         }
 
-        private bool MP_AccionResult()
+        private void MP_Limpiar()
         {
-            return lblId.Text == string.Empty ? true : false;
+            this.Tb_Descrip.Text = "";
+            this.Tb_Direcc.Text = "";
+            this.Tb_Telef.Text = "";
+            this.lblId.Text = "";
+            this.LblPaginacion.Text = "";
+
+            Dgv_Almacenes.DataSource = "";
         }
 
-        private void MP_MostrarMensajeError(string mensaje)
+        private void MP_CargarListaSucursales()
         {
-            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
-        }
-
-        private string MP_CopiarImagenRutaDefinida()
-        {
+            index = 0;
             try
             {
-                OpenFileDialog file = new OpenFileDialog()
+                listaSucursal = new ServiceDesktop.ServiceDesktopClient().SucursalListar().ToList();
+                if (listaSucursal != null && listaSucursal.Count >= 0)
                 {
-                    Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" +
-                              "|Ficheros GIF|*.gif" +
-                              "|Ficheros BMP|*.bmp" +
-                              "|Ficheros PNG|*.png" +
-                              "|Ficheros TIFF|*.tif"
-                };
-                if (file.ShowDialog() == DialogResult.OK)
-                {
-                    string ruta = file.FileName;
-                    if (file.CheckFileExists)
-                    {
-                        Bitmap img = new Bitmap(new Bitmap(ruta));
-                        Bitmap imgM = new Bitmap(new Bitmap(ruta));
-                        MemoryStream Bin = new MemoryStream();
-                        imgM.Save(Bin, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                        if (MP_AccionResult())
-                        {
-                            int mayor;
-                            mayor = 5;
-                            _imagen = @"\Imagen_" + Convert.ToString(mayor + 1).Trim() + ".jpg";
-                            Pc_Img.SizeMode = PictureBoxSizeMode.StretchImage;
-                            Pc_Img.Image = Image.FromStream(Bin);
-
-                            img.Save(UTGlobal.RutaTemporal + _imagen, System.Drawing.Imaging.ImageFormat.Jpeg);
-                            img.Dispose();
-                        }
-                        else
-                        {
-                            _imagen = @"\Imagen_" + lblId.Text.Trim() + ".jpg";
-                            Pc_Img.Image = Image.FromStream(Bin);
-                            img.Save(UTGlobal.RutaTemporal + _imagen, System.Drawing.Imaging.ImageFormat.Jpeg);
-                            img.Dispose();
-                            _modificarImagen = true;
-                        }
-                    }
-                    return _imagen;
+                    this.MP_MostrarRegistro(index);
                 }
-                return "default.jpg";
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-                return "";
-            }
-        }
-
-        private void MP_CargarSucursales()
-        {
-            try
-            {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().SucursalListar();
-                if (ListaCompleta.Count() > 0)
-                {
-                    Dgv_Sucursales.DataSource = ListaCompleta;
-                    Dgv_Sucursales.RetrieveStructure();
-                    Dgv_Sucursales.AlternatingColors = true;
-
-                    Dgv_Sucursales.RootTable.Columns[0].Key = "Id";
-                    Dgv_Sucursales.RootTable.Columns[0].Caption = "Id";
-                    Dgv_Sucursales.RootTable.Columns[0].Visible = false;
-
-                    Dgv_Sucursales.RootTable.Columns[1].Key = "Descripcion";
-                    Dgv_Sucursales.RootTable.Columns[1].Caption = "Sucursal";
-                    Dgv_Sucursales.RootTable.Columns[1].Width = 250;
-                    Dgv_Sucursales.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Sucursales.RootTable.Columns[1].CellStyle.FontSize = 8;
-                    Dgv_Sucursales.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[1].Visible = true;
-
-                    Dgv_Sucursales.RootTable.Columns[2].Key = "Direccion";
-                    Dgv_Sucursales.RootTable.Columns[2].Caption = "Direccion";
-                    Dgv_Sucursales.RootTable.Columns[2].Width = 250;
-                    Dgv_Sucursales.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Sucursales.RootTable.Columns[2].CellStyle.FontSize = 8;
-                    Dgv_Sucursales.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[2].Visible = true;
-
-                    Dgv_Sucursales.RootTable.Columns[3].Key = "Telefono";
-                    Dgv_Sucursales.RootTable.Columns[3].Caption = "Telefono";
-                    Dgv_Sucursales.RootTable.Columns[3].Width = 150;
-                    Dgv_Sucursales.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Sucursales.RootTable.Columns[3].CellStyle.FontSize = 8;
-                    Dgv_Sucursales.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[3].Visible = true;
-
-                    Dgv_Sucursales.RootTable.Columns[4].Key = "Deposito";
-                    Dgv_Sucursales.RootTable.Columns[4].Caption = "Deposito";
-                    Dgv_Sucursales.RootTable.Columns[4].Width = 250;
-                    Dgv_Sucursales.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Sucursales.RootTable.Columns[4].CellStyle.FontSize = 8;
-                    Dgv_Sucursales.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Sucursales.RootTable.Columns[4].Visible = true;
-
-                    //Habilitar filtradores
-                    Dgv_Sucursales.DefaultFilterRowComparison = FilterConditionOperator.Contains;
-                    Dgv_Sucursales.FilterMode = FilterMode.Automatic;
-                    Dgv_Sucursales.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
-                    //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
-                    Dgv_Sucursales.GroupByBoxVisible = false;
-                    Dgv_Sucursales.VisualStyle = VisualStyle.Office2007;
-                }
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-
-        private void MP_CargarDepositos()
-        {
-            try
-            {
-                UTGlobal.MG_ArmarComboDeposito(Cb_Depositos,
-                                                new ServiceDesktop.ServiceDesktopClient().DepositoListarCombo().ToList());
             }
             catch (Exception ex)
             {
@@ -232,21 +83,98 @@ namespace PRESENTER.alm
             }
         }
 
+        private void MP_MostrarRegistro(int index)
+        {
+            var deposito = listaSucursal[index];
+            lblId.Text = deposito.Id.ToString();
+            Tb_Descrip.Text = deposito.Descripcion;
+            Tb_Direcc.Text = deposito.Direccion;
+            Tb_Telef.Text = deposito.Telefono;
+
+            this.MP_CargarDetalleRegistro(deposito.Id);
+
+            this.LblPaginacion.Text = (index + 1) + "/" + listaSucursal.Count;
+        }
+
+        private void MP_CargarDetalleRegistro(int id)
+        {
+            try
+            {
+                var result = new ServiceDesktop.ServiceDesktopClient().ListarAlmacenXSucursalId(id).ToList();
+
+                if (result.Count > 0)
+                {
+                    Dgv_Almacenes.DataSource = result;
+                    Dgv_Almacenes.RetrieveStructure();
+                    Dgv_Almacenes.AlternatingColors = true;
+
+                    Dgv_Almacenes.RootTable.Columns[0].Key = "Id";
+                    Dgv_Almacenes.RootTable.Columns[0].Caption = "Id";
+                    Dgv_Almacenes.RootTable.Columns[0].Visible = false;
+
+                    Dgv_Almacenes.RootTable.Columns[1].Key = "Descripcion";
+                    Dgv_Almacenes.RootTable.Columns[1].Caption = "Sucursal";
+                    Dgv_Almacenes.RootTable.Columns[1].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[1].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[1].Visible = true;
+
+                    Dgv_Almacenes.RootTable.Columns[2].Key = "Direccion";
+                    Dgv_Almacenes.RootTable.Columns[2].Caption = "Direccion";
+                    Dgv_Almacenes.RootTable.Columns[2].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[2].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[2].Visible = true;
+
+                    Dgv_Almacenes.RootTable.Columns[3].Key = "Telefono";
+                    Dgv_Almacenes.RootTable.Columns[3].Caption = "Telefono";
+                    Dgv_Almacenes.RootTable.Columns[3].Width = 150;
+                    Dgv_Almacenes.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[3].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[3].Visible = true;
+
+                    Dgv_Almacenes.RootTable.Columns[4].Key = "Deposito";
+                    Dgv_Almacenes.RootTable.Columns[4].Caption = "Deposito";
+                    Dgv_Almacenes.RootTable.Columns[4].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[4].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[4].Visible = true;
+
+                    //Habilitar filtradores
+                    Dgv_Almacenes.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                    Dgv_Almacenes.FilterMode = FilterMode.Automatic;
+                    Dgv_Almacenes.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
+                    //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                    Dgv_Almacenes.GroupByBoxVisible = false;
+                    Dgv_Almacenes.VisualStyle = VisualStyle.Office2007;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
         #endregion
 
-        //===========
         #region Metodos Heredados
 
         public override void MH_Nuevo()
         {
             base.MH_Nuevo();
+            this.MP_Limpiar();
             this.MP_Habilitar();
         }
 
         public override void MH_Salir()
         {
             base.MH_Salir();
-            this.MP_Reiniciar();
+            this.MP_InHabilitar();
+            this.MP_CargarListaSucursales();
         }
 
         public override bool MH_NuevoRegistro()
@@ -255,10 +183,10 @@ namespace PRESENTER.alm
             {
                 Descripcion = Tb_Descrip.Text,
                 Direccion = Tb_Direcc.Text,
-                IdDeposito = Convert.ToInt32(Cb_Depositos.Value),
-                Imagen = _imagen,
-                Latitud = Convert.ToDecimal(_latitud),
-                Longitud = Convert.ToDecimal(_longitud),
+                Estado = 1,
+                //Imagen = _imagen,
+                //Latitud = Convert.ToDecimal(_latitud),
+                //Longitud = Convert.ToDecimal(_longitud),
                 Telefono = Tb_Telef.Text,
                 Usuario = UTGlobal.Usuario
             };
@@ -269,6 +197,7 @@ namespace PRESENTER.alm
             {
                 if (new ServiceDesktop.ServiceDesktopClient().SucursalGuardar(sucursal))
                 {
+                    this.MP_CargarListaSucursales();
                     mensaje = GLMensaje.Modificar_Exito("SUCURSALES", Tb_Descrip.Text);
                     ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                     return true;
@@ -300,28 +229,43 @@ namespace PRESENTER.alm
             }
         }
 
-        #endregion        
+        #endregion
 
-        //==================================
         #region Eventos
 
-        private void F1_Sucursal_Load(object sender, EventArgs e)
+        private void F1_Deposito_Load(object sender, EventArgs e)
         {
             this.LblTitulo.Text = "SUCURSALES";
         }
 
-        private void BtAdicionar_Click(object sender, EventArgs e)
+        private void btnPrimero_Click(object sender, EventArgs e)
         {
-            this.MP_CopiarImagenRutaDefinida();
-            BtnGrabar.Focus();
+            index = 0;
+            this.MP_MostrarRegistro(index);
         }
 
-        private void Tb_Descrip_TextChanged(object sender, EventArgs e)
+        private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (Tb_Descrip.BackColor == Color.Red)
+            if (index > 0)
             {
-                Tb_Descrip.BackColor = Color.White;
+                index -= 1;
+                this.MP_MostrarRegistro(index);
             }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (index < listaSucursal.Count - 1)
+            {
+                index += 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            index = listaSucursal.Count - 1;
+            this.MP_MostrarRegistro(index);
         }
 
         #endregion        

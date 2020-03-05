@@ -254,8 +254,8 @@ namespace PRESENTER.com
                 Dgv_Detalle.Enabled = true;
                 if (_Limpiar == false)
                 {
-                    UTGlobal.MG_SeleccionarCombo_Sucursal(Cb_Almacen1);
-                    UTGlobal.MG_SeleccionarCombo_Sucursal(Cb_Almacen2);
+                    UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen1);
+                    UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen2);
                 }              
                 // ((DataTable)Dgv_Detalle.DataSource).Clear();
                  Dgv_Detalle.DataSource = null;

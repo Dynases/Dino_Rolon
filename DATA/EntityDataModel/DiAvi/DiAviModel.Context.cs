@@ -38,13 +38,16 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TB001> TB001 { get; set; }
+        public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021> TI0021 { get; set; }
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
-        public virtual DbSet<Deposito> Deposito { get; set; }
+        public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<Transformacion> Transformacion { get; set; }
         public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
+        public virtual DbSet<Traspaso> Traspaso { get; set; }
+        public virtual DbSet<Traspaso_01> Traspaso_01 { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Precio> Precio { get; set; }
         public virtual DbSet<PrecioCat> PrecioCat { get; set; }
@@ -191,7 +194,7 @@ namespace DATA.EntityDataModel.DiAvi
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Mam_SaldosProducto_Result>("sp_Mam_SaldosProducto", tipoParameter, yduactParameter, almacenParameter, lineaParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> sp_Mam_TA001(Nullable<int> tipo, Nullable<int> aanumi, Nullable<int> aata2dep, Nullable<int> aata2depVenta, string aadesc, string aadir, string aatelf, Nullable<decimal> aalat, Nullable<decimal> aalong, string aaimg, string aauact)
+        public virtual int sp_Mam_TA001(Nullable<int> tipo, Nullable<int> aanumi, Nullable<int> aata2dep, Nullable<int> aata2depVenta, string aadesc, string aadir, string aatelf, Nullable<decimal> aalat, Nullable<decimal> aalong, string aaimg, string aauact)
         {
             var tipoParameter = tipo.HasValue ?
                 new ObjectParameter("tipo", tipo) :
@@ -237,10 +240,10 @@ namespace DATA.EntityDataModel.DiAvi
                 new ObjectParameter("aauact", aauact) :
                 new ObjectParameter("aauact", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_Mam_TA001", tipoParameter, aanumiParameter, aata2depParameter, aata2depVentaParameter, aadescParameter, aadirParameter, aatelfParameter, aalatParameter, aalongParameter, aaimgParameter, aauactParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Mam_TA001", tipoParameter, aanumiParameter, aata2depParameter, aata2depVentaParameter, aadescParameter, aadirParameter, aatelfParameter, aalatParameter, aalongParameter, aaimgParameter, aauactParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> sp_Mam_TA002(Nullable<int> tipo, Nullable<int> abnumi, string abdesc, string abdir, string abtelf, Nullable<decimal> ablat, Nullable<decimal> ablong, string abimg, Nullable<int> abest, string abuact)
+        public virtual int sp_Mam_TA002(Nullable<int> tipo, Nullable<int> abnumi, string abdesc, string abdir, string abtelf, Nullable<decimal> ablat, Nullable<decimal> ablong, string abimg, Nullable<int> abest, string abuact)
         {
             var tipoParameter = tipo.HasValue ?
                 new ObjectParameter("tipo", tipo) :
@@ -282,7 +285,7 @@ namespace DATA.EntityDataModel.DiAvi
                 new ObjectParameter("abuact", abuact) :
                 new ObjectParameter("abuact", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_Mam_TA002", tipoParameter, abnumiParameter, abdescParameter, abdirParameter, abtelfParameter, ablatParameter, ablongParameter, abimgParameter, abestParameter, abuactParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Mam_TA002", tipoParameter, abnumiParameter, abdescParameter, abdirParameter, abtelfParameter, ablatParameter, ablongParameter, abimgParameter, abestParameter, abuactParameter);
         }
     
         public virtual int sp_Mam_TI002(Nullable<int> tipo, Nullable<int> ibid, Nullable<System.DateTime> ibfdoc, Nullable<int> ibconcep, string ibobs, Nullable<int> ibest, Nullable<int> ibalm, Nullable<int> ibdepdest, Nullable<int> ibiddc, string ibuact, Nullable<int> producto, Nullable<System.DateTime> fechaI, Nullable<System.DateTime> fechaF, Nullable<int> almacen, Nullable<decimal> cantidad, Nullable<int> ibidOrigen, string lote, Nullable<System.DateTime> fechaVenc, Nullable<int> numi, string obs, Nullable<int> cbnumi, Nullable<System.DateTime> fact, string hact, string uact, Nullable<int> cbty5prod, Nullable<decimal> cbcmin, string cblote, Nullable<System.DateTime> cbfechavenc, Nullable<int> depositoInventario)

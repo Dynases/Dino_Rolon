@@ -124,6 +124,9 @@
   <data name="USUARIO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\USUARIO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TRASPASO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_contancia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ALMACEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\ALMACEN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,6 +190,9 @@
   <data name="avicola02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\avicola02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TRASPASO2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconos-6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="hojaruta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hojaruta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,6 +211,9 @@
   <data name="LIBRERIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\LIBRERIA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CUESTION" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CUESTION.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TRANSFORMACION" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TRANSFORMACION.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,7 +223,7 @@
   <data name="PRODUCTOS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\PRODUCTOS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CUESTION" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CUESTION.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="81a6604e247e41542dbe0944bf74b75b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\81a6604e247e41542dbe0944bf74b75b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

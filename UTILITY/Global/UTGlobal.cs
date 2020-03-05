@@ -12,8 +12,8 @@ using System.IO;
 using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Windows.Forms;
+using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
-using ENTITY.inv.Deposito;
 
 namespace UTILITY.Global
 {
@@ -30,6 +30,7 @@ namespace UTILITY.Global
         #endregion
 
         #region Metodos Globales
+
         public static void MG_ArmarCombo(MultiColumnCombo combo, List<VLibreria> lLibreria)
         {
             try
@@ -54,7 +55,7 @@ namespace UTILITY.Global
             }
         }
 
-        public static void MG_ArmarComboSucursal(MultiColumnCombo combo, List<VSucursalCombo> lSucursal)
+        public static void MG_ArmarComboAlmacen(MultiColumnCombo combo, List<VAlmacenCombo> lAlmacen)
         {
             try
             {
@@ -69,7 +70,7 @@ namespace UTILITY.Global
 
                 combo.ValueMember = "idLibreria";
                 combo.DisplayMember = "Descripcion";
-                combo.DropDownList.DataSource = lSucursal;
+                combo.DropDownList.DataSource = lAlmacen;
                 combo.DropDownList.Refresh();
                 combo.Value = 2;
             }
@@ -79,11 +80,11 @@ namespace UTILITY.Global
             }
         }
 
-        public static void MG_SeleccionarCombo_Sucursal(MultiColumnCombo combo)
+        public static void MG_SeleccionarCombo_Almacen(MultiColumnCombo combo)
         {
             try
             {
-                if (((List<VSucursalCombo>)combo.DataSource).Count() > 0)
+                if (((List<VAlmacenCombo>)combo.DataSource).Count() > 0)
                 {
                     combo.SelectedIndex = 0;
                 }
@@ -92,12 +93,13 @@ namespace UTILITY.Global
                     combo.SelectedIndex = -1;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception(ex.Message);
             }
         }
-        public static void MG_ArmarComboDeposito(MultiColumnCombo combo, List<VDepositoCombo> lDeposito)
+
+        public static void MG_ArmarComboSucursal(MultiColumnCombo combo, List<VSucursalCombo> lSucursal)
         {
             try
             {
@@ -112,13 +114,13 @@ namespace UTILITY.Global
 
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "Descripcion";
-                combo.DropDownList.DataSource = lDeposito;
+                combo.DropDownList.DataSource = lSucursal;
                 combo.DropDownList.Refresh();
                 combo.Value = 2;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -140,6 +142,7 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }
+
         public static void MG_CrearCarpetaImagenes(string _CarpetaRaiz, string _NombreCarpeta)
         {
             try
@@ -172,6 +175,7 @@ namespace UTILITY.Global
             }
 
         }
+
         public static void MG_CrearCarpetaTemporal()
         {
             if (System.IO.Directory.Exists(RutaTemporal) == false)
@@ -193,6 +197,7 @@ namespace UTILITY.Global
                 }
             }
         }
+
         public static void MG_MoverImagenRuta(string _Folder, string _Nombre, PictureBox imagen)
         {
             try
@@ -221,6 +226,7 @@ namespace UTILITY.Global
             }
 
         }
+
         #endregion
     }
 }

@@ -53,10 +53,10 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>C:\librerias\Bunifu\Bunifu\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.Design, Version=12.5.0.2, Culture=neutral, PublicKeyToken=2c9ff1fddc42653c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\librerias\DotNet\DevComponents.DotNetBar.Design.dll</HintPath>
@@ -181,11 +181,11 @@
     <Compile Include="adm\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="alm\F1_Deposito.cs">
+    <Compile Include="alm\F1_Almacen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="alm\F1_Deposito.Designer.cs">
-      <DependentUpon>F1_Deposito.cs</DependentUpon>
+    <Compile Include="alm\F1_Almacen.Designer.cs">
+      <DependentUpon>F1_Almacen.cs</DependentUpon>
     </Compile>
     <Compile Include="alm\F1_Sucursal.cs">
       <SubType>Form</SubType>
@@ -286,8 +286,8 @@
     <EmbeddedResource Include="adm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="alm\F1_Deposito.resx">
-      <DependentUpon>F1_Deposito.cs</DependentUpon>
+    <EmbeddedResource Include="alm\F1_Almacen.resx">
+      <DependentUpon>F1_Almacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Sucursal.resx">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
@@ -512,6 +512,8 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
@@ -599,6 +601,10 @@
     <None Include="Resources\hojaruta.png" />
     <None Include="Resource\avicola02.jpg" />
     <None Include="Resources\CUESTION.png" />
+    <None Include="Resources\TRASPASO.bmp" />
+    <None Include="Resources\icono_contancia.png" />
+    <None Include="Resources\iconos-6.png" />
+    <None Include="Resources\81a6604e247e41542dbe0944bf74b75b.png" />
     <Content Include="Resource\BUSQUEDA.png" />
     <Content Include="Resource\CANCEL.png" />
     <None Include="Resource\CLIENTE.png" />

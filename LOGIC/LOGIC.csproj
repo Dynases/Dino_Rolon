@@ -48,12 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\LAlmacen.cs" />
     <Compile Include="Class\LCliente.cs" />
     <Compile Include="Class\LCompra.cs" />
     <Compile Include="Class\LCompraIngreso.cs" />
     <Compile Include="Class\LCompraIngreso_01.cs" />
     <Compile Include="Class\LCompra_01.cs" />
-    <Compile Include="Class\LDeposito.cs" />
+    <Compile Include="Class\LSucursal.cs" />
     <Compile Include="Class\LLibreria.cs" />
     <Compile Include="Class\LPrecio.cs" />
     <Compile Include="Class\LPrecioCategoria.cs" />
@@ -61,7 +62,6 @@
     <Compile Include="Class\LProveedor.cs" />
     <Compile Include="Class\LProveedor_01.cs" />
     <Compile Include="Class\LSeleccion.cs" />
-    <Compile Include="Class\LSucursal.cs" />
     <Compile Include="Class\LSeleccion_01.cs" />
     <Compile Include="Class\LTransformacion.cs" />
     <Compile Include="Class\LTransformacion_01.cs" />

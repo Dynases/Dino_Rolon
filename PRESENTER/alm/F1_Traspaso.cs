@@ -20,7 +20,7 @@ namespace PRESENTER.alm
         {
             InitializeComponent();
             this.MP_InHabilitar();
-            this.MP_CargarSucursales();
+            this.MP_CargarAlmacenes();
             this.MP_CargarListaTraspasos();
         }
 
@@ -78,13 +78,13 @@ namespace PRESENTER.alm
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
 
-        private void MP_CargarSucursales()
+        private void MP_CargarAlmacenes()
         {
             try
             {
-                var sucursales = new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList();
-                UTGlobal.MG_ArmarComboSucursal(Cb_Destino, sucursales);
-                UTGlobal.MG_ArmarComboSucursal(Cb_Origen, sucursales);
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Destino, almacenes);
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Origen, almacenes);
             }
             catch (Exception ex)
             {

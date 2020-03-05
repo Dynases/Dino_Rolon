@@ -10,8 +10,8 @@
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Deposito" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
@@ -152,6 +152,24 @@
   <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenListarCombo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenListarCombo" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenListarCombo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenListarComboResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenListar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenListar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AlmacenListar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlmacenListarResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_SucursalListarCombo_InputMessage">
     <wsdl:part name="parameters" element="tns:SucursalListarCombo" />
   </wsdl:message>
@@ -164,35 +182,17 @@
   <wsdl:message name="IServiceDesktop_SucursalListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:SucursalListarResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarAlmacenXSucursalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAlmacenXSucursalId" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarAlmacenXSucursalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAlmacenXSucursalIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_SucursalGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:SucursalGuardar" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_SucursalGuardar_OutputMessage">
     <wsdl:part name="parameters" element="tns:SucursalGuardarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoListarCombo_InputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoListarCombo" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoListarCombo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoListarComboResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoListar_InputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoListar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoListar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoListarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ListarSucursalXDepositoId_InputMessage">
-    <wsdl:part name="parameters" element="tns:ListarSucursalXDepositoId" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ListarSucursalXDepositoId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ListarSucursalXDepositoIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoGuardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoGuardar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_DepositoGuardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DepositoGuardarResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraspasoGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:TraspasoGuardar" />
@@ -429,6 +429,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" message="tns:IServiceDesktop_ProductoExisteEnCompra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse" message="tns:IServiceDesktop_ProductoExisteEnCompra_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AlmacenGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar" message="tns:IServiceDesktop_AlmacenGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse" message="tns:IServiceDesktop_AlmacenGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlmacenListarCombo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenListarCombo" message="tns:IServiceDesktop_AlmacenListarCombo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenListarComboResponse" message="tns:IServiceDesktop_AlmacenListarCombo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlmacenListar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenListar" message="tns:IServiceDesktop_AlmacenListar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenListarResponse" message="tns:IServiceDesktop_AlmacenListar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SucursalListarCombo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalListarCombo" message="tns:IServiceDesktop_SucursalListarCombo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalListarComboResponse" message="tns:IServiceDesktop_SucursalListarCombo_OutputMessage" />
@@ -437,25 +449,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalListar" message="tns:IServiceDesktop_SucursalListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalListarResponse" message="tns:IServiceDesktop_SucursalListar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ListarAlmacenXSucursalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalId" message="tns:IServiceDesktop_ListarAlmacenXSucursalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalIdResponse" message="tns:IServiceDesktop_ListarAlmacenXSucursalId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SucursalGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalGuardar" message="tns:IServiceDesktop_SucursalGuardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/SucursalGuardarResponse" message="tns:IServiceDesktop_SucursalGuardar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DepositoListarCombo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoListarCombo" message="tns:IServiceDesktop_DepositoListarCombo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoListarComboResponse" message="tns:IServiceDesktop_DepositoListarCombo_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DepositoListar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoListar" message="tns:IServiceDesktop_DepositoListar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoListarResponse" message="tns:IServiceDesktop_DepositoListar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ListarSucursalXDepositoId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId" message="tns:IServiceDesktop_ListarSucursalXDepositoId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoIdResponse" message="tns:IServiceDesktop_ListarSucursalXDepositoId_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DepositoGuardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoGuardar" message="tns:IServiceDesktop_DepositoGuardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/DepositoGuardarResponse" message="tns:IServiceDesktop_DepositoGuardar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraspasoGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraspasoGuardar" message="tns:IServiceDesktop_TraspasoGuardar_InputMessage" />
@@ -749,6 +749,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AlmacenGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/AlmacenGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlmacenListarCombo">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/AlmacenListarCombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlmacenListar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/AlmacenListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SucursalListarCombo">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SucursalListarCombo" style="document" />
       <wsdl:input>
@@ -767,44 +794,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ListarAlmacenXSucursalId">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarAlmacenXSucursalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SucursalGuardar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/SucursalGuardar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DepositoListarCombo">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/DepositoListarCombo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DepositoListar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/DepositoListar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ListarSucursalXDepositoId">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarSucursalXDepositoId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DepositoGuardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/DepositoGuardar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -23,6 +23,7 @@
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
       <xs:element minOccurs="0" name="IdSeleccion" type="xs:int" />
+      <xs:element minOccurs="0" name="Porcen" type="xs:decimal" />
       <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
     </xs:sequence>

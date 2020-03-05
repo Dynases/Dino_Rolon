@@ -51,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="EntityDataModel\DiAvi\Almacen.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Cliente.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -64,9 +67,6 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Compra_01.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\Deposito.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\DiAviModel.Context.cs">
@@ -138,13 +138,25 @@
     <Compile Include="EntityDataModel\DiAvi\TB001.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TI001.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\TI002.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TI0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Transformacion.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Transformacion_01.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Traspaso.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Traspaso_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Vr_CompraIngreso.cs">
