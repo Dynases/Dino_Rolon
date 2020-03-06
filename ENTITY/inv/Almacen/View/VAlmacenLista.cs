@@ -1,6 +1,6 @@
-﻿namespace ENTITY.inv.Deposito
+﻿namespace ENTITY.inv.Almacen.View
 {
-    public class VDepositoLista
+    public class VAlmacenLista
     {
         public int Id { get; set; }
 
@@ -10,5 +10,6 @@
 
         public string Telefono { get; set; }
 
+        public string Sucursal { get; set; }
     }
 }

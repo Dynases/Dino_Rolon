@@ -44,6 +44,7 @@
     <MetadataFile FileName="ServiceDesktop.disco" MetadataType="Disco" ID="4d86423b-9616-4255-8ba1-df54511dec71" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?disco" />
     <MetadataFile FileName="ServiceDesktop17.xsd" MetadataType="Schema" ID="4522a2a8-795c-4247-803d-33973804e3a8" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd14" />
     <MetadataFile FileName="ServiceDesktop18.xsd" MetadataType="Schema" ID="a4a90573-f321-4f69-8ee9-4eebc56c5da4" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" />
+    <MetadataFile FileName="ServiceDesktop1939.xsd" MetadataType="Schema" ID="d196747f-2709-4369-a203-027e8c42c1dd" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd21" />
     <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="7af8e0bb-c76b-43eb-86b3-1ffec58aafbc" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?wsdl" />
   </Metadata>
   <Extensions>

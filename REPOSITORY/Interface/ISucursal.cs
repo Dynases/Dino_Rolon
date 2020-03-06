@@ -1,16 +1,14 @@
-﻿using ENTITY.inv.Sucursal.View;
-using System;
+﻿using ENTITY.inv.Almacen.View;
+using ENTITY.inv.Sucursal.View;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace REPOSITORY.Interface
 {
-   public  interface ISucursal
+    public interface ISucursal
     {
-        bool Guardar(VSucursal vSucursal);
+        bool Guardar(VSucursal vDeposito);
         List<VSucursalCombo> Listar();
+        List<VAlmacenLista> ListarAlmacenXSucursalId(int Id);
         List<VSucursalLista> ListarSucursales();
     }
 }

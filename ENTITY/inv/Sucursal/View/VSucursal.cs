@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public int IdDeposito { get; set; }
+        public int Estado { get; set; }
 
         public string Descripcion { get; set; }
 
@@ -21,7 +21,5 @@
         public string Hora { get; set; }
 
         public string Usuario { get; set; }
-
-
     }
 }

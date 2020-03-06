@@ -10,7 +10,7 @@ using System.Text;
 using ENTITY.Libreria.View;
 using ENTITY.Proveedor.View;
 using ENTITY.Producto.View;
-using ENTITY.inv.Sucursal.View;
+using ENTITY.inv.Almacen.View;
 using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.com.CompraIngreso.View;
@@ -22,9 +22,10 @@ using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
 using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
-using ENTITY.inv.Deposito;
+using ENTITY.inv.Sucursal.View;
 using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.Transformacion.Report;
+using ENTITY.inv.Traspaso.View;
 
 namespace SERVICE
 {
@@ -298,13 +299,13 @@ namespace SERVICE
 
         #endregion
 
-        #region Sucursal        
+        #region Almacen        
 
-        public bool SucursalGuardar(VSucursal vSucursal)
+        public bool AlmacenGuardar(VAlmacen vAlmacen)
         {
             try
             {
-                var result = new LSucursal().Guardar(vSucursal);
+                var result = new LAlmacen().Guardar(vAlmacen);
                 return result;
             }
             catch (Exception ex)
@@ -312,6 +313,34 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VAlmacenCombo> AlmacenListarCombo()
+        {
+            try
+            {
+                var listResult = new LAlmacen().Listar();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VAlmacenLista> AlmacenListar()
+        {
+            try
+            {
+                return new LAlmacen().ListarAlmacenes();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+        #region Sucursal
 
         public List<VSucursalCombo> SucursalListarCombo()
         {
@@ -338,15 +367,11 @@ namespace SERVICE
             }
         }
 
-        #endregion
-        #region Deposito
-
-        public List<VDepositoCombo> DepositoListarCombo()
+        public List<VAlmacenLista> ListarAlmacenXSucursalId(int Id)
         {
             try
             {
-                var listResult = new LDeposito().Listar();
-                return listResult;
+                return new LSucursal().ListarAlmacenXSucursalId(Id);
             }
             catch (Exception ex)
             {
@@ -354,35 +379,11 @@ namespace SERVICE
             }
         }
 
-        public List<VDepositoLista> DepositoListar()
+        public bool SucursalGuardar(VSucursal vDeposito)
         {
             try
             {
-                return new LDeposito().ListarDepositos();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<VSucursalLista> ListarSucursalXDepositoId(int Id)
-        {
-            try
-            {
-                return new LDeposito().ListarSucursalXDepositoId(Id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool DepositoGuardar(VDeposito vDeposito)
-        {
-            try
-            {
-                return new LDeposito().Guardar(vDeposito);
+                return new LSucursal().Guardar(vDeposito);
             }
             catch (Exception ex)
             {
@@ -392,6 +393,54 @@ namespace SERVICE
 
         #endregion
         #region Traspasos
+
+        public bool TraspasoGuardar(VTraspaso vTraspaso)
+        {
+            try
+            {
+                return new LTraspaso().Guardar(vTraspaso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId)
+        {
+            try
+            {
+                return new LTraspaso_01().Guardar(lista, TraspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTraspaso> TraspasosListar()
+        {
+            try
+            {
+                return new LTraspaso().Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId)
+        {
+            try
+            {
+                return new LTraspaso_01().ListarDetalleTraspaso(TraspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
 
@@ -541,7 +590,7 @@ namespace SERVICE
             {
                 throw new Exception(ex.Message);
             }
-        }      
+        }
 
 
         #endregion

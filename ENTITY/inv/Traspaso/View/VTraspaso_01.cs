@@ -1,4 +1,6 @@
-﻿namespace ENTITY.inv.Traspaso.View
+﻿using System;
+
+namespace ENTITY.inv.Traspaso.View
 {
     public class VTraspaso_01
     {
@@ -12,7 +14,7 @@
 
         public string Lote { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Fecha { get; set; }
 
     }
 }

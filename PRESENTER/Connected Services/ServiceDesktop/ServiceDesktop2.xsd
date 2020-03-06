@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVPrecioCategoria">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VTraspaso">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VPrecioCategoria" nillable="true" type="tns:VPrecioCategoria" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVPrecioCategoria" nillable="true" type="tns:ArrayOfVPrecioCategoria" />
-  <xs:complexType name="VPrecioCategoria">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cod" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Concepto" type="xs:int" />
+      <xs:element minOccurs="0" name="Destino" type="xs:int" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Margen" type="xs:decimal" />
-      <xs:element minOccurs="0" name="NombreTipo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origen" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VPrecioCategoria" nillable="true" type="tns:VPrecioCategoria" />
+  <xs:element name="VTraspaso" nillable="true" type="tns:VTraspaso" />
+  <xs:complexType name="ArrayOfVTraspaso_01">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTraspaso_01" nillable="true" type="tns:VTraspaso_01" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTraspaso_01" nillable="true" type="tns:ArrayOfVTraspaso_01" />
+  <xs:complexType name="VTraspaso_01">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductoId" type="xs:int" />
+      <xs:element minOccurs="0" name="TraspasoId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VTraspaso_01" nillable="true" type="tns:VTraspaso_01" />
+  <xs:complexType name="ArrayOfVTraspaso">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTraspaso" nillable="true" type="tns:VTraspaso" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTraspaso" nillable="true" type="tns:ArrayOfVTraspaso" />
 </xs:schema>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENTITY.inv.Traspaso.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace REPOSITORY.Interface
 {
     public interface ITraspaso
     {
+        bool Guardar(VTraspaso vTraspaso);
+        List<VTraspaso> ListarTraspasos();
     }
 }

@@ -3,27 +3,23 @@ using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
 using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
-using ENTITY.com.Seleccion.Report;
 using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
-using ENTITY.inv.Deposito;
+using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
+using ENTITY.inv.Traspaso.View;
 using ENTITY.Libreria.View;
 using ENTITY.Producto.View;
 using ENTITY.Proveedor.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace SERVICE
 {
@@ -47,7 +43,7 @@ namespace SERVICE
         bool LibreriaGuardar(VLibreriaLista vlibreria);
         #endregion
         ///**********CLIENTE*************************
-        
+
         #region Cliente
 
         [OperationContract]
@@ -106,10 +102,23 @@ namespace SERVICE
         [OperationContract]
         bool ProductoExisteEnCompra(int id);
         #endregion
+        ///**********ALMACEN************************
+        ///
+        #region Almacen
+
+        [OperationContract]
+        bool AlmacenGuardar(VAlmacen vAlmacen);
+
+        [OperationContract]
+        List<VAlmacenCombo> AlmacenListarCombo();
+
+        [OperationContract]
+        List<VAlmacenLista> AlmacenListar();
+
+        #endregion
         ///**********SUCURSAL************************
         ///
         #region Sucursal
-
         [OperationContract]
         List<VSucursalCombo> SucursalListarCombo();
 
@@ -117,21 +126,27 @@ namespace SERVICE
         List<VSucursalLista> SucursalListar();
 
         [OperationContract]
-        bool SucursalGuardar(VSucursal vSucursal);
+        List<VAlmacenLista> ListarAlmacenXSucursalId(int Id);
 
+        [OperationContract]
+        bool SucursalGuardar(VSucursal vSucursal);
         #endregion
-        ///**********DEPOSITO************************
+        ///**********TRASPASO************************
         ///
-        #region Deposito
+        #region Traspaso
         [OperationContract]
-        List<VDepositoCombo> DepositoListarCombo();
+        bool TraspasoGuardar(VTraspaso vTraspaso);
+
         [OperationContract]
-        List<VDepositoLista> DepositoListar();
+        bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId);
+
         [OperationContract]
-        List<VSucursalLista> ListarSucursalXDepositoId(int Id);
+        List<VTraspaso> TraspasosListar();
+
         [OperationContract]
-        bool DepositoGuardar(VDeposito vDeposito);
-        #endregion
+        List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId);
+
+        #endregion       
         ///**********PRECIO**************************
         ///
         #region Precio Categoria
@@ -175,7 +190,7 @@ namespace SERVICE
         [OperationContract]
         bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
 
-       
+
         #endregion
         #region Seleccion_01
         [OperationContract]
@@ -202,7 +217,7 @@ namespace SERVICE
         [OperationContract]
         List<VTransformacion_01> Transformacion_01_Lista(int idTransformacion);
         [OperationContract]
-        VTransformacion_01 Transformacion_01_TraerFilaProducto( int IdProducto, int idProducto_Mat);
+        VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat);
         #endregion
         ///**********COMPRA******************
         ///
