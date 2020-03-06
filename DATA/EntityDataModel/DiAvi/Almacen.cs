@@ -35,6 +35,7 @@ namespace DATA.EntityDataModel.DiAvi
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
+        public Nullable<int> TipoAlmacen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
@@ -43,6 +44,7 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Precio> Precio { get; set; }
         public virtual Sucursal Sucursal { get; set; }
+        public virtual TipoAlmacen TipoAlmacen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Traspaso> Traspaso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

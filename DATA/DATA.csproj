@@ -147,6 +147,9 @@
     <Compile Include="EntityDataModel\DiAvi\TI0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TipoAlmacen.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Transformacion.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

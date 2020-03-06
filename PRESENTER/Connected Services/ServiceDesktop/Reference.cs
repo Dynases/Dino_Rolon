@@ -225,6 +225,24 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardarResponse")]
+        bool TipoAlmacenGuardar(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardarResponse")]
+        System.Threading.Tasks.Task<bool> TipoAlmacenGuardarAsync(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenListarComboResponse")]
+        ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[] TipoAlmacenListarCombo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenListarComboResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[]> TipoAlmacenListarComboAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenListarResponse")]
+        ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar[] TipoAlmacenListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar[]> TipoAlmacenListarAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/SucursalListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/SucursalListarComboResponse")]
         ENTITY.inv.Sucursal.View.VSucursalCombo[] SucursalListarCombo();
         
@@ -922,6 +940,30 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync() {
             return base.Channel.AlmacenListarAsync();
+        }
+        
+        public bool TipoAlmacenGuardar(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen) {
+            return base.Channel.TipoAlmacenGuardar(vTipoAlmacen);
+        }
+        
+        public System.Threading.Tasks.Task<bool> TipoAlmacenGuardarAsync(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen) {
+            return base.Channel.TipoAlmacenGuardarAsync(vTipoAlmacen);
+        }
+        
+        public ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[] TipoAlmacenListarCombo() {
+            return base.Channel.TipoAlmacenListarCombo();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[]> TipoAlmacenListarComboAsync() {
+            return base.Channel.TipoAlmacenListarComboAsync();
+        }
+        
+        public ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar[] TipoAlmacenListar() {
+            return base.Channel.TipoAlmacenListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar[]> TipoAlmacenListarAsync() {
+            return base.Channel.TipoAlmacenListarAsync();
         }
         
         public ENTITY.inv.Sucursal.View.VSucursalCombo[] SucursalListarCombo() {

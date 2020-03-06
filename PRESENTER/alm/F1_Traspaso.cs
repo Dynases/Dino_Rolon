@@ -57,8 +57,12 @@ namespace PRESENTER.alm
 
         private void MP_Habilitar()
         {
-            this.Tb_UsuarioEnvio.ReadOnly = false;
-            this.Tb_UsuarioRecibe.ReadOnly = false;
+            //this.Tb_UsuarioEnvio.ReadOnly = false;
+            //this.Tb_UsuarioRecibe.ReadOnly = false;
+
+            this.Tb_UsuarioEnvio.Text = UTGlobal.Usuario;
+            this.lblFechaEnvio.Text = DateTime.Now.ToString();
+
             this.Tb_Observaciones.ReadOnly = false;
 
             Cb_Destino.Enabled = true;
@@ -384,6 +388,7 @@ namespace PRESENTER.alm
         private void F1_Traspaso_Load(object sender, EventArgs e)
         {
             LblTitulo.Text = "TRASPASOS";
+            btnMax.Visible = false;
         }
 
         private void Dgv_ProductosInventario_EditingCell(object sender, EditingCellEventArgs e)

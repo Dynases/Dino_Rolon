@@ -63,6 +63,7 @@
     <Compile Include="Class\LProveedor_01.cs" />
     <Compile Include="Class\LSeleccion.cs" />
     <Compile Include="Class\LSeleccion_01.cs" />
+    <Compile Include="Class\LTipoAlmacen.cs" />
     <Compile Include="Class\LTransformacion.cs" />
     <Compile Include="Class\LTransformacion_01.cs" />
     <Compile Include="Class\LTraspaso.cs" />

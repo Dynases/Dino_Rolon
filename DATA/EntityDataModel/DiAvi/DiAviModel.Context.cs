@@ -44,6 +44,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
+        public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
         public virtual DbSet<Transformacion> Transformacion { get; set; }
         public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<Traspaso> Traspaso { get; set; }

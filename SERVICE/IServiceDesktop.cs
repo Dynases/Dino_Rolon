@@ -7,6 +7,7 @@ using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
 using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
+using ENTITY.inv.TipoAlmacen.view;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
@@ -114,6 +115,20 @@ namespace SERVICE
 
         [OperationContract]
         List<VAlmacenLista> AlmacenListar();
+
+        #endregion
+        ///**********TIPO DE ALMACEN************************
+        ///
+        #region Tipo de Almacen
+
+        [OperationContract]
+        bool TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen);
+
+        [OperationContract]
+        List<VTipoAlmacenCombo> TipoAlmacenListarCombo();
+
+        [OperationContract]
+        List<VTipoAlmacenListar> TipoAlmacenListar();
 
         #endregion
         ///**********SUCURSAL************************

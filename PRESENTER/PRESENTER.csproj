@@ -265,6 +265,12 @@
     <Compile Include="reg\F1_Productos.Designer.cs">
       <DependentUpon>F1_Productos.cs</DependentUpon>
     </Compile>
+    <Compile Include="reg\F1_TipoAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reg\F1_TipoAlmacen.Designer.cs">
+      <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\RCompraIngreso.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reg\F1_Productos.resx">
       <DependentUpon>F1_Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reg\F1_TipoAlmacen.resx">
+      <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RCompraIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -470,6 +479,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1939.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1940.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -518,6 +530,8 @@
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.Report.VTransformacionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />

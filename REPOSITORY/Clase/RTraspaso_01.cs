@@ -22,16 +22,17 @@ namespace REPOSITORY.Clase
                 {
                     foreach (var i in lista)
                     {
-                        var detalle = new TI0021
+                        var detalle = new Traspaso_01
                         {
-                            iccant = i.Cantidad,
-                            iccprod = i.ProductoId,
-                            icfvenc = i.Fecha,
-                            icibid = TraspasoId,
-                            iclot = i.Lote
+                            Cantidad = i.Cantidad,
+                            Estado = i.Estado,
+                            Id = i.Id,
+                            Observaciones = "",
+                            ProductId = i.ProductoId,
+                            TraspasoId = i.TraspasoId
                         };
 
-                        db.TI0021.Add(detalle);
+                        db.Traspaso_01.Add(detalle);
                     }
 
                     db.SaveChanges();
@@ -54,16 +55,16 @@ namespace REPOSITORY.Clase
             {
                 using (var db = this.GetEsquema())
                 {
-                    var listResult = db.TI0021
-                       .Where(d => d.icibid == TraspasoId)
+                    var listResult = db.Traspaso_01
+                       .Where(d => d.TraspasoId == TraspasoId)
                        .Select(d => new VTraspaso_01
                        {
-                           Cantidad = d.iccant.Value,
-                           Fecha = d.icfvenc.Value,
-                           Id = d.icid,
-                           Lote = d.iclot,
-                           ProductoId = d.iccprod.Value,
-                           TraspasoId = d.icibid.Value
+                           Cantidad = d.Cantidad.Value,
+                           Estado = d.Estado.Value,
+                           Id = d.Id,
+                           ProductoId = d.ProductId.Value,
+                           TraspasoId = d.TraspasoId.Value,
+                           Fecha = DateTime.Now
                        }).ToList();
 
                     return listResult;

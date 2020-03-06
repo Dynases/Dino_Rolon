@@ -85,5 +85,11 @@ namespace PRESENTER.adm
             F1_Almacen frm = new F1_Almacen();
             frm.Show();
         }
+
+        private void btn_TipoAlmacen_Click(object sender, EventArgs e)
+        {
+            F1_TipoAlmacen frm = new F1_TipoAlmacen();
+            frm.Show();
+        }
     }
 }

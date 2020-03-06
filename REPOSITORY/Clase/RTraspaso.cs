@@ -5,8 +5,6 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace REPOSITORY.Clase
 {
@@ -20,19 +18,17 @@ namespace REPOSITORY.Clase
             {
                 using (var db = this.GetEsquema())
                 {
-                    var listResult = db.TI002
-                        .Where(ti => ti.ibconcep == 11)
+                    var listResult = db.Traspaso
                         .Select(ti => new VTraspaso
                         {
-                            Concepto = ti.ibconcep.Value,
-                            Destino = ti.ibdepdest.Value,
-                            Estado = ti.ibest.Value,
-                            Fecha = ti.ibfact.Value,
-                            Hora = ti.ibhact,
-                            Id = ti.ibid,
-                            Observaciones = ti.ibobs,
-                            Origen = ti.ibalm.Value,
-                            Usuario = ti.ibuact
+                            Destino = ti.AlmacenDestino.Value,
+                            Estado = ti.Estado.Value,
+                            Fecha = ti.FechaEnvio.Value,
+                            Hora = ti.FechaEnvio.Value.ToString(),
+                            Id = ti.Id,
+                            Observaciones = ti.Observaciones,
+                            Origen = ti.AlmacenOrigen.Value,
+                            Usuario = ti.UsuarioEnvio
                         }).ToList();
 
                     return listResult;
@@ -54,23 +50,20 @@ namespace REPOSITORY.Clase
             {
                 using (var db = this.GetEsquema())
                 {
-                    var traspaso = new TI002
+                    var traspaso = new Traspaso
                     {
-                        ibalm = vTraspaso.Origen,
-                        ibconcep = vTraspaso.Concepto,
-                        ibdepdest = vTraspaso.Destino,
-                        ibest = vTraspaso.Estado,
-                        ibfact = vTraspaso.Fecha,
-                        ibfdoc = vTraspaso.Fecha,
-                        ibhact = vTraspaso.Hora,
-                        ibiddc = vTraspaso.Id,
-                        ibobs = vTraspaso.Observaciones,
-                        ibuact = vTraspaso.Usuario,
-                        ididdestino = 0,
-                        ibid = vTraspaso.Id
+                        Estado = vTraspaso.Estado,
+                        AlmacenDestino = vTraspaso.Destino,
+                        AlmacenOrigen = vTraspaso.Origen,
+                        FechaEnvio = vTraspaso.Fecha,
+                        FechaRecepcion = null,
+                        Id = vTraspaso.Id,
+                        Observaciones = vTraspaso.Observaciones,
+                        UsuarioEnvio = vTraspaso.Usuario,
+                        UsuarioRecepcion = null
                     };
 
-                    db.TI002.Add(traspaso);
+                    db.Traspaso.Add(traspaso);
                     db.SaveChanges();
 
                     return true;

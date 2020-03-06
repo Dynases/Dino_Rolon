@@ -26,6 +26,7 @@ using ENTITY.inv.Sucursal.View;
 using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Traspaso.View;
+using ENTITY.inv.TipoAlmacen.view;
 
 namespace SERVICE
 {
@@ -332,6 +333,48 @@ namespace SERVICE
             try
             {
                 return new LAlmacen().ListarAlmacenes();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+        #region TipoAlmacen
+
+        public bool TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen)
+        {
+            try
+            {
+                var result = new LTipoAlmacen().Guardar(vTipoAlmacen);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTipoAlmacenCombo> TipoAlmacenListarCombo()
+        {
+            try
+            {
+                var result = new LTipoAlmacen().ListarCombo();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VTipoAlmacenListar> TipoAlmacenListar()
+        {
+            try
+            {
+                var result = new LTipoAlmacen().Listar();
+                return result;
             }
             catch (Exception ex)
             {

@@ -63,6 +63,9 @@
     <Compile Include="inv\Sucursal\View\VSucursal.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalCombo.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalLista.cs" />
+    <Compile Include="inv\TipoAlmacen\view\VTipoAlmacen.cs" />
+    <Compile Include="inv\TipoAlmacen\view\VTipoAlmacenCombo.cs" />
+    <Compile Include="inv\TipoAlmacen\view\VTipoAlmacenListar.cs" />
     <Compile Include="inv\Transformacion\Report\VTransformacionReport.cs" />
     <Compile Include="inv\Transformacion\View\VTransformacion.cs" />
     <Compile Include="inv\Transformacion_01\View\VTransformacion_01.cs" />
