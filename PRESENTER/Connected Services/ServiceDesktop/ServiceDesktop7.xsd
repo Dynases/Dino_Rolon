@@ -4,6 +4,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Encargado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdSucursal" type="xs:int" />
@@ -38,9 +39,13 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Encargado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Sucursal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SucursalId" type="xs:int" />
       <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoAlmacen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoAlmacenId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VAlmacenLista" nillable="true" type="tns:VAlmacenLista" />

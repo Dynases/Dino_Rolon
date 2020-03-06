@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Sucursales_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_TipoAlmacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Almacen));
+            Janus.Windows.GridEX.GridEXLayout Cb_Sucursales_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelDerecha = new System.Windows.Forms.Panel();
             this.GPanel_Almacenes = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Almacenes = new Janus.Windows.GridEX.GridEX();
             this.PanelIzquierda = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.Tb_Encargado = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.Cb_TipoAlmacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.btn_TipoProveedor = new DevComponents.DotNetBar.ButtonX();
             this.Cb_Sucursales = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
@@ -81,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Almacenes)).BeginInit();
             this.PanelIzquierda.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_TipoAlmacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Sucursales)).BeginInit();
             this.GPanel_InfoAdicional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
@@ -119,6 +125,22 @@
             this.superTabControl1.Size = new System.Drawing.Size(950, 660);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // TxtNombreUsu
             // 
@@ -270,7 +292,7 @@
             // 
             this.GPanel_Almacenes.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_Almacenes.TabIndex = 0;
-            this.GPanel_Almacenes.Text = "SUCURSALES";
+            this.GPanel_Almacenes.Text = "ALMACENES";
             // 
             // Dgv_Almacenes
             // 
@@ -292,6 +314,10 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX4);
+            this.GPanel_DatosGenerales.Controls.Add(this.Tb_Encargado);
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_TipoAlmacen);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX3);
             this.GPanel_DatosGenerales.Controls.Add(this.btn_TipoProveedor);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Sucursales);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX16);
@@ -340,13 +366,78 @@
             this.GPanel_DatosGenerales.TabIndex = 0;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES";
             // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX4.Location = new System.Drawing.Point(6, 154);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX4.Size = new System.Drawing.Size(250, 23);
+            this.labelX4.TabIndex = 353;
+            this.labelX4.Text = "Encargado de almacen";
+            // 
+            // Tb_Encargado
+            // 
+            // 
+            // 
+            // 
+            this.Tb_Encargado.Border.Class = "TextBoxBorder";
+            this.Tb_Encargado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_Encargado.Location = new System.Drawing.Point(6, 183);
+            this.Tb_Encargado.Multiline = true;
+            this.Tb_Encargado.Name = "Tb_Encargado";
+            this.Tb_Encargado.PreventEnterBeep = true;
+            this.Tb_Encargado.Size = new System.Drawing.Size(250, 32);
+            this.Tb_Encargado.TabIndex = 352;
+            // 
+            // Cb_TipoAlmacen
+            // 
+            this.Cb_TipoAlmacen.BackColor = System.Drawing.Color.White;
+            Cb_TipoAlmacen_DesignTimeLayout.LayoutString = resources.GetString("Cb_TipoAlmacen_DesignTimeLayout.LayoutString");
+            this.Cb_TipoAlmacen.DesignTimeLayout = Cb_TipoAlmacen_DesignTimeLayout;
+            this.Cb_TipoAlmacen.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_TipoAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_TipoAlmacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_TipoAlmacen.Location = new System.Drawing.Point(276, 183);
+            this.Cb_TipoAlmacen.Name = "Cb_TipoAlmacen";
+            this.Cb_TipoAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_TipoAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_TipoAlmacen.SelectedIndex = -1;
+            this.Cb_TipoAlmacen.SelectedItem = null;
+            this.Cb_TipoAlmacen.Size = new System.Drawing.Size(215, 24);
+            this.Cb_TipoAlmacen.TabIndex = 350;
+            this.Cb_TipoAlmacen.Tag = "1";
+            this.Cb_TipoAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX3.Location = new System.Drawing.Point(276, 154);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX3.Size = new System.Drawing.Size(125, 23);
+            this.labelX3.TabIndex = 351;
+            this.labelX3.Text = "Tipo de Almacen";
+            // 
             // btn_TipoProveedor
             // 
             this.btn_TipoProveedor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_TipoProveedor.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
             this.btn_TipoProveedor.Image = global::PRESENTER.Properties.Resources.AGREGAR;
             this.btn_TipoProveedor.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btn_TipoProveedor.Location = new System.Drawing.Point(508, 111);
+            this.btn_TipoProveedor.Location = new System.Drawing.Point(497, 104);
             this.btn_TipoProveedor.Name = "btn_TipoProveedor";
             this.btn_TipoProveedor.Size = new System.Drawing.Size(28, 29);
             this.btn_TipoProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -361,13 +452,13 @@
             this.Cb_Sucursales.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Sucursales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Sucursales.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Sucursales.Location = new System.Drawing.Point(276, 116);
+            this.Cb_Sucursales.Location = new System.Drawing.Point(276, 109);
             this.Cb_Sucursales.Name = "Cb_Sucursales";
             this.Cb_Sucursales.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Sucursales.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Sucursales.SelectedIndex = -1;
             this.Cb_Sucursales.SelectedItem = null;
-            this.Cb_Sucursales.Size = new System.Drawing.Size(226, 24);
+            this.Cb_Sucursales.Size = new System.Drawing.Size(215, 24);
             this.Cb_Sucursales.TabIndex = 347;
             this.Cb_Sucursales.Tag = "1";
             this.Cb_Sucursales.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -381,7 +472,7 @@
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX16.Location = new System.Drawing.Point(276, 87);
+            this.labelX16.Location = new System.Drawing.Point(276, 65);
             this.labelX16.Name = "labelX16";
             this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX16.Size = new System.Drawing.Size(125, 23);
@@ -398,7 +489,7 @@
             this.lblId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblId.Location = new System.Drawing.Point(165, 3);
+            this.lblId.Location = new System.Drawing.Point(165, 0);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
             this.lblId.Size = new System.Drawing.Size(40, 20);
@@ -412,9 +503,9 @@
             this.GPanel_InfoAdicional.Controls.Add(this.superTabControl2);
             this.GPanel_InfoAdicional.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_InfoAdicional.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_InfoAdicional.Location = new System.Drawing.Point(543, 3);
+            this.GPanel_InfoAdicional.Location = new System.Drawing.Point(531, 3);
             this.GPanel_InfoAdicional.Name = "GPanel_InfoAdicional";
-            this.GPanel_InfoAdicional.Size = new System.Drawing.Size(395, 215);
+            this.GPanel_InfoAdicional.Size = new System.Drawing.Size(407, 215);
             // 
             // 
             // 
@@ -472,7 +563,7 @@
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.SelectedTabIndex = 2;
-            this.superTabControl2.Size = new System.Drawing.Size(389, 187);
+            this.superTabControl2.Size = new System.Drawing.Size(401, 187);
             this.superTabControl2.TabFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.TabIndex = 223;
             this.superTabControl2.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -487,7 +578,7 @@
             this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 27);
             this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(389, 160);
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(401, 160);
             this.SuperTabControlPanel1.TabIndex = 1;
             this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
             // 
@@ -651,11 +742,11 @@
             // 
             this.Tb_Telef.Border.Class = "TextBoxBorder";
             this.Tb_Telef.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Telef.Location = new System.Drawing.Point(368, 28);
+            this.Tb_Telef.Location = new System.Drawing.Point(276, 26);
             this.Tb_Telef.Multiline = true;
             this.Tb_Telef.Name = "Tb_Telef";
             this.Tb_Telef.PreventEnterBeep = true;
-            this.Tb_Telef.Size = new System.Drawing.Size(168, 56);
+            this.Tb_Telef.Size = new System.Drawing.Size(215, 34);
             this.Tb_Telef.TabIndex = 344;
             // 
             // labelX2
@@ -668,7 +759,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX2.Location = new System.Drawing.Point(368, 3);
+            this.labelX2.Location = new System.Drawing.Point(276, 0);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX2.Size = new System.Drawing.Size(58, 20);
@@ -682,11 +773,11 @@
             // 
             this.Tb_Direcc.Border.Class = "TextBoxBorder";
             this.Tb_Direcc.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Direcc.Location = new System.Drawing.Point(6, 116);
+            this.Tb_Direcc.Location = new System.Drawing.Point(6, 94);
             this.Tb_Direcc.Multiline = true;
             this.Tb_Direcc.Name = "Tb_Direcc";
             this.Tb_Direcc.PreventEnterBeep = true;
-            this.Tb_Direcc.Size = new System.Drawing.Size(264, 52);
+            this.Tb_Direcc.Size = new System.Drawing.Size(250, 39);
             this.Tb_Direcc.TabIndex = 342;
             // 
             // labelX1
@@ -699,7 +790,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(6, 90);
+            this.labelX1.Location = new System.Drawing.Point(6, 68);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX1.Size = new System.Drawing.Size(61, 20);
@@ -713,11 +804,11 @@
             // 
             this.Tb_Descrip.Border.Class = "TextBoxBorder";
             this.Tb_Descrip.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Descrip.Location = new System.Drawing.Point(6, 29);
+            this.Tb_Descrip.Location = new System.Drawing.Point(6, 26);
             this.Tb_Descrip.Multiline = true;
             this.Tb_Descrip.Name = "Tb_Descrip";
             this.Tb_Descrip.PreventEnterBeep = true;
-            this.Tb_Descrip.Size = new System.Drawing.Size(356, 55);
+            this.Tb_Descrip.Size = new System.Drawing.Size(250, 34);
             this.Tb_Descrip.TabIndex = 340;
             this.Tb_Descrip.TextChanged += new System.EventHandler(this.Tb_Descrip_TextChanged_1);
             // 
@@ -731,7 +822,7 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX10.Location = new System.Drawing.Point(6, 3);
+            this.labelX10.Location = new System.Drawing.Point(6, 0);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX10.Size = new System.Drawing.Size(75, 20);
@@ -768,6 +859,7 @@
             this.PanelIzquierda.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_TipoAlmacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Sucursales)).EndInit();
             this.GPanel_InfoAdicional.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
@@ -814,5 +906,9 @@
         internal DevComponents.DotNetBar.ButtonX btn_TipoProveedor;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Sucursales;
         internal DevComponents.DotNetBar.LabelX labelX16;
+        internal DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.Controls.TextBoxX Tb_Encargado;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_TipoAlmacen;
+        internal DevComponents.DotNetBar.LabelX labelX3;
     }
 }

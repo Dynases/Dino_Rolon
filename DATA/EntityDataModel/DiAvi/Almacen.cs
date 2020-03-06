@@ -36,6 +36,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string Hora { get; set; }
         public string Usuario { get; set; }
         public Nullable<int> TipoAlmacen { get; set; }
+        public string Encargado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }

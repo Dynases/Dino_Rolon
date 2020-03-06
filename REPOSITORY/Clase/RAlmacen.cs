@@ -28,7 +28,8 @@ namespace REPOSITORY.Clase
                         Usuario = vAlmacen.Usuario,
                         IdSuc = vAlmacen.IdSucursal,
                         Id = vAlmacen.Id,
-                        Imagen = vAlmacen.Imagen
+                        Imagen = vAlmacen.Imagen,
+                        Encargado = vAlmacen.Encargado
                     };
 
                     db.Almacen.Add(almacen);
@@ -75,8 +76,12 @@ namespace REPOSITORY.Clase
                         Id = al.Id,
                         Descripcion = al.Descrip,
                         Sucursal = al.Sucursal.Descrip,
+                        SucursalId = al.Sucursal.Id,
                         Direccion = al.Direcc,
                         Telefono = al.Telef,
+                        Encargado = al.Encargado,
+                        TipoAlmacen = al.TipoAlmacen1.TipoAlmacen1,
+                        TipoAlmacenId = al.TipoAlmacen1.Id
                     }).ToList();
 
                     return listResult;

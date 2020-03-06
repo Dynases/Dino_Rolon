@@ -1,15 +1,10 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.inv.Sucursal.View;
-using GMap.NET;
-using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 using UTILITY.Global;
 
 namespace PRESENTER.alm
@@ -85,13 +80,13 @@ namespace PRESENTER.alm
 
         private void MP_MostrarRegistro(int index)
         {
-            var deposito = listaSucursal[index];
-            lblId.Text = deposito.Id.ToString();
-            Tb_Descrip.Text = deposito.Descripcion;
-            Tb_Direcc.Text = deposito.Direccion;
-            Tb_Telef.Text = deposito.Telefono;
+            var sucursal = listaSucursal[index];
+            lblId.Text = sucursal.Id.ToString();
+            Tb_Descrip.Text = sucursal.Descripcion;
+            Tb_Direcc.Text = sucursal.Direccion;
+            Tb_Telef.Text = sucursal.Telefono;
 
-            this.MP_CargarDetalleRegistro(deposito.Id);
+            this.MP_CargarDetalleRegistro(sucursal.Id);
 
             this.LblPaginacion.Text = (index + 1) + "/" + listaSucursal.Count;
         }

@@ -19,7 +19,6 @@ namespace REPOSITORY.Clase
                     var tipoAlmacen = new TipoAlmacen
                     {
                         Descripcion = vtipoAlmacen.Descripcion,
-                        Id = vtipoAlmacen.Id,
                         TipoAlmacen1 = vtipoAlmacen.Nombre
                     };
 

@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
+using ENTITY.inv.TipoAlmacen.view;
 
 namespace UTILITY.Global
 {
@@ -117,6 +118,32 @@ namespace UTILITY.Global
                 combo.DropDownList.DataSource = lSucursal;
                 combo.DropDownList.Refresh();
                 combo.Value = 2;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static void MG_ArmarComboTipoAlmacen(MultiColumnCombo combo, List<VTipoAlmacenCombo> lTipoAlmacen)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 70;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Nombre").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Nombre";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Nombre";
+                combo.DropDownList.DataSource = lTipoAlmacen;
+                combo.DropDownList.Refresh();
+
+
             }
             catch (Exception ex)
             {

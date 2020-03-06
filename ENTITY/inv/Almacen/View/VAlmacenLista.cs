@@ -11,5 +11,13 @@
         public string Telefono { get; set; }
 
         public string Sucursal { get; set; }
+
+        public int SucursalId { get; set; }
+
+        public string TipoAlmacen { get; set; }
+
+        public int TipoAlmacenId { get; set; }
+
+        public string Encargado { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using Janus.Windows.GridEX;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace PRESENTER.alm
             this.MP_InHabilitar();
             this.MP_CargarAlmacenes();
             this.MP_CargarSucursales();
+            this.MP_CargarTiposAlmacen();
         }
 
         //==================================
@@ -32,6 +34,9 @@ namespace PRESENTER.alm
         private Double _longitud = 0;
         private string _imagen = "Default.jpg";
         private bool _modificarImagen = false;
+
+        private static int index;
+        private static List<VAlmacenLista> listaAlmacen;
 
         #endregion
 
@@ -68,11 +73,15 @@ namespace PRESENTER.alm
 
         private void MP_Reiniciar()
         {
+            this.MP_Limpiar();
+            this.MP_InHabilitar();
+        }
+
+        private void MP_Limpiar()
+        {
             this.Tb_Descrip.Text = "";
             this.Tb_Direcc.Text = "";
             this.Tb_Telef.Text = "";
-
-            this.MP_InHabilitar();
         }
 
         private void MP_InHabilitar()
@@ -82,6 +91,7 @@ namespace PRESENTER.alm
             this.Tb_Telef.ReadOnly = true;
             this.BtAdicionar.Enabled = false;
             this.Cb_Sucursales.Enabled = false;
+            this.Cb_TipoAlmacen.Enabled = false;
             this.lblId.Visible = false;
         }
 
@@ -91,6 +101,7 @@ namespace PRESENTER.alm
             this.Tb_Direcc.ReadOnly = false;
             this.Tb_Telef.ReadOnly = false;
             this.Cb_Sucursales.Enabled = true;
+            this.Cb_TipoAlmacen.Enabled = true;
             this.BtAdicionar.Enabled = true;
         }
 
@@ -161,10 +172,13 @@ namespace PRESENTER.alm
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().AlmacenListar();
-                if (ListaCompleta.Count() > 0)
+                listaAlmacen = new ServiceDesktop.ServiceDesktopClient().AlmacenListar().ToList();
+                if (listaAlmacen.Count() > 0)
                 {
-                    Dgv_Almacenes.DataSource = ListaCompleta;
+                    index = 0;
+                    this.MP_MostrarRegistro(index);
+
+                    Dgv_Almacenes.DataSource = listaAlmacen;
                     Dgv_Almacenes.RetrieveStructure();
                     Dgv_Almacenes.AlternatingColors = true;
 
@@ -212,6 +226,7 @@ namespace PRESENTER.alm
                     Dgv_Almacenes.GroupByBoxVisible = false;
                     Dgv_Almacenes.VisualStyle = VisualStyle.Office2007;
                 }
+
             }
             catch (Exception ex)
             {
@@ -232,6 +247,33 @@ namespace PRESENTER.alm
             }
         }
 
+        private void MP_CargarTiposAlmacen()
+        {
+            try
+            {
+                UTGlobal.MG_ArmarComboTipoAlmacen(Cb_TipoAlmacen,
+                                                new ServiceDesktop.ServiceDesktopClient().TipoAlmacenListarCombo().ToList());
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void MP_MostrarRegistro(int index)
+        {
+            var almacen = listaAlmacen[index];
+            lblId.Text = almacen.Id.ToString();
+            Tb_Descrip.Text = almacen.Descripcion;
+            Tb_Direcc.Text = almacen.Direccion;
+            Tb_Telef.Text = almacen.Telefono;
+            Tb_Encargado.Text = almacen.Encargado;
+            Cb_Sucursales.Text = almacen.Sucursal;
+            Cb_TipoAlmacen.Text = almacen.TipoAlmacen;
+
+            this.LblPaginacion.Text = (index + 1) + "/" + listaAlmacen.Count;
+        }
+
         #endregion
 
         //===========
@@ -241,12 +283,14 @@ namespace PRESENTER.alm
         {
             base.MH_Nuevo();
             this.MP_Habilitar();
+            this.MP_Limpiar();
         }
 
         public override void MH_Salir()
         {
             base.MH_Salir();
             this.MP_Reiniciar();
+            this.MP_MostrarRegistro(0);
         }
 
         public override bool MH_NuevoRegistro()
@@ -260,7 +304,8 @@ namespace PRESENTER.alm
                 Latitud = Convert.ToDecimal(_latitud),
                 Longitud = Convert.ToDecimal(_longitud),
                 Telefono = Tb_Telef.Text,
-                Usuario = UTGlobal.Usuario
+                Usuario = UTGlobal.Usuario,
+                Encargado = Tb_Encargado.Text
             };
 
             var mensaje = "";
@@ -300,6 +345,12 @@ namespace PRESENTER.alm
             }
         }
 
+        public override void MH_Modificar()
+        {
+            base.MH_Modificar();
+            this.MP_Habilitar();
+        }
+
         #endregion
 
         //==================================
@@ -307,7 +358,7 @@ namespace PRESENTER.alm
 
         private void F1_Almacen_Load(object sender, EventArgs e)
         {
-            this.LblTitulo.Text = "Almacenes";
+            this.LblTitulo.Text = "ALMACENES";
         }
 
         private void BtAdicionar_Click(object sender, EventArgs e)
@@ -324,6 +375,37 @@ namespace PRESENTER.alm
             }
         }
 
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            index = 0;
+            this.MP_MostrarRegistro(index);
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (index > 0)
+            {
+                index -= 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (index < listaAlmacen.Count - 1)
+            {
+                index += 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            index = listaAlmacen.Count - 1;
+            this.MP_MostrarRegistro(index);
+        }
+
         #endregion
+
     }
 }
