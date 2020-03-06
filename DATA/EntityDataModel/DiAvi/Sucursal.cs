@@ -18,8 +18,8 @@ namespace DATA.EntityDataModel.DiAvi
         public Sucursal()
         {
             this.Compra = new HashSet<Compra>();
-            this.Precio = new HashSet<Precio>();
             this.CompraIng = new HashSet<CompraIng>();
+            this.Precio = new HashSet<Precio>();
         }
     
         public int Id { get; set; }
@@ -36,10 +36,10 @@ namespace DATA.EntityDataModel.DiAvi
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CompraIng> CompraIng { get; set; }
         public virtual Deposito Deposito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Precio> Precio { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraIng> CompraIng { get; set; }
     }
 }

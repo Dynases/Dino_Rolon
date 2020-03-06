@@ -26,5 +26,6 @@ namespace DATA.EntityDataModel.DiAvi
         public Nullable<System.DateTime> ibfact { get; set; }
         public string ibhact { get; set; }
         public string ibuact { get; set; }
+        public int id { get; set; }
     }
 }

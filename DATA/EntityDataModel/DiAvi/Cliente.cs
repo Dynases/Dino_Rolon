@@ -33,10 +33,10 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal Latitud { get; set; }
         public decimal Longit { get; set; }
         public string Imagen { get; set; }
+        public decimal TotalCred { get; set; }
+        public decimal Dias { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
-        public decimal TotalCred { get; set; }
-        public decimal Dias { get; set; }
     }
 }

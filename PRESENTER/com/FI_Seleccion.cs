@@ -238,7 +238,7 @@ namespace PRESENTER.com
 
                 Dgv_Seleccion.RootTable.Columns["Porcen"].Key = "Porcen";
                 Dgv_Seleccion.RootTable.Columns["Porcen"].Caption = "%";
-                Dgv_Seleccion.RootTable.Columns["Porcen"].FormatString = "0";
+                Dgv_Seleccion.RootTable.Columns["Porcen"].FormatString = "0.00";
                 Dgv_Seleccion.RootTable.Columns["Porcen"].Width = 50;
                 Dgv_Seleccion.RootTable.Columns["Porcen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.FontSize = 9;

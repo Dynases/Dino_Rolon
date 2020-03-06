@@ -28,25 +28,25 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Libreria> Libreria { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<Compra_01> Compra_01 { get; set; }
+        public virtual DbSet<CompraIng> CompraIng { get; set; }
+        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<Proveed> Proveed { get; set; }
         public virtual DbSet<Proveed_01> Proveed_01 { get; set; }
+        public virtual DbSet<Seleccion> Seleccion { get; set; }
+        public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
+        public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<Deposito> Deposito { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<Transformacion> Transformacion { get; set; }
+        public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Precio> Precio { get; set; }
         public virtual DbSet<PrecioCat> PrecioCat { get; set; }
-        public virtual DbSet<Estaticos> Estaticos { get; set; }
-        public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
-        public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
-        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
+        public virtual DbSet<Estaticos> Estaticos { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
-        public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
-        public virtual DbSet<Seleccion> Seleccion { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
-        public virtual DbSet<TI002> TI002 { get; set; }
     }
 }
