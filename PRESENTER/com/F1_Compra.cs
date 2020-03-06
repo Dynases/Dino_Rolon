@@ -179,9 +179,24 @@ namespace PRESENTER.com
                     Dgv_Detalle.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                     Dgv_Detalle.RootTable.Columns["Total"].Visible = true;
 
+                    Dgv_Detalle.RootTable.Columns["Lote"].Caption = "Lote";
+                    //Dgv_Detalle.RootTable.Columns["Lote"].FormatString = "0.00";
+                    Dgv_Detalle.RootTable.Columns["Lote"].Width = 120;
+                    Dgv_Detalle.RootTable.Columns["Lote"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Detalle.RootTable.Columns["Lote"].CellStyle.FontSize = 9;
+                    Dgv_Detalle.RootTable.Columns["Lote"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Detalle.RootTable.Columns["Lote"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns["Lote"].Visible = false;
-                    Dgv_Detalle.RootTable.Columns["FechaVen"].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].Caption = "Fecha Ven.";
+                    //Dgv_Detalle.RootTable.Columns["Lote"].FormatString = "0.00";
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].Width = 120;
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].CellStyle.FontSize = 9;
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Detalle.RootTable.Columns["FechaVen"].Visible = true;
+
+                    //Dgv_Detalle.RootTable.Columns["Lote"].Visible = false;
+                    //Dgv_Detalle.RootTable.Columns["FechaVen"].Visible = false;
 
                     Dgv_Detalle.RootTable.Columns["Utilidad"].Caption = "UTILIDAD(%)";
                     Dgv_Detalle.RootTable.Columns["Utilidad"].FormatString = "0.00";

@@ -2353,6 +2353,51 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CompraIng">
+            <EntityTypeMapping TypeName="DiAviModel.CompraIng">
+              <MappingFragment StoreEntitySet="CompraIng">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalVendido" ColumnName="TotalVendido" />
+                <ScalarProperty Name="TotalRecibido" ColumnName="TotalRecibido" />
+                <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+                <ScalarProperty Name="Entregado" ColumnName="Entregado" />
+                <ScalarProperty Name="Obser" ColumnName="Obser" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="EdadSemana" ColumnName="EdadSemana" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="FechaRec" ColumnName="FechaRec" />
+                <ScalarProperty Name="FechaEnt" ColumnName="FechaEnt" />
+                <ScalarProperty Name="NumNota" ColumnName="NumNota" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProvee" ColumnName="IdProvee" />
+                <ScalarProperty Name="IdSucur" ColumnName="IdSucur" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompraIng_01">
+            <EntityTypeMapping TypeName="DiAviModel.CompraIng_01">
+              <MappingFragment StoreEntitySet="CompraIng_01">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PrecioCost" ColumnName="PrecioCost" />
+                <ScalarProperty Name="TotalCant" ColumnName="TotalCant" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Maple" ColumnName="Maple" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Caja" ColumnName="Caja" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProduc" ColumnName="IdProduc" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Proveed">
             <EntityTypeMapping TypeName="DiAviModel.Proveed">
               <MappingFragment StoreEntitySet="Proveed">
