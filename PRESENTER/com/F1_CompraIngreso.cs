@@ -538,6 +538,7 @@ namespace PRESENTER.com
             tb_Proveedor.ReadOnly = false;
             Tb_Observacion.ReadOnly = false;
             Tb_Edad.ReadOnly = false;
+            Sw_Tipo.IsReadOnly = false;
             Tb_Entregado.ReadOnly = false;
             Tb_FechaEnt.Value = DateTime.Now;
             Tb_FechaRec.Value = DateTime.Now;
@@ -556,6 +557,7 @@ namespace PRESENTER.com
             Tb_Observacion.ReadOnly = true;
             Tb_Entregado.ReadOnly = true;
             Tb_Edad.ReadOnly = true;
+            Sw_Tipo.IsReadOnly = true;
             _Limpiar = false;
             Tb_Recibido.ReadOnly = true;
             Dgv_Detalle.Enabled = false;
@@ -619,6 +621,7 @@ namespace PRESENTER.com
                     Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
                     Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
                     Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
+                    Sw_Tipo.Value = registro.TipoCompra == 1 ? true : false;
                     MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                     MP_ObtenerCalculo();
                     BtnModificar.Enabled = registro.estado == (int)ENEstado.COMPLETADO ? false : true;
@@ -689,6 +692,7 @@ namespace PRESENTER.com
                 Recibido = Tb_Recibido.Text,
                 TotalRecibido = Convert.ToDecimal(Tb_TotalEnviado.Value),
                 TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
+                TipoCompra = Sw_Tipo.Value == true ? 1 : 2,
                 Total = Convert.ToDecimal(Tb_TSaldoTo.Value),
                 Fecha = DateTime.Now.Date,
                 Hora = DateTime.Now.ToString("hh:mm"),

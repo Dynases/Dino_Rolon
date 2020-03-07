@@ -193,7 +193,7 @@ namespace REPOSITORY.Clase
                                           Estado = tipo == 1 ? (int)ENEstado.COMPLETADO : a.Estado,
                                           Producto = c.Descrip,
                                           Cantidad = tipo == 1 ? 0 : a.TotalCant,                                         
-                                          Precio = a.PrecioCost,
+                                          Precio = tipo == 1 ? 0 : a.PrecioCost,
                                           Total = tipo == 1 ? 0 : a.Total                                         
                                       }).ToList();
                     return listResult;

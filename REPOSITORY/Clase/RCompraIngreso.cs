@@ -48,7 +48,8 @@ namespace REPOSITORY.Clase
                     CompraIngreso.Recibido = vCompraIngreso.Recibido;
                     CompraIngreso.TotalVendido = vCompraIngreso.TotalVendido;
                     CompraIngreso.TotalRecibido = vCompraIngreso.TotalRecibido;
-                    CompraIngreso.Total = vCompraIngreso.Total;          
+                    CompraIngreso.Total = vCompraIngreso.Total;
+                    CompraIngreso.TipoCompra = vCompraIngreso.TipoCompra;
                     CompraIngreso.Fecha = vCompraIngreso.Fecha;
                     CompraIngreso.Hora = vCompraIngreso.Hora;
                     CompraIngreso.Usuario = vCompraIngreso.Usuario;
@@ -180,7 +181,8 @@ namespace REPOSITORY.Clase
                                           Recibido = a.Recibido,
                                           Total = a.Total,
                                           TotalRecibido= a.TotalRecibido,
-                                          TotalVendido =a.TotalVendido
+                                          TotalVendido =a.TotalVendido,
+                                          TipoCompra = a.TipoCompra
                                       }).ToList();
                     return listResult;
                 }
@@ -205,7 +207,8 @@ namespace REPOSITORY.Clase
 	                                b.Descrip as Proveedor,
 	                                a.Tipo,
 	                                a.EdadSemana,
-	                                a.IdSucur
+	                                a.IdSucur,
+                                    a.TipoCompra
                                 FROM 
 	                                COM.CompraIng a JOIN
 	                                COM.Proveed b ON b.Id = a.IdProvee 
