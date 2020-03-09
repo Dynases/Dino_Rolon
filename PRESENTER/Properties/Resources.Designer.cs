@@ -143,6 +143,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap COMPRAS2 {
+            get {
+                object obj = ResourceManager.GetObject("COMPRAS2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CUESTION {
             get {
                 object obj = ResourceManager.GetObject("CUESTION", resourceCulture);
@@ -356,6 +366,26 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap TRASPASO2 {
             get {
                 object obj = ResourceManager.GetObject("TRASPASO2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TRASPASO31 {
+            get {
+                object obj = ResourceManager.GetObject("TRASPASO31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TRASPASO32 {
+            get {
+                object obj = ResourceManager.GetObject("TRASPASO32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

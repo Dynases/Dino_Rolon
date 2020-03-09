@@ -4,6 +4,7 @@ using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace REPOSITORY.Clase
@@ -39,6 +40,26 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+
+        //public List<VTListaProducto> ListarInventarioXAlmacenId(int Id)
+        //{
+        //    try
+        //    {
+        //        using (var db = this.GetEsquema())
+        //        {
+        //           //var list = (
+        //           //             from a in db.TI001
+        //           //             join producto in db.Producto
+        //           //           )
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         #endregion
 

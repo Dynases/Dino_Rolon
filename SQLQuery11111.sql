@@ -1,0 +1,1 @@
+﻿select * from ADM.Libreria where IdGrupo = 3 and ADM.Libreria.IdOrden = 6

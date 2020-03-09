@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Cliente\View\VCliente.cs" />
     <Compile Include="Cliente\View\VClienteLista.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngreso.cs" />
@@ -70,6 +69,7 @@
     <Compile Include="inv\Transformacion\View\VTransformacion.cs" />
     <Compile Include="inv\Transformacion_01\View\VTransformacion_01.cs" />
     <Compile Include="inv\Traspaso\View\VTraspaso.cs" />
+    <Compile Include="inv\Traspaso\View\VTListaProducto.cs" />
     <Compile Include="inv\Traspaso\View\VTraspaso_01.cs" />
     <Compile Include="Libreria\View\VLibreria.cs" />
     <Compile Include="Libreria\View\VLibreriaLista.cs" />
