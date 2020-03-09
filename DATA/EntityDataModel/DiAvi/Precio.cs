@@ -25,8 +25,8 @@ namespace DATA.EntityDataModel.DiAvi
         public string Hora { get; set; }
         public string Usuario { get; set; }
     
-        public virtual Almacen Almacen { get; set; }
         public virtual PrecioCat PrecioCat { get; set; }
         public virtual Producto Producto { get; set; }
+        public virtual Almacen Almacen { get; set; }
     }
 }

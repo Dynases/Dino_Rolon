@@ -30,6 +30,7 @@ namespace PRESENTER.com
         bool _Limpiar = false;
         int _idOriginal = 0;  
         int _MPos = 0;
+        int _TipoCompra = 0;
         List<VSeleccion_01_Lista> seleccion_01 = new List<VSeleccion_01_Lista>(); 
         #endregion
         public FI_Seleccion()
@@ -271,8 +272,9 @@ namespace PRESENTER.com
         {
             try
             {
-                //Consulta segun un Categoria 
-                seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01,1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+                //Consulta segun un Categoria
+                seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01, 1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+
                 ArmarDetalle(seleccion_01);
             }
             catch (Exception ex)
@@ -550,7 +552,8 @@ namespace PRESENTER.com
                         new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
                         new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
                         new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
-                        new GLCelda() { campo = "IdSucur", visible = false, titulo = "IdSucur", tamano = 100 }
+                        new GLCelda() { campo = "IdSucur", visible = false, titulo = "IdSucur", tamano = 100 },
+                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
                     };
                     Efecto efecto = new Efecto();
                     efecto.Tipo = 3;
@@ -575,6 +578,7 @@ namespace PRESENTER.com
                         Tb_Placa.Text = Row.Cells["Placa"].Value.ToString();
                         Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
                         Cb_Almacen.Value = Row.Cells["IdSucur"].Value;
+                        _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
                         MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                         MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                         MP_ObtenerCalculo();

@@ -27,6 +27,7 @@ namespace ENTITY.com.CompraIngreso.View
         public decimal TotalRecibido { get; set; }
         public decimal TotalVendido { get; set; }
 
+        public  int TipoCompra { get; set; }
 
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }

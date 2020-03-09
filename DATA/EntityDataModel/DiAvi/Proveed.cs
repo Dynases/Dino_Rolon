@@ -18,8 +18,8 @@ namespace DATA.EntityDataModel.DiAvi
         public Proveed()
         {
             this.Compra = new HashSet<Compra>();
-            this.CompraIng = new HashSet<CompraIng>();
             this.Proveed_01 = new HashSet<Proveed_01>();
+            this.CompraIng = new HashSet<CompraIng>();
         }
     
         public int Id { get; set; }
@@ -46,8 +46,8 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraIng> CompraIng { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proveed_01> Proveed_01 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CompraIng> CompraIng { get; set; }
     }
 }
