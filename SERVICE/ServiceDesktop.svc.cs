@@ -485,6 +485,18 @@ namespace SERVICE
             }
         }
 
+        public List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId)
+        {
+            try
+            {
+                return new LTraspaso().ListarInventarioXAlmacenId(AlmacenId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Precio Categoria

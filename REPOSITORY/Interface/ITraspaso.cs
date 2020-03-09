@@ -10,6 +10,7 @@ namespace REPOSITORY.Interface
     public interface ITraspaso
     {
         bool Guardar(VTraspaso vTraspaso);
+        List<VTListaProducto> ListarInventarioXAlmacenId(int Id);
         List<VTraspaso> ListarTraspasos();
     }
 }

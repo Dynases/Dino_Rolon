@@ -38,4 +38,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVTraspaso" nillable="true" type="tns:ArrayOfVTraspaso" />
+  <xs:complexType name="ArrayOfVTListaProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTListaProducto" nillable="true" type="tns:VTListaProducto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTListaProducto" nillable="true" type="tns:ArrayOfVTListaProducto" />
+  <xs:complexType name="VTListaProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Categoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Division" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Existencia" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Marca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnidadVenta" type="xs:int" />
+      <xs:element minOccurs="0" name="UnidadVentaDisplay" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VTListaProducto" nillable="true" type="tns:VTListaProducto" />
 </xs:schema>

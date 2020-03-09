@@ -545,6 +545,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTListaProducto.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreria.datasource" />
@@ -631,6 +632,11 @@
     <None Include="Resources\COMPRAS2.png" />
     <None Include="Resources\TRASPASO31.png" />
     <None Include="Resources\TRASPASO32.png" />
+    <None Include="Resources\SIGUIENTE2.png" />
+    <None Include="Resources\ANTERIOR2.png" />
+    <None Include="Resources\ANTERIOR.png" />
+    <None Include="Resources\SIGUIENTE.png" />
+    <None Include="Resources\New.png" />
     <Content Include="Resource\BUSQUEDA.png" />
     <Content Include="Resource\CANCEL.png" />
     <None Include="Resource\CLIENTE.png" />

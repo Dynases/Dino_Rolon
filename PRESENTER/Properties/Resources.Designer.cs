@@ -93,6 +93,26 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ANTERIOR {
+            get {
+                object obj = ResourceManager.GetObject("ANTERIOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ANTERIOR2 {
+            get {
+                object obj = ResourceManager.GetObject("ANTERIOR2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap avicola02 {
             get {
                 object obj = ResourceManager.GetObject("avicola02", resourceCulture);
@@ -263,6 +283,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap New {
+            get {
+                object obj = ResourceManager.GetObject("New", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PANTALLA {
             get {
                 object obj = ResourceManager.GetObject("PANTALLA", resourceCulture);
@@ -336,6 +366,26 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap ROLES {
             get {
                 object obj = ResourceManager.GetObject("ROLES", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SIGUIENTE {
+            get {
+                object obj = ResourceManager.GetObject("SIGUIENTE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SIGUIENTE2 {
+            get {
+                object obj = ResourceManager.GetObject("SIGUIENTE2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

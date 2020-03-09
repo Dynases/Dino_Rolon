@@ -2,7 +2,9 @@
 {
     public class VTListaProducto
     {
-        public int Id { get; set; }
+        public int InventarioId { get; set; }
+
+        public int AlmacenId { get; set; }
 
         public string Descripcion { get; set; }
 
@@ -18,6 +20,6 @@
 
         public string UnidadVentaDisplay { get; set; }
 
-        public int Cantidad { get; set; }
+        
     }
 }

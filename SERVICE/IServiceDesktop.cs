@@ -161,6 +161,9 @@ namespace SERVICE
         [OperationContract]
         List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId);
 
+        [OperationContract]
+        List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId);
+
         #endregion       
         ///**********PRECIO**************************
         ///
