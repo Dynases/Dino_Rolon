@@ -611,7 +611,7 @@
             this.lbgrupo3.Location = new System.Drawing.Point(2, 99);
             this.lbgrupo3.Name = "lbgrupo3";
             this.lbgrupo3.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lbgrupo3.Size = new System.Drawing.Size(116, 23);
+            this.lbgrupo3.Size = new System.Drawing.Size(121, 23);
             this.lbgrupo3.TabIndex = 223;
             this.lbgrupo3.Text = "Categorias/Tipo (*)";
             // 
@@ -733,13 +733,13 @@
             Cb_Grupo3_DesignTimeLayout.LayoutString = resources.GetString("Cb_Grupo3_DesignTimeLayout.LayoutString");
             this.Cb_Grupo3.DesignTimeLayout = Cb_Grupo3_DesignTimeLayout;
             this.Cb_Grupo3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_Grupo3.Location = new System.Drawing.Point(128, 101);
+            this.Cb_Grupo3.Location = new System.Drawing.Point(129, 101);
             this.Cb_Grupo3.Name = "Cb_Grupo3";
             this.Cb_Grupo3.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Grupo3.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Grupo3.SelectedIndex = -1;
             this.Cb_Grupo3.SelectedItem = null;
-            this.Cb_Grupo3.Size = new System.Drawing.Size(144, 24);
+            this.Cb_Grupo3.Size = new System.Drawing.Size(143, 24);
             this.Cb_Grupo3.TabIndex = 218;
             this.Cb_Grupo3.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_Grupo3.ValueChanged += new System.EventHandler(this.Cb_Grupo3_ValueChanged);
@@ -819,10 +819,10 @@
             this.Tb_CodProducto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_CodProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_CodProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_CodProducto.Location = new System.Drawing.Point(304, 14);
+            this.Tb_CodProducto.Location = new System.Drawing.Point(313, 14);
             this.Tb_CodProducto.Name = "Tb_CodProducto";
             this.Tb_CodProducto.PreventEnterBeep = true;
-            this.Tb_CodProducto.Size = new System.Drawing.Size(66, 25);
+            this.Tb_CodProducto.Size = new System.Drawing.Size(65, 25);
             this.Tb_CodProducto.TabIndex = 2;
             // 
             // GroupBox1
@@ -874,7 +874,7 @@
             this.Tb_Cantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Cantidad.Increment = 1D;
-            this.Tb_Cantidad.Location = new System.Drawing.Point(122, 138);
+            this.Tb_Cantidad.Location = new System.Drawing.Point(110, 141);
             this.Tb_Cantidad.MinValue = 0D;
             this.Tb_Cantidad.Name = "Tb_Cantidad";
             this.Tb_Cantidad.Size = new System.Drawing.Size(143, 22);
@@ -908,7 +908,7 @@
             this.Tb_Producto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Producto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Producto.Location = new System.Drawing.Point(172, 111);
+            this.Tb_Producto.Location = new System.Drawing.Point(160, 114);
             this.Tb_Producto.Name = "Tb_Producto";
             this.Tb_Producto.PreventEnterBeep = true;
             this.Tb_Producto.Size = new System.Drawing.Size(167, 25);
@@ -924,7 +924,7 @@
             this.Tb_IdProducto.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_IdProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_IdProducto.Increment = 1D;
-            this.Tb_IdProducto.Location = new System.Drawing.Point(123, 111);
+            this.Tb_IdProducto.Location = new System.Drawing.Point(111, 114);
             this.Tb_IdProducto.MinValue = 0D;
             this.Tb_IdProducto.Name = "Tb_IdProducto";
             this.Tb_IdProducto.Size = new System.Drawing.Size(43, 22);
@@ -954,7 +954,7 @@
             // 
             this.sw_TipoPro.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sw_TipoPro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sw_TipoPro.Location = new System.Drawing.Point(122, 81);
+            this.sw_TipoPro.Location = new System.Drawing.Point(110, 79);
             this.sw_TipoPro.Name = "sw_TipoPro";
             this.sw_TipoPro.OffBackColor = System.Drawing.Color.LawnGreen;
             this.sw_TipoPro.OffText = "MATERIA PRIMA";
@@ -976,10 +976,10 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX3.Location = new System.Drawing.Point(6, 75);
+            this.labelX3.Location = new System.Drawing.Point(8, 78);
             this.labelX3.Name = "labelX3";
             this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX3.Size = new System.Drawing.Size(117, 23);
+            this.labelX3.Size = new System.Drawing.Size(38, 23);
             this.labelX3.TabIndex = 331;
             this.labelX3.Text = "Tipo";
             // 
@@ -993,10 +993,10 @@
             this.Tb_Peso.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Peso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Peso.Increment = 1D;
-            this.Tb_Peso.Location = new System.Drawing.Point(121, 50);
+            this.Tb_Peso.Location = new System.Drawing.Point(111, 49);
             this.Tb_Peso.MinValue = 0D;
             this.Tb_Peso.Name = "Tb_Peso";
-            this.Tb_Peso.Size = new System.Drawing.Size(73, 22);
+            this.Tb_Peso.Size = new System.Drawing.Size(89, 22);
             this.Tb_Peso.TabIndex = 330;
             this.Tb_Peso.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1006,7 +1006,7 @@
             this.btn_UnidadPeso.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
             this.btn_UnidadPeso.Image = ((System.Drawing.Image)(resources.GetObject("btn_UnidadPeso.Image")));
             this.btn_UnidadPeso.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btn_UnidadPeso.Location = new System.Drawing.Point(271, 46);
+            this.btn_UnidadPeso.Location = new System.Drawing.Point(318, 44);
             this.btn_UnidadPeso.Name = "btn_UnidadPeso";
             this.btn_UnidadPeso.Size = new System.Drawing.Size(28, 29);
             this.btn_UnidadPeso.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1020,7 +1020,7 @@
             this.btn_UnidadVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
             this.btn_UnidadVenta.Image = ((System.Drawing.Image)(resources.GetObject("btn_UnidadVenta.Image")));
             this.btn_UnidadVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btn_UnidadVenta.Location = new System.Drawing.Point(271, 13);
+            this.btn_UnidadVenta.Location = new System.Drawing.Point(318, 11);
             this.btn_UnidadVenta.Name = "btn_UnidadVenta";
             this.btn_UnidadVenta.Size = new System.Drawing.Size(28, 29);
             this.btn_UnidadVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1033,13 +1033,13 @@
             Cb_UnidadVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_UnidadVenta_DesignTimeLayout.LayoutString");
             this.Cb_UnidadVenta.DesignTimeLayout = Cb_UnidadVenta_DesignTimeLayout;
             this.Cb_UnidadVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_UnidadVenta.Location = new System.Drawing.Point(120, 16);
+            this.Cb_UnidadVenta.Location = new System.Drawing.Point(111, 14);
             this.Cb_UnidadVenta.Name = "Cb_UnidadVenta";
             this.Cb_UnidadVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_UnidadVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_UnidadVenta.SelectedIndex = -1;
             this.Cb_UnidadVenta.SelectedItem = null;
-            this.Cb_UnidadVenta.Size = new System.Drawing.Size(145, 24);
+            this.Cb_UnidadVenta.Size = new System.Drawing.Size(201, 24);
             this.Cb_UnidadVenta.TabIndex = 328;
             this.Cb_UnidadVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_UnidadVenta.ValueChanged += new System.EventHandler(this.Cb_UnidadVenta_ValueChanged);
@@ -1056,7 +1056,7 @@
             this.labelX12.Location = new System.Drawing.Point(5, 15);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX12.Size = new System.Drawing.Size(98, 23);
+            this.labelX12.Size = new System.Drawing.Size(109, 23);
             this.labelX12.TabIndex = 243;
             this.labelX12.Text = "Unidad de Venta";
             // 
@@ -1065,13 +1065,13 @@
             Cb_UniPeso_DesignTimeLayout.LayoutString = resources.GetString("Cb_UniPeso_DesignTimeLayout.LayoutString");
             this.Cb_UniPeso.DesignTimeLayout = Cb_UniPeso_DesignTimeLayout;
             this.Cb_UniPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_UniPeso.Location = new System.Drawing.Point(201, 49);
+            this.Cb_UniPeso.Location = new System.Drawing.Point(210, 47);
             this.Cb_UniPeso.Name = "Cb_UniPeso";
             this.Cb_UniPeso.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_UniPeso.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_UniPeso.SelectedIndex = -1;
             this.Cb_UniPeso.SelectedItem = null;
-            this.Cb_UniPeso.Size = new System.Drawing.Size(64, 24);
+            this.Cb_UniPeso.Size = new System.Drawing.Size(102, 24);
             this.Cb_UniPeso.TabIndex = 328;
             this.Cb_UniPeso.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_UniPeso.ValueChanged += new System.EventHandler(this.Cb_UniPeso_ValueChanged);
@@ -1102,10 +1102,10 @@
             this.Tb_CodBarras.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_CodBarras.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_CodBarras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_CodBarras.Location = new System.Drawing.Point(108, 43);
+            this.Tb_CodBarras.Location = new System.Drawing.Point(114, 43);
             this.Tb_CodBarras.Name = "Tb_CodBarras";
             this.Tb_CodBarras.PreventEnterBeep = true;
-            this.Tb_CodBarras.Size = new System.Drawing.Size(262, 25);
+            this.Tb_CodBarras.Size = new System.Drawing.Size(264, 25);
             this.Tb_CodBarras.TabIndex = 4;
             // 
             // Tb_Descripcion
@@ -1118,10 +1118,10 @@
             this.Tb_Descripcion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Descripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Descripcion.Location = new System.Drawing.Point(109, 74);
+            this.Tb_Descripcion.Location = new System.Drawing.Point(114, 74);
             this.Tb_Descripcion.Name = "Tb_Descripcion";
             this.Tb_Descripcion.PreventEnterBeep = true;
-            this.Tb_Descripcion.Size = new System.Drawing.Size(262, 25);
+            this.Tb_Descripcion.Size = new System.Drawing.Size(264, 25);
             this.Tb_Descripcion.TabIndex = 3;
             // 
             // Tb_Id
@@ -1183,7 +1183,7 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX7.Location = new System.Drawing.Point(184, 16);
+            this.labelX7.Location = new System.Drawing.Point(180, 15);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX7.Size = new System.Drawing.Size(127, 20);

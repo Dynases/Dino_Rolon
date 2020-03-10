@@ -51,6 +51,18 @@ namespace LOGIC.Class
             }
         }
 
+        public List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId)
+        {
+            try
+            {
+                return this.iTraspaso.ListarInventarioXAlmacenId(AlmacenId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
     }
 }

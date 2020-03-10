@@ -1,6 +1,7 @@
 ﻿using PRESENTER.alm;
 using PRESENTER.com;
 using PRESENTER.reg;
+using PRESENTER.ven;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,6 +90,12 @@ namespace PRESENTER.adm
         private void btn_TipoAlmacen_Click(object sender, EventArgs e)
         {
             F1_TipoAlmacen frm = new F1_TipoAlmacen();
+            frm.Show();
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            F1_Ventas frm = new F1_Ventas();
             frm.Show();
         }
     }
