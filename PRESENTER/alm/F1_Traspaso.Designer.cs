@@ -35,12 +35,14 @@
             this.PanelAbajo = new System.Windows.Forms.Panel();
             this.GPanel_Detalles = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.panelNavegacionPlantilla = new System.Windows.Forms.Panel();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Tb_NombrePlantilla = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnAgregarPlantilla = new DevComponents.DotNetBar.ButtonX();
             this.btnSiguientePlantilla = new DevComponents.DotNetBar.ButtonX();
             this.btnAnteriorPlantilla = new DevComponents.DotNetBar.ButtonX();
             this.btnPrimerPlantilla = new DevComponents.DotNetBar.ButtonX();
             this.btnUltimaPlantilla = new DevComponents.DotNetBar.ButtonX();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPlantillaCount = new System.Windows.Forms.Label();
             this.panelDerecha = new System.Windows.Forms.Panel();
             this.GPanel_Derecha = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_DetalleNuevo = new Janus.Windows.GridEX.GridEX();
@@ -289,27 +291,56 @@
             // 
             this.panelNavegacionPlantilla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panelNavegacionPlantilla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
-            this.panelNavegacionPlantilla.Controls.Add(this.buttonX1);
+            this.panelNavegacionPlantilla.Controls.Add(this.label2);
+            this.panelNavegacionPlantilla.Controls.Add(this.Tb_NombrePlantilla);
+            this.panelNavegacionPlantilla.Controls.Add(this.btnAgregarPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnSiguientePlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnAnteriorPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
-            this.panelNavegacionPlantilla.Controls.Add(this.label1);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 292);
+            this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 300);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
             this.panelNavegacionPlantilla.Size = new System.Drawing.Size(595, 40);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
-            // buttonX1
+            // label2
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.buttonX1.Image = global::PRESENTER.Properties.Resources.New;
-            this.buttonX1.Location = new System.Drawing.Point(270, 7);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(33, 31);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(62, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 360;
+            this.label2.Text = "Plantillas";
+            // 
+            // Tb_NombrePlantilla
+            // 
+            // 
+            // 
+            // 
+            this.Tb_NombrePlantilla.Border.Class = "TextBoxBorder";
+            this.Tb_NombrePlantilla.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_NombrePlantilla.Location = new System.Drawing.Point(281, 9);
+            this.Tb_NombrePlantilla.Multiline = true;
+            this.Tb_NombrePlantilla.Name = "Tb_NombrePlantilla";
+            this.Tb_NombrePlantilla.PreventEnterBeep = true;
+            this.Tb_NombrePlantilla.Size = new System.Drawing.Size(272, 26);
+            this.Tb_NombrePlantilla.TabIndex = 359;
+            this.Tb_NombrePlantilla.TextChanged += new System.EventHandler(this.Tb_NombrePlantilla_TextChanged);
+            // 
+            // btnAgregarPlantilla
+            // 
+            this.btnAgregarPlantilla.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAgregarPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnAgregarPlantilla.Image = global::PRESENTER.Properties.Resources.New;
+            this.btnAgregarPlantilla.Location = new System.Drawing.Point(554, 7);
+            this.btnAgregarPlantilla.Name = "btnAgregarPlantilla";
+            this.btnAgregarPlantilla.Size = new System.Drawing.Size(33, 31);
+            this.btnAgregarPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAgregarPlantilla.TabIndex = 5;
+            this.btnAgregarPlantilla.Click += new System.EventHandler(this.btnAgregarPlantilla_Click);
             // 
             // btnSiguientePlantilla
             // 
@@ -317,7 +348,7 @@
             this.btnSiguientePlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnSiguientePlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE;
             this.btnSiguientePlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSiguientePlantilla.Location = new System.Drawing.Point(194, 7);
+            this.btnSiguientePlantilla.Location = new System.Drawing.Point(206, 7);
             this.btnSiguientePlantilla.Name = "btnSiguientePlantilla";
             this.btnSiguientePlantilla.Size = new System.Drawing.Size(30, 31);
             this.btnSiguientePlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -329,7 +360,7 @@
             this.btnAnteriorPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnAnteriorPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR;
             this.btnAnteriorPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(155, 7);
+            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(167, 7);
             this.btnAnteriorPlantilla.Name = "btnAnteriorPlantilla";
             this.btnAnteriorPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnAnteriorPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -341,7 +372,7 @@
             this.btnPrimerPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnPrimerPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR2;
             this.btnPrimerPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnPrimerPlantilla.Location = new System.Drawing.Point(116, 7);
+            this.btnPrimerPlantilla.Location = new System.Drawing.Point(128, 7);
             this.btnPrimerPlantilla.Name = "btnPrimerPlantilla";
             this.btnPrimerPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnPrimerPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -353,29 +384,29 @@
             this.btnUltimaPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnUltimaPlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE2;
             this.btnUltimaPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnUltimaPlantilla.Location = new System.Drawing.Point(230, 7);
+            this.btnUltimaPlantilla.Location = new System.Drawing.Point(242, 7);
             this.btnUltimaPlantilla.Name = "btnUltimaPlantilla";
             this.btnUltimaPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnUltimaPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUltimaPlantilla.TabIndex = 1;
             // 
-            // label1
+            // lblPlantillaCount
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "PLANTILLAS";
+            this.lblPlantillaCount.AutoSize = true;
+            this.lblPlantillaCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblPlantillaCount.ForeColor = System.Drawing.Color.White;
+            this.lblPlantillaCount.Location = new System.Drawing.Point(14, 11);
+            this.lblPlantillaCount.Name = "lblPlantillaCount";
+            this.lblPlantillaCount.Size = new System.Drawing.Size(42, 20);
+            this.lblPlantillaCount.TabIndex = 0;
+            this.lblPlantillaCount.Text = "0 / 0";
             // 
             // panelDerecha
             // 
             this.panelDerecha.Controls.Add(this.GPanel_Derecha);
             this.panelDerecha.Location = new System.Drawing.Point(687, 3);
             this.panelDerecha.Name = "panelDerecha";
-            this.panelDerecha.Size = new System.Drawing.Size(598, 283);
+            this.panelDerecha.Size = new System.Drawing.Size(598, 291);
             this.panelDerecha.TabIndex = 2;
             // 
             // GPanel_Derecha
@@ -389,7 +420,7 @@
             this.GPanel_Derecha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_Derecha.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Derecha.Name = "GPanel_Derecha";
-            this.GPanel_Derecha.Size = new System.Drawing.Size(598, 283);
+            this.GPanel_Derecha.Size = new System.Drawing.Size(598, 291);
             // 
             // 
             // 
@@ -427,7 +458,7 @@
             this.Dgv_DetalleNuevo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Dgv_DetalleNuevo.Location = new System.Drawing.Point(0, 0);
             this.Dgv_DetalleNuevo.Name = "Dgv_DetalleNuevo";
-            this.Dgv_DetalleNuevo.Size = new System.Drawing.Size(592, 255);
+            this.Dgv_DetalleNuevo.Size = new System.Drawing.Size(592, 263);
             this.Dgv_DetalleNuevo.TabIndex = 4;
             // 
             // panelIzquierda
@@ -864,10 +895,12 @@
         private Janus.Windows.GridEX.GridEX Dgv_DetalleNuevo;
         private System.Windows.Forms.Panel panelNavegacionPlantilla;
         private DevComponents.DotNetBar.ButtonX btnUltimaPlantilla;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPlantillaCount;
         private DevComponents.DotNetBar.ButtonX btnSiguientePlantilla;
         private DevComponents.DotNetBar.ButtonX btnAnteriorPlantilla;
         private DevComponents.DotNetBar.ButtonX btnPrimerPlantilla;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnAgregarPlantilla;
+        private DevComponents.DotNetBar.Controls.TextBoxX Tb_NombrePlantilla;
+        private System.Windows.Forms.Label label2;
     }
 }

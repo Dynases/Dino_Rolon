@@ -13,6 +13,7 @@ using ENTITY.inv.Transformacion.View;
 using ENTITY.inv.Transformacion_01.View;
 using ENTITY.inv.Traspaso.View;
 using ENTITY.Libreria.View;
+using ENTITY.Plantilla;
 using ENTITY.Producto.View;
 using ENTITY.Proveedor.View;
 using ENTITY.reg.Precio.View;
@@ -246,6 +247,23 @@ namespace SERVICE
         #region Compra_01
         [OperationContract]
         List<VCompra_01_Lista> Compra_01_Lista();
+        #endregion
+        ///**********PLANTILLA******************
+        ///
+        #region Plantilla
+
+        [OperationContract]
+        bool PlantillaGuardar(VPlantilla VPlantilla);
+
+        [OperationContract]
+        List<VPlantilla> PlantillaListar();
+
+        [OperationContract]
+        bool PlantillaDetalleGuardar(List<VPlantilla01> lista, int PlantillaId);
+
+        [OperationContract]
+        List<VPlantilla01> PlantillaListarDetallePlantilla(int PlantillaId);
+
         #endregion
         // TODO: agregue aquí sus operaciones de servicio
     }

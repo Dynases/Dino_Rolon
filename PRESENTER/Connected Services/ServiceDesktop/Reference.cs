@@ -427,6 +427,30 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_01_ListaResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Compra_01.View.VCompra_01_Lista[]> Compra_01_ListaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaGuardarResponse")]
+        bool PlantillaGuardar(ENTITY.Plantilla.VPlantilla VPlantilla);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaGuardarResponse")]
+        System.Threading.Tasks.Task<bool> PlantillaGuardarAsync(ENTITY.Plantilla.VPlantilla VPlantilla);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarResponse")]
+        ENTITY.Plantilla.VPlantilla[] PlantillaListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
+        bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
+        System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
+        ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
+        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1245,6 +1269,38 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Compra_01.View.VCompra_01_Lista[]> Compra_01_ListaAsync() {
             return base.Channel.Compra_01_ListaAsync();
+        }
+        
+        public bool PlantillaGuardar(ENTITY.Plantilla.VPlantilla VPlantilla) {
+            return base.Channel.PlantillaGuardar(VPlantilla);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PlantillaGuardarAsync(ENTITY.Plantilla.VPlantilla VPlantilla) {
+            return base.Channel.PlantillaGuardarAsync(VPlantilla);
+        }
+        
+        public ENTITY.Plantilla.VPlantilla[] PlantillaListar() {
+            return base.Channel.PlantillaListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync() {
+            return base.Channel.PlantillaListarAsync();
+        }
+        
+        public bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
+            return base.Channel.PlantillaDetalleGuardar(lista, PlantillaId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
+            return base.Channel.PlantillaDetalleGuardarAsync(lista, PlantillaId);
+        }
+        
+        public ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId) {
+            return base.Channel.PlantillaListarDetallePlantilla(PlantillaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId) {
+            return base.Channel.PlantillaListarDetallePlantillaAsync(PlantillaId);
         }
     }
 }

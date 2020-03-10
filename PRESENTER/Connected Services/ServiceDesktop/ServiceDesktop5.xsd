@@ -20,6 +20,7 @@
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -824,6 +825,61 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q57:ArrayOfVCompra_01_Lista" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaGuardar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="VPlantilla" nillable="true" type="q58:VPlantilla" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaGuardarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlantillaGuardarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaListar">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaListarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarResult" nillable="true" type="q59:ArrayOfVPlantilla" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaDetalleGuardar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="lista" nillable="true" type="q60:ArrayOfVPlantilla01" />
+        <xs:element minOccurs="0" name="PlantillaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaDetalleGuardarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlantillaDetalleGuardarResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaListarDetallePlantilla">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlantillaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlantillaListarDetallePlantillaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarDetallePlantillaResult" nillable="true" type="q61:ArrayOfVPlantilla01" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
