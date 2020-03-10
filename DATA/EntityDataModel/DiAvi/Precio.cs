@@ -15,10 +15,10 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class Precio
     {
         public int Id { get; set; }
-        public int IdAlmac { get; set; }
+        public int IdSucursal { get; set; }
         public int IdProduc { get; set; }
         public int IdPrecioCat { get; set; }
-        public decimal Prrecio { get; set; }
+        public decimal Precio1 { get; set; }
         public Nullable<int> Oferta { get; set; }
         public string Observacion { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }

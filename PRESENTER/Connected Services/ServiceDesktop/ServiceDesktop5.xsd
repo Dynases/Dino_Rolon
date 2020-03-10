@@ -718,6 +718,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Seleccion_01_ListarXId_CompraIng_01_XSeleccion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdCompraInreso_01" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Seleccion_01_ListarXId_CompraIng_01_XSeleccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListarXId_CompraIng_01_XSeleccionResult" nillable="true" type="q48:ArrayOfVSeleccion_01_Lista" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Transformacion_Lista">
     <xs:complexType>
       <xs:sequence />

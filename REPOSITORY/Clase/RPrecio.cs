@@ -19,7 +19,7 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = (from a in db.Precio
                                       join pro in db.Producto on
-                                        new { idpro = a.IdProduc, idAlm = a.IdAlmac }
+                                        new { idpro = a.IdProduc, idAlm = a.IdSucursal }
                                          equals new { idpro= pro.Id, idAlm = idAlmacen }
                                       join cat in db.PrecioCat on
                                            new { idCat= a.IdPrecioCat }
@@ -30,7 +30,7 @@ namespace REPOSITORY.Clase
                                           IdProducto = a.IdProduc,
                                           IdPrecioCat = a.IdPrecioCat,
                                           COd = cat.Cod,
-                                          Precio = a.Prrecio,
+                                          Precio = a.Precio1,
                                           Estado = 1
                                       }).ToList();
                     return listResult;

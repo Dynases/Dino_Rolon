@@ -21,7 +21,7 @@ namespace DATA.EntityDataModel.DiAvi
         }
     
         public int Id { get; set; }
-        public int IdSuc { get; set; }
+        public int IdAlmacen { get; set; }
         public int IdProvee { get; set; }
         public int Estado { get; set; }
         public System.DateTime FechaDoc { get; set; }
@@ -36,7 +36,7 @@ namespace DATA.EntityDataModel.DiAvi
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra_01> Compra_01 { get; set; }
-        public virtual Proveed Proveed { get; set; }
         public virtual Almacen Almacen { get; set; }
+        public virtual Proveed Proveed { get; set; }
     }
 }

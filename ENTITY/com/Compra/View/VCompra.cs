@@ -9,7 +9,7 @@ namespace ENTITY.com.Compra.View
     public class VCompra
     {
         public int Id { get; set; }
-        public int IdSuc { get; set; }
+        public int IdAlmacen { get; set; }
         public int IdProvee { get; set; }
         public int Estado { get; set; }
         public System.DateTime FechaDoc { get; set; }

@@ -675,6 +675,19 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01_XSeleccion(int IdCompraInreso_01)
+        {
+            try
+            {
+                var listResult = new LSeleccion_01().ListarXId_CompraIng_XSeleccion(IdCompraInreso_01);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Transaformacion
@@ -784,6 +797,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
 
         #region Plantilla

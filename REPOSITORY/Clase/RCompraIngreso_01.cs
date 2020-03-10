@@ -163,7 +163,7 @@ namespace REPOSITORY.Clase
                                           Maple = 0,
                                           Cantidad = 0,
                                           TotalCant = 0,
-                                          PrecioCost = b.Prrecio,
+                                          PrecioCost = b.Precio1,
                                           Total = 0,
                                           Estado = 0
                                       }).ToList();

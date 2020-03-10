@@ -34,7 +34,7 @@ namespace REPOSITORY.Clase
                         seleccion = new Seleccion();
                         db.Seleccion.Add(seleccion);
                     }
-                    seleccion.IdSucur = vSeleccion.IdSucur;
+                    seleccion.IdAlmacen = vSeleccion.IdAlmacen;
                     seleccion.IdCompraIng = vSeleccion.IdCompraIng;
                     seleccion.Estado = vSeleccion.Estado;
                     seleccion.Cantidad = vSeleccion.Cantidad ;

@@ -180,9 +180,6 @@
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

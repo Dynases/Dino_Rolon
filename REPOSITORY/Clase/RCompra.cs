@@ -23,7 +23,7 @@ namespace REPOSITORY.Clase
                                       select new VCompraLista
                                       {
                                           Id = a.Id,
-                                          IdSuc = a.IdSuc,
+                                          IdAlmacen = a.IdAlmacen,
                                           IdProvee = a.IdProvee,
                                           Proveedor = b.Descrip,
                                           Estado = a.Estado,

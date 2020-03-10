@@ -193,8 +193,45 @@ namespace REPOSITORY.Clase
                                           Estado = tipo == 1 ? (int)ENEstado.COMPLETADO : a.Estado,
                                           Producto = c.Descrip,
                                           Cantidad = tipo == 1 ? 0 : a.TotalCant,                                         
-                                          Precio = tipo == 1 ? 0 : a.PrecioCost,
+                                          Precio = a.PrecioCost,
                                           Total = tipo == 1 ? 0 : a.Total                                         
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VSeleccion_01_Lista> ListarXId_CompraIng_XSeleccion(int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.CompraIng_01
+                                      join c in db.Producto on
+                                       new
+                                       {
+                                           idProve = a.IdProduc
+                                       }
+                                       equals
+                                       new
+                                       {
+                                           idProve = c.Id
+                                       }
+                                      where a.IdCompra.Equals(id)
+                                      select new VSeleccion_01_Lista
+                                      {
+                                          Id = a.Id,
+                                          IdSeleccion = 0,
+                                          IdProducto = a.IdProduc,
+                                          Estado =  a.Estado,
+                                          Producto = c.Descrip,
+                                          Cantidad =  0,
+                                          Precio = 0,
+                                          Total = 0
                                       }).ToList();
                     return listResult;
                 }
