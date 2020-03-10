@@ -9,8 +9,8 @@ namespace ENTITY.inv.Transformacion.Report
     public class VTransformacionReport
     {
         public int Id { get; set; }
-        public string SucursalIngreso { get; set; }
-        public string SucursalSalida { get; set; }
+        public string AlmacenIngreso { get; set; }
+        public string AlmacenSalida { get; set; }
         public string Observ { get; set; }
         public System.DateTime Fecha { get; set; }
         public int IdProducto { get; set; }

@@ -10,9 +10,9 @@ namespace ENTITY.inv.Transformacion.View
     {
         public int Id { get; set; }
         public int IdAlmacenSalida { get; set; }
-        public string Sucursal1 { get; set; }
+        public string Almacen1 { get; set; }
         public int IdAlmacenIngreso { get; set; }
-        public string Sucursal2 { get; set; }
+        public string Almacen2 { get; set; }
         public int Estado { get; set; }
         public string Observ { get; set; }
         public System.DateTime Fecha { get; set; }

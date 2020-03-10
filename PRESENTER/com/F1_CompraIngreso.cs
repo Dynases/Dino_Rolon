@@ -269,10 +269,10 @@ namespace PRESENTER.com
             {
                 LblTitulo.Text = _NombreFormulario;
                 MP_InicioArmarCombo();
+                MP_CargarAlmacenes();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
-                MP_InHabilitar();
-
+                MP_InHabilitar();             
             }
             catch (Exception ex)
             {
@@ -380,6 +380,18 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
 
+        }
+        private void MP_CargarAlmacenes()
+        {
+            try
+            {
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+            }
         }
         private void MP_ArmarDetalle(List<VCompraIngreso_01> lresult)
         {
@@ -532,7 +544,8 @@ namespace PRESENTER.com
         {
             Tb_NUmGranja.ReadOnly = false;
             Tb_Placa.ReadOnly = false;
-            Cb_Tipo.Enabled = true;
+            Cb_Tipo.ReadOnly = false;
+            Cb_Almacen.ReadOnly = false;
             tb_Proveedor.ReadOnly = false;
             Tb_Observacion.ReadOnly = false;
             Tb_Edad.ReadOnly = false;
@@ -542,14 +555,14 @@ namespace PRESENTER.com
             Tb_FechaRec.Value = DateTime.Now;
             Tb_Recibido.ReadOnly = false;
             Dgv_Detalle.Enabled = true;
-
         }
         private void MP_InHabilitar()
         {
             Tb_Cod.ReadOnly = true;
             Tb_NUmGranja.ReadOnly = true;
             Tb_Placa.ReadOnly = true;
-            Cb_Tipo.Enabled = false;
+            Cb_Tipo.ReadOnly = true;
+            Cb_Almacen.ReadOnly = true;
             tb_Proveedor.ReadOnly = true;
             Tb_Observacion.ReadOnly = true;
             Tb_Observacion.ReadOnly = true;
@@ -575,7 +588,7 @@ namespace PRESENTER.com
                 Tb_FechaRec.Value = DateTime.Now;
                 if (_Limpiar == false)
                 {
-                    UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Tipo);                  
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
                 Tb_TotalVendido.Value = 0;
@@ -604,18 +617,19 @@ namespace PRESENTER.com
                 var registro = tabla.First();
                 if (tabla.Length > 0)
                 {
-                    Tb_Cod.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Id.ToString())).Count() > 0 ? tabla.Select(x => x.Id).First().ToString() : "";
-                    Tb_NUmGranja.Text = tabla.Where(x => !string.IsNullOrEmpty(x.NumNota)).Count() > 0 ? tabla.Select(x => x.NumNota).First().ToString() : "";
-                    Tb_FechaEnt.Value = tabla.Select(x => x.FechaEnt).First(); //registro.FechaEnt;
-                    Tb_FechaRec.Value = tabla.Select(x => x.FechaRec).First();
-                    Tb_Placa.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Placa)).Count() > 0 ? tabla.Select(x => x.Placa).First().ToString() : "";
-                    tb_Proveedor.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Proveedor)).Count() > 0 ? tabla.Select(x => x.Proveedor).First().ToString() : "";
-                    _idProveedor = tabla.Select(x => x.IdProvee).First();
-                    Tb_Observacion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Observacion)).Count() > 0 ? tabla.Select(x => x.Observacion).First().ToString() : "";
-                    Cb_Tipo.Value = tabla.Select(x => x.Tipo).First();
-                    Tb_Recibido.Text = registro.Recibido.ToString();
-                    Tb_Edad.Text = tabla.Select(x => x.CantidadSemanas).First().ToString();
-                    Tb_Entregado.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Entregado)).Count() > 0 ? tabla.Select(x => x.Entregado).First().ToString() : "";
+                    Tb_Cod.Text = registro.Id.ToString();
+                    Cb_Almacen.Value = registro.IdAlmacen;
+                    Tb_NUmGranja.Text = registro.NumNota.ToString();
+                    Tb_FechaEnt.Value = registro.FechaEnt; //registro.FechaEnt;
+                    Tb_FechaRec.Value = registro.FechaRec;
+                    Tb_Placa.Text = registro.Placa;
+                    tb_Proveedor.Text = registro.Proveedor;
+                    _idProveedor = registro.IdProvee;
+                    Tb_Observacion.Text = registro.Observacion;
+                    Cb_Tipo.Value = registro.Tipo;
+                    Tb_Recibido.Text = registro.Recibido;
+                    Tb_Edad.Text = registro.CantidadSemanas;
+                    Tb_Entregado.Text = registro.Entregado;
                     Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
                     Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
                     Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
@@ -679,9 +693,9 @@ namespace PRESENTER.com
 
             VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
             {
-                IdAlmacen = 2,
+                IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
                 IdProvee = _idProveedor,
-                estado = 1,
+                estado = (int)ENEstado.GUARDADO,
                 NumNota = Tb_NUmGranja.Text,
                 FechaEnt = Tb_FechaEnt.Value,
                 FechaRec = Tb_FechaRec.Value,

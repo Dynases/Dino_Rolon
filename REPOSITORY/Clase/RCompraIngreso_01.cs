@@ -19,11 +19,7 @@ namespace REPOSITORY.Clase
             try
             {
                 using (var db = GetEsquema())
-                {
-                    var listResult = db.CompraIng_01.Where(a => a.IdCompra == Id).ToList();
-                    if (listResult.Count != 0)
-                        db.CompraIng_01.RemoveRange(listResult);
-
+                {                 
                     foreach (var vCompraIngreso_01 in Lista)
                     {
                         var compraIng_01 = new CompraIng_01();
@@ -42,9 +38,9 @@ namespace REPOSITORY.Clase
                         compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
                         compraIng_01.Usuario = usuario;
                         db.CompraIng_01.Add(compraIng_01);
-                        db.SaveChanges();
+                        
                     }
-                    
+                    db.SaveChanges();
                     return true;
                 }
             }

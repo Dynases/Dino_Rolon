@@ -168,7 +168,7 @@ namespace UTILITY.Global
             {
                 throw new Exception();
             }
-        }
+        }      
 
         public static void MG_CrearCarpetaImagenes(string _CarpetaRaiz, string _NombreCarpeta)
         {
