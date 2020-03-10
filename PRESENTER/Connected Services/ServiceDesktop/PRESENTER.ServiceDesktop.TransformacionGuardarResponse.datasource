@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="TransformacionGuardarResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>PRESENTER.ServiceDesktop.TransformacionGuardarResponse, Connected Services.ServiceDesktop.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>PRESENTER.ServiceDesktop.TransformacionGuardarResponse</TypeInfo>
 </GenericObjectDataSource>

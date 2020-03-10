@@ -90,6 +90,12 @@
     <Compile Include="EntityDataModel\DiAvi\Libreria.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Plantilla.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Plantilla_01.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Precio.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -127,6 +133,15 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\SY000.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sysdiagrams.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\TB001.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\TI001.cs">

@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.inv.Traspaso.View;
+using ENTITY.Plantilla;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTILITY.Enum;
 using UTILITY.Global;
 
 namespace PRESENTER.alm
@@ -29,7 +31,9 @@ namespace PRESENTER.alm
 
         public static List<Producto> detalleProductos;
         private static List<VTraspaso> listaTraspasos;
+        private static List<VPlantilla> listaPlantillas;
         private static int index;
+        private static int plantillaIndex;
 
         #endregion
 
@@ -336,6 +340,79 @@ namespace PRESENTER.alm
             return response;
         }
 
+        private void MP_CargarPlantillas()
+        {
+            try
+            {
+                plantillaIndex = 0;
+                listaPlantillas = new ServiceDesktop.ServiceDesktopClient().PlantillaListar()
+                                    .Where(p => p.Concepto.Equals(ENConceptoPlantilla.Traspaso))
+                                    .ToList();
+
+                lblPlantillaCount.Text = plantillaIndex.ToString() + " / " + listaPlantillas.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private VPlantilla MP_GuardarPlantilla()
+        {
+            var plantilla = new VPlantilla
+            {
+                Concepto = Convert.ToInt32(ENConceptoPlantilla.Traspaso),
+                IdAlmacen = Convert.ToInt32(Cb_Origen.Value),
+                IdAlmacenDestino = Convert.ToInt32(Cb_Destino.Value),
+                Nombre = Tb_NombrePlantilla.Text,
+            };
+
+            try
+            {
+                if (new ServiceDesktop.ServiceDesktopClient().PlantillaGuardar(plantilla))
+                { return plantilla; }
+                else
+                { return null; }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        private void MP_GuardarDetallePlantilla(VPlantilla plantilla)
+        {
+            var mensaje = "";
+            if (plantilla != null)
+            {
+                var listaDetalle = new List<VPlantilla01>();
+                foreach (var i in Dgv_DetalleNuevo.GetRows())
+                {
+                    var detalle = new VPlantilla01
+                    {
+                        Cantidad = Convert.ToInt32(i.Cells[3].Value),
+                        IdPlantilla = plantilla.Id,
+                        IdProducto = Convert.ToInt32(i.Cells[0].Value),
+                        Precio = 0
+                    };
+
+                    listaDetalle.Add(detalle);
+                }
+
+                if (!new ServiceDesktop.ServiceDesktopClient().PlantillaDetalleGuardar(listaDetalle.ToArray(), plantilla.Id))
+                {
+                    mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                    this.MP_MostrarMensajeError(mensaje);
+                }
+            }
+            else
+            {
+                mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                this.MP_MostrarMensajeError(mensaje);
+            }
+        }
+
         #endregion
 
         //===============
@@ -415,6 +492,7 @@ namespace PRESENTER.alm
         {
             LblTitulo.Text = "TRASPASOS";
             btnMax.Visible = false;
+            this.MP_CargarPlantillas();
         }
 
         private void Dgv_ProductosInventario_EditingCell(object sender, EditingCellEventArgs e)
@@ -485,6 +563,34 @@ namespace PRESENTER.alm
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
         {
             this.MP_CargarProductosPorAlmacenOrigen(Convert.ToInt32(Cb_Origen.Value));
+        }
+
+        private void btnAgregarPlantilla_Click(object sender, EventArgs e)
+        {
+            if (Dgv_DetalleNuevo.RowCount > 0)
+            {
+                if (!string.IsNullOrEmpty(Tb_NombrePlantilla.Text))
+                {
+                    this.MP_GuardarDetallePlantilla(this.MP_GuardarPlantilla());
+                }
+                else
+                {
+                    this.MP_MostrarMensajeError("Debe ingresar un nombre a la plantilla");
+                    Tb_NombrePlantilla.BackColor = Color.Red;
+                }
+            }
+            else
+            {
+                this.MP_MostrarMensajeError("Debe ingresar un item para agregar una nueva plantilla");
+            }
+        }
+
+        private void Tb_NombrePlantilla_TextChanged(object sender, EventArgs e)
+        {
+            if (Tb_NombrePlantilla.BackColor.Equals(Color.Red))
+            {
+                Tb_NombrePlantilla.BackColor = Color.White;
+            }
         }
 
         #endregion        

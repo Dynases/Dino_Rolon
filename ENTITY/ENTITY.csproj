@@ -73,6 +73,8 @@
     <Compile Include="inv\Traspaso\View\VTraspaso_01.cs" />
     <Compile Include="Libreria\View\VLibreria.cs" />
     <Compile Include="Libreria\View\VLibreriaLista.cs" />
+    <Compile Include="Plantilla\VPlantilla.cs" />
+    <Compile Include="Plantilla\VPlantilla01.cs" />
     <Compile Include="Producto\View\VProducto.cs" />
     <Compile Include="Producto\View\VProductoLista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cliente\Report\" />
+    <Folder Include="ven\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DATA\DATA.csproj">

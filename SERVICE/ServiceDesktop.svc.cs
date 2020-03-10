@@ -27,6 +27,7 @@ using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Traspaso.View;
 using ENTITY.inv.TipoAlmacen.view;
+using ENTITY.Plantilla;
 
 namespace SERVICE
 {
@@ -799,5 +800,56 @@ namespace SERVICE
 
         #endregion
 
+        #region Plantilla
+
+        public bool PlantillaGuardar(VPlantilla VPlantilla)
+        {
+            try
+            {
+                return new LPlantilla().Guardar(VPlantilla);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VPlantilla> PlantillaListar()
+        {
+            try
+            {
+                return new LPlantilla().Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool PlantillaDetalleGuardar(List<VPlantilla01> lista, int PlantillaId)
+        {
+            try
+            {
+                return new LPlantilla_01().Guardar(lista, PlantillaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VPlantilla01> PlantillaListarDetallePlantilla(int PlantillaId)
+        {
+            try
+            {
+                return new LPlantilla_01().ListarDetallePlantilla(PlantillaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

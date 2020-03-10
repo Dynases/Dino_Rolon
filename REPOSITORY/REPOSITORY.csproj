@@ -58,6 +58,8 @@
     <Compile Include="Clase\RCompraIngreso_01.cs" />
     <Compile Include="Clase\RCompra_01.cs" />
     <Compile Include="Clase\RLibreria.cs" />
+    <Compile Include="Clase\RPlantilla.cs" />
+    <Compile Include="Clase\RPlantilla01.cs" />
     <Compile Include="Clase\RPrecio.cs" />
     <Compile Include="Clase\RPrecioCategoria.cs" />
     <Compile Include="Clase\RProducto.cs" />
@@ -77,6 +79,8 @@
     <Compile Include="Interface\ICompraIngreso.cs" />
     <Compile Include="Interface\ICompraIngreso_01.cs" />
     <Compile Include="Interface\ILibreria.cs" />
+    <Compile Include="Interface\IPlantilla.cs" />
+    <Compile Include="Interface\IPlantilla_01.cs" />
     <Compile Include="Interface\IPrecio.cs" />
     <Compile Include="Interface\IPrecioCategoria.cs" />
     <Compile Include="Interface\IProducto.cs" />

@@ -491,6 +491,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1940.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1941.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -549,6 +552,8 @@
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreria.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProducto.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProductoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor.datasource" />
