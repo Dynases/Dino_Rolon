@@ -117,28 +117,10 @@
     <Compile Include="EntityDataModel\DiAvi\Seleccion_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Marco_TI002_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\SY000.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sysdiagrams.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\TB001.cs">
@@ -180,6 +162,9 @@
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,7 +182,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="EntityDataModel\DiAvi\DiAviModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
