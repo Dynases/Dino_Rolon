@@ -12,27 +12,33 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Traspaso
+    public partial class Venta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Traspaso()
+        public Venta()
         {
-            this.Traspaso_01 = new HashSet<Traspaso_01>();
+            this.Venta_01 = new HashSet<Venta_01>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> AlmacenOrigen { get; set; }
-        public Nullable<int> AlmacenDestino { get; set; }
-        public Nullable<int> Estado { get; set; }
-        public string UsuarioEnvio { get; set; }
-        public string UsuarioRecepcion { get; set; }
-        public Nullable<System.DateTime> FechaEnvio { get; set; }
-        public Nullable<System.DateTime> FechaRecepcion { get; set; }
+        public System.DateTime FechaRegistro { get; set; }
+        public System.DateTime FechaVenta { get; set; }
+        public string Usuario { get; set; }
+        public decimal Total { get; set; }
+        public int Estado { get; set; }
+        public int Almacen { get; set; }
+        public int Tipo { get; set; }
+        public int ClienteId { get; set; }
+        public string EncPreventa { get; set; }
+        public string EncVenta { get; set; }
+        public string EncEntrega { get; set; }
+        public string EncTransporte { get; set; }
+        public string EncRecepcion { get; set; }
         public string Observaciones { get; set; }
     
-        public virtual Almacen Almacen { get; set; }
         public virtual Almacen Almacen1 { get; set; }
+        public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Traspaso_01> Traspaso_01 { get; set; }
+        public virtual ICollection<Venta_01> Venta_01 { get; set; }
     }
 }

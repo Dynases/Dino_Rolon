@@ -64,7 +64,8 @@ namespace SERVICE
         [OperationContract]
         List<VClienteLista> ClientesListar();
 
-
+        [OperationContract]
+        DataTable ClienteListarEncabezado();
         #endregion
         ///**********PROVEEDOR***********************
         ///
@@ -265,7 +266,6 @@ namespace SERVICE
 
         [OperationContract]
         List<VPlantilla01> PlantillaListarDetallePlantilla(int PlantillaId);
-
         #endregion
         // TODO: agregue aquí sus operaciones de servicio
     }

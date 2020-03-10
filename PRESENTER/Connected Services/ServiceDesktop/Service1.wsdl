@@ -7,8 +7,8 @@
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
-      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
@@ -87,6 +87,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ClientesListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:ClientesListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ClienteListarEncabezado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClienteListarEncabezado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ClienteListarEncabezado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClienteListarEncabezadoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProveedorGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:ProveedorGuardar" />
@@ -441,6 +447,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ClientesListar" message="tns:IServiceDesktop_ClientesListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ClientesListarResponse" message="tns:IServiceDesktop_ClientesListar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ClienteListarEncabezado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado" message="tns:IServiceDesktop_ClienteListarEncabezado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse" message="tns:IServiceDesktop_ClienteListarEncabezado_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ProveedorGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar" message="tns:IServiceDesktop_ProveedorGuardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse" message="tns:IServiceDesktop_ProveedorGuardar_OutputMessage" />
@@ -735,6 +745,15 @@
     </wsdl:operation>
     <wsdl:operation name="ClientesListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ClientesListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteListarEncabezado">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -52,6 +52,7 @@ namespace SERVICE
             }
             return composite;
         }
+
         #region Cliente
         public List<VCliente> ClienteListar()
         {
@@ -121,6 +122,19 @@ namespace SERVICE
             try
             {
                 var listResult = new LCliente().ListarClientes();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable ClienteListarEncabezado()
+        {
+            try
+            {
+                var listResult = new LCliente().ListarEncabezado();
                 return listResult;
             }
             catch (Exception ex)

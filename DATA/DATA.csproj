@@ -120,12 +120,6 @@
     <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -136,9 +130,6 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\SY000.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sysdiagrams.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\TB001.cs">
@@ -168,6 +159,12 @@
     <Compile Include="EntityDataModel\DiAvi\Traspaso_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Venta.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Venta_01.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Vr_CompraIngreso.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -178,6 +175,9 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

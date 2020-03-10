@@ -46,7 +46,6 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng_01> CompraIng_01 { get; set; }
         public virtual Proveed Proveed { get; set; }
-        public virtual Almacen Almacen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seleccion> Seleccion { get; set; }
     }

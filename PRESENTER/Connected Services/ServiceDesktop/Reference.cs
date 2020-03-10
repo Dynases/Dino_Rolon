@@ -139,6 +139,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClientesListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClientesListarResponse")]
         System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
+        System.Data.DataTable ClienteListarEncabezado();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
         PRESENTER.ServiceDesktop.ProveedorGuardarResponse ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
         
@@ -846,6 +852,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync() {
             return base.Channel.ClientesListarAsync();
+        }
+        
+        public System.Data.DataTable ClienteListarEncabezado() {
+            return base.Channel.ClienteListarEncabezado();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync() {
+            return base.Channel.ClienteListarEncabezadoAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

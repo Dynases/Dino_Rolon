@@ -22,6 +22,7 @@ namespace DATA.EntityDataModel.DiAvi
             this.Seleccion_01 = new HashSet<Seleccion_01>();
             this.Plantilla_01 = new HashSet<Plantilla_01>();
             this.Precio = new HashSet<Precio>();
+            this.Venta_01 = new HashSet<Venta_01>();
         }
     
         public int Id { get; set; }
@@ -57,5 +58,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Plantilla_01> Plantilla_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Precio> Precio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venta_01> Venta_01 { get; set; }
     }
 }

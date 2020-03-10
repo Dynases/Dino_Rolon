@@ -299,9 +299,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 300);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 286);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(595, 40);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(589, 40);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
             // label2
@@ -766,7 +766,7 @@
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX1.Size = new System.Drawing.Size(125, 23);
             this.labelX1.TabIndex = 352;
-            this.labelX1.Text = "Sucursal Destino";
+            this.labelX1.Text = "Almacen Destino";
             // 
             // Cb_Origen
             // 
@@ -802,7 +802,7 @@
             this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX16.Size = new System.Drawing.Size(125, 23);
             this.labelX16.TabIndex = 350;
-            this.labelX16.Text = "Sucursal Origen";
+            this.labelX16.Text = "Almacen Origen";
             // 
             // lblId
             // 

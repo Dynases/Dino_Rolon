@@ -3,9 +3,7 @@ using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Transactions;
 
 namespace LOGIC.Class
@@ -13,10 +11,12 @@ namespace LOGIC.Class
     public class LCliente
     {
         protected ICliente iCliente;
+
         public LCliente()
         {
             iCliente = new RCliente();
         }
+
         #region Consultas
         public List<VCliente> Listar()
         {
@@ -51,6 +51,18 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable ListarEncabezado()
+        {
+            try
+            {
+                return iCliente.ListarEncabezado();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
         #region Transacciones
         public bool Guardar(VCliente vcliente, ref int idCliente)
@@ -89,8 +101,9 @@ namespace LOGIC.Class
         {
             try
             {
-                using (var scope = new TransactionScope())                {
-                   
+                using (var scope = new TransactionScope())
+                {
+
                     var result = iCliente.Eliminar(IdCliente);
                     scope.Complete();
                     return result;

@@ -3,7 +3,7 @@
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
+  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
@@ -158,6 +158,30 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" minOccurs="0" name="ClientesListarResult" nillable="true" type="q9:ArrayOfVClienteLista" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClienteListarEncabezado">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClienteListarEncabezadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClienteListarEncabezadoResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -728,7 +752,7 @@
   <xs:element name="Seleccion_01_ListarXId_CompraIng_01_XSeleccionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListarXId_CompraIng_01_XSeleccionResult" nillable="true" type="q48:ArrayOfVSeleccion_01_Lista" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" minOccurs="0" name="Seleccion_01_ListarXId_CompraIng_01_XSeleccionResult" nillable="true" type="q49:ArrayOfVSeleccion_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -740,15 +764,15 @@
   <xs:element name="Transformacion_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="Transformacion_ListaResult" nillable="true" type="q49:ArrayOfVTransformacion" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="Transformacion_ListaResult" nillable="true" type="q50:ArrayOfVTransformacion" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TransformacionGuardar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="vSeleccion" nillable="true" type="q50:VTransformacion" />
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="detalle" nillable="true" type="q51:ArrayOfVTransformacion_01" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" minOccurs="0" name="vSeleccion" nillable="true" type="q51:VTransformacion" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="detalle" nillable="true" type="q52:ArrayOfVTransformacion_01" />
         <xs:element minOccurs="0" name="Id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -771,7 +795,7 @@
   <xs:element name="TransformacionIngresoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionIngresoResult" nillable="true" type="q52:ArrayOfVTransformacionReport" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionIngresoResult" nillable="true" type="q53:ArrayOfVTransformacionReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -785,7 +809,7 @@
   <xs:element name="TransformacionSalidaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionSalidaResult" nillable="true" type="q53:ArrayOfVTransformacionReport" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" minOccurs="0" name="TransformacionSalidaResult" nillable="true" type="q54:ArrayOfVTransformacionReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -799,7 +823,7 @@
   <xs:element name="Transformacion_01_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_ListaResult" nillable="true" type="q54:ArrayOfVTransformacion_01" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_ListaResult" nillable="true" type="q55:ArrayOfVTransformacion_01" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -814,7 +838,7 @@
   <xs:element name="Transformacion_01_TraerFilaProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_TraerFilaProductoResult" nillable="true" type="q55:VTransformacion_01" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" minOccurs="0" name="Transformacion_01_TraerFilaProductoResult" nillable="true" type="q56:VTransformacion_01" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -826,7 +850,7 @@
   <xs:element name="Compra_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" minOccurs="0" name="Compra_ListaResult" nillable="true" type="q56:ArrayOfVCompraLista" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" minOccurs="0" name="Compra_ListaResult" nillable="true" type="q57:ArrayOfVCompraLista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -838,14 +862,14 @@
   <xs:element name="Compra_01_ListaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q57:ArrayOfVCompra_01_Lista" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" minOccurs="0" name="Compra_01_ListaResult" nillable="true" type="q58:ArrayOfVCompra_01_Lista" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PlantillaGuardar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="VPlantilla" nillable="true" type="q58:VPlantilla" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="VPlantilla" nillable="true" type="q59:VPlantilla" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -864,14 +888,14 @@
   <xs:element name="PlantillaListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarResult" nillable="true" type="q59:ArrayOfVPlantilla" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarResult" nillable="true" type="q60:ArrayOfVPlantilla" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PlantillaDetalleGuardar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="lista" nillable="true" type="q60:ArrayOfVPlantilla01" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="lista" nillable="true" type="q61:ArrayOfVPlantilla01" />
         <xs:element minOccurs="0" name="PlantillaId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -893,7 +917,7 @@
   <xs:element name="PlantillaListarDetallePlantillaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarDetallePlantillaResult" nillable="true" type="q61:ArrayOfVPlantilla01" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" minOccurs="0" name="PlantillaListarDetallePlantillaResult" nillable="true" type="q62:ArrayOfVPlantilla01" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

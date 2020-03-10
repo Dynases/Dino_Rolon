@@ -20,5 +20,7 @@ namespace DATA.EntityDataModel.DiAvi
         public Nullable<int> Cantidad { get; set; }
         public Nullable<int> Estado { get; set; }
         public string Observaciones { get; set; }
+    
+        public virtual Traspaso Traspaso { get; set; }
     }
 }

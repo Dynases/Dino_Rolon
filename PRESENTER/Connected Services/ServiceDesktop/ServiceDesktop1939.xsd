@@ -26,8 +26,8 @@
       <xs:element minOccurs="0" name="FechaVen" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
       <xs:element minOccurs="0" name="IdProvee" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSuc" type="xs:int" />
       <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoVenta" type="xs:int" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />

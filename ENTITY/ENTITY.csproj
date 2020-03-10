@@ -85,10 +85,10 @@
     <Compile Include="reg\PrecioCategoria\View\VPrecioCategoria.cs" />
     <Compile Include="reg\Precio\View\VPrecioLista.cs" />
     <Compile Include="Telefono\View\VTelefono.cs" />
+    <Compile Include="ven\view\VVenta.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cliente\Report\" />
-    <Folder Include="ven\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DATA\DATA.csproj">

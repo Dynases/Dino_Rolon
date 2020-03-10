@@ -12,8 +12,8 @@
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSucIngreso" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSucSalida" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacenIngreso" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacenSalida" type="xs:int" />
       <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sucursal1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sucursal2" nillable="true" type="xs:string" />

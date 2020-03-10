@@ -38,12 +38,10 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Plantilla> Plantilla { get; set; }
         public virtual DbSet<Plantilla_01> Plantilla_01 { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TB001> TB001 { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021> TI0021 { get; set; }
-        public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
@@ -57,52 +55,13 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<PrecioCat> PrecioCat { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Estaticos> Estaticos { get; set; }
+        public virtual DbSet<SY000> SY000 { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
+        public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<Venta_01> Venta_01 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {
@@ -137,45 +96,6 @@ namespace DATA.EntityDataModel.DiAvi
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_dg_TC0051_Result>("sp_dg_TC0051", tipoParameter, cncod1Parameter, cncod2Parameter, cnnumParameter, cndesc1Parameter, cndesc2Parameter, cnuactParameter);
         }
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
         public virtual ObjectResult<sp_Mam_SaldosProducto_Result> sp_Mam_SaldosProducto(Nullable<int> tipo, string yduact, Nullable<int> almacen, Nullable<int> linea)
         {
             var tipoParameter = tipo.HasValue ?
@@ -197,53 +117,9 @@ namespace DATA.EntityDataModel.DiAvi
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Mam_SaldosProducto_Result>("sp_Mam_SaldosProducto", tipoParameter, yduactParameter, almacenParameter, lineaParameter);
         }
     
-        public virtual int sp_Mam_TA001(Nullable<int> tipo, Nullable<int> aanumi, Nullable<int> aata2dep, Nullable<int> aata2depVenta, string aadesc, string aadir, string aatelf, Nullable<decimal> aalat, Nullable<decimal> aalong, string aaimg, string aauact)
+        public virtual int sp_Mam_TA001()
         {
-            var tipoParameter = tipo.HasValue ?
-                new ObjectParameter("tipo", tipo) :
-                new ObjectParameter("tipo", typeof(int));
-    
-            var aanumiParameter = aanumi.HasValue ?
-                new ObjectParameter("aanumi", aanumi) :
-                new ObjectParameter("aanumi", typeof(int));
-    
-            var aata2depParameter = aata2dep.HasValue ?
-                new ObjectParameter("aata2dep", aata2dep) :
-                new ObjectParameter("aata2dep", typeof(int));
-    
-            var aata2depVentaParameter = aata2depVenta.HasValue ?
-                new ObjectParameter("aata2depVenta", aata2depVenta) :
-                new ObjectParameter("aata2depVenta", typeof(int));
-    
-            var aadescParameter = aadesc != null ?
-                new ObjectParameter("aadesc", aadesc) :
-                new ObjectParameter("aadesc", typeof(string));
-    
-            var aadirParameter = aadir != null ?
-                new ObjectParameter("aadir", aadir) :
-                new ObjectParameter("aadir", typeof(string));
-    
-            var aatelfParameter = aatelf != null ?
-                new ObjectParameter("aatelf", aatelf) :
-                new ObjectParameter("aatelf", typeof(string));
-    
-            var aalatParameter = aalat.HasValue ?
-                new ObjectParameter("aalat", aalat) :
-                new ObjectParameter("aalat", typeof(decimal));
-    
-            var aalongParameter = aalong.HasValue ?
-                new ObjectParameter("aalong", aalong) :
-                new ObjectParameter("aalong", typeof(decimal));
-    
-            var aaimgParameter = aaimg != null ?
-                new ObjectParameter("aaimg", aaimg) :
-                new ObjectParameter("aaimg", typeof(string));
-    
-            var aauactParameter = aauact != null ?
-                new ObjectParameter("aauact", aauact) :
-                new ObjectParameter("aauact", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Mam_TA001", tipoParameter, aanumiParameter, aata2depParameter, aata2depVentaParameter, aadescParameter, aadirParameter, aatelfParameter, aalatParameter, aalongParameter, aaimgParameter, aauactParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Mam_TA001");
         }
     
         public virtual int sp_Mam_TA002(Nullable<int> tipo, Nullable<int> abnumi, string abdesc, string abdir, string abtelf, Nullable<decimal> ablat, Nullable<decimal> ablong, string abimg, Nullable<int> abest, string abuact)
@@ -471,28 +347,6 @@ namespace DATA.EntityDataModel.DiAvi
                 new ObjectParameter("almacen", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Marco_TI002_Result>("sp_Marco_TI002", tipoParameter, ibidParameter, ibfdocParameter, ibconcepParameter, ibobsParameter, ibestParameter, ibalmParameter, ibdepdestParameter, ibiddcParameter, ibuactParameter, productoParameter, fechaIParameter, fechaFParameter, almacenParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

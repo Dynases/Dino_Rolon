@@ -12,12 +12,17 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Venta_01
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> ProductoId { get; set; }
+        public Nullable<int> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+        public string Unidad { get; set; }
+        public Nullable<int> Dscto { get; set; }
+        public Nullable<int> VentaId { get; set; }
+    
+        public virtual Producto Producto { get; set; }
+        public virtual Venta Venta { get; set; }
     }
 }

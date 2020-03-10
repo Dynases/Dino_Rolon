@@ -36,9 +36,9 @@
     <MetadataFile FileName="ServiceDesktop8.xsd" MetadataType="Schema" ID="eb345085-cf08-4e31-aece-ee7e48d9d702" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd15" />
     <MetadataFile FileName="ServiceDesktop9.xsd" MetadataType="Schema" ID="6e48266d-6433-430d-b555-aba3954e4751" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd13" />
     <MetadataFile FileName="ServiceDesktop10.xsd" MetadataType="Schema" ID="2e27ecff-fc5a-4b53-9343-683b6863da01" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" />
-    <MetadataFile FileName="ServiceDesktop11.xsd" MetadataType="Schema" ID="614c4b43-7ca1-45c4-bf1a-32e294731590" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" />
-    <MetadataFile FileName="ServiceDesktop12.xsd" MetadataType="Schema" ID="a3fd86ff-139e-4255-bcaa-b87a66aa03ae" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" />
     <MetadataFile FileName="ServiceDesktop13.xsd" MetadataType="Schema" ID="0805060c-542d-4cd2-992e-0893179f8127" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceDesktop12.xsd" MetadataType="Schema" ID="a3fd86ff-139e-4255-bcaa-b87a66aa03ae" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" />
+    <MetadataFile FileName="ServiceDesktop11.xsd" MetadataType="Schema" ID="614c4b43-7ca1-45c4-bf1a-32e294731590" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" />
     <MetadataFile FileName="ServiceDesktop14.xsd" MetadataType="Schema" ID="01c5359e-7a48-4bab-9ea9-62c76824abf0" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" />
     <MetadataFile FileName="ServiceDesktop1941.xsd" MetadataType="Schema" ID="e23f8a11-007b-4b66-9ec1-ccd9703310f0" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd23" />
     <MetadataFile FileName="ServiceDesktop15.xsd" MetadataType="Schema" ID="1d424179-b34f-4e57-8295-73e9a4320225" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" />
