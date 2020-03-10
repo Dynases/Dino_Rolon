@@ -373,6 +373,16 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01Response")]
         System.Threading.Tasks.Task<ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[]> Seleccion_01_ListarXId_CompraIng_01Async(int IdCompraInreso_01, int tipo);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" +
+            "", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" +
+            "Response")]
+        ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] Seleccion_01_ListarXId_CompraIng_01_XSeleccion(int IdCompraInreso_01);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" +
+            "", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" +
+            "Response")]
+        System.Threading.Tasks.Task<ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[]> Seleccion_01_ListarXId_CompraIng_01_XSeleccionAsync(int IdCompraInreso_01);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse")]
         ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista();
         
@@ -1156,6 +1166,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[]> Seleccion_01_ListarXId_CompraIng_01Async(int IdCompraInreso_01, int tipo) {
             return base.Channel.Seleccion_01_ListarXId_CompraIng_01Async(IdCompraInreso_01, tipo);
+        }
+        
+        public ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] Seleccion_01_ListarXId_CompraIng_01_XSeleccion(int IdCompraInreso_01) {
+            return base.Channel.Seleccion_01_ListarXId_CompraIng_01_XSeleccion(IdCompraInreso_01);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[]> Seleccion_01_ListarXId_CompraIng_01_XSeleccionAsync(int IdCompraInreso_01) {
+            return base.Channel.Seleccion_01_ListarXId_CompraIng_01_XSeleccionAsync(IdCompraInreso_01);
         }
         
         public ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista() {

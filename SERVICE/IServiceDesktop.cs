@@ -212,6 +212,8 @@ namespace SERVICE
         List<VSeleccion_01_Lista> Seleccion_01_Lista();
         [OperationContract]
         List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01(int IdCompraInreso_01, int tipo);
+        [OperationContract]
+        List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01_XSeleccion(int IdCompraInreso_01);
         #endregion
         ///**********TRANSFORMACION******************
         ///

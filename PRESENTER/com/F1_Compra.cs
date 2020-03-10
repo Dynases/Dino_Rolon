@@ -313,7 +313,7 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().Where(A => A.Id == _idOriginal).ToList();
                     var Lista = ListaCompleta.First();
                     Tb_Id.Text = Lista.Id.ToString();
-                    Cb_Sucursal.Value = Lista.IdSuc;
+                    Cb_Sucursal.Value = Lista.IdAlmacen;
                     _IdProveedor = Lista.IdProvee;
                     Tb_Proveedor.Text = Lista.Proveedor.ToString();
                     Tb_FechaVenta.Value = Lista.FechaDoc;

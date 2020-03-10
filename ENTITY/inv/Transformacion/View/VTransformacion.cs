@@ -9,9 +9,9 @@ namespace ENTITY.inv.Transformacion.View
    public class VTransformacion
     {
         public int Id { get; set; }
-        public int IdSucSalida { get; set; }
+        public int IdAlmacenSalida { get; set; }
         public string Sucursal1 { get; set; }
-        public int IdSucIngreso { get; set; }
+        public int IdAlmacenIngreso { get; set; }
         public string Sucursal2 { get; set; }
         public int Estado { get; set; }
         public string Observ { get; set; }

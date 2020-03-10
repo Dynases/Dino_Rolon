@@ -90,6 +90,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public List<VSeleccion_01_Lista> ListarXId_CompraIng_XSeleccion(int Id)
+        {
+            try
+            {
+                return iSeleccion_01.ListarXId_CompraIng_XSeleccion(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
     #endregion
 

@@ -30,16 +30,16 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Libreria> Libreria { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<Compra_01> Compra_01 { get; set; }
+        public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<Proveed> Proveed { get; set; }
         public virtual DbSet<Proveed_01> Proveed_01 { get; set; }
         public virtual DbSet<Seleccion> Seleccion { get; set; }
         public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
-        public virtual DbSet<TB001> TB001 { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021> TI0021 { get; set; }
-        public virtual DbSet<ZY0021> ZY0021 { get; set; }
+        public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
         public virtual DbSet<Transformacion> Transformacion { get; set; }
@@ -51,13 +51,10 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<PrecioCat> PrecioCat { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Estaticos> Estaticos { get; set; }
-        public virtual DbSet<SY000> SY000 { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
-        public virtual DbSet<CompraIng> CompraIng { get; set; }
-        public virtual DbSet<Almacen> Almacen { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

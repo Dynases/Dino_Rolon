@@ -34,7 +34,7 @@ namespace REPOSITORY.Clase
                         db.CompraIng.Add(CompraIngreso);
                     }
 
-                    CompraIngreso.IdSucur = vCompraIngreso.IdSucur;
+                    CompraIngreso.IdAlmacen = vCompraIngreso.IdAlmacen;
                     CompraIngreso.IdProvee = vCompraIngreso.IdProvee;
                     CompraIngreso.Estado = vCompraIngreso.estado;
                     CompraIngreso.NumNota = vCompraIngreso.NumNota;
@@ -167,7 +167,7 @@ namespace REPOSITORY.Clase
                                       select new VCompraIngresoLista
                                       {
                                           Id = a.Id,
-                                          IdSucur = a.IdSucur,
+                                          IdAlmacen = a.IdAlmacen,
                                           IdProvee = a.IdProvee,                                         
                                           CantidadSemanas = a.EdadSemana,
                                           Proveedor = c.Descrip,

@@ -278,8 +278,8 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista().Where(A => A.Id == _idOriginal).ToList();
                     var Lista = ListaCompleta.First();
                     Tb_Id.Text = Lista.Id.ToString();
-                    Cb_Almacen1.Value = Lista.IdSucSalida;
-                    Cb_Almacen2.Value = Lista.IdSucIngreso;
+                    Cb_Almacen1.Value = Lista.IdAlmacenSalida;
+                    Cb_Almacen2.Value = Lista.IdAlmacenIngreso;
                     Tb_Observacion.Text = Lista.Observ;               
                     MP_CargarDetalle(Convert.ToInt32(Tb_Id.Text));                
                     MP_ObtenerCalculo();
@@ -712,8 +712,8 @@ namespace PRESENTER.com
 
             VTransformacion CompraIngreso = new VTransformacion()
             {
-                IdSucIngreso = Convert.ToInt32(Cb_Almacen2.Value),
-                IdSucSalida = Convert.ToInt32(Cb_Almacen1.Value),
+                IdAlmacenIngreso = Convert.ToInt32(Cb_Almacen2.Value),
+                IdAlmacenSalida = Convert.ToInt32(Cb_Almacen1.Value),
                 Observ = Tb_Observacion.Text,
                 Fecha = DateTime.Now.Date,
                 Hora = DateTime.Now.ToString("hh:mm"),

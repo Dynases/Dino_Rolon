@@ -9,7 +9,7 @@ namespace ENTITY.com.CompraIngreso.View
     public class VCompraIngresoLista
     {
         public int Id { get; set; }
-        public int IdSucur { get; set; }
+        public int IdAlmacen { get; set; }
         public int IdProvee { get; set; }
         public int estado { get; set; }
         public int IdProvee_01 { get; set; }

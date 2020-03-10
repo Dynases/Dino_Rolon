@@ -53,7 +53,7 @@ namespace PRESENTER.com
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
-                Tb_MERMA.Value = 0;
+                Tb_Merma.Value = 0;
             }
             catch (Exception ex)
             {
@@ -137,8 +137,7 @@ namespace PRESENTER.com
         private void MP_CargarDetalle(int id)
         {
             try
-            {              
-                //Consulta segun un Id de Ingreso
+            {                
                 var lresult = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(id,2).ToList();
                 if (lresult.Count() > 0)
                 {
@@ -199,6 +198,7 @@ namespace PRESENTER.com
         {
             try
             {
+              
                 seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_Lista().Where(a => a.IdSeleccion == id).ToList();
                 ArmarDetalle(seleccion_01);
             }
@@ -268,13 +268,25 @@ namespace PRESENTER.com
             }
         }
 
+
         private void MP_CargarDetalle_Nuevo(int IdCompraIngreso_01)
         {
             try
             {
                 //Consulta segun un Categoria
-                seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01, 1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+                //Consulta segun un Id de Ingreso
 
+                if (_TipoCompra == 1)
+                {
+                    seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01_XSeleccion(IdCompraIngreso_01).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+                }
+                else
+                {
+                    if (_TipoCompra == 2)
+                    {
+                        seleccion_01 = new ServiceDesktop.ServiceDesktopClient().Seleccion_01_ListarXId_CompraIng_01(IdCompraIngreso_01, 1).Where(a => !a.Producto.Contains("SIN SELECCION")).ToList();
+                    }
+                }              
                 ArmarDetalle(seleccion_01);
             }
             catch (Exception ex)
@@ -405,20 +417,20 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Seleccion_Lista();
                     var lista = (from a in ListaCompleta
                                  where a.Id.Equals(_idOriginal)
-                                 select new { a.Id, a.IdCompraIng, a.Granja, a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad }).ToList();
-
-                    foreach (var seleccion in lista)
-                    {
-                        Tb_Id.Text = seleccion.Id.ToString();
-                        Tb_NUmGranja.Text = seleccion.Granja.ToString();
-                        Tb_IdCompraIngreso.Text = seleccion.IdCompraIng.ToString();
-                        Tb_FechaEnt.Value = seleccion.FechaEntrega;
-                        Tb_FechaRec.Value = seleccion.FechaRecepcion;
-                        Tb_Placa.Text = seleccion.Placa == "" ? "" : seleccion.Placa;
-                        tb_Proveedor.Text = seleccion.Proveedor.ToString();
-                        Cb_Tipo.Value = (int)seleccion.Tipo;
-                        Tb_Edad.Text = seleccion.Edad.ToString();
-                    }
+                                 select new { a.Id, a.IdCompraIng, a.Granja, a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad }).FirstOrDefault();
+                    Tb_Id.Text = lista.Id.ToString();
+                    Tb_NUmGranja.Text = lista.Granja.ToString();
+                    Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
+                    Tb_FechaEnt.Value = lista.FechaEntrega;
+                    Tb_FechaRec.Value = lista.FechaRecepcion;
+                    Tb_Placa.Text = lista.Placa == "" ? "" : lista.Placa;
+                    tb_Proveedor.Text = lista.Proveedor.ToString();
+                    Cb_Tipo.Value = (int)lista.Tipo;
+                    Tb_Edad.Text = lista.Edad.ToString();
+                    var LTipoCompra = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(lista.IdCompraIng).ToList();
+                    _TipoCompra = (from a in LTipoCompra
+                                   select new { a.TipoCompra }).First().TipoCompra;
+                    btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
                     MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                     MP_CargarDetalle2(Convert.ToInt32(Tb_Id.Text));
                     MP_ObtenerCalculo();
@@ -436,20 +448,25 @@ namespace PRESENTER.com
             {
                 Dgv_Detalle.UpdateData();
                 Dgv_Seleccion.UpdateData();
-                decimal Precio = 0;
-                if (Tb_IdCompraIngreso.Text != "")
-                {
-                    var lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(Convert.ToInt32(Tb_IdCompraIngreso.Text)).ToList();
-                    Precio = lresult.Select(c => c.PrecioCost).Sum() / lresult.Where(c => c.PrecioCost > 0).Select(d => d.PrecioCost).Count();
-                }              
+               // decimal Precio = 0;
+                //if (Tb_IdCompraIngreso.Text != "")
+                //{                    
+                //   var lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(Convert.ToInt32(Tb_IdCompraIngreso.Text)).ToList();
+                //   Precio = lresult.Select(c => c.PrecioCost).Sum() / lresult.Where(c => c.PrecioCost > 0).Select(d => d.PrecioCost).Count();
+                //}           
+                //Totales de recepcion
                 Tb_Recep_TCantidad.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
-                Tb_Recep_TPrecio.Value = Convert.ToDouble(Precio);
-                Tb_Recep_Total.Value = Tb_Recep_TCantidad.Value * Tb_Recep_TPrecio.Value;
+                Tb_Recep_Total.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns["Total"], AggregateFunction.Sum));
+                Tb_Recep_TPrecio.Value = Tb_Recep_Total.Value / Tb_Recep_TCantidad.Value;
+
+                //Totales de seleccion
                 Tb_TCantidad.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
-                Tb_TPrecio.Value = Convert.ToDouble(Precio);
+                Tb_Total.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
                 //Tb_Selecc_TPrecio.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Precio"], AggregateFunction.Sum)) / Dgv_Seleccion.RowCount;
-                Tb_Total.Value = Tb_TCantidad.Value * Tb_TPrecio.Value;
-                
+                //Merma              
+                Tb_TPrecio.Value = Tb_Total.Value / Tb_TCantidad.Value;
+                Tb_Merma.Value = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
+                tb_MermaPorc.Value = Tb_Merma.Value / Tb_Recep_TCantidad.Value;
             }
             catch (Exception ex)
             {
@@ -522,8 +539,7 @@ namespace PRESENTER.com
                         fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
                     }
                     ArmarDetalle(seleccion_01);
-                }
-                
+                }               
             }
             catch (Exception ex)
             {
@@ -582,6 +598,7 @@ namespace PRESENTER.com
                         MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                         MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                         MP_ObtenerCalculo();
+                        btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
                     }
                 }
             }
@@ -624,6 +641,50 @@ namespace PRESENTER.com
                 Dgv_GBuscador.Row = _MPos;
             }
         }
+        private void btn_Seleccionar_Click(object sender, EventArgs e)
+        {
+            Dgv_Seleccion.UpdateData();
+            Double totalSel, totalCant, precioProrateo, precioAvg;
+            if (_TipoCompra == 1)
+            {
+                //merma = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
+                //mermaPorc = merma / Tb_Recep_TCantidad.Value;
+                //Tb_Merma.Value = merma;
+                var detRecion = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource);
+                Dgv_Seleccion.UpdateData();
+                seleccion_01 = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource);
+                foreach (var filaRep in detRecion)
+                {
+                    foreach (var filaSel in seleccion_01)
+                    {
+                        if (filaRep.IdProducto == filaSel.IdProducto)
+                        {
+                            filaSel.Total = filaSel.Cantidad * filaRep.Precio;
+                        }
+                    }
+                }
+                ArmarDetalle(seleccion_01);
+                Dgv_Seleccion.UpdateData();
+                totalSel = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
+                totalCant = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
+                precioProrateo = (Tb_Recep_Total.Value - totalSel) / totalCant;
+
+                foreach (var filaRep in detRecion)
+                {
+                    foreach (var filaSel in seleccion_01)
+                    {
+                        if (filaRep.IdProducto == filaSel.IdProducto)
+                        {
+                            filaSel.Precio = (filaRep.Precio + Convert.ToDecimal(precioProrateo));
+                            filaSel.Total = filaSel.Precio * filaRep.Cantidad;
+                            
+                        }
+                    }
+                }             
+                ArmarDetalle(seleccion_01);
+                MP_ObtenerCalculo();
+             }
+        }
         #endregion
         #region Metodo heredados
         public override bool MH_NuevoRegistro()
@@ -633,7 +694,7 @@ namespace PRESENTER.com
 
             VSeleccion vSeleccion = new VSeleccion()
             {
-                IdSucur = Convert.ToInt32(Cb_Almacen.Value),
+                IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
                 IdCompraIng = Convert.ToInt32(Tb_IdCompraIngreso.Text),
                 Estado = (int)ENEstado.GUARDADO,
                 Cantidad = Convert.ToDecimal(Tb_TCantidad.Value),
@@ -642,7 +703,7 @@ namespace PRESENTER.com
                 Fecha = DateTime.Now.Date,
                 Hora = DateTime.Now.ToString("hh:mm"),
                 Usuario = UTGlobal.Usuario,
-                Merma = Convert.ToDecimal(Tb_MERMA.Value)
+                Merma = Convert.ToDecimal(Tb_Merma.Value)
             };
             int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
             int idAux = id;
@@ -740,5 +801,7 @@ namespace PRESENTER.com
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
         }
+
+        
     }
 }

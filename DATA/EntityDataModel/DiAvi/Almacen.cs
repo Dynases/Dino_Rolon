@@ -19,6 +19,7 @@ namespace DATA.EntityDataModel.DiAvi
         {
             this.Compra = new HashSet<Compra>();
             this.CompraIng = new HashSet<CompraIng>();
+            this.Seleccion = new HashSet<Seleccion>();
             this.Precio = new HashSet<Precio>();
             this.Traspaso = new HashSet<Traspaso>();
             this.Traspaso1 = new HashSet<Traspaso>();
@@ -42,6 +43,8 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Compra> Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng> CompraIng { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Seleccion> Seleccion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Precio> Precio { get; set; }
         public virtual Sucursal Sucursal { get; set; }

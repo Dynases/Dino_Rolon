@@ -21,8 +21,8 @@ namespace DATA.EntityDataModel.DiAvi
         }
     
         public int Id { get; set; }
-        public int IdSucSalida { get; set; }
-        public int IdSucIngreso { get; set; }
+        public int IdAlmacenSalida { get; set; }
+        public int IdAlmacenIngreso { get; set; }
         public int Estado { get; set; }
         public string Observ { get; set; }
         public System.DateTime Fecha { get; set; }

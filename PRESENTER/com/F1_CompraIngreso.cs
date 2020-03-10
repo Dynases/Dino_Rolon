@@ -98,7 +98,7 @@ namespace PRESENTER.com
         }
         private void Dgv_Detalle_EditingCell(object sender, EditingCellEventArgs e)
         {
-            if (Tb_Cod.ReadOnly == false)
+            if (Tb_NUmGranja.ReadOnly == false)
             {
                 if (e.Column.Index == Dgv_Detalle.RootTable.Columns[3].Index ||
                     e.Column.Index == Dgv_Detalle.RootTable.Columns[4].Index ||
@@ -144,9 +144,8 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-
                 MP_MostrarMensajeError(ex.Message);
-            }           
+            }
         }
         private void CalcularFila()
         {
@@ -238,7 +237,7 @@ namespace PRESENTER.com
                         Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
                         _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
                         tb_Proveedor.Text = Row.Cells["Descrip"].Value.ToString();
-                        Tb_Edad.Text = Row.Cells["Id"].Value.ToString();
+                        Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
                     }
                 }
             }
@@ -531,7 +530,6 @@ namespace PRESENTER.com
         }
         private void MP_Habilitar()
         {
-            Tb_Cod.ReadOnly = false;
             Tb_NUmGranja.ReadOnly = false;
             Tb_Placa.ReadOnly = false;
             Cb_Tipo.Enabled = true;
@@ -645,8 +643,11 @@ namespace PRESENTER.com
             //Tb_MTotal.Value = Tb_TSaldoTo.Value + Tb_MGrupos.Value + Tb_MMaples.Value + Tb_MCantidad.Value;
             Dgv_Detalle.UpdateData();
             Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[7], AggregateFunction.Sum));
-            Tb_TPrecio.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[8], AggregateFunction.Sum)) / Dgv_Detalle.RowCount;
-            Tb_TSaldoTo.Value = Tb_TotalFisico.Value * Tb_TPrecio.Value;
+            Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[10], AggregateFunction.Sum));
+            //Tb_TPrecio.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[8], AggregateFunction.Average));
+            // Tb_TPrecio.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[8], AggregateFunction.Average));
+            //  Tb_TSaldoTo.Value = Tb_TotalFisico.Value * Tb_TPrecio.Value;
+            Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
             Tb_TotalMaples.Value = Tb_TotalFisico.Value / 30;
         }
         private void MP_Filtrar(int tipo)
@@ -678,7 +679,7 @@ namespace PRESENTER.com
 
             VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
             {
-                IdSucur = 2,
+                IdAlmacen = 2,
                 IdProvee = _idProveedor,
                 estado = 1,
                 NumNota = Tb_NUmGranja.Text,

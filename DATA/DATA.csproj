@@ -129,12 +129,6 @@
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\SY000.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\TB001.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\TI001.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -169,9 +163,6 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\V_NotaCompraIngreso.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

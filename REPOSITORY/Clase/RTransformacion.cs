@@ -35,8 +35,8 @@ namespace REPOSITORY.Clase
                         transformacion = new Transformacion();
                         db.Transformacion.Add(transformacion);
                     }
-                    transformacion.IdSucSalida = vTransformacion.IdSucSalida;
-                    transformacion.IdSucIngreso = vTransformacion.IdSucIngreso;
+                    transformacion.IdAlmacenSalida = vTransformacion.IdAlmacenSalida;
+                    transformacion.IdAlmacenIngreso = vTransformacion.IdAlmacenIngreso;
                     transformacion.Estado = (int)ENEstado.GUARDADO;
                     transformacion.Observ = vTransformacion.Observ;          
                     transformacion.Fecha = vTransformacion.Fecha;
@@ -62,14 +62,14 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Transformacion
-                                      join b in db.Sucursal on a.IdSucIngreso equals b.Id
-                                      join c in db.Sucursal on a.IdSucSalida equals c.Id
+                                      join b in db.Sucursal on a.IdAlmacenIngreso equals b.Id
+                                      join c in db.Sucursal on a.IdAlmacenSalida equals c.Id
                                       select new VTransformacion
                                       {
                                           Id = a.Id,
-                                          IdSucSalida = a.IdSucSalida,
+                                          IdAlmacenSalida = a.IdAlmacenSalida,
                                           Sucursal2 = c.Descrip,
-                                          IdSucIngreso = a.IdSucIngreso,
+                                          IdAlmacenIngreso = a.IdAlmacenIngreso,
                                           Sucursal1 = b.Descrip,
                                           Observ = a.Observ,
                                           Fecha = a.Fecha,

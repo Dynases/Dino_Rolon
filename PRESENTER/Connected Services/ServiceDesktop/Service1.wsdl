@@ -315,6 +315,12 @@
   <wsdl:message name="IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_OutputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_01_ListarXId_CompraIng_01Response" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_XSeleccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:Seleccion_01_ListarXId_CompraIng_01_XSeleccion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_XSeleccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Seleccion_01_ListarXId_CompraIng_01_XSeleccionResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Transformacion_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_Lista" />
   </wsdl:message>
@@ -555,6 +561,10 @@
     <wsdl:operation name="Seleccion_01_ListarXId_CompraIng_01">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01" message="tns:IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01Response" message="tns:IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Seleccion_01_ListarXId_CompraIng_01_XSeleccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" message="tns:IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_XSeleccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccionResponse" message="tns:IServiceDesktop_Seleccion_01_ListarXId_CompraIng_01_XSeleccion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Transformacion_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista" message="tns:IServiceDesktop_Transformacion_Lista_InputMessage" />
@@ -1016,6 +1026,15 @@
     </wsdl:operation>
     <wsdl:operation name="Seleccion_01_ListarXId_CompraIng_01">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Seleccion_01_ListarXId_CompraIng_01_XSeleccion">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Seleccion_01_ListarXId_CompraIng_01_XSeleccion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

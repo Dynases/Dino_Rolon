@@ -14,5 +14,6 @@ namespace REPOSITORY.Interface
         bool GuardarModificar_CompraIngreso(List<VSeleccion_01_Lista> Lista, int IdCompraIngreso);
         List<VSeleccion_01_Lista> Listar();
         List<VSeleccion_01_Lista> ListarXId_CompraIng(int id, int tipo);
+        List<VSeleccion_01_Lista> ListarXId_CompraIng_XSeleccion(int id);
         }
 }
