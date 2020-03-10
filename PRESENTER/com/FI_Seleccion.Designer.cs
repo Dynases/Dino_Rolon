@@ -39,6 +39,9 @@
             this.GPanel_Detalle = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Seleccionar = new DevComponents.DotNetBar.ButtonX();
+            this.tb_MermaPorc = new DevComponents.Editors.DoubleInput();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Merma = new DevComponents.Editors.DoubleInput();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Total = new DevComponents.Editors.DoubleInput();
@@ -71,9 +74,6 @@
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
-            this.tb_MermaPorc = new DevComponents.Editors.DoubleInput();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
-            this.btn_Seleccionar = new DevComponents.DotNetBar.ButtonX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -96,6 +96,7 @@
             this.GPanel_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_MermaPorc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Merma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Total)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).BeginInit();
@@ -109,7 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_MermaPorc)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
@@ -418,6 +418,62 @@
             this.panel1.Size = new System.Drawing.Size(799, 112);
             this.panel1.TabIndex = 0;
             // 
+            // btn_Seleccionar
+            // 
+            this.btn_Seleccionar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btn_Seleccionar.BackColor = System.Drawing.Color.White;
+            this.btn_Seleccionar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btn_Seleccionar.FadeEffect = false;
+            this.btn_Seleccionar.FocusCuesEnabled = false;
+            this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Seleccionar.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
+            this.btn_Seleccionar.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.btn_Seleccionar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btn_Seleccionar.Location = new System.Drawing.Point(15, 39);
+            this.btn_Seleccionar.Name = "btn_Seleccionar";
+            this.btn_Seleccionar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btn_Seleccionar.Size = new System.Drawing.Size(202, 39);
+            this.btn_Seleccionar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btn_Seleccionar.SymbolSize = 5F;
+            this.btn_Seleccionar.TabIndex = 374;
+            this.btn_Seleccionar.Text = "SELECCIONAR";
+            this.btn_Seleccionar.Visible = false;
+            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
+            // 
+            // tb_MermaPorc
+            // 
+            // 
+            // 
+            // 
+            this.tb_MermaPorc.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.tb_MermaPorc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_MermaPorc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.tb_MermaPorc.DisplayFormat = "0.0000000";
+            this.tb_MermaPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_MermaPorc.Increment = 1D;
+            this.tb_MermaPorc.Location = new System.Drawing.Point(561, 63);
+            this.tb_MermaPorc.MinValue = 0D;
+            this.tb_MermaPorc.Name = "tb_MermaPorc";
+            this.tb_MermaPorc.Size = new System.Drawing.Size(65, 22);
+            this.tb_MermaPorc.TabIndex = 347;
+            this.tb_MermaPorc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
+            // 
+            // labelX13
+            // 
+            this.labelX13.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX13.ForeColor = System.Drawing.Color.White;
+            this.labelX13.Location = new System.Drawing.Point(494, 63);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX13.Size = new System.Drawing.Size(61, 23);
+            this.labelX13.TabIndex = 348;
+            this.labelX13.Text = "MERMA %";
+            // 
             // Tb_Merma
             // 
             // 
@@ -677,7 +733,6 @@
             this.Cb_Almacen.Size = new System.Drawing.Size(195, 22);
             this.Cb_Almacen.TabIndex = 340;
             this.Cb_Almacen.Tag = "1";
-            this.Cb_Almacen.Visible = false;
             this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // labelX11
@@ -695,7 +750,6 @@
             this.labelX11.Size = new System.Drawing.Size(71, 23);
             this.labelX11.TabIndex = 341;
             this.labelX11.Text = "Almacen";
-            this.labelX11.Visible = false;
             // 
             // Tb_Id
             // 
@@ -1051,62 +1105,6 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
-            // tb_MermaPorc
-            // 
-            // 
-            // 
-            // 
-            this.tb_MermaPorc.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.tb_MermaPorc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_MermaPorc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.tb_MermaPorc.DisplayFormat = "0.0000000";
-            this.tb_MermaPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_MermaPorc.Increment = 1D;
-            this.tb_MermaPorc.Location = new System.Drawing.Point(561, 63);
-            this.tb_MermaPorc.MinValue = 0D;
-            this.tb_MermaPorc.Name = "tb_MermaPorc";
-            this.tb_MermaPorc.Size = new System.Drawing.Size(65, 22);
-            this.tb_MermaPorc.TabIndex = 347;
-            this.tb_MermaPorc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            // 
-            // labelX13
-            // 
-            this.labelX13.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX13.ForeColor = System.Drawing.Color.White;
-            this.labelX13.Location = new System.Drawing.Point(494, 63);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX13.Size = new System.Drawing.Size(61, 23);
-            this.labelX13.TabIndex = 348;
-            this.labelX13.Text = "MERMA %";
-            // 
-            // btn_Seleccionar
-            // 
-            this.btn_Seleccionar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btn_Seleccionar.BackColor = System.Drawing.Color.White;
-            this.btn_Seleccionar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btn_Seleccionar.FadeEffect = false;
-            this.btn_Seleccionar.FocusCuesEnabled = false;
-            this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Seleccionar.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
-            this.btn_Seleccionar.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.btn_Seleccionar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btn_Seleccionar.Location = new System.Drawing.Point(15, 39);
-            this.btn_Seleccionar.Name = "btn_Seleccionar";
-            this.btn_Seleccionar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btn_Seleccionar.Size = new System.Drawing.Size(202, 39);
-            this.btn_Seleccionar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btn_Seleccionar.SymbolSize = 5F;
-            this.btn_Seleccionar.TabIndex = 374;
-            this.btn_Seleccionar.Text = "SELECCIONAR";
-            this.btn_Seleccionar.Visible = false;
-            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
-            // 
             // FI_Seleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1139,6 +1137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_MermaPorc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Merma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Total)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).EndInit();
@@ -1153,7 +1152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_MermaPorc)).EndInit();
             this.ResumeLayout(false);
 
         }

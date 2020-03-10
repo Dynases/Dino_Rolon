@@ -1141,10 +1141,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="PrecioCat" EntityType="DiAviModel.PrecioCat" />
           <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
           <EntitySet Name="Estaticos" EntityType="DiAviModel.Estaticos" />
-          <EntitySet Name="V_NotaCompraIngreso" EntityType="DiAviModel.V_NotaCompraIngreso" />
-          <EntitySet Name="Vr_CompraIngreso" EntityType="DiAviModel.Vr_CompraIngreso" />
-          <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
-          <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
           <AssociationSet Name="FK_Compra_01_Compra" Association="DiAviModel.FK_Compra_01_Compra">
             <End Role="Compra" EntitySet="Compra" />
             <End Role="Compra_01" EntitySet="Compra_01" />
@@ -1229,6 +1225,10 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Precio" EntitySet="Precio" />
           </AssociationSet>
+          <EntitySet Name="V_NotaCompraIngreso" EntityType="DiAviModel.V_NotaCompraIngreso" />
+          <EntitySet Name="Vr_CompraIngreso" EntityType="DiAviModel.Vr_CompraIngreso" />
+          <EntitySet Name="Vr_TransformacionIngreso" EntityType="DiAviModel.Vr_TransformacionIngreso" />
+          <EntitySet Name="Vr_TransformacionSalida" EntityType="DiAviModel.Vr_TransformacionSalida" />
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -1693,96 +1693,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Orden" Type="Int32" Nullable="false" />
           <Property Name="Descrip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="V_NotaCompraIngreso">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="NumNota" />
-            <PropertyRef Name="FechaRec" />
-            <PropertyRef Name="FechaEnt" />
-            <PropertyRef Name="Proveedor" />
-            <PropertyRef Name="IdSpyre" />
-            <PropertyRef Name="MarcaTipo" />
-            <PropertyRef Name="IdProduc" />
-            <PropertyRef Name="Producto" />
-            <PropertyRef Name="TotalCant" />
-            <PropertyRef Name="PrecioCost" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
-          <Property Name="FechaRec" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MarcaTipo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="IdProduc" Type="Int32" Nullable="false" />
-          <Property Name="Producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Vr_CompraIngreso">
-          <Key>
-            <PropertyRef Name="NotaRecepcion" />
-            <PropertyRef Name="NotaGranja" />
-            <PropertyRef Name="FechaRecep" />
-            <PropertyRef Name="FechaEnt" />
-            <PropertyRef Name="Codaparov" />
-            <PropertyRef Name="Proveedor" />
-            <PropertyRef Name="Descrip" />
-            <PropertyRef Name="TotalCant" />
-            <PropertyRef Name="PrecioCost" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="NotaRecepcion" Type="Int32" Nullable="false" />
-          <Property Name="NotaGranja" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
-          <Property Name="FechaRecep" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Codaparov" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Vr_TransformacionIngreso">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="SucursalIngreso" />
-            <PropertyRef Name="SucursalSalida" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="IdProducto" />
-            <PropertyRef Name="Descrip" />
-            <PropertyRef Name="TotalProd" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="SucursalIngreso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SucursalSalida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Observ" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalProd" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Vr_TransformacionSalida">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="SucursalIngreso" />
-            <PropertyRef Name="SucursalSalida" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="IdProducto_Mat" />
-            <PropertyRef Name="Descrip" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="SucursalIngreso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SucursalSalida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Observ" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdProducto_Mat" Type="Int32" Nullable="false" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
         <Association Name="FK_Compra_01_Compra">
           <End Type="DiAviModel.Compra" Role="Compra" Multiplicity="1" />
           <End Type="DiAviModel.Compra_01" Role="Compra_01" Multiplicity="*" />
@@ -2035,6 +1945,96 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="V_NotaCompraIngreso">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="NumNota" />
+            <PropertyRef Name="FechaRec" />
+            <PropertyRef Name="FechaEnt" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="IdSpyre" />
+            <PropertyRef Name="MarcaTipo" />
+            <PropertyRef Name="IdProduc" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="TotalCant" />
+            <PropertyRef Name="PrecioCost" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MarcaTipo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IdProduc" Type="Int32" Nullable="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vr_CompraIngreso">
+          <Key>
+            <PropertyRef Name="NotaRecepcion" />
+            <PropertyRef Name="NotaGranja" />
+            <PropertyRef Name="FechaRecep" />
+            <PropertyRef Name="FechaEnt" />
+            <PropertyRef Name="Codaparov" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="TotalCant" />
+            <PropertyRef Name="PrecioCost" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="NotaRecepcion" Type="Int32" Nullable="false" />
+          <Property Name="NotaGranja" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRecep" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Codaparov" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vr_TransformacionIngreso">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SucursalIngreso" />
+            <PropertyRef Name="SucursalSalida" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="TotalProd" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SucursalIngreso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SucursalSalida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observ" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalProd" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vr_TransformacionSalida">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SucursalIngreso" />
+            <PropertyRef Name="SucursalSalida" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdProducto_Mat" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SucursalIngreso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SucursalSalida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observ" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdProducto_Mat" Type="Int32" Nullable="false" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

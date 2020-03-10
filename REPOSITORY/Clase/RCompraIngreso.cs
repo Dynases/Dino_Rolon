@@ -207,7 +207,7 @@ namespace REPOSITORY.Clase
 	                                b.Descrip as Proveedor,
 	                                a.Tipo,
 	                                a.EdadSemana,
-	                                a.IdSucur,
+	                                a.IdAlmacen,
                                     a.TipoCompra
                                 FROM 
 	                                COM.CompraIng a JOIN

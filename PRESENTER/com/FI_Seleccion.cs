@@ -50,14 +50,28 @@ namespace PRESENTER.com
             {
                 LblTitulo.Text = _NombreFormulario;
                 MP_InicioArmarCombo();
+                MP_CargarAlmacenes();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
                 Tb_Merma.Value = 0;
+               
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_CargarAlmacenes()
+        {
+            try
+            {
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
             }
         }
         private void MP_CargarEncabezado()
@@ -207,7 +221,6 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
         }
-
         private void ArmarDetalle(List<VSeleccion_01_Lista> lresult)
         {
             if (lresult.Count() > 0)
@@ -267,8 +280,6 @@ namespace PRESENTER.com
                 Dgv_Seleccion.VisualStyle = VisualStyle.Office2007;
             }
         }
-
-
         private void MP_CargarDetalle_Nuevo(int IdCompraIngreso_01)
         {
             try
@@ -525,29 +536,49 @@ namespace PRESENTER.com
             try
             {
                 Dgv_Seleccion.UpdateData();
-                Double cantidad, precio, total;
-                cantidad = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Cantidad"].Value);
-                precio = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Precio"].Value);
-                total = cantidad * precio;
-                Dgv_Seleccion.CurrentRow.Cells["Total"].Value = total;
-                MP_ObtenerCalculo();
-                if (cantidad > 0)
+                int estado = Convert.ToInt32(Dgv_Seleccion.CurrentRow.Cells["Estado"].Value);
+                //if (estado == (int)ENEstado.COMPLETADO)
+                //{
+                //    throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
+                //}
+                if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                 {
-                    Dgv_Seleccion.UpdateData();
-                    foreach (var fila in seleccion_01)
+                    MP_CalcularFila();
+                }
+                else
+                {
+                    if (estado == (int)ENEstado.GUARDADO)
                     {
-                        fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                        MP_CalcularFila();
+                        Dgv_Seleccion.CurrentRow.Cells["Estado"].Value = (int)ENEstado.MODIFICAR;
                     }
-                    ArmarDetalle(seleccion_01);
-                }               
+                }             
             }
             catch (Exception ex)
             {
-
                 MP_MostrarMensajeError(ex.Message);
             }
            
-        }  
+        }
+
+        private void MP_CalcularFila()
+        {
+            Double cantidad, precio, total;
+            cantidad = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Cantidad"].Value);
+            precio = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Precio"].Value);
+            total = cantidad * precio;
+            Dgv_Seleccion.CurrentRow.Cells["Total"].Value = total;
+            MP_ObtenerCalculo();
+            if (cantidad > 0)
+            {
+                Dgv_Seleccion.UpdateData();
+                foreach (var fila in seleccion_01)
+                {
+                    fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                }
+                ArmarDetalle(seleccion_01);
+            }
+        }
 
         private void Tb_IdCompraIngreso_KeyDown(object sender, KeyEventArgs e)
         {
@@ -568,7 +599,7 @@ namespace PRESENTER.com
                         new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
                         new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
                         new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
-                        new GLCelda() { campo = "IdSucur", visible = false, titulo = "IdSucur", tamano = 100 },
+                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
                         new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
                     };
                     Efecto efecto = new Efecto();
@@ -593,7 +624,7 @@ namespace PRESENTER.com
                         tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
                         Tb_Placa.Text = Row.Cells["Placa"].Value.ToString();
                         Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
-                        Cb_Almacen.Value = Row.Cells["IdSucur"].Value;
+                        Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
                         _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
                         MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                         MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));

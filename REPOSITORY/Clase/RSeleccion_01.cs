@@ -124,8 +124,9 @@ namespace REPOSITORY.Clase
                                       {
                                           Id = a.Id,
                                           IdSeleccion = a.IdSeleccion,
-                                          Producto = b.Descrip,
+                                          IdProducto = a.IdProducto,
                                           Estado = a.Estado,
+                                          Producto = b.Descrip,                                        
                                           Cantidad = a.Cantidad,
                                           Porcen =a.Porcen,
                                           Precio = a.Precio,
@@ -153,6 +154,8 @@ namespace REPOSITORY.Clase
                                       {
                                           Id = a.Id,
                                           IdSeleccion = a.IdSeleccion,
+                                          IdProducto = a.IdProducto,
+                                          Estado = a.Estado,
                                           Producto = b.Descrip,
                                           Cantidad = a.Cantidad,
                                           Porcen = a.Porcen,

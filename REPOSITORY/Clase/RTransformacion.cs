@@ -62,15 +62,15 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Transformacion
-                                      join b in db.Sucursal on a.IdAlmacenIngreso equals b.Id
-                                      join c in db.Sucursal on a.IdAlmacenSalida equals c.Id
+                                      join b in db.Almacen on a.IdAlmacenIngreso equals b.Id
+                                      join c in db.Almacen on a.IdAlmacenSalida equals c.Id
                                       select new VTransformacion
                                       {
                                           Id = a.Id,
                                           IdAlmacenSalida = a.IdAlmacenSalida,
-                                          Sucursal2 = c.Descrip,
+                                          Almacen2 = c.Descrip,
                                           IdAlmacenIngreso = a.IdAlmacenIngreso,
-                                          Sucursal1 = b.Descrip,
+                                          Almacen1 = b.Descrip,
                                           Observ = a.Observ,
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
@@ -95,8 +95,8 @@ namespace REPOSITORY.Clase
                                       select new VTransformacionReport
                                       {
                                           Id = a.Id,
-                                          SucursalIngreso = a.SucursalIngreso,
-                                          SucursalSalida = a.SucursalSalida,
+                                          AlmacenIngreso = a.SucursalIngreso,
+                                          AlmacenSalida = a.SucursalSalida,
                                           IdProducto = a.IdProducto,
                                           Descrip = a.Descrip,
                                           Observ = a.Observ,
@@ -122,8 +122,8 @@ namespace REPOSITORY.Clase
                                       select new VTransformacionReport
                                       {
                                           Id = a.Id,
-                                          SucursalIngreso = a.SucursalIngreso,
-                                          SucursalSalida = a.SucursalSalida,
+                                          AlmacenIngreso = a.SucursalIngreso,
+                                          AlmacenSalida = a.SucursalSalida,
                                           IdProducto_Mat = a.IdProducto_Mat,
                                           Descrip = a.Descrip,
                                           Observ = a.Observ,

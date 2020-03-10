@@ -36,7 +36,6 @@ namespace LOGIC.Class
                     else
                     {
                         result = iSeleccion.Guardar(vSeleccion, ref Id);
-                     
                         var resultDetalle = new LSeleccion_01().GuardarModificar(detalle_Seleecion, Id);
                     }
                     scope.Complete();

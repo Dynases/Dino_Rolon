@@ -48,7 +48,7 @@ namespace PRESENTER.com
             try
             {
                 LblTitulo.Text = _NombreFormulario;
-                MP_InicioArmarCombo();
+                MP_CargarAlmacenes();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
@@ -76,23 +76,23 @@ namespace PRESENTER.com
                     Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
 
-                    Dgv_GBuscador.RootTable.Columns["IdSucSalida"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["IdAlmacenSalida"].Visible = false;
 
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].Caption = "Nota Sucursal2";
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].Width = 350;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].CellStyle.FontSize = 8;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal2"].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].Caption = "Almacen Salida";
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].Width = 350;
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns["Almacen2"].Visible = true;
 
-                    Dgv_GBuscador.RootTable.Columns["IdSucIngreso"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["IdAlmacenIngreso"].Visible = false;
 
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].Caption = "Salida";
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].Width = 350;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].CellStyle.FontSize = 8;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_GBuscador.RootTable.Columns["Sucursal1"].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].Caption = "Almacen Ingreso";
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].Width = 350;
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns["Almacen1"].Visible = true;
 
                     Dgv_GBuscador.RootTable.Columns["Observ"].Visible = false;
 
@@ -190,14 +190,18 @@ namespace PRESENTER.com
             Dgv_Detalle.GroupByBoxVisible = false;
             Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
         }
-
-        private void MP_InicioArmarCombo()
-        {            
-            UTGlobal.MG_ArmarComboSucursal(Cb_Almacen1,
-                                              new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList());
-            
-            UTGlobal.MG_ArmarComboSucursal(Cb_Almacen2,
-                                              new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList());
+        private void MP_CargarAlmacenes()
+        {
+            try
+            {
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen1, almacenes);
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen2, almacenes);
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+            }
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {

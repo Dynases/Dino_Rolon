@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2560a35d38d241b2b07fe28b3522dfa3" Name="Diagram1" ZoomLevel="124">
+      <Diagram DiagramId="2560a35d38d241b2b07fe28b3522dfa3" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="2.875" />
         <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="8.25" PointY="7.75" />
         <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="10.5" PointY="7.75" />
@@ -29,10 +29,6 @@
         <EntityTypeShape EntityType="DiAviModel.PrecioCat" Width="1.5" PointX="6" PointY="22.375" />
         <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="8.25" PointY="0.75" />
         <EntityTypeShape EntityType="DiAviModel.Estaticos" Width="1.5" PointX="14.75" PointY="6.875" />
-        <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="14.75" PointY="9.875" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngreso" Width="1.5" PointX="14.75" PointY="14.875" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="15.75" PointY="2.875" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="0.75" PointY="18.875" />
         <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" />
         <AssociationConnector Association="DiAviModel.FK_Compra_IdAlmacen" />
         <AssociationConnector Association="DiAviModel.FK_Compra_IdProveedor" />
@@ -54,6 +50,10 @@
         <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
         <AssociationConnector Association="DiAviModel.FK__Precio_Cat" />
         <AssociationConnector Association="DiAviModel.FK__Precio_Product" />
+        <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngreso" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="15.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
