@@ -1,4 +1,5 @@
-﻿using ENTITY.Producto.View;
+﻿using DevComponents.DotNetBar;
+using ENTITY.Producto.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
 using Janus.Windows.GridEX;
@@ -6,12 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.IO;
+using System.Text.RegularExpressions;
+
 using UTILITY.Global;
 
 namespace PRESENTER.reg
@@ -21,6 +27,7 @@ namespace PRESENTER.reg
         #region Variables Locales
         string _NombreFormulario = "PRECIOS";
         DataTable tPrecio = new DataTable();
+        GridEX Dgv_PrecioImport = new GridEX();
         #endregion
         #region Eventos
         public f1_Precio()
@@ -50,12 +57,17 @@ namespace PRESENTER.reg
 
                 MP_CargarCategoria();
                 //MP_InHabilitar();
+                BtnExportar.Visible = true;
                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
+        }
+        void MP_MostrarMensajeError(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
         private void MP_CargarCategoria()
         {
@@ -120,7 +132,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         public static DataTable ListaATabla(List<VPrecioCategoria> lista)
@@ -240,10 +252,10 @@ namespace PRESENTER.reg
                         string columnestado = "estado_" + rPrecioCat.Field<string>("Cod").ToString().Trim();
 
                         //Dgv_Precio.RootTable.Columns[columnestado].Key = "Id";
-                        Dgv_Precio.RootTable.Columns[columnestado].Caption = "";
-                        Dgv_Precio.RootTable.Columns[columnestado].Width = 150;            
+                        //Dgv_Precio.RootTable.Columns[columnestado].Caption = "";
+                        //Dgv_Precio.RootTable.Columns[columnestado].Width = 150;            
                         Dgv_Precio.RootTable.Columns[columnestado].Visible = false;
-                        Dgv_Precio.RootTable.Columns[columnestado].FormatString = "0";
+                       // Dgv_Precio.RootTable.Columns[columnestado].FormatString = "0";
 
                         //Dgv_Precio.RootTable.Columns[columnprecio].Key = "Cod";
                         Dgv_Precio.RootTable.Columns[columnprecio].Caption = rPrecioCat.Field<string>("Cod").ToString();
@@ -254,65 +266,44 @@ namespace PRESENTER.reg
                         Dgv_Precio.RootTable.Columns[columnprecio].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                         Dgv_Precio.RootTable.Columns[columnprecio].Visible = true;
                     }
-                    Dgv_Precio.RetrieveStructure();
+                   // Dgv_Precio.RetrieveStructure();
                     Dgv_Precio.AlternatingColors = true;
+                    Dgv_Precio.RootTable.Columns["Id"].Visible = false;
 
-                    Dgv_Precio.RootTable.Columns[0].Key = "id";
-                    Dgv_Precio.RootTable.Columns[0].Visible = false;
+                    Dgv_Precio.RootTable.Columns["Cod_Producto"].Visible = false;
 
-                    Dgv_Precio.RootTable.Columns[1].Key = "CodProducto";
-                    Dgv_Precio.RootTable.Columns[1].Visible = false;
+                    Dgv_Precio.RootTable.Columns["Descripcion"].Caption = "Descripcion";
+                    Dgv_Precio.RootTable.Columns["Descripcion"].Width = 210;
+                    Dgv_Precio.RootTable.Columns["Descripcion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Precio.RootTable.Columns["Descripcion"].CellStyle.FontSize = 8;
+                    Dgv_Precio.RootTable.Columns["Descripcion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Precio.RootTable.Columns["Descripcion"].Visible = true;
 
+                    Dgv_Precio.RootTable.Columns["Grupo1"].Caption = "División";
+                    Dgv_Precio.RootTable.Columns["Grupo1"].Width = 150;
+                    Dgv_Precio.RootTable.Columns["Grupo1"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Precio.RootTable.Columns["Grupo1"].CellStyle.FontSize = 8;
+                    Dgv_Precio.RootTable.Columns["Grupo1"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Precio.RootTable.Columns["Grupo1"].Visible = true;
 
-                    Dgv_Precio.RootTable.Columns[2].Key = "Descripcion";
-                    Dgv_Precio.RootTable.Columns[2].Caption = "Descripcion";
-                    Dgv_Precio.RootTable.Columns[2].Width = 210;
-                    Dgv_Precio.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Precio.RootTable.Columns[2].CellStyle.FontSize = 8;
-                    Dgv_Precio.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Precio.RootTable.Columns[2].Visible = true;
+                    Dgv_Precio.RootTable.Columns["Grupo2"].Caption = "Marca/Tipo";
+                    Dgv_Precio.RootTable.Columns["Grupo2"].Width = 250;
+                    Dgv_Precio.RootTable.Columns["Grupo2"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Precio.RootTable.Columns["Grupo2"].CellStyle.FontSize = 8;
+                    Dgv_Precio.RootTable.Columns["Grupo2"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Precio.RootTable.Columns["Grupo2"].Visible = false;
 
-                    Dgv_Precio.RootTable.Columns[3].Key = "División";
-                    Dgv_Precio.RootTable.Columns[3].Caption = "División";
-                    Dgv_Precio.RootTable.Columns[3].Width = 150;
-                    Dgv_Precio.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Precio.RootTable.Columns[3].CellStyle.FontSize = 8;
-                    Dgv_Precio.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Precio.RootTable.Columns[3].Visible = true;
+                    Dgv_Precio.RootTable.Columns["Grupo3"].Caption = "CategorIas/tipo";
+                    Dgv_Precio.RootTable.Columns["Grupo3"].Width = 200;
+                    Dgv_Precio.RootTable.Columns["Grupo3"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Precio.RootTable.Columns["Grupo3"].CellStyle.FontSize = 8;
+                    Dgv_Precio.RootTable.Columns["Grupo3"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Precio.RootTable.Columns["Grupo3"].Visible = false;
 
-
-                    Dgv_Precio.RootTable.Columns[4].Key = "Marca/Tipo";
-                    Dgv_Precio.RootTable.Columns[4].Caption = "Marca/Tipo";
-                    Dgv_Precio.RootTable.Columns[4].Width = 250;
-                    Dgv_Precio.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Precio.RootTable.Columns[4].CellStyle.FontSize = 8;
-                    Dgv_Precio.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Precio.RootTable.Columns[4].Visible = false;
-
-                    Dgv_Precio.RootTable.Columns[5].Key = "Categorías/Tipo";
-                    Dgv_Precio.RootTable.Columns[5].Caption = "CategorIas/tipo";
-                    Dgv_Precio.RootTable.Columns[5].Width = 200;
-                    Dgv_Precio.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Precio.RootTable.Columns[5].CellStyle.FontSize = 8;
-                    Dgv_Precio.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Precio.RootTable.Columns[5].Visible = false;
-
-                    Dgv_Precio.RootTable.Columns[6].Key = "Contacto2";
-                    Dgv_Precio.RootTable.Columns[6].Caption = "Contacto2";
-                    Dgv_Precio.RootTable.Columns[6].Width = 200;
-                    Dgv_Precio.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_Precio.RootTable.Columns[6].CellStyle.FontSize = 8;
-                    Dgv_Precio.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Precio.RootTable.Columns[6].Visible = false;
-
-                    Dgv_Precio.RootTable.Columns[7].Key = "Usuario";
-                    Dgv_Precio.RootTable.Columns[7].Visible = false;
-
-                    Dgv_Precio.RootTable.Columns[8].Key = "Hora";
-                    Dgv_Precio.RootTable.Columns[8].Visible = false;
-
-                    Dgv_Precio.RootTable.Columns[9].Key = "Fecha";
-                    Dgv_Precio.RootTable.Columns[9].Visible = false;
+                    Dgv_Precio.RootTable.Columns["Tipo"].Visible = false;
+                    Dgv_Precio.RootTable.Columns["Usuario"].Visible = false;                    
+                    Dgv_Precio.RootTable.Columns["Hora"].Visible = false;                    
+                    Dgv_Precio.RootTable.Columns["Fecha"].Visible = false;
              
                     //Habilitar filtradores
                     Dgv_Precio.DefaultFilterRowComparison = FilterConditionOperator.Contains;
@@ -325,13 +316,78 @@ namespace PRESENTER.reg
             }
         }
 
+        private void MP_ImportarExelLista()
+        {
+            try
+            {
+                //String name = "LISTA";
+                //String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
+                //               @"D:\DINASES\DiAvi\ARCHIVOS\Plantilla.xlsx" +
+                //                ";Extended Properties='Excel 8.0;HDR=SI;';";
+
+                //OleDbConnection con = new OleDbConnection(constr);
+                //OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", con);
+                //con.Open();
+
+                //OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
+                //DataTable data = new DataTable();
+                //sda.Fill(data);
+                //Dgv_Precio.DataSource = data;
+                //con.Close();
+                string folder = "";
+                string doc = "LISTA";
+                OpenFileDialog openfile1 = new OpenFileDialog();
+                if (openfile1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    folder = openfile1.FileName;
+                }
+                {
+                    string pathconn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + folder + @";Extended Properties=""Excel 12.0 Xml;HDR=YES;""";
+
+                    OleDbConnection con = new OleDbConnection(pathconn);
+                    //OleDbCommand oconn = new OleDbCommand("Select * from [" + doc + "$]", con);             
+                    con.Open();
+                    OleDbDataAdapter MyDataAdapter = new OleDbDataAdapter("Select * from [" + doc + "$]", con);
+                 
+                    DataTable dt = new DataTable();
+                    MyDataAdapter.Fill(dt);
+                    Dgv_PrecioImport.DataSource = dt;
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
+        }
+
+        private void MP_PasarRegistrosImportados()
+        {
+            var lresult = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
+            foreach (var fila in Dgv_Precio.GetRows())
+            {
+                foreach (var filaImport in Dgv_PrecioImport.GetRows())
+                {
+                    foreach (var categoria in lresult)
+                    {
+                        if (fila.Cells[categoria.Descrip].Value.ToString() == filaImport.Cells[categoria.Descrip].Value.ToString())
+                        {
+                            fila.Cells[categoria.Descrip].Value = filaImport.Cells[categoria.Descrip].Value;
+                        }
+                    }
+                }              
+            }
+        }
 
         #endregion
 
-        #region Metodos Heredados
+        #region Metodos Heredados      
 
         #endregion
 
-
+        private void BtnExportar_Click(object sender, EventArgs e)
+        {
+            MP_ImportarExelLista();
+        }
     }
 }

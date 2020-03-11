@@ -836,57 +836,66 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
                 return false;
             }
          
         }
         public override bool MH_Eliminar()
         {
-            bool resultadoRegistro = false;
-            int IdProducto = Convert.ToInt32(Tb_Id.Text);
-            bool resultado = new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompra(IdProducto);
-            if (resultado)
+            try
             {
-                Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
-                ToastNotification.Show(this, GLMensaje.Eliminar_Error_Transaciones_Relacionadas(_NombreFormulario),
-                                            img, (int)GLMensajeTamano.Mediano, 
-                                            eToastGlowColor.Green, 
-                                            eToastPosition.TopCenter);
-                return false;
-            }
-           //Pregunta si eliminara el registro
-            Efecto efecto = new Efecto();
-            efecto.Tipo = 2;
-            efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
-            efecto.Header = GLMensaje.Mensaje_Principal.ToUpper() ;
-            efecto.ShowDialog();
-            bool bandera = efecto.Band;
-            if (bandera)
-            {
-                var resul = new ServiceDesktop.ServiceDesktopClient().ProductoEliminar(IdProducto);
-                if (resul)
-                {
-                    ToastNotification.Show(this, GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text),
-                                           PRESENTER.Properties.Resources.GRABACION_EXITOSA,
-                                           (int)GLMensajeTamano.Chico,
-                                            eToastGlowColor.Green,
-                                           eToastPosition.TopCenter);
-                    MP_Filtrar(1);
-                    resultadoRegistro = true;
-                }
-                else
+                bool resultadoRegistro = false;
+                int IdProducto = Convert.ToInt32(Tb_Id.Text);
+                bool resultado = new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompra(IdProducto);
+                if (resultado)
                 {
                     Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
-                    ToastNotification.Show(this, GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text),
+                    ToastNotification.Show(this, GLMensaje.Eliminar_Error_Transaciones_Relacionadas(_NombreFormulario),
                                                 img, (int)GLMensajeTamano.Mediano,
                                                 eToastGlowColor.Green,
                                                 eToastPosition.TopCenter);
-                    resultadoRegistro = false;
-                }                
+                    return false;
+                }
+                //Pregunta si eliminara el registro
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool bandera = efecto.Band;
+                if (bandera)
+                {
+                    var resul = new ServiceDesktop.ServiceDesktopClient().ProductoEliminar(IdProducto);
+                    if (resul)
+                    {
+                        ToastNotification.Show(this, GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text),
+                                               PRESENTER.Properties.Resources.GRABACION_EXITOSA,
+                                               (int)GLMensajeTamano.Chico,
+                                                eToastGlowColor.Green,
+                                               eToastPosition.TopCenter);
+                        MP_Filtrar(1);
+                        resultadoRegistro = true;
+                    }
+                    else
+                    {
+                        Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
+                        ToastNotification.Show(this, GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text),
+                                                    img, (int)GLMensajeTamano.Mediano,
+                                                    eToastGlowColor.Green,
+                                                    eToastPosition.TopCenter);
+                        resultadoRegistro = false;
+                    }
+                }
+                return resultadoRegistro;
+
             }
-            return resultadoRegistro;
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+            
         }
         public override void MH_Nuevo()
         {

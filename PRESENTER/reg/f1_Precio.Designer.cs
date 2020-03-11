@@ -67,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
+            this.PanelMenu.SuspendLayout();
             this.GPanelAddCategoria.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.GroupPanel2.SuspendLayout();
@@ -84,16 +85,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             this.SuspendLayout();
             // 
-            // LblSubtitulo
-            // 
-            this.LblSubtitulo.Size = new System.Drawing.Size(1161, 36);
-            this.LblSubtitulo.Text = "Visualice y/o modifique la información de un precio previamente registrado. ";
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel4);
             this.PanelContenidoRegistro.Controls.Add(this.Panel_Precio);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1161, 641);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel_Precio, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel4, 0);
@@ -123,6 +121,10 @@
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(1019, 0);
             // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
+            // 
             // BubbleBarUsuario
             // 
             // 
@@ -149,6 +151,7 @@
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(962, 641);
             // 
             // btnMin
@@ -198,6 +201,16 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Size = new System.Drawing.Size(956, 615);
+            // 
+            // LblSubtitulo
+            // 
+            this.LblSubtitulo.Size = new System.Drawing.Size(1161, 36);
+            this.LblSubtitulo.Text = "Visualice y/o modifique la información de un precio previamente registrado. ";
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.Size = new System.Drawing.Size(1161, 72);
             // 
             // GPanelAddCategoria
             // 
@@ -694,6 +707,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
+            this.PanelMenu.ResumeLayout(false);
             this.GPanelAddCategoria.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.GroupPanel2.ResumeLayout(false);
