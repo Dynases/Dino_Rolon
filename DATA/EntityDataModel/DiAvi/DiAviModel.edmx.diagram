@@ -60,16 +60,14 @@
         <AssociationConnector Association="DiAviModel.FK_Traspaso_AlmacenOrigen" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Traspaso" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__Precio_Cat" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__Precio_Product" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="18" PointY="17.5" />
         <EntityTypeShape EntityType="DiAviModel.Venta_01" Width="1.5" PointX="20.25" PointY="21.125" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Venta_01" />
-        <EntityTypeShape EntityType="DiAviModel.Precio" Width="1.5" PointX="5.25" PointY="10.875" />
-        <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal" />
-        <AssociationConnector Association="DiAviModel.FK__Precio_Cat" />
-        <AssociationConnector Association="DiAviModel.FK__Precio_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

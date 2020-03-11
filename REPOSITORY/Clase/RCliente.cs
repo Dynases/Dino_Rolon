@@ -12,6 +12,7 @@ using UTILITY.Enum;
 using ENTITY.Telefono.View;
 using UTILITY.Enum.EnEstaticos;
 using System.Data.Entity;
+using System.Data;
 
 namespace REPOSITORY.Clase
 {
@@ -277,6 +278,33 @@ namespace REPOSITORY.Clase
                                       }).ToList();
                     return listResult;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable ListarEncabezado()
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                string consulta = @"SELECT
+                                     c.Id as 'COD',
+                                     C.IdSpyre as 'CÓDIGO SPYRE',
+                                     c.Descrip as 'Nombre y Apellido', 
+                                     c.RazonSo as 'Razon Social', 
+                                     C.Nit as 'NIT',
+                                     c.Direcc as 'Direccion',
+                                     b.Descrip as 'Ciudad',
+                                     c.Factur as 'Facturacion'
+                                    FROM 
+                                        REG.Cliente c
+                                        JOIN ADM.Libreria b ON b.IdGrupo = 2 AND b.IdOrden = 1 AND b.IdLibrer = c.Ciudad
+                                    GROUP BY
+                                      c.Id, c.IdSpyre, c.Descrip, c.RazonSo, c.Nit, c.Direcc, b.Descrip, c.Factur";
+                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
             }
             catch (Exception ex)
             {

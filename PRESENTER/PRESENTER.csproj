@@ -494,6 +494,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1941.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1942.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -561,6 +564,8 @@
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor_01Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.reg.Precio.View.VPrecioLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.reg.PrecioCategoria.View.VPrecioCategoria.datasource" />
+    <None Include="Properties\DataSources\ENTITY.ven.view.VVenta.datasource" />
+    <None Include="Properties\DataSources\ENTITY.ven.view.VVenta_01.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

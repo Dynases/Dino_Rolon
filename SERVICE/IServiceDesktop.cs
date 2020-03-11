@@ -18,6 +18,7 @@ using ENTITY.Producto.View;
 using ENTITY.Proveedor.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
+using ENTITY.ven.view;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.Serialization;
@@ -64,7 +65,8 @@ namespace SERVICE
         [OperationContract]
         List<VClienteLista> ClientesListar();
 
-
+        [OperationContract]
+        DataTable ClienteListarEncabezado();
         #endregion
         ///**********PROVEEDOR***********************
         ///
@@ -103,6 +105,9 @@ namespace SERVICE
 
         [OperationContract]
         bool ProductoExisteEnCompra(int id);
+
+        [OperationContract]
+        DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
         #endregion
         ///**********ALMACEN************************
         ///
@@ -265,9 +270,24 @@ namespace SERVICE
 
         [OperationContract]
         List<VPlantilla01> PlantillaListarDetallePlantilla(int PlantillaId);
+        #endregion
+        ///**********VENTA******************
+        ///
+        #region Venta
+
+        [OperationContract]
+        bool VentaGuardar(VVenta vVenta);
+
+        [OperationContract]
+        List<VVenta> VentasListar();
+
+        [OperationContract]
+        bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId);
+
+        [OperationContract]
+        List<VVenta_01> VentaDetalleListar(int VentaId);        
 
         #endregion
-        // TODO: agregue aquí sus operaciones de servicio
     }
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
     [DataContract]

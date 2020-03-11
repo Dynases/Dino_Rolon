@@ -35,9 +35,9 @@
       <xs:element minOccurs="0" name="FechaRec" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
       <xs:element minOccurs="0" name="IdProvee" type="xs:int" />
       <xs:element minOccurs="0" name="IdProvee_01" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSucur" type="xs:int" />
       <xs:element minOccurs="0" name="NumNota" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Observacion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Placa" nillable="true" type="xs:string" />

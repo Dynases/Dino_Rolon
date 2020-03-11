@@ -10,12 +10,14 @@ using ENTITY.Producto.View;
 using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum.EnEstaticos;
 using System.Data.Entity;
+using System.Data;
+
 namespace REPOSITORY.Clase
 {
     public class RProducto : BaseConexion, IProducto
     {
         #region Transacciones
-        public bool Guardar(VProducto Producto,ref int id)
+        public bool Guardar(VProducto Producto, ref int id)
         {
             try
             {
@@ -116,16 +118,16 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                using ( var db= GetEsquema())
+                using (var db = GetEsquema())
                 {
                     var grupo = Convert.ToInt32(ENEstaticosGrupo.PRODUCTO);
                     var Orden1 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO1);
                     var Orden2 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2);
                     var Orden3 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO3);
-                    var listResult = (from a in db.Producto 
+                    var listResult = (from a in db.Producto
                                       join grupo1 in db.Libreria on
-                                      new { Grupo =grupo, Orden = Orden1, Libreria = a.Grupo1}
-                                         equals new { Grupo = grupo1.IdGrupo, Orden = grupo1.IdOrden, Libreria = grupo1.IdLibrer}
+                                      new { Grupo = grupo, Orden = Orden1, Libreria = a.Grupo1 }
+                                         equals new { Grupo = grupo1.IdGrupo, Orden = grupo1.IdOrden, Libreria = grupo1.IdLibrer }
                                       join grupo2 in db.Libreria on
                                       new { Grupo = grupo, Orden = Orden2, Libreria = a.Grupo2 }
                                          equals new { Grupo = grupo2.IdGrupo, Orden = grupo2.IdOrden, Libreria = grupo2.IdLibrer }
@@ -143,19 +145,19 @@ namespace REPOSITORY.Clase
                                           Tipo = a.Tipo,
                                           Usuario = a.Usuario,
                                           Hora = a.Hora,
-                                          Fecha =a.Fecha                                          
+                                          Fecha = a.Fecha
                                       }).ToList();
                     return listResult;
                 }
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
 
                 throw new Exception(ex.Message);
             }
         }
-        
-        
+
+
         //join grupo4 in db.Libreria on
         //new { Grupo = ENEstaticosGrupo.PRODUCTO, Orden = ENEstaticosOrden.PRODUCTO_GRUPO4, Libreria = a.Grupo4 }
         //   equals new { Grupo = grupo4.IdGrupo, Orden = grupo4.IdOrden, Libreria = grupo4.IdLibrer }
@@ -176,25 +178,25 @@ namespace REPOSITORY.Clase
                                       select new VProducto
                                       {
                                           Id = a.Id,
-                                          IdProd =a.IdProd,
+                                          IdProd = a.IdProd,
                                           CodBar = a.CodBar,
                                           Tipo = a.Tipo,
                                           Descripcion = a.Descrip,
-                                          Peso =a.Peso,
-                                          UniVenta =a.UniVen,
+                                          Peso = a.Peso,
+                                          UniVenta = a.UniVen,
                                           UniPeso = a.UniPeso,
                                           Grupo1 = a.Grupo1,
-                                          Grupo2 =a.Grupo2,
-                                          Grupo3 =a.Grupo3,
-                                          Grupo4 =a.Grupo4,
-                                          Grupo5 =a.Grupo5,
-                                          Imagen =a.Imagen,
-                                          IdProducto =  a.IdProducto,
+                                          Grupo2 = a.Grupo2,
+                                          Grupo3 = a.Grupo3,
+                                          Grupo4 = a.Grupo4,
+                                          Grupo5 = a.Grupo5,
+                                          Imagen = a.Imagen,
+                                          IdProducto = a.IdProducto,
                                           Producto2 = a.DescripProduc,
-                                          Cantidad=a.Cantidad,
-                                          Usuario =a.Usuario,
-                                          Hora =a.Hora,
-                                          Fecha =a.Fecha                                        
+                                          Cantidad = a.Cantidad,
+                                          Usuario = a.Usuario,
+                                          Hora = a.Hora,
+                                          Fecha = a.Fecha
                                       }).ToList();
                     return listResult;
                 }
@@ -204,7 +206,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-       
+
         public bool ExisteEnCompra(int IdProducto)
         {
             try
@@ -228,6 +230,37 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
+                                          int IdCategoriaPrecio)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                string consulta = "SELECT " +
+                                    "p.Id as ProductoId, p.Descrip as Producto, i.iccven as 'Stock Disponible', " +
+                                    " a.Descrip as Almacen, pr.Precio as Precio, l.Descrip as 'Unidad de Venta', " +
+                                    " prc.Descrip as 'Cat. Precio' " +
+                                    " FROM " +
+                                        " dbo.TI001 i " +
+                                        "JOIN REG.Producto p ON i.iccprod = p.Id " +
+                                        "JOIN INV.Almacen a ON i.icalm = a.Id " +
+                                        "JOIN REG.Precio pr ON pr.IdProduc = p.Id " +
+                                        "JOIN INV.Sucursal s ON s.Id = a.IdSuc " +
+                                        "JOIN REG.PrecioCat prc ON prc.Id = pr.IdPrecioCat " +
+                                        "JOIN ADM.Libreria l ON l.IdLibrer = p.UniVen " +
+                                    "WHERE " +
+                                        "s.Id = " + IdSucursal + " and a.Id = " + IdAlmacen + " and prc.Id = " + IdCategoriaPrecio + " and l.IdGrupo = 3 and l.IdOrden = 6  " +
+                                    "GROUP BY " +
+                                        "s.Id, a.Id, p.Id, p.Descrip, a.Descrip, i.iccven, pr.Precio, l.Descrip, prc.Descrip";
+                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
     }
 }
