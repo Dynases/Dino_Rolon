@@ -67,7 +67,8 @@ namespace REPOSITORY.Clase
                            IdProducto = v.IdProducto,
                            IdVenta = v.IdVenta.Value,
                            Precio = v.Precio,
-                           Unidad = v.Unidad
+                           Unidad = v.Unidad,
+                           Delete = ""
                        }).ToList();
 
                     return listResult;

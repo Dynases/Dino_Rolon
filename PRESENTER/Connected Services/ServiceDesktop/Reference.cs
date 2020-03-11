@@ -475,10 +475,11 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
-        bool VentaGuardar(ENTITY.ven.view.VVenta vVenta);
+        PRESENTER.ServiceDesktop.VentaGuardarResponse VentaGuardar(PRESENTER.ServiceDesktop.VentaGuardarRequest request);
         
+        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
-        System.Threading.Tasks.Task<bool> VentaGuardarAsync(ENTITY.ven.view.VVenta vVenta);
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaGuardarResponse> VentaGuardarAsync(PRESENTER.ServiceDesktop.VentaGuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
         ENTITY.ven.view.VVenta[] VentasListar();
@@ -764,6 +765,46 @@ namespace PRESENTER.ServiceDesktop {
         public TransformacionGuardarResponse(bool TransformacionGuardarResult, int Id) {
             this.TransformacionGuardarResult = TransformacionGuardarResult;
             this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VentaGuardar", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class VentaGuardarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ENTITY.ven.view.VVenta vVenta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int id;
+        
+        public VentaGuardarRequest() {
+        }
+        
+        public VentaGuardarRequest(ENTITY.ven.view.VVenta vVenta, int id) {
+            this.vVenta = vVenta;
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VentaGuardarResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class VentaGuardarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool VentaGuardarResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int id;
+        
+        public VentaGuardarResponse() {
+        }
+        
+        public VentaGuardarResponse(bool VentaGuardarResult, int id) {
+            this.VentaGuardarResult = VentaGuardarResult;
+            this.id = id;
         }
     }
     
@@ -1373,12 +1414,22 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.PlantillaListarDetallePlantillaAsync(PlantillaId);
         }
         
-        public bool VentaGuardar(ENTITY.ven.view.VVenta vVenta) {
-            return base.Channel.VentaGuardar(vVenta);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.VentaGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.VentaGuardar(PRESENTER.ServiceDesktop.VentaGuardarRequest request) {
+            return base.Channel.VentaGuardar(request);
         }
         
-        public System.Threading.Tasks.Task<bool> VentaGuardarAsync(ENTITY.ven.view.VVenta vVenta) {
-            return base.Channel.VentaGuardarAsync(vVenta);
+        public bool VentaGuardar(ENTITY.ven.view.VVenta vVenta, ref int id) {
+            PRESENTER.ServiceDesktop.VentaGuardarRequest inValue = new PRESENTER.ServiceDesktop.VentaGuardarRequest();
+            inValue.vVenta = vVenta;
+            inValue.id = id;
+            PRESENTER.ServiceDesktop.VentaGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).VentaGuardar(inValue);
+            id = retVal.id;
+            return retVal.VentaGuardarResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaGuardarResponse> VentaGuardarAsync(PRESENTER.ServiceDesktop.VentaGuardarRequest request) {
+            return base.Channel.VentaGuardarAsync(request);
         }
         
         public ENTITY.ven.view.VVenta[] VentasListar() {

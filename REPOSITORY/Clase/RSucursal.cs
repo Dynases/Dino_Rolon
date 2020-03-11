@@ -78,28 +78,27 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Guardar(VSucursal vDeposito)
+        public bool Guardar(VSucursal vSucursal)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    var deposito = new Sucursal
+                    var sucursal = new Sucursal
                     {
-                        Descrip = vDeposito.Descripcion,
-                        Direcc = vDeposito.Direccion,
+                        Descrip = vSucursal.Descripcion,
+                        Direcc = vSucursal.Direccion,
                         Fecha = DateTime.Now,
                         Hora = DateTime.Now.ToShortTimeString(),
-                        Latit = vDeposito.Latitud,
-                        Longi = vDeposito.Longitud,
-                        Telef = vDeposito.Telefono,
-                        Usuario = vDeposito.Usuario,
-                        Estado = vDeposito.Estado,
-                        Id = vDeposito.Id,
-                        Imagen = vDeposito.Imagen
+                        Latit = vSucursal.Latitud,
+                        Longi = vSucursal.Longitud,
+                        Telef = vSucursal.Telefono,
+                        Usuario = vSucursal.Usuario,
+                        Estado = vSucursal.Estado,                        
+                        Imagen = vSucursal.Imagen
                     };
 
-                    db.Sucursal.Add(deposito);
+                    db.Sucursal.Add(sucursal);
                     db.SaveChanges();
 
                     return true;

@@ -380,6 +380,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TransformacionGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
@@ -647,6 +650,9 @@
     <None Include="Resources\ANTERIOR.png" />
     <None Include="Resources\SIGUIENTE.png" />
     <None Include="Resources\New.png" />
+    <None Include="Resources\Image1.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\reload.png" />
     <Content Include="Resource\BUSQUEDA.png" />
     <Content Include="Resource\CANCEL.png" />
     <None Include="Resource\CLIENTE.png" />

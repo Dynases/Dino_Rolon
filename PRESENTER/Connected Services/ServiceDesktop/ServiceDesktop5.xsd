@@ -954,6 +954,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="vVenta" nillable="true" type="q63:VVenta" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -961,6 +962,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="VentaGuardarResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

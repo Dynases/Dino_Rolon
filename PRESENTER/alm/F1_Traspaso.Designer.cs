@@ -299,9 +299,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 286);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 297);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(589, 40);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(598, 40);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
             // label2

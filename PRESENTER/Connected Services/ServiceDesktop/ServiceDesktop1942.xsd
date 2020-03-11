@@ -36,6 +36,9 @@
   <xs:complexType name="VVenta_01">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="CodBar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Delete" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />

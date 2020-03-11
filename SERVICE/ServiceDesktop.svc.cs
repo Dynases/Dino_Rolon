@@ -452,11 +452,11 @@ namespace SERVICE
             }
         }
 
-        public bool SucursalGuardar(VSucursal vDeposito)
+        public bool SucursalGuardar(VSucursal vSucursal)
         {
             try
             {
-                return new LSucursal().Guardar(vDeposito);
+                return new LSucursal().Guardar(vSucursal);
             }
             catch (Exception ex)
             {
@@ -760,6 +760,7 @@ namespace SERVICE
 
         #endregion
         #region Transaformacion_01
+
         public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id)
         {
             try
@@ -798,6 +799,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
         #region Compra
         public List<VCompraLista> Compra_Lista()
@@ -883,11 +885,11 @@ namespace SERVICE
 
         #region Ventas
 
-        public bool VentaGuardar(VVenta vVenta)
+        public bool VentaGuardar(VVenta vVenta, ref int id)
         {
             try
             {
-                return new LVenta().Guardar(vVenta);
+                return new LVenta().Guardar(vVenta, ref id);
             }
             catch (Exception ex)
             {

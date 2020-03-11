@@ -1,29 +1,33 @@
-﻿namespace ENTITY.ven.view
+﻿using System;
+
+namespace ENTITY.ven.view
 {
     public class VVenta_01
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //0
 
-        public int IdProducto { get; set; }
+        public int IdProducto { get; set; } //1
 
-        public string DescripcionProducto { get; set; }
+        public string DescripcionProducto { get; set; } //2
 
-        public int Cantidad { get; set; }
+        public int Cantidad { get; set; } //3
 
-        public decimal Precio { get; set; }
+        public decimal Precio { get; set; } //4
 
-        public string Unidad { get; set; }
+        public string Unidad { get; set; } //5
 
-        public int Estado { get; set; }
+        public int Estado { get; set; } //6
 
-        public decimal SubTotal
+        public decimal SubTotal //7
         {
             get
-            { return this.Precio * this.Cantidad; }
+            { return this.Precio * Convert.ToDecimal(this.Cantidad); }
         }
 
-        public string CodBar { get; set; }
+        public string CodBar { get; set; } //8
 
-        public int IdVenta { get; set; }
+        public int IdVenta { get; set; } //9
+
+        public string Delete { get; set; } //10
     }
 }
