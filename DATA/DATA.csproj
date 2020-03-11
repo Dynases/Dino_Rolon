@@ -117,15 +117,6 @@
     <Compile Include="EntityDataModel\DiAvi\Seleccion_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Marco_TI002_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
