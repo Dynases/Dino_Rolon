@@ -213,6 +213,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
         System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse")]
+        System.Data.DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> PrductoListarEncabezadoAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse")]
         bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen);
         
@@ -467,6 +473,30 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
         System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
+        bool VentaGuardar(ENTITY.ven.view.VVenta vVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
+        System.Threading.Tasks.Task<bool> VentaGuardarAsync(ENTITY.ven.view.VVenta vVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
+        ENTITY.ven.view.VVenta[] VentasListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
+        bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
+        System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -972,6 +1002,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ProductoExisteEnCompraAsync(id);
         }
         
+        public System.Data.DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
+            return base.Channel.PrductoListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> PrductoListarEncabezadoAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
+            return base.Channel.PrductoListarEncabezadoAsync(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+        }
+        
         public bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen) {
             return base.Channel.AlmacenGuardar(vAlmacen);
         }
@@ -1333,6 +1371,38 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId) {
             return base.Channel.PlantillaListarDetallePlantillaAsync(PlantillaId);
+        }
+        
+        public bool VentaGuardar(ENTITY.ven.view.VVenta vVenta) {
+            return base.Channel.VentaGuardar(vVenta);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VentaGuardarAsync(ENTITY.ven.view.VVenta vVenta) {
+            return base.Channel.VentaGuardarAsync(vVenta);
+        }
+        
+        public ENTITY.ven.view.VVenta[] VentasListar() {
+            return base.Channel.VentasListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync() {
+            return base.Channel.VentasListarAsync();
+        }
+        
+        public bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId) {
+            return base.Channel.VentaDetalleGuardar(lista, VentaId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId) {
+            return base.Channel.VentaDetalleGuardarAsync(lista, VentaId);
+        }
+        
+        public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
+            return base.Channel.VentaDetalleListar(VentaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
+            return base.Channel.VentaDetalleListarAsync(VentaId);
         }
     }
 }

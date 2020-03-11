@@ -3,6 +3,7 @@ using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool Eliminar( int idProducto)
+        public bool Eliminar(int idProducto)
         {
             try
             {
@@ -101,6 +102,20 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
+                                          int IdCategoriaPrecio)
+        {
+            try
+            {
+                return iProducto.ListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
     }
 }

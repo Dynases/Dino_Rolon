@@ -28,6 +28,7 @@ using ENTITY.inv.Transformacion.Report;
 using ENTITY.inv.Traspaso.View;
 using ENTITY.inv.TipoAlmacen.view;
 using ENTITY.Plantilla;
+using ENTITY.ven.view;
 
 namespace SERVICE
 {
@@ -305,6 +306,20 @@ namespace SERVICE
             try
             {
                 var listResult = new LProducto().ExisteEnCompra(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen,
+                                          int IdCategoriaPrecio)
+        {
+            try
+            {
+                var listResult = new LProducto().ListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
                 return listResult;
             }
             catch (Exception ex)
@@ -857,6 +872,58 @@ namespace SERVICE
             try
             {
                 return new LPlantilla_01().ListarDetallePlantilla(PlantillaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Ventas
+
+        public bool VentaGuardar(VVenta vVenta)
+        {
+            try
+            {
+                return new LVenta().Guardar(vVenta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VVenta> VentasListar()
+        {
+            try
+            {
+                return new LVenta().Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId)
+        {
+            try
+            {
+                return new LVenta_01().Guardar(lista, VentaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VVenta_01> VentaDetalleListar(int VentaId)
+        {
+            try
+            {
+                return new LVenta_01().ListarDetalle(VentaId);
             }
             catch (Exception ex)
             {

@@ -86,6 +86,7 @@
     <Compile Include="reg\Precio\View\VPrecioLista.cs" />
     <Compile Include="Telefono\View\VTelefono.cs" />
     <Compile Include="ven\view\VVenta.cs" />
+    <Compile Include="ven\view\VVenta_01.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cliente\Report\" />

@@ -10,13 +10,15 @@
 namespace DATA.EntityDataModel.DiAvi
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Estaticos
+    public partial class sp_Marco_TI002_Result
     {
-        public int Id { get; set; }
-        public string Grupo { get; set; }
-        public int Orden { get; set; }
-        public string Descrip { get; set; }
+        public int yfnumi { get; set; }
+        public int yfcprod { get; set; }
+        public string yfcdprod1 { get; set; }
+        public string yfcdprod2 { get; set; }
+        public string Laboratorio { get; set; }
+        public string Presentacion { get; set; }
+        public Nullable<decimal> stock { get; set; }
     }
 }

@@ -21,22 +21,21 @@ namespace DATA.EntityDataModel.DiAvi
         }
     
         public int Id { get; set; }
+        public int IdAlmacen { get; set; }
+        public int IdCliente { get; set; }
         public System.DateTime FechaRegistro { get; set; }
         public System.DateTime FechaVenta { get; set; }
         public string Usuario { get; set; }
-        public decimal Total { get; set; }
         public int Estado { get; set; }
-        public int Almacen { get; set; }
         public int Tipo { get; set; }
-        public int ClienteId { get; set; }
-        public string EncPreventa { get; set; }
-        public string EncVenta { get; set; }
-        public string EncEntrega { get; set; }
-        public string EncTransporte { get; set; }
-        public string EncRecepcion { get; set; }
         public string Observaciones { get; set; }
+        public string EncPrVenta { get; set; }
+        public string EncVenta { get; set; }
+        public string EncTransporte { get; set; }
+        public string EncEntrega { get; set; }
+        public string EncRecepcion { get; set; }
     
-        public virtual Almacen Almacen1 { get; set; }
+        public virtual Almacen Almacen { get; set; }
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta_01> Venta_01 { get; set; }

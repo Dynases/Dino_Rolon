@@ -26,6 +26,7 @@
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
       <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
+      <xsd:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceDesktop_GetData_InputMessage">
@@ -159,6 +160,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrductoListarEncabezado_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrductoListarEncabezado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrductoListarEncabezado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrductoListarEncabezadoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_AlmacenGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:AlmacenGuardar" />
@@ -406,6 +413,30 @@
   <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage">
     <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantillaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentasListar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentasListar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentasListar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentasListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleListar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleListar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleListar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleListarResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/GetData" message="tns:IServiceDesktop_GetData_InputMessage" />
@@ -494,6 +525,10 @@
     <wsdl:operation name="ProductoExisteEnCompra">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" message="tns:IServiceDesktop_ProductoExisteEnCompra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse" message="tns:IServiceDesktop_ProductoExisteEnCompra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrductoListarEncabezado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" message="tns:IServiceDesktop_PrductoListarEncabezado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse" message="tns:IServiceDesktop_PrductoListarEncabezado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AlmacenGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar" message="tns:IServiceDesktop_AlmacenGuardar_InputMessage" />
@@ -658,6 +693,22 @@
     <wsdl:operation name="PlantillaListarDetallePlantilla">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardar" message="tns:IServiceDesktop_VentaGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardarResponse" message="tns:IServiceDesktop_VentaGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentasListar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentasListar" message="tns:IServiceDesktop_VentasListar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentasListarResponse" message="tns:IServiceDesktop_VentasListar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar" message="tns:IServiceDesktop_VentaDetalleGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse" message="tns:IServiceDesktop_VentaDetalleGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleListar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse" message="tns:IServiceDesktop_VentaDetalleListar_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
@@ -853,6 +904,15 @@
     </wsdl:operation>
     <wsdl:operation name="ProductoExisteEnCompra">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrductoListarEncabezado">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1222,6 +1282,42 @@
     </wsdl:operation>
     <wsdl:operation name="PlantillaListarDetallePlantilla">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentasListar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentasListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleListar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleListar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
