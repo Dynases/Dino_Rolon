@@ -280,6 +280,8 @@
             this.Dgv_DetalleVenta.Name = "Dgv_DetalleVenta";
             this.Dgv_DetalleVenta.Size = new System.Drawing.Size(1288, 260);
             this.Dgv_DetalleVenta.TabIndex = 0;
+            this.Dgv_DetalleVenta.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_DetalleVenta_CellEdited);
+            this.Dgv_DetalleVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_DetalleVenta_KeyDown);
             // 
             // PanelArriba
             // 

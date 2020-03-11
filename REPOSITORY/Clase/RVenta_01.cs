@@ -60,6 +60,8 @@ namespace REPOSITORY.Clase
                        .Select(v => new VVenta_01
                        {
                            Cantidad = v.Cantidad,
+                           CodBar = v.Producto.CodBar,
+                           DescripcionProducto = v.Producto.Descrip,
                            Estado = v.Estado,
                            Id = v.Id,
                            IdProducto = v.IdProducto,
