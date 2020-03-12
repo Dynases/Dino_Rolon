@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_CompraIngreso));
+            Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.LblSucursal = new DevComponents.DotNetBar.LabelX();
             this.Sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Recibido = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -73,8 +75,6 @@
             this.Tb_TotalFisico = new DevComponents.Editors.DoubleInput();
             this.Tb_TotalEnviado = new DevComponents.Editors.DoubleInput();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.LblSucursal = new DevComponents.DotNetBar.LabelX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -91,6 +91,7 @@
             this.PanelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
@@ -105,15 +106,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel2);
             this.PanelContenidoRegistro.Controls.Add(this.panel1);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1133, 635);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1133, 634);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel1, 0);
@@ -239,7 +238,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1127, 571);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1127, 569);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -260,7 +259,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 108);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(348, 527);
+            this.panel1.Size = new System.Drawing.Size(348, 526);
             this.panel1.TabIndex = 69;
             // 
             // GPanel_DatosGenerales
@@ -298,7 +297,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(348, 527);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(348, 526);
             // 
             // 
             // 
@@ -329,6 +328,41 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 80;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // Cb_Almacen
+            // 
+            this.Cb_Almacen.BackColor = System.Drawing.Color.White;
+            Cb_Almacen_DesignTimeLayout.LayoutString = resources.GetString("Cb_Almacen_DesignTimeLayout.LayoutString");
+            this.Cb_Almacen.DesignTimeLayout = Cb_Almacen_DesignTimeLayout;
+            this.Cb_Almacen.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Almacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Almacen.Location = new System.Drawing.Point(110, 428);
+            this.Cb_Almacen.Name = "Cb_Almacen";
+            this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Almacen.SelectedIndex = -1;
+            this.Cb_Almacen.SelectedItem = null;
+            this.Cb_Almacen.Size = new System.Drawing.Size(195, 24);
+            this.Cb_Almacen.TabIndex = 371;
+            this.Cb_Almacen.Tag = "1";
+            this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // LblSucursal
+            // 
+            this.LblSucursal.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LblSucursal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblSucursal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.LblSucursal.Location = new System.Drawing.Point(5, 427);
+            this.LblSucursal.Name = "LblSucursal";
+            this.LblSucursal.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.LblSucursal.Size = new System.Drawing.Size(71, 23);
+            this.LblSucursal.TabIndex = 372;
+            this.LblSucursal.Text = "Sucursal";
             // 
             // Sw_Tipo
             // 
@@ -378,7 +412,7 @@
             this.Tb_Recibido.Location = new System.Drawing.Point(107, 368);
             this.Tb_Recibido.Name = "Tb_Recibido";
             this.Tb_Recibido.PreventEnterBeep = true;
-            this.Tb_Recibido.Size = new System.Drawing.Size(196, 23);
+            this.Tb_Recibido.Size = new System.Drawing.Size(196, 25);
             this.Tb_Recibido.TabIndex = 342;
             // 
             // labelX11
@@ -410,7 +444,7 @@
             this.Tb_Entregado.Location = new System.Drawing.Point(107, 336);
             this.Tb_Entregado.Name = "Tb_Entregado";
             this.Tb_Entregado.PreventEnterBeep = true;
-            this.Tb_Entregado.Size = new System.Drawing.Size(196, 23);
+            this.Tb_Entregado.Size = new System.Drawing.Size(196, 25);
             this.Tb_Entregado.TabIndex = 10;
             // 
             // labelX10
@@ -442,7 +476,7 @@
             this.Tb_Edad.Location = new System.Drawing.Point(107, 307);
             this.Tb_Edad.Name = "Tb_Edad";
             this.Tb_Edad.PreventEnterBeep = true;
-            this.Tb_Edad.Size = new System.Drawing.Size(196, 23);
+            this.Tb_Edad.Size = new System.Drawing.Size(196, 25);
             this.Tb_Edad.TabIndex = 9;
             // 
             // labelX9
@@ -491,7 +525,7 @@
             this.Cb_Tipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Tipo.SelectedIndex = -1;
             this.Cb_Tipo.SelectedItem = null;
-            this.Cb_Tipo.Size = new System.Drawing.Size(195, 22);
+            this.Cb_Tipo.Size = new System.Drawing.Size(195, 24);
             this.Cb_Tipo.TabIndex = 7;
             this.Cb_Tipo.Tag = "1";
             this.Cb_Tipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -526,7 +560,7 @@
             this.tb_Proveedor.Location = new System.Drawing.Point(108, 163);
             this.tb_Proveedor.Name = "tb_Proveedor";
             this.tb_Proveedor.PreventEnterBeep = true;
-            this.tb_Proveedor.Size = new System.Drawing.Size(196, 23);
+            this.tb_Proveedor.Size = new System.Drawing.Size(196, 25);
             this.tb_Proveedor.TabIndex = 6;
             this.tb_Proveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_Proveedor_KeyDown);
             // 
@@ -604,7 +638,7 @@
             this.Tb_FechaRec.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_FechaRec.MonthCalendar.TodayButtonVisible = true;
             this.Tb_FechaRec.Name = "Tb_FechaRec";
-            this.Tb_FechaRec.Size = new System.Drawing.Size(153, 22);
+            this.Tb_FechaRec.Size = new System.Drawing.Size(153, 24);
             this.Tb_FechaRec.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Tb_FechaRec.TabIndex = 4;
             // 
@@ -650,7 +684,7 @@
             this.Tb_FechaEnt.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_FechaEnt.MonthCalendar.TodayButtonVisible = true;
             this.Tb_FechaEnt.Name = "Tb_FechaEnt";
-            this.Tb_FechaEnt.Size = new System.Drawing.Size(153, 22);
+            this.Tb_FechaEnt.Size = new System.Drawing.Size(153, 24);
             this.Tb_FechaEnt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Tb_FechaEnt.TabIndex = 3;
             // 
@@ -684,7 +718,7 @@
             this.Tb_Placa.Location = new System.Drawing.Point(108, 134);
             this.Tb_Placa.Name = "Tb_Placa";
             this.Tb_Placa.PreventEnterBeep = true;
-            this.Tb_Placa.Size = new System.Drawing.Size(196, 23);
+            this.Tb_Placa.Size = new System.Drawing.Size(196, 25);
             this.Tb_Placa.TabIndex = 5;
             // 
             // Tb_NUmGranja
@@ -700,7 +734,7 @@
             this.Tb_NUmGranja.Location = new System.Drawing.Point(152, 44);
             this.Tb_NUmGranja.Name = "Tb_NUmGranja";
             this.Tb_NUmGranja.PreventEnterBeep = true;
-            this.Tb_NUmGranja.Size = new System.Drawing.Size(152, 23);
+            this.Tb_NUmGranja.Size = new System.Drawing.Size(152, 25);
             this.Tb_NUmGranja.TabIndex = 2;
             // 
             // Tb_Cod
@@ -716,7 +750,7 @@
             this.Tb_Cod.Location = new System.Drawing.Point(152, 13);
             this.Tb_Cod.Name = "Tb_Cod";
             this.Tb_Cod.PreventEnterBeep = true;
-            this.Tb_Cod.Size = new System.Drawing.Size(66, 23);
+            this.Tb_Cod.Size = new System.Drawing.Size(66, 25);
             this.Tb_Cod.TabIndex = 247;
             // 
             // LabelX3
@@ -780,7 +814,7 @@
             this.LabelX1.Location = new System.Drawing.Point(3, 13);
             this.LabelX1.Name = "LabelX1";
             this.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.LabelX1.Size = new System.Drawing.Size(137, 18);
+            this.LabelX1.Size = new System.Drawing.Size(151, 20);
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
@@ -792,7 +826,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(348, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(785, 527);
+            this.panel2.Size = new System.Drawing.Size(785, 526);
             this.panel2.TabIndex = 70;
             // 
             // panel4
@@ -801,7 +835,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(785, 410);
+            this.panel4.Size = new System.Drawing.Size(785, 409);
             this.panel4.TabIndex = 1;
             // 
             // GPanel_Detalle
@@ -815,7 +849,7 @@
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(785, 410);
+            this.GPanel_Detalle.Size = new System.Drawing.Size(785, 409);
             // 
             // 
             // 
@@ -854,7 +888,7 @@
             this.Dgv_Detalle.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(779, 384);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(779, 381);
             this.Dgv_Detalle.TabIndex = 258;
             this.Dgv_Detalle.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellValueChanged);
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
@@ -875,7 +909,7 @@
             this.panel3.Controls.Add(this.Tb_TotalEnviado);
             this.panel3.Controls.Add(this.labelX12);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 410);
+            this.panel3.Location = new System.Drawing.Point(0, 409);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(785, 117);
             this.panel3.TabIndex = 0;
@@ -887,7 +921,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 15);
+            this.label1.Size = new System.Drawing.Size(375, 17);
             this.label1.TabIndex = 236;
             this.label1.Text = "Medidas: Cajas = 360 /  Grupo = 300 / Maple = 30 ";
             // 
@@ -904,7 +938,7 @@
             this.labelX14.Location = new System.Drawing.Point(335, 36);
             this.labelX14.Name = "labelX14";
             this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX14.Size = new System.Drawing.Size(104, 16);
+            this.labelX14.Size = new System.Drawing.Size(114, 18);
             this.labelX14.TabIndex = 235;
             this.labelX14.Text = "TOTAL MAPLES";
             // 
@@ -921,7 +955,7 @@
             this.labelX15.Location = new System.Drawing.Point(335, 8);
             this.labelX15.Name = "labelX15";
             this.labelX15.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX15.Size = new System.Drawing.Size(174, 16);
+            this.labelX15.Size = new System.Drawing.Size(192, 18);
             this.labelX15.TabIndex = 234;
             this.labelX15.Text = "TOTAL RECEPCION FISICA";
             // 
@@ -938,7 +972,7 @@
             this.labelX13.Location = new System.Drawing.Point(6, 41);
             this.labelX13.Name = "labelX13";
             this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX13.Size = new System.Drawing.Size(131, 16);
+            this.labelX13.Size = new System.Drawing.Size(144, 18);
             this.labelX13.TabIndex = 233;
             this.labelX13.Text = "TOTAL VENDIDO(h)";
             // 
@@ -955,7 +989,7 @@
             this.Tb_TSaldoTo.Location = new System.Drawing.Point(691, 7);
             this.Tb_TSaldoTo.MinValue = 0D;
             this.Tb_TSaldoTo.Name = "Tb_TSaldoTo";
-            this.Tb_TSaldoTo.Size = new System.Drawing.Size(82, 22);
+            this.Tb_TSaldoTo.Size = new System.Drawing.Size(82, 24);
             this.Tb_TSaldoTo.TabIndex = 232;
             this.Tb_TSaldoTo.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -972,7 +1006,7 @@
             this.Tb_TotalMaples.Location = new System.Drawing.Point(515, 35);
             this.Tb_TotalMaples.MinValue = 0D;
             this.Tb_TotalMaples.Name = "Tb_TotalMaples";
-            this.Tb_TotalMaples.Size = new System.Drawing.Size(80, 22);
+            this.Tb_TotalMaples.Size = new System.Drawing.Size(80, 24);
             this.Tb_TotalMaples.TabIndex = 231;
             this.Tb_TotalMaples.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -989,7 +1023,7 @@
             this.Tb_TotalVendido.Location = new System.Drawing.Point(142, 36);
             this.Tb_TotalVendido.MinValue = 0D;
             this.Tb_TotalVendido.Name = "Tb_TotalVendido";
-            this.Tb_TotalVendido.Size = new System.Drawing.Size(84, 22);
+            this.Tb_TotalVendido.Size = new System.Drawing.Size(84, 24);
             this.Tb_TotalVendido.TabIndex = 227;
             this.Tb_TotalVendido.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1006,7 +1040,7 @@
             this.Tb_TPrecio.Location = new System.Drawing.Point(603, 7);
             this.Tb_TPrecio.MinValue = 0D;
             this.Tb_TPrecio.Name = "Tb_TPrecio";
-            this.Tb_TPrecio.Size = new System.Drawing.Size(82, 22);
+            this.Tb_TPrecio.Size = new System.Drawing.Size(82, 24);
             this.Tb_TPrecio.TabIndex = 226;
             this.Tb_TPrecio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1023,7 +1057,7 @@
             this.Tb_TotalFisico.Location = new System.Drawing.Point(515, 7);
             this.Tb_TotalFisico.MinValue = 0D;
             this.Tb_TotalFisico.Name = "Tb_TotalFisico";
-            this.Tb_TotalFisico.Size = new System.Drawing.Size(80, 22);
+            this.Tb_TotalFisico.Size = new System.Drawing.Size(80, 24);
             this.Tb_TotalFisico.TabIndex = 225;
             this.Tb_TotalFisico.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1040,7 +1074,7 @@
             this.Tb_TotalEnviado.Location = new System.Drawing.Point(142, 8);
             this.Tb_TotalEnviado.MinValue = 0D;
             this.Tb_TotalEnviado.Name = "Tb_TotalEnviado";
-            this.Tb_TotalEnviado.Size = new System.Drawing.Size(84, 22);
+            this.Tb_TotalEnviado.Size = new System.Drawing.Size(84, 24);
             this.Tb_TotalEnviado.TabIndex = 221;
             this.Tb_TotalEnviado.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1057,44 +1091,9 @@
             this.labelX12.Location = new System.Drawing.Point(6, 13);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX12.Size = new System.Drawing.Size(130, 16);
+            this.labelX12.Size = new System.Drawing.Size(143, 18);
             this.labelX12.TabIndex = 220;
             this.labelX12.Text = "TOTAL ENVIADO(h)";
-            // 
-            // Cb_Almacen
-            // 
-            this.Cb_Almacen.BackColor = System.Drawing.Color.White;
-            Cb_Almacen_DesignTimeLayout.LayoutString = resources.GetString("Cb_Almacen_DesignTimeLayout.LayoutString");
-            this.Cb_Almacen.DesignTimeLayout = Cb_Almacen_DesignTimeLayout;
-            this.Cb_Almacen.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_Almacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacen.Location = new System.Drawing.Point(110, 428);
-            this.Cb_Almacen.Name = "Cb_Almacen";
-            this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_Almacen.SelectedIndex = -1;
-            this.Cb_Almacen.SelectedItem = null;
-            this.Cb_Almacen.Size = new System.Drawing.Size(195, 22);
-            this.Cb_Almacen.TabIndex = 371;
-            this.Cb_Almacen.Tag = "1";
-            this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            // 
-            // LblSucursal
-            // 
-            this.LblSucursal.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.LblSucursal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblSucursal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LblSucursal.Location = new System.Drawing.Point(5, 427);
-            this.LblSucursal.Name = "LblSucursal";
-            this.LblSucursal.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.LblSucursal.Size = new System.Drawing.Size(71, 23);
-            this.LblSucursal.TabIndex = 372;
-            this.LblSucursal.Text = "Sucursal";
             // 
             // F1_CompraIngreso
             // 
@@ -1121,6 +1120,7 @@
             this.panel1.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
@@ -1136,7 +1136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             this.ResumeLayout(false);
 
         }

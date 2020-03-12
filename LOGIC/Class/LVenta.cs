@@ -21,13 +21,13 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Guardar(VVenta vVenta)
+        public bool Guardar(VVenta vVenta, ref int id)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iVenta.Guardar(vVenta);
+                    var result = iVenta.Guardar(vVenta, ref id);
                     scope.Complete();
                     return result;
                 }

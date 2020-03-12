@@ -39,5 +39,7 @@ namespace ENTITY.ven.view
         public string EncEntrega { get; set; }
 
         public string EncRecepcion { get; set; }
+
+        public string NitCliente { get; set; }
     }
 }

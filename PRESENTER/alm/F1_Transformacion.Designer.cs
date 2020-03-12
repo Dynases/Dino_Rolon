@@ -85,9 +85,8 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
-            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1267, 776);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 626);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
@@ -109,8 +108,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.superTabControl1.Size = new System.Drawing.Size(1267, 813);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.superTabControl1.Size = new System.Drawing.Size(950, 660);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
@@ -136,8 +135,8 @@
             // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1079, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // BubbleBarUsuario
             // 
@@ -159,36 +158,36 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(1012, 0);
-            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(758, 0);
+            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 41);
-            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1137, 772);
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(853, 627);
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(1207, 0);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnMin.Location = new System.Drawing.Point(890, 0);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(1227, 0);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnMax.Location = new System.Drawing.Point(910, 0);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1247, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnClose.Location = new System.Drawing.Point(930, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1137, 772);
+            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(853, 627);
             // 
             // 
             // 
@@ -220,22 +219,22 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1131, 741);
+            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(847, 599);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
             // 
-            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.LblSubtitulo.Size = new System.Drawing.Size(1267, 44);
+            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblSubtitulo.Size = new System.Drawing.Size(950, 36);
             this.LblSubtitulo.Text = "Registre una nueva transformación . Visualice y/o modifique la información de una" +
     " transformación previamente registrado.";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PanelMenu.Size = new System.Drawing.Size(1267, 89);
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelMenu.Size = new System.Drawing.Size(950, 72);
             // 
             // PanelFondo
             // 
@@ -243,10 +242,9 @@
             this.PanelFondo.Controls.Add(this.PanelDerecho);
             this.PanelFondo.Controls.Add(this.PanelIzquierda);
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFondo.Location = new System.Drawing.Point(0, 133);
-            this.PanelFondo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1267, 643);
+            this.PanelFondo.Size = new System.Drawing.Size(950, 518);
             this.PanelFondo.TabIndex = 70;
             // 
             // PanelDerecho
@@ -255,10 +253,9 @@
             this.PanelDerecho.Controls.Add(this.panel2);
             this.PanelDerecho.Controls.Add(this.panel1);
             this.PanelDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelDerecho.Location = new System.Drawing.Point(460, 0);
-            this.PanelDerecho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelDerecho.Location = new System.Drawing.Point(345, 0);
             this.PanelDerecho.Name = "PanelDerecho";
-            this.PanelDerecho.Size = new System.Drawing.Size(807, 643);
+            this.PanelDerecho.Size = new System.Drawing.Size(605, 518);
             this.PanelDerecho.TabIndex = 1;
             // 
             // panel2
@@ -266,9 +263,8 @@
             this.panel2.Controls.Add(this.GPanel_Detalle);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(807, 563);
+            this.panel2.Size = new System.Drawing.Size(605, 453);
             this.panel2.TabIndex = 1;
             // 
             // GPanel_Detalle
@@ -282,9 +278,8 @@
             this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
-            this.GPanel_Detalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(807, 563);
+            this.GPanel_Detalle.Size = new System.Drawing.Size(605, 453);
             // 
             // 
             // 
@@ -322,10 +317,9 @@
             this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Producto.Controls.Add(this.Dgv_Producto);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Producto.Location = new System.Drawing.Point(4, 252);
-            this.GPanel_Producto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GPanel_Producto.Location = new System.Drawing.Point(3, 205);
             this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(791, 278);
+            this.GPanel_Producto.Size = new System.Drawing.Size(593, 226);
             // 
             // 
             // 
@@ -362,9 +356,8 @@
             // 
             this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Producto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dgv_Producto.Name = "Dgv_Producto";
-            this.Dgv_Producto.Size = new System.Drawing.Size(785, 247);
+            this.Dgv_Producto.Size = new System.Drawing.Size(587, 198);
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
             this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);
@@ -375,9 +368,8 @@
             this.Dgv_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Detalle.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Detalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(801, 532);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(599, 425);
             this.Dgv_Detalle.TabIndex = 258;
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
@@ -391,10 +383,9 @@
             this.panel1.Controls.Add(this.Tb_Total1);
             this.panel1.Controls.Add(this.labelX12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 563);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 453);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(807, 80);
+            this.panel1.Size = new System.Drawing.Size(605, 65);
             this.panel1.TabIndex = 0;
             // 
             // Tb_Total2
@@ -407,11 +398,10 @@
             this.Tb_Total2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Total2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Total2.Increment = 1D;
-            this.Tb_Total2.Location = new System.Drawing.Point(699, 7);
-            this.Tb_Total2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Total2.Location = new System.Drawing.Point(524, 6);
             this.Tb_Total2.MinValue = 0D;
             this.Tb_Total2.Name = "Tb_Total2";
-            this.Tb_Total2.Size = new System.Drawing.Size(92, 27);
+            this.Tb_Total2.Size = new System.Drawing.Size(69, 24);
             this.Tb_Total2.TabIndex = 225;
             this.Tb_Total2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -425,11 +415,10 @@
             this.Tb_Total1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Total1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Total1.Increment = 1D;
-            this.Tb_Total1.Location = new System.Drawing.Point(471, 7);
-            this.Tb_Total1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Total1.Location = new System.Drawing.Point(353, 6);
             this.Tb_Total1.MinValue = 0D;
             this.Tb_Total1.Name = "Tb_Total1";
-            this.Tb_Total1.Size = new System.Drawing.Size(112, 27);
+            this.Tb_Total1.Size = new System.Drawing.Size(84, 24);
             this.Tb_Total1.TabIndex = 223;
             this.Tb_Total1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -443,11 +432,10 @@
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX12.ForeColor = System.Drawing.Color.White;
-            this.labelX12.Location = new System.Drawing.Point(20, 15);
-            this.labelX12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX12.Location = new System.Drawing.Point(15, 12);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX12.Size = new System.Drawing.Size(59, 20);
+            this.labelX12.Size = new System.Drawing.Size(51, 18);
             this.labelX12.TabIndex = 222;
             this.labelX12.Text = "TOTAL";
             // 
@@ -457,9 +445,8 @@
             this.PanelIzquierda.Controls.Add(this.GPanel_DatosGenerales);
             this.PanelIzquierda.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelIzquierda.Location = new System.Drawing.Point(0, 0);
-            this.PanelIzquierda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelIzquierda.Name = "PanelIzquierda";
-            this.PanelIzquierda.Size = new System.Drawing.Size(460, 643);
+            this.PanelIzquierda.Size = new System.Drawing.Size(345, 518);
             this.PanelIzquierda.TabIndex = 0;
             // 
             // GPanel_DatosGenerales
@@ -478,9 +465,8 @@
             this.GPanel_DatosGenerales.Dock = System.Windows.Forms.DockStyle.Left;
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
-            this.GPanel_DatosGenerales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(464, 643);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(348, 518);
             // 
             // 
             // 
@@ -521,11 +507,10 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(4, 143);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Location = new System.Drawing.Point(3, 116);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(95, 28);
+            this.labelX1.Size = new System.Drawing.Size(71, 23);
             this.labelX1.TabIndex = 343;
             this.labelX1.Text = "Observación";
             // 
@@ -539,12 +524,11 @@
             this.Tb_Observacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Observacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Observacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Observacion.Location = new System.Drawing.Point(144, 145);
-            this.Tb_Observacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Observacion.Location = new System.Drawing.Point(108, 118);
             this.Tb_Observacion.Multiline = true;
             this.Tb_Observacion.Name = "Tb_Observacion";
             this.Tb_Observacion.PreventEnterBeep = true;
-            this.Tb_Observacion.Size = new System.Drawing.Size(261, 174);
+            this.Tb_Observacion.Size = new System.Drawing.Size(196, 141);
             this.Tb_Observacion.TabIndex = 342;
             // 
             // Cb_Almacen2
@@ -555,14 +539,13 @@
             this.Cb_Almacen2.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Almacen2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Almacen2.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacen2.Location = new System.Drawing.Point(144, 100);
-            this.Cb_Almacen2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_Almacen2.Location = new System.Drawing.Point(108, 81);
             this.Cb_Almacen2.Name = "Cb_Almacen2";
             this.Cb_Almacen2.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacen2.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen2.SelectedIndex = -1;
             this.Cb_Almacen2.SelectedItem = null;
-            this.Cb_Almacen2.Size = new System.Drawing.Size(260, 27);
+            this.Cb_Almacen2.Size = new System.Drawing.Size(195, 24);
             this.Cb_Almacen2.TabIndex = 340;
             this.Cb_Almacen2.Tag = "1";
             this.Cb_Almacen2.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -576,11 +559,10 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(4, 98);
-            this.labelX11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX11.Location = new System.Drawing.Point(3, 80);
             this.labelX11.Name = "labelX11";
             this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX11.Size = new System.Drawing.Size(95, 28);
+            this.labelX11.Size = new System.Drawing.Size(71, 23);
             this.labelX11.TabIndex = 341;
             this.labelX11.Text = "Ingreso";
             // 
@@ -594,11 +576,10 @@
             this.Tb_Id.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Id.Location = new System.Drawing.Point(188, 17);
-            this.Tb_Id.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Id.Location = new System.Drawing.Point(141, 14);
             this.Tb_Id.Name = "Tb_Id";
             this.Tb_Id.PreventEnterBeep = true;
-            this.Tb_Id.Size = new System.Drawing.Size(217, 28);
+            this.Tb_Id.Size = new System.Drawing.Size(163, 25);
             this.Tb_Id.TabIndex = 339;
             // 
             // labelX10
@@ -611,11 +592,10 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX10.Location = new System.Drawing.Point(4, 17);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX10.Location = new System.Drawing.Point(3, 14);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(155, 23);
+            this.labelX10.Size = new System.Drawing.Size(132, 20);
             this.labelX10.TabIndex = 338;
             this.labelX10.Text = "Nro. Transformación";
             // 
@@ -627,14 +607,13 @@
             this.Cb_Almacen1.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Almacen1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Almacen1.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacen1.Location = new System.Drawing.Point(144, 58);
-            this.Cb_Almacen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cb_Almacen1.Location = new System.Drawing.Point(108, 47);
             this.Cb_Almacen1.Name = "Cb_Almacen1";
             this.Cb_Almacen1.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacen1.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen1.SelectedIndex = -1;
             this.Cb_Almacen1.SelectedItem = null;
-            this.Cb_Almacen1.Size = new System.Drawing.Size(260, 27);
+            this.Cb_Almacen1.Size = new System.Drawing.Size(195, 24);
             this.Cb_Almacen1.TabIndex = 7;
             this.Cb_Almacen1.Tag = "1";
             this.Cb_Almacen1.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -648,20 +627,19 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX7.Location = new System.Drawing.Point(4, 57);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX7.Location = new System.Drawing.Point(3, 46);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX7.Size = new System.Drawing.Size(95, 28);
+            this.labelX7.Size = new System.Drawing.Size(71, 23);
             this.labelX7.TabIndex = 254;
             this.labelX7.Text = "Salida";
             // 
             // F1_Transformacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 846);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ClientSize = new System.Drawing.Size(950, 687);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "F1_Transformacion";
             this.Text = "F1_Transformacion";
             this.Load += new System.EventHandler(this.F1_Transformacion_Load);

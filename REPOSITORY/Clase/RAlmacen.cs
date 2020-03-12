@@ -54,7 +54,7 @@ namespace REPOSITORY.Clase
                                       select new VAlmacenCombo
                                       {
                                           IdLibreria = a.Id,
-                                          Descripcion = a.Descrip + " | " + a.Sucursal.Descrip
+                                          Descripcion = a.Descrip + " | Sucursal : " + a.Sucursal.Descrip
                                       }).ToList();
                     return listResult;
                 }

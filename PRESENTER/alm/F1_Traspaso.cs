@@ -593,6 +593,36 @@ namespace PRESENTER.alm
             }
         }
 
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            index = 0;
+            this.MP_MostrarRegistro(index);
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (index > 0)
+            {
+                index -= 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (index < listaTraspasos.Count - 1)
+            {
+                index += 1;
+                this.MP_MostrarRegistro(index);
+            }
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            index = listaTraspasos.Count - 1;
+            this.MP_MostrarRegistro(index);
+        }
+
         #endregion        
 
         public class Producto
@@ -604,7 +634,7 @@ namespace PRESENTER.alm
             public string Unidad { get; set; }
 
             public string Cantidad { get; set; }
-        }
+        }        
     }
 }
 

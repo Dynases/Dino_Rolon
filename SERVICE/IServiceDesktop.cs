@@ -284,16 +284,16 @@ namespace SERVICE
         #region Venta
 
         [OperationContract]
-        bool VentaGuardar(VVenta vVenta);
+        bool VentaGuardar(VVenta vVenta, ref int id);
 
         [OperationContract]
         List<VVenta> VentasListar();
 
         [OperationContract]
-        bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId);
+        bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId);
 
         [OperationContract]
-        List<VVenta_01> VentaDetalleListar(int VentaId);        
+        List<VVenta_01> VentaDetalleListar(int VentaId);
 
         #endregion
     }

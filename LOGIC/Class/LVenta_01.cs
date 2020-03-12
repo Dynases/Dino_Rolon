@@ -10,21 +10,23 @@ namespace LOGIC.Class
     public class LVenta_01
     {
         protected IVenta_01 iVenta_01;
+        protected ITI001 iTi001;
 
         public LVenta_01()
         {
-            iVenta_01 = new RVenta_01();
+            iTi001 = new RTI001();
+            iVenta_01 = new RVenta_01(iTi001);
         }
 
         #region Transacciones
 
-        public bool Guardar(List<VVenta_01> lista, int VentaId)
+        public bool Guardar(List<VVenta_01> lista, int VentaId, int AlmacenId)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = this.iVenta_01.Guardar(lista, VentaId);
+                    var result = this.iVenta_01.Guardar(lista, VentaId, AlmacenId);
                     scope.Complete();
                     return result;
                 }

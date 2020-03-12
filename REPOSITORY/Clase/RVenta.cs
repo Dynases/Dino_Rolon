@@ -12,7 +12,7 @@ namespace REPOSITORY.Clase
     {
         #region Trasanciones
 
-        public bool Guardar(VVenta VVenta)
+        public bool Guardar(VVenta VVenta, ref int id)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace REPOSITORY.Clase
 
                     db.Venta.Add(venta);
                     db.SaveChanges();
-
+                    id = venta.Id;
                     return true;
                 }
             }
@@ -73,6 +73,7 @@ namespace REPOSITORY.Clase
                                  Id = v.Id,
                                  IdAlmacen = v.IdAlmacen,
                                  IdCliente = v.IdCliente,
+                                 NitCliente = v.Cliente.Nit,
                                  Observaciones = v.Observaciones,
                                  Tipo = v.Tipo,
                                  Usuario = v.Usuario
