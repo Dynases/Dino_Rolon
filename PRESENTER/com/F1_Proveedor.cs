@@ -165,7 +165,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_Ciudad_Click(object sender, EventArgs e)
@@ -199,7 +199,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_TipoProveedor_Click(object sender, EventArgs e)
@@ -233,7 +233,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void Btn_LineaGen_Click(object sender, EventArgs e)
@@ -267,7 +267,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void Cb_TipoProveedor_ValueChanged(object sender, EventArgs e)
@@ -299,7 +299,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MP_MostrarMensajeError(ex.Message.ToUpper());
+                MP_MostrarMensajeError(ex.Message);
             }            
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
@@ -330,7 +330,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }                    
         }
         private void MP_InicioArmarCombo(int detalle)
@@ -455,7 +455,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }            
         }
         private void MP_CargarDetalle(int id)
@@ -470,7 +470,7 @@ namespace PRESENTER.com
             }              
             catch (Exception ex)
             {
-                MP_MostrarMensajeError(ex.Message.ToUpper());
+                MP_MostrarMensajeError(ex.Message);
             }
            
         }
@@ -485,73 +485,79 @@ namespace PRESENTER.com
         }
         private void ArmarDetalle()
         {
-            Dgv_Detalle.DataSource = _proveedorDetalle;
-            Dgv_Detalle.RetrieveStructure();
-            Dgv_Detalle.AlternatingColors = true;
+            try
+            {
+                Dgv_Detalle.DataSource = _proveedorDetalle;
+                Dgv_Detalle.RetrieveStructure();
+                Dgv_Detalle.AlternatingColors = true;
 
-            Dgv_Detalle.RootTable.Columns[0].Key = "id";
-            Dgv_Detalle.RootTable.Columns[0].Visible = false;
+                Dgv_Detalle.RootTable.Columns[0].Key = "id";
+                Dgv_Detalle.RootTable.Columns[0].Visible = false;
 
-            Dgv_Detalle.RootTable.Columns[1].Key = "IdLinea";
-            Dgv_Detalle.RootTable.Columns[1].Visible = false;
+                Dgv_Detalle.RootTable.Columns[1].Key = "IdLinea";
+                Dgv_Detalle.RootTable.Columns[1].Visible = false;
 
-            Dgv_Detalle.RootTable.Columns[2].Key = "Linea";
-            Dgv_Detalle.RootTable.Columns[2].Caption = "Linea genetica";
-            Dgv_Detalle.RootTable.Columns[2].Width = 300;
-            Dgv_Detalle.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[2].CellStyle.FontSize = 8;
-            Dgv_Detalle.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Detalle.RootTable.Columns[2].Visible = true;
+                Dgv_Detalle.RootTable.Columns[2].Key = "Linea";
+                Dgv_Detalle.RootTable.Columns[2].Caption = "Linea genetica";
+                Dgv_Detalle.RootTable.Columns[2].Width = 300;
+                Dgv_Detalle.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[2].CellStyle.FontSize = 8;
+                Dgv_Detalle.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Detalle.RootTable.Columns[2].Visible = true;
 
-            Dgv_Detalle.RootTable.Columns[3].Key = "Fecha";
-            Dgv_Detalle.RootTable.Columns[3].Caption = "Fecha de Nacimiento";
-            Dgv_Detalle.RootTable.Columns[3].Width = 350;
-            Dgv_Detalle.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[3].CellStyle.FontSize = 8;
-            Dgv_Detalle.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[3].Visible = true;
+                Dgv_Detalle.RootTable.Columns[3].Key = "Fecha";
+                Dgv_Detalle.RootTable.Columns[3].Caption = "Fecha de Nacimiento";
+                Dgv_Detalle.RootTable.Columns[3].Width = 350;
+                Dgv_Detalle.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[3].CellStyle.FontSize = 8;
+                Dgv_Detalle.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[3].Visible = true;
 
-            Dgv_Detalle.RootTable.Columns[4].Key = "EdadSeman";
-            Dgv_Detalle.RootTable.Columns[4].Caption = "Edad en Semanas";
-            Dgv_Detalle.RootTable.Columns[4].FormatString = "0.00";
-            Dgv_Detalle.RootTable.Columns[4].Width = 150;
-            Dgv_Detalle.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[4].CellStyle.FontSize = 8;
-            Dgv_Detalle.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-            Dgv_Detalle.RootTable.Columns[4].Visible = true;
+                Dgv_Detalle.RootTable.Columns[4].Key = "EdadSeman";
+                Dgv_Detalle.RootTable.Columns[4].Caption = "Edad en Semanas";
+                Dgv_Detalle.RootTable.Columns[4].FormatString = "0.00";
+                Dgv_Detalle.RootTable.Columns[4].Width = 150;
+                Dgv_Detalle.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[4].CellStyle.FontSize = 8;
+                Dgv_Detalle.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Detalle.RootTable.Columns[4].Visible = true;
 
-            Dgv_Detalle.RootTable.Columns[5].Key = "Cantidad";
-            Dgv_Detalle.RootTable.Columns[5].Caption = "Aves Alojadas";
-            Dgv_Detalle.RootTable.Columns[5].FormatString = "0.00";
-            Dgv_Detalle.RootTable.Columns[5].Width = 150;
-            Dgv_Detalle.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[5].CellStyle.FontSize = 8;
-            Dgv_Detalle.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-            Dgv_Detalle.RootTable.Columns[5].Visible = true;
+                Dgv_Detalle.RootTable.Columns[5].Key = "Cantidad";
+                Dgv_Detalle.RootTable.Columns[5].Caption = "Aves Alojadas";
+                Dgv_Detalle.RootTable.Columns[5].FormatString = "0.00";
+                Dgv_Detalle.RootTable.Columns[5].Width = 150;
+                Dgv_Detalle.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[5].CellStyle.FontSize = 8;
+                Dgv_Detalle.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Detalle.RootTable.Columns[5].Visible = true;
 
-            Dgv_Detalle.RootTable.Columns[6].Key = "IdTipoAloja";
-            Dgv_Detalle.RootTable.Columns[6].Visible = false;
+                Dgv_Detalle.RootTable.Columns[6].Key = "IdTipoAloja";
+                Dgv_Detalle.RootTable.Columns[6].Visible = false;
 
-            Dgv_Detalle.RootTable.Columns[7].Key = "TipoAlojamiento";
-            Dgv_Detalle.RootTable.Columns[7].Caption = "Tipo Alojamiento";
-            Dgv_Detalle.RootTable.Columns[7].Width = 150;
-            Dgv_Detalle.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Detalle.RootTable.Columns[7].CellStyle.FontSize = 8;
-            Dgv_Detalle.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Detalle.RootTable.Columns[7].Visible = true;
+                Dgv_Detalle.RootTable.Columns[7].Key = "TipoAlojamiento";
+                Dgv_Detalle.RootTable.Columns[7].Caption = "Tipo Alojamiento";
+                Dgv_Detalle.RootTable.Columns[7].Width = 150;
+                Dgv_Detalle.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Detalle.RootTable.Columns[7].CellStyle.FontSize = 8;
+                Dgv_Detalle.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Detalle.RootTable.Columns[7].Visible = true;
 
-            //Habilitar filtradores
-            Dgv_Detalle.DefaultFilterRowComparison = FilterConditionOperator.Contains;
-            Dgv_Detalle.FilterMode = FilterMode.Automatic;
-            Dgv_Detalle.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
-            //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
-            Dgv_Detalle.GroupByBoxVisible = false;
-            Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
+                //Habilitar filtradores
+                Dgv_Detalle.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                Dgv_Detalle.FilterMode = FilterMode.Automatic;
+                Dgv_Detalle.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
+                //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                Dgv_Detalle.GroupByBoxVisible = false;
+                Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
 
         private void MP_Habilitar()
-        {
-            Tb_Cod.ReadOnly = false;
+        {            
             Tb_CodSpyre.ReadOnly = false;
             Tb_Descripcion.ReadOnly = false;
             Cb_TipoProveedor.Enabled = true;
@@ -698,21 +704,7 @@ namespace PRESENTER.com
                         _longitud = Convert.ToDouble(proveedor.Longittud);
                         MP_DibujarUbicacion(Tb_Descripcion.Text, "");
                         MP_MostrarImagen(proveedor.Imagen);
-                        MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text));
-                        //Tb_Cod.Text = proveedor.Id.ToString();
-                        //Tb_CodSpyre.Text = tabla.Where(x => !string.IsNullOrEmpty(x.IdSpyre)).Count() > 0 ? tabla.Select(x => x.IdSpyre).First().ToString() : "";
-                        //Tb_Descripcion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Descripcion)).Count() > 0 ? tabla.Select(x => x.Descripcion).First().ToString() : "";
-                        //Tb_Direccion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Direccion)).Count() > 0 ? tabla.Select(x => x.Direccion).First().ToString() : "";
-                        //Tb_Contacto.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Contacto)).Count() > 0 ? tabla.Select(x => x.Contacto).First().ToString() : "";
-                        //Tb_Telefono.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Telefono)).Count() > 0 ? tabla.Select(x => x.Telefono).First().ToString() : "";
-                        //Tb_Email1.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Email)).Count() > 0 ? tabla.Select(x => x.Email).First().ToString() : "";
-                        //sw_Tipo.Value = tabla.Select(x => x.Tipo).First() == 1 ? true : false;
-                        //Cb_Ciudad.Value = tabla.Select(x => x.Ciudad).First();
-                        //Cb_TipoProveedor.Value = tabla.Select(x => x.TipoProveeedor).First();
-                        //_latitud = Convert.ToDouble(tabla.Select(x => x.Latitud).First());
-                        //_longitud = Convert.ToDouble(tabla.Select(x => x.Longittud).First());
-                        //MP_DibujarUbicacion(Tb_Descripcion.Text, "");
-                        //MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text));
+                        MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text));                   
                     }
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
                 }
@@ -815,7 +807,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
                 return "";
             }
         }
@@ -834,7 +826,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private bool MP_ValidarDetalle()
@@ -857,13 +849,13 @@ namespace PRESENTER.com
                 Cb_TipoAlojamiento.BackColor = Color.White;
             if (Tb_Fecha.Value > DateTime.Now.Date)
             {
-                MessageBox.Show("La fecha de nacimiento no puede ser mayor ala fecha actual");
                 _Error = true;
+                throw  new Exception("La fecha de nacimiento no puede ser mayor ala fecha actual");                
             }
             if (Tb_Aves.Value < 0)
             {
-                MessageBox.Show("La cantidad de aves tiene que ser mayor a 0");
                 _Error = true;
+                throw new Exception("La cantidad de aves tiene que ser mayor a 0");                
             }
             return _Error;
         }
@@ -899,7 +891,6 @@ namespace PRESENTER.com
                 double CantidadAves;
                 int IdTipoAlojamiento, IdLineaGen;
 
-                //idProveedorDetalle = _NuevoSeg ?Convert.ToInt32(Dgv_Detalle.GetValue("Id")) : 0;
                 IdTipoAlojamiento = Convert.ToInt32(Cb_TipoAlojamiento.Value);
                 IdLineaGen = Convert.ToInt32(Cb_LineaGen.Value);
                 CantidadAves = Tb_Aves.Value;
@@ -938,131 +929,109 @@ namespace PRESENTER.com
                         }
                     }
                 }                
-                ArmarDetalle();
-                //if (Dgv_Detalle.DataSource != null)
-                //{
-                //    proveedor_01.Add((VProveedor_01Lista)Dgv_Detalle.DataSource);
-                //}               
-                ////proveedor_01.Add((VProveedor_01Lista)Dgv_Detalle.DataSource);
-                //VProveedor_01Lista proveedor = new VProveedor_01Lista()
-                //{
-                //    Id = 0,
-                //    IdLinea = IdLineaGen,
-                //    Linea = Linea,
-                //    FechaNac = FechaNac,
-                //    EdadSeman = edadSema,
-                //    Cantidad = Convert.ToDecimal(CantidadAves),
-                //    IdTipoAloja = IdTipoAlojamiento,
-                //    TipoAlojamiento = TipoAlojamiento
-                //};                
-                //proveedor_01.Add(proveedor);
-                //Dgv_Detalle.DataSource =  proveedor_01.ToList();
-
-                // Dgv_Detalle.AddItem(proveedor_01);
-
-                //DataRow nuevaFila = ((DataTable)Dgv_Detalle.DataSource).NewRow();
-                //nuevaFila[0] = 0;
-                //nuevaFila[1] = IdLineaGen;
-                //nuevaFila[2] = Linea;
-                //nuevaFila[3] = FechaNac;
-                //nuevaFila[4] = edadSema;
-                //nuevaFila[5] = CantidadAves;
-                //nuevaFila[6] = IdTipoAlojamiento;
-                //nuevaFila[7] = TipoAlojamiento;
-                //((DataTable)Dgv_Detalle.DataSource).Rows.Add(nuevaFila);
+                ArmarDetalle();               
                 Dgv_Detalle.Focus();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         #endregion
         #region Metodos Heredados
         public override bool MH_NuevoRegistro()
         {
-            bool resultadoDetalle = false;
-            bool resultado = false;
-            string mensaje = "";
-            if (_NuevoDetalle)
+            try
             {
-                if (MP_ValidarDetalle())
+                bool resultadoDetalle = false;
+                bool resultado = false;
+                string mensaje = "";
+                if (_NuevoDetalle)
                 {
-                    resultadoDetalle = true;
+                    if (MP_ValidarDetalle())
+                    {
+                        resultadoDetalle = true;
+                    }
+                    //Ingresa o modifica un detalle
+                    MP_InsertarDetalle();
                 }
-                //Ingresa o modifica un detalle
-                MP_InsertarDetalle();
-            }
-            if (!resultadoDetalle)
-            {              
-                VProveedor Proveedor = new VProveedor()
+                if (!resultadoDetalle)
                 {
-                    IdSpyre = Tb_CodSpyre.Text,
-                    Descripcion = Tb_Descripcion.Text,
-                    Direccion = Tb_Direccion.Text,
-                    Contacto = Tb_Contacto.Text,
-                    Telefono = Tb_Telefono.Text,
-                    Email = Tb_Email1.Text,
-                    Contacto2 = Tb_Contacto2.Text,
-                    Telefono2 = Tb_Telefono2.Text,
-                    Email2 = Tb_Email2.Text,
-                    Ciudad = Convert.ToInt32(Cb_Ciudad.Value),
-                    Tipo = sw_Tipo.Value == true ? 1 : 2,
-                    TipoProveeedor = Convert.ToInt32(Cb_TipoProveedor.Value),
-                    Latitud = Convert.ToDecimal(_latitud),
-                    Longittud = Convert.ToDecimal(_longitud),
-                    Imagen = _imagen,
-                    Fecha = DateTime.Now.Date,
-                    Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario,
-                };
-                int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
-                int idAux = id;
-                var detalle = ((List<VProveedor_01Lista>)Dgv_Detalle.DataSource).ToArray<VProveedor_01Lista>();
+                    VProveedor Proveedor = new VProveedor()
+                    {
+                        IdSpyre = Tb_CodSpyre.Text,
+                        Descripcion = Tb_Descripcion.Text,
+                        Direccion = Tb_Direccion.Text,
+                        Contacto = Tb_Contacto.Text,
+                        Telefono = Tb_Telefono.Text,
+                        Email = Tb_Email1.Text,
+                        Contacto2 = Tb_Contacto2.Text,
+                        Telefono2 = Tb_Telefono2.Text,
+                        Email2 = Tb_Email2.Text,
+                        Ciudad = Convert.ToInt32(Cb_Ciudad.Value),
+                        Tipo = sw_Tipo.Value == true ? 1 : 2,
+                        TipoProveeedor = Convert.ToInt32(Cb_TipoProveedor.Value),
+                        Latitud = Convert.ToDecimal(_latitud),
+                        Longittud = Convert.ToDecimal(_longitud),
+                        Imagen = _imagen,
+                        Fecha = DateTime.Now.Date,
+                        Hora = DateTime.Now.ToString("hh:mm"),
+                        Usuario = UTGlobal.Usuario,
+                    };
+                    int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
+                    int idAux = id;
+                    var detalle = ((List<VProveedor_01Lista>)Dgv_Detalle.DataSource).ToArray<VProveedor_01Lista>();
 
-                resultado = new ServiceDesktop.ServiceDesktopClient().ProveedorGuardar(Proveedor, detalle, ref id, TxtNombreUsu.Text);
-                if (resultado)
-                {
-                    if (idAux == 0)//Registar
+                    resultado = new ServiceDesktop.ServiceDesktopClient().ProveedorGuardar(Proveedor, detalle, ref id, TxtNombreUsu.Text);
+                    if (resultado)
                     {
-                        Tb_CodSpyre.Focus();
-                        MP_CargarEncabezado();
-                        MP_Limpiar();
-                        _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
-                    }
-                    else//Modificar
-                    {
-                        if (_ModificarImagen)
+                        if (idAux == 0)//Registar
                         {
-                            UTGlobal.MG_MoverImagenRuta(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor), _imagen, Pc_Img);
-                            _ModificarImagen = false;
+                            Tb_CodSpyre.Focus();
+                            MP_CargarEncabezado();
+                            MP_Limpiar();
+                            _Limpiar = true;
+                            mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
                         }
-                        MP_Filtrar(1);
-                        MP_InHabilitar();//El formulario
-                        _Limpiar = true;
-                        _imagen = "Default.jpg";
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
+                        else//Modificar
+                        {
+                            if (_ModificarImagen)
+                            {
+                                UTGlobal.MG_MoverImagenRuta(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor), _imagen, Pc_Img);
+                                _ModificarImagen = false;
+                            }
+                            MP_Filtrar(1);
+                            MP_InHabilitar();//El formulario
+                            _Limpiar = true;
+                            _imagen = "Default.jpg";
+                            mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                            MH_Habilitar();//El menu                   
+                        }
                     }
-                }
-                //Resultado
-                if (resultado)
-                {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    //Resultado
+                    if (resultado)
+                    {
+                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }
+                    else
+                    {
+                        mensaje = GLMensaje.Registro_Error(_NombreFormulario);
+                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }
                 }
                 else
                 {
                     mensaje = GLMensaje.Registro_Error(_NombreFormulario);
                     ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                 }
+                return resultado;
             }
-            else
-            {
-                mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+            catch (Exception ex)
+            {                
+                MP_MostrarMensajeError(ex.Message);
+                return false;
             }
-            return resultado;
+           
         }
         public override void MH_Nuevo()
         {

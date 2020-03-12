@@ -109,10 +109,11 @@ namespace MODEL
         {
             if (MH_Validar() == true)
                 return;
-            MH_NuevoRegistro();
-            if (VM_Nuevo)
-                MH_Habilitar();
-            else
+            if (!MH_NuevoRegistro())
+            {
+                return;
+            }
+            if (!VM_Nuevo)
                 MH_Inhanbilitar();
 
         }
