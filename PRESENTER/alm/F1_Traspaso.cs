@@ -573,7 +573,7 @@ namespace PRESENTER.alm
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 this.MP_MostrarMensajeError("Ocurrió un error inesperado, por favor intente cerrar la ventana actual y pruebe nuevamente");
             }

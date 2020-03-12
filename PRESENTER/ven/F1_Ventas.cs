@@ -351,7 +351,7 @@ namespace PRESENTER.ven
             index = 0;
             listaDetalleVenta.Clear();
             this.Dgv_DetalleVenta.DataSource = null;
-            this.MP_CargarEncargado();
+            this.MP_CargarEncargado(Convert.ToInt32(Cb_Origen.Value));
         }
 
         private void MP_CalcularTotal()
@@ -397,11 +397,11 @@ namespace PRESENTER.ven
             }
         }
 
-        private void MP_CargarEncargado()
+        private void MP_CargarEncargado(int almacenOrigen)
         {
             var almacen = new ServiceDesktop.ServiceDesktopClient().AlmacenListar()
                                                                        .ToList()
-                                                                       .Where(a => a.Id == Convert.ToInt32(Cb_Origen.Value))
+                                                                       .Where(a => a.Id == almacenOrigen)
                                                                        .FirstOrDefault();
             TbEncEntrega.Text = almacen.Encargado;
         }
@@ -500,7 +500,7 @@ namespace PRESENTER.ven
                     Dgv_GBuscador.RootTable.Columns[16].CellStyle.FontSize = 8;
                     Dgv_GBuscador.RootTable.Columns[16].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_GBuscador.RootTable.Columns[16].Visible = true;
-                    Dgv_GBuscador.RootTable.Columns[16].EditType = EditType.NoEdit;                    
+                    Dgv_GBuscador.RootTable.Columns[16].EditType = EditType.NoEdit;
 
                     //Habilitar filtradores
                     Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;
@@ -801,7 +801,22 @@ namespace PRESENTER.ven
 
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
         {
-            this.MP_CargarEncargado();
+            try
+            {
+                if (Cb_Origen.Value != null)
+                {
+                    int AlmacenOrigenId;
+                    if (int.TryParse(Cb_Origen.Value.ToString(), out AlmacenOrigenId))
+                    {
+                        this.MP_CargarEncargado(AlmacenOrigenId);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
+            }
         }
 
         private void lblIdCliente_TextChanged(object sender, EventArgs e)
