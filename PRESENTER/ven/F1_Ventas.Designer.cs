@@ -106,9 +106,8 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
-            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(5);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1625, 828);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1215, 669);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
@@ -130,10 +129,11 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(5);
-            this.superTabControl1.Size = new System.Drawing.Size(1625, 865);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(1215, 703);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // btnPrimero
             // 
@@ -153,8 +153,8 @@
             // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1437, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(1073, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
             // 
             // BubbleBarUsuario
             // 
@@ -176,36 +176,35 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(1370, 0);
-            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(5);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(1023, 0);
+            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 37);
-            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(5);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(2000, 910);
+            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 669);
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(1565, 0);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMin.Location = new System.Drawing.Point(1155, 0);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(1585, 0);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMax.Location = new System.Drawing.Point(1175, 0);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1605, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(5);
+            this.btnClose.Location = new System.Drawing.Point(1195, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(5);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(2000, 910);
+            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1215, 669);
             // 
             // 
             // 
@@ -237,21 +236,21 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(5);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1994, 879);
+            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 641);
             // 
             // LblSubtitulo
             // 
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.LblSubtitulo.Size = new System.Drawing.Size(1625, 47);
+            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 38);
             this.LblSubtitulo.Text = "GESTION DE VENTAS";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.PanelMenu.Size = new System.Drawing.Size(1625, 89);
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelMenu.Size = new System.Drawing.Size(1215, 72);
             // 
             // PanelFondo
             // 
@@ -260,10 +259,9 @@
             this.PanelFondo.Controls.Add(this.PanelAbajo);
             this.PanelFondo.Controls.Add(this.PanelArriba);
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFondo.Location = new System.Drawing.Point(0, 136);
-            this.PanelFondo.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelFondo.Location = new System.Drawing.Point(0, 110);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1625, 692);
+            this.PanelFondo.Size = new System.Drawing.Size(1215, 559);
             this.PanelFondo.TabIndex = 70;
             // 
             // panelNavegacionPlantilla
@@ -280,10 +278,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(4, 591);
-            this.panelNavegacionPlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(-5, 478);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1621, 58);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1220, 50);
             this.panelNavegacionPlantilla.TabIndex = 28;
             // 
             // label1
@@ -291,10 +288,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1099, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(824, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 30);
+            this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 362;
             this.label1.Text = "TOTAL:";
             // 
@@ -306,12 +302,11 @@
             this.TbTotal.Border.Class = "TextBoxBorder";
             this.TbTotal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TbTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TbTotal.Location = new System.Drawing.Point(1189, 10);
-            this.TbTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.TbTotal.Location = new System.Drawing.Point(892, 8);
             this.TbTotal.Multiline = true;
             this.TbTotal.Name = "TbTotal";
             this.TbTotal.PreventEnterBeep = true;
-            this.TbTotal.Size = new System.Drawing.Size(403, 32);
+            this.TbTotal.Size = new System.Drawing.Size(302, 26);
             this.TbTotal.TabIndex = 361;
             // 
             // label2
@@ -319,10 +314,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(66, 15);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(50, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 360;
             this.label2.Text = "Plantillas";
             // 
@@ -333,12 +327,11 @@
             // 
             this.Tb_NombrePlantilla.Border.Class = "TextBoxBorder";
             this.Tb_NombrePlantilla.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_NombrePlantilla.Location = new System.Drawing.Point(364, 6);
-            this.Tb_NombrePlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.Tb_NombrePlantilla.Location = new System.Drawing.Point(273, 5);
             this.Tb_NombrePlantilla.Multiline = true;
             this.Tb_NombrePlantilla.Name = "Tb_NombrePlantilla";
             this.Tb_NombrePlantilla.PreventEnterBeep = true;
-            this.Tb_NombrePlantilla.Size = new System.Drawing.Size(363, 32);
+            this.Tb_NombrePlantilla.Size = new System.Drawing.Size(272, 26);
             this.Tb_NombrePlantilla.TabIndex = 359;
             // 
             // btnAgregarPlantilla
@@ -346,10 +339,9 @@
             this.btnAgregarPlantilla.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAgregarPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnAgregarPlantilla.Image = global::PRESENTER.Properties.Resources.New;
-            this.btnAgregarPlantilla.Location = new System.Drawing.Point(728, 4);
-            this.btnAgregarPlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarPlantilla.Location = new System.Drawing.Point(546, 3);
             this.btnAgregarPlantilla.Name = "btnAgregarPlantilla";
-            this.btnAgregarPlantilla.Size = new System.Drawing.Size(44, 38);
+            this.btnAgregarPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnAgregarPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAgregarPlantilla.TabIndex = 5;
             // 
@@ -359,10 +351,9 @@
             this.btnSiguientePlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnSiguientePlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE;
             this.btnSiguientePlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSiguientePlantilla.Location = new System.Drawing.Point(264, 4);
-            this.btnSiguientePlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSiguientePlantilla.Location = new System.Drawing.Point(198, 3);
             this.btnSiguientePlantilla.Name = "btnSiguientePlantilla";
-            this.btnSiguientePlantilla.Size = new System.Drawing.Size(40, 38);
+            this.btnSiguientePlantilla.Size = new System.Drawing.Size(30, 31);
             this.btnSiguientePlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSiguientePlantilla.TabIndex = 4;
             // 
@@ -372,10 +363,9 @@
             this.btnAnteriorPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnAnteriorPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR;
             this.btnAnteriorPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(212, 4);
-            this.btnAnteriorPlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(159, 3);
             this.btnAnteriorPlantilla.Name = "btnAnteriorPlantilla";
-            this.btnAnteriorPlantilla.Size = new System.Drawing.Size(44, 38);
+            this.btnAnteriorPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnAnteriorPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAnteriorPlantilla.TabIndex = 3;
             // 
@@ -385,10 +375,9 @@
             this.btnPrimerPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnPrimerPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR2;
             this.btnPrimerPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnPrimerPlantilla.Location = new System.Drawing.Point(160, 4);
-            this.btnPrimerPlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrimerPlantilla.Location = new System.Drawing.Point(120, 3);
             this.btnPrimerPlantilla.Name = "btnPrimerPlantilla";
-            this.btnPrimerPlantilla.Size = new System.Drawing.Size(44, 38);
+            this.btnPrimerPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnPrimerPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPrimerPlantilla.TabIndex = 2;
             // 
@@ -398,10 +387,9 @@
             this.btnUltimaPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnUltimaPlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE2;
             this.btnUltimaPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnUltimaPlantilla.Location = new System.Drawing.Point(312, 4);
-            this.btnUltimaPlantilla.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUltimaPlantilla.Location = new System.Drawing.Point(234, 3);
             this.btnUltimaPlantilla.Name = "btnUltimaPlantilla";
-            this.btnUltimaPlantilla.Size = new System.Drawing.Size(44, 38);
+            this.btnUltimaPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnUltimaPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUltimaPlantilla.TabIndex = 1;
             // 
@@ -410,10 +398,9 @@
             this.lblPlantillaCount.AutoSize = true;
             this.lblPlantillaCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblPlantillaCount.ForeColor = System.Drawing.Color.White;
-            this.lblPlantillaCount.Location = new System.Drawing.Point(8, 9);
-            this.lblPlantillaCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPlantillaCount.Location = new System.Drawing.Point(6, 7);
             this.lblPlantillaCount.Name = "lblPlantillaCount";
-            this.lblPlantillaCount.Size = new System.Drawing.Size(50, 25);
+            this.lblPlantillaCount.Size = new System.Drawing.Size(42, 20);
             this.lblPlantillaCount.TabIndex = 0;
             this.lblPlantillaCount.Text = "0 / 0";
             // 
@@ -421,10 +408,9 @@
             // 
             this.PanelAbajo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelAbajo.Controls.Add(this.GPanel_Detalles);
-            this.PanelAbajo.Location = new System.Drawing.Point(4, 295);
-            this.PanelAbajo.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelAbajo.Location = new System.Drawing.Point(3, 237);
             this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(1617, 296);
+            this.PanelAbajo.Size = new System.Drawing.Size(1209, 235);
             this.PanelAbajo.TabIndex = 1;
             // 
             // GPanel_Detalles
@@ -437,9 +423,8 @@
             this.GPanel_Detalles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_Detalles.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_Detalles.Location = new System.Drawing.Point(0, 0);
-            this.GPanel_Detalles.Margin = new System.Windows.Forms.Padding(4);
             this.GPanel_Detalles.Name = "GPanel_Detalles";
-            this.GPanel_Detalles.Size = new System.Drawing.Size(1617, 296);
+            this.GPanel_Detalles.Size = new System.Drawing.Size(1209, 235);
             // 
             // 
             // 
@@ -475,9 +460,8 @@
             // 
             this.Dgv_DetalleVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_DetalleVenta.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_DetalleVenta.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_DetalleVenta.Name = "Dgv_DetalleVenta";
-            this.Dgv_DetalleVenta.Size = new System.Drawing.Size(1611, 265);
+            this.Dgv_DetalleVenta.Size = new System.Drawing.Size(1203, 207);
             this.Dgv_DetalleVenta.TabIndex = 0;
             this.Dgv_DetalleVenta.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_DetalleVenta_CellEdited);
             this.Dgv_DetalleVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_DetalleVenta_KeyDown);
@@ -486,10 +470,9 @@
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelArriba.Controls.Add(this.GPanel_DatosGenerales);
-            this.PanelArriba.Location = new System.Drawing.Point(8, 0);
-            this.PanelArriba.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelArriba.Location = new System.Drawing.Point(3, 0);
             this.PanelArriba.Name = "PanelArriba";
-            this.PanelArriba.Size = new System.Drawing.Size(1613, 295);
+            this.PanelArriba.Size = new System.Drawing.Size(1209, 231);
             this.PanelArriba.TabIndex = 0;
             // 
             // GPanel_DatosGenerales
@@ -532,9 +515,8 @@
             this.GPanel_DatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
-            this.GPanel_DatosGenerales.Margin = new System.Windows.Forms.Padding(4);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(1613, 295);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(1209, 231);
             // 
             // 
             // 
@@ -572,10 +554,9 @@
             this.btnLimpiarCliente.BackColor = System.Drawing.Color.Transparent;
             this.btnLimpiarCliente.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnLimpiarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiarCliente.Image")));
-            this.btnLimpiarCliente.Location = new System.Drawing.Point(422, 35);
-            this.btnLimpiarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiarCliente.Location = new System.Drawing.Point(316, 28);
             this.btnLimpiarCliente.Name = "btnLimpiarCliente";
-            this.btnLimpiarCliente.Size = new System.Drawing.Size(40, 32);
+            this.btnLimpiarCliente.Size = new System.Drawing.Size(30, 26);
             this.btnLimpiarCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLimpiarCliente.TabIndex = 388;
             this.btnLimpiarCliente.Click += new System.EventHandler(this.btnLimpiarCliente_Click);
@@ -587,12 +568,11 @@
             // 
             this.TbNitCliente.Border.Class = "TextBoxBorder";
             this.TbNitCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbNitCliente.Location = new System.Drawing.Point(534, 71);
-            this.TbNitCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.TbNitCliente.Location = new System.Drawing.Point(400, 58);
             this.TbNitCliente.Multiline = true;
             this.TbNitCliente.Name = "TbNitCliente";
             this.TbNitCliente.PreventEnterBeep = true;
-            this.TbNitCliente.Size = new System.Drawing.Size(285, 32);
+            this.TbNitCliente.Size = new System.Drawing.Size(214, 26);
             this.TbNitCliente.TabIndex = 387;
             // 
             // labelX13
@@ -604,11 +584,10 @@
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX13.Location = new System.Drawing.Point(422, 74);
-            this.labelX13.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX13.Location = new System.Drawing.Point(316, 60);
             this.labelX13.Name = "labelX13";
             this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX13.Size = new System.Drawing.Size(163, 28);
+            this.labelX13.Size = new System.Drawing.Size(122, 23);
             this.labelX13.TabIndex = 386;
             this.labelX13.Text = "NIT Cliente:";
             // 
@@ -622,11 +601,10 @@
             this.lblFechaRegistro.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblFechaRegistro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblFechaRegistro.Location = new System.Drawing.Point(207, 184);
-            this.lblFechaRegistro.Margin = new System.Windows.Forms.Padding(4);
+            this.lblFechaRegistro.Location = new System.Drawing.Point(155, 150);
             this.lblFechaRegistro.Name = "lblFechaRegistro";
             this.lblFechaRegistro.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblFechaRegistro.Size = new System.Drawing.Size(136, 23);
+            this.lblFechaRegistro.Size = new System.Drawing.Size(116, 20);
             this.lblFechaRegistro.TabIndex = 385;
             this.lblFechaRegistro.Text = "[lblFechaRegistro]";
             // 
@@ -637,12 +615,11 @@
             // 
             this.TbEncPrVenta.Border.Class = "TextBoxBorder";
             this.TbEncPrVenta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncPrVenta.Location = new System.Drawing.Point(1252, 202);
-            this.TbEncPrVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.TbEncPrVenta.Location = new System.Drawing.Point(939, 164);
             this.TbEncPrVenta.Multiline = true;
             this.TbEncPrVenta.Name = "TbEncPrVenta";
             this.TbEncPrVenta.PreventEnterBeep = true;
-            this.TbEncPrVenta.Size = new System.Drawing.Size(333, 32);
+            this.TbEncPrVenta.Size = new System.Drawing.Size(250, 26);
             this.TbEncPrVenta.TabIndex = 384;
             // 
             // labelX12
@@ -654,11 +631,10 @@
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX12.Location = new System.Drawing.Point(1252, 170);
-            this.labelX12.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX12.Location = new System.Drawing.Point(939, 138);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX12.Size = new System.Drawing.Size(333, 28);
+            this.labelX12.Size = new System.Drawing.Size(250, 23);
             this.labelX12.TabIndex = 383;
             this.labelX12.Text = "Encargado de PRE-Venta";
             // 
@@ -669,12 +645,11 @@
             // 
             this.TbEncRecepcion.Border.Class = "TextBoxBorder";
             this.TbEncRecepcion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncRecepcion.Location = new System.Drawing.Point(845, 207);
-            this.TbEncRecepcion.Margin = new System.Windows.Forms.Padding(4);
+            this.TbEncRecepcion.Location = new System.Drawing.Point(634, 168);
             this.TbEncRecepcion.Multiline = true;
             this.TbEncRecepcion.Name = "TbEncRecepcion";
             this.TbEncRecepcion.PreventEnterBeep = true;
-            this.TbEncRecepcion.Size = new System.Drawing.Size(399, 32);
+            this.TbEncRecepcion.Size = new System.Drawing.Size(299, 26);
             this.TbEncRecepcion.TabIndex = 382;
             // 
             // labelX11
@@ -686,11 +661,10 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(845, 175);
-            this.labelX11.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX11.Location = new System.Drawing.Point(634, 142);
             this.labelX11.Name = "labelX11";
             this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX11.Size = new System.Drawing.Size(215, 28);
+            this.labelX11.Size = new System.Drawing.Size(161, 23);
             this.labelX11.TabIndex = 381;
             this.labelX11.Text = "Encargado de Recepcion";
             // 
@@ -701,12 +675,11 @@
             // 
             this.TbEncTransporte.Border.Class = "TextBoxBorder";
             this.TbEncTransporte.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncTransporte.Location = new System.Drawing.Point(845, 136);
-            this.TbEncTransporte.Margin = new System.Windows.Forms.Padding(4);
+            this.TbEncTransporte.Location = new System.Drawing.Point(634, 110);
             this.TbEncTransporte.Multiline = true;
             this.TbEncTransporte.Name = "TbEncTransporte";
             this.TbEncTransporte.PreventEnterBeep = true;
-            this.TbEncTransporte.Size = new System.Drawing.Size(399, 32);
+            this.TbEncTransporte.Size = new System.Drawing.Size(299, 26);
             this.TbEncTransporte.TabIndex = 380;
             // 
             // labelX9
@@ -718,11 +691,10 @@
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX9.Location = new System.Drawing.Point(845, 104);
-            this.labelX9.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX9.Location = new System.Drawing.Point(634, 84);
             this.labelX9.Name = "labelX9";
             this.labelX9.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX9.Size = new System.Drawing.Size(215, 28);
+            this.labelX9.Size = new System.Drawing.Size(161, 23);
             this.labelX9.TabIndex = 379;
             this.labelX9.Text = "Encargado de Transporte";
             // 
@@ -733,12 +705,11 @@
             // 
             this.TbEncEntrega.Border.Class = "TextBoxBorder";
             this.TbEncEntrega.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncEntrega.Location = new System.Drawing.Point(845, 66);
-            this.TbEncEntrega.Margin = new System.Windows.Forms.Padding(4);
+            this.TbEncEntrega.Location = new System.Drawing.Point(634, 54);
             this.TbEncEntrega.Multiline = true;
             this.TbEncEntrega.Name = "TbEncEntrega";
             this.TbEncEntrega.PreventEnterBeep = true;
-            this.TbEncEntrega.Size = new System.Drawing.Size(399, 32);
+            this.TbEncEntrega.Size = new System.Drawing.Size(299, 26);
             this.TbEncEntrega.TabIndex = 378;
             // 
             // labelX8
@@ -750,11 +721,10 @@
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX8.Location = new System.Drawing.Point(845, 34);
-            this.labelX8.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX8.Location = new System.Drawing.Point(634, 28);
             this.labelX8.Name = "labelX8";
             this.labelX8.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX8.Size = new System.Drawing.Size(215, 28);
+            this.labelX8.Size = new System.Drawing.Size(161, 23);
             this.labelX8.TabIndex = 377;
             this.labelX8.Text = "Encargado de Entrega";
             // 
@@ -765,12 +735,11 @@
             // 
             this.TbEncVenta.Border.Class = "TextBoxBorder";
             this.TbEncVenta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncVenta.Location = new System.Drawing.Point(421, 212);
-            this.TbEncVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.TbEncVenta.Location = new System.Drawing.Point(316, 172);
             this.TbEncVenta.Multiline = true;
             this.TbEncVenta.Name = "TbEncVenta";
             this.TbEncVenta.PreventEnterBeep = true;
-            this.TbEncVenta.Size = new System.Drawing.Size(399, 32);
+            this.TbEncVenta.Size = new System.Drawing.Size(299, 26);
             this.TbEncVenta.TabIndex = 376;
             // 
             // labelX6
@@ -782,11 +751,10 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX6.Location = new System.Drawing.Point(421, 180);
-            this.labelX6.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX6.Location = new System.Drawing.Point(316, 146);
             this.labelX6.Name = "labelX6";
             this.labelX6.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX6.Size = new System.Drawing.Size(215, 28);
+            this.labelX6.Size = new System.Drawing.Size(161, 23);
             this.labelX6.TabIndex = 375;
             this.labelX6.Text = "Encargado de Venta";
             // 
@@ -797,14 +765,13 @@
             // 
             this.sw_estado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sw_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sw_estado.Location = new System.Drawing.Point(633, 141);
-            this.sw_estado.Margin = new System.Windows.Forms.Padding(4);
+            this.sw_estado.Location = new System.Drawing.Point(475, 115);
             this.sw_estado.Name = "sw_estado";
             this.sw_estado.OffBackColor = System.Drawing.Color.LawnGreen;
             this.sw_estado.OffText = "RECIBO";
             this.sw_estado.OnBackColor = System.Drawing.Color.Gold;
             this.sw_estado.OnText = "FACTURA";
-            this.sw_estado.Size = new System.Drawing.Size(187, 27);
+            this.sw_estado.Size = new System.Drawing.Size(140, 22);
             this.sw_estado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sw_estado.TabIndex = 374;
             this.sw_estado.Value = true;
@@ -819,11 +786,10 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX7.Location = new System.Drawing.Point(633, 110);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX7.Location = new System.Drawing.Point(475, 89);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX7.Size = new System.Drawing.Size(187, 28);
+            this.labelX7.Size = new System.Drawing.Size(140, 23);
             this.labelX7.TabIndex = 373;
             this.labelX7.Text = "Facturación:";
             // 
@@ -836,11 +802,10 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX5.Location = new System.Drawing.Point(421, 110);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX5.Location = new System.Drawing.Point(316, 89);
             this.labelX5.Name = "labelX5";
             this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX5.Size = new System.Drawing.Size(187, 28);
+            this.labelX5.Size = new System.Drawing.Size(140, 23);
             this.labelX5.TabIndex = 369;
             this.labelX5.Text = "Tipo de Venta:";
             // 
@@ -851,14 +816,13 @@
             // 
             this.Sw_TipoVenta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Sw_TipoVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sw_TipoVenta.Location = new System.Drawing.Point(421, 141);
-            this.Sw_TipoVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.Sw_TipoVenta.Location = new System.Drawing.Point(316, 115);
             this.Sw_TipoVenta.Name = "Sw_TipoVenta";
             this.Sw_TipoVenta.OffBackColor = System.Drawing.Color.LawnGreen;
             this.Sw_TipoVenta.OffText = "CREDITO";
             this.Sw_TipoVenta.OnBackColor = System.Drawing.Color.Gold;
             this.Sw_TipoVenta.OnText = "CONTADO";
-            this.Sw_TipoVenta.Size = new System.Drawing.Size(187, 27);
+            this.Sw_TipoVenta.Size = new System.Drawing.Size(140, 22);
             this.Sw_TipoVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Sw_TipoVenta.TabIndex = 368;
             this.Sw_TipoVenta.Value = true;
@@ -874,11 +838,10 @@
             this.lblIdCliente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblIdCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblIdCliente.Location = new System.Drawing.Point(708, 7);
-            this.lblIdCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.lblIdCliente.Location = new System.Drawing.Point(531, 6);
             this.lblIdCliente.Name = "lblIdCliente";
             this.lblIdCliente.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblIdCliente.Size = new System.Drawing.Size(98, 23);
+            this.lblIdCliente.Size = new System.Drawing.Size(84, 20);
             this.lblIdCliente.TabIndex = 367;
             this.lblIdCliente.Text = "[lblIdCliente]";
             this.lblIdCliente.TextChanged += new System.EventHandler(this.lblIdCliente_TextChanged);
@@ -890,12 +853,11 @@
             // 
             this.TbCliente.Border.Class = "TextBoxBorder";
             this.TbCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbCliente.Location = new System.Drawing.Point(469, 35);
-            this.TbCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.TbCliente.Location = new System.Drawing.Point(352, 28);
             this.TbCliente.Multiline = true;
             this.TbCliente.Name = "TbCliente";
             this.TbCliente.PreventEnterBeep = true;
-            this.TbCliente.Size = new System.Drawing.Size(351, 32);
+            this.TbCliente.Size = new System.Drawing.Size(263, 26);
             this.TbCliente.TabIndex = 366;
             this.TbCliente.WatermarkText = "Ingrese Ctrl + Enter";
             this.TbCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbCliente_KeyDown);
@@ -909,11 +871,10 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX4.Location = new System.Drawing.Point(422, 5);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX4.Location = new System.Drawing.Point(316, 4);
             this.labelX4.Name = "labelX4";
             this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX4.Size = new System.Drawing.Size(73, 28);
+            this.labelX4.Size = new System.Drawing.Size(55, 23);
             this.labelX4.TabIndex = 365;
             this.labelX4.Text = "Cliente:";
             // 
@@ -924,12 +885,11 @@
             // 
             this.Tb_Cod.Border.Class = "TextBoxBorder";
             this.Tb_Cod.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Cod.Location = new System.Drawing.Point(147, 4);
-            this.Tb_Cod.Margin = new System.Windows.Forms.Padding(4);
+            this.Tb_Cod.Location = new System.Drawing.Point(110, 3);
             this.Tb_Cod.Multiline = true;
             this.Tb_Cod.Name = "Tb_Cod";
             this.Tb_Cod.PreventEnterBeep = true;
-            this.Tb_Cod.Size = new System.Drawing.Size(265, 32);
+            this.Tb_Cod.Size = new System.Drawing.Size(199, 26);
             this.Tb_Cod.TabIndex = 364;
             // 
             // labelX2
@@ -941,11 +901,10 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX2.Location = new System.Drawing.Point(11, 5);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX2.Location = new System.Drawing.Point(8, 4);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX2.Size = new System.Drawing.Size(128, 28);
+            this.labelX2.Size = new System.Drawing.Size(96, 23);
             this.labelX2.TabIndex = 363;
             this.labelX2.Text = "Código";
             // 
@@ -958,21 +917,19 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(11, 110);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX1.Location = new System.Drawing.Point(8, 89);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(336, 28);
+            this.labelX1.Size = new System.Drawing.Size(252, 23);
             this.labelX1.TabIndex = 362;
             this.labelX1.Text = "Fecha de venta:";
             // 
             // Dt_FechaVenta
             // 
-            this.Dt_FechaVenta.Location = new System.Drawing.Point(11, 141);
-            this.Dt_FechaVenta.Margin = new System.Windows.Forms.Padding(4);
-            this.Dt_FechaVenta.MinimumSize = new System.Drawing.Size(0, 30);
+            this.Dt_FechaVenta.Location = new System.Drawing.Point(8, 115);
+            this.Dt_FechaVenta.MinimumSize = new System.Drawing.Size(0, 29);
             this.Dt_FechaVenta.Name = "Dt_FechaVenta";
-            this.Dt_FechaVenta.Size = new System.Drawing.Size(397, 30);
+            this.Dt_FechaVenta.Size = new System.Drawing.Size(299, 29);
             this.Dt_FechaVenta.TabIndex = 361;
             // 
             // Tb_Usuario
@@ -982,12 +939,11 @@
             // 
             this.Tb_Usuario.Border.Class = "TextBoxBorder";
             this.Tb_Usuario.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Usuario.Location = new System.Drawing.Point(14, 212);
-            this.Tb_Usuario.Margin = new System.Windows.Forms.Padding(4);
+            this.Tb_Usuario.Location = new System.Drawing.Point(10, 172);
             this.Tb_Usuario.Multiline = true;
             this.Tb_Usuario.Name = "Tb_Usuario";
             this.Tb_Usuario.PreventEnterBeep = true;
-            this.Tb_Usuario.Size = new System.Drawing.Size(399, 32);
+            this.Tb_Usuario.Size = new System.Drawing.Size(299, 26);
             this.Tb_Usuario.TabIndex = 358;
             // 
             // labelX3
@@ -999,11 +955,10 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX3.Location = new System.Drawing.Point(14, 184);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX3.Location = new System.Drawing.Point(10, 150);
             this.labelX3.Name = "labelX3";
             this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX3.Size = new System.Drawing.Size(109, 28);
+            this.labelX3.Size = new System.Drawing.Size(82, 23);
             this.labelX3.TabIndex = 356;
             this.labelX3.Text = "Usuario:";
             // 
@@ -1014,12 +969,11 @@
             // 
             this.Tb_Observaciones.Border.Class = "TextBoxBorder";
             this.Tb_Observaciones.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Observaciones.Location = new System.Drawing.Point(1252, 54);
-            this.Tb_Observaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.Tb_Observaciones.Location = new System.Drawing.Point(939, 44);
             this.Tb_Observaciones.Multiline = true;
             this.Tb_Observaciones.Name = "Tb_Observaciones";
             this.Tb_Observaciones.PreventEnterBeep = true;
-            this.Tb_Observaciones.Size = new System.Drawing.Size(333, 103);
+            this.Tb_Observaciones.Size = new System.Drawing.Size(250, 84);
             this.Tb_Observaciones.TabIndex = 354;
             // 
             // labelX10
@@ -1032,11 +986,10 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX10.Location = new System.Drawing.Point(1252, 20);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX10.Location = new System.Drawing.Point(939, 16);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(113, 23);
+            this.labelX10.Size = new System.Drawing.Size(96, 20);
             this.labelX10.TabIndex = 353;
             this.labelX10.Text = "Observaciones:";
             // 
@@ -1048,14 +1001,13 @@
             this.Cb_Origen.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Origen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Origen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Origen.Location = new System.Drawing.Point(11, 73);
-            this.Cb_Origen.Margin = new System.Windows.Forms.Padding(4);
+            this.Cb_Origen.Location = new System.Drawing.Point(8, 59);
             this.Cb_Origen.Name = "Cb_Origen";
             this.Cb_Origen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Origen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Origen.SelectedIndex = -1;
             this.Cb_Origen.SelectedItem = null;
-            this.Cb_Origen.Size = new System.Drawing.Size(399, 27);
+            this.Cb_Origen.Size = new System.Drawing.Size(299, 24);
             this.Cb_Origen.TabIndex = 349;
             this.Cb_Origen.Tag = "1";
             this.Cb_Origen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -1070,11 +1022,10 @@
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX16.Location = new System.Drawing.Point(11, 41);
-            this.labelX16.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX16.Location = new System.Drawing.Point(8, 33);
             this.labelX16.Name = "labelX16";
             this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX16.Size = new System.Drawing.Size(337, 28);
+            this.labelX16.Size = new System.Drawing.Size(253, 23);
             this.labelX16.TabIndex = 350;
             this.labelX16.Text = "Almacen de Salida:";
             // 
@@ -1088,20 +1039,19 @@
             this.lblId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblId.Location = new System.Drawing.Point(357, 45);
-            this.lblId.Margin = new System.Windows.Forms.Padding(4);
+            this.lblId.Location = new System.Drawing.Point(268, 37);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblId.Size = new System.Drawing.Size(47, 23);
+            this.lblId.Size = new System.Drawing.Size(40, 20);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
             // F1_Ventas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1625, 898);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.ClientSize = new System.Drawing.Size(1215, 730);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "F1_Ventas";
             this.Text = "F1_Ventas";
             this.Load += new System.EventHandler(this.F1_Ventas_Load);

@@ -25,6 +25,7 @@ namespace PRESENTER.ven
             this.lblIdCliente.Text = "";
             this.lblId.Text = "";
             listaDetalleVenta = new List<VVenta_01>();
+            this.MP_CargarBuscador();
         }
 
         #region Variables de Entorno
@@ -405,6 +406,117 @@ namespace PRESENTER.ven
             TbEncEntrega.Text = almacen.Encargado;
         }
 
+        private void MP_CargarBuscador()
+        {
+            try
+            {
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().VentasListar().ToList();
+                if (ListaCompleta.Count() > 0)
+                {
+                    Dgv_GBuscador.DataSource = ListaCompleta;
+                    Dgv_GBuscador.RetrieveStructure();
+                    Dgv_GBuscador.AlternatingColors = true;
+
+                    Dgv_GBuscador.RootTable.Columns[0].Caption = "COD";
+                    Dgv_GBuscador.RootTable.Columns[0].Width = 60;
+                    Dgv_GBuscador.RootTable.Columns[0].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[0].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[0].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[0].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[0].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[1].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns[2].Caption = "Almacen";
+                    Dgv_GBuscador.RootTable.Columns[2].Width = 120;
+                    Dgv_GBuscador.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[2].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[2].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[2].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[3].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns[4].Caption = "Cliente";
+                    Dgv_GBuscador.RootTable.Columns[4].Width = 180;
+                    Dgv_GBuscador.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[4].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[4].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[4].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[5].Caption = "Fch Registro";
+                    Dgv_GBuscador.RootTable.Columns[5].Width = 100;
+                    Dgv_GBuscador.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[5].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[5].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[5].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[6].Caption = "Fch. Venta";
+                    Dgv_GBuscador.RootTable.Columns[6].Width = 100;
+                    Dgv_GBuscador.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[6].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[6].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[6].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[7].Caption = "Usuario";
+                    Dgv_GBuscador.RootTable.Columns[7].Width = 100;
+                    Dgv_GBuscador.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[7].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[7].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[7].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[8].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns[9].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns[10].Caption = "Observaciones";
+                    Dgv_GBuscador.RootTable.Columns[10].Width = 250;
+                    Dgv_GBuscador.RootTable.Columns[10].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[10].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[10].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[10].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[10].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[11].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns[12].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns[13].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns[14].Caption = "Enc Entrega";
+                    Dgv_GBuscador.RootTable.Columns[14].Width = 150;
+                    Dgv_GBuscador.RootTable.Columns[14].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[14].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[14].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[14].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[14].EditType = EditType.NoEdit;
+
+                    Dgv_GBuscador.RootTable.Columns[15].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns[16].Caption = "NIT";
+                    Dgv_GBuscador.RootTable.Columns[16].Width = 150;
+                    Dgv_GBuscador.RootTable.Columns[16].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns[16].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns[16].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns[16].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns[16].EditType = EditType.NoEdit;                    
+
+                    //Habilitar filtradores
+                    Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                    Dgv_GBuscador.FilterMode = FilterMode.Automatic;
+                    Dgv_GBuscador.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
+                    //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                    Dgv_GBuscador.GroupByBoxVisible = false;
+                    Dgv_GBuscador.VisualStyle = VisualStyle.Office2007;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Metodos Heredados
@@ -505,6 +617,7 @@ namespace PRESENTER.ven
                         this.MP_Reiniciar();
                         this.MP_CargarAlmacenes();
                         this.MP_CargarVentas();
+                        this.MP_CargarBuscador();
                         ToastNotification.Show(this, GLMensaje.Modificar_Exito("TRASPASOS", vVenta.Id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                         return true;
 
