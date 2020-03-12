@@ -85,6 +85,7 @@ namespace REPOSITORY.Clase
                                            Orden = c.IdOrden,
                                            Libreria = c.IdLibrer
                                        }
+                                       orderby a.Id
                                       select new VProveedorLista                                      
                                       {
                                           Id = a.Id,
