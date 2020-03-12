@@ -349,12 +349,12 @@ namespace PRESENTER.com
             Dgv_Producto.AlternatingColors = true;
             Dgv_Producto.RootTable.Columns["id"].Visible = false;
 
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].Caption = "Codigo";
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].Width = 100;
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].CellStyle.FontSize = 8;
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Producto.RootTable.Columns["Cod_Producto"].Visible = true;
+            Dgv_Producto.RootTable.Columns["Codigo"].Caption = "Codigo";
+            Dgv_Producto.RootTable.Columns["Codigo"].Width = 100;
+            Dgv_Producto.RootTable.Columns["Codigo"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_Producto.RootTable.Columns["Codigo"].CellStyle.FontSize = 8;
+            Dgv_Producto.RootTable.Columns["Codigo"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            Dgv_Producto.RootTable.Columns["Codigo"].Visible = true;
 
             Dgv_Producto.RootTable.Columns["Descripcion"].Caption = "Descripcion";
             Dgv_Producto.RootTable.Columns["Descripcion"].Width = 150;

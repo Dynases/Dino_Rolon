@@ -9,6 +9,7 @@ namespace REPOSITORY.Interface
 {
    public interface IPrecioCategoria
     {
+        bool Guardar(VPrecioCategoria vPrecioCat, ref int id);
         List<VPrecioCategoria> Listar();
     }
 }

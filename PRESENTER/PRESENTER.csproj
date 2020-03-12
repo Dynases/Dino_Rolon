@@ -368,6 +368,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.precioCategoria_GuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ProductoGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -176,10 +176,18 @@ namespace SERVICE
         #region Precio Categoria
         [OperationContract]
         List<VPrecioCategoria> PrecioCategoriaListar();
+
+        [OperationContract]
+        bool precioCategoria_Guardar(VPrecioCategoria precioCat,ref int id);
         #endregion
         #region Precio 
         [OperationContract]
         List<VPrecioLista> PrecioProductoListar(int idSucursal);
+
+        [OperationContract]
+        DataTable PrecioProductoListar2(int idSucursal);
+        [OperationContract]
+        bool PrecioGuardar(List<VPrecioLista> vPrecio, int idSucural, string usuario);
         #endregion
         ///**********COMPRA INGRESO******************
         ///

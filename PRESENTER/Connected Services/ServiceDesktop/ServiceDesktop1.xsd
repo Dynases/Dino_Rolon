@@ -41,7 +41,7 @@
   <xs:element name="ArrayOfVProductoLista" nillable="true" type="tns:ArrayOfVProductoLista" />
   <xs:complexType name="VProductoLista">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Cod_Producto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Grupo1" nillable="true" type="xs:string" />

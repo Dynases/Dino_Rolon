@@ -531,6 +531,18 @@ namespace SERVICE
 
         #region Precio Categoria
 
+        public bool precioCategoria_Guardar(VPrecioCategoria precioCat, ref int id)
+        {
+            try
+            {
+                var result = new LPrecioCategoria().Guardar(precioCat, ref id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VPrecioCategoria> PrecioCategoriaListar()
         {
             try
@@ -546,6 +558,19 @@ namespace SERVICE
 
         #endregion
         #region Precio 
+
+        public bool PrecioGuardar(List<VPrecioLista> vPrecio, int idSucural, string usuario)
+        {
+            try
+            {
+                var listResult = new LPrecio().Guardar(vPrecio,idSucural,usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VPrecioLista> PrecioProductoListar(int idSucursal)
         {
             try
@@ -558,6 +583,19 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable PrecioProductoListar2(int idSucursal)
+        {
+            try
+            {
+                var listResult = new LPrecio().ListarProductoPrecio2(idSucursal);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
         #region Compra Ingreso
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
@@ -930,7 +968,6 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
         #endregion
     }
 }
