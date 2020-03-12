@@ -857,7 +857,19 @@ namespace PRESENTER.ven
             this.MP_MostrarRegistro(index);
         }
 
-        #endregion
+        private void Dgv_GBuscador_Click(object sender, EventArgs e)
+        {
+            if (this.Dgv_GBuscador.CurrentRow != null)
+            {
+                if (this.Dgv_GBuscador.CurrentRow.Cells[0].Value != null &&
+                    !string.IsNullOrEmpty(this.Dgv_GBuscador.CurrentRow.Cells[0].Value.ToString()))
+                {
+                    this.MP_MostrarRegistro(listaVentas.FindIndex(v => v.Id == Convert.ToInt32(this.Dgv_GBuscador.CurrentRow.Cells[0].Value)));
+                    this.superTabControl1.SelectedPanel = this.PanelContenidoRegistro;
+                }
+            }
+        }
 
+        #endregion        
     }
 }

@@ -238,6 +238,7 @@
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 641);
+            this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
             // LblSubtitulo
             // 
@@ -278,9 +279,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(-5, 478);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(3, 478);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1220, 50);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1209, 50);
             this.panelNavegacionPlantilla.TabIndex = 28;
             // 
             // label1
@@ -288,7 +289,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(824, 10);
+            this.label1.Location = new System.Drawing.Point(937, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 362;
@@ -302,11 +303,11 @@
             this.TbTotal.Border.Class = "TextBoxBorder";
             this.TbTotal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TbTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TbTotal.Location = new System.Drawing.Point(892, 8);
+            this.TbTotal.Location = new System.Drawing.Point(1014, 8);
             this.TbTotal.Multiline = true;
             this.TbTotal.Name = "TbTotal";
             this.TbTotal.PreventEnterBeep = true;
-            this.TbTotal.Size = new System.Drawing.Size(302, 26);
+            this.TbTotal.Size = new System.Drawing.Size(180, 26);
             this.TbTotal.TabIndex = 361;
             // 
             // label2
@@ -314,7 +315,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(50, 12);
+            this.label2.Location = new System.Drawing.Point(53, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 360;
@@ -327,11 +328,11 @@
             // 
             this.Tb_NombrePlantilla.Border.Class = "TextBoxBorder";
             this.Tb_NombrePlantilla.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_NombrePlantilla.Location = new System.Drawing.Point(273, 5);
+            this.Tb_NombrePlantilla.Location = new System.Drawing.Point(271, 12);
             this.Tb_NombrePlantilla.Multiline = true;
             this.Tb_NombrePlantilla.Name = "Tb_NombrePlantilla";
             this.Tb_NombrePlantilla.PreventEnterBeep = true;
-            this.Tb_NombrePlantilla.Size = new System.Drawing.Size(272, 26);
+            this.Tb_NombrePlantilla.Size = new System.Drawing.Size(214, 26);
             this.Tb_NombrePlantilla.TabIndex = 359;
             // 
             // btnAgregarPlantilla
@@ -339,7 +340,7 @@
             this.btnAgregarPlantilla.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAgregarPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnAgregarPlantilla.Image = global::PRESENTER.Properties.Resources.New;
-            this.btnAgregarPlantilla.Location = new System.Drawing.Point(546, 3);
+            this.btnAgregarPlantilla.Location = new System.Drawing.Point(521, 9);
             this.btnAgregarPlantilla.Name = "btnAgregarPlantilla";
             this.btnAgregarPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnAgregarPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -351,7 +352,7 @@
             this.btnSiguientePlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnSiguientePlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE;
             this.btnSiguientePlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSiguientePlantilla.Location = new System.Drawing.Point(198, 3);
+            this.btnSiguientePlantilla.Location = new System.Drawing.Point(191, 9);
             this.btnSiguientePlantilla.Name = "btnSiguientePlantilla";
             this.btnSiguientePlantilla.Size = new System.Drawing.Size(30, 31);
             this.btnSiguientePlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -363,7 +364,7 @@
             this.btnAnteriorPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnAnteriorPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR;
             this.btnAnteriorPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(159, 3);
+            this.btnAnteriorPlantilla.Location = new System.Drawing.Point(152, 9);
             this.btnAnteriorPlantilla.Name = "btnAnteriorPlantilla";
             this.btnAnteriorPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnAnteriorPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -375,7 +376,7 @@
             this.btnPrimerPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnPrimerPlantilla.Image = global::PRESENTER.Properties.Resources.ANTERIOR2;
             this.btnPrimerPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnPrimerPlantilla.Location = new System.Drawing.Point(120, 3);
+            this.btnPrimerPlantilla.Location = new System.Drawing.Point(113, 9);
             this.btnPrimerPlantilla.Name = "btnPrimerPlantilla";
             this.btnPrimerPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnPrimerPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -387,7 +388,7 @@
             this.btnUltimaPlantilla.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnUltimaPlantilla.Image = global::PRESENTER.Properties.Resources.SIGUIENTE2;
             this.btnUltimaPlantilla.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnUltimaPlantilla.Location = new System.Drawing.Point(234, 3);
+            this.btnUltimaPlantilla.Location = new System.Drawing.Point(227, 9);
             this.btnUltimaPlantilla.Name = "btnUltimaPlantilla";
             this.btnUltimaPlantilla.Size = new System.Drawing.Size(33, 31);
             this.btnUltimaPlantilla.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -398,7 +399,7 @@
             this.lblPlantillaCount.AutoSize = true;
             this.lblPlantillaCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblPlantillaCount.ForeColor = System.Drawing.Color.White;
-            this.lblPlantillaCount.Location = new System.Drawing.Point(6, 7);
+            this.lblPlantillaCount.Location = new System.Drawing.Point(9, 14);
             this.lblPlantillaCount.Name = "lblPlantillaCount";
             this.lblPlantillaCount.Size = new System.Drawing.Size(42, 20);
             this.lblPlantillaCount.TabIndex = 0;
