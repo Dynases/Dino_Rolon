@@ -21,7 +21,7 @@ namespace PRESENTER.ven
             this.MP_InHabilitar();
             this.MP_CargarAlmacenes();
             this.MP_CargarVentas();
-            TxtNombreUsu.Visible = false;
+            this.TxtNombreUsu.Visible = false;
             this.lblIdCliente.Text = "";
             this.lblId.Text = "";
             listaDetalleVenta = new List<VVenta_01>();
@@ -501,6 +501,10 @@ namespace PRESENTER.ven
                     {
                         vVenta.Id = id;
                         this.MP_GuardarDetalleVenta(vVenta);
+                        this.MP_InHabilitar();
+                        this.MP_Reiniciar();
+                        this.MP_CargarAlmacenes();
+                        this.MP_CargarVentas();
                         ToastNotification.Show(this, GLMensaje.Modificar_Exito("TRASPASOS", vVenta.Id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                         return true;
 
@@ -697,22 +701,32 @@ namespace PRESENTER.ven
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-
+            index = 0;
+            this.MP_MostrarRegistro(index);
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-
+            if (index > 0)
+            {
+                index -= 1;
+                this.MP_MostrarRegistro(index);
+            }
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-
+            if (index < listaVentas.Count - 1)
+            {
+                index += 1;
+                this.MP_MostrarRegistro(index);
+            }
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-
+            index = listaVentas.Count - 1;
+            this.MP_MostrarRegistro(index);
         }
 
         #endregion
