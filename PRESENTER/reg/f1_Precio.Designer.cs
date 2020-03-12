@@ -32,13 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(f1_Precio));
             this.GPanelAddCategoria = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.Tb_CodCategoria = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Margen = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.Btn_Agregar = new DevComponents.DotNetBar.ButtonX();
             this.Tb_Descripcion = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX12 = new DevComponents.DotNetBar.LabelX();
-            this.sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.Sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.LabelX9 = new DevComponents.DotNetBar.LabelX();
             this.GroupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel3 = new System.Windows.Forms.Panel();
@@ -223,7 +225,7 @@
             this.GPanelAddCategoria.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanelAddCategoria.Location = new System.Drawing.Point(0, 0);
             this.GPanelAddCategoria.Name = "GPanelAddCategoria";
-            this.GPanelAddCategoria.Size = new System.Drawing.Size(474, 147);
+            this.GPanelAddCategoria.Size = new System.Drawing.Size(382, 155);
             // 
             // 
             // 
@@ -259,19 +261,52 @@
             // 
             this.Panel2.AutoScroll = true;
             this.Panel2.BackColor = System.Drawing.Color.White;
+            this.Panel2.Controls.Add(this.Tb_CodCategoria);
+            this.Panel2.Controls.Add(this.LabelX3);
             this.Panel2.Controls.Add(this.LabelX2);
             this.Panel2.Controls.Add(this.Tb_Margen);
             this.Panel2.Controls.Add(this.LabelX1);
             this.Panel2.Controls.Add(this.Btn_Agregar);
             this.Panel2.Controls.Add(this.Tb_Descripcion);
             this.Panel2.Controls.Add(this.LabelX12);
-            this.Panel2.Controls.Add(this.sw_Tipo);
+            this.Panel2.Controls.Add(this.Sw_Tipo);
             this.Panel2.Controls.Add(this.LabelX9);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(0, 0);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(468, 124);
+            this.Panel2.Size = new System.Drawing.Size(376, 132);
             this.Panel2.TabIndex = 0;
+            // 
+            // Tb_CodCategoria
+            // 
+            // 
+            // 
+            // 
+            this.Tb_CodCategoria.Border.Class = "TextBoxBorder";
+            this.Tb_CodCategoria.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_CodCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tb_CodCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.Tb_CodCategoria.Location = new System.Drawing.Point(131, 22);
+            this.Tb_CodCategoria.Name = "Tb_CodCategoria";
+            this.Tb_CodCategoria.PreventEnterBeep = true;
+            this.Tb_CodCategoria.Size = new System.Drawing.Size(166, 21);
+            this.Tb_CodCategoria.TabIndex = 251;
+            // 
+            // LabelX3
+            // 
+            this.LabelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LabelX3.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.LabelX3.Location = new System.Drawing.Point(5, 21);
+            this.LabelX3.Name = "LabelX3";
+            this.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.LabelX3.Size = new System.Drawing.Size(113, 23);
+            this.LabelX3.TabIndex = 252;
+            this.LabelX3.Text = "Codigo:";
             // 
             // LabelX2
             // 
@@ -282,7 +317,7 @@
             this.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX2.Location = new System.Drawing.Point(190, 47);
+            this.LabelX2.Location = new System.Drawing.Point(188, 76);
             this.LabelX2.Name = "LabelX2";
             this.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX2.Size = new System.Drawing.Size(21, 23);
@@ -300,7 +335,7 @@
             this.Tb_Margen.DisabledBackColor = System.Drawing.Color.White;
             this.Tb_Margen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Margen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.Tb_Margen.Location = new System.Drawing.Point(133, 48);
+            this.Tb_Margen.Location = new System.Drawing.Point(131, 77);
             this.Tb_Margen.Name = "Tb_Margen";
             this.Tb_Margen.PreventEnterBeep = true;
             this.Tb_Margen.Size = new System.Drawing.Size(51, 21);
@@ -317,7 +352,7 @@
             this.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX1.Location = new System.Drawing.Point(7, 46);
+            this.LabelX1.Location = new System.Drawing.Point(5, 75);
             this.LabelX1.Name = "LabelX1";
             this.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX1.Size = new System.Drawing.Size(79, 23);
@@ -332,13 +367,14 @@
             this.Btn_Agregar.Image = global::PRESENTER.Properties.Resources.AGREGAR;
             this.Btn_Agregar.ImageFixedSize = new System.Drawing.Size(35, 30);
             this.Btn_Agregar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.Btn_Agregar.Location = new System.Drawing.Point(331, 21);
+            this.Btn_Agregar.Location = new System.Drawing.Point(279, 72);
             this.Btn_Agregar.Name = "Btn_Agregar";
             this.Btn_Agregar.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.Btn_Agregar.Size = new System.Drawing.Size(92, 51);
             this.Btn_Agregar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Btn_Agregar.TabIndex = 245;
             this.Btn_Agregar.Text = "Agregar";
+            this.Btn_Agregar.Click += new System.EventHandler(this.Btn_Agregar_Click);
             // 
             // Tb_Descripcion
             // 
@@ -351,7 +387,7 @@
             this.Tb_Descripcion.DisabledBackColor = System.Drawing.Color.White;
             this.Tb_Descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.Tb_Descripcion.Location = new System.Drawing.Point(133, 22);
+            this.Tb_Descripcion.Location = new System.Drawing.Point(131, 51);
             this.Tb_Descripcion.Name = "Tb_Descripcion";
             this.Tb_Descripcion.PreventEnterBeep = true;
             this.Tb_Descripcion.Size = new System.Drawing.Size(166, 21);
@@ -366,33 +402,33 @@
             this.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX12.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX12.Location = new System.Drawing.Point(7, 21);
+            this.LabelX12.Location = new System.Drawing.Point(5, 50);
             this.LabelX12.Name = "LabelX12";
             this.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX12.Size = new System.Drawing.Size(113, 23);
             this.LabelX12.TabIndex = 244;
             this.LabelX12.Text = "Descripción:";
             // 
-            // sw_Tipo
+            // Sw_Tipo
             // 
             // 
             // 
             // 
-            this.sw_Tipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sw_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sw_Tipo.Location = new System.Drawing.Point(133, 72);
-            this.sw_Tipo.Name = "sw_Tipo";
-            this.sw_Tipo.OffBackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sw_Tipo.OffText = "COSTO";
-            this.sw_Tipo.OffTextColor = System.Drawing.Color.White;
-            this.sw_Tipo.OnBackColor = System.Drawing.Color.Gold;
-            this.sw_Tipo.OnText = "VENTA";
-            this.sw_Tipo.OnTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.sw_Tipo.Size = new System.Drawing.Size(136, 22);
-            this.sw_Tipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sw_Tipo.TabIndex = 242;
-            this.sw_Tipo.Value = true;
-            this.sw_Tipo.ValueObject = "Y";
+            this.Sw_Tipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Sw_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sw_Tipo.Location = new System.Drawing.Point(131, 101);
+            this.Sw_Tipo.Name = "Sw_Tipo";
+            this.Sw_Tipo.OffBackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Sw_Tipo.OffText = "COSTO";
+            this.Sw_Tipo.OffTextColor = System.Drawing.Color.White;
+            this.Sw_Tipo.OnBackColor = System.Drawing.Color.Gold;
+            this.Sw_Tipo.OnText = "VENTA";
+            this.Sw_Tipo.OnTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.Sw_Tipo.Size = new System.Drawing.Size(136, 22);
+            this.Sw_Tipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Sw_Tipo.TabIndex = 242;
+            this.Sw_Tipo.Value = true;
+            this.Sw_Tipo.ValueObject = "Y";
             // 
             // LabelX9
             // 
@@ -403,7 +439,7 @@
             this.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX9.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX9.Location = new System.Drawing.Point(7, 72);
+            this.LabelX9.Location = new System.Drawing.Point(5, 101);
             this.LabelX9.Name = "LabelX9";
             this.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX9.Size = new System.Drawing.Size(79, 23);
@@ -419,9 +455,9 @@
             this.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GroupPanel2.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupPanel2.Location = new System.Drawing.Point(0, 150);
+            this.GroupPanel2.Location = new System.Drawing.Point(0, 158);
             this.GroupPanel2.Name = "GroupPanel2";
-            this.GroupPanel2.Size = new System.Drawing.Size(474, 383);
+            this.GroupPanel2.Size = new System.Drawing.Size(382, 375);
             // 
             // 
             // 
@@ -461,7 +497,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(468, 360);
+            this.Panel3.Size = new System.Drawing.Size(376, 352);
             this.Panel3.TabIndex = 0;
             // 
             // Dgv_Categoria
@@ -475,7 +511,7 @@
             this.Dgv_Categoria.Name = "Dgv_Categoria";
             this.Dgv_Categoria.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Dgv_Categoria.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Categoria.Size = new System.Drawing.Size(468, 360);
+            this.Dgv_Categoria.Size = new System.Drawing.Size(376, 352);
             this.Dgv_Categoria.TabIndex = 0;
             this.Dgv_Categoria.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Dgv_Categoria.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Categoria_EditingCell);
@@ -486,9 +522,9 @@
             this.Panel_Precio.Controls.Add(this.GPanelAddCategoria);
             this.Panel_Precio.Controls.Add(this.GroupPanel2);
             this.Panel_Precio.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Panel_Precio.Location = new System.Drawing.Point(687, 108);
+            this.Panel_Precio.Location = new System.Drawing.Point(779, 108);
             this.Panel_Precio.Name = "Panel_Precio";
-            this.Panel_Precio.Size = new System.Drawing.Size(474, 533);
+            this.Panel_Precio.Size = new System.Drawing.Size(382, 533);
             this.Panel_Precio.TabIndex = 73;
             // 
             // panel4
@@ -499,7 +535,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 108);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(684, 533);
+            this.panel4.Size = new System.Drawing.Size(776, 533);
             this.panel4.TabIndex = 75;
             // 
             // GroupPanel4
@@ -513,7 +549,7 @@
             this.GroupPanel4.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupPanel4.Location = new System.Drawing.Point(0, 92);
             this.GroupPanel4.Name = "GroupPanel4";
-            this.GroupPanel4.Size = new System.Drawing.Size(684, 441);
+            this.GroupPanel4.Size = new System.Drawing.Size(776, 441);
             // 
             // 
             // 
@@ -551,7 +587,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(678, 418);
+            this.panel7.Size = new System.Drawing.Size(770, 418);
             this.panel7.TabIndex = 0;
             // 
             // Dgv_Precio
@@ -563,9 +599,14 @@
             this.Dgv_Precio.Name = "Dgv_Precio";
             this.Dgv_Precio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Dgv_Precio.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Precio.Size = new System.Drawing.Size(678, 418);
+            this.Dgv_Precio.Size = new System.Drawing.Size(770, 418);
             this.Dgv_Precio.TabIndex = 0;
             this.Dgv_Precio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Precio.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Precio_CellEdited);
+            this.Dgv_Precio.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Precio_EditingCell);
+            this.Dgv_Precio.CellUpdated += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Precio_CellUpdated);
+            this.Dgv_Precio.UpdatingCell += new Janus.Windows.GridEX.UpdatingCellEventHandler(this.Dgv_Precio_UpdatingCell);
+            this.Dgv_Precio.SelectionChanged += new System.EventHandler(this.Dgv_Precio_SelectionChanged);
             // 
             // GroupPanel3
             // 
@@ -578,7 +619,7 @@
             this.GroupPanel3.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupPanel3.Location = new System.Drawing.Point(0, 0);
             this.GroupPanel3.Name = "GroupPanel3";
-            this.GroupPanel3.Size = new System.Drawing.Size(684, 92);
+            this.GroupPanel3.Size = new System.Drawing.Size(776, 92);
             // 
             // 
             // 
@@ -618,7 +659,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(678, 69);
+            this.panel5.Size = new System.Drawing.Size(770, 69);
             this.panel5.TabIndex = 0;
             // 
             // TableLayoutPanel1
@@ -633,7 +674,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(678, 69);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(770, 69);
             this.TableLayoutPanel1.TabIndex = 236;
             // 
             // Panel6
@@ -642,10 +683,10 @@
             this.Panel6.Controls.Add(this.Cb_Almacen);
             this.Panel6.Controls.Add(this.lbgrupo2);
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel6.Location = new System.Drawing.Point(167, 3);
+            this.Panel6.Location = new System.Drawing.Point(189, 3);
             this.Panel6.Name = "Panel6";
             this.Panel6.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.Panel6.Size = new System.Drawing.Size(342, 63);
+            this.Panel6.Size = new System.Drawing.Size(389, 63);
             this.Panel6.TabIndex = 34;
             // 
             // Cb_Almacen
@@ -662,7 +703,7 @@
             this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen.SelectedIndex = -1;
             this.Cb_Almacen.SelectedItem = null;
-            this.Cb_Almacen.Size = new System.Drawing.Size(281, 21);
+            this.Cb_Almacen.Size = new System.Drawing.Size(328, 21);
             this.Cb_Almacen.TabIndex = 31;
             this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_Almacen.ValueChanged += new System.EventHandler(this.Cb_Almacen_ValueChanged);
@@ -749,10 +790,12 @@
         internal DevComponents.DotNetBar.ButtonX Btn_Agregar;
         internal DevComponents.DotNetBar.Controls.TextBoxX Tb_Descripcion;
         internal DevComponents.DotNetBar.LabelX LabelX12;
-        internal DevComponents.DotNetBar.Controls.SwitchButton sw_Tipo;
+        internal DevComponents.DotNetBar.Controls.SwitchButton Sw_Tipo;
         internal DevComponents.DotNetBar.LabelX LabelX9;
         internal DevComponents.DotNetBar.Controls.GroupPanel GroupPanel2;
         internal System.Windows.Forms.Panel Panel3;
         internal Janus.Windows.GridEX.GridEX Dgv_Categoria;
+        internal DevComponents.DotNetBar.Controls.TextBoxX Tb_CodCategoria;
+        internal DevComponents.DotNetBar.LabelX LabelX3;
     }
 }

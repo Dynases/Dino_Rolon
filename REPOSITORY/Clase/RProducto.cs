@@ -137,7 +137,7 @@ namespace REPOSITORY.Clase
                                       select new VProductoLista
                                       {
                                           Id = a.Id,
-                                          Cod_Producto = a.IdProd,
+                                          Codigo = a.IdProd,
                                           Descripcion = a.Descrip,
                                           Grupo1 = grupo1.Descrip,
                                           Grupo2 = grupo2.Descrip,

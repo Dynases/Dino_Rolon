@@ -9,8 +9,7 @@ namespace ENTITY.Producto.View
     public class VProductoLista
     {
         public int Id { get; set; }
-
-        public string Cod_Producto { get; set; }
+        public string Codigo { get; set; }
         public string Descripcion { get; set; }
         //public string UniVenta { get; set; }       
         public string Grupo1 { get; set; }

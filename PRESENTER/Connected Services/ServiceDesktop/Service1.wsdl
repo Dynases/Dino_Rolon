@@ -263,11 +263,29 @@
   <wsdl:message name="IServiceDesktop_PrecioCategoriaListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:PrecioCategoriaListarResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_precioCategoria_Guardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:precioCategoria_Guardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_precioCategoria_Guardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:precioCategoria_GuardarResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_PrecioProductoListar_InputMessage">
     <wsdl:part name="parameters" element="tns:PrecioProductoListar" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_PrecioProductoListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:PrecioProductoListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrecioProductoListar2_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrecioProductoListar2" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrecioProductoListar2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrecioProductoListar2Response" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrecioGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrecioGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PrecioGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrecioGuardarResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_CmmpraIngresoListar_InputMessage">
     <wsdl:part name="parameters" element="tns:CmmpraIngresoListar" />
@@ -594,9 +612,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar" message="tns:IServiceDesktop_PrecioCategoriaListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListarResponse" message="tns:IServiceDesktop_PrecioCategoriaListar_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="precioCategoria_Guardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/precioCategoria_Guardar" message="tns:IServiceDesktop_precioCategoria_Guardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/precioCategoria_GuardarResponse" message="tns:IServiceDesktop_precioCategoria_Guardar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="PrecioProductoListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioProductoListar" message="tns:IServiceDesktop_PrecioProductoListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioProductoListarResponse" message="tns:IServiceDesktop_PrecioProductoListar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrecioProductoListar2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioProductoListar2" message="tns:IServiceDesktop_PrecioProductoListar2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioProductoListar2Response" message="tns:IServiceDesktop_PrecioProductoListar2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrecioGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioGuardar" message="tns:IServiceDesktop_PrecioGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioGuardarResponse" message="tns:IServiceDesktop_PrecioGuardar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CmmpraIngresoListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CmmpraIngresoListar" message="tns:IServiceDesktop_CmmpraIngresoListar_InputMessage" />
@@ -1064,8 +1094,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="precioCategoria_Guardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/precioCategoria_Guardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="PrecioProductoListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrecioProductoListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrecioProductoListar2">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrecioProductoListar2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrecioGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrecioGuardar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

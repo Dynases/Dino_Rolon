@@ -14,5 +14,9 @@ namespace ENTITY.reg.PrecioCategoria.View
         public int Tipo { get; set; }
         public string NombreTipo { get; set; }
         public decimal Margen { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+        public string Usuario { get; set; }
+        public int Estado { get; set; }
     }
 }
