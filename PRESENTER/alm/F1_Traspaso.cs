@@ -562,7 +562,21 @@ namespace PRESENTER.alm
 
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
         {
-            this.MP_CargarProductosPorAlmacenOrigen(Convert.ToInt32(Cb_Origen.Value));
+            try
+            {
+                if (Cb_Origen.Value != null)
+                {
+                    int AlmacenOrigenId;
+                    if (int.TryParse(Cb_Origen.Value.ToString(), out AlmacenOrigenId))
+                    {
+                        this.MP_CargarProductosPorAlmacenOrigen(AlmacenOrigenId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError("Ocurrió un error inesperado, por favor intente cerrar la ventana actual y pruebe nuevamente");
+            }
         }
 
         private void btnAgregarPlantilla_Click(object sender, EventArgs e)
@@ -634,7 +648,7 @@ namespace PRESENTER.alm
             public string Unidad { get; set; }
 
             public string Cantidad { get; set; }
-        }        
+        }
     }
 }
 

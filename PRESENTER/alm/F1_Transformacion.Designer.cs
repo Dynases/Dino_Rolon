@@ -85,7 +85,7 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 626);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
@@ -108,10 +108,11 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(950, 660);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // BtnImprimir
             // 
@@ -136,7 +137,7 @@
             // TxtNombreUsu
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
             // 
             // BubbleBarUsuario
             // 
@@ -159,35 +160,34 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
             this.BubbleBarUsuario.Location = new System.Drawing.Point(758, 0);
-            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(853, 627);
+            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(950, 626);
             // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(890, 0);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnMax
             // 
             this.btnMax.Location = new System.Drawing.Point(910, 0);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(930, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(853, 627);
+            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(950, 626);
             // 
             // 
             // 
@@ -219,8 +219,8 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(847, 599);
+            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 598);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -233,7 +233,7 @@
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.PanelMenu.Size = new System.Drawing.Size(950, 72);
             // 
             // PanelFondo
@@ -639,7 +639,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 687);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "F1_Transformacion";
             this.Text = "F1_Transformacion";
             this.Load += new System.EventHandler(this.F1_Transformacion_Load);
