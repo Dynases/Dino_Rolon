@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Enum\EnAccionEnInventario.cs" />
     <Compile Include="Enum\EnCarpetas\EnCarpeta.cs" />
     <Compile Include="Enum\EnCarpetas\ENSubCarpetas.cs" />
     <Compile Include="Enum\EnEstado\ENEstado.cs" />

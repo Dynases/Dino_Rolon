@@ -488,10 +488,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
-        bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId);
+        bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
-        System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId);
+        System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
         ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
@@ -1440,12 +1440,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.VentasListarAsync();
         }
         
-        public bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId) {
-            return base.Channel.VentaDetalleGuardar(lista, VentaId);
+        public bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId) {
+            return base.Channel.VentaDetalleGuardar(lista, VentaId, AlmacenId);
         }
         
-        public System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId) {
-            return base.Channel.VentaDetalleGuardarAsync(lista, VentaId);
+        public System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId) {
+            return base.Channel.VentaDetalleGuardarAsync(lista, VentaId, AlmacenId);
         }
         
         public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {

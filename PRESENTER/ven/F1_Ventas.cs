@@ -63,6 +63,7 @@ namespace PRESENTER.ven
             this.Tb_Observaciones.ReadOnly = true;
             this.TbEncPrVenta.ReadOnly = true;
             this.TbNitCliente.ReadOnly = true;
+            this.btnLimpiarCliente.Visible = false;
         }
 
         private void MP_Habilitar()
@@ -81,6 +82,7 @@ namespace PRESENTER.ven
             this.TbEncPrVenta.ReadOnly = false;
             this.Tb_Usuario.Text = UTGlobal.Usuario;
             this.TbNitCliente.ReadOnly = true;
+            this.btnLimpiarCliente.Visible = true;
         }
 
         private void MP_CargarAlmacenes()
@@ -225,6 +227,7 @@ namespace PRESENTER.ven
             Tb_Usuario.Text = venta.Usuario;
             TbCliente.Text = venta.DescripcionCliente;
             lblIdCliente.Text = venta.IdCliente.ToString();
+            TbNitCliente.Text = venta.NitCliente;
             Sw_TipoVenta.Value = true;
             sw_estado.Value = true;
             TbEncVenta.Text = venta.EncVenta;
@@ -315,6 +318,8 @@ namespace PRESENTER.ven
 
                     Dgv_DetalleVenta.GroupByBoxVisible = false;
                     Dgv_DetalleVenta.VisualStyle = VisualStyle.Office2007;
+
+                    this.MP_CalcularTotal();
                 }
             }
             catch (Exception ex)
@@ -326,7 +331,7 @@ namespace PRESENTER.ven
         private void MP_Reiniciar()
         {
             this.Tb_Cod.Text = "";
-            this.Tb_Usuario.Text = "";
+            this.Tb_Usuario.Text = UTGlobal.Usuario;
             this.Dt_FechaVenta.Value = DateTime.Today;
             this.TbCliente.Text = "";
             this.lblIdCliente.Text = "";
@@ -341,9 +346,11 @@ namespace PRESENTER.ven
             this.lblFechaRegistro.Text = "";
             this.lblId.Text = "";
             this.TbNitCliente.Text = "";
+            this.TbTotal.Text = "";
             index = 0;
             listaDetalleVenta.Clear();
             this.Dgv_DetalleVenta.DataSource = null;
+            this.MP_CargarEncargado();
         }
 
         private void MP_CalcularTotal()
@@ -382,12 +389,20 @@ namespace PRESENTER.ven
                 }
             }
 
-            if (!new ServiceDesktop.ServiceDesktopClient().VentaDetalleGuardar(lista.ToArray(), vVenta.Id))
+            if (!new ServiceDesktop.ServiceDesktopClient().VentaDetalleGuardar(lista.ToArray(), vVenta.Id, vVenta.IdAlmacen))
             {
-                var mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                var mensaje = GLMensaje.Registro_Error("VENTAS");
                 this.MP_MostrarMensajeError(mensaje);
-                this.MP_MostrarMensajeError("Ocurrio un error al guardar el detalle de su venta sus datos");
             }
+        }
+
+        private void MP_CargarEncargado()
+        {
+            var almacen = new ServiceDesktop.ServiceDesktopClient().AlmacenListar()
+                                                                       .ToList()
+                                                                       .Where(a => a.Id == Convert.ToInt32(Cb_Origen.Value))
+                                                                       .FirstOrDefault();
+            TbEncEntrega.Text = almacen.Encargado;
         }
 
         #endregion
@@ -398,6 +413,7 @@ namespace PRESENTER.ven
         {
             base.MH_Nuevo();
             this.MP_Habilitar();
+            this.MP_Reiniciar();
             this.MP_AgregarFila(new VVenta_01
             {
                 Cantidad = 0,
@@ -644,13 +660,18 @@ namespace PRESENTER.ven
 
         private void Dgv_DetalleVenta_CellEdited(object sender, ColumnActionEventArgs e)
         {
-            var precio = Convert.ToDecimal(Dgv_DetalleVenta.CurrentRow.Cells[4].Value);
-            var cantidad = Convert.ToUInt32(Dgv_DetalleVenta.CurrentRow.Cells[3].Value);
+            if (!string.IsNullOrEmpty(Dgv_DetalleVenta.CurrentRow.Cells[4].Value.ToString()) &&
+                !string.IsNullOrEmpty(Dgv_DetalleVenta.CurrentRow.Cells[3].Value.ToString()) &&
+                !string.IsNullOrEmpty(Dgv_DetalleVenta.CurrentRow.Cells[6].Value.ToString()))
+            {
+                var precio = Convert.ToDecimal(Dgv_DetalleVenta.CurrentRow.Cells[4].Value);
+                var cantidad = Convert.ToUInt32(Dgv_DetalleVenta.CurrentRow.Cells[3].Value);
 
-            Dgv_DetalleVenta.CurrentRow.Cells[6].Value = precio * cantidad;
-            Dgv_DetalleVenta.UpdateData();
+                Dgv_DetalleVenta.CurrentRow.Cells[6].Value = precio * cantidad;
+                Dgv_DetalleVenta.UpdateData();
 
-            this.MP_CalcularTotal();
+                this.MP_CalcularTotal();
+            }
         }
 
         private void btnLimpiarCliente_Click(object sender, EventArgs e)
@@ -663,11 +684,7 @@ namespace PRESENTER.ven
 
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
         {
-            var almacen = new ServiceDesktop.ServiceDesktopClient().AlmacenListar()
-                                                                       .ToList()
-                                                                       .Where(a => a.Id == Convert.ToInt32(Cb_Origen.Value))
-                                                                       .FirstOrDefault();
-            TbEncEntrega.Text = almacen.Encargado;
+            this.MP_CargarEncargado();
         }
 
         private void lblIdCliente_TextChanged(object sender, EventArgs e)
@@ -678,6 +695,27 @@ namespace PRESENTER.ven
             }
         }
 
-        #endregion        
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
     }
 }

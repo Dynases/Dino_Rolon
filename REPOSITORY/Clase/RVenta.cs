@@ -73,6 +73,7 @@ namespace REPOSITORY.Clase
                                  Id = v.Id,
                                  IdAlmacen = v.IdAlmacen,
                                  IdCliente = v.IdCliente,
+                                 NitCliente = v.Cliente.Nit,
                                  Observaciones = v.Observaciones,
                                  Tipo = v.Tipo,
                                  Usuario = v.Usuario

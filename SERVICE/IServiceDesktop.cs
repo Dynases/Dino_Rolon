@@ -282,10 +282,10 @@ namespace SERVICE
         List<VVenta> VentasListar();
 
         [OperationContract]
-        bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId);
+        bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId);
 
         [OperationContract]
-        List<VVenta_01> VentaDetalleListar(int VentaId);        
+        List<VVenta_01> VentaDetalleListar(int VentaId);
 
         #endregion
     }

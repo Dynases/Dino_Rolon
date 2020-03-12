@@ -7,14 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTILITY.Enum;
 
 namespace REPOSITORY.Clase
 {
     public class RVenta_01 : BaseConexion, IVenta_01
     {
+        private readonly ITI001 tI001;
+
+        public RVenta_01(ITI001 tI001)
+        {
+            this.tI001 = tI001;
+        }
+
         #region Trasancciones
 
-        public bool Guardar(List<VVenta_01> lista, int ventaId)
+        public bool Guardar(List<VVenta_01> lista, int ventaId, int almacenId)
         {
             try
             {
@@ -33,6 +41,14 @@ namespace REPOSITORY.Clase
                         };
 
                         db.Venta_01.Add(detalle);
+
+                        if (!this.tI001.ActualizarInventario(detalle.IdProducto.ToString(),
+                                                            almacenId,
+                                                            EnAccionEnInventario.Descontar,
+                                                            Convert.ToDecimal(detalle.Cantidad)))
+                        {
+                            return false;
+                        }
                     }
 
                     db.SaveChanges();

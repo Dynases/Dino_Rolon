@@ -983,6 +983,7 @@
       <xs:sequence>
         <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="lista" nillable="true" type="q65:ArrayOfVVenta_01" />
         <xs:element minOccurs="0" name="VentaId" type="xs:int" />
+        <xs:element minOccurs="0" name="AlmacenId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

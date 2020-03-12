@@ -909,11 +909,11 @@ namespace SERVICE
             }
         }
 
-        public bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId)
+        public bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId)
         {
             try
             {
-                return new LVenta_01().Guardar(lista, VentaId);
+                return new LVenta_01().Guardar(lista, VentaId, AlmacenId);
             }
             catch (Exception ex)
             {
