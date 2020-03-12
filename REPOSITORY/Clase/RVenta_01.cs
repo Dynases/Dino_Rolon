@@ -27,7 +27,7 @@ namespace REPOSITORY.Clase
                             Cantidad = i.Cantidad,
                             Estado = i.Estado,
                             IdProducto = i.IdProducto,
-                            IdVenta = i.IdVenta,
+                            IdVenta = ventaId,
                             Precio = i.Precio,
                             Unidad = i.Unidad
                         };

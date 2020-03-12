@@ -382,7 +382,7 @@ namespace PRESENTER.ven
                 }
             }
 
-            if (!new ServiceDesktop.ServiceDesktopClient().VentaDetalleGuardar(listaDetalleVenta.ToArray(), vVenta.Id))
+            if (!new ServiceDesktop.ServiceDesktopClient().VentaDetalleGuardar(lista.ToArray(), vVenta.Id))
             {
                 var mensaje = GLMensaje.Registro_Error("TRASPASOS");
                 this.MP_MostrarMensajeError(mensaje);
