@@ -39,6 +39,7 @@ namespace PRESENTER.com
         private void F1_Transformacion_Load(object sender, EventArgs e)
         {
             this.Name = _NombreFormulario;
+            superTabControl1.SelectedTabIndex = 0;
             MP_Iniciar();
         }
 
@@ -223,8 +224,7 @@ namespace PRESENTER.com
         }
 
         private void MP_Habilitar()
-        {
-            this.Tb_Id.ReadOnly = false;
+        {           
             this.Cb_Almacen1.ReadOnly = false;
             this.Cb_Almacen2.ReadOnly = false;
             this.Tb_Observacion.ReadOnly = false;
@@ -494,7 +494,7 @@ namespace PRESENTER.com
         {
             try
             {
-                if (Tb_Id.ReadOnly == false)
+                if (Tb_Observacion.ReadOnly == false)
                 {
                     if (e.Column.Index == Dgv_Detalle.RootTable.Columns["Cantidad"].Index ||
                         e.Column.Index == Dgv_Detalle.RootTable.Columns["TotalProd"].Index)
@@ -609,36 +609,42 @@ namespace PRESENTER.com
 
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
+            MP_Imprimir(Convert.ToInt32(Tb_Id.Text));
+        }
 
-            if (Tb_Id.ReadOnly == true)
-            {
+        private void MP_Imprimir(int Id)
+        {
+           
                 //TRANSAFORMACION INGRESO
                 if (UTGlobal.visualizador != null)
                 {
                     UTGlobal.visualizador.Close();
                 }
                 UTGlobal.visualizador = new Visualizador();
-                var lista = new ServiceDesktop.ServiceDesktopClient().TransformacionIngreso(Convert.ToInt32(Tb_Id.Text));
+                var lista = new ServiceDesktop.ServiceDesktopClient().TransformacionIngreso(Id);
+                var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Id);
                 var ObjetoReport = new RTransformacionIngreso();
+                ObjetoReport.Subreports["RTransformacionSalida.rpt"].SetDataSource(lista2);
                 ObjetoReport.SetDataSource(lista);
                 UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
                 UTGlobal.visualizador.ShowDialog();
                 UTGlobal.visualizador.BringToFront();
 
                 //TRANSFORMACION SALIDA
-                if (UTGlobal.visualizador != null)
-                {
-                    UTGlobal.visualizador.Close();
-                }
-                UTGlobal.visualizador = new Visualizador();
-                var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Convert.ToInt32(Tb_Id.Text));
-                var ObjetoReport2 = new RTransformacionSalida();
-                ObjetoReport2.SetDataSource(lista2);
-                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport2;
-                UTGlobal.visualizador.ShowDialog();
-                UTGlobal.visualizador.BringToFront();
-            }
+                //if (UTGlobal.visualizador != null)
+                //{
+                //    UTGlobal.visualizador.Close();
+                //}
+                //UTGlobal.visualizador = new Visualizador();
+                //var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Convert.ToInt32(Tb_Id.Text));
+                //var ObjetoReport2 = new RTransformacionSalida();
+                //ObjetoReport2.SetDataSource(lista2);
+                //UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport2;
+                //UTGlobal.visualizador.ShowDialog();
+                //UTGlobal.visualizador.BringToFront();
+            
         }
+
         private void Dgv_Detalle_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -673,37 +679,52 @@ namespace PRESENTER.com
 
         private void Dgv_Producto_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Cb_Almacen1.ReadOnly == false)
+            try
             {
-                if (e.KeyData == Keys.Enter)
+                if (Cb_Almacen1.ReadOnly == false)
                 {
-                    if (_IdProducto == 0)
+                    if (e.KeyData == Keys.Enter)
                     {
-                        _IdProducto = Convert.ToInt32(Dgv_Producto.GetValue("id"));
-                        MP_InsertarProducto();
-                    }
-                    else
-                    {
-                        var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
-                        _idProducto_Mat = Convert.ToInt32(Dgv_Producto.GetValue("id"));
-                        var ProductoNombre = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_TraerFilaProducto(_IdProducto, _idProducto_Mat);
-                        ListaDetalle = (List<VTransformacion_01>)Dgv_Detalle.DataSource;
-                        foreach (var fila in ListaDetalle)
+                        if (_IdProducto == 0)
                         {
-                            if (fila.Id == idDetalle)
+                            _IdProducto = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                            MP_InsertarProducto();
+                        }
+                        else
+                        {
+                            var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
+                            _idProducto_Mat = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                            if (_idProducto_Mat > 0)
                             {
-                                fila.IdProducto = ProductoNombre.IdProducto;
-                                fila.Producto = ProductoNombre.Producto;
-                                fila.IdProducto_Mat_Prima = ProductoNombre.IdProducto_Mat_Prima;
-                                fila.Producto_Mat_Prima = ProductoNombre.Producto_Mat_Prima;
-                                fila.Cantidad = ProductoNombre.Cantidad;
+                                var ProductoNombre = new ServiceDesktop.ServiceDesktopClient().Transformacion_01_TraerFilaProducto(_IdProducto, _idProducto_Mat);
+                                ListaDetalle = (List<VTransformacion_01>)Dgv_Detalle.DataSource;
+                                foreach (var fila in ListaDetalle)
+                                {
+                                    if (fila.Id == idDetalle)
+                                    {
+                                        fila.IdProducto = ProductoNombre.IdProducto;
+                                        fila.Producto = ProductoNombre.Producto;
+                                        fila.IdProducto_Mat_Prima = ProductoNombre.IdProducto_Mat_Prima;
+                                        fila.Producto_Mat_Prima = ProductoNombre.Producto_Mat_Prima;
+                                        fila.Cantidad = ProductoNombre.Cantidad;
+                                    }
+                                }
+                                MP_ArmarDetalle();
+                                MP_InHabilitarProducto();
                             }
                         }
-                        MP_ArmarDetalle();
-                        MP_InHabilitarProducto();
+                    }
+                    if (e.KeyData == Keys.Escape)
+                    {
+                        MP_InHabilitarProducto();                       
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+            
         }
         #endregion
 
@@ -734,13 +755,16 @@ namespace PRESENTER.com
                 if (idAux == 0)//Registar
                 {
                     Cb_Almacen1.Focus();
+                    MP_Imprimir(id);
                     MP_CargarEncabezado();
                     MP_Limpiar();
                     _Limpiar = true;
                     mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                   
                 }
                 else//Modificar
                 {
+                    MP_Imprimir(id);
                     MP_Filtrar(1);
                     MP_InHabilitar();//El formulario
                     _Limpiar = true;

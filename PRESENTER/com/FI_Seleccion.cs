@@ -720,6 +720,20 @@ namespace PRESENTER.com
                 MP_ObtenerCalculo();
              }
         }
+
+        private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+                tb_FechaSeleccion.Focus();
+            }
+        }
+
+        private void Dgv_GBuscador_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            e.Cancel = true;
+        }
         #endregion
         #region Metodo heredados
         public override bool MH_NuevoRegistro()
@@ -838,6 +852,6 @@ namespace PRESENTER.com
         {
         }
 
-        
+      
     }
 }

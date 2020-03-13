@@ -54,6 +54,8 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.PanelIzquierda = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Id = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -74,8 +76,6 @@
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
-            this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -108,11 +108,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Recep_TCantidad)).BeginInit();
             this.PanelIzquierda.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
@@ -140,9 +140,10 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(1144, 630);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // BtnImprimir
             // 
@@ -194,7 +195,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1117, 555);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1144, 597);
             // 
             // btnMin
             // 
@@ -210,7 +211,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1117, 555);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1144, 597);
             // 
             // 
             // 
@@ -242,8 +243,10 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1111, 529);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1138, 571);
+            this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
+            this.Dgv_GBuscador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_GBuscador_KeyDown);
             // 
             // LblSubtitulo
             // 
@@ -449,7 +452,7 @@
             this.tb_MermaPorc.BackgroundStyle.Class = "DateTimeInputBackground";
             this.tb_MermaPorc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tb_MermaPorc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.tb_MermaPorc.DisplayFormat = "0.0000000";
+            this.tb_MermaPorc.DisplayFormat = "0.0000";
             this.tb_MermaPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MermaPorc.Increment = 1D;
             this.tb_MermaPorc.Location = new System.Drawing.Point(561, 63);
@@ -718,6 +721,68 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 85;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // tb_FechaSeleccion
+            // 
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.tb_FechaSeleccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.tb_FechaSeleccion.ButtonDropDown.Visible = true;
+            this.tb_FechaSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_FechaSeleccion.IsPopupCalendarOpen = false;
+            this.tb_FechaSeleccion.Location = new System.Drawing.Point(152, 101);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.tb_FechaSeleccion.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.DisplayMonth = new System.DateTime(2017, 2, 1, 0, 0, 0, 0);
+            this.tb_FechaSeleccion.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.TodayButtonVisible = true;
+            this.tb_FechaSeleccion.Name = "tb_FechaSeleccion";
+            this.tb_FechaSeleccion.Size = new System.Drawing.Size(153, 22);
+            this.tb_FechaSeleccion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.tb_FechaSeleccion.TabIndex = 342;
+            // 
+            // labelX14
+            // 
+            this.labelX14.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX14.Location = new System.Drawing.Point(4, 100);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX14.Size = new System.Drawing.Size(123, 23);
+            this.labelX14.TabIndex = 343;
+            this.labelX14.Text = "Fecha de Seleccion (*)";
             // 
             // Cb_Almacen
             // 
@@ -1108,68 +1173,6 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
-            // tb_FechaSeleccion
-            // 
-            // 
-            // 
-            // 
-            this.tb_FechaSeleccion.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.tb_FechaSeleccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_FechaSeleccion.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.tb_FechaSeleccion.ButtonDropDown.Visible = true;
-            this.tb_FechaSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_FechaSeleccion.IsPopupCalendarOpen = false;
-            this.tb_FechaSeleccion.Location = new System.Drawing.Point(152, 101);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.tb_FechaSeleccion.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_FechaSeleccion.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.tb_FechaSeleccion.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_FechaSeleccion.MonthCalendar.DisplayMonth = new System.DateTime(2017, 2, 1, 0, 0, 0, 0);
-            this.tb_FechaSeleccion.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tb_FechaSeleccion.MonthCalendar.TodayButtonVisible = true;
-            this.tb_FechaSeleccion.Name = "tb_FechaSeleccion";
-            this.tb_FechaSeleccion.Size = new System.Drawing.Size(153, 22);
-            this.tb_FechaSeleccion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.tb_FechaSeleccion.TabIndex = 342;
-            // 
-            // labelX14
-            // 
-            this.labelX14.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX14.Location = new System.Drawing.Point(4, 100);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX14.Size = new System.Drawing.Size(123, 23);
-            this.labelX14.TabIndex = 343;
-            this.labelX14.Text = "Fecha de Seleccion (*)";
-            // 
             // FI_Seleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1213,11 +1216,11 @@
             this.PanelIzquierda.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
             this.ResumeLayout(false);
 
         }
