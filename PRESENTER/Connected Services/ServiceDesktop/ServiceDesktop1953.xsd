@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
-  <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
+  <xs:import schemaLocation="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>

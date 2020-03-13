@@ -289,6 +289,12 @@
       <DependentUpon>RTransformacionSalida.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\R_KardexInventarioGeneralResumen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_KardexInventarioGeneralResumen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ven\F1_Ventas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,6 +362,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionSalida.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\R_KardexInventarioGeneralResumen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_KardexInventarioGeneralResumen.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ven\F1_Ventas.resx">
       <DependentUpon>F1_Ventas.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,6 +376,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_GuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.PlantillaGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.precioCategoria_GuardarResponse.datasource">
@@ -381,6 +394,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TransformacionGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TraspasoGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
@@ -488,21 +504,6 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1936.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1938.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1939.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1940.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1941.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1942.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -510,6 +511,24 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop26.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
