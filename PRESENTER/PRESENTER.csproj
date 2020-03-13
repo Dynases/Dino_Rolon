@@ -477,6 +477,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1922.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1929.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
       <SubType>Designer</SubType>
     </None>

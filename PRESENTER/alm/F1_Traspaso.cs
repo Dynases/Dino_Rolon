@@ -362,9 +362,7 @@ namespace PRESENTER.alm
             try
             {
                 plantillaIndex = 0;
-                listaPlantillas = new ServiceDesktop.ServiceDesktopClient().PlantillaListar()
-                                    .Where(p => p.Concepto.Equals(ENConceptoPlantilla.Traspaso))
-                                    .ToList();
+                listaPlantillas = new ServiceDesktop.ServiceDesktopClient().PlantillaListar(ENConceptoPlantilla.Traspaso).ToList();
 
                 lblPlantillaCount.Text = plantillaIndex.ToString() + " / " + listaPlantillas.Count.ToString();
             }
