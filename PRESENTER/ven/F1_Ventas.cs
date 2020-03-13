@@ -654,6 +654,7 @@ namespace PRESENTER.ven
 
         private void TbCliente_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (TbCliente.ReadOnly.Equals(false))
             {
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)

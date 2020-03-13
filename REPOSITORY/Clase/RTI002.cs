@@ -1,4 +1,5 @@
-﻿using REPOSITORY.Base;
+﻿using DATA.EntityDataModel.DiAvi;
+using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,29 @@ namespace REPOSITORY.Clase
     {
         #region Trasancciones
 
+        public bool GuardarTransaccion()
+        {
+            try
+            {
+                //var t2 = new TI002
+                //{
+                //    ibalm = 1,
+                //    ibconcep = 
+                //};
 
+                using (var db = this.GetEsquema())
+                {
+
+
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
     }

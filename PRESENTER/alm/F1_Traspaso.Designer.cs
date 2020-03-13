@@ -67,6 +67,8 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
+            this.btnEstado = new DevComponents.DotNetBar.ButtonX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -101,6 +103,7 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
             this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1215, 659);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
@@ -330,7 +333,7 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 303);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 297);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
             this.panelNavegacionPlantilla.Size = new System.Drawing.Size(513, 40);
             this.panelNavegacionPlantilla.TabIndex = 27;
@@ -584,6 +587,8 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX5);
+            this.GPanel_DatosGenerales.Controls.Add(this.btnEstado);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX4);
             this.GPanel_DatosGenerales.Controls.Add(this.lblFechaRecepcion);
             this.GPanel_DatosGenerales.Controls.Add(this.lblFechaEnvio);
@@ -863,6 +868,33 @@
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
+            // btnEstado
+            // 
+            this.btnEstado.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEstado.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEstado.Location = new System.Drawing.Point(949, 32);
+            this.btnEstado.Name = "btnEstado";
+            this.btnEstado.Size = new System.Drawing.Size(68, 37);
+            this.btnEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEstado.TabIndex = 362;
+            // 
+            // labelX5
+            // 
+            this.labelX5.AutoSize = true;
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX5.Location = new System.Drawing.Point(1033, 32);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX5.Size = new System.Drawing.Size(58, 26);
+            this.labelX5.TabIndex = 363;
+            this.labelX5.Text = "Estado";
+            // 
             // F1_Traspaso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -946,5 +978,7 @@
         private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.ButtonX btnGuardarPlantilla;
         private System.Windows.Forms.Label lblIdPlantilla;
+        internal DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.ButtonX btnEstado;
     }
 }

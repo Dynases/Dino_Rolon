@@ -479,11 +479,11 @@ namespace SERVICE
             }
         }
 
-        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId)
+        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId)
         {
             try
             {
-                return new LTraspaso_01().Guardar(lista, TraspasoId);
+                return new LTraspaso_01().Guardar(lista, TraspasoId, almacenId);
             }
             catch (Exception ex)
             {

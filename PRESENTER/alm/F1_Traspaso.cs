@@ -4,13 +4,8 @@ using ENTITY.Plantilla;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UTILITY.Enum;
 using UTILITY.Global;
 
@@ -232,7 +227,7 @@ namespace PRESENTER.alm
                 listaDetalle.Add(detalle);
             }
 
-            if (!new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleGuardar(listaDetalle.ToArray(), traspaso.Id))
+            if (!new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleGuardar(listaDetalle.ToArray(), traspaso.Id, Convert.ToInt32(Cb_Origen.Value)))
             {
                 mensaje = GLMensaje.Registro_Error("TRASPASOS");
                 this.MP_MostrarMensajeError(mensaje);
@@ -253,8 +248,10 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[0].Key = "InventarioId";
                     Dgv_ProductosInventario.RootTable.Columns[0].Visible = false;
 
-                    Dgv_ProductosInventario.RootTable.Columns[1].Key = "ProductoId";
-                    Dgv_ProductosInventario.RootTable.Columns[1].Visible = false;
+                    Dgv_ProductosInventario.RootTable.Columns[1].Key = "COD";
+                    Dgv_ProductosInventario.RootTable.Columns[1].Width = 60;
+                    Dgv_ProductosInventario.RootTable.Columns[1].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[1].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[2].Key = "AlmacenId";
                     Dgv_ProductosInventario.RootTable.Columns[2].Visible = false;
@@ -266,6 +263,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[3].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[3].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[3].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[4].Key = "Saldo";
                     Dgv_ProductosInventario.RootTable.Columns[4].Caption = "Saldo";
@@ -274,6 +272,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[4].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[4].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[4].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[5].Key = "División";
                     Dgv_ProductosInventario.RootTable.Columns[5].Caption = "División";
@@ -282,6 +281,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[5].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[5].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[5].EditType = EditType.NoEdit;
 
 
                     Dgv_ProductosInventario.RootTable.Columns[6].Key = "Marca";
@@ -291,6 +291,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[6].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[6].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[6].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[7].Key = "Categorías";
                     Dgv_ProductosInventario.RootTable.Columns[7].Caption = "Categoría";
@@ -299,6 +300,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[7].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[7].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[7].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[8].Key = "Unidad";
                     Dgv_ProductosInventario.RootTable.Columns[8].Caption = "Unidad";
@@ -307,6 +309,7 @@ namespace PRESENTER.alm
                     Dgv_ProductosInventario.RootTable.Columns[8].CellStyle.FontSize = 8;
                     Dgv_ProductosInventario.RootTable.Columns[8].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_ProductosInventario.RootTable.Columns[8].Visible = true;
+                    Dgv_ProductosInventario.RootTable.Columns[8].EditType = EditType.NoEdit;
 
                     Dgv_ProductosInventario.RootTable.Columns[9].Key = "UnidadVentaDisplay";
                     Dgv_ProductosInventario.RootTable.Columns[9].Visible = false;
@@ -357,12 +360,15 @@ namespace PRESENTER.alm
             return response;
         }
 
-        private void MP_CargarPlantillas()
+        private void MP_CargarPlantillas(int AlmacenOrigen, int AlmacenDestino)
         {
             try
             {
                 plantillaIndex = 0;
-                listaPlantillas = new ServiceDesktop.ServiceDesktopClient().PlantillaListar(ENConceptoPlantilla.Traspaso).ToList();
+                listaPlantillas = new ServiceDesktop.ServiceDesktopClient()
+                                                    .PlantillaListar(ENConceptoPlantilla.Traspaso)
+                                                    .Where(p => p.IdAlmacen == AlmacenOrigen && p.IdAlmacenDestino == AlmacenDestino)
+                                                    .ToList();
 
                 lblPlantillaCount.Text = plantillaIndex.ToString() + " / " + listaPlantillas.Count.ToString();
             }
@@ -443,12 +449,15 @@ namespace PRESENTER.alm
         {
             base.MH_Nuevo();
             this.MP_Habilitar();
+            this.MP_CargarInventario();
         }
 
         public override void MH_Salir()
         {
             base.MH_Salir();
             this.MP_Reiniciar();
+            this.MP_CargarAlmacenes();
+            this.MP_CargarListaTraspasos();
         }
 
         public override bool MH_NuevoRegistro()
@@ -499,6 +508,28 @@ namespace PRESENTER.alm
             return false;
         }
 
+        public void MP_CargarInventario()
+        {
+            try
+            {
+                if (Cb_Origen.Value != null)
+                {
+                    int AlmacenOrigenId;
+                    int AlmacenDestinoId;
+                    if (int.TryParse(Cb_Origen.Value.ToString(), out AlmacenOrigenId) &&
+                        int.TryParse(Cb_Destino.Value.ToString(), out AlmacenDestinoId))
+                    {
+                        this.MP_CargarProductosPorAlmacenOrigen(AlmacenOrigenId);
+                        this.MP_CargarPlantillas(AlmacenOrigenId, AlmacenDestinoId);
+                    }
+                }
+            }
+            catch
+            {
+                this.MP_MostrarMensajeError("Ocurrió un error inesperado, por favor intente cerrar la ventana actual y pruebe nuevamente");
+            }
+        }
+
         #endregion
 
         //===============
@@ -508,7 +539,7 @@ namespace PRESENTER.alm
         {
             LblTitulo.Text = "TRASPASOS";
             btnMax.Visible = false;
-            this.MP_CargarPlantillas();
+            this.MP_CargarPlantillas(Convert.ToInt32(Cb_Origen.Value), Convert.ToInt32(Cb_Destino.Value));
         }
 
         private void Dgv_ProductosInventario_EditingCell(object sender, EditingCellEventArgs e)
@@ -539,8 +570,10 @@ namespace PRESENTER.alm
                         Dgv_DetalleNuevo.RetrieveStructure();
                         Dgv_DetalleNuevo.AlternatingColors = true;
 
-                        Dgv_DetalleNuevo.RootTable.Columns[0].Key = "id";
-                        Dgv_DetalleNuevo.RootTable.Columns[0].Visible = false;
+                        Dgv_DetalleNuevo.RootTable.Columns[0].Key = "Id";
+                        Dgv_DetalleNuevo.RootTable.Columns[1].Caption = "COD";
+                        Dgv_DetalleNuevo.RootTable.Columns[1].Width = 150;
+                        Dgv_DetalleNuevo.RootTable.Columns[0].Visible = true;
 
                         Dgv_DetalleNuevo.RootTable.Columns[1].Key = "Descripcion";
                         Dgv_DetalleNuevo.RootTable.Columns[1].Caption = "Descripcion";
@@ -586,22 +619,7 @@ namespace PRESENTER.alm
 
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (Cb_Origen.Value != null)
-                {
-                    int AlmacenOrigenId;
-                    if (int.TryParse(Cb_Origen.Value.ToString(), out AlmacenOrigenId))
-                    {
-                        this.MP_CargarProductosPorAlmacenOrigen(AlmacenOrigenId);
-                        //this.MP_CargarPlantillas();
-                    }
-                }
-            }
-            catch
-            {
-                this.MP_MostrarMensajeError("Ocurrió un error inesperado, por favor intente cerrar la ventana actual y pruebe nuevamente");
-            }
+            this.MP_CargarInventario();
         }
 
         private void Tb_NombrePlantilla_TextChanged(object sender, EventArgs e)
