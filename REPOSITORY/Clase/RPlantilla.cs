@@ -49,8 +49,9 @@ namespace REPOSITORY.Clase
             {
                 using (var db = this.GetEsquema())
                 {
+                    var concept = Convert.ToInt32(concepto);
                     var listresult = db.Plantilla
-                                         .Where(p => p.Concepto == Convert.ToInt32(concepto))
+                                         .Where(p => p.Concepto == concept)
                                          .Select(p => new VPlantilla
                                          {
                                              Concepto = p.Concepto,

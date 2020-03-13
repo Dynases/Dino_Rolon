@@ -887,7 +887,8 @@ namespace SERVICE
         {
             try
             {
-                return new LPlantilla().Listar(concepto);
+                var response = new LPlantilla().Listar(concepto);
+                return response;
             }
             catch (Exception ex)
             {

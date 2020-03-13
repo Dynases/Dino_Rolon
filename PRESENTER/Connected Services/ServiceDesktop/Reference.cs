@@ -478,10 +478,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.PlantillaGuardarResponse> PlantillaGuardarAsync(PRESENTER.ServiceDesktop.PlantillaGuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarResponse")]
-        ENTITY.Plantilla.VPlantilla[] PlantillaListar();
+        ENTITY.Plantilla.VPlantilla[] PlantillaListar(UTILITY.Enum.ENConceptoPlantilla concepto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync();
+        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync(UTILITY.Enum.ENConceptoPlantilla concepto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
         bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
@@ -1585,12 +1585,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.PlantillaGuardarAsync(request);
         }
         
-        public ENTITY.Plantilla.VPlantilla[] PlantillaListar() {
-            return base.Channel.PlantillaListar();
+        public ENTITY.Plantilla.VPlantilla[] PlantillaListar(UTILITY.Enum.ENConceptoPlantilla concepto) {
+            return base.Channel.PlantillaListar(concepto);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync() {
-            return base.Channel.PlantillaListarAsync();
+        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync(UTILITY.Enum.ENConceptoPlantilla concepto) {
+            return base.Channel.PlantillaListarAsync(concepto);
         }
         
         public bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
