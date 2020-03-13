@@ -98,5 +98,11 @@ namespace PRESENTER.adm
             F1_Ventas frm = new F1_Ventas();
             frm.Show();
         }
+
+        private void btnReporteKardex_Click(object sender, EventArgs e)
+        {
+            UTILITY.Visualizador frm = new UTILITY.Visualizador();
+            frm.Show();
+        }
     }
 }

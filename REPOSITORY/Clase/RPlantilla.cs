@@ -5,6 +5,7 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UTILITY.Enum;
 
 namespace REPOSITORY.Clase
 {
@@ -12,7 +13,7 @@ namespace REPOSITORY.Clase
     {
         #region Trasancciones
 
-        public bool Guardar(VPlantilla vPlantilla)
+        public bool Guardar(VPlantilla vPlantilla, ref int id)
         {
             try
             {
@@ -28,6 +29,7 @@ namespace REPOSITORY.Clase
 
                     db.Plantilla.Add(plantilla);
                     db.SaveChanges();
+                    id = plantilla.Id;
                     return true;
                 }
             }
@@ -41,22 +43,26 @@ namespace REPOSITORY.Clase
 
         #region Consultas
 
-        public List<VPlantilla> Listar()
+        public List<VPlantilla> Listar(ENConceptoPlantilla concepto)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    return db.Plantilla.Select(p => new VPlantilla
-                    {
-                        Concepto = p.Concepto,
-                        Id = p.Id,
-                        IdAlmacen = p.IdAlmacen,
-                        IdAlmacenDestino = p.IdAlmacenDestino,
-                        NombreAlmacen = p.Almacen.Descrip,
-                        NombreAlmacenDestino = p.Almacen1.Descrip,
-                        Nombre = p.Nombre
-                    }).ToList();
+                    var listresult = db.Plantilla
+                                         .Where(p => p.Concepto == Convert.ToInt32(concepto))
+                                         .Select(p => new VPlantilla
+                                         {
+                                             Concepto = p.Concepto,
+                                             Id = p.Id,
+                                             IdAlmacen = p.IdAlmacen,
+                                             IdAlmacenDestino = p.IdAlmacenDestino,
+                                             NombreAlmacen = p.Almacen.Descrip,
+                                             NombreAlmacenDestino = p.Almacen1.Descrip,
+                                             Nombre = p.Nombre
+                                         }).ToList();
+
+                    return listresult;
                 }
             }
             catch (Exception ex)
