@@ -176,7 +176,7 @@
             this.LblTitulo.ForeColor = System.Drawing.SystemColors.Control;
             this.LblTitulo.Location = new System.Drawing.Point(47, 4);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(63, 17);
+            this.LblTitulo.Size = new System.Drawing.Size(74, 20);
             this.LblTitulo.TabIndex = 0;
             this.LblTitulo.Text = "NOMBRE";
             // 
@@ -351,8 +351,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.PanelContenidoBuscar);
             this.superTabControl1.Controls.Add(this.PanelContenidoRegistro);
+            this.superTabControl1.Controls.Add(this.PanelContenidoBuscar);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.HorizontalText = false;
             this.superTabControl1.Location = new System.Drawing.Point(0, 27);
@@ -378,9 +378,9 @@
             this.PanelContenidoRegistro.Controls.Add(this.LblSubtitulo);
             this.PanelContenidoRegistro.Controls.Add(this.PanelMenu);
             this.PanelContenidoRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
             this.PanelContenidoRegistro.Name = "PanelContenidoRegistro";
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(837, 516);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(837, 515);
             this.PanelContenidoRegistro.TabIndex = 0;
             this.PanelContenidoRegistro.TabItem = this.SuperTalRegistro;
             // 
@@ -645,7 +645,7 @@
             this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
             this.Dgv_GBuscador.Name = "Dgv_GBuscador";
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 488);
             this.Dgv_GBuscador.TabIndex = 0;
             // 
             // PanelUsuario
@@ -669,7 +669,7 @@
             this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHora.Location = new System.Drawing.Point(115, 65);
             this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(79, 18);
+            this.lbHora.Size = new System.Drawing.Size(89, 20);
             this.lbHora.TabIndex = 6;
             this.lbHora.Text = "USUARIO:";
             // 
@@ -679,7 +679,7 @@
             this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.Location = new System.Drawing.Point(115, 42);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(79, 18);
+            this.lbFecha.Size = new System.Drawing.Size(89, 20);
             this.lbFecha.TabIndex = 5;
             this.lbFecha.Text = "USUARIO:";
             // 
@@ -689,7 +689,7 @@
             this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsuario.Location = new System.Drawing.Point(115, 19);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(79, 18);
+            this.lbUsuario.Size = new System.Drawing.Size(89, 20);
             this.lbUsuario.TabIndex = 4;
             this.lbUsuario.Text = "USUARIO:";
             // 
@@ -699,7 +699,7 @@
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.Location = new System.Drawing.Point(31, 65);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(60, 18);
+            this.lblHora.Size = new System.Drawing.Size(68, 20);
             this.lblHora.TabIndex = 2;
             this.lblHora.Text = "HORA:";
             // 
@@ -709,7 +709,7 @@
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Location = new System.Drawing.Point(31, 43);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(68, 18);
+            this.lblFecha.Size = new System.Drawing.Size(77, 20);
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "FECHA:";
             // 
@@ -719,7 +719,7 @@
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(31, 19);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(87, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(97, 20);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "USUARIO:";
             // 
