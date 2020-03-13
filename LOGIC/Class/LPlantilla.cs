@@ -17,11 +17,11 @@ namespace LOGIC.Class
 
         #region Trasancciones
 
-        public bool Guardar(VPlantilla VPlantilla)
+        public bool Guardar(VPlantilla VPlantilla, ref int id)
         {
             try
             {
-                return this.iPlantilla.Guardar(VPlantilla);
+                return this.iPlantilla.Guardar(VPlantilla, ref id);
             }
             catch (Exception ex)
             {

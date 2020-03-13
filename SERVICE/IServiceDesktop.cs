@@ -156,7 +156,7 @@ namespace SERVICE
         ///
         #region Traspaso
         [OperationContract]
-        bool TraspasoGuardar(VTraspaso vTraspaso);
+        bool TraspasoGuardar(VTraspaso vTraspaso, ref int id);
 
         [OperationContract]
         bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId);
@@ -178,7 +178,7 @@ namespace SERVICE
         List<VPrecioCategoria> PrecioCategoriaListar();
 
         [OperationContract]
-        bool precioCategoria_Guardar(VPrecioCategoria precioCat,ref int id);
+        bool precioCategoria_Guardar(VPrecioCategoria precioCat, ref int id);
         #endregion
         #region Precio 
         [OperationContract]
@@ -211,7 +211,7 @@ namespace SERVICE
         [OperationContract]
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId(int id);
         [OperationContract]
-        List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2,int idAlmacen);
+        List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen);
         #endregion
         ///**********SELECCION**********************
         ///
@@ -268,7 +268,7 @@ namespace SERVICE
         #region Plantilla
 
         [OperationContract]
-        bool PlantillaGuardar(VPlantilla VPlantilla);
+        bool PlantillaGuardar(VPlantilla VPlantilla, ref int id);
 
         [OperationContract]
         List<VPlantilla> PlantillaListar();

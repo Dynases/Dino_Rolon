@@ -86,6 +86,7 @@ namespace REPOSITORY.Clase
                             Descripcion = producto.Descrip,
                             Existencia = Convert.ToInt32(i.iccven.Value),
                             InventarioId = i.id,
+                            ProductoId = Convert.ToInt32(i.iccprod),
                             UnidadVenta = producto.UniVen,
                             UnidadVentaDisplay = "",
                         };
@@ -106,7 +107,7 @@ namespace REPOSITORY.Clase
 
         #region TRANSACCIONES
 
-        public bool Guardar(VTraspaso vTraspaso)
+        public bool Guardar(VTraspaso vTraspaso, ref int id)
         {
             try
             {
@@ -119,7 +120,6 @@ namespace REPOSITORY.Clase
                         AlmacenOrigen = vTraspaso.Origen,
                         FechaEnvio = vTraspaso.Fecha,
                         FechaRecepcion = null,
-                        Id = vTraspaso.Id,
                         Observaciones = vTraspaso.Observaciones,
                         UsuarioEnvio = vTraspaso.Usuario,
                         UsuarioRecepcion = null
@@ -127,7 +127,7 @@ namespace REPOSITORY.Clase
 
                     db.Traspaso.Add(traspaso);
                     db.SaveChanges();
-
+                    id = traspaso.Id;
                     return true;
                 }
             }

@@ -5,7 +5,7 @@ namespace REPOSITORY.Interface
 {
     public interface IPlantilla
     {
-        bool Guardar(VPlantilla VPlantilla);
+        bool Guardar(VPlantilla vPlantilla, ref int id);
         List<VPlantilla> Listar();
     }
 }

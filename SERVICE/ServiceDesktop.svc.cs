@@ -467,11 +467,11 @@ namespace SERVICE
         #endregion
         #region Traspasos
 
-        public bool TraspasoGuardar(VTraspaso vTraspaso)
+        public bool TraspasoGuardar(VTraspaso vTraspaso, ref int id)
         {
             try
             {
-                return new LTraspaso().Guardar(vTraspaso);
+                return new LTraspaso().Guardar(vTraspaso, ref id);
             }
             catch (Exception ex)
             {
@@ -563,7 +563,7 @@ namespace SERVICE
         {
             try
             {
-                var listResult = new LPrecio().Guardar(vPrecio,idSucural,usuario);
+                var listResult = new LPrecio().Guardar(vPrecio, idSucural, usuario);
                 return listResult;
             }
             catch (Exception ex)
@@ -871,11 +871,11 @@ namespace SERVICE
 
         #region Plantilla
 
-        public bool PlantillaGuardar(VPlantilla VPlantilla)
+        public bool PlantillaGuardar(VPlantilla VPlantilla, ref int id)
         {
             try
             {
-                return new LPlantilla().Guardar(VPlantilla);
+                return new LPlantilla().Guardar(VPlantilla, ref id);
             }
             catch (Exception ex)
             {

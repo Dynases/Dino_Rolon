@@ -12,7 +12,7 @@ namespace REPOSITORY.Clase
     {
         #region Trasancciones
 
-        public bool Guardar(VPlantilla vPlantilla)
+        public bool Guardar(VPlantilla vPlantilla, ref int id)
         {
             try
             {
@@ -28,6 +28,7 @@ namespace REPOSITORY.Clase
 
                     db.Plantilla.Add(plantilla);
                     db.SaveChanges();
+                    id = plantilla.Id;
                     return true;
                 }
             }

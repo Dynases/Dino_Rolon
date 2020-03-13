@@ -4,6 +4,8 @@
     {
         public int InventarioId { get; set; }
 
+        public int ProductoId { get; set; }
+
         public int AlmacenId { get; set; }
 
         public string Descripcion { get; set; }
@@ -20,6 +22,6 @@
 
         public string UnidadVentaDisplay { get; set; }
 
-        
+
     }
 }
