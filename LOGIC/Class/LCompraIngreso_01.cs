@@ -64,11 +64,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public List<VCompraIngreso_01> ListarXId2(int IdGrupo2)
+        public List<VCompraIngreso_01> ListarXId2(int IdGrupo2, int idAlmacen)
         {
             try
             {
-                return iCompraIngreso_01.ListarXId2(IdGrupo2);
+                return iCompraIngreso_01.ListarXId2(IdGrupo2, idAlmacen);
             }
             catch (Exception ex)
             {

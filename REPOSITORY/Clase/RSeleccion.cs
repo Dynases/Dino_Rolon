@@ -37,6 +37,7 @@ namespace REPOSITORY.Clase
                     seleccion.IdAlmacen = vSeleccion.IdAlmacen;
                     seleccion.IdCompraIng = vSeleccion.IdCompraIng;
                     seleccion.Estado = vSeleccion.Estado;
+                    seleccion.FechaReg = vSeleccion.FechaReg;
                     seleccion.Cantidad = vSeleccion.Cantidad ;
                     seleccion.Precio = vSeleccion.Precio;
                     seleccion.Total = vSeleccion.Total;                  
@@ -76,6 +77,7 @@ namespace REPOSITORY.Clase
                                           Id = a.Id,
                                           IdCompraIng = a.IdCompraIng,
                                           Granja = b.NumNota,
+                                          FechaReg = a.FechaReg,
                                           FechaEntrega = b.FechaEnt,
                                           FechaRecepcion = b.FechaRec,
                                           Proveedor = c.Descrip,

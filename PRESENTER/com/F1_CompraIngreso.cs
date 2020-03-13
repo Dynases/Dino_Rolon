@@ -370,7 +370,7 @@ namespace PRESENTER.com
                 else
                 {
                     //Consulta segun un Categoria 
-                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id).ToList();
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id,Convert.ToInt32(Cb_Almacen.Value)).ToList();
                 }
 
                 MP_ArmarDetalle(lresult);

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="457542b6347c4d09b835e81fe1b2b708" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="457542b6347c4d09b835e81fe1b2b708" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="5.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="10.5" PointY="16.125" IsExpanded="true" />
@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="13.5" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Proveed" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Proveed_01" Width="1.5" PointX="5.25" PointY="33.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Plantilla" Width="1.5" PointX="5.25" PointY="26.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiAviModel.Plantilla_01" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
@@ -47,11 +46,8 @@
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" ManuallyRouted="false" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Proveed_01_Proveed" ManuallyRouted="false" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" ManuallyRouted="false" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Almacen_Plantilla" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_AlmacenDestino_Plantilla" ManuallyRouted="false" />
@@ -70,6 +66,11 @@
         <AssociationConnector Association="DiAviModel.FK__Precio_Product" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Venta_01" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="10.5" PointY="11.25" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" />
+        <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

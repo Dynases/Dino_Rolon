@@ -76,15 +76,15 @@
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.GPanel_InfoAdicional = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
+            this.SuperTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.grayuda = new Janus.Windows.GridEX.GridEX();
+            this.SuperTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.SuperTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.Pc_Img = new System.Windows.Forms.PictureBox();
             this.BtAdicionar = new DevComponents.DotNetBar.ButtonX();
             this.LabelX15 = new DevComponents.DotNetBar.LabelX();
             this.SuperTabItem3 = new DevComponents.DotNetBar.SuperTabItem();
-            this.SuperTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.grayuda = new Janus.Windows.GridEX.GridEX();
-            this.SuperTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.SuperTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.BtnMapaMax = new DevComponents.DotNetBar.ButtonX();
             this.btnMapaMin = new DevComponents.DotNetBar.ButtonX();
@@ -117,11 +117,11 @@
             this.GPanel_InfoAdicional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.superTabControl2.SuspendLayout();
+            this.SuperTabControlPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grayuda)).BeginInit();
             this.SuperTabControlPanel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).BeginInit();
-            this.SuperTabControlPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grayuda)).BeginInit();
             this.SuperTabControlPanel2.SuspendLayout();
             this.GPanel_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
@@ -159,8 +159,8 @@
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(1063, 680);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // BtnNuevo
             // 
@@ -216,7 +216,8 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1063, 647);
             // 
             // btnMin
             // 
@@ -232,7 +233,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1043, 608);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1063, 647);
             // 
             // 
             // 
@@ -264,9 +265,10 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 582);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1057, 621);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
+            this.Dgv_GBuscador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_GBuscador_KeyDown);
             // 
             // LblSubtitulo
             // 
@@ -1117,6 +1119,32 @@
             this.superTabControl2.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue;
             this.superTabControl2.Text = "superTabControl2";
             // 
+            // SuperTabControlPanel1
+            // 
+            this.SuperTabControlPanel1.Controls.Add(this.grayuda);
+            this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 25);
+            this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(344, 272);
+            this.SuperTabControlPanel1.TabIndex = 1;
+            this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
+            // 
+            // grayuda
+            // 
+            this.grayuda.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grayuda.Location = new System.Drawing.Point(0, 0);
+            this.grayuda.Name = "grayuda";
+            this.grayuda.Size = new System.Drawing.Size(344, 272);
+            this.grayuda.TabIndex = 0;
+            // 
+            // SuperTabItem1
+            // 
+            this.SuperTabItem1.AttachedControl = this.SuperTabControlPanel1;
+            this.SuperTabItem1.GlobalItem = false;
+            this.SuperTabItem1.Name = "SuperTabItem1";
+            this.SuperTabItem1.TabFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SuperTabItem1.Text = "Ayuda";
+            // 
             // SuperTabControlPanel3
             // 
             this.SuperTabControlPanel3.Controls.Add(this.Panel2);
@@ -1190,32 +1218,6 @@
             this.SuperTabItem3.GlobalItem = false;
             this.SuperTabItem3.Name = "SuperTabItem3";
             this.SuperTabItem3.Text = "Imagen";
-            // 
-            // SuperTabControlPanel1
-            // 
-            this.SuperTabControlPanel1.Controls.Add(this.grayuda);
-            this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 25);
-            this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(344, 272);
-            this.SuperTabControlPanel1.TabIndex = 1;
-            this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
-            // 
-            // grayuda
-            // 
-            this.grayuda.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grayuda.Location = new System.Drawing.Point(0, 0);
-            this.grayuda.Name = "grayuda";
-            this.grayuda.Size = new System.Drawing.Size(344, 272);
-            this.grayuda.TabIndex = 0;
-            // 
-            // SuperTabItem1
-            // 
-            this.SuperTabItem1.AttachedControl = this.SuperTabControlPanel1;
-            this.SuperTabItem1.GlobalItem = false;
-            this.SuperTabItem1.Name = "SuperTabItem1";
-            this.SuperTabItem1.TabFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuperTabItem1.Text = "Ayuda";
             // 
             // SuperTabControlPanel2
             // 
@@ -1379,12 +1381,12 @@
             this.GPanel_InfoAdicional.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
             this.superTabControl2.ResumeLayout(false);
+            this.SuperTabControlPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grayuda)).EndInit();
             this.SuperTabControlPanel3.ResumeLayout(false);
             this.SuperTabControlPanel3.PerformLayout();
             this.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).EndInit();
-            this.SuperTabControlPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grayuda)).EndInit();
             this.SuperTabControlPanel2.ResumeLayout(false);
             this.GPanel_Detalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();

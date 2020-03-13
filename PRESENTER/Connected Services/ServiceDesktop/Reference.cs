@@ -379,10 +379,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2Response")]
-        ENTITY.com.CompraIngreso_01.VCompraIngreso_01[] CmmpraIngreso_01ListarXId2(int IdGrupo2);
+        ENTITY.com.CompraIngreso_01.VCompraIngreso_01[] CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2Response")]
-        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2);
+        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2, int idAlmacen);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ListaResponse")]
         ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista();
@@ -496,7 +496,7 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
         PRESENTER.ServiceDesktop.VentaGuardarResponse VentaGuardar(PRESENTER.ServiceDesktop.VentaGuardarRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaGuardarResponse> VentaGuardarAsync(PRESENTER.ServiceDesktop.VentaGuardarRequest request);
         
@@ -1340,12 +1340,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CmmpraIngreso_01ListarXIdAsync(id);
         }
         
-        public ENTITY.com.CompraIngreso_01.VCompraIngreso_01[] CmmpraIngreso_01ListarXId2(int IdGrupo2) {
-            return base.Channel.CmmpraIngreso_01ListarXId2(IdGrupo2);
+        public ENTITY.com.CompraIngreso_01.VCompraIngreso_01[] CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen) {
+            return base.Channel.CmmpraIngreso_01ListarXId2(IdGrupo2, idAlmacen);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2) {
-            return base.Channel.CmmpraIngreso_01ListarXId2Async(IdGrupo2);
+        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2, int idAlmacen) {
+            return base.Channel.CmmpraIngreso_01ListarXId2Async(IdGrupo2, idAlmacen);
         }
         
         public ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista() {

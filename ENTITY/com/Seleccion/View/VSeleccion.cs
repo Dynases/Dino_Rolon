@@ -12,6 +12,7 @@ namespace ENTITY.com.Seleccion.View
         public int IdAlmacen { get; set; }
         public int IdCompraIng { get; set; }
         public int Estado { get; set; }
+        public DateTime FechaReg { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Precio { get; set; }
         public decimal Total { get; set; }

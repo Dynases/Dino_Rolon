@@ -18,6 +18,7 @@ namespace DATA.EntityDataModel.DiAvi
         public Sucursal()
         {
             this.Almacen = new HashSet<Almacen>();
+            this.Precio = new HashSet<Precio>();
         }
     
         public int Id { get; set; }
@@ -34,5 +35,7 @@ namespace DATA.EntityDataModel.DiAvi
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacen> Almacen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Precio> Precio { get; set; }
     }
 }

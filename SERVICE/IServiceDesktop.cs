@@ -211,7 +211,7 @@ namespace SERVICE
         [OperationContract]
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId(int id);
         [OperationContract]
-        List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2);
+        List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2,int idAlmacen);
         #endregion
         ///**********SELECCION**********************
         ///

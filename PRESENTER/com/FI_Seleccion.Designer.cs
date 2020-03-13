@@ -74,6 +74,8 @@
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
+            this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -110,12 +112,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1144, 597);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
@@ -192,7 +194,6 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1117, 555);
             // 
             // btnMin
@@ -659,6 +660,8 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.tb_FechaSeleccion);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX14);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Almacen);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX11);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Id);
@@ -724,7 +727,7 @@
             this.Cb_Almacen.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Almacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacen.Location = new System.Drawing.Point(109, 288);
+            this.Cb_Almacen.Location = new System.Drawing.Point(110, 314);
             this.Cb_Almacen.Name = "Cb_Almacen";
             this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -744,7 +747,7 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(4, 287);
+            this.labelX11.Location = new System.Drawing.Point(5, 313);
             this.labelX11.Name = "labelX11";
             this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX11.Size = new System.Drawing.Size(71, 23);
@@ -794,7 +797,7 @@
             this.Tb_Edad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Edad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Edad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Edad.Location = new System.Drawing.Point(108, 258);
+            this.Tb_Edad.Location = new System.Drawing.Point(109, 284);
             this.Tb_Edad.Name = "Tb_Edad";
             this.Tb_Edad.PreventEnterBeep = true;
             this.Tb_Edad.Size = new System.Drawing.Size(196, 23);
@@ -809,7 +812,7 @@
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX9.Location = new System.Drawing.Point(4, 258);
+            this.labelX9.Location = new System.Drawing.Point(5, 284);
             this.labelX9.Name = "labelX9";
             this.labelX9.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX9.Size = new System.Drawing.Size(71, 23);
@@ -824,7 +827,7 @@
             this.Cb_Tipo.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Tipo.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Tipo.Location = new System.Drawing.Point(109, 230);
+            this.Cb_Tipo.Location = new System.Drawing.Point(110, 256);
             this.Cb_Tipo.Name = "Cb_Tipo";
             this.Cb_Tipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Tipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -844,7 +847,7 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX7.Location = new System.Drawing.Point(4, 229);
+            this.labelX7.Location = new System.Drawing.Point(5, 255);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX7.Size = new System.Drawing.Size(71, 23);
@@ -861,7 +864,7 @@
             this.tb_Proveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tb_Proveedor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Proveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.tb_Proveedor.Location = new System.Drawing.Point(109, 191);
+            this.tb_Proveedor.Location = new System.Drawing.Point(110, 217);
             this.tb_Proveedor.Name = "tb_Proveedor";
             this.tb_Proveedor.PreventEnterBeep = true;
             this.tb_Proveedor.Size = new System.Drawing.Size(196, 23);
@@ -876,7 +879,7 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX6.Location = new System.Drawing.Point(4, 189);
+            this.labelX6.Location = new System.Drawing.Point(5, 215);
             this.labelX6.Name = "labelX6";
             this.labelX6.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX6.Size = new System.Drawing.Size(71, 23);
@@ -892,7 +895,7 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX5.Location = new System.Drawing.Point(4, 131);
+            this.labelX5.Location = new System.Drawing.Point(5, 157);
             this.labelX5.Name = "labelX5";
             this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX5.Size = new System.Drawing.Size(137, 23);
@@ -910,7 +913,7 @@
             this.Tb_FechaRec.ButtonDropDown.Visible = true;
             this.Tb_FechaRec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_FechaRec.IsPopupCalendarOpen = false;
-            this.Tb_FechaRec.Location = new System.Drawing.Point(153, 131);
+            this.Tb_FechaRec.Location = new System.Drawing.Point(154, 157);
             // 
             // 
             // 
@@ -956,7 +959,7 @@
             this.Tb_FechaEnt.ButtonDropDown.Visible = true;
             this.Tb_FechaEnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_FechaEnt.IsPopupCalendarOpen = false;
-            this.Tb_FechaEnt.Location = new System.Drawing.Point(152, 102);
+            this.Tb_FechaEnt.Location = new System.Drawing.Point(153, 128);
             // 
             // 
             // 
@@ -1001,7 +1004,7 @@
             this.Tb_Placa.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Placa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Placa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Placa.Location = new System.Drawing.Point(109, 162);
+            this.Tb_Placa.Location = new System.Drawing.Point(110, 188);
             this.Tb_Placa.Name = "Tb_Placa";
             this.Tb_Placa.PreventEnterBeep = true;
             this.Tb_Placa.Size = new System.Drawing.Size(196, 23);
@@ -1049,7 +1052,7 @@
             this.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX3.Location = new System.Drawing.Point(4, 160);
+            this.LabelX3.Location = new System.Drawing.Point(5, 186);
             this.LabelX3.Name = "LabelX3";
             this.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX3.Size = new System.Drawing.Size(71, 23);
@@ -1065,7 +1068,7 @@
             this.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LabelX4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelX4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LabelX4.Location = new System.Drawing.Point(4, 101);
+            this.LabelX4.Location = new System.Drawing.Point(5, 127);
             this.LabelX4.Name = "LabelX4";
             this.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX4.Size = new System.Drawing.Size(123, 23);
@@ -1104,6 +1107,68 @@
             this.LabelX1.Size = new System.Drawing.Size(137, 18);
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
+            // 
+            // tb_FechaSeleccion
+            // 
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.tb_FechaSeleccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.tb_FechaSeleccion.ButtonDropDown.Visible = true;
+            this.tb_FechaSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_FechaSeleccion.IsPopupCalendarOpen = false;
+            this.tb_FechaSeleccion.Location = new System.Drawing.Point(152, 101);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.tb_FechaSeleccion.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.tb_FechaSeleccion.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.DisplayMonth = new System.DateTime(2017, 2, 1, 0, 0, 0, 0);
+            this.tb_FechaSeleccion.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.tb_FechaSeleccion.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tb_FechaSeleccion.MonthCalendar.TodayButtonVisible = true;
+            this.tb_FechaSeleccion.Name = "tb_FechaSeleccion";
+            this.tb_FechaSeleccion.Size = new System.Drawing.Size(153, 22);
+            this.tb_FechaSeleccion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.tb_FechaSeleccion.TabIndex = 342;
+            // 
+            // labelX14
+            // 
+            this.labelX14.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX14.Location = new System.Drawing.Point(4, 100);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX14.Size = new System.Drawing.Size(123, 23);
+            this.labelX14.TabIndex = 343;
+            this.labelX14.Text = "Fecha de Seleccion (*)";
             // 
             // FI_Seleccion
             // 
@@ -1152,6 +1217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1201,5 +1267,7 @@
         internal DevComponents.Editors.DoubleInput tb_MermaPorc;
         internal DevComponents.DotNetBar.LabelX labelX13;
         internal DevComponents.DotNetBar.ButtonX btn_Seleccionar;
+        internal DevComponents.Editors.DateTimeAdv.DateTimeInput tb_FechaSeleccion;
+        internal DevComponents.DotNetBar.LabelX labelX14;
     }
 }

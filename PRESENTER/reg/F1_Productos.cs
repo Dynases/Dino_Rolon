@@ -407,6 +407,12 @@ namespace PRESENTER.reg
             MP_ArmarComboInicial();
             MP_CargarEncabezado();
             MP_InHabilitar();
+            btn_Grupo1.Visible = false;
+            btn_Grupo2.Visible = false;
+            btn_Grupo4.Visible = false;
+            btn_Grupo3.Visible = false;
+            btn_UnidadPeso.Visible = false;
+            btn_UnidadVenta.Visible = false;
         }
         private void MP_ArmarComboInicial()
         {
@@ -633,6 +639,7 @@ namespace PRESENTER.reg
                 Tb_IdProducto.Value = lista.IdProducto;
                 Tb_Producto.Text = lista.Producto2;
                 sw_TipoPro.Value = lista.Tipo == 1 ? true : false;
+                _imagen = lista.Imagen;
                 Tb_Cantidad.Value = Convert.ToDouble(lista.Cantidad);
                 //Mostrar Imagenes
                 MP_MostrarImagen(tabla.Select(x => x.Imagen).First());
@@ -874,6 +881,7 @@ namespace PRESENTER.reg
                                                (int)GLMensajeTamano.Chico,
                                                 eToastGlowColor.Green,
                                                eToastPosition.TopCenter);
+                 
                         MP_Filtrar(1);
                         resultadoRegistro = true;
                     }

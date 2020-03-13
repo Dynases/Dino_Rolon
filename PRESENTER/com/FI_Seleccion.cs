@@ -363,6 +363,7 @@ namespace PRESENTER.com
             //Tb_Edad.ReadOnly = false;           
             //Tb_FechaEnt.Value = DateTime.Now;
             //Tb_FechaRec.Value = DateTime.Now;
+            tb_FechaSeleccion.IsInputReadOnly = false;
             Tb_IdCompraIngreso.ReadOnly = false;
             Dgv_Detalle.Enabled = true;
             Dgv_Seleccion.Enabled = true;
@@ -371,6 +372,7 @@ namespace PRESENTER.com
         private void MP_InHabilitar()
         {
             Tb_FechaEnt.IsInputReadOnly = true;
+            tb_FechaSeleccion.IsInputReadOnly = true;
             Tb_FechaRec.IsInputReadOnly = true;
             Tb_Id.ReadOnly = true;
             Tb_IdCompraIngreso.ReadOnly = true;
@@ -394,6 +396,7 @@ namespace PRESENTER.com
                 Tb_Edad.Clear();
                 Tb_FechaEnt.Value = DateTime.Now;
                 Tb_FechaRec.Value = DateTime.Now;
+                tb_FechaSeleccion.Value = DateTime.Now;
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);                    
@@ -428,7 +431,7 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Seleccion_Lista();
                     var lista = (from a in ListaCompleta
                                  where a.Id.Equals(_idOriginal)
-                                 select new { a.Id, a.IdCompraIng, a.Granja, a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad }).FirstOrDefault();
+                                 select new { a.Id, a.IdCompraIng, a.Granja,a.FechaReg,  a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad }).FirstOrDefault();
                     Tb_Id.Text = lista.Id.ToString();
                     Tb_NUmGranja.Text = lista.Granja.ToString();
                     Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
@@ -438,6 +441,7 @@ namespace PRESENTER.com
                     tb_Proveedor.Text = lista.Proveedor.ToString();
                     Cb_Tipo.Value = (int)lista.Tipo;
                     Tb_Edad.Text = lista.Edad.ToString();
+                    tb_FechaSeleccion.Value = lista.FechaReg;
                     var LTipoCompra = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(lista.IdCompraIng).ToList();
                     _TipoCompra = (from a in LTipoCompra
                                    select new { a.TipoCompra }).First().TipoCompra;
@@ -728,6 +732,7 @@ namespace PRESENTER.com
                 IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
                 IdCompraIng = Convert.ToInt32(Tb_IdCompraIngreso.Text),
                 Estado = (int)ENEstado.GUARDADO,
+                FechaReg = tb_FechaSeleccion.Value,
                 Cantidad = Convert.ToDecimal(Tb_TCantidad.Value),
                 Precio = Convert.ToDecimal(Tb_TPrecio.Value),
                 Total = Convert.ToDecimal(Tb_Total.Value),

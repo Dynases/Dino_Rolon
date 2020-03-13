@@ -361,6 +361,7 @@ namespace PRESENTER.reg
                 _longitud = Convert.ToDouble(tabla.Longittud);
                 Tb_TotalCred.Value = Convert.ToDouble( tabla.TotalCred);
                 Tb_Dias.Value = Convert.ToDouble(tabla.Dias);
+                _imagen = tabla.Imagen;
                 MP_DibujarUbicacion(Txb_CliDescripcion.Text, Txb_CliNit.Text);
                 //Mostrar Imagenes
                 MP_MostrarImagen(tabla.Imagen);

@@ -28,5 +28,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual Almacen Almacen { get; set; }
         public virtual PrecioCat PrecioCat { get; set; }
         public virtual Producto Producto { get; set; }
+        public virtual Sucursal Sucursal { get; set; }
     }
 }

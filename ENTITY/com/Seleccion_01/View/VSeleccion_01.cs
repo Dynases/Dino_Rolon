@@ -11,7 +11,7 @@ namespace ENTITY.com.Seleccion_01.View
 
         public int Id { get; set; }
         public int IdSeleccion { get; set; }
-        public int IdProducto { get; set; }
+        public int IdProducto { get; set; }     
         public int Estado { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Porcen { get; set; }

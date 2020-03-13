@@ -130,7 +130,7 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VCompraIngreso_01> ListarXId2(int IdGrupo2)
+        public List<VCompraIngreso_01> ListarXId2(int IdGrupo2, int idAlmacen)
         {
 
             try
@@ -138,17 +138,10 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = (from c in db.Producto                                
-                                      join b in db.Precio on
-                                      new
-                                      {
-                                          idProduc = c.Id
-                                      }
-                                      equals
-                                      new
-                                      {
-                                          idProduc = b.IdProduc
-                                      }
-                                      where b.IdPrecioCat.Equals(1) && c.Grupo2.Equals(IdGrupo2) && c.Tipo.Equals(2)
+                                      join b in db.Precio on c.Id equals b.IdProduc
+                                      join s in db.Sucursal on b.IdSucursal equals s.Id
+                                      join a in db.Almacen  on s.Id equals a.IdSuc
+                                      where b.IdPrecioCat.Equals(1) && c.Grupo2.Equals(IdGrupo2) && c.Tipo.Equals(2) && a.Id.Equals(idAlmacen)
                                       select new VCompraIngreso_01
                                       {
                                           Id = 0,

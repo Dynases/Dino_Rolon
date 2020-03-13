@@ -271,13 +271,24 @@ namespace PRESENTER.com
             }
         }
         private void Cb_TipoProveedor_ValueChanged(object sender, EventArgs e)
-        {
+        {          
             MP_SeleccionarButtonCombo(Cb_TipoProveedor, btn_TipoProveedor);
         }
 
         private void Cb_Ciudad_ValueChanged(object sender, EventArgs e)
         {
-            MP_SeleccionarButtonCombo(Cb_Ciudad, btn_Ciudad);
+           
+                if (Cb_Ciudad.SelectedIndex < 0 && Cb_Ciudad.Text != string.Empty)
+                {
+                    btn_Ciudad.Visible = true;
+                }
+                else
+                {
+                    btn_Ciudad.Visible = false;
+                }
+            
+
+            //MP_SeleccionarButtonCombo(Cb_Ciudad, btn_Ciudad);
         }
 
         private void Cb_TipoAlojamiento_ValueChanged(object sender, EventArgs e)
@@ -322,11 +333,15 @@ namespace PRESENTER.com
             try
             {
                 LblTitulo.Text = _NombreFormulario;
-                MP_InicioArmarCombo(1);
                 MP_IniciarMapa();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
+                MP_InicioArmarCombo(1);
                 MP_InHabilitar();
+                btn_Ciudad.Visible = false;
+                Btn_LineaGen.Visible = false;
+                btn_TipoAlojamiento.Visible = false;
+                btn_TipoProveedor.Visible = false;
             }
             catch (Exception ex)
             {
@@ -559,8 +574,7 @@ namespace PRESENTER.com
         private void MP_Habilitar()
         {            
             Tb_CodSpyre.ReadOnly = false;
-            Tb_Descripcion.ReadOnly = false;
-            Cb_TipoProveedor.Enabled = true;
+            Tb_Descripcion.ReadOnly = false;          
             Tb_Direccion.ReadOnly = false;
             Tb_Contacto.ReadOnly = false;         
             Tb_Telefono.ReadOnly = false;
@@ -568,7 +582,9 @@ namespace PRESENTER.com
             Tb_Contacto2.ReadOnly = false;
             Tb_Telefono2.ReadOnly = false;
             Tb_Email2.ReadOnly = false;
-            Cb_Ciudad.Enabled = true;          
+            Cb_Ciudad.ReadOnly = false;
+            Cb_TipoProveedor.ReadOnly = false;
+            Tb_Fecha.Enabled = true;
             Dgv_Detalle.Enabled = false;
             sw_Tipo.IsReadOnly = true;
             btn_Agregar.Enabled = false;
@@ -577,12 +593,12 @@ namespace PRESENTER.com
             UTGlobal.MG_CrearCarpetaTemporal();
         }
         private void MP_HabilitarDetalle()
-        {            
-            Cb_LineaGen.Enabled = true;
+        {           
+            Cb_LineaGen.ReadOnly = false;
+            Cb_TipoAlojamiento.ReadOnly = false;
             BtAdicionar.Enabled = true;
             Tb_Fecha.Value = DateTime.Now;
-            Tb_Aves.IsInputReadOnly = false;
-            Cb_TipoAlojamiento.Enabled = true;                             
+            Tb_Aves.IsInputReadOnly = false;                                      
         }
         private void MP_HabilitarMenu( int tipo)
         {
@@ -612,8 +628,7 @@ namespace PRESENTER.com
             Tb_Cod.ReadOnly = true;
             Tb_CodSpyre.ReadOnly = true;
             Tb_Descripcion.ReadOnly = true;
-            Cb_TipoProveedor.Enabled = false;
-            Cb_Ciudad.Enabled = false;
+            Cb_TipoProveedor.ReadOnly = true;
             Tb_Direccion.ReadOnly = true;
             Tb_Contacto.ReadOnly = true;    
             Tb_Telefono.ReadOnly = true;
@@ -621,13 +636,13 @@ namespace PRESENTER.com
             Tb_Contacto2.ReadOnly = true;
             Tb_Telefono2.ReadOnly = true;
             Tb_Email2.ReadOnly = true;
-            Cb_Ciudad.Enabled = false;
-            Cb_LineaGen.Enabled = false;
+            Cb_Ciudad.ReadOnly = true;
+            Cb_LineaGen.ReadOnly = true;
             BtAdicionar.Enabled = false;
+            Tb_Fecha.Enabled = false;
+            Cb_TipoAlojamiento.ReadOnly = true;
             _Limpiar = false;
-            Tb_Aves.IsInputReadOnly = true;
-            Cb_TipoAlojamiento.Enabled = false;
-            
+            Tb_Aves.IsInputReadOnly = true;            
             btn_Agregar.Enabled = true;
             Dgv_Detalle.Enabled = true;
             sw_Tipo.IsReadOnly = false;
@@ -699,7 +714,7 @@ namespace PRESENTER.com
                         Tb_Email2.Text = proveedor.Email.ToString();
                         sw_Tipo.Value = proveedor.Tipo == 1 ? true : false;
                         Cb_Ciudad.Value = proveedor.Ciudad;
-                        Cb_TipoProveedor.Value = proveedor.TipoProveeedor;
+                        Cb_TipoProveedor.Value = proveedor.TipoProveeedor;                      
                         _latitud = Convert.ToDouble(proveedor.Latitud);
                         _longitud = Convert.ToDouble(proveedor.Longittud);
                         MP_DibujarUbicacion(Tb_Descripcion.Text, "");
@@ -1107,8 +1122,16 @@ namespace PRESENTER.com
             else
                 Cb_TipoProveedor.BackColor = Color.White;
             return _Error;
-        }   
+        }
         #endregion
-  
+
+        private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+                Tb_CodSpyre.Focus();
+            }
+        }
     }
 }

@@ -649,11 +649,11 @@ namespace SERVICE
             }
         }
 
-        public List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2)
+        public List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen)
         {
             try
             {
-                var listResult = new LCompraIngreso_01().ListarXId2(IdGrupo2);
+                var listResult = new LCompraIngreso_01().ListarXId2(IdGrupo2, idAlmacen);
                 return listResult;
             }
             catch (Exception ex)
