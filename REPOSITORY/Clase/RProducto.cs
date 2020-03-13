@@ -244,9 +244,9 @@ namespace REPOSITORY.Clase
                                     " FROM " +
                                         " dbo.TI001 i " +
                                         "JOIN REG.Producto p ON i.iccprod = p.Id " +
-                                        "JOIN INV.Almacen a ON i.icalm = a.Id " +
-                                        "JOIN REG.Precio pr ON pr.IdProduc = p.Id " +
+                                        "JOIN INV.Almacen a ON i.icalm = a.Id " +                                        
                                         "JOIN INV.Sucursal s ON s.Id = a.IdSuc " +
+                                        "JOIN REG.Precio pr ON pr.IdProduc = p.Id AND s.Id = pr.IdSucursal " +
                                         "JOIN REG.PrecioCat prc ON prc.Id = pr.IdPrecioCat " +
                                         "JOIN ADM.Libreria l ON l.IdLibrer = p.UniVen " +
                                     "WHERE " +

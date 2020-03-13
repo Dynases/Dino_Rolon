@@ -325,6 +325,20 @@ namespace PRESENTER.alm
             }
         }
 
+
+        private bool MP_ValidarExistenciaSeleccionado(GridEXRow row)
+        {
+            var response = false;
+
+            if (Convert.ToInt32(row.Cells[3].Value) <= 0)
+            {
+                response = true;
+                this.MP_MostrarMensajeError("No puede seleccionar un producto con STOCK EN CERO");
+            }
+
+            return response;
+        }
+
         private bool MP_ExisteItemEnLista(string valorId)
         {
             var response = false;
@@ -412,6 +426,8 @@ namespace PRESENTER.alm
                 this.MP_MostrarMensajeError(mensaje);
             }
         }
+
+
 
         #endregion
 
@@ -506,7 +522,8 @@ namespace PRESENTER.alm
 
             if (row.Cells != null && row.Cells[0].Value != null)
             {
-                if (!this.MP_ExisteItemEnLista(row.Cells[0].Value.ToString()))
+                if (!this.MP_ExisteItemEnLista(row.Cells[0].Value.ToString()) &&
+                    !this.MP_ValidarExistenciaSeleccionado(row))
                 {
                     detalleProductos.Add(new Producto
                     {
@@ -573,7 +590,7 @@ namespace PRESENTER.alm
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 this.MP_MostrarMensajeError("Ocurrió un error inesperado, por favor intente cerrar la ventana actual y pruebe nuevamente");
             }
