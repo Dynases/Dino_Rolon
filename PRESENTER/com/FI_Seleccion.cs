@@ -41,6 +41,7 @@ namespace PRESENTER.com
         private void FI_Seleccion_Load(object sender, EventArgs e)
         {
             this.Name = _NombreFormulario;
+            superTabControl1.SelectedTabIndex = 0;
             MP_Iniciar();
         }
         #region Metodos privados
@@ -481,7 +482,7 @@ namespace PRESENTER.com
                 //Merma              
                 Tb_TPrecio.Value = Tb_Total.Value / Tb_TCantidad.Value;
                 Tb_Merma.Value = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
-                tb_MermaPorc.Value = Tb_Merma.Value / Tb_Recep_TCantidad.Value;
+                tb_MermaPorc.Value = (Tb_Merma.Value * 100 )/ Tb_Recep_TCantidad.Value;
             }
             catch (Exception ex)
             {

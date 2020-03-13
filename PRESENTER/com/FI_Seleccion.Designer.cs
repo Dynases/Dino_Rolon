@@ -452,7 +452,6 @@
             this.tb_MermaPorc.BackgroundStyle.Class = "DateTimeInputBackground";
             this.tb_MermaPorc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tb_MermaPorc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.tb_MermaPorc.DisplayFormat = "0.0000";
             this.tb_MermaPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MermaPorc.Increment = 1D;
             this.tb_MermaPorc.Location = new System.Drawing.Point(561, 63);
@@ -536,7 +535,7 @@
             this.Tb_TPrecio.BackgroundStyle.Class = "DateTimeInputBackground";
             this.Tb_TPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_TPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.Tb_TPrecio.DisplayFormat = "0.0000000";
+            this.Tb_TPrecio.DisplayFormat = "0.00000";
             this.Tb_TPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_TPrecio.Increment = 1D;
             this.Tb_TPrecio.Location = new System.Drawing.Point(631, 7);
@@ -605,7 +604,7 @@
             this.Tb_Recep_TPrecio.BackgroundStyle.Class = "DateTimeInputBackground";
             this.Tb_Recep_TPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Recep_TPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.Tb_Recep_TPrecio.DisplayFormat = "0.0000000";
+            this.Tb_Recep_TPrecio.DisplayFormat = "0.00000";
             this.Tb_Recep_TPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Recep_TPrecio.Increment = 1D;
             this.Tb_Recep_TPrecio.Location = new System.Drawing.Point(217, 9);
