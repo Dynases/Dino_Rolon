@@ -57,6 +57,7 @@ namespace PRESENTER.alm
 
             this.lblId.Visible = false;
             this.panelNavegacionPlantilla.Visible = false;
+            this.lblIdPlantilla.Visible = false;
         }
 
         private void MP_Habilitar()
@@ -332,7 +333,7 @@ namespace PRESENTER.alm
         {
             var response = false;
 
-            if (Convert.ToInt32(row.Cells[3].Value) <= 0)
+            if (Convert.ToInt32(row.Cells[4].Value) <= 0)
             {
                 response = true;
                 this.MP_MostrarMensajeError("No puede seleccionar un producto con STOCK EN CERO");
@@ -530,9 +531,9 @@ namespace PRESENTER.alm
                     {
                         detalleProductos.Add(new Producto
                         {
-                            Id = row.Cells[0].Value.ToString(),
-                            Descripcion = row.Cells[2].Value.ToString(),
-                            Unidad = row.Cells[7].Value.ToString(),
+                            Id = row.Cells[1].Value.ToString(),
+                            Descripcion = row.Cells[3].Value.ToString(),
+                            Unidad = row.Cells[8].Value.ToString(),
                             Cantidad = ""
                         });
 
@@ -650,6 +651,8 @@ namespace PRESENTER.alm
                 if (!string.IsNullOrEmpty(Tb_NombrePlantilla.Text))
                 {
                     this.MP_GuardarDetallePlantilla(this.MP_GuardarPlantilla());
+                    var mensaje = GLMensaje.Modificar_Exito("TRASPASOS", "Plantilla ");
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                 }
                 else
                 {

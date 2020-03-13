@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using UTILITY.Enum;
 
 namespace SERVICE
 {
@@ -271,7 +272,7 @@ namespace SERVICE
         bool PlantillaGuardar(VPlantilla VPlantilla, ref int id);
 
         [OperationContract]
-        List<VPlantilla> PlantillaListar();
+        List<VPlantilla> PlantillaListar(ENConceptoPlantilla concepto);
 
         [OperationContract]
         bool PlantillaDetalleGuardar(List<VPlantilla01> lista, int PlantillaId);

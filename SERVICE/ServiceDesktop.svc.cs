@@ -883,11 +883,11 @@ namespace SERVICE
             }
         }
 
-        public List<VPlantilla> PlantillaListar()
+        public List<VPlantilla> PlantillaListar(UTILITY.Enum.ENConceptoPlantilla concepto)
         {
             try
             {
-                return new LPlantilla().Listar();
+                return new LPlantilla().Listar(concepto);
             }
             catch (Exception ex)
             {

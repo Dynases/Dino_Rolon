@@ -33,11 +33,11 @@ namespace LOGIC.Class
 
         #region Consultas
 
-        public List<VPlantilla> Listar()
+        public List<VPlantilla> Listar(UTILITY.Enum.ENConceptoPlantilla concepto)
         {
             try
             {
-                return this.iPlantilla.Listar();
+                return this.iPlantilla.Listar(concepto);
             }
             catch (Exception ex)
             {
