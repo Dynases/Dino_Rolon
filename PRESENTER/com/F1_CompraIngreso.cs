@@ -795,5 +795,17 @@ namespace PRESENTER.com
             return _Error;
         }
         #endregion
+
+        private void Tb_TotalEnviado_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Tb_TotalVendido.Value = Tb_TotalEnviado.Value - Tb_TotalFisico.Value;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
     }
 }

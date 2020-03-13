@@ -95,8 +95,8 @@ namespace REPOSITORY.Clase
                                       select new VTransformacionReport
                                       {
                                           Id = a.Id,
-                                          AlmacenIngreso = a.SucursalIngreso,
-                                          AlmacenSalida = a.SucursalSalida,
+                                          AlmacenIngreso = a.AlmacenIngreso,
+                                          AlmacenSalida = a.AlmacenSalida,
                                           IdProducto = a.IdProducto,
                                           Descrip = a.Descrip,
                                           Observ = a.Observ,
@@ -122,8 +122,8 @@ namespace REPOSITORY.Clase
                                       select new VTransformacionReport
                                       {
                                           Id = a.Id,
-                                          AlmacenIngreso = a.SucursalIngreso,
-                                          AlmacenSalida = a.SucursalSalida,
+                                          AlmacenIngreso = a.AlmacenIngreso,
+                                          AlmacenSalida = a.AlmacenSalida,
                                           IdProducto_Mat = a.IdProducto_Mat,
                                           Descrip = a.Descrip,
                                           Observ = a.Observ,

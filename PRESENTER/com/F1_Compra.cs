@@ -68,7 +68,7 @@ namespace PRESENTER.com
                     Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
 
-                    Dgv_GBuscador.RootTable.Columns["IdSuc"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["IdAlmacen"].Visible = false;
                     Dgv_GBuscador.RootTable.Columns["IdProvee"].Visible = false;
 
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].Caption = "Proveedor";
