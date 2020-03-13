@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Sucursal_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Compra));
             this.PanelContentSup = new System.Windows.Forms.Panel();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.btn_Agregar = new DevComponents.DotNetBar.ButtonX();
             this.lbNFactura = new DevComponents.DotNetBar.LabelX();
             this.Tb_NFactura = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Sw_Emision = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.LabelX16 = new DevComponents.DotNetBar.LabelX();
-            this.Cb_Sucursal = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.LabelX7 = new DevComponents.DotNetBar.LabelX();
             this.lbCredito = new DevComponents.DotNetBar.LabelX();
             this.LabelX5 = new DevComponents.DotNetBar.LabelX();
@@ -66,7 +67,6 @@
             this.GPanelProductos = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel7 = new System.Windows.Forms.Panel();
             this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
-            this.btn_Agregar = new DevComponents.DotNetBar.ButtonX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -80,10 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
+            this.PanelMenu.SuspendLayout();
             this.PanelContentSup.SuspendLayout();
             this.GroupPanel1.SuspendLayout();
             this.Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Sucursal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaVenc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaVenta)).BeginInit();
             this.PanelTotal.SuspendLayout();
@@ -106,6 +107,7 @@
             this.PanelContenidoRegistro.Controls.Add(this.PanelTotal);
             this.PanelContenidoRegistro.Controls.Add(this.PanelContentSup);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1023, 615);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelContentSup, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelTotal, 0);
@@ -219,6 +221,11 @@
             this.LblSubtitulo.Text = "Registre una nueva compra . Visualice y/o modifique la información de una compra " +
     "previamente registrado. ";
             // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.Size = new System.Drawing.Size(1023, 72);
+            // 
             // PanelContentSup
             // 
             this.PanelContentSup.BackColor = System.Drawing.Color.White;
@@ -282,7 +289,7 @@
             this.Panel2.Controls.Add(this.Tb_NFactura);
             this.Panel2.Controls.Add(this.Sw_Emision);
             this.Panel2.Controls.Add(this.LabelX16);
-            this.Panel2.Controls.Add(this.Cb_Sucursal);
+            this.Panel2.Controls.Add(this.Cb_Almacen);
             this.Panel2.Controls.Add(this.LabelX7);
             this.Panel2.Controls.Add(this.lbCredito);
             this.Panel2.Controls.Add(this.LabelX5);
@@ -301,6 +308,26 @@
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(1017, 128);
             this.Panel2.TabIndex = 234;
+            // 
+            // btn_Agregar
+            // 
+            this.btn_Agregar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btn_Agregar.BackColor = System.Drawing.Color.White;
+            this.btn_Agregar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btn_Agregar.FadeEffect = false;
+            this.btn_Agregar.FocusCuesEnabled = false;
+            this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Agregar.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
+            this.btn_Agregar.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.btn_Agregar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btn_Agregar.Location = new System.Drawing.Point(270, 3);
+            this.btn_Agregar.Name = "btn_Agregar";
+            this.btn_Agregar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btn_Agregar.Size = new System.Drawing.Size(130, 39);
+            this.btn_Agregar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btn_Agregar.SymbolSize = 5F;
+            this.btn_Agregar.TabIndex = 373;
+            this.btn_Agregar.Text = "Plantilla";
             // 
             // lbNFactura
             // 
@@ -372,20 +399,20 @@
             this.LabelX16.Text = "Emisión:";
             this.LabelX16.Visible = false;
             // 
-            // Cb_Sucursal
+            // Cb_Almacen
             // 
-            Cb_Sucursal_DesignTimeLayout.LayoutString = resources.GetString("Cb_Sucursal_DesignTimeLayout.LayoutString");
-            this.Cb_Sucursal.DesignTimeLayout = Cb_Sucursal_DesignTimeLayout;
-            this.Cb_Sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_Sucursal.Location = new System.Drawing.Point(513, 40);
-            this.Cb_Sucursal.Name = "Cb_Sucursal";
-            this.Cb_Sucursal.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_Sucursal.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_Sucursal.SelectedIndex = -1;
-            this.Cb_Sucursal.SelectedItem = null;
-            this.Cb_Sucursal.Size = new System.Drawing.Size(164, 22);
-            this.Cb_Sucursal.TabIndex = 240;
-            this.Cb_Sucursal.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            Cb_Almacen_DesignTimeLayout.LayoutString = resources.GetString("Cb_Almacen_DesignTimeLayout.LayoutString");
+            this.Cb_Almacen.DesignTimeLayout = Cb_Almacen_DesignTimeLayout;
+            this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Almacen.Location = new System.Drawing.Point(513, 40);
+            this.Cb_Almacen.Name = "Cb_Almacen";
+            this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Almacen.SelectedIndex = -1;
+            this.Cb_Almacen.SelectedItem = null;
+            this.Cb_Almacen.Size = new System.Drawing.Size(164, 22);
+            this.Cb_Almacen.TabIndex = 240;
+            this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // LabelX7
             // 
@@ -401,7 +428,7 @@
             this.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control;
             this.LabelX7.Size = new System.Drawing.Size(129, 23);
             this.LabelX7.TabIndex = 235;
-            this.LabelX7.Text = "Sucursal:";
+            this.LabelX7.Text = "Almacen:";
             // 
             // lbCredito
             // 
@@ -939,26 +966,6 @@
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
-            // btn_Agregar
-            // 
-            this.btn_Agregar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btn_Agregar.BackColor = System.Drawing.Color.White;
-            this.btn_Agregar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btn_Agregar.FadeEffect = false;
-            this.btn_Agregar.FocusCuesEnabled = false;
-            this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Agregar.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
-            this.btn_Agregar.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.btn_Agregar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btn_Agregar.Location = new System.Drawing.Point(270, 3);
-            this.btn_Agregar.Name = "btn_Agregar";
-            this.btn_Agregar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btn_Agregar.Size = new System.Drawing.Size(130, 39);
-            this.btn_Agregar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btn_Agregar.SymbolSize = 5F;
-            this.btn_Agregar.TabIndex = 373;
-            this.btn_Agregar.Text = "Plantilla";
-            // 
             // F1_Compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -981,11 +988,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
+            this.PanelMenu.ResumeLayout(false);
             this.PanelContentSup.ResumeLayout(false);
             this.GroupPanel1.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Sucursal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaVenc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaVenta)).EndInit();
             this.PanelTotal.ResumeLayout(false);
@@ -1028,7 +1036,7 @@
         internal DevComponents.DotNetBar.Controls.TextBoxX Tb_NFactura;
         internal DevComponents.DotNetBar.Controls.SwitchButton Sw_Emision;
         internal DevComponents.DotNetBar.LabelX LabelX16;
-        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Sucursal;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Almacen;
         internal DevComponents.DotNetBar.LabelX LabelX7;
         internal DevComponents.DotNetBar.LabelX lbCredito;
         internal DevComponents.DotNetBar.LabelX LabelX5;

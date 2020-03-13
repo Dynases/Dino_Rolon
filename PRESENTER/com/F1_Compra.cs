@@ -40,7 +40,7 @@ namespace PRESENTER.com
             try
             {
                 LblTitulo.Text = _NombreFormulario;
-                MP_InicioArmarCombo();
+                MP_CargarAlmacenes();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
@@ -48,6 +48,18 @@ namespace PRESENTER.com
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_CargarAlmacenes()
+        {
+            try
+            {
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
+            }
+            catch (Exception ex)
+            {
+                this.MP_MostrarMensajeError(ex.Message);
             }
         }
         private void MP_CargarEncabezado()
@@ -227,7 +239,7 @@ namespace PRESENTER.com
         }
         private void MP_InicioArmarCombo()
         {
-            UTGlobal.MG_ArmarComboSucursal(Cb_Sucursal,
+            UTGlobal.MG_ArmarComboSucursal(Cb_Almacen,
                                               new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList());
 
            
@@ -257,7 +269,7 @@ namespace PRESENTER.com
             Tb_FechaVenta.IsInputReadOnly = false;
             Tb_FechaVenc.IsInputReadOnly = false;
             Tb_Observacion.ReadOnly = false;
-            Cb_Sucursal.ReadOnly = false;
+            Cb_Almacen.ReadOnly = false;
             Tb_NFactura.ReadOnly = false;
             Sw_Emision.IsReadOnly = false;
             Sw_TipoVenta.IsReadOnly = false;  
@@ -270,7 +282,7 @@ namespace PRESENTER.com
             Tb_FechaVenta.IsInputReadOnly = true;
             Tb_FechaVenc.IsInputReadOnly = true;
             Tb_Observacion.ReadOnly = true;
-            Cb_Sucursal.ReadOnly = true;
+            Cb_Almacen.ReadOnly = true;
             Tb_NFactura.ReadOnly = true;
             Sw_Emision.IsReadOnly = true;
             Sw_TipoVenta.IsReadOnly = true;
@@ -291,7 +303,7 @@ namespace PRESENTER.com
                 Sw_TipoVenta.Value = true;
                 if (_Limpiar == false)
                 {
-                    UTGlobal.MG_SeleccionarCombo(Cb_Sucursal);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
                 }
                 // ((DataTable)Dgv_Detalle.DataSource).Clear();
                 //  Dgv_Detalle.DataSource = null;
@@ -313,7 +325,7 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().Where(A => A.Id == _idOriginal).ToList();
                     var Lista = ListaCompleta.First();
                     Tb_Id.Text = Lista.Id.ToString();
-                    Cb_Sucursal.Value = Lista.IdAlmacen;
+                    Cb_Almacen.Value = Lista.IdAlmacen;
                     _IdProveedor = Lista.IdProvee;
                     Tb_Proveedor.Text = Lista.Proveedor.ToString();
                     Tb_FechaVenta.Value = Lista.FechaDoc;
@@ -449,13 +461,13 @@ namespace PRESENTER.com
             try
             {
 
-                if (Cb_Sucursal.SelectedIndex == 0)
+                if (Cb_Almacen.SelectedIndex == 0)
                 {
-                    Cb_Sucursal.BackColor = Color.Red;
+                    Cb_Almacen.BackColor = Color.Red;
                     _Error = true;
                 }
                 else
-                    Cb_Sucursal.BackColor = Color.White;
+                    Cb_Almacen.BackColor = Color.White;
 
                 if (_IdProveedor == 0)
                 {

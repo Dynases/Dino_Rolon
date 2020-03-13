@@ -10,5 +10,6 @@ namespace REPOSITORY.Interface
    public interface ICompra
     {
         List<VCompraLista> Lista();
+        bool Guardar(VCompra vCompraIngreso, ref int id);
     }
 }

@@ -6,14 +6,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTITY.com.Compra.View;
+using DATA.EntityDataModel.DiAvi;
 
 namespace REPOSITORY.Clase
 {
     public class RCompra : BaseConexion, ICompra
     {
+
+        public bool Guardar(VCompra vCompraIngreso, ref int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var idAux = id;
+                    Compra Compra;
+                    if (id > 0)
+                    {
+                        Compra = db.Compra.Where(a => a.Id == idAux).FirstOrDefault();
+                        if (Compra == null)
+                            throw new Exception("No existe la compra con id " + idAux);
+                    }
+                    else
+                    {
+                        Compra = new Compra();
+                        db.Compra.Add(Compra);
+                    }
+                    Compra.IdAlmacen = vCompraIngreso.IdAlmacen;
+                    Compra.IdProvee = vCompraIngreso.IdProvee;
+                    Compra.Estado = vCompraIngreso.Estado;
+                    Compra.FechaDoc = vCompraIngreso.FechaDoc;
+                    Compra.TipoVenta = vCompraIngreso.TipoVenta;
+                    Compra.FechaVen = vCompraIngreso.FechaVen;
+                    Compra.Observ = vCompraIngreso.Observ;
+                    Compra.Descu = vCompraIngreso.Descu;
+                    Compra.Total = vCompraIngreso.Total;
+                    Compra.Fecha = vCompraIngreso.Fecha;
+                    Compra.Hora = vCompraIngreso.Hora;
+                    Compra.Usuario = vCompraIngreso.Usuario;
+                    db.SaveChanges();
+                    id = Compra.Id;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #region CONSULTA
         public List<VCompraLista> Lista()
         {
+
             try
             {
                 using (var db = GetEsquema())
