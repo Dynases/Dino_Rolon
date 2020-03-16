@@ -53,6 +53,10 @@ namespace PRESENTER.alm
             this.lblId.Visible = false;
             this.panelNavegacionPlantilla.Visible = false;
             this.lblIdPlantilla.Visible = false;
+            this.lblEstadoTraspasoValue.Visible = false;
+
+            this.btnEstado.Visible = true;
+            this.lblEstadoTraspaso.Visible = true;
         }
 
         private void MP_Habilitar()
@@ -76,6 +80,9 @@ namespace PRESENTER.alm
 
             this.lblId.Visible = false;
             this.panelNavegacionPlantilla.Visible = true;
+
+            this.btnEstado.Visible = false;
+            this.lblEstadoTraspaso.Visible = false;
         }
 
         private void MP_MostrarMensajeError(string mensaje)
@@ -133,6 +140,24 @@ namespace PRESENTER.alm
             Tb_UsuarioEnvio.Text = traspaso.Usuario;
             lblFechaEnvio.Text = traspaso.Fecha.ToShortDateString();
             lblFechaRecepcion.Text = traspaso.Fecha.ToShortDateString();
+
+            switch (traspaso.Estado)
+            {
+                case 1:
+                    btnEstado.BackColor = Color.Red;
+                    lblEstadoTraspaso.Text = "Enviado - En curso";
+                    break;
+                case 2:
+                    btnEstado.BackColor = Color.Yellow;
+                    lblEstadoTraspaso.Text = "Envio inmediato";
+                    break;
+                case 3:
+                    btnEstado.BackColor = Color.Green;
+                    lblEstadoTraspaso.Text = "Recepcionado";
+                    break;
+                default:
+                    break;
+            }
 
             this.MP_CargarDetalleRegistro(traspaso.Id);
 
@@ -466,7 +491,7 @@ namespace PRESENTER.alm
             {
                 Concepto = 11,
                 Destino = Convert.ToInt32(Cb_Destino.Value),
-                Estado = 11,
+                Estado = 1,
                 Fecha = DateTime.Now,
                 Hora = DateTime.Now.ToShortTimeString(),
                 Observaciones = Tb_Observaciones.Text,
@@ -682,7 +707,6 @@ namespace PRESENTER.alm
             }
         }
 
-
         #endregion        
 
         public class Producto
@@ -695,8 +719,6 @@ namespace PRESENTER.alm
 
             public string Cantidad { get; set; }
         }
-
-
     }
 }
 

@@ -70,6 +70,7 @@
     <Compile Include="Clase\RSeleccion_01.cs" />
     <Compile Include="Clase\RTI001.cs" />
     <Compile Include="Clase\RTI002.cs" />
+    <Compile Include="Clase\RTI0021.cs" />
     <Compile Include="Clase\RTipoAlmacen.cs" />
     <Compile Include="Clase\RTransformacion.cs" />
     <Compile Include="Clase\RTransformacion_01.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Interface\ISucursal.cs" />
     <Compile Include="Interface\ITI001.cs" />
     <Compile Include="Interface\ITI002.cs" />
+    <Compile Include="Interface\ITI0021.cs" />
     <Compile Include="Interface\ITipoAlmacen.cs" />
     <Compile Include="Interface\ITransformacion.cs" />
     <Compile Include="Interface\ITransformacion_01.cs" />

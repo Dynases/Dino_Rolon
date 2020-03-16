@@ -8,5 +8,6 @@ namespace REPOSITORY.Interface
 {
     public interface ITI002
     {
+        bool Guardar(int idAlmacenSalida, string almacenSalida, int idAlmacenDestino, string almacenDestino, int idTraspaso, string usuario);
     }
 }

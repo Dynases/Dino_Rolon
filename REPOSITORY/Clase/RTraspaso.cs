@@ -11,6 +11,13 @@ namespace REPOSITORY.Clase
 {
     public class RTraspaso : BaseConexion, ITraspaso
     {
+        private readonly ITI002 tI002;
+
+        public RTraspaso(ITI002 tI002)
+        {
+            this.tI002 = tI002;
+        }
+
         #region CONSULTAS
 
         public List<VTraspaso> ListarTraspasos()
@@ -128,6 +135,14 @@ namespace REPOSITORY.Clase
                     db.Traspaso.Add(traspaso);
                     db.SaveChanges();
                     id = traspaso.Id;
+
+                    if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
+                                            traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
+                                            id, traspaso.UsuarioEnvio))
+                    {
+                        return false;
+                    }
+
                     return true;
                 }
             }

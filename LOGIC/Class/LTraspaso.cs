@@ -10,10 +10,12 @@ namespace LOGIC.Class
     public class LTraspaso
     {
         protected ITraspaso iTraspaso;
+        protected ITI002 iTI002;
 
         public LTraspaso()
         {
-            iTraspaso = new RTraspaso();
+            iTI002 = new RTI002();
+            iTraspaso = new RTraspaso(iTI002);
         }
 
         #region Transacciones

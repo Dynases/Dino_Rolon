@@ -2,10 +2,7 @@
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace REPOSITORY.Clase
 {
@@ -13,23 +10,37 @@ namespace REPOSITORY.Clase
     {
         #region Trasancciones
 
-        public bool GuardarTransaccion()
+        public bool Guardar(int idAlmacenSalida,
+                                       string almacenSalida,
+                                       int idAlmacenDestino,
+                                       string almacenDestino,
+                                       int idTraspaso,
+                                       string usuario)
         {
             try
             {
-                //var t2 = new TI002
-                //{
-                //    ibalm = 1,
-                //    ibconcep = 
-                //};
-
                 using (var db = this.GetEsquema())
                 {
+                    var ti002 = new TI002
+                    {
+                        ibalm = idAlmacenSalida,
+                        ibconcep = 6,//FROM TCI001 id 6 TRASPASO SALIDA
+                        ibdepdest = idAlmacenDestino,
+                        ibest = 2,//NO SE SABE PORQUE
+                        ibfact = DateTime.Now,
+                        ibfdoc = DateTime.Now,
+                        ibhact = DateTime.Now.ToShortTimeString(),
+                        ibid = db.TI002.Count() + 1,
+                        ibiddc = idTraspaso, //JOIN IMPLICITO A TABLA TRASPASO
+                        ibobs = "TRASPASO DE SALIDA " + almacenSalida + " - " + almacenDestino,
+                        ibuact = usuario
+                    };
 
+                    db.TI002.Add(ti002);
+                    db.SaveChanges();
 
+                    return true;
                 }
-
-                return true;
             }
             catch (Exception ex)
             {

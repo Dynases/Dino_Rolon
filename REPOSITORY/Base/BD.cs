@@ -12,6 +12,7 @@ namespace REPOSITORY.Base
     public class BD
     {
         #region Declaraciones
+
         //DESARROLLO
         string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
         private static string cadenaConexion = "data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
@@ -67,6 +68,7 @@ namespace REPOSITORY.Base
             DataSet dt = new DataSet();
             return dt = EjecutarConsulta(string.Format("INSERT INTO {0} {1} VALUES({2}) SELECT @@ROWCOUNT", nombreTabla, campos, string.Join(",", valores)));
         }
+
         public static DataSet EjecutarDataSet(string sqlSpName, SqlParameter[] dbParams)
         {
             DataSet ds = null;

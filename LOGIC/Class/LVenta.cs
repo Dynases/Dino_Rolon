@@ -3,9 +3,6 @@ using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace LOGIC.Class
@@ -52,7 +49,7 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }        
+        }
 
         #endregion
     }
