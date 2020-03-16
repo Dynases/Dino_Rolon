@@ -37,7 +37,9 @@ namespace REPOSITORY.Clase
                             Id = i.Id,
                             Observaciones = "",
                             ProductId = i.ProductoId,
-                            TraspasoId = TraspasoId
+                            TraspasoId = TraspasoId,
+                            Marca = i.Marca,
+                            Unidad = i.Unidad
                         };
 
                         db.Traspaso_01.Add(detalle);
@@ -115,11 +117,13 @@ namespace REPOSITORY.Clase
                        {
                            Cantidad = d.Cantidad.Value,
                            Estado = d.Estado.Value,
+                           Fecha = DateTime.Now,
                            Id = d.Id,
+                           Marca = d.Marca,
+                           Unidad = d.Unidad,
                            ProductoId = d.ProductId.Value,
                            ProductoDescripcion = d.Producto.Descrip,
                            TraspasoId = d.TraspasoId.Value,
-                           Fecha = DateTime.Now
                        }).ToList();
 
                     return listResult;

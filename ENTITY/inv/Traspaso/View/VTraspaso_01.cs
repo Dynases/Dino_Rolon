@@ -20,5 +20,8 @@ namespace ENTITY.inv.Traspaso.View
 
         public DateTime Fecha { get; set; }
 
+        public string Unidad { get; set; }
+
+        public string Marca { get; set; }
     }
 }

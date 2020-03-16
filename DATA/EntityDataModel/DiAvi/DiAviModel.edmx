@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Estaticos">
@@ -449,6 +449,8 @@ warning 6013: The table/view 'DiAvi.dbo.ZY003' does not have a primary key defin
           <Property Name="Cantidad" Type="int" />
           <Property Name="Estado" Type="int" />
           <Property Name="Observaciones" Type="nvarchar" MaxLength="200" />
+          <Property Name="Unidad" Type="nvarchar" MaxLength="100" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -1347,8 +1349,7 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiAviModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1742,6 +1743,8 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a
           <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Traspaso" Relationship="Self.FK_Traspaso_01_Traspaso" FromRole="Traspaso_01" ToRole="Traspaso" />
           <NavigationProperty Name="Producto" Relationship="Self.FK_Traspaso_01_Producto" FromRole="Traspaso_01" ToRole="Producto" />
+          <Property Name="Unidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -2987,6 +2990,8 @@ warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a
           <EntitySetMapping Name="Traspaso_01">
             <EntityTypeMapping TypeName="DiAviModel.Traspaso_01">
               <MappingFragment StoreEntitySet="Traspaso_01">
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TraspasoId" ColumnName="TraspasoId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />

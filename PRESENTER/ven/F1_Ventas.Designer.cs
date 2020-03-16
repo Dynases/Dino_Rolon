@@ -79,6 +79,11 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
+            this.btnNuevoCliente = new DevComponents.DotNetBar.ButtonX();
+            this.TbNumFacturaExterna = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.TbEmpresaProveedoraCliente = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -106,6 +111,7 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
             this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1215, 669);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
@@ -183,6 +189,7 @@
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 34);
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 669);
             // 
@@ -480,6 +487,11 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.TbEmpresaProveedoraCliente);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX15);
+            this.GPanel_DatosGenerales.Controls.Add(this.TbNumFacturaExterna);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX14);
+            this.GPanel_DatosGenerales.Controls.Add(this.btnNuevoCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.btnLimpiarCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.TbNitCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX13);
@@ -555,7 +567,7 @@
             this.btnLimpiarCliente.BackColor = System.Drawing.Color.Transparent;
             this.btnLimpiarCliente.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
             this.btnLimpiarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiarCliente.Image")));
-            this.btnLimpiarCliente.Location = new System.Drawing.Point(316, 28);
+            this.btnLimpiarCliente.Location = new System.Drawing.Point(366, 37);
             this.btnLimpiarCliente.Name = "btnLimpiarCliente";
             this.btnLimpiarCliente.Size = new System.Drawing.Size(30, 26);
             this.btnLimpiarCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -569,11 +581,11 @@
             // 
             this.TbNitCliente.Border.Class = "TextBoxBorder";
             this.TbNitCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbNitCliente.Location = new System.Drawing.Point(400, 58);
+            this.TbNitCliente.Location = new System.Drawing.Point(402, 92);
             this.TbNitCliente.Multiline = true;
             this.TbNitCliente.Name = "TbNitCliente";
             this.TbNitCliente.PreventEnterBeep = true;
-            this.TbNitCliente.Size = new System.Drawing.Size(214, 26);
+            this.TbNitCliente.Size = new System.Drawing.Size(215, 26);
             this.TbNitCliente.TabIndex = 387;
             // 
             // labelX13
@@ -585,7 +597,7 @@
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX13.Location = new System.Drawing.Point(316, 60);
+            this.labelX13.Location = new System.Drawing.Point(318, 94);
             this.labelX13.Name = "labelX13";
             this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX13.Size = new System.Drawing.Size(122, 23);
@@ -616,7 +628,7 @@
             // 
             this.TbEncPrVenta.Border.Class = "TextBoxBorder";
             this.TbEncPrVenta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncPrVenta.Location = new System.Drawing.Point(939, 164);
+            this.TbEncPrVenta.Location = new System.Drawing.Point(939, 149);
             this.TbEncPrVenta.Multiline = true;
             this.TbEncPrVenta.Name = "TbEncPrVenta";
             this.TbEncPrVenta.PreventEnterBeep = true;
@@ -632,7 +644,7 @@
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX12.Location = new System.Drawing.Point(939, 138);
+            this.labelX12.Location = new System.Drawing.Point(939, 124);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX12.Size = new System.Drawing.Size(250, 23);
@@ -646,7 +658,7 @@
             // 
             this.TbEncRecepcion.Border.Class = "TextBoxBorder";
             this.TbEncRecepcion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncRecepcion.Location = new System.Drawing.Point(634, 168);
+            this.TbEncRecepcion.Location = new System.Drawing.Point(634, 171);
             this.TbEncRecepcion.Multiline = true;
             this.TbEncRecepcion.Name = "TbEncRecepcion";
             this.TbEncRecepcion.PreventEnterBeep = true;
@@ -662,7 +674,7 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(634, 142);
+            this.labelX11.Location = new System.Drawing.Point(634, 150);
             this.labelX11.Name = "labelX11";
             this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX11.Size = new System.Drawing.Size(161, 23);
@@ -676,7 +688,7 @@
             // 
             this.TbEncTransporte.Border.Class = "TextBoxBorder";
             this.TbEncTransporte.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncTransporte.Location = new System.Drawing.Point(634, 110);
+            this.TbEncTransporte.Location = new System.Drawing.Point(634, 120);
             this.TbEncTransporte.Multiline = true;
             this.TbEncTransporte.Name = "TbEncTransporte";
             this.TbEncTransporte.PreventEnterBeep = true;
@@ -692,7 +704,7 @@
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX9.Location = new System.Drawing.Point(634, 84);
+            this.labelX9.Location = new System.Drawing.Point(634, 100);
             this.labelX9.Name = "labelX9";
             this.labelX9.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX9.Size = new System.Drawing.Size(161, 23);
@@ -706,7 +718,7 @@
             // 
             this.TbEncEntrega.Border.Class = "TextBoxBorder";
             this.TbEncEntrega.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncEntrega.Location = new System.Drawing.Point(634, 54);
+            this.TbEncEntrega.Location = new System.Drawing.Point(634, 68);
             this.TbEncEntrega.Multiline = true;
             this.TbEncEntrega.Name = "TbEncEntrega";
             this.TbEncEntrega.PreventEnterBeep = true;
@@ -722,7 +734,7 @@
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX8.Location = new System.Drawing.Point(634, 28);
+            this.labelX8.Location = new System.Drawing.Point(634, 48);
             this.labelX8.Name = "labelX8";
             this.labelX8.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX8.Size = new System.Drawing.Size(161, 23);
@@ -736,7 +748,7 @@
             // 
             this.TbEncVenta.Border.Class = "TextBoxBorder";
             this.TbEncVenta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEncVenta.Location = new System.Drawing.Point(316, 172);
+            this.TbEncVenta.Location = new System.Drawing.Point(634, 21);
             this.TbEncVenta.Multiline = true;
             this.TbEncVenta.Name = "TbEncVenta";
             this.TbEncVenta.PreventEnterBeep = true;
@@ -752,7 +764,7 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX6.Location = new System.Drawing.Point(316, 146);
+            this.labelX6.Location = new System.Drawing.Point(634, 0);
             this.labelX6.Name = "labelX6";
             this.labelX6.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX6.Size = new System.Drawing.Size(161, 23);
@@ -766,13 +778,13 @@
             // 
             this.sw_estado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sw_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sw_estado.Location = new System.Drawing.Point(475, 115);
+            this.sw_estado.Location = new System.Drawing.Point(544, 176);
             this.sw_estado.Name = "sw_estado";
             this.sw_estado.OffBackColor = System.Drawing.Color.LawnGreen;
-            this.sw_estado.OffText = "RECIBO";
+            this.sw_estado.OffText = "R";
             this.sw_estado.OnBackColor = System.Drawing.Color.Gold;
-            this.sw_estado.OnText = "FACTURA";
-            this.sw_estado.Size = new System.Drawing.Size(140, 22);
+            this.sw_estado.OnText = "F";
+            this.sw_estado.Size = new System.Drawing.Size(73, 22);
             this.sw_estado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sw_estado.TabIndex = 374;
             this.sw_estado.Value = true;
@@ -787,12 +799,12 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX7.Location = new System.Drawing.Point(475, 89);
+            this.labelX7.Location = new System.Drawing.Point(544, 152);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX7.Size = new System.Drawing.Size(140, 23);
+            this.labelX7.Size = new System.Drawing.Size(72, 23);
             this.labelX7.TabIndex = 373;
-            this.labelX7.Text = "Facturación:";
+            this.labelX7.Text = "Impresión:";
             // 
             // labelX5
             // 
@@ -803,7 +815,7 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX5.Location = new System.Drawing.Point(316, 89);
+            this.labelX5.Location = new System.Drawing.Point(318, 152);
             this.labelX5.Name = "labelX5";
             this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX5.Size = new System.Drawing.Size(140, 23);
@@ -817,7 +829,7 @@
             // 
             this.Sw_TipoVenta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Sw_TipoVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sw_TipoVenta.Location = new System.Drawing.Point(316, 115);
+            this.Sw_TipoVenta.Location = new System.Drawing.Point(318, 176);
             this.Sw_TipoVenta.Name = "Sw_TipoVenta";
             this.Sw_TipoVenta.OffBackColor = System.Drawing.Color.LawnGreen;
             this.Sw_TipoVenta.OffText = "CREDITO";
@@ -839,7 +851,7 @@
             this.lblIdCliente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblIdCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblIdCliente.Location = new System.Drawing.Point(531, 6);
+            this.lblIdCliente.Location = new System.Drawing.Point(533, 40);
             this.lblIdCliente.Name = "lblIdCliente";
             this.lblIdCliente.SingleLineColor = System.Drawing.SystemColors.Control;
             this.lblIdCliente.Size = new System.Drawing.Size(84, 20);
@@ -854,11 +866,11 @@
             // 
             this.TbCliente.Border.Class = "TextBoxBorder";
             this.TbCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbCliente.Location = new System.Drawing.Point(352, 28);
+            this.TbCliente.Location = new System.Drawing.Point(402, 62);
             this.TbCliente.Multiline = true;
             this.TbCliente.Name = "TbCliente";
             this.TbCliente.PreventEnterBeep = true;
-            this.TbCliente.Size = new System.Drawing.Size(263, 26);
+            this.TbCliente.Size = new System.Drawing.Size(215, 26);
             this.TbCliente.TabIndex = 366;
             this.TbCliente.WatermarkText = "Ingrese Ctrl + Enter";
             this.TbCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbCliente_KeyDown);
@@ -872,7 +884,7 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX4.Location = new System.Drawing.Point(316, 4);
+            this.labelX4.Location = new System.Drawing.Point(318, 65);
             this.labelX4.Name = "labelX4";
             this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX4.Size = new System.Drawing.Size(55, 23);
@@ -886,7 +898,7 @@
             // 
             this.Tb_Cod.Border.Class = "TextBoxBorder";
             this.Tb_Cod.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Cod.Location = new System.Drawing.Point(110, 3);
+            this.Tb_Cod.Location = new System.Drawing.Point(108, 0);
             this.Tb_Cod.Multiline = true;
             this.Tb_Cod.Name = "Tb_Cod";
             this.Tb_Cod.PreventEnterBeep = true;
@@ -970,7 +982,7 @@
             // 
             this.Tb_Observaciones.Border.Class = "TextBoxBorder";
             this.Tb_Observaciones.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Observaciones.Location = new System.Drawing.Point(939, 44);
+            this.Tb_Observaciones.Location = new System.Drawing.Point(939, 33);
             this.Tb_Observaciones.Multiline = true;
             this.Tb_Observaciones.Name = "Tb_Observaciones";
             this.Tb_Observaciones.PreventEnterBeep = true;
@@ -987,7 +999,7 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX10.Location = new System.Drawing.Point(939, 16);
+            this.labelX10.Location = new System.Drawing.Point(939, 7);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX10.Size = new System.Drawing.Size(96, 20);
@@ -1046,6 +1058,80 @@
             this.lblId.Size = new System.Drawing.Size(40, 20);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
+            // 
+            // btnNuevoCliente
+            // 
+            this.btnNuevoCliente.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNuevoCliente.BackColor = System.Drawing.Color.Transparent;
+            this.btnNuevoCliente.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnNuevoCliente.Image = global::PRESENTER.Properties.Resources.New;
+            this.btnNuevoCliente.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(317, 37);
+            this.btnNuevoCliente.Name = "btnNuevoCliente";
+            this.btnNuevoCliente.Size = new System.Drawing.Size(31, 26);
+            this.btnNuevoCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNuevoCliente.TabIndex = 363;
+            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
+            // 
+            // TbNumFacturaExterna
+            // 
+            // 
+            // 
+            // 
+            this.TbNumFacturaExterna.Border.Class = "TextBoxBorder";
+            this.TbNumFacturaExterna.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.TbNumFacturaExterna.Location = new System.Drawing.Point(455, 4);
+            this.TbNumFacturaExterna.Multiline = true;
+            this.TbNumFacturaExterna.Name = "TbNumFacturaExterna";
+            this.TbNumFacturaExterna.PreventEnterBeep = true;
+            this.TbNumFacturaExterna.Size = new System.Drawing.Size(162, 26);
+            this.TbNumFacturaExterna.TabIndex = 390;
+            // 
+            // labelX14
+            // 
+            this.labelX14.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX14.Location = new System.Drawing.Point(314, 8);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX14.Size = new System.Drawing.Size(137, 23);
+            this.labelX14.TabIndex = 389;
+            this.labelX14.Text = "Número Factura Ext.";
+            // 
+            // labelX15
+            // 
+            this.labelX15.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX15.Location = new System.Drawing.Point(318, 124);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX15.Size = new System.Drawing.Size(140, 23);
+            this.labelX15.TabIndex = 391;
+            this.labelX15.Text = "Empresa Proveedora:";
+            // 
+            // TbEmpresaProveedoraCliente
+            // 
+            // 
+            // 
+            // 
+            this.TbEmpresaProveedoraCliente.Border.Class = "TextBoxBorder";
+            this.TbEmpresaProveedoraCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.TbEmpresaProveedoraCliente.Location = new System.Drawing.Point(464, 121);
+            this.TbEmpresaProveedoraCliente.Multiline = true;
+            this.TbEmpresaProveedoraCliente.Name = "TbEmpresaProveedoraCliente";
+            this.TbEmpresaProveedoraCliente.PreventEnterBeep = true;
+            this.TbEmpresaProveedoraCliente.Size = new System.Drawing.Size(152, 26);
+            this.TbEmpresaProveedoraCliente.TabIndex = 392;
             // 
             // F1_Ventas
             // 
@@ -1136,5 +1222,10 @@
         private System.Windows.Forms.Label lblPlantillaCount;
         private DevComponents.DotNetBar.Controls.TextBoxX TbTotal;
         private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.ButtonX btnNuevoCliente;
+        private DevComponents.DotNetBar.Controls.TextBoxX TbNumFacturaExterna;
+        protected internal DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.Controls.TextBoxX TbEmpresaProveedoraCliente;
+        protected internal DevComponents.DotNetBar.LabelX labelX15;
     }
 }
