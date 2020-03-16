@@ -534,6 +534,7 @@
         <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" minOccurs="0" name="lista" nillable="true" type="q30:ArrayOfVTraspaso_01" />
         <xs:element minOccurs="0" name="TraspasoId" type="xs:int" />
         <xs:element minOccurs="0" name="almacenId" type="xs:int" />
+        <xs:element minOccurs="0" name="idTI2" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

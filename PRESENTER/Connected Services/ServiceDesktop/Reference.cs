@@ -287,10 +287,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TraspasoGuardarResponse> TraspasoGuardarAsync(PRESENTER.ServiceDesktop.TraspasoGuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoDetalleGuardarResponse")]
-        bool TraspasoDetalleGuardar(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId);
+        bool TraspasoDetalleGuardar(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId, int idTI2);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoDetalleGuardarResponse")]
-        System.Threading.Tasks.Task<bool> TraspasoDetalleGuardarAsync(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId);
+        System.Threading.Tasks.Task<bool> TraspasoDetalleGuardarAsync(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId, int idTI2);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasosListar", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasosListarResponse")]
         ENTITY.inv.Traspaso.View.VTraspaso[] TraspasosListar();
@@ -1300,12 +1300,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TraspasoGuardarAsync(request);
         }
         
-        public bool TraspasoDetalleGuardar(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId) {
-            return base.Channel.TraspasoDetalleGuardar(lista, TraspasoId, almacenId);
+        public bool TraspasoDetalleGuardar(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId, int idTI2) {
+            return base.Channel.TraspasoDetalleGuardar(lista, TraspasoId, almacenId, idTI2);
         }
         
-        public System.Threading.Tasks.Task<bool> TraspasoDetalleGuardarAsync(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId) {
-            return base.Channel.TraspasoDetalleGuardarAsync(lista, TraspasoId, almacenId);
+        public System.Threading.Tasks.Task<bool> TraspasoDetalleGuardarAsync(ENTITY.inv.Traspaso.View.VTraspaso_01[] lista, int TraspasoId, int almacenId, int idTI2) {
+            return base.Channel.TraspasoDetalleGuardarAsync(lista, TraspasoId, almacenId, idTI2);
         }
         
         public ENTITY.inv.Traspaso.View.VTraspaso[] TraspasosListar() {

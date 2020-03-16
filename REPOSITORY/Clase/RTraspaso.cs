@@ -136,6 +136,10 @@ namespace REPOSITORY.Clase
                     db.SaveChanges();
                     id = traspaso.Id;
 
+                    traspaso.Almacen = db.Almacen.Find(vTraspaso.Origen);
+                    traspaso.Almacen1 = db.Almacen.Find(vTraspaso.Destino);
+
+                    //ACTUALIZACION EN TI002: CABECERA
                     if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
                                             traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
                                             id, traspaso.UsuarioEnvio,

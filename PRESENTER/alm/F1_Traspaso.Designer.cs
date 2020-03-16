@@ -53,8 +53,8 @@
             this.Dgv_DetalleTraspaso = new Janus.Windows.GridEX.GridEX();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lblEstadoTraspasoValue = new DevComponents.DotNetBar.LabelX();
             this.lblEstadoTraspaso = new DevComponents.DotNetBar.LabelX();
-            this.btnEstado = new DevComponents.DotNetBar.ButtonX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.lblFechaRecepcion = new DevComponents.DotNetBar.LabelX();
             this.lblFechaEnvio = new DevComponents.DotNetBar.LabelX();
@@ -69,7 +69,7 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.lblEstadoTraspasoValue = new DevComponents.DotNetBar.LabelX();
+            this.btnEstado = new System.Windows.Forms.Button();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -334,9 +334,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 283);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 269);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(507, 40);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(501, 40);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
             // lblIdPlantilla
@@ -588,9 +588,9 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.btnEstado);
             this.GPanel_DatosGenerales.Controls.Add(this.lblEstadoTraspasoValue);
             this.GPanel_DatosGenerales.Controls.Add(this.lblEstadoTraspaso);
-            this.GPanel_DatosGenerales.Controls.Add(this.btnEstado);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX4);
             this.GPanel_DatosGenerales.Controls.Add(this.lblFechaRecepcion);
             this.GPanel_DatosGenerales.Controls.Add(this.lblFechaEnvio);
@@ -642,6 +642,23 @@
             this.GPanel_DatosGenerales.TabIndex = 1;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES DE TRASPASO";
             // 
+            // lblEstadoTraspasoValue
+            // 
+            this.lblEstadoTraspasoValue.AutoSize = true;
+            this.lblEstadoTraspasoValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblEstadoTraspasoValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblEstadoTraspasoValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoTraspasoValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.lblEstadoTraspasoValue.Location = new System.Drawing.Point(941, 91);
+            this.lblEstadoTraspasoValue.Name = "lblEstadoTraspasoValue";
+            this.lblEstadoTraspasoValue.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.lblEstadoTraspasoValue.Size = new System.Drawing.Size(91, 20);
+            this.lblEstadoTraspasoValue.TabIndex = 364;
+            this.lblEstadoTraspasoValue.Text = "[Estado value]";
+            // 
             // lblEstadoTraspaso
             // 
             this.lblEstadoTraspaso.AutoSize = true;
@@ -652,22 +669,12 @@
             this.lblEstadoTraspaso.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblEstadoTraspaso.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblEstadoTraspaso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblEstadoTraspaso.Location = new System.Drawing.Point(1015, 30);
+            this.lblEstadoTraspaso.Location = new System.Drawing.Point(1020, 42);
             this.lblEstadoTraspaso.Name = "lblEstadoTraspaso";
             this.lblEstadoTraspaso.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblEstadoTraspaso.Size = new System.Drawing.Size(71, 26);
+            this.lblEstadoTraspaso.Size = new System.Drawing.Size(65, 24);
             this.lblEstadoTraspaso.TabIndex = 363;
             this.lblEstadoTraspaso.Text = "[Estado]";
-            // 
-            // btnEstado
-            // 
-            this.btnEstado.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEstado.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEstado.Location = new System.Drawing.Point(941, 32);
-            this.btnEstado.Name = "btnEstado";
-            this.btnEstado.Size = new System.Drawing.Size(68, 37);
-            this.btnEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEstado.TabIndex = 362;
             // 
             // labelX4
             // 
@@ -897,22 +904,14 @@
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
-            // lblEstadoTraspasoValue
+            // btnEstado
             // 
-            this.lblEstadoTraspasoValue.AutoSize = true;
-            this.lblEstadoTraspasoValue.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblEstadoTraspasoValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblEstadoTraspasoValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstadoTraspasoValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblEstadoTraspasoValue.Location = new System.Drawing.Point(941, 75);
-            this.lblEstadoTraspasoValue.Name = "lblEstadoTraspasoValue";
-            this.lblEstadoTraspasoValue.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblEstadoTraspasoValue.Size = new System.Drawing.Size(91, 20);
-            this.lblEstadoTraspasoValue.TabIndex = 364;
-            this.lblEstadoTraspasoValue.Text = "[Estado value]";
+            this.btnEstado.Location = new System.Drawing.Point(941, 28);
+            this.btnEstado.Name = "btnEstado";
+            this.btnEstado.Size = new System.Drawing.Size(75, 57);
+            this.btnEstado.TabIndex = 365;
+            this.btnEstado.UseVisualStyleBackColor = true;
+            this.btnEstado.Click += new System.EventHandler(this.btnEstado_Click);
             // 
             // F1_Traspaso
             // 
@@ -998,7 +997,7 @@
         private DevComponents.DotNetBar.ButtonX btnGuardarPlantilla;
         private System.Windows.Forms.Label lblIdPlantilla;
         internal DevComponents.DotNetBar.LabelX lblEstadoTraspaso;
-        private DevComponents.DotNetBar.ButtonX btnEstado;
         internal DevComponents.DotNetBar.LabelX lblEstadoTraspasoValue;
+        private System.Windows.Forms.Button btnEstado;
     }
 }

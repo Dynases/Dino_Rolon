@@ -25,7 +25,7 @@ namespace REPOSITORY.Clase
                         icfvenc = null,
                         icibid = idTI002,
                         iclot = "",
-                        icid = db.TI0021.Count() + 1
+                        icid = db.TI0021.Max(t => t.icid) + 1
                     };
 
                     db.TI0021.Add(ti0021);

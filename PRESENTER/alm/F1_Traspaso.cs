@@ -145,7 +145,7 @@ namespace PRESENTER.alm
             {
                 case 1:
                     btnEstado.BackColor = Color.Red;
-                    lblEstadoTraspaso.Text = "Enviado - En curso";
+                    lblEstadoTraspaso.Text = "Enviado - Pendiente";
                     break;
                 case 2:
                     btnEstado.BackColor = Color.Yellow;
@@ -252,7 +252,8 @@ namespace PRESENTER.alm
                 listaDetalle.Add(detalle);
             }
 
-            if (!new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleGuardar(listaDetalle.ToArray(), traspaso.Id, Convert.ToInt32(Cb_Origen.Value)))
+            if (!new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleGuardar(listaDetalle.ToArray(),
+                traspaso.Id, Convert.ToInt32(Cb_Origen.Value), idTI2))
             {
                 mensaje = GLMensaje.Registro_Error("TRASPASOS");
                 this.MP_MostrarMensajeError(mensaje);
@@ -705,6 +706,14 @@ namespace PRESENTER.alm
             else
             {
                 this.MP_MostrarMensajeError("Debe ingresar un item para agregar una nueva plantilla");
+            }
+        }
+
+        private void btnEstado_Click(object sender, EventArgs e)
+        {
+            if (Tb_UsuarioEnvio.Text.Equals(UTGlobal.Usuario))
+            {
+
             }
         }
 

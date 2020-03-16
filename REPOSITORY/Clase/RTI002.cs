@@ -32,7 +32,7 @@ namespace REPOSITORY.Clase
                         ibfact = DateTime.Now,
                         ibfdoc = DateTime.Now,
                         ibhact = DateTime.Now.ToShortTimeString(),
-                        ibid = db.TI002.Count() + 1,
+                        ibid = db.TI002.Max(t => t.ibid) + 1,
                         ibiddc = idTraspaso, //JOIN IMPLICITO A TABLA TRASPASO
                         ibobs = observaciones,
                         ibuact = usuario
@@ -40,7 +40,7 @@ namespace REPOSITORY.Clase
 
                     db.TI002.Add(ti002);
                     db.SaveChanges();
-                    idTI2 = db.TI002.Count() + 1;
+                    idTI2 = ti002.ibid;
                     return true;
                 }
             }
