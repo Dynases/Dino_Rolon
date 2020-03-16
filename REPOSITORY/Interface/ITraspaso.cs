@@ -9,6 +9,7 @@ namespace REPOSITORY.Interface
 {
     public interface ITraspaso
     {
+        bool ConfirmarRecepcion(int TraspasoId, string usuarioRecepcion);
         bool Guardar(VTraspaso vTraspaso, ref int idTI2, ref int id);
         List<VTListaProducto> ListarInventarioXAlmacenId(int Id);
         List<VTraspaso> ListarTraspasos();

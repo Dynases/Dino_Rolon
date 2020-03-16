@@ -84,11 +84,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DiAviModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\DiAviModel1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DiAviModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Estaticos.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -120,6 +115,15 @@
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Seleccion_01.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\sp_Marco_TI002_Result.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
@@ -182,7 +186,7 @@
     <None Include="App.Config" />
     <EntityDeploy Include="EntityDataModel\DiAvi\DiAviModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DiAviModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DiAviModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="EntityDataModel\DiAvi\DiAviModel.edmx.diagram">
       <DependentUpon>DiAviModel.edmx</DependentUpon>
@@ -193,6 +197,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="EntityDataModel\DiAvi\DiAviModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

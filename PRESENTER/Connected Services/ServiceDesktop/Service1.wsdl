@@ -258,6 +258,12 @@
   <wsdl:message name="IServiceDesktop_ListarInventarioXAlmacenId_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarInventarioXAlmacenIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraspasoConfirmarRecepcion_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraspasoConfirmarRecepcion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraspasoConfirmarRecepcion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraspasoConfirmarRecepcionResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_PrecioCategoriaListar_InputMessage">
     <wsdl:part name="parameters" element="tns:PrecioCategoriaListar" />
   </wsdl:message>
@@ -608,6 +614,10 @@
     <wsdl:operation name="ListarInventarioXAlmacenId">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarInventarioXAlmacenId" message="tns:IServiceDesktop_ListarInventarioXAlmacenId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarInventarioXAlmacenIdResponse" message="tns:IServiceDesktop_ListarInventarioXAlmacenId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraspasoConfirmarRecepcion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcion" message="tns:IServiceDesktop_TraspasoConfirmarRecepcion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcionResponse" message="tns:IServiceDesktop_TraspasoConfirmarRecepcion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PrecioCategoriaListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar" message="tns:IServiceDesktop_PrecioCategoriaListar_InputMessage" />
@@ -1079,6 +1089,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarInventarioXAlmacenId">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarInventarioXAlmacenId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraspasoConfirmarRecepcion">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

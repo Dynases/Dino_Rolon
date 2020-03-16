@@ -11,11 +11,16 @@ namespace LOGIC.Class
     {
         protected ITraspaso iTraspaso;
         protected ITI002 iTI002;
-
+        protected ITI0021 iTI0021;
+        protected ITI001 iTI001;
+        protected ITraspaso_01 iTraspaso_01;
         public LTraspaso()
         {
             iTI002 = new RTI002();
-            iTraspaso = new RTraspaso(iTI002);
+            iTI001 = new RTI001();
+            iTI0021 = new RTI0021();
+            iTraspaso_01 = new RTraspaso_01(iTI001, iTI0021);
+            iTraspaso = new RTraspaso(iTI002, iTraspaso_01);
         }
 
         #region Transacciones
@@ -30,6 +35,23 @@ namespace LOGIC.Class
                     scope.Complete();
                     return result;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ConfirmarRecepcion(int traspasoId, string usuarioRecepcion)
+        {
+            try
+            {
+                if (!this.iTraspaso.ConfirmarRecepcion(traspasoId, usuarioRecepcion))
+                {
+                    return false;
+                }
+
+                return true;
             }
             catch (Exception ex)
             {

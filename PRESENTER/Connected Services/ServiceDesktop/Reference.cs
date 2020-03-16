@@ -310,6 +310,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarInventarioXAlmacenId", ReplyAction="http://tempuri.org/IServiceDesktop/ListarInventarioXAlmacenIdResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTListaProducto[]> ListarInventarioXAlmacenIdAsync(int AlmacenId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcion", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcionResponse")]
+        bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcion", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcionResponse")]
+        System.Threading.Tasks.Task<bool> TraspasoConfirmarRecepcionAsync(int traspasoId, string usuarioRecepcion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioCategoriaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioCategoriaListarResponse")]
         ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar();
         
@@ -1330,6 +1336,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTListaProducto[]> ListarInventarioXAlmacenIdAsync(int AlmacenId) {
             return base.Channel.ListarInventarioXAlmacenIdAsync(AlmacenId);
+        }
+        
+        public bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion) {
+            return base.Channel.TraspasoConfirmarRecepcion(traspasoId, usuarioRecepcion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> TraspasoConfirmarRecepcionAsync(int traspasoId, string usuarioRecepcion) {
+            return base.Channel.TraspasoConfirmarRecepcionAsync(traspasoId, usuarioRecepcion);
         }
         
         public ENTITY.reg.PrecioCategoria.View.VPrecioCategoria[] PrecioCategoriaListar() {

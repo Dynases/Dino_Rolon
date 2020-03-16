@@ -53,6 +53,7 @@
             this.Dgv_DetalleTraspaso = new Janus.Windows.GridEX.GridEX();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnEstado = new System.Windows.Forms.Button();
             this.lblEstadoTraspasoValue = new DevComponents.DotNetBar.LabelX();
             this.lblEstadoTraspaso = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -69,7 +70,6 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.btnEstado = new System.Windows.Forms.Button();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -106,7 +106,7 @@
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
             this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1215, 659);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1250, 659);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
@@ -129,7 +129,7 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.superTabControl1.Size = new System.Drawing.Size(1215, 693);
+            this.superTabControl1.Size = new System.Drawing.Size(1250, 693);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
@@ -151,7 +151,7 @@
             // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1073, 0);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(1108, 0);
             this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
             // 
             // BubbleBarUsuario
@@ -174,7 +174,7 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(1023, 0);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(1058, 0);
             this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
@@ -187,17 +187,17 @@
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(1155, 0);
+            this.btnMin.Location = new System.Drawing.Point(1190, 0);
             this.btnMin.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(1175, 0);
+            this.btnMax.Location = new System.Drawing.Point(1210, 0);
             this.btnMax.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1195, 0);
+            this.btnClose.Location = new System.Drawing.Point(1230, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             // 
             // GMPanel_Buscardor
@@ -242,14 +242,14 @@
             // 
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 36);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1250, 36);
             this.LblSubtitulo.Text = "TRASPASOS DE PRODUCTOS ENTRE ALMACENES";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelMenu.Size = new System.Drawing.Size(1215, 72);
+            this.PanelMenu.Size = new System.Drawing.Size(1250, 72);
             // 
             // PanelFondo
             // 
@@ -259,7 +259,7 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1215, 551);
+            this.PanelFondo.Size = new System.Drawing.Size(1250, 551);
             this.PanelFondo.TabIndex = 69;
             // 
             // PanelAbajo
@@ -270,7 +270,7 @@
             this.PanelAbajo.Controls.Add(this.GPanel_Detalles);
             this.PanelAbajo.Location = new System.Drawing.Point(3, 149);
             this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(1209, 371);
+            this.PanelAbajo.Size = new System.Drawing.Size(1244, 371);
             this.PanelAbajo.TabIndex = 1;
             // 
             // GPanel_Detalles
@@ -289,7 +289,7 @@
             this.GPanel_Detalles.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_Detalles.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Detalles.Name = "GPanel_Detalles";
-            this.GPanel_Detalles.Size = new System.Drawing.Size(1209, 371);
+            this.GPanel_Detalles.Size = new System.Drawing.Size(1244, 371);
             // 
             // 
             // 
@@ -334,9 +334,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(687, 269);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(719, 297);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(501, 40);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(513, 43);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
             // lblIdPlantilla
@@ -450,7 +450,7 @@
             // panelDerecha
             // 
             this.panelDerecha.Controls.Add(this.GPanel_Derecha);
-            this.panelDerecha.Location = new System.Drawing.Point(687, 3);
+            this.panelDerecha.Location = new System.Drawing.Point(719, 3);
             this.panelDerecha.Name = "panelDerecha";
             this.panelDerecha.Size = new System.Drawing.Size(513, 291);
             this.panelDerecha.TabIndex = 2;
@@ -512,7 +512,7 @@
             this.panelIzquierda.Controls.Add(this.GPanel_Izquierda);
             this.panelIzquierda.Location = new System.Drawing.Point(0, 3);
             this.panelIzquierda.Name = "panelIzquierda";
-            this.panelIzquierda.Size = new System.Drawing.Size(684, 337);
+            this.panelIzquierda.Size = new System.Drawing.Size(716, 337);
             this.panelIzquierda.TabIndex = 1;
             // 
             // GPanel_Izquierda
@@ -526,7 +526,7 @@
             this.GPanel_Izquierda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_Izquierda.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Izquierda.Name = "GPanel_Izquierda";
-            this.GPanel_Izquierda.Size = new System.Drawing.Size(684, 337);
+            this.GPanel_Izquierda.Size = new System.Drawing.Size(716, 337);
             // 
             // 
             // 
@@ -563,7 +563,7 @@
             this.Dgv_ProductosInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_ProductosInventario.Location = new System.Drawing.Point(0, 0);
             this.Dgv_ProductosInventario.Name = "Dgv_ProductosInventario";
-            this.Dgv_ProductosInventario.Size = new System.Drawing.Size(678, 309);
+            this.Dgv_ProductosInventario.Size = new System.Drawing.Size(710, 309);
             this.Dgv_ProductosInventario.TabIndex = 4;
             this.Dgv_ProductosInventario.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_ProductosInventario_EditingCell);
             this.Dgv_ProductosInventario.Click += new System.EventHandler(this.Dgv_ProductosInventario_Click);
@@ -573,7 +573,7 @@
             this.Dgv_DetalleTraspaso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_DetalleTraspaso.Location = new System.Drawing.Point(0, 0);
             this.Dgv_DetalleTraspaso.Name = "Dgv_DetalleTraspaso";
-            this.Dgv_DetalleTraspaso.Size = new System.Drawing.Size(1203, 343);
+            this.Dgv_DetalleTraspaso.Size = new System.Drawing.Size(1238, 343);
             this.Dgv_DetalleTraspaso.TabIndex = 0;
             // 
             // PanelArriba
@@ -581,7 +581,7 @@
             this.PanelArriba.Controls.Add(this.GPanel_DatosGenerales);
             this.PanelArriba.Location = new System.Drawing.Point(0, 0);
             this.PanelArriba.Name = "PanelArriba";
-            this.PanelArriba.Size = new System.Drawing.Size(1209, 151);
+            this.PanelArriba.Size = new System.Drawing.Size(1244, 151);
             this.PanelArriba.TabIndex = 0;
             // 
             // GPanel_DatosGenerales
@@ -610,7 +610,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(1209, 151);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(1244, 151);
             // 
             // 
             // 
@@ -641,6 +641,15 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 1;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES DE TRASPASO";
+            // 
+            // btnEstado
+            // 
+            this.btnEstado.Location = new System.Drawing.Point(941, 28);
+            this.btnEstado.Name = "btnEstado";
+            this.btnEstado.Size = new System.Drawing.Size(75, 57);
+            this.btnEstado.TabIndex = 365;
+            this.btnEstado.UseVisualStyleBackColor = true;
+            this.btnEstado.Click += new System.EventHandler(this.btnEstado_Click);
             // 
             // lblEstadoTraspasoValue
             // 
@@ -904,20 +913,11 @@
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
-            // btnEstado
-            // 
-            this.btnEstado.Location = new System.Drawing.Point(941, 28);
-            this.btnEstado.Name = "btnEstado";
-            this.btnEstado.Size = new System.Drawing.Size(75, 57);
-            this.btnEstado.TabIndex = 365;
-            this.btnEstado.UseVisualStyleBackColor = true;
-            this.btnEstado.Click += new System.EventHandler(this.btnEstado_Click);
-            // 
             // F1_Traspaso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 720);
+            this.ClientSize = new System.Drawing.Size(1250, 720);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "F1_Traspaso";
             this.Text = "F1_Traspaso";

@@ -66,6 +66,39 @@ namespace REPOSITORY.Clase
             }
         }
 
+        public bool ConfirmarRecepcionDetalle(List<Traspaso_01> detalle, int idTI2)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    foreach (var i in detalle)
+                    {
+                        //ACTUALIZAMOS EL INVENTARIO
+                        if (!this.tI001.ActualizarInventario(i.ProductId.ToString(),
+                                                            i.Traspaso.AlmacenDestino.Value,
+                                                            EnAccionEnInventario.Incrementar,
+                                                            Convert.ToDecimal(i.Cantidad.Value)))
+                        {
+                            return false;
+                        }
+
+                        //REGISTRAMOS LA CONFIRMACION COMO UN REGISTRO DONDE SE ESPEFICICA LA RECEPCION DE ESE TRASPASO
+                        if (!this.tI0021.Guardar(idTI2, i.ProductId.Value, i.Cantidad.Value))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region CONSULTAS
@@ -84,6 +117,7 @@ namespace REPOSITORY.Clase
                            Estado = d.Estado.Value,
                            Id = d.Id,
                            ProductoId = d.ProductId.Value,
+                           ProductoDescripcion = d.Producto.Descrip,
                            TraspasoId = d.TraspasoId.Value,
                            Fecha = DateTime.Now
                        }).ToList();
