@@ -10,13 +10,10 @@
 namespace DATA.EntityDataModel.DiAvi
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Estaticos
+    public partial class sp_dg_TC0051_Result
     {
-        public int Id { get; set; }
-        public string Grupo { get; set; }
-        public int Orden { get; set; }
-        public string Descrip { get; set; }
+        public int cnnum { get; set; }
+        public string cndesc2 { get; set; }
     }
 }

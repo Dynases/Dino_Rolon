@@ -27,8 +27,11 @@
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Marca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductoDescripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductoId" type="xs:int" />
       <xs:element minOccurs="0" name="TraspasoId" type="xs:int" />
+      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VTraspaso_01" nillable="true" type="tns:VTraspaso_01" />

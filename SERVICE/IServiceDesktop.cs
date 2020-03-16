@@ -171,6 +171,9 @@ namespace SERVICE
         [OperationContract]
         List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId);
 
+        [OperationContract]
+        bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion);
+
         #endregion       
         ///**********PRECIO**************************
         ///

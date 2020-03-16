@@ -4,6 +4,7 @@ using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using UTILITY.Enum.EnEstaticos;
 
@@ -12,10 +13,12 @@ namespace REPOSITORY.Clase
     public class RTraspaso : BaseConexion, ITraspaso
     {
         private readonly ITI002 tI002;
+        private readonly ITraspaso_01 traspaso_01;
 
-        public RTraspaso(ITI002 tI002)
+        public RTraspaso(ITI002 tI002, ITraspaso_01 traspaso_01)
         {
             this.tI002 = tI002;
+            this.traspaso_01 = traspaso_01;
         }
 
         #region CONSULTAS
@@ -83,6 +86,10 @@ namespace REPOSITORY.Clase
                                                        l.IdLibrer == producto.Grupo3)
                                                 .FirstOrDefault();
 
+                        var grupo4 = db.Libreria.Where(l => l.IdGrupo == grupo &&
+                                                      l.IdOrden == Unidad &&
+                                                      l.IdLibrer == producto.UniVen)
+                                               .FirstOrDefault();
 
                         var item = new VTListaProducto
                         {
@@ -95,7 +102,7 @@ namespace REPOSITORY.Clase
                             InventarioId = i.id,
                             ProductoId = Convert.ToInt32(i.iccprod),
                             UnidadVenta = producto.UniVen,
-                            UnidadVentaDisplay = "",
+                            UnidadVentaDisplay = grupo4.Descrip
                         };
 
                         listResult.Add(item);
@@ -143,13 +150,59 @@ namespace REPOSITORY.Clase
                     if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
                                             traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
                                             id, traspaso.UsuarioEnvio,
-                                            " TRASPASO DE SALIDA " + traspaso.Almacen.Descrip + " - " + traspaso.Almacen1.Descrip,
+                                            " TRASPASO DE SALIDA DESDE: " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
                                             ref idTI2))
                     {
                         return false;
                     }
 
                     return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ConfirmarRecepcion(int TraspasoId, string usuarioRecepcion)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var traspaso = db.Traspaso.Find(TraspasoId);
+
+                    if (traspaso == null)
+                    {
+                        return false;
+                    }
+
+                    int idTI2 = 0;
+                    //REGISTRAMOS LA CABECERA DE LA RECEPCION EN LA TI002
+                    if (this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip, traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
+                        traspaso.Id, usuarioRecepcion,
+                        " TRASPASO DE INGRESO DESDE " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
+                        ref idTI2))
+                    {
+                        //AHORA SE REGISTRA EL DETALLE DE LA RECEPCION EN LA TABLA TI0021 y 
+                        //A SU VES EN EL METODO SE ACTUALIZA EL INVENTARIO DE DESTINO EN LA TI001
+                        var detalle = db.Traspaso_01.Where(tp => tp.TraspasoId == traspaso.Id).ToList();
+                        if (this.traspaso_01.ConfirmarRecepcionDetalle(detalle, idTI2))
+                        {
+                            //ACTUALIZAMOS EL TRASPASO CAMBIANDO SU ESTADO A RECEPCIONADO = 3
+                            traspaso.Estado = 3;
+                            db.Traspaso.Attach(traspaso);
+                            db.Entry(traspaso).State = EntityState.Modified;
+                            db.SaveChanges();
+
+                            return true;
+                        }
+                        else
+                        { return false; }
+                    }
+                    else
+                    { return false; }
                 }
             }
             catch (Exception ex)

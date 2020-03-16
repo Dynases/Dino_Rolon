@@ -4,11 +4,13 @@ using ENTITY.ven.view;
 using Janus.Windows.GridEX;
 using PRESENTER.frm;
 using PRESENTER.Properties;
+using PRESENTER.reg;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using UTILITY.Enum.EnEstaticos;
 using UTILITY.Global;
 
 namespace PRESENTER.ven
@@ -65,6 +67,9 @@ namespace PRESENTER.ven
             this.TbEncPrVenta.ReadOnly = true;
             this.TbNitCliente.ReadOnly = true;
             this.btnLimpiarCliente.Visible = false;
+            this.btnNuevoCliente.Visible = false;
+            this.TbNumFacturaExterna.ReadOnly = true;
+            this.TbEmpresaProveedoraCliente.ReadOnly = true;
         }
 
         private void MP_Habilitar()
@@ -84,6 +89,8 @@ namespace PRESENTER.ven
             this.Tb_Usuario.Text = UTGlobal.Usuario;
             this.TbNitCliente.ReadOnly = true;
             this.btnLimpiarCliente.Visible = true;
+            this.btnNuevoCliente.Visible = true;
+            this.TbNumFacturaExterna.ReadOnly = false;
         }
 
         private void MP_CargarAlmacenes()
@@ -690,6 +697,10 @@ namespace PRESENTER.ven
                         lblIdCliente.Text = Row.Cells[0].Value.ToString();
                         TbCliente.Text = Row.Cells[2].Value.ToString();
                         TbNitCliente.Text = Row.Cells[4].Value.ToString();
+
+                        var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
+                        TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
                     }
                 }
             }
@@ -871,6 +882,12 @@ namespace PRESENTER.ven
             }
         }
 
-        #endregion        
+        #endregion
+
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            F1_Clientes frm = new F1_Clientes();
+            frm.ShowDialog();
+        }
     }
 }

@@ -12,11 +12,16 @@ namespace ENTITY.inv.Traspaso.View
 
         public int ProductoId { get; set; }
 
+        public string ProductoDescripcion { get; set; }
+
         public int Cantidad { get; set; }
 
         public string Lote { get; set; }
 
         public DateTime Fecha { get; set; }
 
+        public string Unidad { get; set; }
+
+        public string Marca { get; set; }
     }
 }

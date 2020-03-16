@@ -521,6 +521,18 @@ namespace SERVICE
             }
         }
 
+        public bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion)
+        {
+            try
+            {
+                return new LTraspaso().ConfirmarRecepcion(traspasoId, usuarioRecepcion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Precio Categoria

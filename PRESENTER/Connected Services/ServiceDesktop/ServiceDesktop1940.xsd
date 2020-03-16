@@ -585,6 +585,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="TraspasoConfirmarRecepcion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="traspasoId" type="xs:int" />
+        <xs:element minOccurs="0" name="usuarioRecepcion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TraspasoConfirmarRecepcionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TraspasoConfirmarRecepcionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="PrecioCategoriaListar">
     <xs:complexType>
       <xs:sequence />
