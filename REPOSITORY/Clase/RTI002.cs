@@ -11,11 +11,13 @@ namespace REPOSITORY.Clase
         #region Trasancciones
 
         public bool Guardar(int idAlmacenSalida,
-                                       string almacenSalida,
-                                       int idAlmacenDestino,
-                                       string almacenDestino,
-                                       int idTraspaso,
-                                       string usuario)
+                            string almacenSalida,
+                            int idAlmacenDestino,
+                            string almacenDestino,
+                            int idTraspaso,
+                            string usuario,
+                            string observaciones,
+                            ref int idTI2)
         {
             try
             {
@@ -32,13 +34,13 @@ namespace REPOSITORY.Clase
                         ibhact = DateTime.Now.ToShortTimeString(),
                         ibid = db.TI002.Count() + 1,
                         ibiddc = idTraspaso, //JOIN IMPLICITO A TABLA TRASPASO
-                        ibobs = "TRASPASO DE SALIDA " + almacenSalida + " - " + almacenDestino,
+                        ibobs = observaciones,
                         ibuact = usuario
                     };
 
                     db.TI002.Add(ti002);
                     db.SaveChanges();
-
+                    idTI2 = db.TI002.Count() + 1;
                     return true;
                 }
             }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace REPOSITORY.Interface
+﻿namespace REPOSITORY.Interface
 {
     public interface ITI002
     {
-        bool Guardar(int idAlmacenSalida, string almacenSalida, int idAlmacenDestino, string almacenDestino, int idTraspaso, string usuario);
+        bool Guardar(int idAlmacenSalida, string almacenSalida, int idAlmacenDestino, string almacenDestino, int idTraspaso, string usuario, string observaciones, ref int idTI2);
     }
 }

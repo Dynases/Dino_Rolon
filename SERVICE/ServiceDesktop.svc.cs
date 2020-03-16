@@ -467,11 +467,11 @@ namespace SERVICE
         #endregion
         #region Traspasos
 
-        public bool TraspasoGuardar(VTraspaso vTraspaso, ref int id)
+        public bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
         {
             try
             {
-                return new LTraspaso().Guardar(vTraspaso, ref id);
+                return new LTraspaso().Guardar(vTraspaso, ref idTI2, ref id);
             }
             catch (Exception ex)
             {
@@ -479,11 +479,11 @@ namespace SERVICE
             }
         }
 
-        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId)
+        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2)
         {
             try
             {
-                return new LTraspaso_01().Guardar(lista, TraspasoId, almacenId);
+                return new LTraspaso_01().Guardar(lista, TraspasoId, almacenId, idTI2);
             }
             catch (Exception ex)
             {

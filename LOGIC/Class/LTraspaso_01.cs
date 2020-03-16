@@ -11,22 +11,24 @@ namespace LOGIC.Class
     {
         protected ITraspaso_01 iTraspaso_01;
         protected ITI001 iTi001;
+        protected ITI0021 iTi0021;
 
         public LTraspaso_01()
         {
             iTi001 = new RTI001();
-            iTraspaso_01 = new RTraspaso_01(iTi001);
+            iTi0021 = new RTI0021();
+            iTraspaso_01 = new RTraspaso_01(iTi001, iTi0021);
         }
 
         #region Transacciones
 
-        public bool Guardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId)
+        public bool Guardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = this.iTraspaso_01.Guardar(lista, TraspasoId, almacenId);
+                    var result = this.iTraspaso_01.Guardar(lista, TraspasoId, almacenId, idTI2);
                     scope.Complete();
                     return result;
                 }

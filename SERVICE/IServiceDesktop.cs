@@ -157,10 +157,10 @@ namespace SERVICE
         ///
         #region Traspaso
         [OperationContract]
-        bool TraspasoGuardar(VTraspaso vTraspaso, ref int id);
+        bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id);
 
         [OperationContract]
-        bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId);
+        bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2);
 
         [OperationContract]
         List<VTraspaso> TraspasosListar();
@@ -294,7 +294,7 @@ namespace SERVICE
         bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId);
 
         [OperationContract]
-        List<VVenta_01> VentaDetalleListar(int VentaId);        
+        List<VVenta_01> VentaDetalleListar(int VentaId);
 
         #endregion
     }

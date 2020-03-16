@@ -234,7 +234,7 @@ namespace PRESENTER.alm
             }
         }
 
-        private void MP_GuardarDetalleTraspaso(VTraspaso traspaso)
+        private void MP_GuardarDetalleTraspaso(VTraspaso traspaso, int idTI2)
         {
             var listaDetalle = new List<VTraspaso_01>();
             var mensaje = "";
@@ -504,10 +504,11 @@ namespace PRESENTER.alm
             try
             {
                 int id = 0;
-                if (new ServiceDesktop.ServiceDesktopClient().TraspasoGuardar(Vtraspaso, ref id))
+                int idTI2 = 0;
+                if (new ServiceDesktop.ServiceDesktopClient().TraspasoGuardar(Vtraspaso, ref idTI2, ref id))
                 {
                     Vtraspaso.Id = id;
-                    this.MP_GuardarDetalleTraspaso(Vtraspaso);
+                    this.MP_GuardarDetalleTraspaso(Vtraspaso, idTI2);
                     mensaje = GLMensaje.Modificar_Exito("TRASPASOS", Vtraspaso.Id.ToString());
                     this.MP_InHabilitar();
                     ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);

@@ -114,7 +114,7 @@ namespace REPOSITORY.Clase
 
         #region TRANSACCIONES
 
-        public bool Guardar(VTraspaso vTraspaso, ref int id)
+        public bool Guardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
         {
             try
             {
@@ -138,7 +138,9 @@ namespace REPOSITORY.Clase
 
                     if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
                                             traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
-                                            id, traspaso.UsuarioEnvio))
+                                            id, traspaso.UsuarioEnvio,
+                                            " TRASPASO DE SALIDA " + traspaso.Almacen.Descrip + " - " + traspaso.Almacen1.Descrip,
+                                            ref idTI2))
                     {
                         return false;
                     }

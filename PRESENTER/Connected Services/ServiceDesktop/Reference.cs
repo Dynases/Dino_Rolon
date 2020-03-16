@@ -658,13 +658,17 @@ namespace PRESENTER.ServiceDesktop {
         public ENTITY.inv.Traspaso.View.VTraspaso vTraspaso;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int idTI2;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public int id;
         
         public TraspasoGuardarRequest() {
         }
         
-        public TraspasoGuardarRequest(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso, int id) {
+        public TraspasoGuardarRequest(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso, int idTI2, int id) {
             this.vTraspaso = vTraspaso;
+            this.idTI2 = idTI2;
             this.id = id;
         }
     }
@@ -678,13 +682,17 @@ namespace PRESENTER.ServiceDesktop {
         public bool TraspasoGuardarResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int idTI2;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public int id;
         
         public TraspasoGuardarResponse() {
         }
         
-        public TraspasoGuardarResponse(bool TraspasoGuardarResult, int id) {
+        public TraspasoGuardarResponse(bool TraspasoGuardarResult, int idTI2, int id) {
             this.TraspasoGuardarResult = TraspasoGuardarResult;
+            this.idTI2 = idTI2;
             this.id = id;
         }
     }
@@ -1277,11 +1285,13 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TraspasoGuardar(request);
         }
         
-        public bool TraspasoGuardar(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso, ref int id) {
+        public bool TraspasoGuardar(ENTITY.inv.Traspaso.View.VTraspaso vTraspaso, ref int idTI2, ref int id) {
             PRESENTER.ServiceDesktop.TraspasoGuardarRequest inValue = new PRESENTER.ServiceDesktop.TraspasoGuardarRequest();
             inValue.vTraspaso = vTraspaso;
+            inValue.idTI2 = idTI2;
             inValue.id = id;
             PRESENTER.ServiceDesktop.TraspasoGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).TraspasoGuardar(inValue);
+            idTI2 = retVal.idTI2;
             id = retVal.id;
             return retVal.TraspasoGuardarResult;
         }

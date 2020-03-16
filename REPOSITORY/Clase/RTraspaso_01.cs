@@ -5,8 +5,6 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UTILITY.Enum;
 
 namespace REPOSITORY.Clase
@@ -14,15 +12,17 @@ namespace REPOSITORY.Clase
     public class RTraspaso_01 : BaseConexion, ITraspaso_01
     {
         private readonly ITI001 tI001;
+        private readonly ITI0021 tI0021;
 
-        public RTraspaso_01(ITI001 tI001)
+        public RTraspaso_01(ITI001 tI001, ITI0021 tI0021)
         {
             this.tI001 = tI001;
+            this.tI0021 = tI0021;
         }
 
         #region TRANSACCIONES
 
-        public bool Guardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId)
+        public bool Guardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace REPOSITORY.Clase
                             Id = i.Id,
                             Observaciones = "",
                             ProductId = i.ProductoId,
-                            TraspasoId = i.TraspasoId
+                            TraspasoId = TraspasoId
                         };
 
                         db.Traspaso_01.Add(detalle);
@@ -46,6 +46,11 @@ namespace REPOSITORY.Clase
                                                             almacenId,
                                                             EnAccionEnInventario.Descontar,
                                                             Convert.ToDecimal(detalle.Cantidad)))
+                        {
+                            return false;
+                        }
+
+                        if (!this.tI0021.Guardar(idTI2, detalle.ProductId.Value, detalle.Cantidad.Value))
                         {
                             return false;
                         }
