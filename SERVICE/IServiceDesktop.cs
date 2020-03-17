@@ -308,6 +308,7 @@ namespace SERVICE
 
         [OperationContract]
         List<VVenta_01> VentaDetalleListar(int VentaId);
+        List<VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
 
         #endregion
     }

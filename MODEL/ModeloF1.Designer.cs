@@ -107,16 +107,18 @@
             this.PanelSuperior.Controls.Add(this.LblTitulo);
             this.PanelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelSuperior.Location = new System.Drawing.Point(0, 0);
+            this.PanelSuperior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelSuperior.Name = "PanelSuperior";
-            this.PanelSuperior.Size = new System.Drawing.Size(837, 27);
+            this.PanelSuperior.Size = new System.Drawing.Size(1116, 33);
             this.PanelSuperior.TabIndex = 2;
             // 
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(3, 1);
+            this.PictureBox1.Location = new System.Drawing.Point(4, 1);
+            this.PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.PictureBox1.Size = new System.Drawing.Size(41, 32);
             this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox1.TabIndex = 6;
             this.PictureBox1.TabStop = false;
@@ -128,9 +130,10 @@
             this.btnMin.ErrorImage = null;
             this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
             this.btnMin.ImageActive = null;
-            this.btnMin.Location = new System.Drawing.Point(777, 0);
+            this.btnMin.Location = new System.Drawing.Point(1056, 0);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(20, 27);
+            this.btnMin.Size = new System.Drawing.Size(20, 33);
             this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnMin.TabIndex = 3;
             this.btnMin.TabStop = false;
@@ -144,9 +147,10 @@
             this.btnMax.ErrorImage = null;
             this.btnMax.Image = ((System.Drawing.Image)(resources.GetObject("btnMax.Image")));
             this.btnMax.ImageActive = null;
-            this.btnMax.Location = new System.Drawing.Point(797, 0);
+            this.btnMax.Location = new System.Drawing.Point(1076, 0);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(20, 27);
+            this.btnMax.Size = new System.Drawing.Size(20, 33);
             this.btnMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnMax.TabIndex = 4;
             this.btnMax.TabStop = false;
@@ -160,9 +164,10 @@
             this.btnClose.ErrorImage = null;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageActive = null;
-            this.btnClose.Location = new System.Drawing.Point(817, 0);
+            this.btnClose.Location = new System.Drawing.Point(1096, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 27);
+            this.btnClose.Size = new System.Drawing.Size(20, 33);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnClose.TabIndex = 5;
             this.btnClose.TabStop = false;
@@ -174,9 +179,10 @@
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.LblTitulo.Location = new System.Drawing.Point(47, 4);
+            this.LblTitulo.Location = new System.Drawing.Point(63, 5);
+            this.LblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(63, 17);
+            this.LblTitulo.Size = new System.Drawing.Size(83, 23);
             this.LblTitulo.TabIndex = 0;
             this.LblTitulo.Text = "NOMBRE";
             // 
@@ -187,9 +193,10 @@
             this.PanelInferior.Controls.Add(this.TxtNombreUsu);
             this.PanelInferior.Controls.Add(this.PanelNavegacion);
             this.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelInferior.Location = new System.Drawing.Point(0, 548);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 675);
+            this.PanelInferior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelInferior.Name = "PanelInferior";
-            this.PanelInferior.Size = new System.Drawing.Size(837, 28);
+            this.PanelInferior.Size = new System.Drawing.Size(1116, 34);
             this.PanelInferior.TabIndex = 3;
             // 
             // BubbleBarUsuario
@@ -216,12 +223,13 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
             this.BubbleBarUsuario.Dock = System.Windows.Forms.DockStyle.Right;
             this.BubbleBarUsuario.ImageSizeNormal = new System.Drawing.Size(24, 24);
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(645, 0);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(861, 0);
+            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.Name = "BubbleBarUsuario";
             this.BubbleBarUsuario.SelectedTab = this.BubbleBarTabUsuario;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
-            this.BubbleBarUsuario.Size = new System.Drawing.Size(50, 28);
+            this.BubbleBarUsuario.Size = new System.Drawing.Size(67, 34);
             this.BubbleBarUsuario.TabIndex = 27;
             this.BubbleBarUsuario.Tabs.Add(this.BubbleBarTabUsuario);
             this.BubbleBarUsuario.TabsVisible = false;
@@ -242,10 +250,11 @@
             // 
             this.TxtNombreUsu.Dock = System.Windows.Forms.DockStyle.Right;
             this.TxtNombreUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNombreUsu.Location = new System.Drawing.Point(695, 0);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(928, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtNombreUsu.Multiline = true;
             this.TxtNombreUsu.Name = "TxtNombreUsu";
-            this.TxtNombreUsu.Size = new System.Drawing.Size(142, 28);
+            this.TxtNombreUsu.Size = new System.Drawing.Size(188, 34);
             this.TxtNombreUsu.TabIndex = 25;
             this.TxtNombreUsu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -258,8 +267,9 @@
             this.PanelNavegacion.Controls.Add(this.btnPrimero);
             this.PanelNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelNavegacion.Location = new System.Drawing.Point(0, 0);
+            this.PanelNavegacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelNavegacion.Name = "PanelNavegacion";
-            this.PanelNavegacion.Size = new System.Drawing.Size(318, 28);
+            this.PanelNavegacion.Size = new System.Drawing.Size(424, 34);
             this.PanelNavegacion.TabIndex = 26;
             // 
             // btnUltimo
@@ -271,9 +281,10 @@
             this.btnUltimo.Image = global::MODEL.Properties.Resources.SIGUIENTE2;
             this.btnUltimo.ImageFixedSize = new System.Drawing.Size(30, 30);
             this.btnUltimo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnUltimo.Location = new System.Drawing.Point(129, 0);
+            this.btnUltimo.Location = new System.Drawing.Point(171, 0);
+            this.btnUltimo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUltimo.Name = "btnUltimo";
-            this.btnUltimo.Size = new System.Drawing.Size(43, 28);
+            this.btnUltimo.Size = new System.Drawing.Size(57, 34);
             this.btnUltimo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUltimo.TabIndex = 12;
             // 
@@ -286,9 +297,10 @@
             this.btnSiguiente.Image = global::MODEL.Properties.Resources.SIGUIENTE;
             this.btnSiguiente.ImageFixedSize = new System.Drawing.Size(30, 30);
             this.btnSiguiente.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnSiguiente.Location = new System.Drawing.Point(86, 0);
+            this.btnSiguiente.Location = new System.Drawing.Point(114, 0);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(43, 28);
+            this.btnSiguiente.Size = new System.Drawing.Size(57, 34);
             this.btnSiguiente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSiguiente.TabIndex = 13;
             // 
@@ -297,9 +309,10 @@
             this.LblPaginacion.Dock = System.Windows.Forms.DockStyle.Right;
             this.LblPaginacion.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPaginacion.ForeColor = System.Drawing.Color.White;
-            this.LblPaginacion.Location = new System.Drawing.Point(202, 0);
+            this.LblPaginacion.Location = new System.Drawing.Point(269, 0);
+            this.LblPaginacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblPaginacion.Name = "LblPaginacion";
-            this.LblPaginacion.Size = new System.Drawing.Size(116, 28);
+            this.LblPaginacion.Size = new System.Drawing.Size(155, 34);
             this.LblPaginacion.TabIndex = 23;
             this.LblPaginacion.Text = "0/0";
             this.LblPaginacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -313,9 +326,10 @@
             this.btnAnterior.Image = global::MODEL.Properties.Resources.ANTERIOR;
             this.btnAnterior.ImageFixedSize = new System.Drawing.Size(30, 30);
             this.btnAnterior.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAnterior.Location = new System.Drawing.Point(43, 0);
+            this.btnAnterior.Location = new System.Drawing.Point(57, 0);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(43, 28);
+            this.btnAnterior.Size = new System.Drawing.Size(57, 34);
             this.btnAnterior.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAnterior.TabIndex = 14;
             // 
@@ -329,8 +343,9 @@
             this.btnPrimero.ImageFixedSize = new System.Drawing.Size(30, 30);
             this.btnPrimero.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnPrimero.Location = new System.Drawing.Point(0, 0);
+            this.btnPrimero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrimero.Name = "btnPrimero";
-            this.btnPrimero.Size = new System.Drawing.Size(43, 28);
+            this.btnPrimero.Size = new System.Drawing.Size(57, 34);
             this.btnPrimero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPrimero.TabIndex = 15;
             // 
@@ -355,12 +370,13 @@
             this.superTabControl1.Controls.Add(this.PanelContenidoBuscar);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.HorizontalText = false;
-            this.superTabControl1.Location = new System.Drawing.Point(0, 27);
+            this.superTabControl1.Location = new System.Drawing.Point(0, 33);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(837, 549);
+            this.superTabControl1.Size = new System.Drawing.Size(1116, 676);
             this.superTabControl1.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl1.TabIndex = 4;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -378,9 +394,10 @@
             this.PanelContenidoRegistro.Controls.Add(this.LblSubtitulo);
             this.PanelContenidoRegistro.Controls.Add(this.PanelMenu);
             this.PanelContenidoRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelContenidoRegistro.Name = "PanelContenidoRegistro";
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(837, 516);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1116, 639);
             this.PanelContenidoRegistro.TabIndex = 0;
             this.PanelContenidoRegistro.TabItem = this.SuperTalRegistro;
             // 
@@ -391,9 +408,10 @@
             this.LblSubtitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSubtitulo.ForeColor = System.Drawing.Color.Black;
-            this.LblSubtitulo.Location = new System.Drawing.Point(0, 72);
+            this.LblSubtitulo.Location = new System.Drawing.Point(0, 89);
+            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblSubtitulo.Name = "LblSubtitulo";
-            this.LblSubtitulo.Size = new System.Drawing.Size(837, 36);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1116, 44);
             this.LblSubtitulo.TabIndex = 68;
             this.LblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -417,9 +435,10 @@
             this.PanelMenu.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
             this.PanelMenu.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
             this.PanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Quality = 10;
-            this.PanelMenu.Size = new System.Drawing.Size(837, 72);
+            this.PanelMenu.Size = new System.Drawing.Size(1116, 89);
             this.PanelMenu.TabIndex = 2;
             // 
             // BtnExportar
@@ -432,9 +451,10 @@
             this.BtnExportar.Image = global::MODEL.Properties.Resources.EXCEL;
             this.BtnExportar.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnExportar.Location = new System.Drawing.Point(444, 0);
+            this.BtnExportar.Location = new System.Drawing.Point(592, 0);
+            this.BtnExportar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnExportar.Name = "BtnExportar";
-            this.BtnExportar.Size = new System.Drawing.Size(78, 72);
+            this.BtnExportar.Size = new System.Drawing.Size(104, 89);
             this.BtnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnExportar.TabIndex = 71;
             this.BtnExportar.Text = "EXPORTAR";
@@ -449,9 +469,10 @@
             // 
             this.reflectionLabelLogo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.reflectionLabelLogo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reflectionLabelLogo.Location = new System.Drawing.Point(624, 0);
+            this.reflectionLabelLogo.Location = new System.Drawing.Point(832, 0);
+            this.reflectionLabelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reflectionLabelLogo.Name = "reflectionLabelLogo";
-            this.reflectionLabelLogo.Size = new System.Drawing.Size(213, 72);
+            this.reflectionLabelLogo.Size = new System.Drawing.Size(284, 89);
             this.reflectionLabelLogo.TabIndex = 70;
             this.reflectionLabelLogo.Text = "<b><font size=\"+20\">RO<font color=\"#B02B2C\">LON</font></font></b>";
             // 
@@ -465,9 +486,10 @@
             this.BtnImprimir.Image = global::MODEL.Properties.Resources.PRINT;
             this.BtnImprimir.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnImprimir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnImprimir.Location = new System.Drawing.Point(372, 0);
+            this.BtnImprimir.Location = new System.Drawing.Point(496, 0);
+            this.BtnImprimir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnImprimir.Name = "BtnImprimir";
-            this.BtnImprimir.Size = new System.Drawing.Size(72, 72);
+            this.BtnImprimir.Size = new System.Drawing.Size(96, 89);
             this.BtnImprimir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnImprimir.TabIndex = 12;
             this.BtnImprimir.Text = "IMPRIMIR";
@@ -483,9 +505,10 @@
             this.BtnAtras.Image = global::MODEL.Properties.Resources.atras;
             this.BtnAtras.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnAtras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnAtras.Location = new System.Drawing.Point(300, 0);
+            this.BtnAtras.Location = new System.Drawing.Point(400, 0);
+            this.BtnAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnAtras.Name = "BtnAtras";
-            this.BtnAtras.Size = new System.Drawing.Size(72, 72);
+            this.BtnAtras.Size = new System.Drawing.Size(96, 89);
             this.BtnAtras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnAtras.TabIndex = 11;
             this.BtnAtras.Text = "SALIR";
@@ -502,9 +525,10 @@
             this.BtnGrabar.Image = global::MODEL.Properties.Resources.save___copia;
             this.BtnGrabar.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnGrabar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnGrabar.Location = new System.Drawing.Point(228, 0);
+            this.BtnGrabar.Location = new System.Drawing.Point(304, 0);
+            this.BtnGrabar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGrabar.Name = "BtnGrabar";
-            this.BtnGrabar.Size = new System.Drawing.Size(72, 72);
+            this.BtnGrabar.Size = new System.Drawing.Size(96, 89);
             this.BtnGrabar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnGrabar.TabIndex = 10;
             this.BtnGrabar.Text = "GRABAR";
@@ -521,9 +545,10 @@
             this.BtnEliminar.Image = global::MODEL.Properties.Resources.trash;
             this.BtnEliminar.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnEliminar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnEliminar.Location = new System.Drawing.Point(156, 0);
+            this.BtnEliminar.Location = new System.Drawing.Point(208, 0);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(72, 72);
+            this.BtnEliminar.Size = new System.Drawing.Size(96, 89);
             this.BtnEliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnEliminar.TabIndex = 9;
             this.BtnEliminar.Text = "ELIMINAR";
@@ -540,9 +565,10 @@
             this.BtnModificar.Image = global::MODEL.Properties.Resources.edit;
             this.BtnModificar.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnModificar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnModificar.Location = new System.Drawing.Point(72, 0);
+            this.BtnModificar.Location = new System.Drawing.Point(96, 0);
+            this.BtnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(84, 72);
+            this.BtnModificar.Size = new System.Drawing.Size(112, 89);
             this.BtnModificar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnModificar.TabIndex = 8;
             this.BtnModificar.Text = "MODIFICAR";
@@ -561,8 +587,9 @@
             this.BtnNuevo.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.BtnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.BtnNuevo.Location = new System.Drawing.Point(0, 0);
+            this.BtnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnNuevo.Name = "BtnNuevo";
-            this.BtnNuevo.Size = new System.Drawing.Size(72, 72);
+            this.BtnNuevo.Size = new System.Drawing.Size(96, 89);
             this.BtnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnNuevo.TabIndex = 7;
             this.BtnNuevo.Text = "NUEVO";
@@ -573,9 +600,10 @@
             // 
             this.PictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
-            this.PictureBoxLogo.Location = new System.Drawing.Point(538, 0);
+            this.PictureBoxLogo.Location = new System.Drawing.Point(717, 0);
+            this.PictureBoxLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PictureBoxLogo.Name = "PictureBoxLogo";
-            this.PictureBoxLogo.Size = new System.Drawing.Size(299, 64);
+            this.PictureBoxLogo.Size = new System.Drawing.Size(399, 79);
             this.PictureBoxLogo.TabIndex = 2;
             this.PictureBoxLogo.TabStop = false;
             // 
@@ -591,9 +619,10 @@
             this.PanelContenidoBuscar.Controls.Add(this.GMPanel_Buscardor);
             this.PanelContenidoBuscar.Controls.Add(this.PanelUsuario);
             this.PanelContenidoBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 37);
+            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelContenidoBuscar.Name = "PanelContenidoBuscar";
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1116, 639);
             this.PanelContenidoBuscar.TabIndex = 0;
             this.PanelContenidoBuscar.TabItem = this.SuperTabBuscar;
             // 
@@ -607,8 +636,9 @@
             this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GMPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 0);
+            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GMPanel_Buscardor.Name = "GMPanel_Buscardor";
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1116, 639);
             // 
             // 
             // 
@@ -644,8 +674,9 @@
             // 
             this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dgv_GBuscador.Name = "Dgv_GBuscador";
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1110, 608);
             this.Dgv_GBuscador.TabIndex = 0;
             // 
             // PanelUsuario
@@ -656,9 +687,10 @@
             this.PanelUsuario.Controls.Add(this.lblHora);
             this.PanelUsuario.Controls.Add(this.lblFecha);
             this.PanelUsuario.Controls.Add(this.lblUsuario);
-            this.PanelUsuario.Location = new System.Drawing.Point(50, 22);
+            this.PanelUsuario.Location = new System.Drawing.Point(67, 27);
+            this.PanelUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelUsuario.Name = "PanelUsuario";
-            this.PanelUsuario.Size = new System.Drawing.Size(220, 100);
+            this.PanelUsuario.Size = new System.Drawing.Size(293, 123);
             this.PanelUsuario.TabIndex = 72;
             this.PanelUsuario.TabStop = true;
             this.PanelUsuario.Visible = false;
@@ -667,9 +699,10 @@
             // 
             this.lbHora.AutoSize = true;
             this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHora.Location = new System.Drawing.Point(115, 65);
+            this.lbHora.Location = new System.Drawing.Point(153, 80);
+            this.lbHora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(79, 18);
+            this.lbHora.Size = new System.Drawing.Size(108, 25);
             this.lbHora.TabIndex = 6;
             this.lbHora.Text = "USUARIO:";
             // 
@@ -677,9 +710,10 @@
             // 
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFecha.Location = new System.Drawing.Point(115, 42);
+            this.lbFecha.Location = new System.Drawing.Point(153, 52);
+            this.lbFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(79, 18);
+            this.lbFecha.Size = new System.Drawing.Size(108, 25);
             this.lbFecha.TabIndex = 5;
             this.lbFecha.Text = "USUARIO:";
             // 
@@ -687,9 +721,10 @@
             // 
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsuario.Location = new System.Drawing.Point(115, 19);
+            this.lbUsuario.Location = new System.Drawing.Point(153, 23);
+            this.lbUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(79, 18);
+            this.lbUsuario.Size = new System.Drawing.Size(108, 25);
             this.lbUsuario.TabIndex = 4;
             this.lbUsuario.Text = "USUARIO:";
             // 
@@ -697,9 +732,10 @@
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(31, 65);
+            this.lblHora.Location = new System.Drawing.Point(41, 80);
+            this.lblHora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(60, 18);
+            this.lblHora.Size = new System.Drawing.Size(80, 25);
             this.lblHora.TabIndex = 2;
             this.lblHora.Text = "HORA:";
             // 
@@ -707,9 +743,10 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(31, 43);
+            this.lblFecha.Location = new System.Drawing.Point(41, 53);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(68, 18);
+            this.lblFecha.Size = new System.Drawing.Size(92, 25);
             this.lblFecha.TabIndex = 1;
             this.lblFecha.Text = "FECHA:";
             // 
@@ -717,9 +754,10 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(31, 19);
+            this.lblUsuario.Location = new System.Drawing.Point(41, 23);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(87, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(116, 25);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "USUARIO:";
             // 
@@ -746,13 +784,14 @@
             // 
             // ModeloF1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 576);
+            this.ClientSize = new System.Drawing.Size(1116, 709);
             this.Controls.Add(this.PanelInferior);
             this.Controls.Add(this.superTabControl1);
             this.Controls.Add(this.PanelSuperior);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModeloF1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModeloF1";
@@ -786,10 +825,7 @@
         #endregion
 
         internal System.Windows.Forms.Panel PanelSuperior;
-        internal System.Windows.Forms.Panel PanelInferior;
         internal System.Windows.Forms.PictureBox PictureBoxLogo;
-        private DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
-        protected DevComponents.DotNetBar.SuperTabControlPanel PanelContenidoRegistro;
         protected DevComponents.DotNetBar.SuperTabControl superTabControl1;
         protected System.Windows.Forms.Label LblTitulo;
         protected DevComponents.DotNetBar.ButtonX BtnImprimir;
@@ -830,5 +866,8 @@
         protected Janus.Windows.GridEX.GridEX Dgv_GBuscador;
         protected System.Windows.Forms.Label LblSubtitulo;
         protected Bunifu.Framework.UI.BunifuGradientPanel PanelMenu;
+        public System.Windows.Forms.Panel PanelInferior;
+        public DevComponents.DotNetBar.SuperTabControlPanel PanelContenidoRegistro;
+        public DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
     }
 }

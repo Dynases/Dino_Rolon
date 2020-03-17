@@ -252,6 +252,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         public bool ProductoModificar(VProducto Producto, int id)
         {
             try
@@ -264,6 +265,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         public bool ProductoEliminar(int id)
         {
 
@@ -277,6 +279,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         public List<VProducto> ProductoListarXId(int id)
         {
             try
@@ -323,6 +326,18 @@ namespace SERVICE
             {
                 var listResult = new LProducto().ListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
                 return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
+        {
+            try
+            {
+                return new LProducto().ListarDetalleKardex(inicio, fin, IdAlmacen);
             }
             catch (Exception ex)
             {
@@ -746,7 +761,7 @@ namespace SERVICE
             {
                 throw new Exception(ex.Message);
             }
-        }       
+        }
         #endregion
         ///**********SELECCION**********************
         ///

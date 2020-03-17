@@ -101,7 +101,7 @@ namespace PRESENTER.adm
 
         private void btnReporteKardex_Click(object sender, EventArgs e)
         {
-            UTILITY.Visualizador frm = new UTILITY.Visualizador();
+            F1_ReporteKardex frm = new F1_ReporteKardex();
             frm.Show();
         }
     }
