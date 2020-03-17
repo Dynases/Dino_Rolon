@@ -586,7 +586,7 @@ namespace PRESENTER.com
             Cb_TipoProveedor.ReadOnly = false;
             Tb_Fecha.Enabled = true;
             Dgv_Detalle.Enabled = false;
-            sw_Tipo.IsReadOnly = true;
+            sw_Tipo.IsReadOnly = false;
             btn_Agregar.Enabled = false;
             MP_HabilitarDetalle();
             UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor);
@@ -598,6 +598,8 @@ namespace PRESENTER.com
             Cb_TipoAlojamiento.ReadOnly = false;
             BtAdicionar.Enabled = true;
             Tb_Fecha.Value = DateTime.Now;
+           // Tb_Fecha.IsInputReadOnly = false;
+            Tb_Fecha.Enabled = true;
             Tb_Aves.IsInputReadOnly = false;                                      
         }
         private void MP_HabilitarMenu( int tipo)
@@ -645,7 +647,7 @@ namespace PRESENTER.com
             Tb_Aves.IsInputReadOnly = true;            
             btn_Agregar.Enabled = true;
             Dgv_Detalle.Enabled = true;
-            sw_Tipo.IsReadOnly = false;
+            sw_Tipo.IsReadOnly = true;
         }
         private void MP_Limpiar()
         {

@@ -66,6 +66,9 @@
     <Compile Include="EntityDataModel\DiAvi\CompraIng_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\CompraIng_02.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Compra_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

@@ -33,5 +33,6 @@ namespace ENTITY.Cliente.View
         public DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
+        public int IdCategoria { get; set; }
     }
 }

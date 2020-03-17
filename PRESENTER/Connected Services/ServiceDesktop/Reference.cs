@@ -391,6 +391,24 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_01ListarXId2Response")]
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2, int idAlmacen);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_GuardarResponse")]
+        bool CompraIngreso_02_Guardar(ENTITY.com.CompraIngreso_02.VCompraIngreso_02 Lista);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_GuardarResponse")]
+        System.Threading.Tasks.Task<bool> CompraIngreso_02_GuardarAsync(ENTITY.com.CompraIngreso_02.VCompraIngreso_02 Lista);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_Listar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarResponse")]
+        ENTITY.com.CompraIngreso_02.VCompraIngreso_02[] CompraIngreso_02_Listar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_Listar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_02.VCompraIngreso_02[]> CompraIngreso_02_ListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTabla", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTablaResponse")]
+        System.Data.DataTable CompraIngreso_02_ListarTabla();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTabla", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTablaResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngreso_02_ListarTablaAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ListaResponse")]
         ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista();
         
@@ -1462,6 +1480,30 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_01.VCompraIngreso_01[]> CmmpraIngreso_01ListarXId2Async(int IdGrupo2, int idAlmacen) {
             return base.Channel.CmmpraIngreso_01ListarXId2Async(IdGrupo2, idAlmacen);
+        }
+        
+        public bool CompraIngreso_02_Guardar(ENTITY.com.CompraIngreso_02.VCompraIngreso_02 Lista) {
+            return base.Channel.CompraIngreso_02_Guardar(Lista);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CompraIngreso_02_GuardarAsync(ENTITY.com.CompraIngreso_02.VCompraIngreso_02 Lista) {
+            return base.Channel.CompraIngreso_02_GuardarAsync(Lista);
+        }
+        
+        public ENTITY.com.CompraIngreso_02.VCompraIngreso_02[] CompraIngreso_02_Listar() {
+            return base.Channel.CompraIngreso_02_Listar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_02.VCompraIngreso_02[]> CompraIngreso_02_ListarAsync() {
+            return base.Channel.CompraIngreso_02_ListarAsync();
+        }
+        
+        public System.Data.DataTable CompraIngreso_02_ListarTabla() {
+            return base.Channel.CompraIngreso_02_ListarTabla();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngreso_02_ListarTablaAsync() {
+            return base.Channel.CompraIngreso_02_ListarTablaAsync();
         }
         
         public ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista() {

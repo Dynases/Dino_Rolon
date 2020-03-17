@@ -23,6 +23,7 @@ using LOGIC.Class;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using ENTITY.com.CompraIngreso_02;
 
 namespace SERVICE
 {
@@ -47,7 +48,8 @@ namespace SERVICE
             }
             return composite;
         }
-
+        ///**********CLIENTE**********************
+        ///
         #region Cliente
         public List<VCliente> ClienteListar()
         {
@@ -138,6 +140,8 @@ namespace SERVICE
             }
         }
         #endregion
+        ///**********LIBRERIA**********************
+        ///
         #region Libreria
         public List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden)
         {
@@ -165,6 +169,8 @@ namespace SERVICE
         }
 
         #endregion
+        ///**********PROEVEEDOR**********************
+        ///
         #region Proveedor
         public bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario)
         {
@@ -231,6 +237,8 @@ namespace SERVICE
             }
         }
         #endregion
+        ///**********PRODUCTO**********************
+        ///
         #region Producto
         public bool ProductoGuardar(VProducto Producto, ref int id)
         {
@@ -323,7 +331,8 @@ namespace SERVICE
         }
 
         #endregion
-
+        ///**********ALMACEN**********************
+        ///
         #region Almacen        
 
         public bool AlmacenGuardar(VAlmacen vAlmacen)
@@ -407,6 +416,8 @@ namespace SERVICE
         }
 
         #endregion
+        ///**********SUCURSAL**********************
+        ///
         #region Sucursal
 
         public List<VSucursalCombo> SucursalListarCombo()
@@ -459,6 +470,8 @@ namespace SERVICE
         }
 
         #endregion
+        ///**********TRASPASO**********************
+        ///
         #region Traspasos
 
         public bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
@@ -534,7 +547,8 @@ namespace SERVICE
         }
 
         #endregion
-
+        ///**********PRECIO**********************
+        ///
         #region Precio Categoria
 
         public bool precioCategoria_Guardar(VPrecioCategoria precioCat, ref int id)
@@ -603,6 +617,8 @@ namespace SERVICE
         }
 
         #endregion
+        ///**********COMPRA INGRESO**********************
+        ///
         #region Compra Ingreso
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
         {
@@ -694,6 +710,46 @@ namespace SERVICE
             }
         }
         #endregion
+        #region Compra Ingreso_02
+        public bool CompraIngreso_02_Guardar(VCompraIngreso_02 Lista)
+        {
+            try
+            {
+                var result = new LCompraIngreso_02().Guardar(Lista);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VCompraIngreso_02> CompraIngreso_02_Listar()
+        {
+            try
+            {
+                var listResult = new LCompraIngreso_02().Listar();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable CompraIngreso_02_ListarTabla()
+        {
+            try
+            {
+                var listResult = new LCompraIngreso_02().ListarTabla();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }       
+        #endregion
+        ///**********SELECCION**********************
+        ///
         #region Seleccion
 
         public bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id)
@@ -762,7 +818,8 @@ namespace SERVICE
             }
         }
         #endregion
-
+        ///**********TRANSFORMACION**********************
+        ///
         #region Transaformacion
         public List<VTransformacion> Transformacion_Lista()
         {
@@ -845,6 +902,8 @@ namespace SERVICE
         }
 
         #endregion
+        ///**********COMPRA**********************
+        ///
         #region Compra
         public List<VCompraLista> Compra_Lista()
         {
@@ -875,6 +934,8 @@ namespace SERVICE
 
         #endregion
 
+        ///**********PLANTILLA**********************
+        ///
         #region Plantilla
 
         public bool PlantillaGuardar(VPlantilla VPlantilla, ref int id)
@@ -928,6 +989,8 @@ namespace SERVICE
 
         #endregion
 
+        ///**********VENTA**********************
+        ///
         #region Ventas
 
         public bool VentaGuardar(VVenta vVenta, ref int id)
@@ -977,6 +1040,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
     }
 }

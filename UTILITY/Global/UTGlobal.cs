@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.TipoAlmacen.view;
+using ENTITY.reg.PrecioCategoria.View;
 
 namespace UTILITY.Global
 {
@@ -47,6 +48,29 @@ namespace UTILITY.Global
 
                 combo.ValueMember = "idLibreria";
                 combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarCombo_CatPrecio(MultiColumnCombo combo, List<VPrecioCategoria> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Descrip").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descrip";
                 combo.DropDownList.DataSource = lLibreria;
                 combo.DropDownList.Refresh();
             }
@@ -169,7 +193,24 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }      
-
+         public static void MG_SeleccionarCombo_CatPrecio(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VPrecioCategoria>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
         public static void MG_CrearCarpetaImagenes(string _CarpetaRaiz, string _NombreCarpeta)
         {
             try

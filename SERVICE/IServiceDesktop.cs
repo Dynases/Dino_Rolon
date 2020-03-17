@@ -3,6 +3,7 @@ using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
 using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
+using ENTITY.com.CompraIngreso_02;
 using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
 using ENTITY.inv.Almacen.View;
@@ -216,6 +217,15 @@ namespace SERVICE
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId(int id);
         [OperationContract]
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen);
+        #endregion
+        #region Ingreso_02
+        [OperationContract]
+        bool CompraIngreso_02_Guardar(VCompraIngreso_02 Lista);
+
+        [OperationContract]
+        List<VCompraIngreso_02> CompraIngreso_02_Listar();
+        [OperationContract]
+        DataTable CompraIngreso_02_ListarTabla();
         #endregion
         ///**********SELECCION**********************
         ///

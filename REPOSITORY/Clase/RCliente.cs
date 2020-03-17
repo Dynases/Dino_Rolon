@@ -48,6 +48,7 @@ namespace REPOSITORY.Clase
                     cliente.Dias = vcliente.Dias;
                     cliente.Fecha = vcliente.Fecha;
                     cliente.Hora = vcliente.Hora;
+                    cliente.IdCategoria = vcliente.IdCategoria;
                     cliente.Usuario = vcliente.Usuario;
                     db.Cliente.Add(cliente);
                     db.SaveChanges();
@@ -90,6 +91,7 @@ namespace REPOSITORY.Clase
                     cliente.Fecha = vcliente.Fecha;
                     cliente.Hora = vcliente.Hora;
                     cliente.Usuario = vcliente.Usuario;
+                    cliente.IdCategoria = vcliente.IdCategoria;
                     db.Cliente.Attach(cliente);
                     db.Entry(cliente).State = EntityState.Modified;
                     db.SaveChanges();
@@ -274,7 +276,8 @@ namespace REPOSITORY.Clase
                                           Longittud = a.Longit,
                                           Imagen = a.Imagen,
                                           TotalCred = a.TotalCred,
-                                          Dias = a.Dias
+                                          Dias = a.Dias,
+                                          IdCategoria = a.IdCategoria,
                                       }).ToList();
                     return listResult;
                 }

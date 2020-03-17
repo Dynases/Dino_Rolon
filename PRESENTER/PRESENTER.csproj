@@ -434,6 +434,9 @@
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
     <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -589,6 +592,7 @@
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoNota.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_01.VCompraIngreso_01.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_02.VCompraIngreso_02.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
@@ -717,7 +721,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

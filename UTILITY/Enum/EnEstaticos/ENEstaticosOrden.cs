@@ -24,8 +24,7 @@ namespace UTILITY.Enum.EnEstaticos
         PRODUCTO_GRUPO5 = 5,
         PRODUCTO_UN_VENTA = 6,
         PRODUCTO_UN_PESO = 7,
-        //****COMPRA INGRESO
-        COMPRA_INGRESO_TIPO = 1,
-        COMPRA_INGRESO_RECIBIDO = 2,        
+        //****COMPRA INGRESO  
+        COMPRA_INGRESO_PLACA = 1,        
     }
 }

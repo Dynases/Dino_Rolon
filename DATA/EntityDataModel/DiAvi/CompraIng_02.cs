@@ -12,15 +12,10 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Plantilla_01
+    public partial class CompraIng_02
     {
         public int Id { get; set; }
-        public int IdProducto { get; set; }
-        public Nullable<int> Cantidad { get; set; }
-        public Nullable<decimal> Precio { get; set; }
-        public int IdPlantilla { get; set; }
-    
-        public virtual Plantilla Plantilla { get; set; }
-        public virtual Producto Producto { get; set; }
+        public int IdLibreria { get; set; }
+        public string Descripcion { get; set; }
     }
 }

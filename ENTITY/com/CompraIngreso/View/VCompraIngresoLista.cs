@@ -17,7 +17,7 @@ namespace ENTITY.com.CompraIngreso.View
         public string NumNota { get; set; }
         public System.DateTime FechaEnt { get; set; }
         public System.DateTime FechaRec { get; set; }
-        public string Placa { get; set; }
+        public int Placa { get; set; }
         public int Tipo { get; set; }
         public string CantidadSemanas { get; set; }
         public string Observacion { get; set; }

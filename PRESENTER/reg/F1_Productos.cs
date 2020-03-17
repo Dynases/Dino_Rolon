@@ -413,6 +413,7 @@ namespace PRESENTER.reg
             btn_Grupo3.Visible = false;
             btn_UnidadPeso.Visible = false;
             btn_UnidadVenta.Visible = false;
+            btn_Grupo5.Visible = false;
         }
         private void MP_ArmarComboInicial()
         {
