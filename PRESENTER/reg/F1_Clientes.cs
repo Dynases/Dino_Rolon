@@ -139,18 +139,26 @@ namespace PRESENTER.reg
         {
             LblTitulo.Text = _NombreFormulario;
             //Carga las librerias al combobox desde una lista
-            UTGlobal.MG_ArmarCombo(Cb_CliCiudad,
-                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo (Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                                 Convert.ToInt32(ENEstaticosOrden.CIUDAD_CLIENTE)).ToList());
-            UTGlobal.MG_ArmarCombo(Cb_CliFacturacion,
-                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                                 Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+            MP_CargarCombo();
             MP_IniciarMapa();
             btnMax.Visible = false;
             MP_CargarEncabezado();
             MP_InHabilitar();
         
         }
+
+        private void MP_CargarCombo()
+        {
+            UTGlobal.MG_ArmarCombo(Cb_CliCiudad,
+                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                 Convert.ToInt32(ENEstaticosOrden.CIUDAD_CLIENTE)).ToList());
+            UTGlobal.MG_ArmarCombo(Cb_CliFacturacion,
+                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                 Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+            var comboCatPrecio = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().Where(a => a.Tipo.Equals((int)ENCategoriaPrecio.VENTA)).ToList();
+            UTGlobal.MG_ArmarCombo_CatPrecio(Cb_CatPrecio, comboCatPrecio);
+        }
+
         private void MP_Map()
         {
             Gmc_Cliente.DragButton = MouseButtons.Left;
@@ -280,6 +288,7 @@ namespace PRESENTER.reg
             Txb_CliEmail1.ReadOnly = false;
             Txb_CliEmail2.ReadOnly = false;
             Cb_CliCiudad.Enabled = true;
+            Cb_CatPrecio.Enabled = true;
             Cb_CliFacturacion.Enabled = true;
             Tb_Dias.IsInputReadOnly = false;
             Tb_TotalCred.IsInputReadOnly = false;
@@ -304,6 +313,7 @@ namespace PRESENTER.reg
             Txb_CliEmail1.ReadOnly = true;
             Txb_CliEmail2.ReadOnly = true;
             Cb_CliCiudad.Enabled = false;
+            Cb_CatPrecio.Enabled = false;
             Tb_Dias.IsInputReadOnly = true;
             Tb_TotalCred.IsInputReadOnly = true;
             Cb_CliFacturacion.Enabled = false;
@@ -332,6 +342,7 @@ namespace PRESENTER.reg
             {
                 UTGlobal.MG_SeleccionarCombo(Cb_CliCiudad);
                 UTGlobal.MG_SeleccionarCombo(Cb_CliFacturacion);
+                UTGlobal.MG_SeleccionarCombo_CatPrecio(Cb_CatPrecio);
             }
         }
         private void MP_MostrarRegistro(int _Pos)
@@ -346,8 +357,8 @@ namespace PRESENTER.reg
                 Txb_CliDescripcion.Text = tabla.Descripcion;
                 Txb_CliRazonSoc.Text = tabla.RazonSocial;
                 Txb_CliNit.Text = tabla.Nit;
-                Chb_CliContado.Checked = tabla.Id == 1 ? true : false;
-                Chb_CliCredito.Checked = tabla.Id != 1 ? true : false;
+                Chb_CliContado.Checked = tabla.TipoCliente == 1 ? true : false;
+                Chb_CliCredito.Checked = tabla.TipoCliente == 0 ? true : false;
                 Txb_CliDireccion.Text = tabla.Direcccion;
                 Txb_CliContacto1.Text = tabla.Contacto1;
                 Txb_CliContacto2.Text = tabla.Contacto2;
@@ -356,6 +367,7 @@ namespace PRESENTER.reg
                 Txb_CliEmail1.Text = tabla.Email1;
                 Txb_CliEmail2.Text = tabla.Email2;
                 Cb_CliCiudad.Value = tabla.Ciudad;
+                Cb_CatPrecio.Value = tabla.IdCategoria;
                 Cb_CliFacturacion.Value = tabla.Facturacion;
                 _latitud = Convert.ToDouble(tabla.Latitud);
                 _longitud = Convert.ToDouble(tabla.Longittud);
@@ -486,6 +498,7 @@ namespace PRESENTER.reg
                 Email2 = Txb_CliEmail2.Text,
                 Ciudad = Convert.ToInt32(Cb_CliCiudad.Value),
                 Facturacion = Convert.ToInt32(Cb_CliFacturacion.Value),
+                IdCategoria  = Convert.ToInt32(Cb_CatPrecio.Value),
                 Latitud = Convert.ToDecimal(_latitud),
                 Longittud = Convert.ToDecimal(_longitud),
                 Imagen = _imagen,
@@ -649,6 +662,13 @@ namespace PRESENTER.reg
             }
             else
                 Cb_CliFacturacion.BackColor = Color.White;
+            if (Cb_CatPrecio.SelectedIndex == -1)
+            {
+                Cb_CatPrecio.BackColor = Color.Red;
+                _Error = true;
+            }
+            else
+                Cb_CatPrecio.BackColor = Color.White;
             return _Error;
         }
 
@@ -669,6 +689,123 @@ namespace PRESENTER.reg
             Tb_TotalCred.Visible = false;
             Lbl_TotalCred.Visible = false;
             Lbl_Dias.Visible = false;
+        }
+
+        private void btnFacturacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_CliFacturacion.Text == "" ? "" : Cb_CliFacturacion.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_CliFacturacion,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+                    Cb_CliFacturacion.SelectedIndex = ((List<VLibreria>)Cb_CliFacturacion.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        void MP_MostrarMensajeError(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
+
+        }
+        private void btn_Ciudad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.CIUDAD_CLIENTE));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.CIUDAD_CLIENTE),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_CliCiudad.Text == "" ? "" : Cb_CliCiudad.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_CliCiudad,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.CIUDAD_CLIENTE)).ToList());
+                    Cb_CliCiudad.SelectedIndex = ((List<VLibreria>)Cb_CliCiudad.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
+        {
+            try
+            {
+                if (combo.SelectedIndex < 0 && combo.Text != string.Empty)
+                {
+                    btn.Visible = true;
+                }
+                else
+                {
+                    btn.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+            }
+        }
+        private void Cb_CliCiudad_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_SeleccionarButtonCombo(Cb_CliCiudad, btn_Ciudad);
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void Cb_CliFacturacion_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_SeleccionarButtonCombo(Cb_CliFacturacion, btnFacturacion);
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
         }
     }
 }

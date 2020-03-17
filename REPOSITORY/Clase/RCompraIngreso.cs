@@ -62,7 +62,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }      
 
         #endregion
         #region Consulta
@@ -182,7 +182,8 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           TotalRecibido= a.TotalRecibido,
                                           TotalVendido =a.TotalVendido,
-                                          TipoCompra = a.TipoCompra
+                                          TipoCompra = a.TipoCompra,
+                                         estado= a.Estado,
                                       }).ToList();
                     return listResult;
                 }

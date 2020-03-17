@@ -30,6 +30,7 @@ namespace PRESENTER.reg
         /// </summary>
         private void InitializeComponent()
         {
+            Janus.Windows.GridEX.GridEXLayout Cb_CatPrecio_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Clientes));
             Janus.Windows.GridEX.GridEXLayout Cb_CliCiudad_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_CliFacturacion_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -53,6 +54,8 @@ namespace PRESENTER.reg
             this.Gmc_Cliente = new GMap.NET.WindowsForms.GMapControl();
             this.SuperTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Cb_CatPrecio = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.Lbl_Dias = new DevComponents.DotNetBar.LabelX();
             this.Tb_Dias = new DevComponents.Editors.DoubleInput();
             this.Lbl_TotalCred = new DevComponents.DotNetBar.LabelX();
@@ -118,6 +121,7 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).BeginInit();
             this.SuperTabControlPanel2.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_CatPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Dias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalCred)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliCiudad)).BeginInit();
@@ -128,7 +132,7 @@ namespace PRESENTER.reg
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel3);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 607);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
@@ -204,7 +208,6 @@ namespace PRESENTER.reg
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
             // 
             // btnMin
@@ -253,7 +256,7 @@ namespace PRESENTER.reg
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 580);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 582);
             // 
             // LblSubtitulo
             // 
@@ -276,7 +279,7 @@ namespace PRESENTER.reg
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 72);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1043, 535);
+            this.panel3.Size = new System.Drawing.Size(1043, 536);
             this.panel3.TabIndex = 232;
             // 
             // GPanel_Buscador
@@ -288,7 +291,7 @@ namespace PRESENTER.reg
             this.GPanel_Buscador.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Buscador.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GPanel_Buscador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Buscador.Location = new System.Drawing.Point(0, 334);
+            this.GPanel_Buscador.Location = new System.Drawing.Point(0, 335);
             this.GPanel_Buscador.Name = "GPanel_Buscador";
             this.GPanel_Buscador.Size = new System.Drawing.Size(1043, 201);
             // 
@@ -327,7 +330,7 @@ namespace PRESENTER.reg
             this.Dgv_Buscador2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Buscador2.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Buscador2.Name = "Dgv_Buscador2";
-            this.Dgv_Buscador2.Size = new System.Drawing.Size(1037, 173);
+            this.Dgv_Buscador2.Size = new System.Drawing.Size(1037, 175);
             this.Dgv_Buscador2.TabIndex = 0;
             this.Dgv_Buscador2.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Buscador_EditingCell);
             this.Dgv_Buscador2.SelectionChanged += new System.EventHandler(this.Dgv_Buscador_SelectionChanged);
@@ -400,7 +403,7 @@ namespace PRESENTER.reg
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.SelectedTabIndex = 2;
-            this.superTabControl2.Size = new System.Drawing.Size(318, 265);
+            this.superTabControl2.Size = new System.Drawing.Size(318, 267);
             this.superTabControl2.TabFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.TabIndex = 223;
             this.superTabControl2.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -414,9 +417,9 @@ namespace PRESENTER.reg
             // 
             this.SuperTabControlPanel1.Controls.Add(this.grayuda);
             this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 27);
+            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 25);
             this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(318, 238);
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(318, 242);
             this.SuperTabControlPanel1.TabIndex = 1;
             this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
             // 
@@ -425,7 +428,7 @@ namespace PRESENTER.reg
             this.grayuda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grayuda.Location = new System.Drawing.Point(0, 0);
             this.grayuda.Name = "grayuda";
-            this.grayuda.Size = new System.Drawing.Size(318, 238);
+            this.grayuda.Size = new System.Drawing.Size(318, 242);
             this.grayuda.TabIndex = 0;
             // 
             // SuperTabItem1
@@ -589,6 +592,8 @@ namespace PRESENTER.reg
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_CatPrecio);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX16);
             this.GPanel_DatosGenerales.Controls.Add(this.Lbl_Dias);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Dias);
             this.GPanel_DatosGenerales.Controls.Add(this.Lbl_TotalCred);
@@ -662,6 +667,37 @@ namespace PRESENTER.reg
             this.GPanel_DatosGenerales.TabIndex = 78;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
             // 
+            // Cb_CatPrecio
+            // 
+            Cb_CatPrecio_DesignTimeLayout.LayoutString = resources.GetString("Cb_CatPrecio_DesignTimeLayout.LayoutString");
+            this.Cb_CatPrecio.DesignTimeLayout = Cb_CatPrecio_DesignTimeLayout;
+            this.Cb_CatPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_CatPrecio.Location = new System.Drawing.Point(408, 12);
+            this.Cb_CatPrecio.Name = "Cb_CatPrecio";
+            this.Cb_CatPrecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_CatPrecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_CatPrecio.SelectedIndex = -1;
+            this.Cb_CatPrecio.SelectedItem = null;
+            this.Cb_CatPrecio.Size = new System.Drawing.Size(214, 22);
+            this.Cb_CatPrecio.TabIndex = 336;
+            this.Cb_CatPrecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX16
+            // 
+            this.labelX16.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX16.Location = new System.Drawing.Point(337, 10);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX16.Size = new System.Drawing.Size(88, 23);
+            this.labelX16.TabIndex = 335;
+            this.labelX16.Text = "Cat. Precio";
+            // 
             // Lbl_Dias
             // 
             this.Lbl_Dias.BackColor = System.Drawing.Color.Transparent;
@@ -692,7 +728,7 @@ namespace PRESENTER.reg
             this.Tb_Dias.Location = new System.Drawing.Point(543, 105);
             this.Tb_Dias.MinValue = 0D;
             this.Tb_Dias.Name = "Tb_Dias";
-            this.Tb_Dias.Size = new System.Drawing.Size(79, 24);
+            this.Tb_Dias.Size = new System.Drawing.Size(79, 22);
             this.Tb_Dias.TabIndex = 333;
             this.Tb_Dias.Visible = false;
             this.Tb_Dias.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
@@ -727,7 +763,7 @@ namespace PRESENTER.reg
             this.Tb_TotalCred.Location = new System.Drawing.Point(403, 103);
             this.Tb_TotalCred.MinValue = 0D;
             this.Tb_TotalCred.Name = "Tb_TotalCred";
-            this.Tb_TotalCred.Size = new System.Drawing.Size(79, 24);
+            this.Tb_TotalCred.Size = new System.Drawing.Size(79, 22);
             this.Tb_TotalCred.TabIndex = 331;
             this.Tb_TotalCred.Visible = false;
             this.Tb_TotalCred.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
@@ -745,6 +781,7 @@ namespace PRESENTER.reg
             this.btnFacturacion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnFacturacion.TabIndex = 330;
             this.btnFacturacion.Visible = false;
+            this.btnFacturacion.Click += new System.EventHandler(this.btnFacturacion_Click);
             // 
             // btn_Ciudad
             // 
@@ -758,6 +795,7 @@ namespace PRESENTER.reg
             this.btn_Ciudad.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_Ciudad.TabIndex = 329;
             this.btn_Ciudad.Visible = false;
+            this.btn_Ciudad.Click += new System.EventHandler(this.btn_Ciudad_Click);
             // 
             // Cb_CliCiudad
             // 
@@ -770,9 +808,10 @@ namespace PRESENTER.reg
             this.Cb_CliCiudad.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_CliCiudad.SelectedIndex = -1;
             this.Cb_CliCiudad.SelectedItem = null;
-            this.Cb_CliCiudad.Size = new System.Drawing.Size(129, 24);
+            this.Cb_CliCiudad.Size = new System.Drawing.Size(129, 22);
             this.Cb_CliCiudad.TabIndex = 328;
             this.Cb_CliCiudad.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_CliCiudad.ValueChanged += new System.EventHandler(this.Cb_CliCiudad_ValueChanged);
             // 
             // Cb_CliFacturacion
             // 
@@ -785,9 +824,10 @@ namespace PRESENTER.reg
             this.Cb_CliFacturacion.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_CliFacturacion.SelectedIndex = -1;
             this.Cb_CliFacturacion.SelectedItem = null;
-            this.Cb_CliFacturacion.Size = new System.Drawing.Size(129, 24);
+            this.Cb_CliFacturacion.Size = new System.Drawing.Size(129, 22);
             this.Cb_CliFacturacion.TabIndex = 328;
             this.Cb_CliFacturacion.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_CliFacturacion.ValueChanged += new System.EventHandler(this.Cb_CliFacturacion_ValueChanged);
             // 
             // Chb_CliContado
             // 
@@ -837,7 +877,7 @@ namespace PRESENTER.reg
             this.Txb_CliNit.Location = new System.Drawing.Point(363, 73);
             this.Txb_CliNit.Name = "Txb_CliNit";
             this.Txb_CliNit.PreventEnterBeep = true;
-            this.Txb_CliNit.Size = new System.Drawing.Size(119, 25);
+            this.Txb_CliNit.Size = new System.Drawing.Size(119, 23);
             this.Txb_CliNit.TabIndex = 5;
             // 
             // Txb_CliCodSpyre
@@ -853,7 +893,7 @@ namespace PRESENTER.reg
             this.Txb_CliCodSpyre.Location = new System.Drawing.Point(262, 14);
             this.Txb_CliCodSpyre.Name = "Txb_CliCodSpyre";
             this.Txb_CliCodSpyre.PreventEnterBeep = true;
-            this.Txb_CliCodSpyre.Size = new System.Drawing.Size(66, 25);
+            this.Txb_CliCodSpyre.Size = new System.Drawing.Size(66, 23);
             this.Txb_CliCodSpyre.TabIndex = 2;
             // 
             // Txb_CliDireccion
@@ -869,7 +909,7 @@ namespace PRESENTER.reg
             this.Txb_CliDireccion.Location = new System.Drawing.Point(101, 133);
             this.Txb_CliDireccion.Name = "Txb_CliDireccion";
             this.Txb_CliDireccion.PreventEnterBeep = true;
-            this.Txb_CliDireccion.Size = new System.Drawing.Size(381, 25);
+            this.Txb_CliDireccion.Size = new System.Drawing.Size(381, 23);
             this.Txb_CliDireccion.TabIndex = 8;
             // 
             // Txb_CliTel2
@@ -885,7 +925,7 @@ namespace PRESENTER.reg
             this.Txb_CliTel2.Location = new System.Drawing.Point(338, 196);
             this.Txb_CliTel2.Name = "Txb_CliTel2";
             this.Txb_CliTel2.PreventEnterBeep = true;
-            this.Txb_CliTel2.Size = new System.Drawing.Size(144, 25);
+            this.Txb_CliTel2.Size = new System.Drawing.Size(144, 23);
             this.Txb_CliTel2.TabIndex = 13;
             // 
             // Txb_CliEmail2
@@ -901,7 +941,7 @@ namespace PRESENTER.reg
             this.Txb_CliEmail2.Location = new System.Drawing.Point(543, 193);
             this.Txb_CliEmail2.Name = "Txb_CliEmail2";
             this.Txb_CliEmail2.PreventEnterBeep = true;
-            this.Txb_CliEmail2.Size = new System.Drawing.Size(167, 25);
+            this.Txb_CliEmail2.Size = new System.Drawing.Size(167, 23);
             this.Txb_CliEmail2.TabIndex = 14;
             // 
             // Txb_CliContacto2
@@ -917,7 +957,7 @@ namespace PRESENTER.reg
             this.Txb_CliContacto2.Location = new System.Drawing.Point(101, 196);
             this.Txb_CliContacto2.Name = "Txb_CliContacto2";
             this.Txb_CliContacto2.PreventEnterBeep = true;
-            this.Txb_CliContacto2.Size = new System.Drawing.Size(160, 25);
+            this.Txb_CliContacto2.Size = new System.Drawing.Size(160, 23);
             this.Txb_CliContacto2.TabIndex = 12;
             // 
             // Txb_CliTel1
@@ -933,7 +973,7 @@ namespace PRESENTER.reg
             this.Txb_CliTel1.Location = new System.Drawing.Point(338, 165);
             this.Txb_CliTel1.Name = "Txb_CliTel1";
             this.Txb_CliTel1.PreventEnterBeep = true;
-            this.Txb_CliTel1.Size = new System.Drawing.Size(144, 25);
+            this.Txb_CliTel1.Size = new System.Drawing.Size(144, 23);
             this.Txb_CliTel1.TabIndex = 10;
             // 
             // Txb_CliEmail1
@@ -949,7 +989,7 @@ namespace PRESENTER.reg
             this.Txb_CliEmail1.Location = new System.Drawing.Point(543, 162);
             this.Txb_CliEmail1.Name = "Txb_CliEmail1";
             this.Txb_CliEmail1.PreventEnterBeep = true;
-            this.Txb_CliEmail1.Size = new System.Drawing.Size(167, 25);
+            this.Txb_CliEmail1.Size = new System.Drawing.Size(167, 23);
             this.Txb_CliEmail1.TabIndex = 11;
             // 
             // Txb_CliContacto1
@@ -965,7 +1005,7 @@ namespace PRESENTER.reg
             this.Txb_CliContacto1.Location = new System.Drawing.Point(101, 165);
             this.Txb_CliContacto1.Name = "Txb_CliContacto1";
             this.Txb_CliContacto1.PreventEnterBeep = true;
-            this.Txb_CliContacto1.Size = new System.Drawing.Size(160, 25);
+            this.Txb_CliContacto1.Size = new System.Drawing.Size(160, 23);
             this.Txb_CliContacto1.TabIndex = 9;
             // 
             // Txb_CliRazonSoc
@@ -981,7 +1021,7 @@ namespace PRESENTER.reg
             this.Txb_CliRazonSoc.Location = new System.Drawing.Point(103, 73);
             this.Txb_CliRazonSoc.Name = "Txb_CliRazonSoc";
             this.Txb_CliRazonSoc.PreventEnterBeep = true;
-            this.Txb_CliRazonSoc.Size = new System.Drawing.Size(225, 25);
+            this.Txb_CliRazonSoc.Size = new System.Drawing.Size(225, 23);
             this.Txb_CliRazonSoc.TabIndex = 4;
             // 
             // Txb_CliDescripcion
@@ -997,7 +1037,7 @@ namespace PRESENTER.reg
             this.Txb_CliDescripcion.Location = new System.Drawing.Point(103, 42);
             this.Txb_CliDescripcion.Name = "Txb_CliDescripcion";
             this.Txb_CliDescripcion.PreventEnterBeep = true;
-            this.Txb_CliDescripcion.Size = new System.Drawing.Size(225, 25);
+            this.Txb_CliDescripcion.Size = new System.Drawing.Size(225, 23);
             this.Txb_CliDescripcion.TabIndex = 3;
             // 
             // Txb_CliCod
@@ -1014,7 +1054,7 @@ namespace PRESENTER.reg
             this.Txb_CliCod.Location = new System.Drawing.Point(103, 12);
             this.Txb_CliCod.Name = "Txb_CliCod";
             this.Txb_CliCod.PreventEnterBeep = true;
-            this.Txb_CliCod.Size = new System.Drawing.Size(66, 25);
+            this.Txb_CliCod.Size = new System.Drawing.Size(66, 23);
             this.Txb_CliCod.TabIndex = 1;
             // 
             // labelX14
@@ -1238,7 +1278,7 @@ namespace PRESENTER.reg
             this.labelX7.Location = new System.Drawing.Point(178, 16);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX7.Size = new System.Drawing.Size(86, 20);
+            this.labelX7.Size = new System.Drawing.Size(78, 18);
             this.labelX7.TabIndex = 225;
             this.labelX7.Text = "Código Spyre";
             // 
@@ -1255,7 +1295,7 @@ namespace PRESENTER.reg
             this.LabelX1.Location = new System.Drawing.Point(9, 14);
             this.LabelX1.Name = "LabelX1";
             this.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.LabelX1.Size = new System.Drawing.Size(97, 20);
+            this.LabelX1.Size = new System.Drawing.Size(88, 18);
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Código Interno";
             // 
@@ -1321,6 +1361,7 @@ namespace PRESENTER.reg
             this.SuperTabControlPanel2.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_CatPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Dias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalCred)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliCiudad)).EndInit();
@@ -1390,6 +1431,8 @@ namespace PRESENTER.reg
         internal DevComponents.Editors.DoubleInput Tb_Dias;
         internal DevComponents.DotNetBar.LabelX Lbl_TotalCred;
         internal DevComponents.Editors.DoubleInput Tb_TotalCred;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_CatPrecio;
+        internal DevComponents.DotNetBar.LabelX labelX16;
         //private BunifuCustomLabel bunifuCustomLabel1;
         //private BunifuTextbox bunifuTextbox1;
     }

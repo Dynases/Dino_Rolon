@@ -438,7 +438,7 @@ namespace PRESENTER.com
                     Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
                     Tb_FechaEnt.Value = lista.FechaEntrega;
                     Tb_FechaRec.Value = lista.FechaRecepcion;
-                    Tb_Placa.Text = lista.Placa == "" ? "" : lista.Placa;
+                    //Tb_Placa.Text = lista.Placa;
                     tb_Proveedor.Text = lista.Proveedor.ToString();
                     Cb_Tipo.Value = (int)lista.Tipo;
                     Tb_Edad.Text = lista.Edad.ToString();
@@ -479,8 +479,16 @@ namespace PRESENTER.com
                 Tb_TCantidad.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
                 Tb_Total.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
                 //Tb_Selecc_TPrecio.Value = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Precio"], AggregateFunction.Sum)) / Dgv_Seleccion.RowCount;
-                //Merma              
-                Tb_TPrecio.Value = Tb_Total.Value / Tb_TCantidad.Value;
+                //Merma   
+                if (Tb_Total.Value == 0)
+                {
+                    Tb_TPrecio.Value = 0;
+                }
+                else
+                {
+                    Tb_TPrecio.Value = Tb_Total.Value / Tb_TCantidad.Value;
+                }
+                
                 Tb_Merma.Value = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
                 tb_MermaPorc.Value = (Tb_Merma.Value * 100 )/ Tb_Recep_TCantidad.Value;
             }

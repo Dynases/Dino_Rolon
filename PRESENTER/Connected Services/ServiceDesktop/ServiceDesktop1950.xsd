@@ -40,7 +40,7 @@
       <xs:element minOccurs="0" name="IdProvee_01" type="xs:int" />
       <xs:element minOccurs="0" name="NumNota" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Observacion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Placa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Placa" type="xs:int" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Recibido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Tipo" type="xs:int" />

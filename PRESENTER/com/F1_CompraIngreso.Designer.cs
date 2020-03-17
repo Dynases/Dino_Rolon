@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_CompraIngreso));
+            Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnFacturacion = new DevComponents.DotNetBar.ButtonX();
+            this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.LblSucursal = new DevComponents.DotNetBar.LabelX();
             this.Sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
@@ -52,7 +55,6 @@
             this.Tb_FechaRec = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Tb_FechaEnt = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Tb_Observacion = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.Tb_Placa = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_NUmGranja = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_Cod = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
@@ -91,6 +93,7 @@
             this.PanelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
@@ -265,6 +268,8 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.btnFacturacion);
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Almacen);
             this.GPanel_DatosGenerales.Controls.Add(this.LblSucursal);
             this.GPanel_DatosGenerales.Controls.Add(this.Sw_Tipo);
@@ -284,7 +289,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaRec);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaEnt);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Observacion);
-            this.GPanel_DatosGenerales.Controls.Add(this.Tb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_NUmGranja);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Cod);
             this.GPanel_DatosGenerales.Controls.Add(this.LabelX3);
@@ -327,6 +331,42 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 80;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // btnFacturacion
+            // 
+            this.btnFacturacion.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnFacturacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFacturacion.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnFacturacion.Image = global::PRESENTER.Properties.Resources.AGREGAR;
+            this.btnFacturacion.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnFacturacion.Location = new System.Drawing.Point(310, 133);
+            this.btnFacturacion.Name = "btnFacturacion";
+            this.btnFacturacion.Size = new System.Drawing.Size(28, 27);
+            this.btnFacturacion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnFacturacion.TabIndex = 374;
+            this.btnFacturacion.Visible = false;
+            this.btnFacturacion.Click += new System.EventHandler(this.btnFacturacion_Click);
+            // 
+            // Cb_Placa
+            // 
+            this.Cb_Placa.BackColor = System.Drawing.Color.White;
+            Cb_Placa_DesignTimeLayout.LayoutString = resources.GetString("Cb_Placa_DesignTimeLayout.LayoutString");
+            this.Cb_Placa.DesignTimeLayout = Cb_Placa_DesignTimeLayout;
+            this.Cb_Placa.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Placa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Placa.Location = new System.Drawing.Point(108, 135);
+            this.Cb_Placa.Name = "Cb_Placa";
+            this.Cb_Placa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Placa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Placa.SelectedIndex = -1;
+            this.Cb_Placa.SelectedItem = null;
+            this.Cb_Placa.Size = new System.Drawing.Size(194, 22);
+            this.Cb_Placa.TabIndex = 373;
+            this.Cb_Placa.Tag = "1";
+            this.Cb_Placa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_Placa.ValueChanged += new System.EventHandler(this.Cb_Placa_ValueChanged);
+            this.Cb_Placa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cb_Placa_KeyDown);
             // 
             // Cb_Almacen
             // 
@@ -703,22 +743,6 @@
             this.Tb_Observacion.PreventEnterBeep = true;
             this.Tb_Observacion.Size = new System.Drawing.Size(196, 57);
             this.Tb_Observacion.TabIndex = 8;
-            // 
-            // Tb_Placa
-            // 
-            this.Tb_Placa.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.Tb_Placa.Border.Class = "TextBoxBorder";
-            this.Tb_Placa.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Placa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_Placa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Placa.Location = new System.Drawing.Point(108, 134);
-            this.Tb_Placa.Name = "Tb_Placa";
-            this.Tb_Placa.PreventEnterBeep = true;
-            this.Tb_Placa.Size = new System.Drawing.Size(196, 23);
-            this.Tb_Placa.TabIndex = 5;
             // 
             // Tb_NUmGranja
             // 
@@ -1120,6 +1144,7 @@
             this.panel1.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
@@ -1148,7 +1173,6 @@
         private System.Windows.Forms.Panel panel3;
         private DevComponents.DotNetBar.Controls.GroupPanel GPanel_DatosGenerales;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_Observacion;
-        private DevComponents.DotNetBar.Controls.TextBoxX Tb_Placa;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_NUmGranja;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_Cod;
         internal DevComponents.DotNetBar.LabelX LabelX3;
@@ -1186,5 +1210,7 @@
         internal DevComponents.DotNetBar.Controls.SwitchButton Sw_Tipo;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Almacen;
         internal DevComponents.DotNetBar.LabelX LblSucursal;
+        internal DevComponents.DotNetBar.ButtonX btnFacturacion;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Placa;
     }
 }

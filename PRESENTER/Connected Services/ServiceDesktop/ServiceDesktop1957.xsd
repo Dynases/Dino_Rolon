@@ -21,6 +21,7 @@
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCategoria" type="xs:int" />
       <xs:element minOccurs="0" name="IdSpyre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Latitud" type="xs:decimal" />

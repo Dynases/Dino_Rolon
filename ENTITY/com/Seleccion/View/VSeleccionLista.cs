@@ -11,7 +11,7 @@ namespace ENTITY.com.Seleccion.View
         public string Granja { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaRecepcion { get; set; }
-        public string Placa { get; set; }
+        public int Placa { get; set; }
         public string Proveedor { get; set; }
         public int Tipo { get; set; }
         public string Edad { get; set; }
