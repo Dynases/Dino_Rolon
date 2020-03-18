@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using ENTITY.com.CompraIngreso_02;
+using UTILITY.Enum;
 
 namespace SERVICE
 {
@@ -965,7 +966,7 @@ namespace SERVICE
             }
         }
 
-        public List<VPlantilla> PlantillaListar(UTILITY.Enum.ENConceptoPlantilla concepto)
+        public List<VPlantilla> PlantillaListar(ENConceptoPlantilla concepto)
         {
             try
             {

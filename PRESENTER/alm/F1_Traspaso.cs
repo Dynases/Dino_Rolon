@@ -431,7 +431,7 @@ namespace PRESENTER.alm
         private void MP_CargarPlantillas(int AlmacenOrigen, int AlmacenDestino)
         {
             try
-            {
+            {                
                 plantillaIndex = 0;
                 listaPlantillas = new ServiceDesktop.ServiceDesktopClient()
                                                     .PlantillaListar(ENConceptoPlantilla.Traspaso)

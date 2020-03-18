@@ -53,7 +53,7 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\..\..\DINASES\Librerias\Bunifu\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -83,10 +83,10 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\Rolon\UTILITY\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.Design, Version=12.5.0.2, Culture=neutral, PublicKeyToken=2c9ff1fddc42653c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\librerias\DotNet\DevComponents.DotNetBar.Design.dll</HintPath>
@@ -217,6 +217,12 @@
     <Compile Include="alm\F1_Almacen.Designer.cs">
       <DependentUpon>F1_Almacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="alm\F1_ReporteKardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F1_ReporteKardex.Designer.cs">
+      <DependentUpon>F1_ReporteKardex.cs</DependentUpon>
+    </Compile>
     <Compile Include="alm\F1_Sucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Almacen.resx">
       <DependentUpon>F1_Almacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alm\F1_ReporteKardex.resx">
+      <DependentUpon>F1_ReporteKardex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Sucursal.resx">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
@@ -600,6 +609,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VDetalleKardex.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />

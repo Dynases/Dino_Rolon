@@ -205,71 +205,79 @@ namespace PRESENTER.reg
         }
         private void MP_CargarEncabezado()
         {
-            var result = new ServiceDesktop.ServiceDesktopClient().ClientesListar();
-            Dgv_Buscador2.DataSource = result;
-            Dgv_Buscador2.RetrieveStructure();
-            Dgv_Buscador2.AlternatingColors = true;
+            try
+            {
+                var result = new ServiceDesktop.ServiceDesktopClient().ClientesListar().ToList();
+                Dgv_Buscador2.DataSource = result;
+                Dgv_Buscador2.RetrieveStructure();
+                Dgv_Buscador2.AlternatingColors = true;
 
-            Dgv_Buscador2.RootTable.Columns[0].Key = "id";
-            Dgv_Buscador2.RootTable.Columns[0].Visible = false;
+                Dgv_Buscador2.RootTable.Columns[0].Key = "id";
+                Dgv_Buscador2.RootTable.Columns[0].Visible = false;
 
-            Dgv_Buscador2.RootTable.Columns[1].Key = "Descripcion";
-            Dgv_Buscador2.RootTable.Columns[1].Caption = "Descripcion";
-            Dgv_Buscador2.RootTable.Columns[1].Width = 250;
-            Dgv_Buscador2.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[1].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[1].Visible = true;
-
-
-            Dgv_Buscador2.RootTable.Columns[2].Key = "RazonSocial";
-            Dgv_Buscador2.RootTable.Columns[2].Caption = "RazonSocial";
-            Dgv_Buscador2.RootTable.Columns[2].Width = 250;
-            Dgv_Buscador2.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[2].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[2].Visible = true;
-
-            Dgv_Buscador2.RootTable.Columns[3].Key = "Ciudad";
-            Dgv_Buscador2.RootTable.Columns[3].Caption = "Ciudad";
-            Dgv_Buscador2.RootTable.Columns[3].Width = 200;
-            Dgv_Buscador2.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[3].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[3].Visible = false;
+                Dgv_Buscador2.RootTable.Columns[1].Key = "Descripcion";
+                Dgv_Buscador2.RootTable.Columns[1].Caption = "Descripcion";
+                Dgv_Buscador2.RootTable.Columns[1].Width = 250;
+                Dgv_Buscador2.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[1].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[1].Visible = true;
 
 
-            Dgv_Buscador2.RootTable.Columns[4].Key = "NombreCiudad";
-            Dgv_Buscador2.RootTable.Columns[4].Caption = "Ciudad";
-            Dgv_Buscador2.RootTable.Columns[4].Width = 200;
-            Dgv_Buscador2.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[4].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[4].Visible = true;
+                Dgv_Buscador2.RootTable.Columns[2].Key = "RazonSocial";
+                Dgv_Buscador2.RootTable.Columns[2].Caption = "RazonSocial";
+                Dgv_Buscador2.RootTable.Columns[2].Width = 250;
+                Dgv_Buscador2.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[2].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[2].Visible = true;
 
-            Dgv_Buscador2.RootTable.Columns[5].Key = "Contacto1";
-            Dgv_Buscador2.RootTable.Columns[5].Caption = "Contacto1";
-            Dgv_Buscador2.RootTable.Columns[5].Width = 200;
-            Dgv_Buscador2.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[5].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[5].Visible = true;
+                Dgv_Buscador2.RootTable.Columns[3].Key = "Ciudad";
+                Dgv_Buscador2.RootTable.Columns[3].Caption = "Ciudad";
+                Dgv_Buscador2.RootTable.Columns[3].Width = 200;
+                Dgv_Buscador2.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[3].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[3].Visible = false;
 
-            Dgv_Buscador2.RootTable.Columns[6].Key = "Contacto2";
-            Dgv_Buscador2.RootTable.Columns[6].Caption = "Contacto2";
-            Dgv_Buscador2.RootTable.Columns[6].Width = 200;
-            Dgv_Buscador2.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            Dgv_Buscador2.RootTable.Columns[6].CellStyle.FontSize = 8;
-            Dgv_Buscador2.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            Dgv_Buscador2.RootTable.Columns[6].Visible = true;
 
-            //Habilitar filtradores
-            Dgv_Buscador2.DefaultFilterRowComparison = FilterConditionOperator.Contains;
-            Dgv_Buscador2.FilterMode = FilterMode.Automatic;
-            Dgv_Buscador2.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
-            //Dgv_Buscador22.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
-            Dgv_Buscador2.GroupByBoxVisible = false;
-            Dgv_Buscador2.VisualStyle = VisualStyle.Office2007;
+                Dgv_Buscador2.RootTable.Columns[4].Key = "NombreCiudad";
+                Dgv_Buscador2.RootTable.Columns[4].Caption = "Ciudad";
+                Dgv_Buscador2.RootTable.Columns[4].Width = 200;
+                Dgv_Buscador2.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[4].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[4].Visible = true;
+
+                Dgv_Buscador2.RootTable.Columns[5].Key = "Contacto1";
+                Dgv_Buscador2.RootTable.Columns[5].Caption = "Contacto1";
+                Dgv_Buscador2.RootTable.Columns[5].Width = 200;
+                Dgv_Buscador2.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[5].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[5].Visible = true;
+
+                Dgv_Buscador2.RootTable.Columns[6].Key = "Contacto2";
+                Dgv_Buscador2.RootTable.Columns[6].Caption = "Contacto2";
+                Dgv_Buscador2.RootTable.Columns[6].Width = 200;
+                Dgv_Buscador2.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Buscador2.RootTable.Columns[6].CellStyle.FontSize = 8;
+                Dgv_Buscador2.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Buscador2.RootTable.Columns[6].Visible = true;
+
+                //Habilitar filtradores
+                Dgv_Buscador2.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                Dgv_Buscador2.FilterMode = FilterMode.Automatic;
+                Dgv_Buscador2.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
+                //Dgv_Buscador22.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                Dgv_Buscador2.GroupByBoxVisible = false;
+                Dgv_Buscador2.VisualStyle = VisualStyle.Office2007;
+            }
+            catch (Exception EX)
+            {
+                MP_MostrarMensajeError(EX.Message);
+            }
+            
         }
         private void MP_Habilitar()
         {
