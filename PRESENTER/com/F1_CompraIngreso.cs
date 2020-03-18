@@ -292,7 +292,7 @@ namespace PRESENTER.com
             {
 
             
-            if (Tb_FechaEnt.IsInputReadOnly == false)
+            if (Tb_FechaEnt.Enabled == true)
             {
                 if (e.KeyData == Keys.Enter)
                 {

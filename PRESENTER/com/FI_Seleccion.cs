@@ -442,6 +442,7 @@ namespace PRESENTER.com
                     Tb_FechaEnt.Value = lista.FechaEntrega;
                     Tb_FechaRec.Value = lista.FechaRecepcion;
                     //Tb_Placa.Text = lista.Placa;
+                    Cb_Placa.Value = (int)lista.Placa;
                     tb_Proveedor.Text = lista.Proveedor.ToString();
                     Cb_Tipo.Value = (int)lista.Tipo;
                     Tb_Edad.Text = lista.Edad.ToString();
@@ -639,7 +640,7 @@ namespace PRESENTER.com
                         Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
                         Cb_Tipo.Value = Row.Cells["Tipo"].Value;
                         tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
-                        Cb_Placa.Value = Row.Cells["Placa"].Value.ToString();
+                        Cb_Placa.Value = Row.Cells["Placa"].Value;
                         Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
                         Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
                         _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
