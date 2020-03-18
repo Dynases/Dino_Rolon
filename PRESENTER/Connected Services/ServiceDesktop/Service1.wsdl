@@ -169,6 +169,12 @@
   <wsdl:message name="IServiceDesktop_PrductoListarEncabezado_OutputMessage">
     <wsdl:part name="parameters" element="tns:PrductoListarEncabezadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarDetalleKardex_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDetalleKardex" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarDetalleKardex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDetalleKardexResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_AlmacenGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:AlmacenGuardar" />
   </wsdl:message>
@@ -573,6 +579,10 @@
     <wsdl:operation name="PrductoListarEncabezado">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" message="tns:IServiceDesktop_PrductoListarEncabezado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse" message="tns:IServiceDesktop_PrductoListarEncabezado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDetalleKardex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" message="tns:IServiceDesktop_ListarDetalleKardex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse" message="tns:IServiceDesktop_ListarDetalleKardex_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AlmacenGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar" message="tns:IServiceDesktop_AlmacenGuardar_InputMessage" />
@@ -985,6 +995,15 @@
     </wsdl:operation>
     <wsdl:operation name="PrductoListarEncabezado">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDetalleKardex">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

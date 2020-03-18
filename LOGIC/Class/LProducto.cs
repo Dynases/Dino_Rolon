@@ -1,4 +1,5 @@
-﻿using ENTITY.Producto.View;
+﻿using ENTITY.inv.Almacen.View;
+using ENTITY.Producto.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -14,10 +15,14 @@ namespace LOGIC.Class
     public class LProducto
     {
         protected IProducto iProducto;
+        protected ITI0021 iTI0021;
+
         public LProducto()
         {
             iProducto = new RProducto();
+            iTI0021 = new RTI0021();
         }
+
         #region Transaciones
         public bool Guardar(VProducto vProducto, ref int id)
         {
@@ -68,7 +73,9 @@ namespace LOGIC.Class
             }
         }
         #endregion
+
         #region Consultas
+
         public List<VProducto> ListarXId(int id)
         {
             try
@@ -109,6 +116,18 @@ namespace LOGIC.Class
             try
             {
                 return iProducto.ListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
+        {
+            try
+            {
+                return this.iTI0021.ListarDetalleKardex(inicio, fin, IdAlmacen);
             }
             catch (Exception ex)
             {

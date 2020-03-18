@@ -110,6 +110,10 @@ namespace SERVICE
 
         [OperationContract]
         DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+
+        [OperationContract]
+        List<VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
+
         #endregion
         ///**********ALMACEN************************
         ///
@@ -307,7 +311,7 @@ namespace SERVICE
         bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId);
 
         [OperationContract]
-        List<VVenta_01> VentaDetalleListar(int VentaId);
+        List<VVenta_01> VentaDetalleListar(int VentaId);        
 
         #endregion
     }
