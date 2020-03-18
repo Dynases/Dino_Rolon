@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelDerecho = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,13 +70,13 @@
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.Tb_FechaRec = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Tb_FechaEnt = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.Tb_Placa = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_NUmGranja = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_IdCompraIngreso = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
+            this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
@@ -113,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelContenidoRegistro
@@ -662,6 +664,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.tb_FechaSeleccion);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX14);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Almacen);
@@ -677,7 +680,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.labelX5);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaRec);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaEnt);
-            this.GPanel_DatosGenerales.Controls.Add(this.Tb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_NUmGranja);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_IdCompraIngreso);
             this.GPanel_DatosGenerales.Controls.Add(this.LabelX3);
@@ -1058,22 +1060,6 @@
             this.Tb_FechaEnt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Tb_FechaEnt.TabIndex = 3;
             // 
-            // Tb_Placa
-            // 
-            this.Tb_Placa.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.Tb_Placa.Border.Class = "TextBoxBorder";
-            this.Tb_Placa.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Placa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_Placa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Placa.Location = new System.Drawing.Point(110, 188);
-            this.Tb_Placa.Name = "Tb_Placa";
-            this.Tb_Placa.PreventEnterBeep = true;
-            this.Tb_Placa.Size = new System.Drawing.Size(196, 23);
-            this.Tb_Placa.TabIndex = 5;
-            // 
             // Tb_NUmGranja
             // 
             this.Tb_NUmGranja.BackColor = System.Drawing.SystemColors.Window;
@@ -1172,6 +1158,25 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
+            // Cb_Placa
+            // 
+            this.Cb_Placa.BackColor = System.Drawing.Color.White;
+            Cb_Placa_DesignTimeLayout.LayoutString = resources.GetString("Cb_Placa_DesignTimeLayout.LayoutString");
+            this.Cb_Placa.DesignTimeLayout = Cb_Placa_DesignTimeLayout;
+            this.Cb_Placa.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Placa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Placa.Location = new System.Drawing.Point(109, 185);
+            this.Cb_Placa.Name = "Cb_Placa";
+            this.Cb_Placa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Placa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Placa.SelectedIndex = -1;
+            this.Cb_Placa.SelectedItem = null;
+            this.Cb_Placa.Size = new System.Drawing.Size(194, 22);
+            this.Cb_Placa.TabIndex = 374;
+            this.Cb_Placa.Tag = "1";
+            this.Cb_Placa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
             // FI_Seleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1220,6 +1225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1241,7 +1247,6 @@
         internal DevComponents.DotNetBar.LabelX labelX5;
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput Tb_FechaRec;
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput Tb_FechaEnt;
-        private DevComponents.DotNetBar.Controls.TextBoxX Tb_Placa;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_NUmGranja;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_IdCompraIngreso;
         internal DevComponents.DotNetBar.LabelX LabelX3;
@@ -1271,5 +1276,6 @@
         internal DevComponents.DotNetBar.ButtonX btn_Seleccionar;
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput tb_FechaSeleccion;
         internal DevComponents.DotNetBar.LabelX labelX14;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Placa;
     }
 }

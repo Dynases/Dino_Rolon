@@ -312,6 +312,9 @@ namespace PRESENTER.com
             UTGlobal.MG_ArmarCombo(Cb_Tipo,
                                    new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
                                                                                                  Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2)).ToList());
+            UTGlobal.MG_ArmarCombo(Cb_Placa,
+                                new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                                                                                              Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {
@@ -378,13 +381,13 @@ namespace PRESENTER.com
             Tb_Id.ReadOnly = true;
             Tb_IdCompraIngreso.ReadOnly = true;
             Tb_NUmGranja.ReadOnly = true;
-            Tb_Placa.ReadOnly = true;
+            Cb_Placa.ReadOnly = true;
             Tb_Edad.ReadOnly = true;
             tb_Proveedor.ReadOnly = true;
             _Limpiar = false;          
             Dgv_Detalle.Enabled = false;
             Dgv_Seleccion.Enabled = false;
-
+            Cb_Almacen.ReadOnly = true;
         }
         private void MP_Limpiar()
         {
@@ -393,14 +396,14 @@ namespace PRESENTER.com
                 Tb_Id.Clear();
                 Tb_IdCompraIngreso.Clear();
                 Tb_NUmGranja.Clear();
-                Tb_Placa.Clear();
                 Tb_Edad.Clear();
                 Tb_FechaEnt.Value = DateTime.Now;
                 Tb_FechaRec.Value = DateTime.Now;
                 tb_FechaSeleccion.Value = DateTime.Now;
                 if (_Limpiar == false)
                 {
-                    UTGlobal.MG_SeleccionarCombo(Cb_Tipo);                    
+                    UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Placa);
                 }
                 //((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).Clear();
                 Dgv_Detalle.DataSource = null;
@@ -420,7 +423,7 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
 
-        }
+        }  
         private void MP_MostrarRegistro(int _Pos)
         {
             try
@@ -432,7 +435,7 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Seleccion_Lista();
                     var lista = (from a in ListaCompleta
                                  where a.Id.Equals(_idOriginal)
-                                 select new { a.Id, a.IdCompraIng, a.Granja,a.FechaReg,  a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad }).FirstOrDefault();
+                                 select new { a.Id, a.IdCompraIng, a.Granja,a.FechaReg,  a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad,a.IdAlmacen }).FirstOrDefault();
                     Tb_Id.Text = lista.Id.ToString();
                     Tb_NUmGranja.Text = lista.Granja.ToString();
                     Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
@@ -443,6 +446,7 @@ namespace PRESENTER.com
                     Cb_Tipo.Value = (int)lista.Tipo;
                     Tb_Edad.Text = lista.Edad.ToString();
                     tb_FechaSeleccion.Value = lista.FechaReg;
+                    Cb_Almacen.Value = lista.IdAlmacen;
                     var LTipoCompra = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(lista.IdCompraIng).ToList();
                     _TipoCompra = (from a in LTipoCompra
                                    select new { a.TipoCompra }).First().TipoCompra;
@@ -635,7 +639,7 @@ namespace PRESENTER.com
                         Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
                         Cb_Tipo.Value = Row.Cells["Tipo"].Value;
                         tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
-                        Tb_Placa.Text = Row.Cells["Placa"].Value.ToString();
+                        Cb_Placa.Value = Row.Cells["Placa"].Value.ToString();
                         Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
                         Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
                         _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);

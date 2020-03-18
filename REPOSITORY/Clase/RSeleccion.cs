@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ENTITY.com.Seleccion.View;
 using DATA.EntityDataModel.DiAvi;
 using ENTITY.com.Seleccion.Report;
+using UTILITY.Enum.EnEstaticos;
 
 namespace REPOSITORY.Clase
 {
@@ -63,6 +64,8 @@ namespace REPOSITORY.Clase
         {
             try
             {
+                //var idGrupo = (int)ENEstaticosGrupo.COMPRA_INGRESO;
+                //var idOrden = (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA;
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Seleccion
@@ -71,7 +74,7 @@ namespace REPOSITORY.Clase
                                         equals new { idCompraIng = b.Id }
                                       join c in db.Proveed on
                                       new { idProve = b.IdProvee }
-                                            equals new { idProve = c.Id }
+                                            equals new { idProve = c.Id }                                      
                                       select new VSeleccionLista
                                       {
                                           Id = a.Id,
@@ -86,7 +89,8 @@ namespace REPOSITORY.Clase
                                           Edad = b.EdadSemana,
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
-                                          Usuario = a.Usuario
+                                          Usuario = a.Usuario,
+                                          IdAlmacen = b.IdAlmacen,
                                       }).ToList();
                     return listResult;
                 }

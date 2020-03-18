@@ -96,8 +96,7 @@ namespace UTILITY.Global
                 combo.ValueMember = "idLibreria";
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lAlmacen;
-                combo.DropDownList.Refresh();
-                combo.Value = 2;
+                combo.DropDownList.Refresh();                
             }
             catch (Exception)
             {
