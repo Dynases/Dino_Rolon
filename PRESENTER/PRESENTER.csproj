@@ -307,14 +307,6 @@
     <Compile Include="reg\F1_TipoAlmacen.Designer.cs">
       <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportesDataSet.cs">
-      <DependentUpon>ReportesDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ReportesDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportesDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Report\RCompraIngreso.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -397,7 +389,6 @@
     <EmbeddedResource Include="reg\F1_TipoAlmacen.resx">
       <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\KardexGeneral.rdlc" />
     <EmbeddedResource Include="Report\RCompraIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RCompraIngreso.cs</LastGenOutput>
@@ -618,6 +609,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VDetalleKardex.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
@@ -695,17 +687,6 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
     <Content Include="MetroFramework.txt" />
-    <None Include="ReportesDataSet.xsc">
-      <DependentUpon>ReportesDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ReportesDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ReportesDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="ReportesDataSet.xss">
-      <DependentUpon>ReportesDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Resource\PANTALLA.png" />
     <None Include="Resource\LIBRERIA.png" />
     <None Include="Resource\ROLES.png" />

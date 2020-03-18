@@ -219,6 +219,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> PrductoListarEncabezadoAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse")]
+        ENTITY.inv.Almacen.View.VDetalleKardex[] ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse")]
         bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen);
         
@@ -1222,6 +1228,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> PrductoListarEncabezadoAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
             return base.Channel.PrductoListarEncabezadoAsync(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+        }
+        
+        public ENTITY.inv.Almacen.View.VDetalleKardex[] ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen) {
+            return base.Channel.ListarDetalleKardex(inicio, fin, IdAlmacen);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen) {
+            return base.Channel.ListarDetalleKardexAsync(inicio, fin, IdAlmacen);
         }
         
         public bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen) {

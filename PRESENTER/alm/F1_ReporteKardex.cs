@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTILITY;
 using UTILITY.Global;
 
 namespace PRESENTER.alm
@@ -58,11 +59,16 @@ namespace PRESENTER.alm
             this.TxtNombreUsu.Visible = false;
             this.SuperTalRegistro.Text = "REPORTES";
             this.PanelInferior.Visible = false;
+            this.btnMax.Visible = false;
         }
 
         private void BtKardexGeneral_Click(object sender, EventArgs e)
         {
-
+            Visualizador2.Fin = Dt_FechaInicio.Value;
+            Visualizador2.Inicio = Dt_FechaFin.Value;
+            Visualizador2.detalleKardex = new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value)).ToList();
+            Visualizador2 frm = new Visualizador2(1);
+            frm.ShowDialog();
         }
 
         #endregion        

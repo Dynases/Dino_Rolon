@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace PRESENTER {
+namespace UTILITY {
     
     
     /// <summary>
@@ -419,7 +419,7 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DetalleKardexRow AddDetalleKardexRow(string Id, string Descripcion, string Unidad, string SaldoAnterior, string Entradas, string Salidas, string Saldo) {
+            public DetalleKardexRow AddDetalleKardexRow(int Id, string Descripcion, string Unidad, decimal SaldoAnterior, decimal Entradas, decimal Salidas, decimal Saldo) {
                 DetalleKardexRow rowDetalleKardexRow = ((DetalleKardexRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -463,19 +463,19 @@ namespace PRESENTER {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
                 this.columnDescripcion = new global::System.Data.DataColumn("Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescripcion);
                 this.columnUnidad = new global::System.Data.DataColumn("Unidad", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnidad);
-                this.columnSaldoAnterior = new global::System.Data.DataColumn("SaldoAnterior", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaldoAnterior = new global::System.Data.DataColumn("SaldoAnterior", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldoAnterior);
-                this.columnEntradas = new global::System.Data.DataColumn("Entradas", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEntradas = new global::System.Data.DataColumn("Entradas", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEntradas);
-                this.columnSalidas = new global::System.Data.DataColumn("Salidas", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSalidas = new global::System.Data.DataColumn("Salidas", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSalidas);
-                this.columnSaldo = new global::System.Data.DataColumn("Saldo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaldo = new global::System.Data.DataColumn("Saldo", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldo);
             }
             
@@ -619,10 +619,10 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Id {
+            public int Id {
                 get {
                     try {
-                        return ((string)(this[this.tableDetalleKardex.IdColumn]));
+                        return ((int)(this[this.tableDetalleKardex.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'DetalleKardex\' is DBNull.", e);
@@ -667,10 +667,10 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SaldoAnterior {
+            public decimal SaldoAnterior {
                 get {
                     try {
-                        return ((string)(this[this.tableDetalleKardex.SaldoAnteriorColumn]));
+                        return ((decimal)(this[this.tableDetalleKardex.SaldoAnteriorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaldoAnterior\' in table \'DetalleKardex\' is DBNull.", e);
@@ -683,10 +683,10 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Entradas {
+            public decimal Entradas {
                 get {
                     try {
-                        return ((string)(this[this.tableDetalleKardex.EntradasColumn]));
+                        return ((decimal)(this[this.tableDetalleKardex.EntradasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Entradas\' in table \'DetalleKardex\' is DBNull.", e);
@@ -699,10 +699,10 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Salidas {
+            public decimal Salidas {
                 get {
                     try {
-                        return ((string)(this[this.tableDetalleKardex.SalidasColumn]));
+                        return ((decimal)(this[this.tableDetalleKardex.SalidasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Salidas\' in table \'DetalleKardex\' is DBNull.", e);
@@ -715,10 +715,10 @@ namespace PRESENTER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Saldo {
+            public decimal Saldo {
                 get {
                     try {
-                        return ((string)(this[this.tableDetalleKardex.SaldoColumn]));
+                        return ((decimal)(this[this.tableDetalleKardex.SaldoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Saldo\' in table \'DetalleKardex\' is DBNull.", e);

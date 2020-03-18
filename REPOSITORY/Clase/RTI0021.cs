@@ -68,22 +68,25 @@ namespace REPOSITORY.Clase
                         var detalleAnterior = listati002.Where(h => h.ibfdoc < inicio && h.ibalm == IdAlmacen).ToList();
                         foreach (var i in detalleAnterior)
                         {
-                            var detalleAnteriorProducto = db.TI0021.Where(ti => ti.iccprod == p.Id
+                            var detalleAnteriorProducto = listati0021.Where(ti => ti.iccprod == p.Id
                                                                              && ti.icibid == i.ibid).FirstOrDefault();
-                            //INGRESOS
-                            if (i.ibconcep == 1 || i.ibconcep == 3 ||
-                                i.ibconcep == 5 || i.ibconcep == 8 ||
-                                i.ibconcep == 9)
-                            {
-                                entradasAnteriores += detalleAnteriorProducto.iccant.Value;
-                            }
-                            //SALIDAS
-                            else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                i.ibconcep == 6 || i.ibconcep == 10)
-                            {
-                                salidasAnteriores += detalleAnteriorProducto.iccant.Value;
-                            }
 
+                            if (detalleAnteriorProducto != null)
+                            {
+                                //INGRESOS
+                                if (i.ibconcep == 1 || i.ibconcep == 3 ||
+                                    i.ibconcep == 5 || i.ibconcep == 8 ||
+                                    i.ibconcep == 9)
+                                {
+                                    entradasAnteriores += detalleAnteriorProducto.iccant.Value;
+                                }
+                                //SALIDAS
+                                else if (i.ibconcep == 2 || i.ibconcep == 4 ||
+                                    i.ibconcep == 6 || i.ibconcep == 10)
+                                {
+                                    salidasAnteriores += detalleAnteriorProducto.iccant.Value;
+                                }
+                            }
                         }
 
                         //CALCULOS DEL PERIODO Y ALMACEN SELECCIONADOS
@@ -96,18 +99,22 @@ namespace REPOSITORY.Clase
                         {
                             var detalleProducto = db.TI0021.Where(ti => ti.iccprod == p.Id
                                                                              && ti.icibid == i.ibid).FirstOrDefault();
-                            //INGRESOS
-                            if (i.ibconcep == 1 || i.ibconcep == 3 ||
-                                i.ibconcep == 5 || i.ibconcep == 8 ||
-                                i.ibconcep == 9)
+
+                            if (detalleProducto != null)
                             {
-                                entradasPeriodo += detalleProducto.iccant.Value;
-                            }
-                            //SALIDAS
-                            else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                i.ibconcep == 6 || i.ibconcep == 10)
-                            {
-                                salidasPeriodo += detalleProducto.iccant.Value;
+                                //INGRESOS
+                                if (i.ibconcep == 1 || i.ibconcep == 3 ||
+                                    i.ibconcep == 5 || i.ibconcep == 8 ||
+                                    i.ibconcep == 9)
+                                {
+                                    entradasPeriodo += detalleProducto.iccant.Value;
+                                }
+                                //SALIDAS
+                                else if (i.ibconcep == 2 || i.ibconcep == 4 ||
+                                    i.ibconcep == 6 || i.ibconcep == 10)
+                                {
+                                    salidasPeriodo += detalleProducto.iccant.Value;
+                                }
                             }
                         }
 
