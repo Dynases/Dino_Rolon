@@ -60,13 +60,19 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = db.Almacen
-                        .Where(s => s.Sucursal.Id == Id)
-                        .Select(s => new VAlmacenLista
+                        .Include("TipoAlmacen1")
+                        .Where(a => a.Sucursal.Id == Id)
+                        .Select(a => new VAlmacenLista
                         {
-                            Id = s.Id,
-                            Descripcion = s.Descrip,
-                            Direccion = s.Direcc,
-                            Telefono = s.Telef,
+                            Id = a.Id,
+                            Descripcion = a.Descrip,
+                            Direccion = a.Direcc,
+                            Telefono = a.Telef,
+                            Encargado = a.Encargado,
+                            Sucursal = a.Sucursal.Descrip,
+                            SucursalId = a.IdSuc,
+                            TipoAlmacen = a.TipoAlmacen1.TipoAlmacen1,
+                            TipoAlmacenId = a.TipoAlmacen.Value
                         })
                         .ToList();
 
@@ -94,7 +100,7 @@ namespace REPOSITORY.Clase
                         Longi = vSucursal.Longitud,
                         Telef = vSucursal.Telefono,
                         Usuario = vSucursal.Usuario,
-                        Estado = vSucursal.Estado,                        
+                        Estado = vSucursal.Estado,
                         Imagen = vSucursal.Imagen
                     };
 

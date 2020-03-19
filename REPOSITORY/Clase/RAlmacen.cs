@@ -27,7 +27,7 @@ namespace REPOSITORY.Clase
                         Telef = vAlmacen.Telefono,
                         Usuario = vAlmacen.Usuario,
                         IdSuc = vAlmacen.IdSucursal,
-                        Id = vAlmacen.Id,
+                        TipoAlmacen = vAlmacen.TipoAlmacenId,
                         Imagen = vAlmacen.Imagen,
                         Encargado = vAlmacen.Encargado
                     };
