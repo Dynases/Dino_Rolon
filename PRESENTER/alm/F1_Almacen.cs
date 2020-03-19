@@ -21,9 +21,9 @@ namespace PRESENTER.alm
             InitializeComponent();
             this.MP_IniciarMapa();
             this.MP_InHabilitar();
-            this.MP_CargarAlmacenes();
-            this.MP_CargarSucursales();
             this.MP_CargarTiposAlmacen();
+            this.MP_CargarSucursales();
+            this.MP_CargarAlmacenes();
         }
 
         //==================================
@@ -74,7 +74,11 @@ namespace PRESENTER.alm
         private void MP_Reiniciar()
         {
             this.MP_Limpiar();
+            this.MP_IniciarMapa();
             this.MP_InHabilitar();
+            this.MP_CargarTiposAlmacen();
+            this.MP_CargarSucursales();
+            this.MP_CargarAlmacenes();
         }
 
         private void MP_Limpiar()
@@ -271,8 +275,8 @@ namespace PRESENTER.alm
             Tb_Direcc.Text = almacen.Direccion;
             Tb_Telef.Text = almacen.Telefono;
             Tb_Encargado.Text = almacen.Encargado;
-            Cb_Sucursales.Text = almacen.Sucursal;
-            Cb_TipoAlmacen.Text = almacen.TipoAlmacen;
+            Cb_TipoAlmacen.Value = almacen.TipoAlmacenId;
+            Cb_Sucursales.Value = almacen.SucursalId;
 
             this.LblPaginacion.Text = (index + 1) + "/" + listaAlmacen.Count;
         }
@@ -318,8 +322,11 @@ namespace PRESENTER.alm
             {
                 if (new ServiceDesktop.ServiceDesktopClient().AlmacenGuardar(Almacen))
                 {
+                    base.MH_Habilitar();
+                    this.MP_Reiniciar();
+                    this.MP_MostrarRegistro(0);
                     mensaje = GLMensaje.Modificar_Exito("AlmacenES", Tb_Descrip.Text);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);                    
                     return true;
                 }
                 else

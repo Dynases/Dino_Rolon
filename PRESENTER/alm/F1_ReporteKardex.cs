@@ -58,7 +58,7 @@ namespace PRESENTER.alm
             this.SuperTabBuscar.Visible = false;
             this.TxtNombreUsu.Visible = false;
             this.SuperTalRegistro.Text = "REPORTES";
-            this.PanelInferior.Visible = false;
+            //this.PanelInferior.Visible = false;
             this.btnMax.Visible = false;
         }
 

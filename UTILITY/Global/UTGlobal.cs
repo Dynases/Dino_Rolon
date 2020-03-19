@@ -157,16 +157,14 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = false;
 
-                combo.DropDownList.Columns.Add("Nombre").Width = 150;
-                combo.DropDownList.Columns[1].Caption = "Nombre";
+                combo.DropDownList.Columns.Add("TipoAlmacen").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "TipoAlmacen";
                 combo.DropDownList.Columns[1].Visible = true;
 
                 combo.ValueMember = "Id";
-                combo.DisplayMember = "Nombre";
+                combo.DisplayMember = "TipoAlmacen";
                 combo.DropDownList.DataSource = lTipoAlmacen;
                 combo.DropDownList.Refresh();
-
-
             }
             catch (Exception ex)
             {
