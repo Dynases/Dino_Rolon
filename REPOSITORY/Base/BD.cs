@@ -14,12 +14,12 @@ namespace REPOSITORY.Base
         #region Declaraciones
 
         //DESARROLLO
-        string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
-        private static string cadenaConexion = "data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        //string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        //private static string cadenaConexion = "data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
 
         //PRODUCCION
-        //string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
-        //private static string cadenaConexion = "data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        private static string cadenaConexion = "data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
 
         #endregion
         public BD() { }
