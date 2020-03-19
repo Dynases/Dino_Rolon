@@ -94,7 +94,6 @@ namespace PRESENTER.reg
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.Dgv_Buscardor = new Janus.Windows.GridEX.GridEX();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -108,6 +107,8 @@ namespace PRESENTER.reg
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
             this.panel3.SuspendLayout();
             this.GPanel_Buscador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).BeginInit();
@@ -128,14 +129,6 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CliFacturacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.panel3);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
             // superTabControl1
             // 
@@ -208,6 +201,7 @@ namespace PRESENTER.reg
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
             // 
             // btnMin
@@ -269,6 +263,20 @@ namespace PRESENTER.reg
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1043, 72);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 640);
+            this.PanelInferior.Size = new System.Drawing.Size(1043, 28);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.panel3);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
             // panel3
             // 
@@ -728,7 +736,7 @@ namespace PRESENTER.reg
             this.Tb_Dias.Location = new System.Drawing.Point(543, 105);
             this.Tb_Dias.MinValue = 0D;
             this.Tb_Dias.Name = "Tb_Dias";
-            this.Tb_Dias.Size = new System.Drawing.Size(79, 22);
+            this.Tb_Dias.Size = new System.Drawing.Size(167, 22);
             this.Tb_Dias.TabIndex = 333;
             this.Tb_Dias.Visible = false;
             this.Tb_Dias.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
@@ -742,7 +750,7 @@ namespace PRESENTER.reg
             this.Lbl_TotalCred.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Lbl_TotalCred.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_TotalCred.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Lbl_TotalCred.Location = new System.Drawing.Point(334, 102);
+            this.Lbl_TotalCred.Location = new System.Drawing.Point(262, 104);
             this.Lbl_TotalCred.Name = "Lbl_TotalCred";
             this.Lbl_TotalCred.SingleLineColor = System.Drawing.SystemColors.Control;
             this.Lbl_TotalCred.Size = new System.Drawing.Size(68, 23);
@@ -760,10 +768,10 @@ namespace PRESENTER.reg
             this.Tb_TotalCred.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_TotalCred.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_TotalCred.Increment = 1D;
-            this.Tb_TotalCred.Location = new System.Drawing.Point(403, 103);
+            this.Tb_TotalCred.Location = new System.Drawing.Point(336, 103);
             this.Tb_TotalCred.MinValue = 0D;
             this.Tb_TotalCred.Name = "Tb_TotalCred";
-            this.Tb_TotalCred.Size = new System.Drawing.Size(79, 22);
+            this.Tb_TotalCred.Size = new System.Drawing.Size(146, 22);
             this.Tb_TotalCred.TabIndex = 331;
             this.Tb_TotalCred.Visible = false;
             this.Tb_TotalCred.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
@@ -874,10 +882,10 @@ namespace PRESENTER.reg
             this.Txb_CliNit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Txb_CliNit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliNit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Txb_CliNit.Location = new System.Drawing.Point(363, 73);
+            this.Txb_CliNit.Location = new System.Drawing.Point(543, 75);
             this.Txb_CliNit.Name = "Txb_CliNit";
             this.Txb_CliNit.PreventEnterBeep = true;
-            this.Txb_CliNit.Size = new System.Drawing.Size(119, 23);
+            this.Txb_CliNit.Size = new System.Drawing.Size(167, 23);
             this.Txb_CliNit.TabIndex = 5;
             // 
             // Txb_CliCodSpyre
@@ -1021,7 +1029,7 @@ namespace PRESENTER.reg
             this.Txb_CliRazonSoc.Location = new System.Drawing.Point(103, 73);
             this.Txb_CliRazonSoc.Name = "Txb_CliRazonSoc";
             this.Txb_CliRazonSoc.PreventEnterBeep = true;
-            this.Txb_CliRazonSoc.Size = new System.Drawing.Size(225, 23);
+            this.Txb_CliRazonSoc.Size = new System.Drawing.Size(379, 23);
             this.Txb_CliRazonSoc.TabIndex = 4;
             // 
             // Txb_CliDescripcion
@@ -1037,7 +1045,7 @@ namespace PRESENTER.reg
             this.Txb_CliDescripcion.Location = new System.Drawing.Point(103, 42);
             this.Txb_CliDescripcion.Name = "Txb_CliDescripcion";
             this.Txb_CliDescripcion.PreventEnterBeep = true;
-            this.Txb_CliDescripcion.Size = new System.Drawing.Size(225, 23);
+            this.Txb_CliDescripcion.Size = new System.Drawing.Size(607, 23);
             this.Txb_CliDescripcion.TabIndex = 3;
             // 
             // Txb_CliCod
@@ -1066,7 +1074,7 @@ namespace PRESENTER.reg
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX14.Location = new System.Drawing.Point(334, 73);
+            this.labelX14.Location = new System.Drawing.Point(487, 73);
             this.labelX14.Name = "labelX14";
             this.labelX14.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX14.Size = new System.Drawing.Size(113, 23);
@@ -1331,7 +1339,6 @@ namespace PRESENTER.reg
             this.Text = "F1_Clientes";
             this.Load += new System.EventHandler(this.F1_Clientes_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.F1_Clientes_MouseMove);
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -1346,6 +1353,9 @@ namespace PRESENTER.reg
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.GPanel_Buscador.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).EndInit();
