@@ -24,5 +24,7 @@
 
         public string Encargado { get; set; }
 
+        public int TipoAlmacenId { get; set; }
+
     }
 }

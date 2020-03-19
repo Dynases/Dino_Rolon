@@ -66,7 +66,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Descrip = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -80,6 +79,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecha.SuspendLayout();
             this.GPanel_Almacenes.SuspendLayout();
@@ -96,14 +97,6 @@
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pc_Img)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 626);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
             // superTabControl1
             // 
@@ -172,6 +165,7 @@
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 37);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(800, 389);
             // 
             // btnMin
@@ -220,7 +214,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(794, 361);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(794, 358);
             // 
             // LblSubtitulo
             // 
@@ -232,6 +226,20 @@
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(950, 72);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 659);
+            this.PanelInferior.Size = new System.Drawing.Size(950, 28);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 623);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
             // PanelFondo
             // 
@@ -299,7 +307,7 @@
             this.Dgv_Almacenes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Almacenes.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Almacenes.Name = "Dgv_Almacenes";
-            this.Dgv_Almacenes.Size = new System.Drawing.Size(935, 208);
+            this.Dgv_Almacenes.Size = new System.Drawing.Size(935, 205);
             this.Dgv_Almacenes.TabIndex = 0;
             // 
             // PanelIzquierda
@@ -410,7 +418,7 @@
             this.Cb_TipoAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_TipoAlmacen.SelectedIndex = -1;
             this.Cb_TipoAlmacen.SelectedItem = null;
-            this.Cb_TipoAlmacen.Size = new System.Drawing.Size(215, 24);
+            this.Cb_TipoAlmacen.Size = new System.Drawing.Size(215, 27);
             this.Cb_TipoAlmacen.TabIndex = 350;
             this.Cb_TipoAlmacen.Tag = "1";
             this.Cb_TipoAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -458,7 +466,7 @@
             this.Cb_Sucursales.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Sucursales.SelectedIndex = -1;
             this.Cb_Sucursales.SelectedItem = null;
-            this.Cb_Sucursales.Size = new System.Drawing.Size(215, 24);
+            this.Cb_Sucursales.Size = new System.Drawing.Size(215, 27);
             this.Cb_Sucursales.TabIndex = 347;
             this.Cb_Sucursales.Tag = "1";
             this.Cb_Sucursales.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -492,7 +500,7 @@
             this.lblId.Location = new System.Drawing.Point(165, 0);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblId.Size = new System.Drawing.Size(40, 20);
+            this.lblId.Size = new System.Drawing.Size(47, 23);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
@@ -563,7 +571,7 @@
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.SelectedTabIndex = 2;
-            this.superTabControl2.Size = new System.Drawing.Size(401, 187);
+            this.superTabControl2.Size = new System.Drawing.Size(401, 184);
             this.superTabControl2.TabFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.TabIndex = 223;
             this.superTabControl2.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -576,9 +584,9 @@
             // SuperTabControlPanel1
             // 
             this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 27);
+            this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 29);
             this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(401, 160);
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(401, 155);
             this.SuperTabControlPanel1.TabIndex = 1;
             this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
             // 
@@ -762,7 +770,7 @@
             this.labelX2.Location = new System.Drawing.Point(276, 0);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX2.Size = new System.Drawing.Size(58, 20);
+            this.labelX2.Size = new System.Drawing.Size(68, 23);
             this.labelX2.TabIndex = 343;
             this.labelX2.Text = "Teléfono";
             // 
@@ -793,7 +801,7 @@
             this.labelX1.Location = new System.Drawing.Point(6, 68);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(61, 20);
+            this.labelX1.Size = new System.Drawing.Size(72, 23);
             this.labelX1.TabIndex = 341;
             this.labelX1.Text = "Dirección";
             // 
@@ -825,7 +833,7 @@
             this.labelX10.Location = new System.Drawing.Point(6, 0);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(75, 20);
+            this.labelX10.Size = new System.Drawing.Size(88, 23);
             this.labelX10.TabIndex = 339;
             this.labelX10.Text = "Descripción";
             // 
@@ -837,7 +845,6 @@
             this.Name = "F1_Almacen";
             this.Text = "F1_Almacen";
             this.Load += new System.EventHandler(this.F1_Almacen_Load);
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -852,6 +859,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecha.ResumeLayout(false);
             this.GPanel_Almacenes.ResumeLayout(false);

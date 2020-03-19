@@ -82,6 +82,7 @@ namespace PRESENTER.alm
             this.Tb_Descrip.Text = "";
             this.Tb_Direcc.Text = "";
             this.Tb_Telef.Text = "";
+            this.Tb_Encargado.Text = "";
         }
 
         private void MP_InHabilitar()
@@ -89,6 +90,7 @@ namespace PRESENTER.alm
             this.Tb_Descrip.ReadOnly = true;
             this.Tb_Direcc.ReadOnly = true;
             this.Tb_Telef.ReadOnly = true;
+            this.Tb_Encargado.ReadOnly = true;
             this.BtAdicionar.Enabled = false;
             this.Cb_Sucursales.Enabled = false;
             this.Cb_TipoAlmacen.Enabled = false;
@@ -100,6 +102,7 @@ namespace PRESENTER.alm
             this.Tb_Descrip.ReadOnly = false;
             this.Tb_Direcc.ReadOnly = false;
             this.Tb_Telef.ReadOnly = false;
+            this.Tb_Encargado.ReadOnly = false;
             this.Cb_Sucursales.Enabled = true;
             this.Cb_TipoAlmacen.Enabled = true;
             this.BtAdicionar.Enabled = true;
@@ -305,7 +308,8 @@ namespace PRESENTER.alm
                 Longitud = Convert.ToDecimal(_longitud),
                 Telefono = Tb_Telef.Text,
                 Usuario = UTGlobal.Usuario,
-                Encargado = Tb_Encargado.Text
+                Encargado = Tb_Encargado.Text,
+                TipoAlmacenId = Convert.ToInt32(Cb_TipoAlmacen.Value)
             };
 
             var mensaje = "";
@@ -406,6 +410,5 @@ namespace PRESENTER.alm
         }
 
         #endregion
-
     }
 }
