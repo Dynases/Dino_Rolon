@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD:PRESENTER/Connected Services/ServiceDesktop/ServiceDesktop5.xsd
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
   <xs:import schemaLocation="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
@@ -1161,42 +1160,4 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-=======
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="VTipoAlmacen">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VTipoAlmacen" nillable="true" type="tns:VTipoAlmacen" />
-  <xs:complexType name="ArrayOfVTipoAlmacenCombo">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTipoAlmacenCombo" nillable="true" type="tns:VTipoAlmacenCombo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVTipoAlmacenCombo" nillable="true" type="tns:ArrayOfVTipoAlmacenCombo" />
-  <xs:complexType name="VTipoAlmacenCombo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VTipoAlmacenCombo" nillable="true" type="tns:VTipoAlmacenCombo" />
-  <xs:complexType name="ArrayOfVTipoAlmacenListar">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTipoAlmacenListar" nillable="true" type="tns:VTipoAlmacenListar" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVTipoAlmacenListar" nillable="true" type="tns:ArrayOfVTipoAlmacenListar" />
-  <xs:complexType name="VTipoAlmacenListar">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VTipoAlmacenListar" nillable="true" type="tns:VTipoAlmacenListar" />
->>>>>>> master:PRESENTER/Connected Services/ServiceDesktop/ServiceDesktop1955.xsd
 </xs:schema>

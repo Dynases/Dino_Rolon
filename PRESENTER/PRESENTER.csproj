@@ -517,8 +517,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\Service111.wsdl" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -555,67 +553,10 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop191.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1910.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1911.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1912.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1913.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1914.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1915.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1916.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1917.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1918.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop192.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1922.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop193.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1930.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1931.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1932.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1933.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1934.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1935.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1936.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop20.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop21.xsd">
@@ -636,19 +577,7 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop26.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop29.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop30.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
@@ -730,21 +659,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceDesktop\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceDesktop\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceDesktop\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceDesktop\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ENTITY\ENTITY.csproj">
       <Project>{526ae2dd-10b8-48dc-a338-f1466bb00b33}</Project>
       <Name>ENTITY</Name>
@@ -760,6 +674,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Connected Services\ServiceDesktop\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceDesktop\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceDesktop\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -773,7 +693,6 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
     <Content Include="MetroFramework.txt" />
     <None Include="Resource\PANTALLA.png" />
     <None Include="Resource\LIBRERIA.png" />
@@ -831,6 +750,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceDesktop\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

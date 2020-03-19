@@ -126,12 +126,12 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSpyre" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Ciudad" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="TipoProve" Type="int" Nullable="false" />
           <Property Name="Direcc" Type="nvarchar" MaxLength="150" />
-          <Property Name="Contacto" Type="nvarchar" MaxLength="30" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
           <Property Name="Telfon" Type="nvarchar" MaxLength="30" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Contacto2" Type="nvarchar" MaxLength="205" />
@@ -247,6 +247,36 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="bahact" Type="nvarchar" MaxLength="5" />
           <Property Name="bauact" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.TC000' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TC000">
+          <Property Name="cnumi" Type="int" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.TC0001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TC0001">
+          <Property Name="ccctc0" Type="int" />
+          <Property Name="cccndesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="cccefac" Type="bit" />
+          <Property Name="ccctfac" Type="int" />
+          <Property Name="ccccite" Type="int" />
+          <Property Name="ccciice" Type="bit" />
+          <Property Name="cccdetp" Type="bit" />
+          <Property Name="ccccbar" Type="bit" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.TCI001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TCI001">
+          <Property Name="cpnumi" Type="int" />
+          <Property Name="cpdesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="cpmov" Type="int" />
+          <Property Name="cpmovcli" Type="int" />
+          <Property Name="cptipo" Type="int" />
+          <Property Name="cpest" Type="int" />
+          <Property Name="cpfact" Type="date" />
+          <Property Name="cphact" Type="nvarchar" MaxLength="5" />
+          <Property Name="cpuact" Type="nvarchar" MaxLength="10" />
+        </EntityType>-->
         <EntityType Name="TI001">
           <Key>
             <PropertyRef Name="id" />
@@ -289,6 +319,23 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="icfvenc" Type="date" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="ZY001">
+          <Property Name="yanumi" Type="int" />
+          <Property Name="yaprog" Type="nvarchar" MaxLength="40" />
+          <Property Name="yatit" Type="nvarchar" MaxLength="40" />
+          <Property Name="yamod" Type="int" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY002' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="ZY002">
+          <Property Name="ybnumi" Type="int" />
+          <Property Name="ybrol" Type="nvarchar" MaxLength="30" />
+          <Property Name="ybfact" Type="date" />
+          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
+          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
+        </EntityType>-->
         <EntityType Name="ZY0021">
           <Key>
             <PropertyRef Name="ycline" />
@@ -301,6 +348,23 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="ycmod" Type="bit" />
           <Property Name="ycdel" Type="bit" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="ZY003">
+          <Property Name="ydnumi" Type="int" />
+          <Property Name="yduser" Type="nvarchar" MaxLength="10" />
+          <Property Name="ydrol" Type="int" />
+          <Property Name="ydpass" Type="nvarchar" MaxLength="20" />
+          <Property Name="ydest" Type="bit" />
+          <Property Name="ydcant" Type="int" />
+          <Property Name="ydfontsize" Type="int" />
+          <Property Name="ydsuc" Type="int" />
+          <Property Name="ydall" Type="int" />
+          <Property Name="ydfact" Type="date" />
+          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
+          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
+          <Property Name="yd_numiVend" Type="int" />
+        </EntityType>-->
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="Id" />
@@ -403,13 +467,13 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSpyre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="RazonSo" Type="nvarchar" MaxLength="40" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="RazonSo" Type="nvarchar" MaxLength="250" />
           <Property Name="Nit" Type="nchar" MaxLength="10" />
           <Property Name="TipoCli" Type="int" Nullable="false" />
           <Property Name="Direcc" Type="nvarchar" MaxLength="250" />
-          <Property Name="Contac1" Type="nvarchar" MaxLength="30" />
-          <Property Name="Contac2" Type="nvarchar" MaxLength="30" />
+          <Property Name="Contac1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contac2" Type="nvarchar" MaxLength="50" />
           <Property Name="Telfo1" Type="nvarchar" MaxLength="30" />
           <Property Name="Telfo2" Type="nvarchar" MaxLength="30" />
           <Property Name="Email1" Type="nvarchar" MaxLength="30" />
@@ -1398,12 +1462,12 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSpyre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Descrip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descrip" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ciudad" Type="Int32" Nullable="false" />
           <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="TipoProve" Type="Int32" Nullable="false" />
           <Property Name="Direcc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Contacto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telfon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Contacto2" Type="String" MaxLength="205" FixedLength="false" Unicode="true" />
@@ -2480,13 +2544,13 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="RazonSo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RazonSo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Nit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="TipoCli" Type="Int32" Nullable="false" />
           <Property Name="Direcc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Contac1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Contac2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Contac1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contac2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telfo1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Telfo2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Email1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
