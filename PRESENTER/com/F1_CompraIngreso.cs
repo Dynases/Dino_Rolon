@@ -139,7 +139,7 @@ namespace PRESENTER.com
         private bool MP_RegistrarEntregaPlaca()
         {
             bool result;
-           VCompraIngreso_02 lista = new VCompraIngreso_02()
+            VCompraIngreso_02 lista = new VCompraIngreso_02()
             {
                 IdLibreria = (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA,
                 Descripcion = Tb_Entregado.Text,
@@ -273,68 +273,75 @@ namespace PRESENTER.com
         {
             if (Tb_Cod.ReadOnly == true)
             {
-                if (UTGlobal.visualizador != null)
+                try
                 {
-                    UTGlobal.visualizador.Close();
+                    if (UTGlobal.visualizador != null)
+                    {
+                        UTGlobal.visualizador.Close();
+                    }
+                    UTGlobal.visualizador = new Visualizador();
+                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
+                    var ObjetoReport = new RCompraIngreso();
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
                 }
-                UTGlobal.visualizador = new Visualizador();
-                var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
-                var ObjetoReport = new RCompraIngreso();
-                ObjetoReport.SetDataSource(lista);
-                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                UTGlobal.visualizador.ShowDialog();
-                UTGlobal.visualizador.BringToFront();
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
         }
-         private void Cb_Placa_KeyDown(object sender, KeyEventArgs e)
+        private void Cb_Placa_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
 
-            
-            if (Tb_FechaEnt.Enabled == true)
-            {
-                if (e.KeyData == Keys.Enter)
+
+                if (Tb_FechaEnt.Enabled == true)
                 {
-                    if (Cb_Placa.SelectedIndex != -1)
+                    if (e.KeyData == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_Listar().Where(a => a.IdLibreria.Equals(Convert.ToInt32(Cb_Placa.Value))).FirstOrDefault();
-                        if (lista == null)
+                        if (Cb_Placa.SelectedIndex != -1)
                         {
-                            throw new Exception("No se encontro la placa");
+                            var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_Listar().Where(a => a.IdLibreria.Equals(Convert.ToInt32(Cb_Placa.Value))).FirstOrDefault();
+                            if (lista == null)
+                            {
+                                throw new Exception("No se encontro la placa");
+                            }
+                            Tb_Entregado.Text = lista.Descripcion;
                         }
-                        Tb_Entregado.Text = lista.Descripcion;
                     }
-                }
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                {
-                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_ListarTabla();
-                    List<GLCelda> listEstCeldas = new List<GLCelda>
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_ListarTabla();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
                         new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
                         new GLCelda() { campo = "IdLibreria", visible = false, titulo = "IdLibreria", tamano = 150 },
                         new GLCelda() { campo = "Libreria", visible = true, titulo = "Placa", tamano = 150 },
                         new GLCelda() { campo = "Descripcion", visible = true, titulo = "Recibido", tamano = 200 },
                     };
-                    Efecto efecto = new Efecto();
-                    efecto.Tipo = 3;
-                    efecto.Tabla = lista;
-                    efecto.SelectCol = 2;
-                    efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
-                    efecto.Context = "SELECCIONE UN PLACA";
-                    efecto.ShowDialog();
-                    bool bandera = false;
-                    bandera = efecto.Band;
-                    if (bandera)
-                    {
-                        Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                        Cb_Placa.Value = Convert.ToInt32(Row.Cells["IdLibreria"].Value);
-                        Tb_Entregado.Text = Row.Cells["Descripcion"].Value.ToString();
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN PLACA";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            Cb_Placa.Value = Convert.ToInt32(Row.Cells["IdLibreria"].Value);
+                            Tb_Entregado.Text = Row.Cells["Descripcion"].Value.ToString();
+                        }
                     }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -458,7 +465,7 @@ namespace PRESENTER.com
                 else
                 {
                     //Consulta segun un Categoria 
-                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id,Convert.ToInt32(Cb_Almacen.Value)).ToList();
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id, Convert.ToInt32(Cb_Almacen.Value)).ToList();
                 }
 
                 MP_ArmarDetalle(lresult);
@@ -641,12 +648,12 @@ namespace PRESENTER.com
             Tb_Observacion.ReadOnly = false;
             Tb_Edad.ReadOnly = false;
             Sw_Tipo.IsReadOnly = false;
-            Tb_Entregado.ReadOnly = false;          
+            Tb_Entregado.ReadOnly = false;
             Tb_FechaEnt.Enabled = true;
             Tb_FechaRec.Enabled = true;
             Tb_Recibido.ReadOnly = false;
             Dgv_Detalle.Enabled = true;
-            
+
         }
         private void MP_InHabilitar()
         {
@@ -783,7 +790,7 @@ namespace PRESENTER.com
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
 
         }
-                 
+
         #endregion
 
         #region Metodo heredados
@@ -896,8 +903,8 @@ namespace PRESENTER.com
             return _Error;
         }
 
-        #endregion     
+        #endregion
 
-       
+
     }
 }
