@@ -52,7 +52,6 @@
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Almacen1 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -66,6 +65,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecho.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,16 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
-            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 626);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
             // 
             // superTabControl1
             // 
@@ -222,7 +213,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 598);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 600);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -238,6 +229,21 @@
             this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.PanelMenu.Size = new System.Drawing.Size(950, 72);
             // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 659);
+            this.PanelInferior.Size = new System.Drawing.Size(950, 28);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 627);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
             // PanelFondo
             // 
             this.PanelFondo.BackColor = System.Drawing.Color.Transparent;
@@ -246,7 +252,7 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(950, 518);
+            this.PanelFondo.Size = new System.Drawing.Size(950, 519);
             this.PanelFondo.TabIndex = 70;
             // 
             // PanelDerecho
@@ -257,7 +263,7 @@
             this.PanelDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDerecho.Location = new System.Drawing.Point(315, 0);
             this.PanelDerecho.Name = "PanelDerecho";
-            this.PanelDerecho.Size = new System.Drawing.Size(635, 518);
+            this.PanelDerecho.Size = new System.Drawing.Size(635, 519);
             this.PanelDerecho.TabIndex = 1;
             // 
             // panel2
@@ -266,7 +272,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(635, 453);
+            this.panel2.Size = new System.Drawing.Size(635, 454);
             this.panel2.TabIndex = 1;
             // 
             // GPanel_Detalle
@@ -281,7 +287,7 @@
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(635, 453);
+            this.GPanel_Detalle.Size = new System.Drawing.Size(635, 454);
             // 
             // 
             // 
@@ -359,7 +365,7 @@
             this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Producto.Name = "Dgv_Producto";
-            this.Dgv_Producto.Size = new System.Drawing.Size(620, 246);
+            this.Dgv_Producto.Size = new System.Drawing.Size(620, 248);
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
             this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);
@@ -371,7 +377,7 @@
             this.Dgv_Detalle.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(629, 425);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(629, 428);
             this.Dgv_Detalle.TabIndex = 258;
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
@@ -385,7 +391,7 @@
             this.panel1.Controls.Add(this.Tb_Total1);
             this.panel1.Controls.Add(this.labelX12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 453);
+            this.panel1.Location = new System.Drawing.Point(0, 454);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 65);
             this.panel1.TabIndex = 0;
@@ -403,7 +409,7 @@
             this.Tb_Total2.Location = new System.Drawing.Point(524, 6);
             this.Tb_Total2.MinValue = 0D;
             this.Tb_Total2.Name = "Tb_Total2";
-            this.Tb_Total2.Size = new System.Drawing.Size(69, 24);
+            this.Tb_Total2.Size = new System.Drawing.Size(69, 22);
             this.Tb_Total2.TabIndex = 225;
             this.Tb_Total2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -420,7 +426,7 @@
             this.Tb_Total1.Location = new System.Drawing.Point(353, 6);
             this.Tb_Total1.MinValue = 0D;
             this.Tb_Total1.Name = "Tb_Total1";
-            this.Tb_Total1.Size = new System.Drawing.Size(84, 24);
+            this.Tb_Total1.Size = new System.Drawing.Size(84, 22);
             this.Tb_Total1.TabIndex = 223;
             this.Tb_Total1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -437,7 +443,7 @@
             this.labelX12.Location = new System.Drawing.Point(15, 12);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX12.Size = new System.Drawing.Size(51, 18);
+            this.labelX12.Size = new System.Drawing.Size(46, 16);
             this.labelX12.TabIndex = 222;
             this.labelX12.Text = "TOTAL";
             // 
@@ -448,7 +454,7 @@
             this.PanelIzquierda.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelIzquierda.Location = new System.Drawing.Point(0, 0);
             this.PanelIzquierda.Name = "PanelIzquierda";
-            this.PanelIzquierda.Size = new System.Drawing.Size(315, 518);
+            this.PanelIzquierda.Size = new System.Drawing.Size(315, 519);
             this.PanelIzquierda.TabIndex = 0;
             // 
             // GPanel_DatosGenerales
@@ -468,7 +474,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(318, 518);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(318, 519);
             // 
             // 
             // 
@@ -526,11 +532,11 @@
             this.Tb_Observacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Observacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Observacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Observacion.Location = new System.Drawing.Point(108, 216);
+            this.Tb_Observacion.Location = new System.Drawing.Point(108, 116);
             this.Tb_Observacion.Multiline = true;
             this.Tb_Observacion.Name = "Tb_Observacion";
             this.Tb_Observacion.PreventEnterBeep = true;
-            this.Tb_Observacion.Size = new System.Drawing.Size(196, 43);
+            this.Tb_Observacion.Size = new System.Drawing.Size(196, 143);
             this.Tb_Observacion.TabIndex = 342;
             // 
             // Cb_Almacen2
@@ -547,7 +553,7 @@
             this.Cb_Almacen2.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen2.SelectedIndex = -1;
             this.Cb_Almacen2.SelectedItem = null;
-            this.Cb_Almacen2.Size = new System.Drawing.Size(167, 24);
+            this.Cb_Almacen2.Size = new System.Drawing.Size(167, 22);
             this.Cb_Almacen2.TabIndex = 340;
             this.Cb_Almacen2.Tag = "1";
             this.Cb_Almacen2.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -578,10 +584,10 @@
             this.Tb_Id.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Id.Location = new System.Drawing.Point(141, 14);
+            this.Tb_Id.Location = new System.Drawing.Point(128, 14);
             this.Tb_Id.Name = "Tb_Id";
             this.Tb_Id.PreventEnterBeep = true;
-            this.Tb_Id.Size = new System.Drawing.Size(28, 25);
+            this.Tb_Id.Size = new System.Drawing.Size(147, 23);
             this.Tb_Id.TabIndex = 339;
             // 
             // labelX10
@@ -597,7 +603,7 @@
             this.labelX10.Location = new System.Drawing.Point(3, 14);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(132, 20);
+            this.labelX10.Size = new System.Drawing.Size(119, 18);
             this.labelX10.TabIndex = 338;
             this.labelX10.Text = "Nro. Transformación";
             // 
@@ -615,7 +621,7 @@
             this.Cb_Almacen1.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen1.SelectedIndex = -1;
             this.Cb_Almacen1.SelectedItem = null;
-            this.Cb_Almacen1.Size = new System.Drawing.Size(117, 24);
+            this.Cb_Almacen1.Size = new System.Drawing.Size(167, 22);
             this.Cb_Almacen1.TabIndex = 7;
             this.Cb_Almacen1.Tag = "1";
             this.Cb_Almacen1.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -645,7 +651,6 @@
             this.Name = "F1_Transformacion";
             this.Text = "F1_Transformacion";
             this.Load += new System.EventHandler(this.F1_Transformacion_Load);
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -660,6 +665,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecho.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
