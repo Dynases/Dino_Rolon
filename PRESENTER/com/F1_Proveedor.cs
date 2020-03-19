@@ -597,7 +597,7 @@ namespace PRESENTER.com
             Cb_LineaGen.ReadOnly = false;
             Cb_TipoAlojamiento.ReadOnly = false;
             BtAdicionar.Enabled = true;
-            Tb_Fecha.Value = DateTime.Now;
+           // Tb_Fecha.Value = DateTime.Now;
            // Tb_Fecha.IsInputReadOnly = false;
             Tb_Fecha.Enabled = true;
             Tb_Aves.IsInputReadOnly = false;                                      
@@ -711,9 +711,9 @@ namespace PRESENTER.com
                         Tb_Contacto.Text = proveedor.Contacto.ToString();
                         Tb_Telefono.Text = proveedor.Telefono.ToString();
                         Tb_Email1.Text = proveedor.Email.ToString();
-                        Tb_Contacto2.Text = proveedor.Contacto.ToString();
-                        Tb_Telefono2.Text = proveedor.Email.ToString();
-                        Tb_Email2.Text = proveedor.Email.ToString();
+                        Tb_Contacto2.Text = proveedor.Contacto2.ToString();
+                        Tb_Telefono2.Text = proveedor.Telefono2.ToString();
+                        Tb_Email2.Text = proveedor.Email2.ToString();
                         sw_Tipo.Value = proveedor.Tipo == 1 ? true : false;
                         Cb_Ciudad.Value = proveedor.Ciudad;
                         Cb_TipoProveedor.Value = proveedor.TipoProveeedor;                      
@@ -960,20 +960,20 @@ namespace PRESENTER.com
         {
             try
             {
-                bool resultadoDetalle = false;
+               //bool resultadoDetalle = false;
                 bool resultado = false;
                 string mensaje = "";
-                if (_NuevoDetalle)
+                //if (MP_ValidarDetalle())
+                //{
+                //    resultadoDetalle = true;
+                //    //Ingresa o modifica un detalle
+                //    MP_InsertarDetalle();
+                //}
+              
+
+                if (!MP_ValidarDetalle())
                 {
-                    if (MP_ValidarDetalle())
-                    {
-                        resultadoDetalle = true;
-                    }
-                    //Ingresa o modifica un detalle
                     MP_InsertarDetalle();
-                }
-                if (!resultadoDetalle)
-                {
                     VProveedor Proveedor = new VProveedor()
                     {
                         IdSpyre = Tb_CodSpyre.Text,

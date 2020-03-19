@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="3J8Qk0g7DW3gfC8y4yevuhCQcdA=">
+=======
 <SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="b2+QFbGG0L2zIp0bZL/4B9MaCMQ1rvOoKEsNhxEIofs=">
+>>>>>>> master
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IServiceDesktop">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IServiceDesktop1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IServiceDesktop</serializedValue>
+          <serializedValue>BasicHttpBinding_IServiceDesktop1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,7 +116,11 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
+<<<<<<< HEAD
+    <endpoint name="BasicHttpBinding_IServiceDesktop" contract="ServiceDesktop.IServiceDesktop" bindingType="basicHttpBinding" address="http://localhost:64474/ServiceDesktop.svc" bindingConfiguration="BasicHttpBinding_IServiceDesktop1">
+=======
     <endpoint name="BasicHttpBinding_IServiceDesktop" contract="ServiceDesktop.IServiceDesktop" bindingType="basicHttpBinding" address="http://localhost:64474/ServiceDesktop.svc" bindingConfiguration="BasicHttpBinding_IServiceDesktop">
+>>>>>>> master
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:64474/ServiceDesktop.svc</serializedValue>
@@ -124,7 +132,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IServiceDesktop</serializedValue>
+          <serializedValue>BasicHttpBinding_IServiceDesktop1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServiceDesktop.IServiceDesktop</serializedValue>
