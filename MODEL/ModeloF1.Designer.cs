@@ -827,8 +827,8 @@
         protected Janus.Windows.GridEX.GridEX Dgv_GBuscador;
         protected System.Windows.Forms.Label LblSubtitulo;
         protected Bunifu.Framework.UI.BunifuGradientPanel PanelMenu;
-        public System.Windows.Forms.Panel PanelInferior;
         public DevComponents.DotNetBar.SuperTabControlPanel PanelContenidoRegistro;
         public DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
+        public System.Windows.Forms.Panel PanelInferior;
     }
 }

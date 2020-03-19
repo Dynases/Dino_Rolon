@@ -17,7 +17,7 @@
   <xs:complexType name="VTipoAlmacenCombo">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoAlmacen" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VTipoAlmacenCombo" nillable="true" type="tns:VTipoAlmacenCombo" />

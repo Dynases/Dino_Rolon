@@ -215,6 +215,8 @@ namespace PRESENTER.alm
             {
                 if (new ServiceDesktop.ServiceDesktopClient().SucursalGuardar(sucursal))
                 {
+                    base.MH_Habilitar();
+                    this.MP_InHabilitar();
                     this.MP_CargarListaSucursales();
                     mensaje = GLMensaje.Modificar_Exito("SUCURSALES", Tb_Descrip.Text);
                     ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);

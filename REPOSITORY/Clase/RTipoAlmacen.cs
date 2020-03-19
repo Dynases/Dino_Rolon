@@ -44,7 +44,7 @@ namespace REPOSITORY.Clase
                              .Select(tp => new VTipoAlmacenCombo
                              {
                                  Id = tp.Id,
-                                 Nombre = tp.TipoAlmacen1
+                                 TipoAlmacen = tp.TipoAlmacen1
                              })
                              .ToList();
                 }
