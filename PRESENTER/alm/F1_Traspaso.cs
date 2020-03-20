@@ -19,6 +19,7 @@ namespace PRESENTER.alm
             this.MP_InHabilitar();
             this.MP_CargarAlmacenes();
             this.MP_CargarListaTraspasos();
+            lblEstadoTraspaso.Text = "";
         }
 
         //===============
@@ -431,7 +432,7 @@ namespace PRESENTER.alm
         private void MP_CargarPlantillas(int AlmacenOrigen, int AlmacenDestino)
         {
             try
-            {                
+            {
                 plantillaIndex = 0;
                 listaPlantillas = new ServiceDesktop.ServiceDesktopClient()
                                                     .PlantillaListar(ENConceptoPlantilla.Traspaso)
@@ -586,7 +587,7 @@ namespace PRESENTER.alm
         {
             try
             {
-                if (Cb_Origen.Value != null)
+                if (Cb_Origen.Value != null && Cb_Destino.Value != null)
                 {
                     int AlmacenOrigenId;
                     int AlmacenDestinoId;

@@ -134,7 +134,7 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
           <Property Name="Telfon" Type="nvarchar" MaxLength="30" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Contacto2" Type="nvarchar" MaxLength="205" />
+          <Property Name="Contacto2" Type="nvarchar" MaxLength="50" />
           <Property Name="Telfon2" Type="nvarchar" MaxLength="30" />
           <Property Name="Email2" Type="nvarchar" MaxLength="50" />
           <Property Name="Latitud" Type="decimal" Precision="18" Scale="14" Nullable="false" />
@@ -469,7 +469,7 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Descrip" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="RazonSo" Type="nvarchar" MaxLength="250" />
-          <Property Name="Nit" Type="nchar" MaxLength="10" />
+          <Property Name="Nit" Type="nchar" MaxLength="50" />
           <Property Name="TipoCli" Type="int" Nullable="false" />
           <Property Name="Direcc" Type="nvarchar" MaxLength="250" />
           <Property Name="Contac1" Type="nvarchar" MaxLength="50" />
@@ -528,7 +528,7 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave
           <Property Name="Granja" Type="int" />
           <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="CodBar" Type="nvarchar" MaxLength="15" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="UniVen" Type="int" Nullable="false" />
           <Property Name="UniPeso" Type="int" Nullable="false" />
           <Property Name="Peso" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -542,7 +542,7 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave
           <Property Name="DescripProduc" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="Hora" Type="nvarchar" MaxLength="5" />
+          <Property Name="Hora" Type="nvarchar" MaxLength="10" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Venta">
@@ -1470,7 +1470,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telfon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Contacto2" Type="String" MaxLength="205" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telfon2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Latitud" Type="Decimal" Precision="18" Scale="14" Nullable="false" />
@@ -1786,7 +1786,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Granja" Type="Int32" />
           <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="CodBar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Descrip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descrip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UniVen" Type="Int32" Nullable="false" />
           <Property Name="UniPeso" Type="Int32" Nullable="false" />
           <Property Name="Peso" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -1800,7 +1800,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="DescripProduc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Hora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Hora" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Compra_01" Relationship="Self.FK_Compra_01_Producto" FromRole="Producto" ToRole="Compra_01" />
           <NavigationProperty Name="CompraIng_01" Relationship="Self.FK__CompraIng__IdPro__46B27FE2" FromRole="Producto" ToRole="CompraIng_01" />
@@ -2546,7 +2546,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Descrip" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="RazonSo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Nit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nit" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="TipoCli" Type="Int32" Nullable="false" />
           <Property Name="Direcc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Contac1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

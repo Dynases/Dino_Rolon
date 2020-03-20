@@ -194,8 +194,8 @@ namespace PRESENTER.alm
                     Dgv_Almacenes.RootTable.Columns[0].Visible = false;
 
                     Dgv_Almacenes.RootTable.Columns[1].Key = "Descripcion";
-                    Dgv_Almacenes.RootTable.Columns[1].Caption = "Almacen";
-                    Dgv_Almacenes.RootTable.Columns[1].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[1].Caption = "Sucursal";
+                    Dgv_Almacenes.RootTable.Columns[1].Width = 200;
                     Dgv_Almacenes.RootTable.Columns[1].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Almacenes.RootTable.Columns[1].CellStyle.FontSize = 8;
                     Dgv_Almacenes.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -203,7 +203,7 @@ namespace PRESENTER.alm
 
                     Dgv_Almacenes.RootTable.Columns[2].Key = "Direccion";
                     Dgv_Almacenes.RootTable.Columns[2].Caption = "Direccion";
-                    Dgv_Almacenes.RootTable.Columns[2].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[2].Width = 150;
                     Dgv_Almacenes.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Almacenes.RootTable.Columns[2].CellStyle.FontSize = 8;
                     Dgv_Almacenes.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -217,13 +217,37 @@ namespace PRESENTER.alm
                     Dgv_Almacenes.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_Almacenes.RootTable.Columns[3].Visible = true;
 
-                    Dgv_Almacenes.RootTable.Columns[4].Key = "Deposito";
-                    Dgv_Almacenes.RootTable.Columns[4].Caption = "Deposito";
-                    Dgv_Almacenes.RootTable.Columns[4].Width = 250;
+                    Dgv_Almacenes.RootTable.Columns[4].Key = "Sucursal";
+                    Dgv_Almacenes.RootTable.Columns[4].Caption = "Sucursal";
+                    Dgv_Almacenes.RootTable.Columns[4].Width = 100;
                     Dgv_Almacenes.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Almacenes.RootTable.Columns[4].CellStyle.FontSize = 8;
                     Dgv_Almacenes.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Almacenes.RootTable.Columns[4].Visible = true;
+                    Dgv_Almacenes.RootTable.Columns[4].Visible = false;
+
+                    Dgv_Almacenes.RootTable.Columns[5].Key = "SucursalId";
+                    Dgv_Almacenes.RootTable.Columns[5].Caption = "SucursalId";
+                    Dgv_Almacenes.RootTable.Columns[5].Visible = false;
+
+                    Dgv_Almacenes.RootTable.Columns[6].Key = "TipoAlmacen";
+                    Dgv_Almacenes.RootTable.Columns[6].Caption = "TipoAlmacen";
+                    Dgv_Almacenes.RootTable.Columns[6].Width = 150;
+                    Dgv_Almacenes.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[6].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[6].Visible = true;
+
+                    Dgv_Almacenes.RootTable.Columns[7].Key = "TipoAlmacenId";
+                    Dgv_Almacenes.RootTable.Columns[7].Caption = "TipoAlmacenId";
+                    Dgv_Almacenes.RootTable.Columns[7].Visible = false;
+
+                    Dgv_Almacenes.RootTable.Columns[8].Key = "Encargado";
+                    Dgv_Almacenes.RootTable.Columns[8].Caption = "Encargado";
+                    Dgv_Almacenes.RootTable.Columns[8].Width = 150;
+                    Dgv_Almacenes.RootTable.Columns[8].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Almacenes.RootTable.Columns[8].CellStyle.FontSize = 8;
+                    Dgv_Almacenes.RootTable.Columns[8].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Almacenes.RootTable.Columns[8].Visible = true;
 
                     //Habilitar filtradores
                     Dgv_Almacenes.DefaultFilterRowComparison = FilterConditionOperator.Contains;

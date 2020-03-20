@@ -192,7 +192,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(956, 615);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(956, 610);
             // 
             // LblSubtitulo
             // 
@@ -208,8 +208,8 @@
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel4);
             this.PanelContenidoRegistro.Controls.Add(this.Panel_Precio);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1161, 641);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1161, 637);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel_Precio, 0);
@@ -280,7 +280,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(0, 0);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(376, 132);
+            this.Panel2.Size = new System.Drawing.Size(376, 127);
             this.Panel2.TabIndex = 0;
             // 
             // Tb_CodCategoria
@@ -295,7 +295,7 @@
             this.Tb_CodCategoria.Location = new System.Drawing.Point(131, 22);
             this.Tb_CodCategoria.Name = "Tb_CodCategoria";
             this.Tb_CodCategoria.PreventEnterBeep = true;
-            this.Tb_CodCategoria.Size = new System.Drawing.Size(166, 21);
+            this.Tb_CodCategoria.Size = new System.Drawing.Size(166, 25);
             this.Tb_CodCategoria.TabIndex = 251;
             // 
             // LabelX3
@@ -344,7 +344,7 @@
             this.Tb_Margen.Location = new System.Drawing.Point(131, 77);
             this.Tb_Margen.Name = "Tb_Margen";
             this.Tb_Margen.PreventEnterBeep = true;
-            this.Tb_Margen.Size = new System.Drawing.Size(51, 21);
+            this.Tb_Margen.Size = new System.Drawing.Size(51, 25);
             this.Tb_Margen.TabIndex = 2;
             this.Tb_Margen.Text = "0";
             this.Tb_Margen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -396,7 +396,7 @@
             this.Tb_Descripcion.Location = new System.Drawing.Point(131, 51);
             this.Tb_Descripcion.Name = "Tb_Descripcion";
             this.Tb_Descripcion.PreventEnterBeep = true;
-            this.Tb_Descripcion.Size = new System.Drawing.Size(166, 21);
+            this.Tb_Descripcion.Size = new System.Drawing.Size(166, 25);
             this.Tb_Descripcion.TabIndex = 1;
             // 
             // LabelX12
@@ -461,7 +461,7 @@
             this.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GroupPanel2.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupPanel2.Location = new System.Drawing.Point(0, 158);
+            this.GroupPanel2.Location = new System.Drawing.Point(0, 154);
             this.GroupPanel2.Name = "GroupPanel2";
             this.GroupPanel2.Size = new System.Drawing.Size(382, 375);
             // 
@@ -503,7 +503,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(0, 0);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(376, 352);
+            this.Panel3.Size = new System.Drawing.Size(376, 347);
             this.Panel3.TabIndex = 0;
             // 
             // Dgv_Categoria
@@ -517,7 +517,7 @@
             this.Dgv_Categoria.Name = "Dgv_Categoria";
             this.Dgv_Categoria.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Dgv_Categoria.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Categoria.Size = new System.Drawing.Size(376, 352);
+            this.Dgv_Categoria.Size = new System.Drawing.Size(376, 347);
             this.Dgv_Categoria.TabIndex = 0;
             this.Dgv_Categoria.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Dgv_Categoria.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Categoria_EditingCell);
@@ -530,7 +530,7 @@
             this.Panel_Precio.Dock = System.Windows.Forms.DockStyle.Right;
             this.Panel_Precio.Location = new System.Drawing.Point(779, 108);
             this.Panel_Precio.Name = "Panel_Precio";
-            this.Panel_Precio.Size = new System.Drawing.Size(382, 533);
+            this.Panel_Precio.Size = new System.Drawing.Size(382, 529);
             this.Panel_Precio.TabIndex = 73;
             // 
             // panel4
@@ -541,7 +541,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 108);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(776, 533);
+            this.panel4.Size = new System.Drawing.Size(776, 529);
             this.panel4.TabIndex = 75;
             // 
             // GroupPanel4
@@ -555,7 +555,7 @@
             this.GroupPanel4.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupPanel4.Location = new System.Drawing.Point(0, 92);
             this.GroupPanel4.Name = "GroupPanel4";
-            this.GroupPanel4.Size = new System.Drawing.Size(776, 441);
+            this.GroupPanel4.Size = new System.Drawing.Size(776, 437);
             // 
             // 
             // 
@@ -593,7 +593,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(770, 418);
+            this.panel7.Size = new System.Drawing.Size(770, 409);
             this.panel7.TabIndex = 0;
             // 
             // Dgv_Precio
@@ -605,7 +605,7 @@
             this.Dgv_Precio.Name = "Dgv_Precio";
             this.Dgv_Precio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Dgv_Precio.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Precio.Size = new System.Drawing.Size(770, 418);
+            this.Dgv_Precio.Size = new System.Drawing.Size(770, 409);
             this.Dgv_Precio.TabIndex = 0;
             this.Dgv_Precio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Dgv_Precio.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Precio_CellEdited);
@@ -665,7 +665,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(770, 69);
+            this.panel5.Size = new System.Drawing.Size(770, 64);
             this.panel5.TabIndex = 0;
             // 
             // TableLayoutPanel1
@@ -680,7 +680,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(770, 69);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(770, 64);
             this.TableLayoutPanel1.TabIndex = 236;
             // 
             // Panel6
@@ -692,7 +692,7 @@
             this.Panel6.Location = new System.Drawing.Point(189, 3);
             this.Panel6.Name = "Panel6";
             this.Panel6.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.Panel6.Size = new System.Drawing.Size(389, 63);
+            this.Panel6.Size = new System.Drawing.Size(389, 58);
             this.Panel6.TabIndex = 34;
             // 
             // Cb_Almacen
@@ -703,13 +703,13 @@
             this.Cb_Almacen.DesignTimeLayout = Cb_Almacen_DesignTimeLayout;
             this.Cb_Almacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_Almacen.Location = new System.Drawing.Point(61, 20);
+            this.Cb_Almacen.Location = new System.Drawing.Point(79, 20);
             this.Cb_Almacen.Name = "Cb_Almacen";
             this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacen.SelectedIndex = -1;
             this.Cb_Almacen.SelectedItem = null;
-            this.Cb_Almacen.Size = new System.Drawing.Size(328, 21);
+            this.Cb_Almacen.Size = new System.Drawing.Size(310, 25);
             this.Cb_Almacen.TabIndex = 31;
             this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_Almacen.ValueChanged += new System.EventHandler(this.Cb_Almacen_ValueChanged);
@@ -729,7 +729,7 @@
             this.lbgrupo2.Name = "lbgrupo2";
             this.lbgrupo2.PaddingTop = 4;
             this.lbgrupo2.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lbgrupo2.Size = new System.Drawing.Size(61, 20);
+            this.lbgrupo2.Size = new System.Drawing.Size(79, 24);
             this.lbgrupo2.TabIndex = 32;
             this.lbgrupo2.Text = "Almacen:";
             // 

@@ -30,6 +30,7 @@
       <xs:element minOccurs="0" name="Latitud" type="xs:decimal" />
       <xs:element minOccurs="0" name="Longitud" type="xs:decimal" />
       <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoAlmacenId" type="xs:int" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

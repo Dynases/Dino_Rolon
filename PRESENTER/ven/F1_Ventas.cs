@@ -20,6 +20,7 @@ namespace PRESENTER.ven
         public F1_Ventas()
         {
             InitializeComponent();
+            this.MP_CargarBuscador();
             this.MP_InHabilitar();
             this.MP_CargarAlmacenes();
             this.MP_CargarVentas();
@@ -27,7 +28,6 @@ namespace PRESENTER.ven
             this.lblIdCliente.Text = "";
             this.lblId.Text = "";
             listaDetalleVenta = new List<VVenta_01>();
-            this.MP_CargarBuscador();
         }
 
         #region Variables de Entorno
@@ -406,11 +406,16 @@ namespace PRESENTER.ven
 
         private void MP_CargarEncargado(int almacenOrigen)
         {
+
+
             var almacen = new ServiceDesktop.ServiceDesktopClient().AlmacenListar()
                                                                        .ToList()
                                                                        .Where(a => a.Id == almacenOrigen)
                                                                        .FirstOrDefault();
-            TbEncEntrega.Text = almacen.Encargado;
+            if (almacen != null)
+            {
+                TbEncEntrega.Text = almacen.Encargado;
+            }
         }
 
         private void MP_CargarBuscador()
@@ -657,6 +662,7 @@ namespace PRESENTER.ven
         {
             this.LblTitulo.Text = "VENTAS";
             btnMax.Visible = false;
+            superTabControl1.SelectedPanel = PanelContenidoRegistro;
         }
 
         private void TbCliente_KeyDown(object sender, KeyEventArgs e)
