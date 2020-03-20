@@ -47,8 +47,8 @@ namespace PRESENTER.com
             try
             {
                 if (Cb_Tipo.Enabled == true)
-                {
-                    MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
+                {                    
+                    MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value),2);                    
                 }
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace PRESENTER.com
             bool result;
             VCompraIngreso_02 lista = new VCompraIngreso_02()
             {
-                IdLibreria = (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA,
+                IdLibreria = Convert.ToInt32((Cb_Placa.Value)), //(int)ENEstaticosOrden.COMPRA_INGRESO_PLACA,
                 Descripcion = Tb_Entregado.Text,
             };
             return result = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_Guardar(lista);

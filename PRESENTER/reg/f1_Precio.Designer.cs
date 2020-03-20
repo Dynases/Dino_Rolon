@@ -56,7 +56,6 @@
             this.Panel6 = new System.Windows.Forms.Panel();
             this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.lbgrupo2 = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -70,6 +69,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.GPanelAddCategoria.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.GroupPanel2.SuspendLayout();
@@ -86,17 +87,6 @@
             this.Panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.panel4);
-            this.PanelContenidoRegistro.Controls.Add(this.Panel_Precio);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1161, 641);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel_Precio, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel4, 0);
             // 
             // superTabControl1
             // 
@@ -213,6 +203,22 @@
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1161, 72);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.panel4);
+            this.PanelContenidoRegistro.Controls.Add(this.Panel_Precio);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1161, 641);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel_Precio, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel4, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 673);
+            this.PanelInferior.Size = new System.Drawing.Size(1161, 28);
             // 
             // GPanelAddCategoria
             // 
@@ -734,7 +740,6 @@
             this.ClientSize = new System.Drawing.Size(1161, 701);
             this.Name = "f1_Precio";
             this.Text = "f1_Precio";
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -749,6 +754,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
             this.GPanelAddCategoria.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.GroupPanel2.ResumeLayout(false);

@@ -140,7 +140,7 @@ namespace UTILITY.Global
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lSucursal;
                 combo.DropDownList.Refresh();
-                combo.Value = 2;
+                combo.Value = 1;
             }
             catch (Exception ex)
             {
