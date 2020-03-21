@@ -247,7 +247,7 @@ namespace PRESENTER.reg
         private void MP_CargarPrecioTabla()
         {
             tPrecio = new ServiceDesktop.ServiceDesktopClient().PrecioProductoListar2(Convert.ToInt32(Cb_Almacen.Value));
-
+           
         }
         private void MP_CargarPrecio(bool bandera)
         {
@@ -433,7 +433,6 @@ namespace PRESENTER.reg
                                 int rowIndex = tPrecio.Rows.IndexOf(resultado[0]);
                                 string columna= resultado[0].Field<int>("Estado").ToString() + "_" + rowIndex.ToString().Trim();
                                 MP_ActualizarPrecio(columna, null, x, 2);
-
                             }
                             break;
                         }

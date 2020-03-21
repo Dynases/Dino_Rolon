@@ -364,10 +364,11 @@ namespace PRESENTER.com
                 LblTitulo.Text = _NombreFormulario;
                 MP_InicioArmarCombo();
                 MP_CargarAlmacenes();
-                btnMax.Visible = false;
+                btnMax.Visible = false;              
                 MP_CargarEncabezado();
                 MP_InHabilitar();
                 btnFacturacion.Visible = false;
+             
             }
             catch (Exception ex)
             {
@@ -490,7 +491,7 @@ namespace PRESENTER.com
         }
         private void MP_ArmarDetalle(List<VCompraIngreso_01> lresult)
         {
-            if (lresult.Count() > 0)
+            try
             {
                 //DataTable result = ListaATabla(lresult);
                 Dgv_Detalle.DataSource = lresult;
@@ -583,6 +584,12 @@ namespace PRESENTER.com
                 Dgv_Detalle.GroupByBoxVisible = false;
                 Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
             }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }         
+            
         }
 
         private void MP_InicioArmarCombo()

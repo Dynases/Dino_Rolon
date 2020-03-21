@@ -49,15 +49,15 @@
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\AxShockwaveFlashObjects.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\AxShockwaveFlashObjects.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Bunifu_UI_v1.52.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Bunifu\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -193,45 +193,48 @@
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, PublicKeyToken=e8a75d24b142be49, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\QrCode\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\GMap.NET.Core.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\GMap.NET.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\DINASES\Librerias\Gmap\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Data.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Data.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.CalendarCombo.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Windows.CalendarCombo.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.CalendarCombo.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Common.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Windows.Common.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.Common.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Windows.GridEX.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.GridEX.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Ribbon.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Windows.Ribbon.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.Ribbon.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\librerias\Janus.Windows.UI.v3.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\Janus\Janus.Windows.UI.v3.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework">
-      <HintPath>..\..\..\..\..\..\librerias\MetroFramework.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Fonts">
-      <HintPath>..\..\..\..\..\..\librerias\MetroFramework.Fonts.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -253,7 +256,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OnBarcode.Barcode.WinForms">
-      <HintPath>..\..\..\..\..\..\librerias\OnBarcode.Barcode.WinForms.dll</HintPath>
+      <HintPath>..\..\..\..\DINASES\Librerias\QrCode\OnBarcode.Barcode.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -516,86 +519,86 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
+    <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop271.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop10.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2710.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2711.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop12.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2712.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop13.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2713.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop14.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2714.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop15.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2715.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop16.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2716.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop17.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2717.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop18.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2718.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2719.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop272.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop20.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2720.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop21.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2721.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop22.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2722.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop23.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2723.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop24.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2724.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop25.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2725.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop26.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2726.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop273.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop274.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop5.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop275.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop6.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop276.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop7.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop277.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop8.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop278.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop9.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop279.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -679,7 +682,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
