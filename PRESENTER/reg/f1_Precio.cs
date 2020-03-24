@@ -614,14 +614,13 @@ namespace PRESENTER.reg
                     {
                         if (item.Estado == 3)
                         {
-                            resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                           resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                         }
                         else
                         {
                             if (item.Estado == 2)
                             {
-
-                                resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
+                              resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
                             }
                         }
                     }
