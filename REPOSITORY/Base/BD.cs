@@ -18,8 +18,8 @@ namespace REPOSITORY.Base
         //private static string cadenaConexion = "data source=.;initial catalog=DiAvi;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework&quot;";
 
         //PRODUCCION
-        string connectionString = "metadata=res://*/EntityDataModel.DiAvi.DiAviModel.csdl|res://*/EntityDataModel.DiAvi.DiAviModel.ssdl|res://*/EntityDataModel.DiAvi.DiAviModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
-        private static string cadenaConexion = "data source=DYNASYS;initial catalog=DiAvi;persist security info=True;user id=Rolon;password=Rolon2020*;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        string connectionstring = "metadata=res://*/entitydatamodel.diavi.diavimodel.csdl|res://*/entitydatamodel.diavi.diavimodel.ssdl|res://*/entitydatamodel.diavi.diavimodel.msl;provider=system.data.sqlclient;provider connection string=&quot;data source=dynasys;initial catalog=diavi;persist security info=true;user id=rolon;password=rolon2020*;multipleactiveresultsets=true;app=entityframework&quot;";
+        private static string cadenaConexion = "data source=dynasys;initial catalog=diavi;persist security info=true;user id=rolon;password=rolon2020*;multipleactiveresultsets=true;app=entityframework&quot;";
 
         #endregion
         public BD() { }

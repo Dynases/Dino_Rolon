@@ -197,6 +197,10 @@ namespace SERVICE
         DataTable PrecioProductoListar2(int idSucursal);
         [OperationContract]
         bool PrecioGuardar(List<VPrecioLista> vPrecio, int idSucural, string usuario);
+        [OperationContract]
+        bool PrecioNuevo(VPrecioLista vPrecio, int idSucural, string usuario);
+        [OperationContract]
+        bool PrecioModificar(VPrecioLista vPrecio, string usuario);
         #endregion
         ///**********COMPRA INGRESO******************
         ///

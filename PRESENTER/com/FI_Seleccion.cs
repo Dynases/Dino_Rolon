@@ -184,7 +184,7 @@ namespace PRESENTER.com
                     Dgv_Detalle.RootTable.Columns["Porcen"].Visible = false;
 
                     Dgv_Detalle.RootTable.Columns["Precio"].Caption = "PRECIO";
-                    Dgv_Detalle.RootTable.Columns["Precio"].FormatString = "0.00";
+                    Dgv_Detalle.RootTable.Columns["Precio"].FormatString = "0.0000";
                     Dgv_Detalle.RootTable.Columns["Precio"].Width = 70;
                     Dgv_Detalle.RootTable.Columns["Precio"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Detalle.RootTable.Columns["Precio"].CellStyle.FontSize = 9;
@@ -206,7 +206,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void MP_CargarDetalle2(int id)
@@ -219,67 +219,74 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void ArmarDetalle(List<VSeleccion_01_Lista> lresult)
         {
-            if (lresult.Count() > 0)
+            try
             {
-                Dgv_Seleccion.DataSource = lresult;
-                Dgv_Seleccion.RetrieveStructure();
-                Dgv_Seleccion.AlternatingColors = true;
+                if (lresult.Count() > 0)
+                {
+                    Dgv_Seleccion.DataSource = lresult;
+                    Dgv_Seleccion.RetrieveStructure();
+                    Dgv_Seleccion.AlternatingColors = true;
 
-                Dgv_Seleccion.RootTable.Columns["id"].Visible = false;
-                Dgv_Seleccion.RootTable.Columns["IdSeleccion"].Visible = false;
-                Dgv_Seleccion.RootTable.Columns["IdProducto"].Visible = false;
-                Dgv_Seleccion.RootTable.Columns["Estado"].Visible = false;
+                    Dgv_Seleccion.RootTable.Columns["id"].Visible = false;
+                    Dgv_Seleccion.RootTable.Columns["IdSeleccion"].Visible = false;
+                    Dgv_Seleccion.RootTable.Columns["IdProducto"].Visible = false;
+                    Dgv_Seleccion.RootTable.Columns["Estado"].Visible = false;
 
-                Dgv_Seleccion.RootTable.Columns["Producto"].Caption = "PRODUCTO";
-                Dgv_Seleccion.RootTable.Columns["Producto"].Width = 150;
-                Dgv_Seleccion.RootTable.Columns["Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.FontSize = 9;
-                Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_Seleccion.RootTable.Columns["Producto"].Visible = true;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].Caption = "PRODUCTO";
+                    Dgv_Seleccion.RootTable.Columns["Producto"].Width = 150;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.FontSize = 9;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].Visible = true;
 
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].Key = "Cantidad";
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].Caption = "CANT.";
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].FormatString = "0";
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].Width = 75;
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].CellStyle.FontSize = 9;
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Seleccion.RootTable.Columns["Cantidad"].Visible = true;
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].Key = "Cantidad";
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].Caption = "CANT.";
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].FormatString = "0";
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].Width = 75;
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].CellStyle.FontSize = 9;
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Seleccion.RootTable.Columns["Cantidad"].Visible = true;
 
-                Dgv_Seleccion.RootTable.Columns["Porcen"].Key = "Porcen";
-                Dgv_Seleccion.RootTable.Columns["Porcen"].Caption = "%";
-                Dgv_Seleccion.RootTable.Columns["Porcen"].FormatString = "0.00";
-                Dgv_Seleccion.RootTable.Columns["Porcen"].Width = 50;
-                Dgv_Seleccion.RootTable.Columns["Porcen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.FontSize = 9;
-                Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Seleccion.RootTable.Columns["Porcen"].Visible = true;
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].Key = "Porcen";
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].Caption = "%";
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].FormatString = "0.00";
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].Width = 50;
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.FontSize = 9;
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Seleccion.RootTable.Columns["Porcen"].Visible = true;
 
-                Dgv_Seleccion.RootTable.Columns["Precio"].Caption = "PRECIO";
-                Dgv_Seleccion.RootTable.Columns["Precio"].FormatString = "0.00";
-                Dgv_Seleccion.RootTable.Columns["Precio"].Width = 75;
-                Dgv_Seleccion.RootTable.Columns["Precio"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Seleccion.RootTable.Columns["Precio"].CellStyle.FontSize = 9;
-                Dgv_Seleccion.RootTable.Columns["Precio"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Seleccion.RootTable.Columns["Precio"].Visible = true;
+                    Dgv_Seleccion.RootTable.Columns["Precio"].Caption = "PRECIO";
+                    Dgv_Seleccion.RootTable.Columns["Precio"].FormatString = "0.0000";
+                    Dgv_Seleccion.RootTable.Columns["Precio"].Width = 75;
+                    Dgv_Seleccion.RootTable.Columns["Precio"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Seleccion.RootTable.Columns["Precio"].CellStyle.FontSize = 9;
+                    Dgv_Seleccion.RootTable.Columns["Precio"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Seleccion.RootTable.Columns["Precio"].Visible = true;
 
-                Dgv_Seleccion.RootTable.Columns["Total"].Caption = "TOTAL";
-                Dgv_Seleccion.RootTable.Columns["Total"].FormatString = "0.00";
-                Dgv_Seleccion.RootTable.Columns["Total"].Width = 90;
-                Dgv_Seleccion.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.FontSize = 9;
-                Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Seleccion.RootTable.Columns["Total"].Visible = true;
+                    Dgv_Seleccion.RootTable.Columns["Total"].Caption = "TOTAL";
+                    Dgv_Seleccion.RootTable.Columns["Total"].FormatString = "0.00";
+                    Dgv_Seleccion.RootTable.Columns["Total"].Width = 90;
+                    Dgv_Seleccion.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.FontSize = 9;
+                    Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                    Dgv_Seleccion.RootTable.Columns["Total"].Visible = true;
 
-                //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
-                Dgv_Seleccion.GroupByBoxVisible = false;
-                Dgv_Seleccion.VisualStyle = VisualStyle.Office2007;
+                    //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                    Dgv_Seleccion.GroupByBoxVisible = false;
+                    Dgv_Seleccion.VisualStyle = VisualStyle.Office2007;
+                }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void MP_CargarDetalle_Nuevo(int IdCompraIngreso_01)
         {
@@ -303,18 +310,25 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }       
         private void MP_InicioArmarCombo()
         {
-            //Carga las librerias al combobox desde una lista
-            UTGlobal.MG_ArmarCombo(Cb_Tipo,
-                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
-                                                                                                 Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2)).ToList());
-            UTGlobal.MG_ArmarCombo(Cb_Placa,
-                                new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
-                                                                                              Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
+            try
+            {
+                //Carga las librerias al combobox desde una lista
+                UTGlobal.MG_ArmarCombo(Cb_Tipo,
+                                       new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
+                                                                                                     Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2)).ToList());
+                UTGlobal.MG_ArmarCombo(Cb_Placa,
+                                    new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                                                                                                  Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {
@@ -331,7 +345,7 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         public static DataTable ListaATabla(List<VSeleccionLista> lista)
@@ -359,19 +373,10 @@ namespace PRESENTER.com
         }
         private void MP_Habilitar()
         {
-            //Tb_IdCompraIngreso.ReadOnly = false;
-            //Tb_NUmGranja.ReadOnly = false;
-            //Tb_Placa.ReadOnly = false;
-            //Cb_Tipo.ReadOnly = true;
-            //tb_Proveedor.ReadOnly = false;           
-            //Tb_Edad.ReadOnly = false;           
-            //Tb_FechaEnt.Value = DateTime.Now;
-            //Tb_FechaRec.Value = DateTime.Now;
             tb_FechaSeleccion.IsInputReadOnly = false;
             Tb_IdCompraIngreso.ReadOnly = false;
             Dgv_Detalle.Enabled = true;
             Dgv_Seleccion.Enabled = true;
-
         }
         private void MP_InHabilitar()
         {
@@ -419,10 +424,8 @@ namespace PRESENTER.com
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
-
         }  
         private void MP_MostrarRegistro(int _Pos)
         {
@@ -504,17 +507,24 @@ namespace PRESENTER.com
         }
         private void MP_Filtrar(int tipo)
         {
-            MP_CargarEncabezado();
-            if (Dgv_GBuscador.RowCount > 0)
+            try
             {
-                _MPos = 0;
-                MP_MostrarRegistro(tipo == 1 ? _MPos : Dgv_GBuscador.RowCount - 1);
+                MP_CargarEncabezado();
+                if (Dgv_GBuscador.RowCount > 0)
+                {
+                    //_MPos = 0;
+                    MP_MostrarRegistro(tipo == 1 ? 0 : _MPos);
+                }
+                else
+                {
+                    MP_Limpiar();
+                    LblPaginacion.Text = "0/0";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MP_Limpiar();
-                LblPaginacion.Text = "0/0";
-            }
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
         void MP_MostrarMensajeError(string mensaje)
         {
@@ -526,10 +536,17 @@ namespace PRESENTER.com
 
         private void Dgv_GBuscador_SelectionChanged_1(object sender, EventArgs e)
         {
-            if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
+            try
             {
-                MP_MostrarRegistro(Dgv_GBuscador.Row);
+                if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
+                {
+                    MP_MostrarRegistro(Dgv_GBuscador.Row);
+                }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void Dgv_Detalle_EditingCell_1(object sender, EditingCellEventArgs e)
@@ -539,7 +556,8 @@ namespace PRESENTER.com
 
         private void Dgv_Seleccion_EditingCell(object sender, EditingCellEventArgs e)
         {
-           
+            try
+            {
                 if (e.Column.Index == Dgv_Seleccion.RootTable.Columns["Cantidad"].Index)
                 {
                     e.Cancel = false;
@@ -547,7 +565,13 @@ namespace PRESENTER.com
                 else
                 {
                     e.Cancel = true;
-                }            
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }            
         }
         private void Dgv_Seleccion_CellEdited(object sender, ColumnActionEventArgs e)
         {
@@ -575,38 +599,44 @@ namespace PRESENTER.com
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }
-           
+            }           
         }
-
         private void MP_CalcularFila()
         {
-            Double cantidad, precio, total;
-            cantidad = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Cantidad"].Value);
-            precio = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Precio"].Value);
-            total = cantidad * precio;
-            Dgv_Seleccion.CurrentRow.Cells["Total"].Value = total;
-            MP_ObtenerCalculo();
-            if (cantidad > 0)
+            try
             {
-                Dgv_Seleccion.UpdateData();
-                foreach (var fila in seleccion_01)
+                Double cantidad, precio, total;
+                cantidad = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Cantidad"].Value);
+                precio = Convert.ToDouble(Dgv_Seleccion.CurrentRow.Cells["Precio"].Value);
+                total = cantidad * precio;
+                Dgv_Seleccion.CurrentRow.Cells["Total"].Value = total;
+                MP_ObtenerCalculo();
+                if (cantidad > 0)
                 {
-                    fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                    Dgv_Seleccion.UpdateData();
+                    foreach (var fila in seleccion_01)
+                    {
+                        fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                    }
+                    ArmarDetalle(seleccion_01);
                 }
-                ArmarDetalle(seleccion_01);
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void Tb_IdCompraIngreso_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (Tb_IdCompraIngreso.ReadOnly == false)
+            try
             {
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                if (Tb_IdCompraIngreso.ReadOnly == false)
                 {
-                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
-                    List<GLCelda> listEstCeldas = new List<GLCelda>
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
                         new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
                         new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
@@ -620,128 +650,176 @@ namespace PRESENTER.com
                         new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
                         new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
                     };
-                    Efecto efecto = new Efecto();
-                    efecto.Tipo = 3;
-                    efecto.Tabla = lista;
-                    efecto.SelectCol = 2;
-                    efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
-                    efecto.Context = "SELECCIONE UN INGRESO";
-                    efecto.ShowDialog();
-                    bool bandera = false;
-                    bandera = efecto.Band;
-                    if (bandera)
-                    {
-                        Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                        Tb_IdCompraIngreso.Text = Row.Cells["Id"].Value.ToString();
-                        Tb_NUmGranja.Text = Row.Cells["NumNota"].Value.ToString();
-                        Tb_FechaEnt.Value = Convert.ToDateTime(Row.Cells["FechaEnt"].Value);
-                        Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
-                        Cb_Tipo.Value = Row.Cells["Tipo"].Value;
-                        tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
-                        Cb_Placa.Value = Row.Cells["Placa"].Value;
-                        Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
-                        Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
-                        _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
-                        MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                        MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                        MP_ObtenerCalculo();
-                        btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN INGRESO";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            Tb_IdCompraIngreso.Text = Row.Cells["Id"].Value.ToString();
+                            Tb_NUmGranja.Text = Row.Cells["NumNota"].Value.ToString();
+                            Tb_FechaEnt.Value = Convert.ToDateTime(Row.Cells["FechaEnt"].Value);
+                            Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
+                            Cb_Tipo.Value = Row.Cells["Tipo"].Value;
+                            tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
+                            Cb_Placa.Value = Row.Cells["Placa"].Value;
+                            Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
+                            Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
+                            _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
+                            MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                            MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                            MP_ObtenerCalculo();
+                            btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btnPrimero_Click(object sender, EventArgs e)
         {
-            if (Dgv_GBuscador.RowCount > 0)
+            try
             {
-                _MPos = 0;
-                Dgv_GBuscador.Row = _MPos;
+                if (Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = 0;
+                    Dgv_GBuscador.Row = _MPos;
+                }
             }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+           
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            _MPos = Dgv_GBuscador.Row;
-            if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+            try
             {
-                _MPos = _MPos - 1;
-                Dgv_GBuscador.Row = _MPos;
+                _MPos = Dgv_GBuscador.Row;
+                if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = _MPos - 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
             }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            _MPos = Dgv_GBuscador.Row;
-            if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+            try
             {
-                _MPos = Dgv_GBuscador.Row + 1;
-                Dgv_GBuscador.Row = _MPos;
+                _MPos = Dgv_GBuscador.Row;
+                if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+                {
+                    _MPos = Dgv_GBuscador.Row + 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
             }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            _MPos = Dgv_GBuscador.Row;
-            if (Dgv_GBuscador.RowCount > 0)
+            try
             {
-                _MPos = Dgv_GBuscador.RowCount - 1;
-                Dgv_GBuscador.Row = _MPos;
+                _MPos = Dgv_GBuscador.Row;
+                if (Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = Dgv_GBuscador.RowCount - 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
-            Dgv_Seleccion.UpdateData();
-            Double totalSel, totalCant, precioProrateo, precioAvg;
-            if (_TipoCompra == 1)
+            try
             {
-                //merma = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
-                //mermaPorc = merma / Tb_Recep_TCantidad.Value;
-                //Tb_Merma.Value = merma;
-                var detRecion = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource);
                 Dgv_Seleccion.UpdateData();
-                seleccion_01 = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource);
-                foreach (var filaRep in detRecion)
-                {
-                    foreach (var filaSel in seleccion_01)
+                Double totalSel, totalCant, precioProrateo, precioAvg;
+                if (_TipoCompra == 1)
+                {                    
+                    var detRecion = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource);
+                    Dgv_Seleccion.UpdateData();
+                    seleccion_01 = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource);
+                    foreach (var filaRep in detRecion)
                     {
-                        if (filaRep.IdProducto == filaSel.IdProducto)
+                        foreach (var filaSel in seleccion_01)
                         {
-                            filaSel.Total = filaSel.Cantidad * filaRep.Precio;
+                            if (filaRep.IdProducto == filaSel.IdProducto)
+                            {
+                                filaSel.Total = filaSel.Cantidad * filaRep.Precio;
+                            }
                         }
                     }
-                }
-                ArmarDetalle(seleccion_01);
-                Dgv_Seleccion.UpdateData();
-                totalSel = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
-                totalCant = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
-                precioProrateo = (Tb_Recep_Total.Value - totalSel) / totalCant;
+                    ArmarDetalle(seleccion_01);
+                    Dgv_Seleccion.UpdateData();
+                    totalSel = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
+                    totalCant = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
+                    precioProrateo = (Tb_Recep_Total.Value - totalSel) / totalCant;
 
-                foreach (var filaRep in detRecion)
-                {
-                    foreach (var filaSel in seleccion_01)
+                    foreach (var filaRep in detRecion)
                     {
-                        if (filaRep.IdProducto == filaSel.IdProducto)
+                        foreach (var filaSel in seleccion_01)
                         {
-                            filaSel.Precio = (filaRep.Precio + Convert.ToDecimal(precioProrateo));
-                            filaSel.Total = filaSel.Precio * filaRep.Cantidad;
-                            
+                            if (filaRep.IdProducto == filaSel.IdProducto)
+                            {
+                                filaSel.Precio = (filaRep.Precio + Convert.ToDecimal(precioProrateo));
+                                filaSel.Total = filaSel.Precio * filaRep.Cantidad;
+
+                            }
                         }
                     }
-                }             
-                ArmarDetalle(seleccion_01);
-                MP_ObtenerCalculo();
-             }
+                    ArmarDetalle(seleccion_01);
+                    MP_ObtenerCalculo();
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            try
             {
-                superTabControl1.SelectedTabIndex = 0;
-                tb_FechaSeleccion.Focus();
+                if (e.KeyData == Keys.Enter)
+                {
+                    superTabControl1.SelectedTabIndex = 0;
+                    tb_FechaSeleccion.Focus();
+                }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void Dgv_GBuscador_EditingCell(object sender, EditingCellEventArgs e)
@@ -753,58 +831,68 @@ namespace PRESENTER.com
         public override bool MH_NuevoRegistro()
         {
             bool resultado = false;
-            string mensaje = "";
+            try
+            {               
+                string mensaje = "";
 
-            VSeleccion vSeleccion = new VSeleccion()
-            {
-                IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
-                IdCompraIng = Convert.ToInt32(Tb_IdCompraIngreso.Text),
-                Estado = (int)ENEstado.GUARDADO,
-                FechaReg = tb_FechaSeleccion.Value,
-                Cantidad = Convert.ToDecimal(Tb_TCantidad.Value),
-                Precio = Convert.ToDecimal(Tb_TPrecio.Value),
-                Total = Convert.ToDecimal(Tb_Total.Value),
-                Fecha = DateTime.Now.Date,
-                Hora = DateTime.Now.ToString("hh:mm"),
-                Usuario = UTGlobal.Usuario,
-                Merma = Convert.ToDecimal(Tb_Merma.Value)
-            };
-            int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
-            int idAux = id;
-            var detalle_Seleccion = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource).ToArray<VSeleccion_01_Lista>();
+                VSeleccion vSeleccion = new VSeleccion()
+                {
+                    IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
+                    IdCompraIng = Convert.ToInt32(Tb_IdCompraIngreso.Text),
+                    Estado = (int)ENEstado.GUARDADO,
+                    FechaReg = tb_FechaSeleccion.Value,
+                    Cantidad = Convert.ToDecimal(Tb_TCantidad.Value),
+                    Precio = Convert.ToDecimal(Tb_TPrecio.Value),
+                    Total = Convert.ToDecimal(Tb_Total.Value),
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                    Merma = Convert.ToDecimal(Tb_Merma.Value)
+                };
+                int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
+                int idAux = id;
+                var detalle_Seleccion = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource).ToArray<VSeleccion_01_Lista>();
 
-            var detalle_Ingreso = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource).ToArray<VSeleccion_01_Lista>();
-            resultado = new ServiceDesktop.ServiceDesktopClient().Seleccion_Guardar(vSeleccion, detalle_Seleccion, detalle_Ingreso, ref id);
-            if (resultado)
-            {
-                if (idAux == 0)//Registar
+                var detalle_Ingreso = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource).ToArray<VSeleccion_01_Lista>();
+                resultado = new ServiceDesktop.ServiceDesktopClient().Seleccion_Guardar(vSeleccion, detalle_Seleccion, detalle_Ingreso, ref id);
+                if (resultado)
                 {
-                    Tb_NUmGranja.Focus();
-                    MP_CargarEncabezado();
-                    MP_Limpiar();
-                    _Limpiar = true;
-                    mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                    if (idAux == 0)//Registar
+                    {
+                        Tb_NUmGranja.Focus();
+                        MP_Filtrar(1);
+                        MP_CargarEncabezado();
+                        MP_Limpiar();
+                        _Limpiar = true;
+                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                    }
+                    else//Modificar
+                    {
+                        MP_Filtrar(2);
+                        MP_InHabilitar();//El formulario
+                        _Limpiar = true;
+                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                        MH_Habilitar();//El menu                   
+                    }
                 }
-                else//Modificar
+                //Resultado
+                if (resultado)
                 {
-                    MP_Filtrar(1);
-                    MP_InHabilitar();//El formulario
-                    _Limpiar = true;
-                    mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                    MH_Habilitar();//El menu                   
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                 }
+                else
+                {
+                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
+                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                }
+                return resultado;
             }
-            //Resultado
-            if (resultado)
+            catch (Exception ex)
             {
-                ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                MP_MostrarMensajeError(ex.Message);
+                return resultado;
             }
-            else
-            {
-                mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-            }
-            return resultado;
+          
         }
         public override void MH_Nuevo()
         {

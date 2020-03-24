@@ -36,8 +36,8 @@ namespace DATA.EntityDataModel.DiAvi
         public string EncRecepcion { get; set; }
     
         public virtual Almacen Almacen { get; set; }
+        public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta_01> Venta_01 { get; set; }
-        public virtual Cliente Cliente { get; set; }
     }
 }

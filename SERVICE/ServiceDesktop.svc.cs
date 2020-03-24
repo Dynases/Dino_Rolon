@@ -595,6 +595,31 @@ namespace SERVICE
         #endregion
         #region Precio 
 
+        public bool PrecioNuevo(VPrecioLista vPrecio, int idSucural, string usuario)
+        {
+            try
+            {
+                var listResult = new LPrecio().Nuevo(vPrecio, idSucural, usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool PrecioModificar(VPrecioLista vPrecio, string usuario)
+        {
+            try
+            {
+                var listResult = new LPrecio().Modificar(vPrecio, usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public bool PrecioGuardar(List<VPrecioLista> vPrecio, int idSucural, string usuario)
         {
             try
@@ -1056,7 +1081,6 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
         #endregion
     }
 }

@@ -19,38 +19,38 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:64474/ServiceDesktop.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceDesktop27.xsd" MetadataType="Schema" ID="40498193-75b9-4ee1-9e67-9e1dcb2cc6ba" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd15" />
-    <MetadataFile FileName="ServiceDesktop271.xsd" MetadataType="Schema" ID="91d3b1e7-f614-44a1-a1e2-b693965f659b" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd14" />
-    <MetadataFile FileName="ServiceDesktop272.xsd" MetadataType="Schema" ID="11f914d6-c19a-48b2-8808-fa948bb07d8f" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd26" />
-    <MetadataFile FileName="ServiceDesktop273.xsd" MetadataType="Schema" ID="bdb9c13d-ac27-47bb-a423-4a67892adc29" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceDesktop274.xsd" MetadataType="Schema" ID="dfd52417-e5ba-4831-947a-4a9d546bf8f4" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd25" />
-    <MetadataFile FileName="ServiceDesktop275.xsd" MetadataType="Schema" ID="68ef530c-7b80-4542-bd09-1c87f3533de3" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd24" />
-    <MetadataFile FileName="ServiceDesktop276.xsd" MetadataType="Schema" ID="c2700883-d706-4cb5-b886-19a6c8064424" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd12" />
-    <MetadataFile FileName="ServiceDesktop277.xsd" MetadataType="Schema" ID="ef4a49a5-0e96-4ba6-890c-f5afca588949" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServiceDesktop278.xsd" MetadataType="Schema" ID="b1b043a4-8744-44f4-91de-ff833378833a" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd11" />
-    <MetadataFile FileName="ServiceDesktop279.xsd" MetadataType="Schema" ID="cb4ce8a6-fc19-4195-a70a-5351330a1644" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd10" />
-    <MetadataFile FileName="ServiceDesktop2710.xsd" MetadataType="Schema" ID="f2a77915-6379-49d0-b3b9-1d770e68b66b" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd17" />
-    <MetadataFile FileName="ServiceDesktop2711.xsd" MetadataType="Schema" ID="3a3159e6-8946-4cec-8161-88e1714037e1" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd22" />
-    <MetadataFile FileName="ServiceDesktop2712.xsd" MetadataType="Schema" ID="902b456d-412b-442c-9b29-e1214e206b67" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd7" />
-    <MetadataFile FileName="ServiceDesktop2713.xsd" MetadataType="Schema" ID="00c06f0a-465a-4d06-a97c-73ed176b63c3" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd21" />
-    <MetadataFile FileName="ServiceDesktop2714.xsd" MetadataType="Schema" ID="f8b77482-9d1f-4886-9103-a3b409ddedd7" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd20" />
-    <MetadataFile FileName="ServiceDesktop2715.xsd" MetadataType="Schema" ID="5a4bf9ab-67a4-48d6-a6c5-0e234ac74533" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd8" />
-    <MetadataFile FileName="ServiceDesktop2716.xsd" MetadataType="Schema" ID="c64482cb-8d56-4cf7-930e-a145c94e8dd6" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd13" />
-    <MetadataFile FileName="ServiceDesktop2717.xsd" MetadataType="Schema" ID="0360c799-dd34-4104-8743-c1392a8488e4" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd4" />
-    <MetadataFile FileName="ServiceDesktop2718.xsd" MetadataType="Schema" ID="adfd7acd-2a7f-43a4-bb13-9706863bb25c" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServiceDesktop2719.xsd" MetadataType="Schema" ID="2e4b5665-2489-48d4-a1a5-48de2de32c78" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd23" />
-    <MetadataFile FileName="ServiceDesktop1.disco" MetadataType="Disco" ID="71e34882-10b0-4ea2-9441-031f3deda23b" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?disco" />
-    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="6cc2ccc8-112b-4d6d-ae27-06138d296830" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?wsdl" />
-    <MetadataFile FileName="ServiceDesktop2720.xsd" MetadataType="Schema" ID="29fd23b7-f66f-4877-b56a-8baee8a749b8" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd5" />
-    <MetadataFile FileName="ServiceDesktop2721.xsd" MetadataType="Schema" ID="e3f86a2a-506b-439d-8e27-d8c44cd58585" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd6" />
-    <MetadataFile FileName="ServiceDesktop2722.xsd" MetadataType="Schema" ID="8e2b72a7-dbcb-4c62-a8a3-f4ca66fd08d2" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd3" />
-    <MetadataFile FileName="ServiceDesktop2723.xsd" MetadataType="Schema" ID="905fdb7a-f439-488d-8bee-3c9e36fd686d" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd19" />
-    <MetadataFile FileName="ServiceDesktop2724.xsd" MetadataType="Schema" ID="5e2df2f8-fcf0-4802-a374-a69d03686108" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd18" />
-    <MetadataFile FileName="ServiceDesktop2725.xsd" MetadataType="Schema" ID="1de7e9bc-cad0-44e6-afb7-74ec1b368579" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd9" />
-    <MetadataFile FileName="ServiceDesktop2726.xsd" MetadataType="Schema" ID="861d92ab-494e-4e83-9a0f-c9649e7dc6d4" SourceId="1" SourceUrl="http://177.222.56.74:8080/RolonService/ServiceDesktop.svc?xsd=xsd16" />
+    <MetadataFile FileName="ServiceDesktop.xsd" MetadataType="Schema" ID="b4dc52da-e427-492b-a8e5-26e11613c39c" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd19" />
+    <MetadataFile FileName="ServiceDesktop1.xsd" MetadataType="Schema" ID="bbc957e2-9aed-499a-896a-9bdff6391ce5" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd18" />
+    <MetadataFile FileName="ServiceDesktop.disco" MetadataType="Disco" ID="39ee9aac-01a3-4412-b45e-0055d2678edd" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="3ae5839e-23a5-4094-b004-51ed6bf9b8d0" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?wsdl" />
+    <MetadataFile FileName="ServiceDesktop2.xsd" MetadataType="Schema" ID="5161393e-b97f-40bb-8dd5-94d9f3b88de8" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceDesktop3.xsd" MetadataType="Schema" ID="ebbff7d4-9b46-4324-930b-8cca08627a67" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd5" />
+    <MetadataFile FileName="ServiceDesktop4.xsd" MetadataType="Schema" ID="3748149d-a9e7-4147-858c-2cfd31f63a38" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd26" />
+    <MetadataFile FileName="ServiceDesktop5.xsd" MetadataType="Schema" ID="d283096e-94b8-49d4-9731-74b419ec87c9" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceDesktop6.xsd" MetadataType="Schema" ID="1a181bc7-dcd2-412e-a9db-f55be1cff939" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceDesktop7.xsd" MetadataType="Schema" ID="0ba0e79c-b874-42c6-9301-5afa258aabda" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd8" />
+    <MetadataFile FileName="ServiceDesktop8.xsd" MetadataType="Schema" ID="51d34e7e-7fad-4512-bef9-526b0d914f90" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd11" />
+    <MetadataFile FileName="ServiceDesktop9.xsd" MetadataType="Schema" ID="03fb2098-4165-4343-811d-547ce016d5f5" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd10" />
+    <MetadataFile FileName="ServiceDesktop10.xsd" MetadataType="Schema" ID="48a7abed-cb33-437d-b4e8-4cdf2e756001" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd13" />
+    <MetadataFile FileName="ServiceDesktop11.xsd" MetadataType="Schema" ID="ba788ce5-7800-4b78-99a5-0703dc1e7a1c" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd22" />
+    <MetadataFile FileName="ServiceDesktop12.xsd" MetadataType="Schema" ID="220f2100-9de2-4ec8-8d74-039615c00139" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd12" />
+    <MetadataFile FileName="ServiceDesktop13.xsd" MetadataType="Schema" ID="a1a70c52-41a1-452f-bfe0-47d46ab54479" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd6" />
+    <MetadataFile FileName="ServiceDesktop14.xsd" MetadataType="Schema" ID="06ad00d2-2db9-4e51-ba06-de2a2369d4f8" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd15" />
+    <MetadataFile FileName="ServiceDesktop15.xsd" MetadataType="Schema" ID="b01082cc-3fd4-4c50-9c65-a59bc5492940" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd14" />
+    <MetadataFile FileName="ServiceDesktop16.xsd" MetadataType="Schema" ID="54aca96f-0f13-4e2e-9927-07057df61ed7" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd17" />
+    <MetadataFile FileName="ServiceDesktop17.xsd" MetadataType="Schema" ID="305603bb-c707-4731-b5c8-2698dca8e54a" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd16" />
+    <MetadataFile FileName="ServiceDesktop18.xsd" MetadataType="Schema" ID="4a7d60d7-c7e7-432d-b620-4bd97942fcaa" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd9" />
+    <MetadataFile FileName="ServiceDesktop19.xsd" MetadataType="Schema" ID="43c86383-250d-4054-9711-9438f2177db5" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd21" />
+    <MetadataFile FileName="ServiceDesktop20.xsd" MetadataType="Schema" ID="f76da502-0f40-473f-ac45-4b3bdb40bccc" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd20" />
+    <MetadataFile FileName="ServiceDesktop21.xsd" MetadataType="Schema" ID="57326f94-555c-4b77-b9dc-08639b37e859" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd23" />
+    <MetadataFile FileName="ServiceDesktop22.xsd" MetadataType="Schema" ID="7cda783a-1dca-439b-9aed-b6a0e5b0c963" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd4" />
+    <MetadataFile FileName="ServiceDesktop23.xsd" MetadataType="Schema" ID="904e9c6e-b3bd-4c36-9985-1da166a48b90" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd7" />
+    <MetadataFile FileName="ServiceDesktop24.xsd" MetadataType="Schema" ID="bc6373c0-058b-455c-bcd8-b15b506e69a8" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd25" />
+    <MetadataFile FileName="ServiceDesktop25.xsd" MetadataType="Schema" ID="d0e40439-4525-4025-89b0-fe2b96519ca5" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd24" />
+    <MetadataFile FileName="ServiceDesktop26.xsd" MetadataType="Schema" ID="4af77f77-0b24-4d1b-96ee-d4816c9b7bd9" SourceId="1" SourceUrl="http://localhost:64474/ServiceDesktop.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

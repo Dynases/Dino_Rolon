@@ -93,7 +93,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, GLMensaje.Error);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_Grupo2_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
 
         }
@@ -162,7 +162,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_Grupo4_Click(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_Grupo5_Click(object sender, EventArgs e)
@@ -230,7 +230,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
         }
         private void btn_UnidadVenta_Click(object sender, EventArgs e)
@@ -264,7 +264,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
         }
 
@@ -299,7 +299,7 @@ namespace PRESENTER.reg
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Comuniquece con el administrador del sistema");
+                MP_MostrarMensajeError(ex.Message);
             }
         }
 
@@ -403,17 +403,26 @@ namespace PRESENTER.reg
         #region Metodos Privados
         private void MP_Iniciar()
         {
-            LblTitulo.Text = _NombreFormulario;
-            MP_ArmarComboInicial();
-            MP_CargarEncabezado();
-            MP_InHabilitar();
-            btn_Grupo1.Visible = false;
-            btn_Grupo2.Visible = false;
-            btn_Grupo4.Visible = false;
-            btn_Grupo3.Visible = false;
-            btn_UnidadPeso.Visible = false;
-            btn_UnidadVenta.Visible = false;
-            btn_Grupo5.Visible = false;
+            try
+            {
+                LblTitulo.Text = _NombreFormulario;
+                MP_ArmarComboInicial();
+                MP_CargarEncabezado();
+                MP_InHabilitar();
+                btn_Grupo1.Visible = false;
+                btn_Grupo2.Visible = false;
+                btn_Grupo4.Visible = false;
+                btn_Grupo3.Visible = false;
+                btn_UnidadPeso.Visible = false;
+                btn_UnidadVenta.Visible = false;
+                btn_Grupo5.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+          
         }
         private void MP_ArmarComboInicial()
         {
@@ -502,15 +511,7 @@ namespace PRESENTER.reg
                     Dgv_Buscardor.RootTable.Columns[5].Visible = true;
 
                     Dgv_Buscardor.RootTable.Columns[6].Key = "Tipo";
-                    Dgv_Buscardor.RootTable.Columns[6].Visible = false;
-
-                    //Dgv_Buscardor.RootTable.Columns[6].Key = "Contacto2";
-                    //Dgv_Buscardor.RootTable.Columns[6].Caption = "Contacto2";
-                    //Dgv_Buscardor.RootTable.Columns[6].Width = 200;
-                    //Dgv_Buscardor.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    //Dgv_Buscardor.RootTable.Columns[6].CellStyle.FontSize = 8;
-                    //Dgv_Buscardor.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    //Dgv_Buscardor.RootTable.Columns[6].Visible = true;
+                    Dgv_Buscardor.RootTable.Columns[6].Visible = false;           
 
                     Dgv_Buscardor.RootTable.Columns[7].Key = "Usuario";
                     Dgv_Buscardor.RootTable.Columns[7].Visible = false;
@@ -534,7 +535,6 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
             }
-
         }
         private void MP_Habilitar()
         {
@@ -573,49 +573,64 @@ namespace PRESENTER.reg
         }
         private void MP_InHabilitar()
         {
-            Tb_Id.ReadOnly = true;
-            Tb_CodProducto.ReadOnly = true;
-            Tb_Descripcion.ReadOnly = true;
-            Tb_CodBarras.ReadOnly = true;
-            Tb_Peso.IsInputReadOnly = true;
-            Cb_UnidadVenta.Enabled = false;
-            Cb_UniPeso.Enabled = false;
-            Cb_Grupo1.Enabled = false;
-            Cb_Grupo2.Enabled = false;
-            Cb_Grupo3.Enabled = false;
-            Cb_Grupo4.Enabled = false;
-            Cb_Grupo5.Enabled = false;
-            sw_TipoPro.IsReadOnly = true;
-            Tb_IdProducto.IsInputReadOnly = true;
-            Tb_Descripcion.ReadOnly = true;
-            Tb_Cantidad.IsInputReadOnly = true;
-            BtAdicionar.Enabled = false;
-            _Limpiar = false;
-            Dgv_Buscardor.Enabled = true;
-            Tb_Producto.ReadOnly = true;
-            Tb_IdProducto.IsInputReadOnly = true;
-            Tb_Cantidad.IsInputReadOnly = true;
+            try
+            {
+                Tb_Id.ReadOnly = true;
+                Tb_CodProducto.ReadOnly = true;
+                Tb_Descripcion.ReadOnly = true;
+                Tb_CodBarras.ReadOnly = true;
+                Tb_Peso.IsInputReadOnly = true;
+                Cb_UnidadVenta.Enabled = false;
+                Cb_UniPeso.Enabled = false;
+                Cb_Grupo1.Enabled = false;
+                Cb_Grupo2.Enabled = false;
+                Cb_Grupo3.Enabled = false;
+                Cb_Grupo4.Enabled = false;
+                Cb_Grupo5.Enabled = false;
+                sw_TipoPro.IsReadOnly = true;
+                Tb_IdProducto.IsInputReadOnly = true;
+                Tb_Descripcion.ReadOnly = true;
+                Tb_Cantidad.IsInputReadOnly = true;
+                BtAdicionar.Enabled = false;
+                _Limpiar = false;
+                Dgv_Buscardor.Enabled = true;
+                Tb_Producto.ReadOnly = true;
+                Tb_IdProducto.IsInputReadOnly = true;
+                Tb_Cantidad.IsInputReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
         private void MP_Limpiar()
         {
-            Tb_Id.Clear();
-            Tb_CodProducto.Clear();
-            Tb_Descripcion.Clear();
-            Tb_CodBarras.Clear();
-            Tb_Peso.Value=0;
-            Tb_IdProducto.Value = 0;
-            Tb_Cantidad.Value = 0;
-            Tb_Producto.Clear();
-            if (_Limpiar == false)
+            try
             {
-                UTGlobal.MG_SeleccionarCombo(Cb_UnidadVenta);
-                UTGlobal.MG_SeleccionarCombo(Cb_UniPeso);
-                UTGlobal.MG_SeleccionarCombo(Cb_Grupo1);
-                UTGlobal.MG_SeleccionarCombo(Cb_Grupo2);
-                UTGlobal.MG_SeleccionarCombo(Cb_Grupo3);
-                UTGlobal.MG_SeleccionarCombo(Cb_Grupo4);
-                UTGlobal.MG_SeleccionarCombo(Cb_Grupo5);
+                Tb_Id.Clear();
+                Tb_CodProducto.Clear();
+                Tb_Descripcion.Clear();
+                Tb_CodBarras.Clear();
+                Tb_Peso.Value = 0;
+                Tb_IdProducto.Value = 0;
+                Tb_Cantidad.Value = 0;
+                Tb_Producto.Clear();
+                _LimpiarColor();
+                if (_Limpiar == false)
+                {
+                    UTGlobal.MG_SeleccionarCombo(Cb_UnidadVenta);
+                    UTGlobal.MG_SeleccionarCombo(Cb_UniPeso);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Grupo1);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Grupo2);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Grupo3);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Grupo4);
+                    UTGlobal.MG_SeleccionarCombo(Cb_Grupo5);
+                }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void MP_MostrarRegistro(int _Pos)
         {
@@ -653,37 +668,52 @@ namespace PRESENTER.reg
         }
         private void MP_MostrarImagen(string _NombreImagen)
         {
-            if (_NombreImagen.Equals("Default.jpg") || !File.Exists(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen))
+            try
             {
-                Bitmap img = new Bitmap(PRESENTER.Properties.Resources.PANTALLA);
-                Pc_ImgProducto.Image = img;
-            }
-            else
-            {
-                if (File.Exists(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen))
+                if (_NombreImagen.Equals("Default.jpg") || !File.Exists(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen))
                 {
-                    MemoryStream Bin = new MemoryStream();
-                    Bitmap img = new Bitmap(new Bitmap(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen));
-                    img.Save(Bin, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    Pc_ImgProducto.SizeMode = PictureBoxSizeMode.StretchImage;
-                    Pc_ImgProducto.Image = Image.FromStream(Bin);
-                    Bin.Dispose();
+                    Bitmap img = new Bitmap(PRESENTER.Properties.Resources.PANTALLA);
+                    Pc_ImgProducto.Image = img;
+                }
+                else
+                {
+                    if (File.Exists(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen))
+                    {
+                        MemoryStream Bin = new MemoryStream();
+                        Bitmap img = new Bitmap(new Bitmap(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProducto) + _NombreImagen));
+                        img.Save(Bin, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        Pc_ImgProducto.SizeMode = PictureBoxSizeMode.StretchImage;
+                        Pc_ImgProducto.Image = Image.FromStream(Bin);
+                        Bin.Dispose();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void MP_Filtrar(int tipo)
         {
-            MP_CargarEncabezado();
-            if (Dgv_Buscardor.RowCount > 0)
+            try
             {
-                _MPos = 0;
-                MP_MostrarRegistro(tipo == 1 ? _MPos : Dgv_Buscardor.RowCount - 1);
+                MP_CargarEncabezado();
+                if (Dgv_Buscardor.RowCount > 0)
+                {
+                    //_MPos = 0;
+                    MP_MostrarRegistro(tipo == 1 ? 0 : _MPos);
+                }
+                else
+                {
+                    MP_Limpiar();
+                    LblPaginacion.Text = "0/0";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MP_Limpiar();
-                LblPaginacion.Text = "0/0";
-            }
+
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {
@@ -827,7 +857,7 @@ namespace PRESENTER.reg
                         _Limpiar = true;
                         _imagen = "Default.jpg";
                         mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Inhanbilitar();
+                        MH_Habilitar();
                     }                
                 }
                 //Mensaje resultado de transaccion
@@ -903,8 +933,7 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
                 return false;
-            }
-            
+            }            
         }
         public override void MH_Nuevo()
         {
@@ -919,44 +948,91 @@ namespace PRESENTER.reg
         {
             MP_InHabilitar();
             MP_Filtrar(1);
-        }     
+        }
+        private void _LimpiarColor()
+        {
+            Tb_Descripcion.BackColor = Color.White;
+            Cb_UnidadVenta.BackColor = Color.White;
+            Cb_UniPeso.BackColor = Color.White;
+            Cb_Grupo1.BackColor = Color.White;
+            Cb_Grupo2.BackColor = Color.White;
+            Cb_Grupo3.BackColor = Color.White;
+            Cb_Grupo4.BackColor = Color.White;
+            Cb_Grupo5.BackColor = Color.White;
+        }
+
         public override bool MH_Validar()
         {
             bool _Error = false;
-            if (Tb_Descripcion.Text == "")
-            {
-                Tb_Descripcion.BackColor = Color.Red;
-                _Error = true;
-            }
-            else
-                Tb_Descripcion.BackColor = Color.White;
+            try
+            {              
+                if (Tb_Descripcion.Text == "")
+                {
+                    Tb_Descripcion.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Tb_Descripcion.BackColor = Color.White;
 
-            if (Cb_UnidadVenta.SelectedIndex == -1)
-            {
-                Cb_UnidadVenta.BackColor = Color.Red;
-                _Error = true;
+                if (Cb_UnidadVenta.SelectedIndex == -1)
+                {
+                    Cb_UnidadVenta.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_UnidadVenta.BackColor = Color.White;
+                if (Cb_UniPeso.SelectedIndex == -1)
+                {
+                    Cb_UniPeso.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_UniPeso.BackColor = Color.White;
+                if (Cb_Grupo1.SelectedIndex == -1)
+                {
+                    Cb_Grupo1.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Grupo1.BackColor = Color.White;
+                if (Cb_Grupo2.SelectedIndex == -1)
+                {
+                    Cb_Grupo2.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Grupo2.BackColor = Color.White;
+                if (Cb_Grupo3.SelectedIndex == -1)
+                {
+                    Cb_Grupo3.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Grupo3.BackColor = Color.White;
+                if (Cb_Grupo4.SelectedIndex == -1)
+                {
+                    Cb_Grupo4.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Grupo4.BackColor = Color.White;
+                if (Cb_Grupo5.SelectedIndex == -1)
+                {
+                    Cb_Grupo5.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Grupo5.BackColor = Color.White;
+
+                return _Error;
             }
-            else
-                Cb_UnidadVenta.BackColor = Color.White;
-            if (Cb_UniPeso.SelectedIndex == -1)
+            catch (Exception ex)
             {
-                Cb_UniPeso.BackColor = Color.Red;
-                _Error = true;
-            }
-            else
-                Cb_UniPeso.BackColor = Color.White;
-            return _Error;
+                MP_MostrarMensajeError(ex.Message);
+                return _Error;
+            }           
         }
         #endregion
-
-        private void labelX5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void F1_Productos_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

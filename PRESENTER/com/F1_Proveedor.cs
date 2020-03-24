@@ -749,8 +749,8 @@ namespace PRESENTER.com
             MP_CargarEncabezado();
             if (Dgv_GBuscador.RowCount > 0)
             {
-                _MPos = 0;
-                MP_MostrarRegistro(tipo == 1 ? _MPos : Dgv_GBuscador.RowCount - 1);
+               // _MPos = 0;
+                MP_MostrarRegistro(tipo == 1 ? 0 : _MPos);
             }
             else
             {
@@ -849,32 +849,41 @@ namespace PRESENTER.com
         private bool MP_ValidarDetalle()
         {
             bool _Error = false;
-            if (Cb_LineaGen.SelectedIndex == -1)
-            {
-                Cb_LineaGen.BackColor = Color.Red;
-                _Error = true;
-            }
-            else
-                Cb_LineaGen.BackColor = Color.White;
+            try
+            {               
+                if (Cb_LineaGen.SelectedIndex == -1)
+                {
+                    Cb_LineaGen.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_LineaGen.BackColor = Color.White;
 
-            if (Cb_TipoAlojamiento.SelectedIndex == -1)
-            {
-                Cb_TipoAlojamiento.BackColor = Color.Red;
-                _Error = true;
+                if (Cb_TipoAlojamiento.SelectedIndex == -1)
+                {
+                    Cb_TipoAlojamiento.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_TipoAlojamiento.BackColor = Color.White;
+                if (Tb_Fecha.Value > DateTime.Now.Date)
+                {
+                    _Error = true;
+                    throw new Exception("La fecha de nacimiento es mayor a la actual");
+                }
+                if (Tb_Aves.Value < 0)
+                {
+                    _Error = true;
+                    throw new Exception("Cantidad de aves debe ser mayor a 0");
+                }
+                return _Error;
             }
-            else
-                Cb_TipoAlojamiento.BackColor = Color.White;
-            if (Tb_Fecha.Value > DateTime.Now.Date)
+            catch (Exception ex)
             {
-                _Error = true;
-                throw  new Exception("La fecha de nacimiento no puede ser mayor ala fecha actual");                
+                MP_MostrarMensajeError(ex.Message);
+               return _Error = true;
             }
-            if (Tb_Aves.Value < 0)
-            {
-                _Error = true;
-                throw new Exception("La cantidad de aves tiene que ser mayor a 0");                
-            }
-            return _Error;
+          
         }
         public static DataTable ListaATabla(List<VProveedor_01Lista> lista)
         {
@@ -962,15 +971,7 @@ namespace PRESENTER.com
             {
                //bool resultadoDetalle = false;
                 bool resultado = false;
-                string mensaje = "";
-                //if (MP_ValidarDetalle())
-                //{
-                //    resultadoDetalle = true;
-                //    //Ingresa o modifica un detalle
-                //    MP_InsertarDetalle();
-                //}
-              
-
+                string mensaje = "";           
                 if (!MP_ValidarDetalle())
                 {
                     MP_InsertarDetalle();
@@ -1005,6 +1006,7 @@ namespace PRESENTER.com
                         if (idAux == 0)//Registar
                         {
                             Tb_CodSpyre.Focus();
+                            MP_Filtrar(1);
                             MP_CargarEncabezado();
                             MP_Limpiar();
                             _Limpiar = true;
@@ -1017,7 +1019,7 @@ namespace PRESENTER.com
                                 UTGlobal.MG_MoverImagenRuta(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor), _imagen, Pc_Img);
                                 _ModificarImagen = false;
                             }
-                            MP_Filtrar(1);
+                            MP_Filtrar(2);
                             MP_InHabilitar();//El formulario
                             _Limpiar = true;
                             _imagen = "Default.jpg";
@@ -1097,7 +1099,13 @@ namespace PRESENTER.com
                 _Overlay.Markers.Clear();
                 Gmc_Proveedor.Position = new PointLatLng(-17.3931784, -66.1738852);
             }
-        }      
+        }
+        private void MP_CambiarColor()
+        {
+            Tb_Descripcion.BackColor = Color.White;
+            Cb_Ciudad.BackColor = Color.White;
+            Cb_TipoProveedor.BackColor = Color.White;
+        }
         public override bool MH_Validar()
         {
             bool _Error = false;

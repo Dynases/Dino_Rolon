@@ -17,8 +17,8 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PrecioCat()
         {
-            this.Precio = new HashSet<Precio>();
             this.Cliente = new HashSet<Cliente>();
+            this.Precio = new HashSet<Precio>();
         }
     
         public int Id { get; set; }
@@ -31,8 +31,8 @@ namespace DATA.EntityDataModel.DiAvi
         public string Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Precio> Precio { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Precio> Precio { get; set; }
     }
 }

@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 
 using UTILITY.Global;
 using UTILITY.Enum.EnEstado;
+using System.Transactions;
 
 namespace PRESENTER.reg
 {
@@ -59,24 +60,31 @@ namespace PRESENTER.reg
         }
         private void Dgv_Precio_EditingCell(object sender, EditingCellEventArgs e)
         {
-            if (BtnGrabar.Enabled)
+            try
             {
-
-                foreach (var categoria in lCategoria)
+                if (BtnGrabar.Enabled)
                 {
-                    if (e.Column.Index == Dgv_Precio.RootTable.Columns[categoria.Cod].Index)
+
+                    foreach (var categoria in lCategoria)
                     {
-                        e.Cancel = false;
-                        break;
+                        if (e.Column.Index == Dgv_Precio.RootTable.Columns[categoria.Cod].Index)
+                        {
+                            e.Cancel = false;
+                            break;
+                        }
+                        else
+                            e.Cancel = true;
                     }
-                    else
-                        e.Cancel = true;
+                }
+                else
+                {
+                    e.Cancel = true;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                e.Cancel = true;
-            }
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }    
     #endregion
     #region Metodos Privados
@@ -448,92 +456,114 @@ namespace PRESENTER.reg
         }
         private void MP_GrabarCategoria()
         {
-            if (!MP_Validar())
+            try
             {
-                bool resultado = false;
-                string mensaje = "";
+                if (!MP_Validar())
+                {
+                    bool resultado = false;
+                    string mensaje = "";
 
-                VPrecioCategoria vPrecioCategoria = new VPrecioCategoria()
-                {
-                    Cod = Tb_CodCategoria.Text,
-                    Descrip = Tb_Descripcion.Text,
-                    Estado = (int)ENEstado.GUARDADO,
-                    Tipo = Sw_Tipo.Value ? 1 : 0,
-                    Margen = Convert.ToDecimal(Tb_Margen.Text),
-                    Fecha = DateTime.Now.Date,
-                    Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario
-                };
-                int id = _IdCategoria;
-                int idAux = id;
-                resultado = new ServiceDesktop.ServiceDesktopClient().precioCategoria_Guardar(vPrecioCategoria, ref id);
-                if (resultado)
-                {
-                    if (idAux == 0)//Registar
+                    VPrecioCategoria vPrecioCategoria = new VPrecioCategoria()
                     {
+                        Cod = Tb_CodCategoria.Text,
+                        Descrip = Tb_Descripcion.Text,
+                        Estado = (int)ENEstado.GUARDADO,
+                        Tipo = Sw_Tipo.Value ? 1 : 0,
+                        Margen = Convert.ToDecimal(Tb_Margen.Text),
+                        Fecha = DateTime.Now.Date,
+                        Hora = DateTime.Now.ToString("hh:mm"),
+                        Usuario = UTGlobal.Usuario
+                    };
+                    int id = _IdCategoria;
+                    int idAux = id;
+                    resultado = new ServiceDesktop.ServiceDesktopClient().precioCategoria_Guardar(vPrecioCategoria, ref id);
+                    if (resultado)
+                    {
+                        if (idAux == 0)//Registar
+                        {
 
-                        MP_CargarCategoria();
-                        MP_CargarTablaPrecios();
-                        lCategoria = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                            MP_CargarCategoria();
+                            MP_CargarTablaPrecios();
+                            lCategoria = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
+                            mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                        }
+                        else//Modificar
+                        {
+                            MP_CargarCategoria();
+                            MP_CargarTablaPrecios();
+                            lCategoria = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
+                            mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                            MH_Habilitar();//El menu                   
+                        }
                     }
-                    else//Modificar
+                    //Resultado
+                    if (resultado)
                     {
-                        MP_CargarCategoria();
-                        MP_CargarTablaPrecios();
-                        lCategoria = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
+                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                     }
-                }
-                //Resultado
-                if (resultado)
-                {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                }
-                else
-                {
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    else
+                    {
+                        mensaje = GLMensaje.Registro_Error(_NombreFormulario);
+                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         public bool MP_Validar()
         {
             bool _Error = false;
-            if (Tb_CodCategoria.Text == "")
-            {
-                Tb_CodCategoria.BackColor = Color.Red;
-                _Error = true;
-            }
-            else
-                Tb_CodCategoria.BackColor = Color.White;
+            try
+            {              
+                if (Tb_CodCategoria.Text == "")
+                {
+                    Tb_CodCategoria.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Tb_CodCategoria.BackColor = Color.White;
 
-            if (Tb_Descripcion.Text == "")
-            {
-                Tb_Descripcion.BackColor = Color.Red;
-                _Error = true;
+                if (Tb_Descripcion.Text == "")
+                {
+                    Tb_Descripcion.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Tb_Descripcion.BackColor = Color.White;
+                return _Error;
             }
-            else
-                Tb_Descripcion.BackColor = Color.White;
-            return _Error;
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return _Error;
+            }           
         }
         private void MP_CargarTablaPrecios()
         {
-            DataRow[] result = tPrecio.Select("estado > 1");
-            MP_CargarPrecioTabla();
-            for (int i = 0; i < result.Length - 1; i++)
+            try
             {
-                DataRow r = result[i];
-                DataRow[] dr;
-                dr = tPrecio.Select("IdProducto=" + r["IdProducto"].ToString() + " and IdPrecioCat=" + r["IdPrecioCat"].ToString());
-                if (dr != null)
+                DataRow[] result = tPrecio.Select("estado > 1");
+                MP_CargarPrecioTabla();
+                for (int i = 0; i < result.Length - 1; i++)
                 {
-                    dr[0]["Precio"] = r["Precio"];
-                    dr[0]["estado"] = r["estado"];
+                    DataRow r = result[i];
+                    DataRow[] dr;
+                    dr = tPrecio.Select("IdProducto=" + r["IdProducto"].ToString() + " and IdPrecioCat=" + r["IdPrecioCat"].ToString());
+                    if (dr != null)
+                    {
+                        dr[0]["Precio"] = r["Precio"];
+                        dr[0]["estado"] = r["estado"];
+                    }
                 }
+                MP_CargarPrecio(false);
             }
-            MP_CargarPrecio(false);
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }          
         }
         private void MP_Habilitar()
         {         
@@ -578,7 +608,27 @@ namespace PRESENTER.reg
                     lPrecio.Add(vPrecio);
                 }
                 var lista = lPrecio.ToArray();
-                resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                using (var scope = new TransactionScope())
+                {
+                    foreach (var item in lPrecio)
+                    {
+                        if (item.Estado == 3)
+                        {
+                            resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                        }
+                        else
+                        {
+                            if (item.Estado == 2)
+                            {
+
+                                resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
+                            }
+                        }
+                    }
+                    scope.Complete();
+                    resultado = true;
+                }
+                //resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                 if (resultado)
                 {
                     MP_CargarPrecio(true);
@@ -606,12 +656,20 @@ namespace PRESENTER.reg
         public override bool MH_Validar()
         {
             bool _Error = false;
-            if (Cb_Almacen.SelectedIndex == -1)
+            try
             {
-                _Error = true;
-                throw new Exception("Debe seleccionar una sucursal");
+                if (Cb_Almacen.SelectedIndex == -1)
+                {
+                    _Error = true;
+                    throw new Exception("Debe seleccionar una sucursal");
+                }
+                return _Error;
             }
-            return _Error;
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return _Error;
+            }          
         }
    
 
@@ -661,22 +719,7 @@ namespace PRESENTER.reg
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }
-           
-        }
-
-        private void Dgv_Precio_CellUpdated(object sender, ColumnActionEventArgs e)
-        {
-            
-        }
-
-        private void Dgv_Precio_UpdatingCell(object sender, UpdatingCellEventArgs e)
-        {
-        }
-
-        private void Dgv_Precio_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
+            }           
+        }        
     }
 }

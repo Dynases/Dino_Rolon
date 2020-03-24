@@ -896,7 +896,7 @@
             this.LblCantidad.Size = new System.Drawing.Size(98, 23);
             this.LblCantidad.TabIndex = 379;
             this.LblCantidad.Text = "Cantidad";
-            this.LblCantidad.Click += new System.EventHandler(this.labelX5_Click);
+           // this.LblCantidad.Click += new System.EventHandler(this.labelX5_Click);
             // 
             // Tb_Producto
             // 
@@ -1214,7 +1214,7 @@
             this.ClientSize = new System.Drawing.Size(1043, 668);
             this.Name = "F1_Productos";
             this.Text = "0/op0/";
-            this.Load += new System.EventHandler(this.F1_Productos_Load);
+           // this.Load += new System.EventHandler(this.F1_Productos_Load);
             this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);

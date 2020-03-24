@@ -50,6 +50,30 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public bool Nuevo(VPrecioLista vPrecio, int idSucural, string usuario)
+        {
+            try
+            {
+                iPrecio.Nuevo(vPrecio, idSucural, usuario);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Modificar(VPrecioLista vPrecio, string usuario)
+        {
+            try
+            {
+                iPrecio.Modificar(vPrecio,  usuario);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Consulta
         public List<VPrecioLista> ListarProductoPrecio(int idSucursal)
