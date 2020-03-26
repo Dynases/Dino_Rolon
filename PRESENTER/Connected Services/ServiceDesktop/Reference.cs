@@ -353,6 +353,18 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioGuardarResponse")]
         System.Threading.Tasks.Task<bool> PrecioGuardarAsync(ENTITY.reg.Precio.View.VPrecioLista[] vPrecio, int idSucural, string usuario);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioNuevo", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioNuevoResponse")]
+        bool PrecioNuevo(ENTITY.reg.Precio.View.VPrecioLista vPrecio, int idSucural, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioNuevo", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioNuevoResponse")]
+        System.Threading.Tasks.Task<bool> PrecioNuevoAsync(ENTITY.reg.Precio.View.VPrecioLista vPrecio, int idSucural, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioModificar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioModificarResponse")]
+        bool PrecioModificar(ENTITY.reg.Precio.View.VPrecioLista vPrecio, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrecioModificar", ReplyAction="http://tempuri.org/IServiceDesktop/PrecioModificarResponse")]
+        System.Threading.Tasks.Task<bool> PrecioModificarAsync(ENTITY.reg.Precio.View.VPrecioLista vPrecio, string usuario);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngresoListar", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngresoListarResponse")]
         ENTITY.com.CompraIngreso.View.VCompraIngreso[] CmmpraIngresoListar();
         
@@ -1426,6 +1438,22 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<bool> PrecioGuardarAsync(ENTITY.reg.Precio.View.VPrecioLista[] vPrecio, int idSucural, string usuario) {
             return base.Channel.PrecioGuardarAsync(vPrecio, idSucural, usuario);
+        }
+        
+        public bool PrecioNuevo(ENTITY.reg.Precio.View.VPrecioLista vPrecio, int idSucural, string usuario) {
+            return base.Channel.PrecioNuevo(vPrecio, idSucural, usuario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PrecioNuevoAsync(ENTITY.reg.Precio.View.VPrecioLista vPrecio, int idSucural, string usuario) {
+            return base.Channel.PrecioNuevoAsync(vPrecio, idSucural, usuario);
+        }
+        
+        public bool PrecioModificar(ENTITY.reg.Precio.View.VPrecioLista vPrecio, string usuario) {
+            return base.Channel.PrecioModificar(vPrecio, usuario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PrecioModificarAsync(ENTITY.reg.Precio.View.VPrecioLista vPrecio, string usuario) {
+            return base.Channel.PrecioModificarAsync(vPrecio, usuario);
         }
         
         public ENTITY.com.CompraIngreso.View.VCompraIngreso[] CmmpraIngresoListar() {

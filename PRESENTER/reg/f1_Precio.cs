@@ -1,5 +1,4 @@
-﻿using DevComponents.DotNetBar;
-using ENTITY.Producto.View;
+﻿using ENTITY.Producto.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
 using Janus.Windows.GridEX;
@@ -14,13 +13,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.IO;
 using System.Text.RegularExpressions;
-
 using UTILITY.Global;
 using UTILITY.Enum.EnEstado;
 using System.Transactions;
+using DevComponents.DotNetBar;
 
 namespace PRESENTER.reg
 {
@@ -32,6 +30,7 @@ namespace PRESENTER.reg
         GridEX Dgv_PrecioImport = new GridEX();
         DataTable PrecioImport = new DataTable();
         int _IdCategoria = 0;
+        bool _ImportadoExcel = false;
         List<VPrecioCategoria> lCategoria = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().ToList();
         #endregion
         #region Eventos
@@ -53,6 +52,7 @@ namespace PRESENTER.reg
         {
             MP_ImportarExelLista();
             MP_PasarRegistrosImportados();
+            _ImportadoExcel = true;
         }
         private void Btn_Agregar_Click(object sender, EventArgs e)
         {
@@ -84,11 +84,11 @@ namespace PRESENTER.reg
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }           
-        }    
-    #endregion
-    #region Metodos Privados
-    private void MP_Iniciar()
+            }
+        }
+        #endregion
+        #region Metodos Privados
+        private void MP_Iniciar()
         {
             try
             {
@@ -255,7 +255,7 @@ namespace PRESENTER.reg
         private void MP_CargarPrecioTabla()
         {
             tPrecio = new ServiceDesktop.ServiceDesktopClient().PrecioProductoListar2(Convert.ToInt32(Cb_Almacen.Value));
-           
+
         }
         private void MP_CargarPrecio(bool bandera)
         {
@@ -439,7 +439,7 @@ namespace PRESENTER.reg
                                 DataRow[] resultado = tPrecio.Select("IdProducto=" + idProducto + "and Cod='" + categoria.Cod + "'");
 
                                 int rowIndex = tPrecio.Rows.IndexOf(resultado[0]);
-                                string columna= resultado[0].Field<int>("Estado").ToString() + "_" + rowIndex.ToString().Trim();
+                                string columna = resultado[0].Field<int>("Estado").ToString() + "_" + rowIndex.ToString().Trim();
                                 MP_ActualizarPrecio(columna, null, x, 2);
                             }
                             break;
@@ -452,7 +452,7 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
             }
-           
+
         }
         private void MP_GrabarCategoria()
         {
@@ -511,13 +511,13 @@ namespace PRESENTER.reg
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }           
+            }
         }
         public bool MP_Validar()
         {
             bool _Error = false;
             try
-            {              
+            {
                 if (Tb_CodCategoria.Text == "")
                 {
                     Tb_CodCategoria.BackColor = Color.Red;
@@ -539,7 +539,7 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
                 return _Error;
-            }           
+            }
         }
         private void MP_CargarTablaPrecios()
         {
@@ -563,10 +563,10 @@ namespace PRESENTER.reg
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }          
+            }
         }
         private void MP_Habilitar()
-        {         
+        {
             Tb_CodCategoria.ReadOnly = false;
             Tb_Descripcion.ReadOnly = false;
             Tb_Margen.ReadOnly = false;
@@ -582,6 +582,15 @@ namespace PRESENTER.reg
             Cb_Almacen.ReadOnly = true;
             Sw_Tipo.IsReadOnly = true;
             BtnExportar.Enabled = false;
+            Btn_Agregar.Enabled = false;
+        }
+        private void MP_Limpiar()
+        {
+            Tb_CodCategoria.Clear();
+            Tb_Descripcion.Clear();
+            Tb_Margen.Clear();
+            Sw_Tipo.Value = true;
+            Btn_Agregar.Enabled = true;
         }
         #endregion
 
@@ -590,49 +599,78 @@ namespace PRESENTER.reg
         public override bool MH_NuevoRegistro()
         {
             try
-            {                
+            {
                 bool resultado = false;
                 string mensaje = "";
-                List<VPrecioLista> lPrecio = new List<VPrecioLista>();   
-                foreach (DataRow item in tPrecio.Rows)
-                {
-                    VPrecioLista vPrecio= new VPrecioLista
-                    {
-                        Id = item.Field<int>("Id"),
-                        IdProducto = item.Field<int>("IdProducto"),
-                        IdPrecioCat = item.Field<int>("IdPrecioCat"),
-                        COd = item.Field<string>("Cod"),
-                        Precio = item.Field<decimal>("Precio"),
-                        Estado = item.Field<int>("Estado"),
-                    };
-                    lPrecio.Add(vPrecio);
-                }
-                var lista = lPrecio.ToArray();
+                List<VPrecioLista> lPrecio = new List<VPrecioLista>();
+                int count = 0;
+                int conntTabla = 0;
                 using (var scope = new TransactionScope())
                 {
-                    foreach (var item in lPrecio)
+                    foreach (DataRow item in tPrecio.Rows)
                     {
-                        if (item.Estado == 3)
+                        if (item.Field<int>("Estado") != 1)
                         {
-                           resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
-                        }
-                        else
-                        {
-                            if (item.Estado == 2)
+                            VPrecioLista vPrecio = new VPrecioLista
                             {
-                              resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
+                                Id = item.Field<int>("Id"),
+                                IdProducto = item.Field<int>("IdProducto"),
+                                IdPrecioCat = item.Field<int>("IdPrecioCat"),
+                                COd = item.Field<string>("Cod"),
+                                Precio = item.Field<decimal>("Precio"),
+                                Estado = item.Field<int>("Estado"),
+                            };
+                            lPrecio.Add(vPrecio);
+                            count += 1;
+                            conntTabla += 1;
+                            if (count == 100 || conntTabla == tPrecio.Rows.Count - 1)
+                            {
+                                var lista = lPrecio.ToArray();
+                                resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                                lPrecio = new List<VPrecioLista>();
+                                count = 0;
+                            }
+                            if (!_ImportadoExcel)
+                            {
+                                var lista = lPrecio.ToArray();
+                                resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                                lPrecio = new List<VPrecioLista>();
                             }
                         }
                     }
                     scope.Complete();
                     resultado = true;
                 }
+
+                //using (var scope = new TransactionScope())
+                //{
+                //    foreach (var item in lPrecio)
+                //    {
+                //        if (item.Estado == 3)
+                //        {
+                //           resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                //        }
+                //        else
+                //        {
+                //            if (item.Estado == 2)
+                //            {
+                //              resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
+                //            }
+                //        }
+                //    }
+                //    scope.Complete();
+                //    resultado = true;
+                //}
+                //resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                 //resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                 if (resultado)
                 {
                     MP_CargarPrecio(true);
                     MP_InHabilitar();//El formulario
+                    MP_Limpiar();
                     mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, "");
+                    MH_Habilitar();
+                    BtnExportar.Enabled = false;
                 }
                 //Resultado
                 if (resultado)
@@ -650,7 +688,7 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
                 return false;
-            }        
+            }
         }
         public override bool MH_Validar()
         {
@@ -668,17 +706,18 @@ namespace PRESENTER.reg
             {
                 MP_MostrarMensajeError(ex.Message);
                 return _Error;
-            }          
+            }
         }
-   
 
         public override void MH_Modificar()
         {
-            MP_Habilitar();           
+            MP_Habilitar();
+            MP_Limpiar();
         }
         public override void MH_Salir()
         {
             MP_InHabilitar();
+            MP_CargarPrecio(true);
         }
         #endregion
 
@@ -688,17 +727,28 @@ namespace PRESENTER.reg
             {
                 if (e.Column.Index > 1)
                 {
-                    var precio =  Dgv_Precio.GetValue(e.Column.Index);
-                    MP_ActualizarPrecio(e.Column.Index.ToString(), precio,"",1);
+                    decimal temp = 0;
+                    var precio = Dgv_Precio.GetValue(e.Column.Index);
+                    if (decimal.TryParse(precio.ToString(), out temp))
+                    {
+                        MP_ActualizarPrecio(e.Column.Index.ToString(), precio, "", 1);
+                        _ImportadoExcel = false;
+                    }
+                    else
+                    {
+                        MP_ActualizarPrecio(e.Column.Index.ToString(), 0, "", 1);
+                        _ImportadoExcel = false;
+                        Dgv_Precio.CurrentRow.Cells[e.Column.Index].Value = 0;
+                    }
                 }
             }
         }
 
-        private void MP_ActualizarPrecio(string columna, object precio, string precio2, int tipo )
+        private void MP_ActualizarPrecio(string columna, object precio, string precio2, int tipo)
         {
             try
             {
-                string data = tipo == 1? Dgv_Precio.GetValue(Convert.ToInt32(columna) - 1).ToString().Trim(): columna;
+                string data = tipo == 1 ? Dgv_Precio.GetValue(Convert.ToInt32(columna) - 1).ToString().Trim() : columna;
                 string estado = data.Substring(0, 1).Trim();
                 string pos = data.Substring(2, data.Length - 2);
                 if (estado == "1" || estado == "2")
@@ -718,7 +768,7 @@ namespace PRESENTER.reg
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
-            }           
-        }        
+            }
+        }
     }
 }
