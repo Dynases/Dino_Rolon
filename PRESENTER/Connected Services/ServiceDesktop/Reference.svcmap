@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/SERVICE" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/SERVICE/ServiceDesktop.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="ServiceDesktop.xsd" MetadataType="Schema" ID="1400e5fc-dc62-4b89-b779-1470509dcd53" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd1" />
