@@ -263,10 +263,10 @@ namespace SERVICE
                 [OperationContract]
                 bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
                 [OperationContract]
-                bool Seleccion_ModificarEstado(int IdSeleccion, int estado);
-            #endregion
-            #region Consulta
-                [OperationContract]
+                bool Seleccion_ModificarEstado(int IdSeleccion, int estado, ref List<string> lMensaje);
+        #endregion
+        #region Consulta
+        [OperationContract]
                 List<VSeleccionLista> Seleccion_Lista();
             #endregion
         #endregion
@@ -286,10 +286,10 @@ namespace SERVICE
                 bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
 
                 [OperationContract]
-                bool Transformacion_ModificarEstado(int IdTransformacion, int estado);
-            #endregion
-            #region Consulta
-                [OperationContract]
+                bool Transformacion_ModificarEstado(int IdTransformacion, int estado, ref List<string> lMensaje);
+        #endregion
+        #region Consulta
+        [OperationContract]
                 List<VTransformacion> Transformacion_Lista();
                 [OperationContract]
                 List<VTransformacionReport> TransformacionIngreso(int id);

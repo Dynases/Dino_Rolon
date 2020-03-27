@@ -479,10 +479,11 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_GuardarResponse> Seleccion_GuardarAsync(PRESENTER.ServiceDesktop.Seleccion_GuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstadoResponse")]
-        bool Seleccion_ModificarEstado(int IdSeleccion, int estado);
+        PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse Seleccion_ModificarEstado(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request);
         
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstadoResponse")]
-        System.Threading.Tasks.Task<bool> Seleccion_ModificarEstadoAsync(int IdSeleccion, int estado);
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse> Seleccion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ListaResponse")]
         ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista();
@@ -520,10 +521,11 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TransformacionGuardarResponse> TransformacionGuardarAsync(PRESENTER.ServiceDesktop.TransformacionGuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_ModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ModificarEstadoResponse")]
-        bool Transformacion_ModificarEstado(int IdTransformacion, int estado);
+        PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse Transformacion_ModificarEstado(PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest request);
         
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_ModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ModificarEstadoResponse")]
-        System.Threading.Tasks.Task<bool> Transformacion_ModificarEstadoAsync(int IdTransformacion, int estado);
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse> Transformacion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse")]
         ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista();
@@ -976,6 +978,50 @@ namespace PRESENTER.ServiceDesktop {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Seleccion_ModificarEstado", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Seleccion_ModificarEstadoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int IdSeleccion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int estado;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
+        
+        public Seleccion_ModificarEstadoRequest() {
+        }
+        
+        public Seleccion_ModificarEstadoRequest(int IdSeleccion, int estado, string[] lMensaje) {
+            this.IdSeleccion = IdSeleccion;
+            this.estado = estado;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Seleccion_ModificarEstadoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Seleccion_ModificarEstadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool Seleccion_ModificarEstadoResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] lMensaje;
+        
+        public Seleccion_ModificarEstadoResponse() {
+        }
+        
+        public Seleccion_ModificarEstadoResponse(bool Seleccion_ModificarEstadoResult, string[] lMensaje) {
+            this.Seleccion_ModificarEstadoResult = Seleccion_ModificarEstadoResult;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.MessageContractAttribute(WrapperName="TransformacionGuardar", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class TransformacionGuardarRequest {
         
@@ -1015,6 +1061,50 @@ namespace PRESENTER.ServiceDesktop {
         public TransformacionGuardarResponse(bool TransformacionGuardarResult, int Id) {
             this.TransformacionGuardarResult = TransformacionGuardarResult;
             this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Transformacion_ModificarEstado", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Transformacion_ModificarEstadoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int IdTransformacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int estado;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
+        
+        public Transformacion_ModificarEstadoRequest() {
+        }
+        
+        public Transformacion_ModificarEstadoRequest(int IdTransformacion, int estado, string[] lMensaje) {
+            this.IdTransformacion = IdTransformacion;
+            this.estado = estado;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Transformacion_ModificarEstadoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Transformacion_ModificarEstadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool Transformacion_ModificarEstadoResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] lMensaje;
+        
+        public Transformacion_ModificarEstadoResponse() {
+        }
+        
+        public Transformacion_ModificarEstadoResponse(bool Transformacion_ModificarEstadoResult, string[] lMensaje) {
+            this.Transformacion_ModificarEstadoResult = Transformacion_ModificarEstadoResult;
+            this.lMensaje = lMensaje;
         }
     }
     
@@ -1734,12 +1824,23 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.Seleccion_GuardarAsync(request);
         }
         
-        public bool Seleccion_ModificarEstado(int IdSeleccion, int estado) {
-            return base.Channel.Seleccion_ModificarEstado(IdSeleccion, estado);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse PRESENTER.ServiceDesktop.IServiceDesktop.Seleccion_ModificarEstado(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request) {
+            return base.Channel.Seleccion_ModificarEstado(request);
         }
         
-        public System.Threading.Tasks.Task<bool> Seleccion_ModificarEstadoAsync(int IdSeleccion, int estado) {
-            return base.Channel.Seleccion_ModificarEstadoAsync(IdSeleccion, estado);
+        public bool Seleccion_ModificarEstado(int IdSeleccion, int estado, ref string[] lMensaje) {
+            PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest inValue = new PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest();
+            inValue.IdSeleccion = IdSeleccion;
+            inValue.estado = estado;
+            inValue.lMensaje = lMensaje;
+            PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).Seleccion_ModificarEstado(inValue);
+            lMensaje = retVal.lMensaje;
+            return retVal.Seleccion_ModificarEstadoResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse> Seleccion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request) {
+            return base.Channel.Seleccion_ModificarEstadoAsync(request);
         }
         
         public ENTITY.com.Seleccion.View.VSeleccionLista[] Seleccion_Lista() {
@@ -1793,12 +1894,23 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TransformacionGuardarAsync(request);
         }
         
-        public bool Transformacion_ModificarEstado(int IdTransformacion, int estado) {
-            return base.Channel.Transformacion_ModificarEstado(IdTransformacion, estado);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse PRESENTER.ServiceDesktop.IServiceDesktop.Transformacion_ModificarEstado(PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest request) {
+            return base.Channel.Transformacion_ModificarEstado(request);
         }
         
-        public System.Threading.Tasks.Task<bool> Transformacion_ModificarEstadoAsync(int IdTransformacion, int estado) {
-            return base.Channel.Transformacion_ModificarEstadoAsync(IdTransformacion, estado);
+        public bool Transformacion_ModificarEstado(int IdTransformacion, int estado, ref string[] lMensaje) {
+            PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest inValue = new PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest();
+            inValue.IdTransformacion = IdTransformacion;
+            inValue.estado = estado;
+            inValue.lMensaje = lMensaje;
+            PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).Transformacion_ModificarEstado(inValue);
+            lMensaje = retVal.lMensaje;
+            return retVal.Transformacion_ModificarEstadoResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse> Transformacion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest request) {
+            return base.Channel.Transformacion_ModificarEstadoAsync(request);
         }
         
         public ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista() {

@@ -100,7 +100,7 @@ namespace REPOSITORY.Clase
                                 }
                                 //SALIDAS
                                 else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                    i.ibconcep == 6 || i.ibconcep == 10)
+                                    i.ibconcep == 6 || i.ibconcep == 10 || i.ibconcep == 11)
                                 {
                                     salidasAnteriores += detalleAnteriorProducto.iccant.Value;
                                 }

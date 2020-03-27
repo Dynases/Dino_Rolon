@@ -15,11 +15,15 @@ namespace LOGIC.Class
     public class LSeleccion
     {
         protected ISeleccion iSeleccion;
-        protected ITI001 iTi001;
+        protected ITI001 iTi001;    
+        protected ITI002 iTi002;
+        protected ITI0021 iTi0021;
         public LSeleccion()
         {
             iTi001 = new RTI001();
-            iSeleccion = new RSeleccion(iTi001);
+            iTi002 = new RTI002();
+            iTi0021 = new RTI0021();
+            iSeleccion = new RSeleccion(iTi001, iTi002, iTi0021);
         }
         #region TRANSACCIONES
         public bool Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleecion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int Id)
@@ -49,14 +53,14 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarEstado(int IdSeleccion,int estado)
+        public bool ModificarEstado(int IdSeleccion,int estado, ref List<string> lMensaje)
         {
             try
             {
                 bool result = false;
                 using (var scope = new TransactionScope())
                 {
-                    var resultDetalle = iSeleccion.ModificarEstado(IdSeleccion, estado);
+                    result = iSeleccion.ModificarEstado(IdSeleccion, estado, ref lMensaje);
                     scope.Complete();
                     return result;
                 }

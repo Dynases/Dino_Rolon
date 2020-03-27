@@ -49,14 +49,13 @@ namespace PRESENTER.com
         {
             try
             {
+                Tb_Merma.Value = 0;
                 LblTitulo.Text = _NombreFormulario;
                 MP_InicioArmarCombo();
                 MP_CargarAlmacenes();
                 btnMax.Visible = false;
                 MP_CargarEncabezado();
-                MP_InHabilitar();
-                Tb_Merma.Value = 0;
-               
+                MP_InHabilitar();                
             }
             catch (Exception ex)
             {
@@ -82,8 +81,6 @@ namespace PRESENTER.com
                 var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Seleccion_Lista().ToList();
                 var lista = (from a in ListaCompleta                     
                             select new { a.Id,a.IdCompraIng, a.Granja, a.Proveedor, a.FechaEntrega, a.FechaRecepcion,a.Fecha,a.Hora,a.Usuario}).ToList();
-                if (lista.Count() > 0)
-                {
                     Dgv_GBuscador.DataSource = lista;
                     Dgv_GBuscador.RetrieveStructure();
                     Dgv_GBuscador.AlternatingColors = true;
@@ -142,7 +139,7 @@ namespace PRESENTER.com
                     //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_GBuscador.GroupByBoxVisible = false;
                     Dgv_GBuscador.VisualStyle = VisualStyle.Office2007;
-                }
+               
             }
             catch (Exception ex)
             {
@@ -438,7 +435,7 @@ namespace PRESENTER.com
                     var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Seleccion_Lista();
                     var lista = (from a in ListaCompleta
                                  where a.Id.Equals(_idOriginal)
-                                 select new { a.Id, a.IdCompraIng, a.Granja,a.FechaReg,  a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad,a.IdAlmacen }).FirstOrDefault();
+                                 select new { a.Id, a.IdCompraIng, a.Granja,a.FechaReg,  a.FechaEntrega, a.FechaRecepcion, a.Placa, a.Proveedor, a.Tipo, a.Edad,a.IdAlmacen,a.Merma }).FirstOrDefault();
                     Tb_Id.Text = lista.Id.ToString();
                     Tb_NUmGranja.Text = lista.Granja.ToString();
                     Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
@@ -451,6 +448,7 @@ namespace PRESENTER.com
                     Tb_Edad.Text = lista.Edad.ToString();
                     tb_FechaSeleccion.Value = lista.FechaReg;
                     Cb_Almacen.Value = lista.IdAlmacen;
+                    Tb_Merma.Value = (double)lista.Merma;
                     var LTipoCompra = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(lista.IdCompraIng).ToList();
                     _TipoCompra = (from a in LTipoCompra
                                    select new { a.TipoCompra }).First().TipoCompra;
@@ -530,7 +528,10 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         #endregion
         #region Eventos     
 
@@ -894,6 +895,56 @@ namespace PRESENTER.com
             }
           
         }
+
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                int IdSeleccion = Convert.ToInt32(Tb_Id.Text);               
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    resul = new ServiceDesktop.ServiceDesktopClient().Seleccion_ModificarEstado(IdSeleccion, (int)ENEstado.ELIMINAR, ref LMensaje);
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         public override void MH_Nuevo()
         {
             MP_Habilitar();
@@ -938,7 +989,13 @@ namespace PRESENTER.com
                 }
                 else
                     Cb_Tipo.BackColor = Color.White;
+                if (Tb_TCantidad.Value == 0)
+                {
+                    _Error = true;
+                    throw new Exception("Detalle de seleccion en 0");                    
+                }
                 return _Error;
+               
             }
             catch (Exception ex)
             {

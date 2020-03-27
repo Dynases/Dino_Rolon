@@ -48,14 +48,14 @@ namespace LOGIC.Class
             }
         }
 
-        public bool ModificarEstado(int IdTransformacion, int estado)
+        public bool ModificarEstado(int IdTransformacion, int estado, ref List<string> lMensaje)
         {
             try
             {
                 bool result = false;
                 using (var scope = new TransactionScope())
                 {
-                    var resultDetalle = iTransformacion.ModificarEstado(IdTransformacion, estado);
+                    result = iTransformacion.ModificarEstado(IdTransformacion, estado, ref lMensaje);
                     scope.Complete();
                     return result;
                 }

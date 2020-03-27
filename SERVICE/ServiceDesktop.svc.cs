@@ -309,7 +309,7 @@ namespace SERVICE
             }
         }
 
-        
+
         public DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
         {
@@ -730,9 +730,9 @@ namespace SERVICE
         ///
         #region Compra Ingreso
         #region Transformacion
-      
 
-       
+
+
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
         {
             try
@@ -749,7 +749,7 @@ namespace SERVICE
         {
             try
             {
-                var listResult = new LCompraIngreso().ModificarEstado(IdCompraIng, estado,ref lMensaje);
+                var listResult = new LCompraIngreso().ModificarEstado(IdCompraIng, estado, ref lMensaje);
                 return listResult;
             }
             catch (Exception ex)
@@ -850,6 +850,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+    
         #endregion
 
 
@@ -896,11 +897,11 @@ namespace SERVICE
         ///
         #region Seleccion
         #region Transacciones
-        public bool Seleccion_ModificarEstado(int IdSeleccion, int estado)
+        public bool Seleccion_ModificarEstado(int IdSeleccion, int estado,ref List<string> lMensaje)
         {
             try
             {
-                var result = new LSeleccion().ModificarEstado(IdSeleccion, estado);
+                var result = new LSeleccion().ModificarEstado(IdSeleccion, estado,ref lMensaje);
                 return result;
             }
             catch (Exception ex)
@@ -991,11 +992,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public bool Transformacion_ModificarEstado(int IdTransformacion, int estado)
+        public bool Transformacion_ModificarEstado(int IdTransformacion, int estado, ref List<string> lMensaje)
         {
             try
             {
-                var result = new LTransformacion().ModificarEstado(IdTransformacion, estado);
+                var result = new LTransformacion().ModificarEstado(IdTransformacion, estado,ref lMensaje);
                 return result;
             }
             catch (Exception ex)

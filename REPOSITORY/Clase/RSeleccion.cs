@@ -10,6 +10,9 @@ using DATA.EntityDataModel.DiAvi;
 using ENTITY.com.Seleccion.Report;
 using UTILITY.Enum.EnEstaticos;
 using System.Data.Entity;
+using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
+using UTILITY.Enum.EnEstado;
 
 namespace REPOSITORY.Clase
 {
@@ -17,10 +20,14 @@ namespace REPOSITORY.Clase
     public class RSeleccion : BaseConexion, ISeleccion
     {
         private readonly ITI001 tI001;
+        private readonly ITI002 tI002;
+        private readonly ITI0021 tI0021;
 
-        public RSeleccion(ITI001 tI001)
+        public RSeleccion(ITI001 tI001, ITI002 tI002, ITI0021 tI0021)
         {
             this.tI001 = tI001;
+            this.tI002 = tI002;
+            this.tI0021 = tI0021;
         }
         #region tRANSACCIONES
         public bool Guardar(VSeleccion vSeleccion, ref int id)
@@ -63,26 +70,26 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarEstado(int IdSeleccion, int estado)
+        public bool ModificarEstado(int IdSeleccion, int estado,ref List<string> lMensaje)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    List<string> lMensaje = new List<string>();
+                    #region Validacion
+                    DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                    string lote = "20170101";
                     var seleccion = db.Seleccion.Where(c => c.Id.Equals(IdSeleccion)).FirstOrDefault();
                     var seleccion_01 = db.Seleccion_01.Where(c => c.IdSeleccion.Equals(IdSeleccion)).ToList();
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in seleccion_01)
                     {
-                        var StockActual = this.tI001.Listar(item.IdProducto).
-                                                   Where(c => c.IdAlmacen.Equals(seleccion.IdAlmacen) &&
-                                                             c.Lote.Equals("20170101") &&
-                                                             c.FechaVen.Equals("2017-01-01")).Select(c => c.Cantidad).FirstOrDefault();
-                        if (StockActual >= item.Cantidad)
+                        var StockActual = this.tI001.StockActual(item.IdProducto.ToString(), seleccion.IdAlmacen, lote, fechaVen);
+                        if (StockActual < item.Cantidad)
                         {
-                            lMensaje.Add("No existe stock actual suficiente para el producto con Cod: " + item.IdProducto);  
-                        }
+                            var producto = db.Producto.Where(p => p.Id == item.IdProducto).Select(p => p.Descrip).FirstOrDefault();
+                            lMensaje.Add("No existe stock actual suficiente para el producto: " + producto);
+                        }                    
                     }
                     if (lMensaje.Count > 0)
                     {
@@ -91,11 +98,93 @@ namespace REPOSITORY.Clase
                         {
                             mensaje = mensaje + "- " + item + "\n";
                         }
-                        throw new Exception(mensaje);
+                        return false;
                     }
+                    #endregion
+                    #region Actualiza TI001, TI002 Y TI0021
+                    //Actualizar saldo, Eliminar Movimientos
+                    foreach (var i in seleccion_01)
+                    {
+                        if (i.Cantidad > 0)
+                        {
+                            if (this.tI001.ExisteProducto(i.IdProducto.ToString(), seleccion.IdAlmacen, lote, fechaVen))
+                            {
+                                if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
+                                                               seleccion.IdAlmacen,
+                                                               EnAccionEnInventario.Descontar,
+                                                               Convert.ToDecimal(i.Cantidad),
+                                                               lote,
+                                                               fechaVen))
+                                {
+                                    return false;
+                                }
+                                //ELIMINA EL DETALLE DE MOVIMIENTO
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_INGRESO);
+                                //ELIMINA EL MOVIMIENTO
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_INGRESO);
+                            }
+                            else
+                            {
+                                //ELIMINA EL DETALLE DE MOVIMIENTO
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_INGRESO);
+                                //ELIMINA EL MOVIMIENTO
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_INGRESO);
+                            }
+                        }
+                        
+                    }
+
+                    //INGRESA EL STOCK DE LA COMPRA
+                    var idCompra = db.CompraIng_01
+                                                .Where(c => c.IdCompra == db.Seleccion
+                                                                                        .Where(s => s.Id == IdSeleccion)
+                                                                                        .Select(d => d.IdCompraIng)
+                                                                                        .FirstOrDefault())
+                                                                                        .Select(a => a.IdCompra)
+                                                                                        .FirstOrDefault();
+                    var compraing_01 = db.CompraIng_01
+                                            .Where(c => c.IdCompra == idCompra).ToList();
+                    var compraIng = db.CompraIng
+                                            .Where(c => c.Id.Equals(idCompra))
+                                            .FirstOrDefault();
+                    foreach (var i in compraing_01)
+                    {                        
+                            if (this.tI001.ExisteProducto(i.IdProduc.ToString(),
+                                                      compraIng.IdAlmacen,
+                                                      lote,
+                                                      fechaVen))
+                            {
+                                if (!this.tI001.ActualizarInventario(i.IdProduc.ToString(),
+                                                               compraIng.IdAlmacen,
+                                                               EnAccionEnInventario.Incrementar,
+                                                               Convert.ToDecimal(i.TotalCant),
+                                                               lote,
+                                                               fechaVen))
+                                {
+                                    return false;
+                                }
+                                //ELIMINA EL DETALLE DE MOVIMIENTO
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                //ELIMINA EL MOVIMIENTO
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                            }
+                            else
+                            {
+                                //ELIMINA EL DETALLE DE MOVIMIENTO
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                //ELIMINA EL MOVIMIENTO
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                            }                                              
+                    }
+                    #endregion
+                    compraIng.Estado = (int)ENEstado.GUARDADO;
+                    db.CompraIng.Attach(compraIng);
+                    db.Entry(compraIng).State = EntityState.Modified;
+
                     seleccion.Estado = estado;
-                    db.Seleccion.Attach(seleccion);
+                    db.Seleccion.Attach(seleccion);                   
                     db.Entry(seleccion).State = EntityState.Modified;
+                  
                     db.SaveChanges();
                     return true;
                 }
@@ -122,7 +211,8 @@ namespace REPOSITORY.Clase
                                         equals new { idCompraIng = b.Id }
                                       join c in db.Proveed on
                                       new { idProve = b.IdProvee }
-                                            equals new { idProve = c.Id }                                      
+                                            equals new { idProve = c.Id }  
+                                      where a.Estado != (int)ENEstado.ELIMINAR
                                       select new VSeleccionLista
                                       {
                                           Id = a.Id,
@@ -139,6 +229,7 @@ namespace REPOSITORY.Clase
                                           Hora = a.Hora,
                                           Usuario = a.Usuario,
                                           IdAlmacen = b.IdAlmacen,
+                                          Merma = a.Merma,
                                       }).ToList();
                     return listResult;
                 }

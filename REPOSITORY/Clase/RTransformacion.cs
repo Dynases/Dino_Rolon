@@ -53,7 +53,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarEstado(int IdTransformacion, int estado)
+        public bool ModificarEstado(int IdTransformacion, int estado,ref List<string> lMensaje)
         {
             try
             {

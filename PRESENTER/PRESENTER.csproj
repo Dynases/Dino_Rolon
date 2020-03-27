@@ -514,7 +514,13 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TransformacionGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TraspasoGuardarResponse.datasource">
