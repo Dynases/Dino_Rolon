@@ -91,29 +91,42 @@ namespace SERVICE
         #endregion
         ///**********PRODUCTO************************
         ///
-        #region Producto
-        [OperationContract]
-        bool ProductoGuardar(VProducto proveedor, ref int id);
-        [OperationContract]
-        bool ProductoModificar(VProducto proveedor, int id);
-        [OperationContract]
-        bool ProductoEliminar(int id);
+        #region PRODUCTO
+            #region Transacciones
+                [OperationContract]
+                bool ProductoGuardar(VProducto proveedor, ref int id);
+                [OperationContract]
+                bool ProductoModificar(VProducto proveedor, int id);
+                [OperationContract]
+                bool ProductoEliminar(int id);
+            #endregion
+            #region Consultas
+                [OperationContract]
+                List<VProducto> ProductoListarXId(int id);
 
-        [OperationContract]
-        List<VProducto> ProductoListarXId(int id);
+                [OperationContract]
+                List<VProductoLista> ProductoListar();       
 
-        [OperationContract]
-        List<VProductoLista> ProductoListar();
+                [OperationContract]
+                DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
 
-        [OperationContract]
-        bool ProductoExisteEnCompra(int id);
-
-        [OperationContract]
-        DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
-
-        [OperationContract]
-        List<VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
-
+                [OperationContract]
+                List<VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
+            #endregion
+            #region Verificaciones
+                [OperationContract]
+                bool ProductoExisteEnCompra(int id);
+                [OperationContract]
+                bool ProductoExisteEnCompraNormal(int id);
+                [OperationContract]
+                bool ProductoExisteEnVenta(int id);
+                [OperationContract]
+                bool ProductoExisteEnMovimiento(int id);
+                [OperationContract]
+                bool ProductoExisteEnTransformacion(int id);
+                [OperationContract]
+                bool ProductoExisteEnSeleccion(int id);
+            #endregion
         #endregion
         ///**********ALMACEN************************
         ///

@@ -207,12 +207,6 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoListar", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoListarResponse")]
         System.Threading.Tasks.Task<ENTITY.Producto.View.VProductoLista[]> ProductoListarAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
-        bool ProductoExisteEnCompra(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
-        System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse")]
         System.Data.DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
         
@@ -224,6 +218,42 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
+        bool ProductoExisteEnCompra(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormal", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormalResponse")]
+        bool ProductoExisteEnCompraNormal(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormal", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormalResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnCompraNormalAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnVentaResponse")]
+        bool ProductoExisteEnVenta(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnVentaResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnVentaAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimiento", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimientoResponse")]
+        bool ProductoExisteEnMovimiento(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimiento", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimientoResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnMovimientoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacion", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacionResponse")]
+        bool ProductoExisteEnTransformacion(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacion", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacionResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnTransformacionAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccionResponse")]
+        bool ProductoExisteEnSeleccion(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccionResponse")]
+        System.Threading.Tasks.Task<bool> ProductoExisteEnSeleccionAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenGuardarResponse")]
         bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen);
@@ -1226,14 +1256,6 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ProductoListarAsync();
         }
         
-        public bool ProductoExisteEnCompra(int id) {
-            return base.Channel.ProductoExisteEnCompra(id);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id) {
-            return base.Channel.ProductoExisteEnCompraAsync(id);
-        }
-        
         public System.Data.DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
             return base.Channel.PrductoListarEncabezado(IdSucursal, IdAlmacen, IdCategoriaPrecio);
         }
@@ -1248,6 +1270,54 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen) {
             return base.Channel.ListarDetalleKardexAsync(inicio, fin, IdAlmacen);
+        }
+        
+        public bool ProductoExisteEnCompra(int id) {
+            return base.Channel.ProductoExisteEnCompra(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnCompraAsync(int id) {
+            return base.Channel.ProductoExisteEnCompraAsync(id);
+        }
+        
+        public bool ProductoExisteEnCompraNormal(int id) {
+            return base.Channel.ProductoExisteEnCompraNormal(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnCompraNormalAsync(int id) {
+            return base.Channel.ProductoExisteEnCompraNormalAsync(id);
+        }
+        
+        public bool ProductoExisteEnVenta(int id) {
+            return base.Channel.ProductoExisteEnVenta(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnVentaAsync(int id) {
+            return base.Channel.ProductoExisteEnVentaAsync(id);
+        }
+        
+        public bool ProductoExisteEnMovimiento(int id) {
+            return base.Channel.ProductoExisteEnMovimiento(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnMovimientoAsync(int id) {
+            return base.Channel.ProductoExisteEnMovimientoAsync(id);
+        }
+        
+        public bool ProductoExisteEnTransformacion(int id) {
+            return base.Channel.ProductoExisteEnTransformacion(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnTransformacionAsync(int id) {
+            return base.Channel.ProductoExisteEnTransformacionAsync(id);
+        }
+        
+        public bool ProductoExisteEnSeleccion(int id) {
+            return base.Channel.ProductoExisteEnSeleccion(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoExisteEnSeleccionAsync(int id) {
+            return base.Channel.ProductoExisteEnSeleccionAsync(id);
         }
         
         public bool AlmacenGuardar(ENTITY.inv.Almacen.View.VAlmacen vAlmacen) {

@@ -16,5 +16,11 @@ namespace REPOSITORY.Interface
         bool Eliminar(int idProducto);
         bool ExisteEnCompra(int IdProducto);
         System.Data.DataTable ListarEncabezado(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+
+        bool ExisteEnCompraNormal(int IdProducto);
+        bool ExisteEnMovimiento(int IdProducto);
+        bool ExisteEnVenta(int IdProducto);
+        bool ExisteEnSeleccion(int IdProducto);
+        bool ExisteEnTransformacion(int IdProducto);
     }
 }

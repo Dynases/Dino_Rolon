@@ -240,7 +240,8 @@ namespace SERVICE
         #endregion
         ///**********PRODUCTO**********************
         ///
-        #region Producto
+        #region PRODUCTO
+        #region Transacciones
         public bool ProductoGuardar(VProducto Producto, ref int id)
         {
             try
@@ -280,7 +281,8 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        #endregion
+        #region Consultas
         public List<VProducto> ProductoListarXId(int id)
         {
             try
@@ -307,19 +309,7 @@ namespace SERVICE
             }
         }
 
-        public bool ProductoExisteEnCompra(int id)
-        {
-            try
-            {
-                var listResult = new LProducto().ExisteEnCompra(id);
-                return listResult;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
+        
         public DataTable PrductoListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
         {
@@ -345,7 +335,85 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+        #region Verficaciones
+        public bool ProductoExisteEnCompra(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnCompra(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ProductoExisteEnCompraNormal(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnCompraNormal(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
+        public bool ProductoExisteEnVenta(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnVenta(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ProductoExisteEnMovimiento(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnMovimiento(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ProductoExisteEnTransformacion(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnTransformacion(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ProductoExisteEnSeleccion(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().ExisteEnSeleccion(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
         #endregion
         ///**********ALMACEN**********************
         ///
@@ -1081,6 +1149,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
     }
 }

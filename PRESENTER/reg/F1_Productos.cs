@@ -792,6 +792,10 @@ namespace PRESENTER.reg
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
 
         }
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         #endregion
         #region Metodos Heredados
         public override bool MH_NuevoRegistro()
@@ -881,53 +885,64 @@ namespace PRESENTER.reg
         }
         public override bool MH_Eliminar()
         {
-            try
-            {
-                bool resultadoRegistro = false;
+            try 
+            {                 
                 int IdProducto = Convert.ToInt32(Tb_Id.Text);
-                bool resultado = new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompra(IdProducto);
-                if (resultado)
+                List<string> lMensaje = new List<string>();
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompra(IdProducto))
                 {
-                    Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
-                    ToastNotification.Show(this, GLMensaje.Eliminar_Error_Transaciones_Relacionadas(_NombreFormulario),
-                                                img, (int)GLMensajeTamano.Mediano,
-                                                eToastGlowColor.Green,
-                                                eToastPosition.TopCenter);
-                    return false;
+                    lMensaje.Add("El producto esta asociado a una compra ingreso.");
                 }
-                //Pregunta si eliminara el registro
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompraNormal(IdProducto))
+                {
+                    lMensaje.Add("El proyecto esta asociado a una compra.");
+                }
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnVenta(IdProducto))
+                {
+                    lMensaje.Add("El proyecto esta asociado a una venta.");
+                }
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnMovimiento(IdProducto))
+                {
+                    lMensaje.Add("El proyecto esta asociado a un movimiento.");
+                }
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnSeleccion(IdProducto))
+                {
+                    lMensaje.Add("El proyecto esta asociado a una seleccion.");
+                }
+                if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnTransformacion(IdProducto))
+                {
+                    lMensaje.Add("El proyecto esta asociado a una transformacion.");
+                }
+                if (lMensaje.Count > 0)
+                {
+                    var mensaje = "";
+                    foreach (var item in lMensaje)
+                    {
+                        mensaje = mensaje + "- " + item + "\n";
+                    }
+                    MP_MostrarMensajeError(mensaje);
+                    return false;
+                }             
                 Efecto efecto = new Efecto();
                 efecto.Tipo = 2;
                 efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
                 efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
-                efecto.ShowDialog();
-                bool bandera = efecto.Band;
-                if (bandera)
+                efecto.ShowDialog();               
+                bool resul = false;
+                if (efecto.Band)
                 {
-                    var resul = new ServiceDesktop.ServiceDesktopClient().ProductoEliminar(IdProducto);
+                    resul = new ServiceDesktop.ServiceDesktopClient().ProductoEliminar(IdProducto);
                     if (resul)
                     {
-                        ToastNotification.Show(this, GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text),
-                                               PRESENTER.Properties.Resources.GRABACION_EXITOSA,
-                                               (int)GLMensajeTamano.Chico,
-                                                eToastGlowColor.Green,
-                                               eToastPosition.TopCenter);
-                 
-                        MP_Filtrar(1);
-                        resultadoRegistro = true;
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text));                 
+                        MP_Filtrar(1);                       
                     }
                     else
-                    {
-                        Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
-                        ToastNotification.Show(this, GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text),
-                                                    img, (int)GLMensajeTamano.Mediano,
-                                                    eToastGlowColor.Green,
-                                                    eToastPosition.TopCenter);
-                        resultadoRegistro = false;
+                    {                      
+                        MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text));                                       
                     }
                 }
-                return resultadoRegistro;
-
+                return resul;
             }
             catch (Exception ex)
             {

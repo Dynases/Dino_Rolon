@@ -208,29 +208,7 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public bool ExisteEnCompra(int IdProducto)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var resultado = (from a in db.Producto
-                                     join b in db.CompraIng_01 on
-                                     new { Id = a.Id }
-                                        equals new { Id = b.IdProduc }
-                                     join c in db.Compra_01 on
-                                     new { Id = a.Id }
-                                        equals new { Id = c.IdProducto }
-                                     where a.Id.Equals(IdProducto)
-                                     select a).Count();
-                    return resultado != 0 ? true : false;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        
 
         public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
@@ -262,6 +240,117 @@ namespace REPOSITORY.Clase
             }
         }
 
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnCompra(int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.CompraIng_01 on a.Id equals b.IdProduc                                     
+                                     where a.Id.Equals(IdProducto) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnCompraNormal(int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.Compra_01 on a.Id equals b.IdProducto
+                                     where b.IdProducto.Equals(IdProducto) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnMovimiento(int IdProducto)
+        {
+            try
+            {
+                //Verificar si Movimiento tiene estado de eliminado y poner
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.TI0021 on a.Id equals b.iccprod
+                                     where a.Id.Equals(IdProducto)
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnVenta(int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.Venta_01 on a.Id equals b.IdProducto
+                                     where a.Id.Equals(IdProducto) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnSeleccion (int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.Seleccion_01 on a.Id equals b.IdProducto
+                                     where a.Id.Equals(IdProducto) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnTransformacion(int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     join b in db.Transformacion_01 on a.Id equals b.IdProducto
+                                     where a.Id.Equals(IdProducto) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

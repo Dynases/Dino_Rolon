@@ -157,12 +157,6 @@
   <wsdl:message name="IServiceDesktop_ProductoListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProductoListarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_InputMessage">
-    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompra" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraResponse" />
-  </wsdl:message>
   <wsdl:message name="IServiceDesktop_PrductoListarEncabezado_InputMessage">
     <wsdl:part name="parameters" element="tns:PrductoListarEncabezado" />
   </wsdl:message>
@@ -174,6 +168,42 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ListarDetalleKardex_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarDetalleKardexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompra" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompraNormal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraNormal" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnCompraNormal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnCompraNormalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnVenta" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnTransformacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnTransformacion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnTransformacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnTransformacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnSeleccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnSeleccion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProductoExisteEnSeleccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoExisteEnSeleccionResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_AlmacenGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:AlmacenGuardar" />
@@ -584,10 +614,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoListar" message="tns:IServiceDesktop_ProductoListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoListarResponse" message="tns:IServiceDesktop_ProductoListar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ProductoExisteEnCompra">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" message="tns:IServiceDesktop_ProductoExisteEnCompra_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse" message="tns:IServiceDesktop_ProductoExisteEnCompra_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="PrductoListarEncabezado">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" message="tns:IServiceDesktop_PrductoListarEncabezado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PrductoListarEncabezadoResponse" message="tns:IServiceDesktop_PrductoListarEncabezado_OutputMessage" />
@@ -595,6 +621,30 @@
     <wsdl:operation name="ListarDetalleKardex">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" message="tns:IServiceDesktop_ListarDetalleKardex_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse" message="tns:IServiceDesktop_ListarDetalleKardex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnCompra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" message="tns:IServiceDesktop_ProductoExisteEnCompra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse" message="tns:IServiceDesktop_ProductoExisteEnCompra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnCompraNormal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormal" message="tns:IServiceDesktop_ProductoExisteEnCompraNormal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormalResponse" message="tns:IServiceDesktop_ProductoExisteEnCompraNormal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnVenta" message="tns:IServiceDesktop_ProductoExisteEnVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnVentaResponse" message="tns:IServiceDesktop_ProductoExisteEnVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimiento" message="tns:IServiceDesktop_ProductoExisteEnMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimientoResponse" message="tns:IServiceDesktop_ProductoExisteEnMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnTransformacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacion" message="tns:IServiceDesktop_ProductoExisteEnTransformacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacionResponse" message="tns:IServiceDesktop_ProductoExisteEnTransformacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnSeleccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccion" message="tns:IServiceDesktop_ProductoExisteEnSeleccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccionResponse" message="tns:IServiceDesktop_ProductoExisteEnSeleccion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AlmacenGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AlmacenGuardar" message="tns:IServiceDesktop_AlmacenGuardar_InputMessage" />
@@ -1004,15 +1054,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ProductoExisteEnCompra">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="PrductoListarEncabezado">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PrductoListarEncabezado" style="document" />
       <wsdl:input>
@@ -1024,6 +1065,60 @@
     </wsdl:operation>
     <wsdl:operation name="ListarDetalleKardex">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnCompra">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnCompraNormal">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraNormal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnVenta">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnMovimiento">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnTransformacion">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnTransformacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoExisteEnSeleccion">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnSeleccion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

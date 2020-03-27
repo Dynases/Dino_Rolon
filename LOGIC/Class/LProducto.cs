@@ -97,18 +97,7 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }
-        public bool ExisteEnCompra(int idProducto)
-        {
-            try
-            {
-                return iProducto.ExisteEnCompra(idProducto);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        }        
 
         public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
@@ -135,6 +124,74 @@ namespace LOGIC.Class
             }
         }
 
+        #endregion
+        #region Transacciones
+        public bool ExisteEnCompra(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnCompra(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnCompraNormal(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnCompraNormal(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnVenta(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnVenta(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnSeleccion(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnSeleccion(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnTransformacion(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnTransformacion(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnMovimiento(int idProducto)
+        {
+            try
+            {
+                return iProducto.ExisteEnMovimiento(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }
