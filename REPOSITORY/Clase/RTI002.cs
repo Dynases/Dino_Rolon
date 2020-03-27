@@ -49,7 +49,24 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool Eliminar(int IdDetalle, int concepto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var tI002 = db.TI002.FirstOrDefault(b => b.ibiddc == IdDetalle &&
+                                                                b.ibconcep == concepto);
+                    db.TI002.Remove(tI002);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

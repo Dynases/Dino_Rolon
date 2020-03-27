@@ -217,21 +217,29 @@ namespace SERVICE
         #endregion
         ///**********COMPRA INGRESO******************
         ///
-        #region Compra Ingreso 
-        [OperationContract]
-        List<VCompraIngreso> CmmpraIngresoListar();
+        #region COMPRA INGRESO
+            #region Transacciones
+                [OperationContract]
+                bool CompraIngreso_Guardar(VCompraIngresoLista proveedor, List<VCompraIngreso_01> detalle, ref int id, string usuario);
+                [OperationContract]
+                bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado,  ref List<string>lMensaje);
+            #endregion
+            #region Consulta
+                [OperationContract]
+                List<VCompraIngreso> CmmpraIngresoListar();
 
-        [OperationContract]
-        List<VCompraIngresoLista> CmmpraIngresoListarXId(int id);
+                [OperationContract]
+                List<VCompraIngresoLista> CmmpraIngresoListarXId(int id);
 
-        [OperationContract]
-        List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
-
-        [OperationContract]
-        bool CompraIngreso_Guardar(VCompraIngresoLista proveedor, List<VCompraIngreso_01> detalle, ref int id, string usuario);
-
-        [OperationContract]
-        DataTable CompraIngreso_ListarEncabezado();
+                [OperationContract]
+                List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
+                [OperationContract]
+                DataTable CompraIngreso_ListarEncabezado();
+                #endregion
+            #region Verficaciones
+                [OperationContract]
+                bool CompraIngreso_ExisteEnSeleccion(int id);
+            #endregion
         #endregion
         #region Compra Ingreso_01
         [OperationContract]
@@ -239,7 +247,7 @@ namespace SERVICE
         [OperationContract]
         List<VCompraIngreso_01> CmmpraIngreso_01ListarXId2(int IdGrupo2, int idAlmacen);
         #endregion
-        #region Ingreso_02
+        #region COMPRA Ingreso_02
         [OperationContract]
         bool CompraIngreso_02_Guardar(VCompraIngreso_02 Lista);
 
@@ -250,14 +258,17 @@ namespace SERVICE
         #endregion
         ///**********SELECCION**********************
         ///
-        #region Seleccion
-        [OperationContract]
-        List<VSeleccionLista> Seleccion_Lista();
-
-        [OperationContract]
-        bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
-
-
+        #region SELECCION
+            #region Transacciones
+                [OperationContract]
+                bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
+                [OperationContract]
+                bool Seleccion_ModificarEstado(int IdSeleccion, int estado);
+            #endregion
+            #region Consulta
+                [OperationContract]
+                List<VSeleccionLista> Seleccion_Lista();
+            #endregion
         #endregion
         #region Seleccion_01
         [OperationContract]
@@ -269,18 +280,22 @@ namespace SERVICE
         #endregion
         ///**********TRANSFORMACION******************
         ///
-        #region Transformacion
-        [OperationContract]
-        List<VTransformacion> Transformacion_Lista();
+        #region TRANSFORMACION
+            #region Trnasacciones
+                [OperationContract]
+                bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
 
-        [OperationContract]
-        bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
-        [OperationContract]
-        List<VTransformacionReport> TransformacionIngreso(int id);
-
-        [OperationContract]
-        List<VTransformacionReport> TransformacionSalida(int id);
-
+                [OperationContract]
+                bool Transformacion_ModificarEstado(int IdTransformacion, int estado);
+            #endregion
+            #region Consulta
+                [OperationContract]
+                List<VTransformacion> Transformacion_Lista();
+                [OperationContract]
+                List<VTransformacionReport> TransformacionIngreso(int id);
+                [OperationContract]
+                List<VTransformacionReport> TransformacionSalida(int id);
+            #endregion
         #endregion
         #region Transformacion_01
         [OperationContract]

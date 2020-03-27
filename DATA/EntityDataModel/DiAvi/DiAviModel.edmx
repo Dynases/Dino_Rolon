@@ -247,36 +247,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="bahact" Type="nvarchar" MaxLength="5" />
           <Property Name="bauact" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.TC000' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="TC000">
-          <Property Name="cnumi" Type="int" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.TC0001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="TC0001">
-          <Property Name="ccctc0" Type="int" />
-          <Property Name="cccndesc" Type="nvarchar" MaxLength="50" />
-          <Property Name="cccefac" Type="bit" />
-          <Property Name="ccctfac" Type="int" />
-          <Property Name="ccccite" Type="int" />
-          <Property Name="ccciice" Type="bit" />
-          <Property Name="cccdetp" Type="bit" />
-          <Property Name="ccccbar" Type="bit" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.TCI001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="TCI001">
-          <Property Name="cpnumi" Type="int" />
-          <Property Name="cpdesc" Type="nvarchar" MaxLength="30" />
-          <Property Name="cpmov" Type="int" />
-          <Property Name="cpmovcli" Type="int" />
-          <Property Name="cptipo" Type="int" />
-          <Property Name="cpest" Type="int" />
-          <Property Name="cpfact" Type="date" />
-          <Property Name="cphact" Type="nvarchar" MaxLength="5" />
-          <Property Name="cpuact" Type="nvarchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="TI001">
           <Key>
             <PropertyRef Name="id" />
@@ -319,23 +289,6 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.TCI001' no tiene definida una clav
           <Property Name="icfvenc" Type="date" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY001">
-          <Property Name="yanumi" Type="int" />
-          <Property Name="yaprog" Type="nvarchar" MaxLength="40" />
-          <Property Name="yatit" Type="nvarchar" MaxLength="40" />
-          <Property Name="yamod" Type="int" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY002' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY002">
-          <Property Name="ybnumi" Type="int" />
-          <Property Name="ybrol" Type="nvarchar" MaxLength="30" />
-          <Property Name="ybfact" Type="date" />
-          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
-          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="ZY0021">
           <Key>
             <PropertyRef Name="ycline" />
@@ -348,23 +301,6 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY002' no tiene definida una clave
           <Property Name="ycmod" Type="bit" />
           <Property Name="ycdel" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY003">
-          <Property Name="ydnumi" Type="int" />
-          <Property Name="yduser" Type="nvarchar" MaxLength="10" />
-          <Property Name="ydrol" Type="int" />
-          <Property Name="ydpass" Type="nvarchar" MaxLength="20" />
-          <Property Name="ydest" Type="bit" />
-          <Property Name="ydcant" Type="int" />
-          <Property Name="ydfontsize" Type="int" />
-          <Property Name="ydsuc" Type="int" />
-          <Property Name="ydall" Type="int" />
-          <Property Name="ydfact" Type="date" />
-          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
-          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
-          <Property Name="yd_numiVend" Type="int" />
-        </EntityType>-->
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="Id" />
@@ -731,18 +667,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Principal>
             <Dependent Role="Precio">
               <PropertyRef Name="IdPrecioCat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Precio_Product">
-          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
-          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Precio">
-              <PropertyRef Name="IdProduc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1266,10 +1190,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="PrecioCat" EntitySet="PrecioCat" />
             <End Role="Precio" EntitySet="Precio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Precio_Product" Association="Self.FK__Precio_Product">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Precio" EntitySet="Precio" />
-          </AssociationSet>
           <AssociationSet Name="FK__Precio_Sucursal" Association="Self.FK__Precio_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Precio" EntitySet="Precio" />
@@ -1468,7 +1388,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="Plantilla" EntityType="DiAviModel.Plantilla" />
           <EntitySet Name="Plantilla_01" EntityType="DiAviModel.Plantilla_01" />
           <EntitySet Name="TB001" EntityType="DiAviModel.TB001" />
-          <EntitySet Name="TI001" EntityType="DiAviModel.TI001" />
           <EntitySet Name="TI002" EntityType="DiAviModel.TI002" />
           <EntitySet Name="TI0021" EntityType="DiAviModel.TI0021" />
           <EntitySet Name="ZY0021" EntityType="DiAviModel.ZY0021" />
@@ -1619,6 +1538,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
+          <EntitySet Name="TI001" EntityType="DiAviModel.TI001" />
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -1868,18 +1788,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="bafact" Type="DateTime" Precision="0" />
           <Property Name="bahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="bauact" Type="Int32" />
-        </EntityType>
-        <EntityType Name="TI001">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="icalm" Type="Int32" />
-          <Property Name="iccprod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="iccven" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="icuven" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="icfven" Type="DateTime" Precision="0" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="TI002">
           <Key>
@@ -2678,6 +2586,18 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TI001">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="icalm" Type="Int32" />
+          <Property Name="iccprod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="iccven" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="icuven" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="icfven" Type="DateTime" Precision="0" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2933,19 +2853,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="baproc" ColumnName="baproc" />
                 <ScalarProperty Name="banum" ColumnName="banum" />
                 <ScalarProperty Name="banumi" ColumnName="banumi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TI001">
-            <EntityTypeMapping TypeName="DiAviModel.TI001">
-              <MappingFragment StoreEntitySet="TI001">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="icfven" ColumnName="icfven" />
-                <ScalarProperty Name="iclot" ColumnName="iclot" />
-                <ScalarProperty Name="icuven" ColumnName="icuven" />
-                <ScalarProperty Name="iccven" ColumnName="iccven" />
-                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
-                <ScalarProperty Name="icalm" ColumnName="icalm" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3309,6 +3216,19 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="AlmacenSalida" ColumnName="AlmacenSalida" />
                 <ScalarProperty Name="AlmacenIngreso" ColumnName="AlmacenIngreso" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TI001">
+            <EntityTypeMapping TypeName="DiAviModel.TI001">
+              <MappingFragment StoreEntitySet="TI001">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="icfven" ColumnName="icfven" />
+                <ScalarProperty Name="iclot" ColumnName="iclot" />
+                <ScalarProperty Name="icuven" ColumnName="icuven" />
+                <ScalarProperty Name="iccven" ColumnName="iccven" />
+                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
+                <ScalarProperty Name="icalm" ColumnName="icalm" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

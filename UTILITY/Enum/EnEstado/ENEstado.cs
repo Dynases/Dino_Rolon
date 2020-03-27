@@ -8,6 +8,7 @@ namespace UTILITY.Enum.EnEstado
 {
     public enum ENEstado
     {
+        ELIMINAR=-1,
         NUEVO = 0,
         GUARDADO= 1,
         MODIFICAR = 2,

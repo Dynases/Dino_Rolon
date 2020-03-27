@@ -729,6 +729,10 @@ namespace SERVICE
         ///**********COMPRA INGRESO**********************
         ///
         #region Compra Ingreso
+        #region Transformacion
+      
+
+       
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
         {
             try
@@ -741,6 +745,20 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado, ref List<string> lMensaje)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ModificarEstado(IdCompraIng, estado,ref lMensaje);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region COnsulta
         public List<VCompraIngreso> CmmpraIngresoListar()
         {
             try
@@ -819,6 +837,23 @@ namespace SERVICE
             }
         }
         #endregion
+        #region Verificaciones
+        public bool CompraIngreso_ExisteEnSeleccion(int id)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ExisteEnSeleccion(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+
+        #endregion
         #region Compra Ingreso_02
         public bool CompraIngreso_02_Guardar(VCompraIngreso_02 Lista)
         {
@@ -860,7 +895,19 @@ namespace SERVICE
         ///**********SELECCION**********************
         ///
         #region Seleccion
-
+        #region Transacciones
+        public bool Seleccion_ModificarEstado(int IdSeleccion, int estado)
+        {
+            try
+            {
+                var result = new LSeleccion().ModificarEstado(IdSeleccion, estado);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id)
         {
             try
@@ -873,6 +920,8 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+        #region Consulta
         public List<VSeleccionLista> Seleccion_Lista()
         {
             try
@@ -885,8 +934,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
-
+        #endregion
         #endregion
         #region Seleccion_01
         public List<VSeleccion_01_Lista> Seleccion_01_Lista()
@@ -929,7 +977,34 @@ namespace SERVICE
         #endregion
         ///**********TRANSFORMACION**********************
         ///
-        #region Transaformacion
+        #region TRANSFORMACION
+        #region Transacciones
+        public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id)
+        {
+            try
+            {
+                var result = new LTransformacion().Guardar(vSeleccion, detalle, ref Id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Transformacion_ModificarEstado(int IdTransformacion, int estado)
+        {
+            try
+            {
+                var result = new LTransformacion().ModificarEstado(IdTransformacion, estado);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consulta
         public List<VTransformacion> Transformacion_Lista()
         {
             try
@@ -967,22 +1042,15 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+
+
+
 
         #endregion
         #region Transaformacion_01
 
-        public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id)
-        {
-            try
-            {
-                var result = new LTransformacion().Guardar(vSeleccion, detalle, ref Id);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        
 
         public VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat)
         {
@@ -1149,6 +1217,13 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
+       
+
+     
+
+
+   
 
         #endregion
     }

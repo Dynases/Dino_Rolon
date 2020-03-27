@@ -46,7 +46,25 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }        
+        }
+
+        public bool ModificarEstado(int IdTransformacion, int estado)
+        {
+            try
+            {
+                bool result = false;
+                using (var scope = new TransactionScope())
+                {
+                    var resultDetalle = iTransformacion.ModificarEstado(IdTransformacion, estado);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Consulta
         public List<VTransformacion> Listar()

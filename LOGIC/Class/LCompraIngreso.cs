@@ -15,11 +15,16 @@ namespace LOGIC.Class
    public class LCompraIngreso
     {
         protected ICompraIngreso iCompraIngreso;
+        protected ITI001 iTi001;
+        protected ITI002 iTi002;
+        protected ITI0021 iTi0021;
         public LCompraIngreso()
         {
-            iCompraIngreso = new RCompraIngreso();
+            iTi001 = new RTI001();
+            iTi002 = new RTI002();
+            iTi0021 = new RTI0021();
+            iCompraIngreso = new RCompraIngreso(iTi001, iTi002, iTi0021);
         }
-
         #region Transacciones
         public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int Id,string usuario)
         {
@@ -38,6 +43,23 @@ namespace LOGIC.Class
                         result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
                         var resultDetalle = new LCompraIngreso_01().GuardarModificado(detalle, Id, usuario);
                     }
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ModificarEstado(int IdCompraIng, int estado, ref List<string> lMensaje)
+        {
+            try
+            {
+                bool result = false;
+                using (var scope = new TransactionScope())
+                {                     
+                    result= iCompraIngreso.ModificarEstado(IdCompraIng, estado, ref lMensaje);                    
                     scope.Complete();
                     return result;
                 }
@@ -89,6 +111,19 @@ namespace LOGIC.Class
             try
             {
                 return iCompraIngreso.ListarEncabezado();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnSeleccion(int idCompraIng)
+        {
+            try
+            {
+                return iCompraIngreso.ExisteEnSeleccion(idCompraIng);
             }
             catch (Exception ex)
             {

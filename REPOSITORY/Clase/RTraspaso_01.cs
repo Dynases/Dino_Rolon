@@ -26,6 +26,8 @@ namespace REPOSITORY.Clase
         {
             try
             {
+                DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                string lote = "20170101";
                 using (var db = GetEsquema())
                 {
                     foreach (var i in lista)
@@ -47,7 +49,9 @@ namespace REPOSITORY.Clase
                         if (!this.tI001.ActualizarInventario(detalle.ProductId.ToString(),
                                                             almacenId,
                                                             EnAccionEnInventario.Descontar,
-                                                            Convert.ToDecimal(detalle.Cantidad)))
+                                                            Convert.ToDecimal(detalle.Cantidad),
+                                                            lote,
+                                                            fechaVen))
                         {
                             return false;
                         }
@@ -72,6 +76,8 @@ namespace REPOSITORY.Clase
         {
             try
             {
+                DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                string lote = "20170101";
                 using (var db = GetEsquema())
                 {
                     foreach (var i in detalle)
@@ -80,7 +86,9 @@ namespace REPOSITORY.Clase
                         if (!this.tI001.ActualizarInventario(i.ProductId.ToString(),
                                                             i.Traspaso.AlmacenDestino.Value,
                                                             EnAccionEnInventario.Incrementar,
-                                                            Convert.ToDecimal(i.Cantidad.Value)))
+                                                            Convert.ToDecimal(i.Cantidad.Value),
+                                                            lote,
+                                                            fechaVen))
                         {
                             return false;
                         }

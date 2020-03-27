@@ -64,6 +64,7 @@
     <Compile Include="inv\Sucursal\View\VSucursal.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalCombo.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalLista.cs" />
+    <Compile Include="inv\TI001\VIew\VTI001.cs" />
     <Compile Include="inv\TipoAlmacen\view\VTipoAlmacen.cs" />
     <Compile Include="inv\TipoAlmacen\view\VTipoAlmacenCombo.cs" />
     <Compile Include="inv\TipoAlmacen\view\VTipoAlmacenListar.cs" />

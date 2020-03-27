@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -94,9 +95,16 @@ namespace MODEL
         }
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            VM_Nuevo = false;
-            MP_Inhabilitar();
-            MH_Modificar();
+            try
+            {
+                VM_Nuevo = false;
+                MH_Modificar();
+                MP_Inhabilitar();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
@@ -130,6 +138,10 @@ namespace MODEL
         }
         #endregion
         #region METODOS PRIVADOS 
+        void MP_MostrarMensajeError(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), MODEL.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         public void MP_IniciarTodo()
         {
             TxtNombreUsu.Text = UTGlobal.Usuario;

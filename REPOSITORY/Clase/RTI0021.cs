@@ -40,7 +40,25 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool Eliminar(int IdDetalle, int concepto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var tI0021 = db.TI0021.FirstOrDefault(b => b.icibid == db.TI002.FirstOrDefault(c => c.ibiddc == IdDetalle &&
+                                                                                                       c.ibconcep == concepto)
+                                                                                                    .ibid);
+                    db.TI0021.Remove(tI0021);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Consultas

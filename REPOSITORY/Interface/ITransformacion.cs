@@ -14,5 +14,6 @@ namespace REPOSITORY.Interface
         List<VTransformacion> Listar();
         List<VTransformacionReport> ListarSalida(int Id);
         List<VTransformacionReport> ListarIngreso(int Id);
+        bool ModificarEstado(int IdTransformacion, int estado);
     }
 }

@@ -40,7 +40,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Plantilla> Plantilla { get; set; }
         public virtual DbSet<Plantilla_01> Plantilla_01 { get; set; }
         public virtual DbSet<TB001> TB001 { get; set; }
-        public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021> TI0021 { get; set; }
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
@@ -63,6 +62,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
+        public virtual DbSet<TI001> TI001 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

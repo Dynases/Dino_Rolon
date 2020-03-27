@@ -10,8 +10,9 @@ namespace REPOSITORY.Interface
 {
    public interface ISeleccion
     {
+       
         bool Guardar(VSeleccion vSeleccion, ref int id);
         List<VSeleccionLista> Listar();
-       
+        bool ModificarEstado(int IdSeleccion, int estado);
     }
 }

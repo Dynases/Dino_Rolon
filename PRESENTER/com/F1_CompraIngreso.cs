@@ -379,9 +379,8 @@ namespace PRESENTER.com
         {
             try
             {
-                var result = new ServiceDesktop.ServiceDesktopClient().CmmpraIngresoListar();
-                if (result.Count() > 0)
-                {
+                var result = new ServiceDesktop.ServiceDesktopClient().CmmpraIngresoListar().ToList();
+               
                     Dgv_GBuscador.DataSource = result;
                     Dgv_GBuscador.RetrieveStructure();
                     Dgv_GBuscador.AlternatingColors = true;
@@ -446,7 +445,7 @@ namespace PRESENTER.com
                     //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_GBuscador.GroupByBoxVisible = false;
                     Dgv_GBuscador.VisualStyle = VisualStyle.Office2007;
-                }
+                
             }
             catch (Exception ex)
             {
@@ -725,6 +724,7 @@ namespace PRESENTER.com
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
                     UTGlobal.MG_SeleccionarCombo(Cb_Placa);
+                   // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
                 Tb_TotalVendido.Value = 0;
@@ -732,12 +732,9 @@ namespace PRESENTER.com
                 Tb_TotalMaples.Value = 0;
                 Tb_TotalFisico.Value = 0;
                 Tb_TPrecio.Value = 0;
-                Tb_TSaldoTo.Value = 0;
-                BtnModificar.Enabled = false;
-                BtnEliminar.Enabled = false;
+                Tb_TSaldoTo.Value = 0;          
                 MP_LimpiarColor();
-                // ((DataTable)Dgv_Detalle.DataSource).Clear();
-                //  Dgv_Detalle.DataSource = null;
+               
             }
             catch (Exception ex)
             {
@@ -776,9 +773,7 @@ namespace PRESENTER.com
                         Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
                         Sw_Tipo.Value = registro.TipoCompra == 1 ? true : false;
                         MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
-                        MP_ObtenerCalculo();
-                        BtnModificar.Enabled = registro.estado == (int)ENEstado.COMPLETADO ? false : true;
-                        BtnEliminar.Enabled = registro.estado == (int)ENEstado.COMPLETADO ? false : true;
+                        MP_ObtenerCalculo();            
                     }
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
                 }
@@ -828,6 +823,10 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
 
+        }      
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
 
         #endregion
@@ -904,7 +903,60 @@ namespace PRESENTER.com
                 return resultado;
             }           
         }
-
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                int IdSeleccion = Convert.ToInt32(Tb_Cod.Text);               
+                if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(IdSeleccion))
+                {
+                   MP_MostrarMensajeError("La compra esta asociado a una Seleccion.");
+                   return false;
+                }                
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje= Mensaje.ToArray();
+                    resul = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ModificarEstado(IdSeleccion, (int)ENEstado.ELIMINAR,ref LMensaje);
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Cod.Text));                        
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Cod.Text));
+                        }                       
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         public override void MH_Nuevo()
         {
             MP_Habilitar();
@@ -913,8 +965,12 @@ namespace PRESENTER.com
         }
         public override void MH_Modificar()
         {
+            int IdSeleccion = Convert.ToInt32(Tb_Cod.Text);
+            if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(IdSeleccion))
+            {
+                throw new Exception("La compra esta asociado a una Seleccion.");
+            }
             MP_Habilitar();
-
         }
         public override void MH_Salir()
         {

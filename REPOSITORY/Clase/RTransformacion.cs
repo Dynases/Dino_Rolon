@@ -10,6 +10,7 @@ using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum.EnEstado;
 using ENTITY.inv.Transformacion.Report;
 using ENTITY.com.Seleccion.Report;
+using System.Data.Entity;
 
 namespace REPOSITORY.Clase
 {
@@ -52,7 +53,25 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool ModificarEstado(int IdTransformacion, int estado)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var transformacion = db.Transformacion.Where(c => c.Id.Equals(IdTransformacion)).FirstOrDefault();
+                    transformacion.Estado = estado;
+                    db.Transformacion.Attach(transformacion);
+                    db.Entry(transformacion).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region CONSULTAS
         public List<VTransformacion> Listar()

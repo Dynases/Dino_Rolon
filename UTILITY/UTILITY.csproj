@@ -216,6 +216,7 @@
     <Compile Include="Enum\EnCarpetas\EnCarpeta.cs" />
     <Compile Include="Enum\EnCarpetas\ENSubCarpetas.cs" />
     <Compile Include="Enum\ENCategoriaPrecio.cs" />
+    <Compile Include="Enum\ENConcepto\ENConcepto.cs" />
     <Compile Include="Enum\EnEstado\ENEstado.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosGrupo.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosOrden.cs" />

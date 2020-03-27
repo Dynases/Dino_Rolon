@@ -24,6 +24,7 @@
   <Metadata>
     <MetadataFile FileName="ServiceDesktop.xsd" MetadataType="Schema" ID="1400e5fc-dc62-4b89-b779-1470509dcd53" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd1" />
     <MetadataFile FileName="ServiceDesktop1.xsd" MetadataType="Schema" ID="ed9fc8d6-1ece-4f17-ab56-d7b16c34ddad" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceDesktop27.xsd" MetadataType="Schema" ID="367211f1-c843-44f4-aa6d-26e98fcc3b7f" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd27" />
     <MetadataFile FileName="ServiceDesktop2.xsd" MetadataType="Schema" ID="06ccebdf-3c52-4c15-b7d8-1fc47fa52a5d" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd16" />
     <MetadataFile FileName="ServiceDesktop3.xsd" MetadataType="Schema" ID="7ae1aebc-35a9-4ef4-8f11-d9cbe2474db2" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd17" />
     <MetadataFile FileName="ServiceDesktop4.xsd" MetadataType="Schema" ID="c55bcde0-e49f-4d91-9ba1-9a5ec49df020" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd14" />

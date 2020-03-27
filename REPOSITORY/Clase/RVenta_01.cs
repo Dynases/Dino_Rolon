@@ -26,6 +26,8 @@ namespace REPOSITORY.Clase
         {
             try
             {
+                DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                string lote = "20170101";
                 using (var db = GetEsquema())
                 {
                     foreach (var i in lista)
@@ -45,7 +47,9 @@ namespace REPOSITORY.Clase
                         if (!this.tI001.ActualizarInventario(detalle.IdProducto.ToString(),
                                                             almacenId,
                                                             EnAccionEnInventario.Descontar,
-                                                            Convert.ToDecimal(detalle.Cantidad)))
+                                                            Convert.ToDecimal(detalle.Cantidad),
+                                                            lote,
+                                                            fechaVen))
                         {
                             return false;
                         }
