@@ -107,8 +107,8 @@ namespace PRESENTER.reg
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
-            this.PanelInferior.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.panel3.SuspendLayout();
             this.GPanel_Buscador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).BeginInit();
@@ -264,11 +264,6 @@ namespace PRESENTER.reg
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1043, 72);
             // 
-            // PanelInferior
-            // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 640);
-            this.PanelInferior.Size = new System.Drawing.Size(1043, 28);
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.panel3);
@@ -277,6 +272,11 @@ namespace PRESENTER.reg
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 640);
+            this.PanelInferior.Size = new System.Drawing.Size(1043, 28);
             // 
             // panel3
             // 
@@ -687,7 +687,7 @@ namespace PRESENTER.reg
             this.Cb_CatPrecio.SelectedIndex = -1;
             this.Cb_CatPrecio.SelectedItem = null;
             this.Cb_CatPrecio.Size = new System.Drawing.Size(214, 22);
-            this.Cb_CatPrecio.TabIndex = 336;
+            this.Cb_CatPrecio.TabIndex = 16;
             this.Cb_CatPrecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // labelX16
@@ -817,7 +817,7 @@ namespace PRESENTER.reg
             this.Cb_CliCiudad.SelectedIndex = -1;
             this.Cb_CliCiudad.SelectedItem = null;
             this.Cb_CliCiudad.Size = new System.Drawing.Size(129, 22);
-            this.Cb_CliCiudad.TabIndex = 328;
+            this.Cb_CliCiudad.TabIndex = 14;
             this.Cb_CliCiudad.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_CliCiudad.ValueChanged += new System.EventHandler(this.Cb_CliCiudad_ValueChanged);
             // 
@@ -833,7 +833,7 @@ namespace PRESENTER.reg
             this.Cb_CliFacturacion.SelectedIndex = -1;
             this.Cb_CliFacturacion.SelectedItem = null;
             this.Cb_CliFacturacion.Size = new System.Drawing.Size(129, 22);
-            this.Cb_CliFacturacion.TabIndex = 328;
+            this.Cb_CliFacturacion.TabIndex = 15;
             this.Cb_CliFacturacion.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_CliFacturacion.ValueChanged += new System.EventHandler(this.Cb_CliFacturacion_ValueChanged);
             // 
@@ -1353,9 +1353,9 @@ namespace PRESENTER.reg
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
-            this.PanelContenidoRegistro.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.GPanel_Buscador.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).EndInit();

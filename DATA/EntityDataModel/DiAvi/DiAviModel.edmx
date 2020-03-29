@@ -1401,7 +1401,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="Cliente" EntityType="DiAviModel.Cliente" />
           <EntitySet Name="Precio" EntityType="DiAviModel.Precio" />
           <EntitySet Name="PrecioCat" EntityType="DiAviModel.PrecioCat" />
-          <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
           <EntitySet Name="Venta" EntityType="DiAviModel.Venta" />
           <EntitySet Name="Venta_01" EntityType="DiAviModel.Venta_01" />
           <EntitySet Name="Estaticos" EntityType="DiAviModel.Estaticos" />
@@ -1422,10 +1421,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Proveed" EntitySet="Proveed" />
             <End Role="Compra" EntitySet="Compra" />
           </AssociationSet>
-          <AssociationSet Name="FK_Compra_01_Producto" Association="DiAviModel.FK_Compra_01_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Compra_01" EntitySet="Compra_01" />
-          </AssociationSet>
           <AssociationSet Name="FK__CompraIng__Almacen" Association="DiAviModel.FK__CompraIng__Almacen">
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="CompraIng" EntitySet="CompraIng" />
@@ -1442,10 +1437,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="CompraIng" EntitySet="CompraIng" />
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
-          <AssociationSet Name="FK__CompraIng__IdPro__46B27FE2" Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="CompraIng_01" EntitySet="CompraIng_01" />
-          </AssociationSet>
           <AssociationSet Name="FK_Proveed_01_Proveed" Association="DiAviModel.FK_Proveed_01_Proveed">
             <End Role="Proveed" EntitySet="Proveed" />
             <End Role="Proveed_01" EntitySet="Proveed_01" />
@@ -1458,10 +1449,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Seleccion_01_Producto" Association="DiAviModel.FK_Seleccion_01_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Seleccion_01" EntitySet="Seleccion_01" />
-          </AssociationSet>
           <AssociationSet Name="FK_Almacen_Plantilla" Association="DiAviModel.FK_Almacen_Plantilla">
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Plantilla" EntitySet="Plantilla" />
@@ -1472,10 +1459,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </AssociationSet>
           <AssociationSet Name="FK_Plantilla01_Plantilla" Association="DiAviModel.FK_Plantilla01_Plantilla">
             <End Role="Plantilla" EntitySet="Plantilla" />
-            <End Role="Plantilla_01" EntitySet="Plantilla_01" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Producto_Plantilla01" Association="DiAviModel.FK_Producto_Plantilla01">
-            <End Role="Producto" EntitySet="Producto" />
             <End Role="Plantilla_01" EntitySet="Plantilla_01" />
           </AssociationSet>
           <AssociationSet Name="FK_Sucursal" Association="DiAviModel.FK_Sucursal">
@@ -1510,10 +1493,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Traspaso" EntitySet="Traspaso" />
             <End Role="Traspaso_01" EntitySet="Traspaso_01" />
           </AssociationSet>
-          <AssociationSet Name="FK_Traspaso_01_Producto" Association="DiAviModel.FK_Traspaso_01_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Traspaso_01" EntitySet="Traspaso_01" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cliente_PrecioCat" Association="DiAviModel.FK_Cliente_PrecioCat">
             <End Role="PrecioCat" EntitySet="PrecioCat" />
             <End Role="Cliente" EntitySet="Cliente" />
@@ -1526,19 +1505,36 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="PrecioCat" EntitySet="PrecioCat" />
             <End Role="Precio" EntitySet="Precio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Precio_Product" Association="DiAviModel.FK__Precio_Product">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Precio" EntitySet="Precio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Venta_01_Producto" Association="DiAviModel.FK_Venta_01_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Venta_01" EntitySet="Venta_01" />
-          </AssociationSet>
           <AssociationSet Name="FK_Venta_Venta_01" Association="DiAviModel.FK_Venta_Venta_01">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
           <EntitySet Name="TI001" EntityType="DiAviModel.TI001" />
+          <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
+          <AssociationSet Name="FK_Compra_01_Producto" Association="DiAviModel.FK_Compra_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Compra_01" EntitySet="Compra_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompraIng__IdPro__46B27FE2" Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="CompraIng_01" EntitySet="CompraIng_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seleccion_01_Producto" Association="DiAviModel.FK_Seleccion_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Seleccion_01" EntitySet="Seleccion_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Plantilla01" Association="DiAviModel.FK_Producto_Plantilla01">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Plantilla_01" EntitySet="Plantilla_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_01_Producto" Association="DiAviModel.FK_Traspaso_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Traspaso_01" EntitySet="Traspaso_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_01_Producto" Association="DiAviModel.FK_Venta_01_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Venta_01" EntitySet="Venta_01" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -1994,7 +1990,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sucursal" Relationship="DiAviModel.FK__Precio_Sucursal" FromRole="Precio" ToRole="Sucursal" />
           <NavigationProperty Name="PrecioCat" Relationship="DiAviModel.FK__Precio_Cat" FromRole="Precio" ToRole="PrecioCat" />
-          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK__Precio_Product" FromRole="Precio" ToRole="Producto" />
         </EntityType>
         <EntityType Name="PrecioCat">
           <Key>
@@ -2010,40 +2005,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cliente" Relationship="DiAviModel.FK_Cliente_PrecioCat" FromRole="PrecioCat" ToRole="Cliente" />
           <NavigationProperty Name="Precio" Relationship="DiAviModel.FK__Precio_Cat" FromRole="PrecioCat" ToRole="Precio" />
-        </EntityType>
-        <EntityType Name="Producto">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdProd" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Granja" Type="Int32" />
-          <Property Name="Tipo" Type="Int32" Nullable="false" />
-          <Property Name="CodBar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UniVen" Type="Int32" Nullable="false" />
-          <Property Name="UniPeso" Type="Int32" Nullable="false" />
-          <Property Name="Peso" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Grupo1" Type="Int32" Nullable="false" />
-          <Property Name="Grupo2" Type="Int32" Nullable="false" />
-          <Property Name="Grupo3" Type="Int32" Nullable="false" />
-          <Property Name="Grupo4" Type="Int32" Nullable="false" />
-          <Property Name="Grupo5" Type="Int32" Nullable="false" />
-          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="DescripProduc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Hora" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Compra_01" Relationship="DiAviModel.FK_Compra_01_Producto" FromRole="Producto" ToRole="Compra_01" />
-          <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdPro__46B27FE2" FromRole="Producto" ToRole="CompraIng_01" />
-          <NavigationProperty Name="Seleccion_01" Relationship="DiAviModel.FK_Seleccion_01_Producto" FromRole="Producto" ToRole="Seleccion_01" />
-          <NavigationProperty Name="Plantilla_01" Relationship="DiAviModel.FK_Producto_Plantilla01" FromRole="Producto" ToRole="Plantilla_01" />
-          <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Producto" FromRole="Producto" ToRole="Traspaso_01" />
-          <NavigationProperty Name="Precio" Relationship="DiAviModel.FK__Precio_Product" FromRole="Producto" ToRole="Precio" />
-          <NavigationProperty Name="Venta_01" Relationship="DiAviModel.FK_Venta_01_Producto" FromRole="Producto" ToRole="Venta_01" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -2078,8 +2039,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdVenta" Type="Int32" />
-          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_Venta_01_Producto" FromRole="Venta_01" ToRole="Producto" />
           <NavigationProperty Name="Venta" Relationship="DiAviModel.FK_Venta_Venta_01" FromRole="Venta_01" ToRole="Venta" />
+          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_Venta_01_Producto" FromRole="Venta_01" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Estaticos">
           <Key>
@@ -2238,18 +2199,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Compra_01_Producto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Compra_01" Role="Compra_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Compra_01">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CompraIng__Almacen">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
           <End Type="DiAviModel.CompraIng" Role="CompraIng" Multiplicity="*" />
@@ -2298,18 +2247,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CompraIng__IdPro__46B27FE2">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.CompraIng_01" Role="CompraIng_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CompraIng_01">
-              <PropertyRef Name="IdProduc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Proveed_01_Proveed">
           <End Type="DiAviModel.Proveed" Role="Proveed" Multiplicity="1" />
           <End Type="DiAviModel.Proveed_01" Role="Proveed_01" Multiplicity="*" />
@@ -2346,18 +2283,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Seleccion_01_Producto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Seleccion_01">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Almacen_Plantilla">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
           <End Type="DiAviModel.Plantilla" Role="Plantilla" Multiplicity="*" />
@@ -2391,18 +2316,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Principal>
             <Dependent Role="Plantilla_01">
               <PropertyRef Name="IdPlantilla" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Producto_Plantilla01">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Plantilla_01" Role="Plantilla_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Plantilla_01">
-              <PropertyRef Name="IdProducto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2502,18 +2415,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Traspaso_01_Producto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="0..1" />
-          <End Type="DiAviModel.Traspaso_01" Role="Traspaso_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Traspaso_01">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Cliente_PrecioCat">
           <End Type="DiAviModel.PrecioCat" Role="PrecioCat" Multiplicity="1" />
           <End Type="DiAviModel.Cliente" Role="Cliente" Multiplicity="*" />
@@ -2550,30 +2451,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Precio_Product">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Precio" Role="Precio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Precio">
-              <PropertyRef Name="IdProduc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Venta_01_Producto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.Venta_01" Role="Venta_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Venta_01">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Venta_Venta_01">
           <End Type="DiAviModel.Venta" Role="Venta" Multiplicity="0..1" />
           <End Type="DiAviModel.Venta_01" Role="Venta_01" Multiplicity="*" />
@@ -2598,6 +2475,111 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="icfven" Type="DateTime" Precision="0" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProd" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Granja" Type="Int32" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="CodBar" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UniVen" Type="Int32" Nullable="false" />
+          <Property Name="UniPeso" Type="Int32" Nullable="false" />
+          <Property Name="Peso" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Grupo1" Type="Int32" Nullable="false" />
+          <Property Name="Grupo2" Type="Int32" Nullable="false" />
+          <Property Name="Grupo3" Type="Int32" Nullable="false" />
+          <Property Name="Grupo4" Type="Int32" Nullable="false" />
+          <Property Name="Grupo5" Type="Int32" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="DescripProduc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Compra_01" Relationship="DiAviModel.FK_Compra_01_Producto" FromRole="Producto" ToRole="Compra_01" />
+          <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdPro__46B27FE2" FromRole="Producto" ToRole="CompraIng_01" />
+          <NavigationProperty Name="Seleccion_01" Relationship="DiAviModel.FK_Seleccion_01_Producto" FromRole="Producto" ToRole="Seleccion_01" />
+          <NavigationProperty Name="Plantilla_01" Relationship="DiAviModel.FK_Producto_Plantilla01" FromRole="Producto" ToRole="Plantilla_01" />
+          <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Producto" FromRole="Producto" ToRole="Traspaso_01" />
+          <NavigationProperty Name="Venta_01" Relationship="DiAviModel.FK_Venta_01_Producto" FromRole="Producto" ToRole="Venta_01" />
+        </EntityType>
+        <Association Name="FK_Compra_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Compra_01" Role="Compra_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra_01">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompraIng__IdPro__46B27FE2">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.CompraIng_01" Role="CompraIng_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompraIng_01">
+              <PropertyRef Name="IdProduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seleccion_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Seleccion_01" Role="Seleccion_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seleccion_01">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Plantilla01">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Plantilla_01" Role="Plantilla_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plantilla_01">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="0..1" />
+          <End Type="DiAviModel.Traspaso_01" Role="Traspaso_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_01">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_01_Producto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.Venta_01" Role="Venta_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venta_01">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3064,34 +3046,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Producto">
-            <EntityTypeMapping TypeName="DiAviModel.Producto">
-              <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="DescripProduc" ColumnName="DescripProduc" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Grupo5" ColumnName="Grupo5" />
-                <ScalarProperty Name="Grupo4" ColumnName="Grupo4" />
-                <ScalarProperty Name="Grupo3" ColumnName="Grupo3" />
-                <ScalarProperty Name="Grupo2" ColumnName="Grupo2" />
-                <ScalarProperty Name="Grupo1" ColumnName="Grupo1" />
-                <ScalarProperty Name="Peso" ColumnName="Peso" />
-                <ScalarProperty Name="UniPeso" ColumnName="UniPeso" />
-                <ScalarProperty Name="UniVen" ColumnName="UniVen" />
-                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
-                <ScalarProperty Name="CodBar" ColumnName="CodBar" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Granja" ColumnName="Granja" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdProd" ColumnName="IdProd" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Venta">
             <EntityTypeMapping TypeName="DiAviModel.Venta">
               <MappingFragment StoreEntitySet="Venta">
@@ -3229,6 +3183,34 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="iccven" ColumnName="iccven" />
                 <ScalarProperty Name="iccprod" ColumnName="iccprod" />
                 <ScalarProperty Name="icalm" ColumnName="icalm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="DiAviModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="DescripProduc" ColumnName="DescripProduc" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Grupo5" ColumnName="Grupo5" />
+                <ScalarProperty Name="Grupo4" ColumnName="Grupo4" />
+                <ScalarProperty Name="Grupo3" ColumnName="Grupo3" />
+                <ScalarProperty Name="Grupo2" ColumnName="Grupo2" />
+                <ScalarProperty Name="Grupo1" ColumnName="Grupo1" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="UniPeso" ColumnName="UniPeso" />
+                <ScalarProperty Name="UniVen" ColumnName="UniVen" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="CodBar" ColumnName="CodBar" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Granja" ColumnName="Granja" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProd" ColumnName="IdProd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -77,7 +77,6 @@
             this.Tb_TotalFisico = new DevComponents.Editors.DoubleInput();
             this.Tb_TotalEnviado = new DevComponents.Editors.DoubleInput();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -91,6 +90,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
@@ -110,16 +111,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.panel2);
-            this.PanelContenidoRegistro.Controls.Add(this.panel1);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1133, 635);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel1, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel2, 0);
             // 
             // superTabControl1
             // 
@@ -192,6 +183,7 @@
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1133, 597);
             // 
             // btnMin
@@ -253,6 +245,22 @@
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1133, 72);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.panel2);
+            this.PanelContenidoRegistro.Controls.Add(this.panel1);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1133, 635);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel1, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel2, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 667);
+            this.PanelInferior.Size = new System.Drawing.Size(1133, 28);
             // 
             // panel1
             // 
@@ -362,7 +370,7 @@
             this.Cb_Placa.SelectedIndex = -1;
             this.Cb_Placa.SelectedItem = null;
             this.Cb_Placa.Size = new System.Drawing.Size(194, 22);
-            this.Cb_Placa.TabIndex = 373;
+            this.Cb_Placa.TabIndex = 5;
             this.Cb_Placa.Tag = "1";
             this.Cb_Placa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_Placa.ValueChanged += new System.EventHandler(this.Cb_Placa_ValueChanged);
@@ -383,7 +391,7 @@
             this.Cb_Almacen.SelectedIndex = -1;
             this.Cb_Almacen.SelectedItem = null;
             this.Cb_Almacen.Size = new System.Drawing.Size(195, 22);
-            this.Cb_Almacen.TabIndex = 371;
+            this.Cb_Almacen.TabIndex = 13;
             this.Cb_Almacen.Tag = "1";
             this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
@@ -418,7 +426,7 @@
             this.Sw_Tipo.OnText = "SELECCION";
             this.Sw_Tipo.Size = new System.Drawing.Size(196, 22);
             this.Sw_Tipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Sw_Tipo.TabIndex = 370;
+            this.Sw_Tipo.TabIndex = 12;
             this.Sw_Tipo.Value = true;
             this.Sw_Tipo.ValueObject = "Y";
             // 
@@ -452,7 +460,7 @@
             this.Tb_Recibido.Name = "Tb_Recibido";
             this.Tb_Recibido.PreventEnterBeep = true;
             this.Tb_Recibido.Size = new System.Drawing.Size(196, 23);
-            this.Tb_Recibido.TabIndex = 342;
+            this.Tb_Recibido.TabIndex = 11;
             // 
             // labelX11
             // 
@@ -1098,7 +1106,7 @@
             this.Tb_TotalEnviado.MinValue = 0D;
             this.Tb_TotalEnviado.Name = "Tb_TotalEnviado";
             this.Tb_TotalEnviado.Size = new System.Drawing.Size(84, 22);
-            this.Tb_TotalEnviado.TabIndex = 221;
+            this.Tb_TotalEnviado.TabIndex = 14;
             this.Tb_TotalEnviado.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.Tb_TotalEnviado.ValueChanged += new System.EventHandler(this.Tb_TotalEnviado_ValueChanged);
             // 
@@ -1126,7 +1134,6 @@
             this.ClientSize = new System.Drawing.Size(1133, 695);
             this.Name = "F1_CompraIngreso";
             this.Text = "F1_CompraIngreso";
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -1141,6 +1148,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();

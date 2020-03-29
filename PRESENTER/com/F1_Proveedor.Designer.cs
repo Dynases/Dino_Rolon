@@ -105,8 +105,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
-            this.PanelInferior.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_LineaGen)).BeginInit();
@@ -269,11 +269,6 @@
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1063, 72);
             // 
-            // PanelInferior
-            // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 679);
-            this.PanelInferior.Size = new System.Drawing.Size(1063, 28);
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.GPanel_Detalle);
@@ -286,6 +281,11 @@
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_DatosGenerales, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_InfoAdicional, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Detalle, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 679);
+            this.PanelInferior.Size = new System.Drawing.Size(1063, 28);
             // 
             // GPanel_DatosGenerales
             // 
@@ -370,7 +370,7 @@
             this.Tb_Telefono2.Name = "Tb_Telefono2";
             this.Tb_Telefono2.PreventEnterBeep = true;
             this.Tb_Telefono2.Size = new System.Drawing.Size(109, 23);
-            this.Tb_Telefono2.TabIndex = 379;
+            this.Tb_Telefono2.TabIndex = 11;
             // 
             // Tb_Email2
             // 
@@ -386,7 +386,7 @@
             this.Tb_Email2.Name = "Tb_Email2";
             this.Tb_Email2.PreventEnterBeep = true;
             this.Tb_Email2.Size = new System.Drawing.Size(193, 23);
-            this.Tb_Email2.TabIndex = 380;
+            this.Tb_Email2.TabIndex = 12;
             // 
             // Tb_Contacto2
             // 
@@ -402,7 +402,7 @@
             this.Tb_Contacto2.Name = "Tb_Contacto2";
             this.Tb_Contacto2.PreventEnterBeep = true;
             this.Tb_Contacto2.Size = new System.Drawing.Size(153, 23);
-            this.Tb_Contacto2.TabIndex = 378;
+            this.Tb_Contacto2.TabIndex = 10;
             // 
             // labelX13
             // 
@@ -541,7 +541,7 @@
             this.Cb_LineaGen.SelectedIndex = -1;
             this.Cb_LineaGen.SelectedItem = null;
             this.Cb_LineaGen.Size = new System.Drawing.Size(122, 22);
-            this.Cb_LineaGen.TabIndex = 221;
+            this.Cb_LineaGen.TabIndex = 15;
             this.Cb_LineaGen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_LineaGen.ValueChanged += new System.EventHandler(this.Cb_LineaGen_ValueChanged);
             // 
@@ -559,7 +559,7 @@
             this.Tb_Aves.MinValue = 0D;
             this.Tb_Aves.Name = "Tb_Aves";
             this.Tb_Aves.Size = new System.Drawing.Size(122, 22);
-            this.Tb_Aves.TabIndex = 11;
+            this.Tb_Aves.TabIndex = 14;
             this.Tb_Aves.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_Fecha
@@ -606,7 +606,7 @@
             this.Tb_Fecha.Name = "Tb_Fecha";
             this.Tb_Fecha.Size = new System.Drawing.Size(120, 22);
             this.Tb_Fecha.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Tb_Fecha.TabIndex = 9;
+            this.Tb_Fecha.TabIndex = 13;
             // 
             // LabelX5
             // 
@@ -651,7 +651,7 @@
             this.Cb_TipoAlojamiento.SelectedIndex = -1;
             this.Cb_TipoAlojamiento.SelectedItem = null;
             this.Cb_TipoAlojamiento.Size = new System.Drawing.Size(122, 22);
-            this.Cb_TipoAlojamiento.TabIndex = 12;
+            this.Cb_TipoAlojamiento.TabIndex = 16;
             this.Cb_TipoAlojamiento.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_TipoAlojamiento.ValueChanged += new System.EventHandler(this.Cb_TipoAlojamiento_ValueChanged);
             // 
@@ -704,7 +704,7 @@
             this.sw_Tipo.OnText = "GRANJA";
             this.sw_Tipo.Size = new System.Drawing.Size(160, 22);
             this.sw_Tipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sw_Tipo.TabIndex = 375;
+            this.sw_Tipo.TabIndex = 4;
             this.sw_Tipo.Value = true;
             this.sw_Tipo.ValueObject = "Y";
             // 
@@ -764,7 +764,7 @@
             this.Cb_Ciudad.SelectedIndex = -1;
             this.Cb_Ciudad.SelectedItem = null;
             this.Cb_Ciudad.Size = new System.Drawing.Size(162, 22);
-            this.Cb_Ciudad.TabIndex = 5;
+            this.Cb_Ciudad.TabIndex = 6;
             this.Cb_Ciudad.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_Ciudad.ValueChanged += new System.EventHandler(this.Cb_Ciudad_ValueChanged);
             // 
@@ -783,7 +783,7 @@
             this.Cb_TipoProveedor.SelectedIndex = -1;
             this.Cb_TipoProveedor.SelectedItem = null;
             this.Cb_TipoProveedor.Size = new System.Drawing.Size(160, 22);
-            this.Cb_TipoProveedor.TabIndex = 4;
+            this.Cb_TipoProveedor.TabIndex = 5;
             this.Cb_TipoProveedor.Tag = "1";
             this.Cb_TipoProveedor.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_TipoProveedor.ValueChanged += new System.EventHandler(this.Cb_TipoProveedor_ValueChanged);
@@ -851,7 +851,7 @@
             this.Tb_Telefono.Name = "Tb_Telefono";
             this.Tb_Telefono.PreventEnterBeep = true;
             this.Tb_Telefono.Size = new System.Drawing.Size(109, 23);
-            this.Tb_Telefono.TabIndex = 7;
+            this.Tb_Telefono.TabIndex = 8;
             // 
             // Tb_Email1
             // 
@@ -867,7 +867,7 @@
             this.Tb_Email1.Name = "Tb_Email1";
             this.Tb_Email1.PreventEnterBeep = true;
             this.Tb_Email1.Size = new System.Drawing.Size(193, 23);
-            this.Tb_Email1.TabIndex = 8;
+            this.Tb_Email1.TabIndex = 9;
             // 
             // Tb_Contacto
             // 
@@ -883,7 +883,7 @@
             this.Tb_Contacto.Name = "Tb_Contacto";
             this.Tb_Contacto.PreventEnterBeep = true;
             this.Tb_Contacto.Size = new System.Drawing.Size(153, 23);
-            this.Tb_Contacto.TabIndex = 6;
+            this.Tb_Contacto.TabIndex = 7;
             // 
             // Tb_Descripcion
             // 
@@ -1374,9 +1374,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
-            this.PanelContenidoRegistro.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
             this.GroupBox1.ResumeLayout(false);

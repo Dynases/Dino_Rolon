@@ -148,7 +148,9 @@ namespace REPOSITORY.Clase
                                             .Where(c => c.Id.Equals(idCompra))
                                             .FirstOrDefault();
                     foreach (var i in compraing_01)
-                    {                        
+                    {
+                        if (i.TotalCant > 0)
+                        {
                             if (this.tI001.ExisteProducto(i.IdProduc.ToString(),
                                                       compraIng.IdAlmacen,
                                                       lote,
@@ -174,7 +176,8 @@ namespace REPOSITORY.Clase
                                 this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
                                 //ELIMINA EL MOVIMIENTO
                                 this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
-                            }                                              
+                            }
+                        }                                                                
                     }
                     #endregion
                     compraIng.Estado = (int)ENEstado.GUARDADO;

@@ -110,7 +110,8 @@ namespace REPOSITORY.Clase
                     //Actualizar saldo, Eliminar Movimientos
                     foreach (var i in compraing_01)
                     {
-                        
+                        if (i.TotalCant > 0)
+                        {
                             if (this.tI001.ExisteProducto(i.IdProduc.ToString(), compraIng.IdAlmacen, lote, fechaVen))
                             {
                                 if (!this.tI001.ActualizarInventario(i.IdProduc.ToString(),
@@ -134,7 +135,7 @@ namespace REPOSITORY.Clase
                                 //ELIMINA EL MOVIMIENTO
                                 this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRA_INGRES0);
                             }
-                                              
+                        }                                               
                     }
                     compraIng.Estado = estado;
                     db.CompraIng.Attach(compraIng);

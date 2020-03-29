@@ -19,7 +19,7 @@ namespace REPOSITORY.Base
 
         //PRODUCCION
         //string connectionstring = "metadata=res://*/entitydatamodel.diavi.diavimodel.csdl|res://*/entitydatamodel.diavi.diavimodel.ssdl|res://*/entitydatamodel.diavi.diavimodel.msl;provider=system.data.sqlclient;provider connection string=&quot;data source=dynasys;initial catalog=diavi;persist security info=true;user id=rolon;password=rolon2020*;multipleactiveresultsets=true;app=entityframework&quot;";
-        //private static string cadenaConexion = "data source=dynasys;initial catalog=diavi;persist security info=true;user id=rolon;password=rolon2020*;multipleactiveresultsets=true;app=entityframework&quot;";
+        //private static string cadenaConexion = "data source=dynasys;initial catalog=diavi;persist security info=true;user id=Rolon;password=Rolon2020*;multipleactiveresultsets=true;app=entityframework&quot;";
 
         #endregion
         public BD() { }

@@ -385,6 +385,7 @@ namespace PRESENTER.com
             Tb_NUmGranja.ReadOnly = true;
             Cb_Placa.ReadOnly = true;
             Tb_Edad.ReadOnly = true;
+            Cb_Tipo.ReadOnly = true;
             tb_Proveedor.ReadOnly = true;
             _Limpiar = false;          
             Dgv_Detalle.Enabled = false;

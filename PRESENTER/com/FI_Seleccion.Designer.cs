@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
+            Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelDerecho = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -55,6 +55,7 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.PanelIzquierda = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -76,8 +77,6 @@
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
-            this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.PanelContenidoRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
@@ -91,6 +90,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecho.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -109,21 +110,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Recep_TCantidad)).BeginInit();
             this.PanelIzquierda.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1144, 597);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
             // 
             // superTabControl1
             // 
@@ -197,6 +190,7 @@
             // 
             // PanelContenidoBuscar
             // 
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1144, 597);
             // 
             // btnMin
@@ -260,6 +254,20 @@
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
             this.PanelMenu.Size = new System.Drawing.Size(1144, 72);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1144, 597);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 629);
+            this.PanelInferior.Size = new System.Drawing.Size(1144, 28);
             // 
             // PanelFondo
             // 
@@ -344,7 +352,7 @@
             this.Dgv_Seleccion.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Seleccion.Name = "Dgv_Seleccion";
             this.Dgv_Seleccion.Size = new System.Drawing.Size(421, 351);
-            this.Dgv_Seleccion.TabIndex = 258;
+            this.Dgv_Seleccion.TabIndex = 4;
             this.Dgv_Seleccion.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Seleccion_CellEdited);
             this.Dgv_Seleccion.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Seleccion_EditingCell);
             // 
@@ -723,6 +731,25 @@
             this.GPanel_DatosGenerales.TabIndex = 85;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
             // 
+            // Cb_Placa
+            // 
+            this.Cb_Placa.BackColor = System.Drawing.Color.White;
+            Cb_Placa_DesignTimeLayout.LayoutString = resources.GetString("Cb_Placa_DesignTimeLayout.LayoutString");
+            this.Cb_Placa.DesignTimeLayout = Cb_Placa_DesignTimeLayout;
+            this.Cb_Placa.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Placa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Placa.Location = new System.Drawing.Point(109, 185);
+            this.Cb_Placa.Name = "Cb_Placa";
+            this.Cb_Placa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Placa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Placa.SelectedIndex = -1;
+            this.Cb_Placa.SelectedItem = null;
+            this.Cb_Placa.Size = new System.Drawing.Size(194, 22);
+            this.Cb_Placa.TabIndex = 374;
+            this.Cb_Placa.Tag = "1";
+            this.Cb_Placa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
             // tb_FechaSeleccion
             // 
             // 
@@ -767,7 +794,7 @@
             this.tb_FechaSeleccion.Name = "tb_FechaSeleccion";
             this.tb_FechaSeleccion.Size = new System.Drawing.Size(153, 22);
             this.tb_FechaSeleccion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.tb_FechaSeleccion.TabIndex = 342;
+            this.tb_FechaSeleccion.TabIndex = 2;
             // 
             // labelX14
             // 
@@ -1090,7 +1117,7 @@
             this.Tb_IdCompraIngreso.Name = "Tb_IdCompraIngreso";
             this.Tb_IdCompraIngreso.PreventEnterBeep = true;
             this.Tb_IdCompraIngreso.Size = new System.Drawing.Size(66, 23);
-            this.Tb_IdCompraIngreso.TabIndex = 247;
+            this.Tb_IdCompraIngreso.TabIndex = 1;
             this.Tb_IdCompraIngreso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_IdCompraIngreso_KeyDown);
             // 
             // LabelX3
@@ -1158,25 +1185,6 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
-            // Cb_Placa
-            // 
-            this.Cb_Placa.BackColor = System.Drawing.Color.White;
-            Cb_Placa_DesignTimeLayout.LayoutString = resources.GetString("Cb_Placa_DesignTimeLayout.LayoutString");
-            this.Cb_Placa.DesignTimeLayout = Cb_Placa_DesignTimeLayout;
-            this.Cb_Placa.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_Placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_Placa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Placa.Location = new System.Drawing.Point(109, 185);
-            this.Cb_Placa.Name = "Cb_Placa";
-            this.Cb_Placa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_Placa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_Placa.SelectedIndex = -1;
-            this.Cb_Placa.SelectedItem = null;
-            this.Cb_Placa.Size = new System.Drawing.Size(194, 22);
-            this.Cb_Placa.TabIndex = 374;
-            this.Cb_Placa.Tag = "1";
-            this.Cb_Placa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            // 
             // FI_Seleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1185,7 +1193,6 @@
             this.Name = "FI_Seleccion";
             this.Text = "FI_Transformacio";
             this.Load += new System.EventHandler(this.FI_Seleccion_Load);
-            this.PanelContenidoRegistro.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
@@ -1200,6 +1207,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecho.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1220,12 +1230,12 @@
             this.PanelIzquierda.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             this.ResumeLayout(false);
 
         }

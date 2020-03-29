@@ -22,7 +22,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string Unidad { get; set; }
         public Nullable<int> IdVenta { get; set; }
     
-        public virtual Producto Producto { get; set; }
         public virtual Venta Venta { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

@@ -806,7 +806,7 @@ namespace PRESENTER.com
                 if (Dgv_GBuscador.RowCount > 0)
                 {
                     //_MPos = 0;
-                    MP_MostrarRegistro(tipo == 1 ? 0 : _MPos);
+                    MP_MostrarRegistro(tipo == 1 ? 0 : Dgv_GBuscador.Row);
                 }
                 else
                 {
