@@ -11,6 +11,7 @@ using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum.EnEstaticos;
 using System.Data.Entity;
 using System.Data;
+using ENTITY.inv.Traspaso.View;
 
 namespace REPOSITORY.Clase
 {
@@ -157,7 +158,58 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        //public List<VProductoLista> Listar2(int idAlmacen)
+        //{
+        //    try
+        //    {
+        //        using (var db = GetEsquema())
+        //        {
+        //            var grupo = Convert.ToInt32(ENEstaticosGrupo.PRODUCTO);
+        //            var Orden1 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO1);
+        //            var Orden2 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2);
+        //            var Orden3 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO3);
+        //            var listResult = (from a in db.Producto
+        //                              join grupo1 in db.Libreria on
+        //                              new { Grupo = grupo, Orden = Orden1, Libreria = a.Grupo1 }
+        //                                 equals new { Grupo = grupo1.IdGrupo, Orden = grupo1.IdOrden, Libreria = grupo1.IdLibrer }
+        //                              join grupo2 in db.Libreria on
+        //                              new { Grupo = grupo, Orden = Orden2, Libreria = a.Grupo2 }
+        //                                 equals new { Grupo = grupo2.IdGrupo, Orden = grupo2.IdOrden, Libreria = grupo2.IdLibrer }
+        //                              join grupo3 in db.Libreria on
+        //                              new { Grupo = grupo, Orden = Orden3, Libreria = a.Grupo3 }
+        //                                 equals new { Grupo = grupo3.IdGrupo, Orden = grupo3.IdOrden, Libreria = grupo3.IdLibrer }
+        //                             join i in db.TI001 on a.IdProd equals i.iccprod
+        //                             where i.icalm.Equals(idAlmacen)
+        //                              //group new { a, grupo1, grupo2, grupo3, i } by new { a.Id, a.IdProd, a.Descrip, grupo1.Descrip } into newGruop
+        //                              select new VProductoLista
+        //                              {
+        //                                  Id = a.Id,
+        //                                  Codigo = a.IdProd,
+        //                                  Descripcion = a.Descrip,
+        //                                  Grupo1 = grupo1.Descrip,
+        //                                  Grupo2 = grupo2.Descrip,
+        //                                  Grupo3 = grupo3.Descrip,
+        //                                  Tipo = a.Tipo,
+        //                                  Usuario = a.Usuario,
+        //                                  Hora = a.Hora,
+        //                                  Fecha = a.Fecha
+        //                              } into x
+        //                              group x by x.Id  into g
+        //                              select g).ToList();
+        //            var lista = new List<VProductoLista>();
+        //            foreach (var item in listResult)
+        //            {
+        //                lista.Add(item);
+        //            }
+        //            return listResult;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         //join grupo4 in db.Libreria on
         //new { Grupo = ENEstaticosGrupo.PRODUCTO, Orden = ENEstaticosOrden.PRODUCTO_GRUPO4, Libreria = a.Grupo4 }
@@ -207,9 +259,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-        
-
+    
         public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
         {

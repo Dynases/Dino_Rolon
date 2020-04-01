@@ -235,7 +235,7 @@ namespace PRESENTER.com
                     Dgv_Seleccion.RootTable.Columns["Estado"].Visible = false;
 
                     Dgv_Seleccion.RootTable.Columns["Producto"].Caption = "PRODUCTO";
-                    Dgv_Seleccion.RootTable.Columns["Producto"].Width = 150;
+                    Dgv_Seleccion.RootTable.Columns["Producto"].Width = 140;
                     Dgv_Seleccion.RootTable.Columns["Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.FontSize = 9;
                     Dgv_Seleccion.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;

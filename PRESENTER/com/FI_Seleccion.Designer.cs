@@ -1116,8 +1116,9 @@
             this.Tb_IdCompraIngreso.Location = new System.Drawing.Point(152, 43);
             this.Tb_IdCompraIngreso.Name = "Tb_IdCompraIngreso";
             this.Tb_IdCompraIngreso.PreventEnterBeep = true;
-            this.Tb_IdCompraIngreso.Size = new System.Drawing.Size(66, 23);
+            this.Tb_IdCompraIngreso.Size = new System.Drawing.Size(155, 23);
             this.Tb_IdCompraIngreso.TabIndex = 1;
+            this.Tb_IdCompraIngreso.WatermarkText = "Ingrese Ctrl + Enter";
             this.Tb_IdCompraIngreso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_IdCompraIngreso_KeyDown);
             // 
             // LabelX3

@@ -56,7 +56,7 @@ namespace REPOSITORY.Clase
                             return false;
                         }
 
-                        if (!this.tI0021.Guardar(idTI2, detalle.ProductId.Value, detalle.Cantidad.Value))
+                        if (!this.tI0021.Guardar(idTI2, detalle.ProductId.Value, detalle.Cantidad.Value, lote, fechaVen))
                         {
                             return false;
                         }
@@ -94,7 +94,7 @@ namespace REPOSITORY.Clase
                         }
 
                         //REGISTRAMOS LA CONFIRMACION COMO UN REGISTRO DONDE SE ESPEFICICA LA RECEPCION DE ESE TRASPASO
-                        if (!this.tI0021.Guardar(idTI2, i.ProductId.Value, i.Cantidad.Value))
+                        if (!this.tI0021.Guardar(idTI2, i.ProductId.Value, i.Cantidad.Value,lote, fechaVen))
                         {
                             return false;
                         }

@@ -773,9 +773,9 @@ namespace PRESENTER.reg
                             _ModificarImagen = true;
                         }
                     }
-                    return _imagen;
+                    //return _imagen;
                 }
-                return "default.jpg";
+                return _imagen; ;
             }
             catch (Exception ex)
             {

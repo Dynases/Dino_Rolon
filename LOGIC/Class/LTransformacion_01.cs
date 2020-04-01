@@ -14,9 +14,15 @@ namespace LOGIC.Class
     {
 
         protected ITransformacion_01 ITransformacion_01;
+        protected ITI001 iTi001;
+        protected ITI002 iTi002;
+        protected ITI0021 iTi0021;      
         public LTransformacion_01()
         {
-            ITransformacion_01 = new RTransformacion_01();
+            iTi001 = new RTI001();
+            iTi002 = new RTI002();
+            iTi0021 = new RTI0021();
+            ITransformacion_01 = new RTransformacion_01(iTi001, iTi002, iTi0021);
         }
         #region TRANSACCIONES
         public bool Nuevo(List<VTransformacion_01> lista, int Id)
@@ -25,7 +31,8 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = ITransformacion_01.Nuevo(lista, Id);
+                    int iddetalle = 0;
+                    var result = ITransformacion_01.Nuevo(lista, Id, ref iddetalle);
                     scope.Complete();
                     return result;
                 }
@@ -35,13 +42,13 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(List<VTransformacion_01> lista, int Id)
+        public bool Modificar(List<VTransformacion_01> lista, int Id, string usuario, ref List<string> lMensaje)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = ITransformacion_01.Modificar(lista, Id);
+                    var result = ITransformacion_01.Modificar(lista, Id, usuario,ref lMensaje);
                     scope.Complete();
                     return result;
                 }

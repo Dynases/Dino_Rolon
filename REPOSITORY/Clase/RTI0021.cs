@@ -4,6 +4,7 @@ using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace REPOSITORY.Clase
@@ -14,7 +15,9 @@ namespace REPOSITORY.Clase
 
         public bool Guardar(int idTI002,
                             int idProducto,
-                            int cantidad)
+                            decimal? cantidad,
+                            string lote,
+                            DateTime? fechaVen)
         {
             try
             {
@@ -24,13 +27,37 @@ namespace REPOSITORY.Clase
                     {
                         iccant = cantidad,
                         iccprod = idProducto,
-                        icfvenc = null,
+                        icfvenc = fechaVen,
                         icibid = idTI002,
-                        iclot = "",
+                        iclot = lote,
                         icid = db.TI0021.Max(t => t.icid) + 1
                     };
 
                     db.TI0021.Add(ti0021);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Modificar(decimal cantidad,
+                            int IdDetalle,
+                            int concepto)
+
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var ti0021 = db.TI0021.FirstOrDefault(b => b.icibid == db.TI002.FirstOrDefault(c => c.ibiddc == IdDetalle &&
+                                                                                                         c.ibconcep == concepto)
+                                                                                                      .ibid);
+                    ti0021.iccant = cantidad;            
+                    db.TI0021.Attach(ti0021);
+                    db.Entry(ti0021).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
                 }

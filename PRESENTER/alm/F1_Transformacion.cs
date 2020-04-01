@@ -17,6 +17,7 @@ using ENTITY.inv.Transformacion.View;
 using UTILITY.Enum.EnEstado;
 using PRESENTER.Report;
 using UTILITY;
+using PRESENTER.frm;
 
 namespace PRESENTER.com
 {
@@ -64,8 +65,7 @@ namespace PRESENTER.com
             try
             {
                 var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista().ToList();
-                if (ListaCompleta.Count() > 0)
-                {
+               
                     Dgv_GBuscador.DataSource = ListaCompleta;
                     Dgv_GBuscador.RetrieveStructure();
                     Dgv_GBuscador.AlternatingColors = true;
@@ -115,7 +115,7 @@ namespace PRESENTER.com
                     //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_GBuscador.GroupByBoxVisible = false;
                     Dgv_GBuscador.VisualStyle = VisualStyle.Office2007;
-                }
+                
             }
             catch (Exception ex)
             {
@@ -192,6 +192,7 @@ namespace PRESENTER.com
 
                 Dgv_Detalle.GroupByBoxVisible = false;
                 Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
+                Dgv_Detalle.RootTable.ApplyFilter(new Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Detalle.RootTable.Columns["Estado"], Janus.Windows.GridEX.ConditionOperator.NotEqual, -1));
             }
             catch (Exception ex)
             {
@@ -510,9 +511,11 @@ namespace PRESENTER.com
         {
             try
             {
+                int idDetalle = ((List<VTransformacion_01>)Dgv_Detalle.DataSource) == null ? 0 : ((List<VTransformacion_01>)Dgv_Detalle.DataSource).Max(c => c.Id);
+                int posicion = ((List<VTransformacion_01>)Dgv_Detalle.DataSource) == null ? 0 : ((List<VTransformacion_01>)Dgv_Detalle.DataSource).Count;
                 VTransformacion_01 nuevo = new VTransformacion_01()
                 {
-                    Id = Dgv_Detalle.RowCount + 1,
+                    Id = idDetalle + 1,
                     IdTransformacion = 0,
                     Estado = 0,
                     IdProducto = 0,
@@ -523,7 +526,7 @@ namespace PRESENTER.com
                     Cantidad = 0,
                     Total = 0,
                 };
-                ListaDetalle.Insert(Dgv_Detalle.RowCount, nuevo);
+                ListaDetalle.Insert(posicion, nuevo);
                 MP_ArmarDetalle();
             }
             catch (Exception ex)
@@ -549,7 +552,10 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         #endregion
 
         #region Eventos
@@ -618,6 +624,42 @@ namespace PRESENTER.com
                         Dgv_Detalle.CurrentRow.Cells["Estado"].Value = (int)ENEstado.MODIFICAR;
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_EliminarFila()
+        {
+            try
+            {
+                if (Dgv_Detalle.RowCount > 1)
+                {
+                    Dgv_Detalle.UpdateData();
+                    int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells["Estado"].Value);
+                    int idDetalle = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells["Id"].Value);
+                    if (estado == (int)ENEstado.NUEVO)
+                    {
+                        //Elimina
+                        ListaDetalle = ((List<VTransformacion_01>)Dgv_Detalle.DataSource).ToList();
+                        var lista = ListaDetalle.Where(t => t.Id == idDetalle).FirstOrDefault();
+                        ListaDetalle.Remove(lista);
+                        MP_ArmarDetalle();
+                    }
+                    else
+                    {
+                        if (estado == (int)ENEstado.GUARDADO || estado == (int)ENEstado.MODIFICAR)
+                        {
+                            Dgv_Detalle.CurrentRow.Cells["Estado"].Value = (int)ENEstado.ELIMINAR;
+                            Dgv_Detalle.UpdateData();
+                            Dgv_Detalle.RootTable.ApplyFilter(new Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Detalle.RootTable.Columns["Estado"], Janus.Windows.GridEX.ConditionOperator.NotEqual, -1));
+                        }
+
+                    }
+                }
+                else
+                    throw new Exception("El detalle no puede estar vacio");
             }
             catch (Exception ex)
             {
@@ -767,7 +809,7 @@ namespace PRESENTER.com
         {
             try
             {
-                if (Cb_Almacen1.ReadOnly == false)
+                if (Tb_Observacion.ReadOnly == false)
                 {
                     if (e.KeyData == Keys.Enter)
                     {
@@ -779,12 +821,24 @@ namespace PRESENTER.com
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter && Dgv_Detalle.Row >= 0
                         && Dgv_Detalle.Col == Dgv_Detalle.RootTable.Columns["Producto"].Index)
                     {
-                        MP_HabilitarProducto();
-                        MP_InsertarProducto();
+                        int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells["Estado"].Value);
+                        if (estado == (int)ENEstado.NUEVO)
+                        {
+                            MP_HabilitarProducto();
+                            MP_InsertarProducto();
+                        }
+                        else
+                        {
+                           string mensaje = "-No se puede cambiar de producto " + "\n" +
+                                            "-Modifique la cantidad";
+                            throw new Exception(mensaje);
+                        }
+                      
                     }
                     if (e.KeyCode == Keys.Escape)
                     {
-                        //Eliminar FIla
+                        //Eliminar FIla.
+                        MP_EliminarFila();
                     }
                 }
             }
@@ -799,7 +853,7 @@ namespace PRESENTER.com
         {
             try
             {
-                if (Cb_Almacen1.ReadOnly == false)
+                if (Tb_Observacion.ReadOnly == false)
                 {
                     if (e.KeyData == Keys.Enter)
                     {
@@ -854,7 +908,7 @@ namespace PRESENTER.com
             bool resultado = false;
             try
             {
-                string mensaje = "";
+                string mensajeConfirmacion = "";
 
                 VTransformacion CompraIngreso = new VTransformacion()
                 {
@@ -868,8 +922,9 @@ namespace PRESENTER.com
                 int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
                 int idAux = id;
                 var detalle = ((List<VTransformacion_01>)Dgv_Detalle.DataSource).ToArray<VTransformacion_01>();
-
-                resultado = new ServiceDesktop.ServiceDesktopClient().TransformacionGuardar(CompraIngreso, detalle, ref id);
+                List<string> Mensaje = new List<string>();
+                var LMensaje = Mensaje.ToArray();
+                resultado = new ServiceDesktop.ServiceDesktopClient().TransformacionGuardar(CompraIngreso, detalle, ref id,ref LMensaje);
                 if (resultado)
                 {
                     if (idAux == 0)//Registar
@@ -879,7 +934,7 @@ namespace PRESENTER.com
                         MP_CargarEncabezado();
                         MP_Limpiar();
                         _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                        mensajeConfirmacion = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
 
                     }
                     else//Modificar
@@ -888,19 +943,36 @@ namespace PRESENTER.com
                         MP_Filtrar(1);
                         MP_InHabilitar();//El formulario
                         _Limpiar = true;
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                        mensajeConfirmacion = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
                         MH_Habilitar();//El menu                   
                     }
                 }
+        
                 //Resultado
                 if (resultado)
                 {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    ToastNotification.Show(this, mensajeConfirmacion, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                 }
                 else
                 {
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    //Obtiene los codigos de productos sin stock
+                    var mensajeLista = LMensaje.ToList();
+                    if (mensajeLista.Count > 0)
+                    {
+                        var mensaje = "";
+                        foreach (var item in mensajeLista)
+                        {
+                            mensaje = mensaje + "- " + item + "\n";
+                        }
+                        MP_MostrarMensajeError(mensaje);
+                        return false;
+                    }
+                    else
+                    {
+                        MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text));
+                        mensajeConfirmacion = GLMensaje.Registro_Error(_NombreFormulario);
+                        ToastNotification.Show(this, mensajeConfirmacion, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }                   
                 }
                 return resultado;
             }
@@ -912,6 +984,55 @@ namespace PRESENTER.com
            
           
         }
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                int IdSeleccion = Convert.ToInt32(Tb_Id.Text);               
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    resul = new ServiceDesktop.ServiceDesktopClient().Transformacion_ModificarEstado(IdSeleccion, (int)ENEstado.ELIMINAR, ref LMensaje);
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Id.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Id.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         public override void MH_Nuevo()
         {
             MP_Habilitar();
@@ -921,6 +1042,8 @@ namespace PRESENTER.com
         public override void MH_Modificar()
         {
             MP_Habilitar();
+            Cb_Almacen1.ReadOnly = true;
+            Cb_Almacen2.ReadOnly = true;
 
         }
         public override void MH_Salir()
@@ -952,9 +1075,16 @@ namespace PRESENTER.com
                     Cb_Almacen2.BackColor = Color.White;
                 if (Dgv_Detalle.RowCount == 0)
                 {
-                    throw new Exception("El detalle no tiene registros");
+                    _Error = true;
+                    throw new Exception("Detalle vacio");                    
+                }
+                if (Tb_Total1.Value == 0 || Tb_Total2.Value == 0)
+                {
+                    _Error = true;
+                    throw new Exception("Detalle algun producto en 0");
                 }
                 return _Error;
+               
             }
             catch (Exception ex)
             {

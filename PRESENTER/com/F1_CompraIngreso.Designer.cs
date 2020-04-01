@@ -609,6 +609,7 @@
             this.tb_Proveedor.PreventEnterBeep = true;
             this.tb_Proveedor.Size = new System.Drawing.Size(196, 23);
             this.tb_Proveedor.TabIndex = 6;
+            this.tb_Proveedor.WatermarkText = "Ingrese Ctrl + Enter";
             this.tb_Proveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_Proveedor_KeyDown);
             // 
             // labelX6

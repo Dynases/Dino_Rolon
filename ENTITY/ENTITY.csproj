@@ -80,6 +80,7 @@
     <Compile Include="Plantilla\VPlantilla01.cs" />
     <Compile Include="Producto\View\VProducto.cs" />
     <Compile Include="Producto\View\VProductoLista.cs" />
+    <Compile Include="Producto\View\VProductoListaStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor\View\VProveedor.cs" />
     <Compile Include="Proveedor\View\VProveedorLista.cs" />

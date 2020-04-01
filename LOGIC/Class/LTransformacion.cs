@@ -15,12 +15,18 @@ namespace LOGIC.Class
    public class LTransformacion
     {
         protected ITransformacion iTransformacion;
+        protected ITI001 iTi001;
+        protected ITI002 iTi002;
+        protected ITI0021 iTi0021;
         public LTransformacion()
         {
-            iTransformacion = new RTransformacion();
+            iTi001 = new RTI001();
+            iTi002 = new RTI002();
+            iTi0021 = new RTI0021();
+            iTransformacion = new RTransformacion(iTi001, iTi002, iTi0021);
         }
         #region TRANSACCIONES
-        public bool Guardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id)
+        public bool Guardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id, ref List<string> lMensaje)
         {
             try
             {
@@ -36,7 +42,7 @@ namespace LOGIC.Class
                     }
                     else//Modificar          
                     { 
-                        var resultDetalle = new LTransformacion_01().Modificar(detalle, Id);
+                        var resultDetalle = new LTransformacion_01().Modificar(detalle, Id, vSeleccion.Usuario, ref lMensaje);
                     }
                     scope.Complete();
                     return result;

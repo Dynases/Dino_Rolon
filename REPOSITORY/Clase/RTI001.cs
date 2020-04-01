@@ -30,11 +30,42 @@ namespace REPOSITORY.Clase
                                                     && i.icfven == fechaVen)
                                              .FirstOrDefault();
 
+                    var stock = inventario.iccven;
                     if (accionEnInventario.Equals(EnAccionEnInventario.Incrementar))
-                    { inventario.iccven += cantidad; }
+                    { inventario.iccven = stock +  cantidad; }
                     else if (accionEnInventario.Equals(EnAccionEnInventario.Descontar))
-                    { inventario.iccven -= cantidad; }
+                    { inventario.iccven = stock -cantidad; }
 
+                    db.TI001.Attach(inventario);
+                    db.Entry(inventario).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ActualizarInventarioModificados(string idProducto,
+                                        int idAlmacen,                                      
+                                        decimal cantidadAnterior,
+                                        decimal cantidadNueva,
+                                        string lote,
+                                        DateTime? fechaVen)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var inventario = db.TI001.Where(i => i.icalm == idAlmacen
+                                                    && i.iccprod.Equals(idProducto)
+                                                    && i.iclot.Equals(lote)
+                                                    && i.icfven == fechaVen)
+                                             .FirstOrDefault();
+                    var stock = inventario.iccven;
+                    inventario.iccven = stock- (cantidadAnterior - cantidadNueva);               
                     db.TI001.Attach(inventario);
                     db.Entry(inventario).State = EntityState.Modified;
                     db.SaveChanges();

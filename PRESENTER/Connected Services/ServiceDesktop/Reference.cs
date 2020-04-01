@@ -1034,13 +1034,17 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public int Id;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public string[] lMensaje;
+        
         public TransformacionGuardarRequest() {
         }
         
-        public TransformacionGuardarRequest(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, int Id) {
+        public TransformacionGuardarRequest(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, int Id, string[] lMensaje) {
             this.vSeleccion = vSeleccion;
             this.detalle = detalle;
             this.Id = Id;
+            this.lMensaje = lMensaje;
         }
     }
     
@@ -1055,12 +1059,16 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
         public int Id;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
+        
         public TransformacionGuardarResponse() {
         }
         
-        public TransformacionGuardarResponse(bool TransformacionGuardarResult, int Id) {
+        public TransformacionGuardarResponse(bool TransformacionGuardarResult, int Id, string[] lMensaje) {
             this.TransformacionGuardarResult = TransformacionGuardarResult;
             this.Id = Id;
+            this.lMensaje = lMensaje;
         }
     }
     
@@ -1880,13 +1888,15 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TransformacionGuardar(request);
         }
         
-        public bool TransformacionGuardar(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, ref int Id) {
+        public bool TransformacionGuardar(ENTITY.inv.Transformacion.View.VTransformacion vSeleccion, ENTITY.inv.Transformacion_01.View.VTransformacion_01[] detalle, ref int Id, ref string[] lMensaje) {
             PRESENTER.ServiceDesktop.TransformacionGuardarRequest inValue = new PRESENTER.ServiceDesktop.TransformacionGuardarRequest();
             inValue.vSeleccion = vSeleccion;
             inValue.detalle = detalle;
             inValue.Id = Id;
+            inValue.lMensaje = lMensaje;
             PRESENTER.ServiceDesktop.TransformacionGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).TransformacionGuardar(inValue);
             Id = retVal.Id;
+            lMensaje = retVal.lMensaje;
             return retVal.TransformacionGuardarResult;
         }
         

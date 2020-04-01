@@ -65,8 +65,8 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
-            this.PanelInferior.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecho.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -158,9 +158,9 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 34);
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(950, 626);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(950, 627);
             // 
             // btnMin
             // 
@@ -180,7 +180,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(950, 626);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(950, 627);
             // 
             // 
             // 
@@ -213,7 +213,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 600);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 601);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -229,11 +229,6 @@
             this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.PanelMenu.Size = new System.Drawing.Size(950, 72);
             // 
-            // PanelInferior
-            // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 659);
-            this.PanelInferior.Size = new System.Drawing.Size(950, 28);
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
@@ -243,6 +238,11 @@
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 659);
+            this.PanelInferior.Size = new System.Drawing.Size(950, 28);
             // 
             // PanelFondo
             // 
@@ -665,9 +665,9 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
-            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecho.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

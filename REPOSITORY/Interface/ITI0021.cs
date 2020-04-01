@@ -1,10 +1,12 @@
-﻿namespace REPOSITORY.Interface
+﻿using System;
+
+namespace REPOSITORY.Interface
 {
     public interface ITI0021
     {
-        bool Guardar(int idTI002, int idProducto, int cantidad);
+        bool Guardar(int idTI002, int idProducto, decimal? cantidad, string lote, DateTime? fechaVen);
         System.Collections.Generic.List<ENTITY.inv.Almacen.View.VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
-
+        bool Modificar(decimal cantidad, int IdDetalle, int concepto);
         bool Eliminar(int IdDetalle, int concepto);
     }
 }

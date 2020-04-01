@@ -281,9 +281,9 @@ namespace SERVICE
         ///**********TRANSFORMACION******************
         ///
         #region TRANSFORMACION
-            #region Trnasacciones
-                [OperationContract]
-                bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id);
+        #region Trnasacciones
+        [OperationContract]
+        bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id, ref List<string> lMensaje);
 
                 [OperationContract]
                 bool Transformacion_ModificarEstado(int IdTransformacion, int estado, ref List<string> lMensaje);

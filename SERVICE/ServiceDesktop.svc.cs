@@ -980,11 +980,11 @@ namespace SERVICE
         ///
         #region TRANSFORMACION
         #region Transacciones
-        public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id)
+        public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id, ref List<string> lMensaje)
         {
             try
             {
-                var result = new LTransformacion().Guardar(vSeleccion, detalle, ref Id);
+                var result = new LTransformacion().Guardar(vSeleccion, detalle, ref Id, ref lMensaje);
                 return result;
             }
             catch (Exception ex)

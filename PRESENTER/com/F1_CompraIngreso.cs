@@ -1031,6 +1031,11 @@ namespace PRESENTER.com
                     _Error = true;
                     throw new Exception("El detalle se encuentra vacio no se puede Guardar");
                 }
+                if (Tb_TotalFisico.Value == 0)
+                {
+                    _Error = true;
+                    throw new Exception("Detalle de compra en 0");
+                }
                 return _Error;
             }
             catch (Exception ex)

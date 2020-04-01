@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using UTILITY.Enum.ENConcepto;
 using UTILITY.Enum.EnEstaticos;
 
 namespace REPOSITORY.Clase
@@ -151,6 +152,7 @@ namespace REPOSITORY.Clase
                                             traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
                                             id, traspaso.UsuarioEnvio,
                                             " TRASPASO DE SALIDA DESDE: " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
+                                            (int)ENConcepto.TRASPASO_SALIDA,
                                             ref idTI2))
                     {
                         return false;
@@ -183,6 +185,7 @@ namespace REPOSITORY.Clase
                     if (this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip, traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
                         traspaso.Id, usuarioRecepcion,
                         " TRASPASO DE INGRESO DESDE " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
+                        (int)ENConcepto.TRASPASO_SALIDA,
                         ref idTI2))
                     {
                         //AHORA SE REGISTRA EL DETALLE DE LA RECEPCION EN LA TABLA TI0021 y 
