@@ -275,21 +275,32 @@ namespace PRESENTER.com
             {
                 try
                 {
+                    if (Tb_Cod.Text == string.Empty)
+                    {
+                        throw new Exception("No existen registros");
+                    }
                     if (UTGlobal.visualizador != null)
                     {
                         UTGlobal.visualizador.Close();
                     }
                     UTGlobal.visualizador = new Visualizador();
                     var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
-                    var ObjetoReport = new RCompraIngreso();
-                    ObjetoReport.SetDataSource(lista);
-                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                    UTGlobal.visualizador.ShowDialog();
-                    UTGlobal.visualizador.BringToFront();
+                    if (lista != null)
+                    {
+                        var ObjetoReport = new RCompraIngreso();
+                        ObjetoReport.SetDataSource(lista);
+                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        UTGlobal.visualizador.ShowDialog();
+                        UTGlobal.visualizador.BringToFront();
+                    }
+                    else
+                        throw new Exception("No se encontraron registros");
+
+
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    MP_MostrarMensajeError(ex.Message);
                 }
             }
         }

@@ -763,14 +763,25 @@ namespace PRESENTER.com
 
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
-            MP_Imprimir(Convert.ToInt32(Tb_Id.Text));
+            try
+            {
+                if (Tb_Id.Text == string.Empty)
+                {
+                    throw new Exception("No existen registros");
+                }
+                MP_Imprimir(Convert.ToInt32(Tb_Id.Text));
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }           
         }
 
         private void MP_Imprimir(int Id)
         {
             try
             {
-
+              
                 //TRANSAFORMACION INGRESO
                 if (UTGlobal.visualizador != null)
                 {
@@ -779,12 +790,18 @@ namespace PRESENTER.com
                 UTGlobal.visualizador = new Visualizador();
                 var lista = new ServiceDesktop.ServiceDesktopClient().TransformacionIngreso(Id);
                 var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Id);
-                var ObjetoReport = new RTransformacionIngreso();
-                ObjetoReport.Subreports["RTransformacionSalida.rpt"].SetDataSource(lista2);
-                ObjetoReport.SetDataSource(lista);
-                UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                UTGlobal.visualizador.ShowDialog();
-                UTGlobal.visualizador.BringToFront();
+                if (lista != null )
+                {
+                    var ObjetoReport = new RTransformacionIngreso();
+                    ObjetoReport.Subreports["RTransformacionSalida.rpt"].SetDataSource(lista2);
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
+                }
+                else
+                    throw new Exception("No se encontraron registros");
+               
 
                 //TRANSFORMACION SALIDA
                 //if (UTGlobal.visualizador != null)
