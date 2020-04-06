@@ -20,7 +20,7 @@ namespace LOGIC.Class
         protected ITI0021 iTi0021;
         public LSeleccion()
         {
-            iTi001 = new RTI001();
+            iTi001 = new RTI001(iTi002, iTi0021);
             iTi002 = new RTI002();
             iTi0021 = new RTI0021();
             iSeleccion = new RSeleccion(iTi001, iTi002, iTi0021);

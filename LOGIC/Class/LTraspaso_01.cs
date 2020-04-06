@@ -11,11 +11,12 @@ namespace LOGIC.Class
     {
         protected ITraspaso_01 iTraspaso_01;
         protected ITI001 iTi001;
+        protected ITI002 iTi002;
         protected ITI0021 iTi0021;
 
         public LTraspaso_01()
         {
-            iTi001 = new RTI001();
+            iTi001 = new RTI001(iTi002, iTi0021);
             iTi0021 = new RTI0021();
             iTraspaso_01 = new RTraspaso_01(iTi001, iTi0021);
         }

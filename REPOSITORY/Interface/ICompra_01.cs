@@ -10,5 +10,8 @@ namespace REPOSITORY.Interface
    public interface ICompra_01
     {
         List<VCompra_01_Lista> Lista();
+        bool Nuevo(List<VCompra_01> Lista, int IdCompra, string usuario);
+        bool Modificar(VCompra_01 Lista, int IdCompra, string usuario);
+        bool Eliminar(int IdCompra, int IdDetalle, ref List<string> lMensaje);
     }
 }

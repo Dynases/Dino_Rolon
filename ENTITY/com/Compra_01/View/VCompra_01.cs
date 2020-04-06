@@ -14,13 +14,10 @@ namespace ENTITY.com.Compra_01.View
         public int Estado { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Costo { get; set; }
-
         public decimal Total { get; set; }
         public string Lote { get; set; }
         public System.DateTime FechaVen { get; set; }
         public decimal Utilidad { get; set; }
         public decimal Porcent { get; set; }
-
-
     }
 }

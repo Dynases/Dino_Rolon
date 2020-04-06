@@ -306,8 +306,14 @@ namespace SERVICE
         ///**********COMPRA******************
         ///
         #region Compra
+        #region Transacciones
+        [OperationContract]
+        bool Guardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario);
+        #endregion
+        #region Consulta
         [OperationContract]
         List<VCompraLista> Compra_Lista();
+        #endregion
         #endregion
         #region Compra_01
         [OperationContract]

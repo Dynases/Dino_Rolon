@@ -86,9 +86,7 @@ namespace REPOSITORY.Clase
                         {
                             transformacion_01 = new Transformacion_01();
                         }
-                        var transformacion = db.Transformacion.Where(t => t.Id == idTransformacion).FirstOrDefault();
-                        var StockActual_Comercial = this.tI001.StockActual(i.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen);
-                        var StockActual_MatPrima = this.tI001.StockActual(i.IdProducto_Mat_Prima.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen);
+                        var transformacion = db.Transformacion.Where(t => t.Id == idTransformacion).FirstOrDefault();                     
                         var AlmacenSalida = db.Almacen.Where(a => a.Id.Equals(transformacion.IdAlmacenSalida)).Select(a => a.Descrip).FirstOrDefault();
                         var AlmacenIngreso = db.Almacen.Where(a => a.Id.Equals(transformacion.IdAlmacenIngreso)).Select(a => a.Descrip).FirstOrDefault();
                         if (i.Estado == (int)ENEstado.NUEVO)
@@ -275,16 +273,7 @@ namespace REPOSITORY.Clase
                                 if (!Nuevo(detalle, transformacion.Id, ref idDetalle))
                                 {
                                     return false;
-                                }
-                                //transformacion_01.IdTransformacion = idTransformacion;
-                                //transformacion_01.IdProducto = i.IdProducto;
-                                //transformacion_01.IdProducto_Mat = i.IdProducto_Mat_Prima;
-                                //transformacion_01.Estado = (int)ENEstado.GUARDADO;
-                                //transformacion_01.TotalProd = i.TotalProd;
-                                //transformacion_01.Cantidad = i.Cantidad;
-                                //transformacion_01.Total = i.Total;
-                                //db.Transformacion_01.Attach(transformacion_01);
-                                //db.Entry(transformacion_01).State = EntityState.Modified;
+                                }                               
                             }
                             #endregion
                             #region Eliminar

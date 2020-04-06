@@ -7,13 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY.com.Compra.View;
 using DATA.EntityDataModel.DiAvi;
+using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
+using System.Data.Entity;
 
 namespace REPOSITORY.Clase
 {
     public class RCompra : BaseConexion, ICompra
     {
-
-        public bool Guardar(VCompra vCompraIngreso, ref int id)
+        private readonly ITI001 tI001;
+       
+        public RCompra(ITI001 tI001)       
+        {
+            this.tI001 = tI001;
+         
+        }
+        public bool Guardar(VCompra vcomprareso, ref int id)
         {
             try
             {
@@ -32,20 +41,93 @@ namespace REPOSITORY.Clase
                         Compra = new Compra();
                         db.Compra.Add(Compra);
                     }
-                    Compra.IdAlmacen = vCompraIngreso.IdAlmacen;
-                    Compra.IdProvee = vCompraIngreso.IdProvee;
-                    Compra.Estado = vCompraIngreso.Estado;
-                    Compra.FechaDoc = vCompraIngreso.FechaDoc;
-                    Compra.TipoVenta = vCompraIngreso.TipoVenta;
-                    Compra.FechaVen = vCompraIngreso.FechaVen;
-                    Compra.Observ = vCompraIngreso.Observ;
-                    Compra.Descu = vCompraIngreso.Descu;
-                    Compra.Total = vCompraIngreso.Total;
-                    Compra.Fecha = vCompraIngreso.Fecha;
-                    Compra.Hora = vCompraIngreso.Hora;
-                    Compra.Usuario = vCompraIngreso.Usuario;
+                    Compra.IdAlmacen = vcomprareso.IdAlmacen;
+                    Compra.IdProvee = vcomprareso.IdProvee;
+                    Compra.Estado = vcomprareso.Estado;
+                    Compra.FechaDoc = vcomprareso.FechaDoc;
+                    Compra.TipoVenta = vcomprareso.TipoVenta;
+                    Compra.FechaVen = vcomprareso.FechaVen;
+                    Compra.Observ = vcomprareso.Observ;
+                    Compra.Descu = vcomprareso.Descu;
+                    Compra.Total = vcomprareso.Total;
+                    Compra.Fecha = vcomprareso.Fecha;
+                    Compra.Hora = vcomprareso.Hora;
+                    Compra.Usuario = vcomprareso.Usuario;
                     db.SaveChanges();
                     id = Compra.Id;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ModificarEstado(int IdCompra, int estado, ref List<string> lMensaje)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {                
+                    var compra = db.Compra.Where(c => c.Id.Equals(IdCompra)).FirstOrDefault();
+                    var compra_01 = db.Compra_01.Where(c => c.IdCompra.Equals(IdCompra)).ToList();
+                    //Verifica si existe stock para todos los productos a Eliminar
+                    foreach (var item in compra_01)
+                    {
+                        var StockActual = this.tI001.StockActual(item.IdProducto.ToString(), compra.IdAlmacen, item.Lote, item.FechaVen);
+                        if (StockActual < item.Canti)
+                        {
+                            var producto = db.Producto.Where(p => p.Id == item.IdProducto).Select(p => p.Descrip).FirstOrDefault();
+                            lMensaje.Add("No existe stock actual suficiente para el producto: " + producto);
+                        }
+                    }
+                    if (lMensaje.Count > 0)
+                    {
+                        var mensaje = "";
+                        foreach (var item in lMensaje)
+                        {
+                            mensaje = mensaje + "- " + item + "\n";
+                        }
+                        return false;
+                    }
+                    //Actualizar saldo, Eliminar Movimientos
+                    foreach (var i in compra_01)
+                    {
+                        if (!this.tI001.EliminarMovimientoInventario(i.Id, i.IdProducto.ToString(), compra.IdAlmacen,
+                                                                         i.Lote, i.FechaVen, i.Canti,
+                                                                         (int)ENConcepto.COMPRAS, EnAccionEnInventario.Descontar))
+                        {
+                            return false;
+                        }
+
+                        //if (this.tI001.ExisteProducto(i.IdProducto.ToString(), compra.IdAlmacen, i.Lote, i.FechaVen))
+                        //{
+                        //    if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
+                        //                                   compra.IdAlmacen,
+                        //                                   EnAccionEnInventario.Descontar,
+                        //                                   Convert.ToDecimal(i.Canti),
+                        //                                   i.Lote,
+                        //                                   i.FechaVen))
+                        //    {
+                        //        return false;
+                        //    }
+                        //    //ELIMINA EL DETALLE DE MOVIMIENTO
+                        //    this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
+                        //    //ELIMINA EL MOVIMIENTO
+                        //    this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
+                        //}
+                        //else
+                        //{
+                        //    //ELIMINA EL DETALLE DE MOVIMIENTO
+                        //    this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
+                        //    //ELIMINA EL MOVIMIENTO
+                        //    this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
+                        //}
+                    }
+                    compra.Estado = estado;
+                    db.Compra.Attach(compra);
+                    db.Entry(compra).State = EntityState.Modified;
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -64,6 +146,7 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = (from a in db.Compra
                                       join b in db.Proveed on a.IdProvee equals b.Id
+                                      where a.Estado != -1
                                       select new VCompraLista
                                       {
                                           Id = a.Id,
@@ -88,6 +171,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+       
         #endregion
 
     }

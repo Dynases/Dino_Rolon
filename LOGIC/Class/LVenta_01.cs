@@ -11,10 +11,11 @@ namespace LOGIC.Class
     {
         protected IVenta_01 iVenta_01;
         protected ITI001 iTi001;
-
+        protected ITI002 iTi002;
+        protected ITI0021 iTi0021;
         public LVenta_01()
         {
-            iTi001 = new RTI001();
+            iTi001 = new RTI001(iTi002, iTi0021);
             iVenta_01 = new RVenta_01(iTi001);
         }
 

@@ -26,6 +26,7 @@ namespace PRESENTER.com
         #endregion
         public F1_Compra()
         {
+            //prueba
             InitializeComponent();
             MP_Iniciar();
         }

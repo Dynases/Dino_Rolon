@@ -37,8 +37,7 @@ namespace REPOSITORY.Clase
                         compraIng_01.Fecha = DateTime.Now.Date;
                         compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
                         compraIng_01.Usuario = usuario;
-                        db.CompraIng_01.Add(compraIng_01);
-                        
+                        db.CompraIng_01.Add(compraIng_01);                        
                     }
                     db.SaveChanges();
                     return true;

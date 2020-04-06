@@ -11,5 +11,6 @@ namespace REPOSITORY.Interface
     {
         List<VCompraLista> Lista();
         bool Guardar(VCompra vCompraIngreso, ref int id);
+        bool ModificarEstado(int IdCompra, int estado, ref List<string> lMensaje);
     }
 }

@@ -17,6 +17,8 @@ namespace DATA.EntityDataModel.DiAvi
     
     public partial class DiAviEntities : DbContext
     {
+        public object compra;
+
         public DiAviEntities()
             : base("name=DiAviEntities")
         {

@@ -68,7 +68,7 @@ namespace UTILITY.Global
             eTaskDialogResult resultado = TaskDialog.Show(info);
             if (resultado == eTaskDialogResult.Yes)
             {
-                string mensajeError = "";
+                //string mensajeError = "";
                 Band = true;
                 this.Close();
             }

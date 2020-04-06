@@ -17,7 +17,7 @@ namespace LOGIC.Class
         public LTraspaso()
         {
             iTI002 = new RTI002();
-            iTI001 = new RTI001();
+            iTI001 = new RTI001(iTI002, iTI0021);
             iTI0021 = new RTI0021();
             iTraspaso_01 = new RTraspaso_01(iTI001, iTI0021);
             iTraspaso = new RTraspaso(iTI002, iTraspaso_01);

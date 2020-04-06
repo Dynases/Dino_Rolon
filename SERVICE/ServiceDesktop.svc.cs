@@ -1083,6 +1083,18 @@ namespace SERVICE
         ///**********COMPRA**********************
         ///
         #region Compra
+        public bool Guardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario)
+        {
+            try
+            {
+                var listResult = new LCompra().Guardar(vCompra,detalle,ref IdCompra,ref lMensaje,usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VCompraLista> Compra_Lista()
         {
 
@@ -1218,14 +1230,6 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
-       
-
-     
-
-
-   
-
         #endregion
     }
 }
