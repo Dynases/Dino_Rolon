@@ -22,7 +22,7 @@ namespace REPOSITORY.Clase
             this.tI001 = tI001;
          
         }
-        public bool Guardar(VCompra vcomprareso, ref int id)
+        public bool Guardar(VCompra vcompra, ref int id)
         {
             try
             {
@@ -41,18 +41,21 @@ namespace REPOSITORY.Clase
                         Compra = new Compra();
                         db.Compra.Add(Compra);
                     }
-                    Compra.IdAlmacen = vcomprareso.IdAlmacen;
-                    Compra.IdProvee = vcomprareso.IdProvee;
-                    Compra.Estado = vcomprareso.Estado;
-                    Compra.FechaDoc = vcomprareso.FechaDoc;
-                    Compra.TipoVenta = vcomprareso.TipoVenta;
-                    Compra.FechaVen = vcomprareso.FechaVen;
-                    Compra.Observ = vcomprareso.Observ;
-                    Compra.Descu = vcomprareso.Descu;
-                    Compra.Total = vcomprareso.Total;
-                    Compra.Fecha = vcomprareso.Fecha;
-                    Compra.Hora = vcomprareso.Hora;
-                    Compra.Usuario = vcomprareso.Usuario;
+                    Compra.IdAlmacen = vcompra.IdAlmacen;
+                    Compra.IdProvee = vcompra.IdProvee;
+                    Compra.Estado = vcompra.Estado;
+                    Compra.FechaDoc = vcompra.FechaDoc;
+                    Compra.TipoVenta = vcompra.TipoVenta;
+                    Compra.FechaVen = vcompra.FechaVen;
+                    Compra.TipoFactura = vcompra.TipoFactura;
+                    Compra.Factura = vcompra.Factura;
+                    Compra.Recibo = vcompra.Recibo;
+                    Compra.Observ = vcompra.Observ;
+                    Compra.Descu = vcompra.Descu;
+                    Compra.Total = vcompra.Total;
+                    Compra.Fecha = vcompra.Fecha;
+                    Compra.Hora = vcompra.Hora;
+                    Compra.Usuario = vcompra.Usuario;
                     db.SaveChanges();
                     id = Compra.Id;
                     return true;

@@ -50,7 +50,6 @@
     <Compile Include="com\Compra\View\VCompra.cs" />
     <Compile Include="com\Compra\View\VCompraLista.cs" />
     <Compile Include="com\Compra_01\View\VCompra_01.cs" />
-    <Compile Include="com\Compra_01\View\VCompra_01_Lista.cs" />
     <Compile Include="com\Seleccion\Report\VSeleccionReport.cs" />
     <Compile Include="com\Seleccion\View\VSeleccion.cs" />
     <Compile Include="com\Seleccion\View\VSeleccionLista.cs" />

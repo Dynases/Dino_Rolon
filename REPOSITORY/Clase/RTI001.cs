@@ -135,7 +135,7 @@ namespace REPOSITORY.Clase
                 }
                 int idMovimiento = 0;
                 //NUEVO EL MOVIMIENTO
-                if (!this.tI002.Guardar(idAlmacen, "",
+                if (!tI002.Guardar(idAlmacen, "",
                                     0, "",
                                     idDetalle,
                                     usuario,
@@ -146,7 +146,7 @@ namespace REPOSITORY.Clase
                     return false;
                 }
                 //NUEVO DETALLE DE MOVIMIENTO
-                if (!this.tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
+                if (!tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
                                       cantidad,
                                       lote,
                                       fechaVen))
@@ -167,11 +167,11 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                if (cantidad > 0)
+                if (cantidad2 > 0)
                 {                   
                     if (!this.ExisteProducto(idProducto, idAlmacen, lote, fechaVen))
                     {
-                        if (!this.Nuevo(idAlmacen, idProducto, cantidad, lote, fechaVen))
+                        if (!this.Nuevo(idAlmacen, idProducto, cantidad2, lote, fechaVen))
                         {
                             return false;
                         }
@@ -198,7 +198,7 @@ namespace REPOSITORY.Clase
                             return false;
                         }
                         //MODIFICA EL DETALLE DE MOVIMIENTO
-                        if (!this.tI0021.Modificar(cantidad,
+                        if (!this.tI0021.Modificar(cantidad2,
                                               idDetalle,
                                               concepto))
                         {

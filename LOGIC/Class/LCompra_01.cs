@@ -18,6 +18,8 @@ namespace LOGIC.Class
         protected ITI0021 iTi0021;
         public LCompra_01()
         {
+            iTi002 = new RTI002();
+            iTi0021 = new RTI0021();
             iTi001 = new RTI001(iTi002, iTi0021);
             iCompra_01 = new RCompra_01(iTi001);
         }
@@ -72,7 +74,7 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
-        public List<VCompra_01_Lista> Listar()
+        public List<VCompra_01> Listar()
         {
             try
             {

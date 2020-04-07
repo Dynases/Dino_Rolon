@@ -493,13 +493,16 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_ModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarResponse.datasource">
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.PlantillaGuardarResponse.datasource">
@@ -626,6 +629,7 @@
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoNota.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_01.VCompraIngreso_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_02.VCompraIngreso_02.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />

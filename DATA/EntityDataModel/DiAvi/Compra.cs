@@ -27,6 +27,9 @@ namespace DATA.EntityDataModel.DiAvi
         public System.DateTime FechaDoc { get; set; }
         public int TipoVenta { get; set; }
         public System.DateTime FechaVen { get; set; }
+        public int TipoFactura { get; set; }
+        public string Factura { get; set; }
+        public string Recibo { get; set; }
         public string Observ { get; set; }
         public decimal Descu { get; set; }
         public decimal Total { get; set; }
@@ -34,9 +37,9 @@ namespace DATA.EntityDataModel.DiAvi
         public string Hora { get; set; }
         public string Usuario { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compra_01> Compra_01 { get; set; }
         public virtual Almacen Almacen { get; set; }
         public virtual Proveed Proveed { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Compra_01> Compra_01 { get; set; }
     }
 }

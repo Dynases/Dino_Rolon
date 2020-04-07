@@ -308,7 +308,9 @@ namespace SERVICE
         #region Compra
         #region Transacciones
         [OperationContract]
-        bool Guardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario);
+        bool CompraGuardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario);
+        [OperationContract]
+        bool CompraModificarEstado(int IdCompra, int estado, ref List<string> lMensaje);
         #endregion
         #region Consulta
         [OperationContract]
@@ -317,7 +319,7 @@ namespace SERVICE
         #endregion
         #region Compra_01
         [OperationContract]
-        List<VCompra_01_Lista> Compra_01_Lista();
+        List<VCompra_01> Compra_01_Lista();
         #endregion
         ///**********PLANTILLA******************
         ///

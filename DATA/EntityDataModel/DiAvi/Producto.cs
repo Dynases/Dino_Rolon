@@ -17,12 +17,12 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
-            this.Compra_01 = new HashSet<Compra_01>();
             this.CompraIng_01 = new HashSet<CompraIng_01>();
             this.Seleccion_01 = new HashSet<Seleccion_01>();
             this.Plantilla_01 = new HashSet<Plantilla_01>();
             this.Traspaso_01 = new HashSet<Traspaso_01>();
             this.Venta_01 = new HashSet<Venta_01>();
+            this.Compra_01 = new HashSet<Compra_01>();
         }
     
         public int Id { get; set; }
@@ -49,8 +49,6 @@ namespace DATA.EntityDataModel.DiAvi
         public string Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compra_01> Compra_01 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng_01> CompraIng_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seleccion_01> Seleccion_01 { get; set; }
@@ -60,5 +58,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Traspaso_01> Traspaso_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta_01> Venta_01 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Compra_01> Compra_01 { get; set; }
     }
 }

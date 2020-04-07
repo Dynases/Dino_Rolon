@@ -20,12 +20,12 @@ namespace LOGIC.Class
         protected ITI0021 iTi0021;
         public LCompra()
         {
-            iTi001 = new RTI001(iTi002, iTi0021);
             iTi002 = new RTI002();
             iTi0021 = new RTI0021();
+            iTi001 = new RTI001(iTi002, iTi0021);           
             iCompra = new RCompra(iTi001);
         }
-        #region Consulta
+        #region Transaccion
         public bool Guardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario)
         {
             try
@@ -45,10 +45,12 @@ namespace LOGIC.Class
                         {
                             if (i.Estado == (int)ENEstado.NUEVO)
                             {
-                                var resultDetalle = new LCompra_01().Nuevo(detalle, IdCompra, usuario);
+                                List<VCompra_01> detalleNuevo = new List<VCompra_01>();
+                                detalleNuevo.Add(i);
+                                var resultDetalle = new LCompra_01().Nuevo(detalleNuevo, IdCompra, usuario);
                             }
                             if (i.Estado == (int)ENEstado.MODIFICAR)
-                            {                                
+                            {
                                 var resultDetalle = new LCompra_01().Modificar(i, IdCompra, usuario);
                                 if (resultDetalle == false)
                                 {
@@ -57,13 +59,13 @@ namespace LOGIC.Class
                             }
                             if (i.Estado == (int)ENEstado.ELIMINAR)
                             {
-                                var resultDetalle = new LCompra_01().Eliminar(IdCompra, i.Id,ref lMensaje);
+                                var resultDetalle = new LCompra_01().Eliminar(IdCompra, i.Id, ref lMensaje);
                                 if (resultDetalle == false)
                                 {
                                     return false;
                                 }
                             }
-                        }                       
+                        }
                     }
                     scope.Complete();
                     return result;
@@ -74,6 +76,25 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public bool ModificarEstado(int IdCompra, int estado, ref List<string> lMensaje)
+        {
+            try
+            {
+                bool result = false;
+                using (var scope = new TransactionScope())
+                {
+                    result = iCompra.ModificarEstado(IdCompra, estado, ref lMensaje);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consulta
 
         public List<VCompraLista> Listar()
         {

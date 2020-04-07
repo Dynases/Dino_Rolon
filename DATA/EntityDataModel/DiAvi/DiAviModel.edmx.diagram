@@ -6,8 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="11.25" PointY="15.375" />
-        <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="13.5" PointY="15.375" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="8.25" PointY="14.625" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="10.5" PointY="10.375" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_02" Width="1.5" PointX="7.75" PointY="0.75" />
@@ -39,9 +37,6 @@
         <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngreso" Width="1.5" PointX="17.75" PointY="13.75" />
         <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="15.75" PointY="17.75" />
         <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="17.75" PointY="17.75" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_IdAlmacen" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_IdProveedor" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />
@@ -66,12 +61,17 @@
         <AssociationConnector Association="DiAviModel.FK_Venta_Venta_01" />
         <EntityTypeShape EntityType="DiAviModel.TI001" Width="1.5" PointX="19.375" PointY="8.75" />
         <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="2.25" PointY="21" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Producto_Plantilla01" />
         <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_Producto" />
+        <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="20.25" PointY="12.625" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_IdAlmacen" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_IdProveedor" />
+        <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="22.5" PointY="18.25" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

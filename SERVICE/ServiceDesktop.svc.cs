@@ -729,10 +729,7 @@ namespace SERVICE
         ///**********COMPRA INGRESO**********************
         ///
         #region Compra Ingreso
-        #region Transformacion
-
-
-
+        #region Transacciones
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
         {
             try
@@ -1083,11 +1080,12 @@ namespace SERVICE
         ///**********COMPRA**********************
         ///
         #region Compra
-        public bool Guardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario)
+        #region Transacciones
+        public bool CompraGuardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario)
         {
             try
             {
-                var listResult = new LCompra().Guardar(vCompra,detalle,ref IdCompra,ref lMensaje,usuario);
+                var listResult = new LCompra().Guardar(vCompra, detalle, ref IdCompra, ref lMensaje, usuario);
                 return listResult;
             }
             catch (Exception ex)
@@ -1095,6 +1093,20 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool CompraModificarEstado(int IdCompra, int estado, ref List<string> lMensaje)
+        {
+            try
+            {
+                var listResult = new LCompra().ModificarEstado(IdCompra, estado, ref lMensaje);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consulta
         public List<VCompraLista> Compra_Lista()
         {
 
@@ -1109,7 +1121,7 @@ namespace SERVICE
             }
         }
 
-        public List<VCompra_01_Lista> Compra_01_Lista()
+        public List<VCompra_01> Compra_01_Lista()
         {
             try
             {
@@ -1120,8 +1132,8 @@ namespace SERVICE
             {
                 throw new Exception(ex.Message);
             }
-        }
-
+        }        
+        #endregion
         #endregion
 
         ///**********PLANTILLA**********************
@@ -1230,6 +1242,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         #endregion
     }
 }

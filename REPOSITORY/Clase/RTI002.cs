@@ -116,7 +116,7 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var resultado = (from a in db.TI002
-                                     where a.ibiddc == idDetalle && a.ibconcep != concepto
+                                     where a.ibiddc == idDetalle && a.ibconcep == concepto
                                      select a).Count();
                     return resultado != 0 ? true : false;
                 }

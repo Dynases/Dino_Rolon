@@ -10,8 +10,10 @@ namespace ENTITY.com.Compra_01.View
     {
         public int Id { get; set; }
         public int IdCompra { get; set; }
-        public int IdProducto { get; set; }
         public int Estado { get; set; }
+        public int IdProducto { get; set; }
+        public string Producto { get; set; }
+        public string Unidad { get; set; }    
         public decimal Cantidad { get; set; }
         public decimal Costo { get; set; }
         public decimal Total { get; set; }

@@ -25,9 +25,6 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal Utilidad { get; set; }
         public decimal Porcent { get; set; }
         public decimal Total { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string Hora { get; set; }
-        public string Usuario { get; set; }
     
         public virtual Compra Compra { get; set; }
         public virtual Producto Producto { get; set; }

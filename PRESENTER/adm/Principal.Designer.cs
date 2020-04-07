@@ -30,6 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.SideNav1 = new DevComponents.DotNetBar.Controls.SideNav();
+            this.SideNav_Conf = new DevComponents.DotNetBar.Controls.SideNavPanel();
+            this.MetroTilePanel1 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
+            this.btConfRoles = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btConfUsuarios = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btConfCliente = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.PictureBox4 = new System.Windows.Forms.PictureBox();
+            this.SideNavPanel6 = new DevComponents.DotNetBar.Controls.SideNavPanel();
+            this.Panel2 = new System.Windows.Forms.Panel();
+            this.MetroTilePanel7 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
+            this.Metro_Proveedor = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.Metro_CompraIngreso = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.Metro_Seleccion = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.Metro_Compra = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.SideNavPanel5 = new DevComponents.DotNetBar.Controls.SideNavPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.MetroTilePanel6 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
@@ -38,13 +52,6 @@
             this.btInvTraspaso = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.Metro_Transformacion = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.btnReporteKardex = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.SideNavPanel6 = new DevComponents.DotNetBar.Controls.SideNavPanel();
-            this.Panel2 = new System.Windows.Forms.Panel();
-            this.MetroTilePanel7 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
-            this.Metro_Proveedor = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.Metro_CompraIngreso = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.Metro_Seleccion = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.Metro_Compra = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.sideNavPanel7 = new DevComponents.DotNetBar.Controls.SideNavPanel();
             this.metroTilePanel2 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
             this.metroTileItem6 = new DevComponents.DotNetBar.Metro.MetroTileItem();
@@ -65,13 +72,6 @@
             this.MetroTileItem3 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.MetroTileItem9 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.MetroTileItem10 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.SideNav_Conf = new DevComponents.DotNetBar.Controls.SideNavPanel();
-            this.MetroTilePanel1 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
-            this.btConfRoles = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btConfUsuarios = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btConfCliente = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.metroTileItem4 = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.PictureBox4 = new System.Windows.Forms.PictureBox();
             this.SideNavPanel1 = new DevComponents.DotNetBar.Controls.SideNavPanel();
             this.MetroTilePanel4 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
             this.btSocSocio = new DevComponents.DotNetBar.Metro.MetroTileItem();
@@ -117,10 +117,12 @@
             this.metroTileItem8 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroTileItem11 = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.SideNav1.SuspendLayout();
-            this.SideNavPanel5.SuspendLayout();
-            this.Panel1.SuspendLayout();
+            this.SideNav_Conf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).BeginInit();
             this.SideNavPanel6.SuspendLayout();
             this.Panel2.SuspendLayout();
+            this.SideNavPanel5.SuspendLayout();
+            this.Panel1.SuspendLayout();
             this.sideNavPanel7.SuspendLayout();
             this.sideNavPanel8.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -128,8 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl3)).BeginInit();
             this.superTabControl3.SuspendLayout();
             this.SideNavPanel4.SuspendLayout();
-            this.SideNav_Conf.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).BeginInit();
             this.SideNavPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SideNavPanel2.SuspendLayout();
@@ -139,8 +139,8 @@
             // SideNav1
             // 
             this.SideNav1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.SideNav1.Controls.Add(this.SideNav_Conf);
             this.SideNav1.Controls.Add(this.SideNavPanel6);
+            this.SideNav1.Controls.Add(this.SideNav_Conf);
             this.SideNav1.Controls.Add(this.SideNavPanel5);
             this.SideNav1.Controls.Add(this.sideNavPanel7);
             this.SideNav1.Controls.Add(this.sideNavPanel8);
@@ -168,6 +168,267 @@
             this.SideNav1.Size = new System.Drawing.Size(1028, 561);
             this.SideNav1.TabIndex = 2;
             this.SideNav1.Text = "SideNav1";
+            // 
+            // SideNav_Conf
+            // 
+            this.SideNav_Conf.Controls.Add(this.MetroTilePanel1);
+            this.SideNav_Conf.Controls.Add(this.PictureBox4);
+            this.SideNav_Conf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SideNav_Conf.Location = new System.Drawing.Point(144, 36);
+            this.SideNav_Conf.Name = "SideNav_Conf";
+            this.SideNav_Conf.Size = new System.Drawing.Size(879, 524);
+            this.SideNav_Conf.TabIndex = 2;
+            this.SideNav_Conf.Visible = false;
+            // 
+            // MetroTilePanel1
+            // 
+            this.MetroTilePanel1.BackColor = System.Drawing.Color.Transparent;
+            this.MetroTilePanel1.BackgroundImage = global::PRESENTER.Properties.Resources.avicola02;
+            this.MetroTilePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            // 
+            // 
+            // 
+            this.MetroTilePanel1.BackgroundStyle.BackColor = System.Drawing.Color.Transparent;
+            this.MetroTilePanel1.BackgroundStyle.Class = "MetroTilePanel";
+            this.MetroTilePanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.MetroTilePanel1.ContainerControlProcessDialogKey = true;
+            this.MetroTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MetroTilePanel1.DragDropSupport = true;
+            this.MetroTilePanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MetroTilePanel1.ForeColor = System.Drawing.Color.White;
+            this.MetroTilePanel1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btConfRoles,
+            this.btConfUsuarios,
+            this.btConfCliente,
+            this.metroTileItem4});
+            this.MetroTilePanel1.ItemSpacing = 10;
+            this.MetroTilePanel1.Location = new System.Drawing.Point(0, 0);
+            this.MetroTilePanel1.MultiLine = true;
+            this.MetroTilePanel1.Name = "MetroTilePanel1";
+            this.MetroTilePanel1.Size = new System.Drawing.Size(879, 410);
+            this.MetroTilePanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.MetroTilePanel1.TabIndex = 0;
+            this.MetroTilePanel1.Text = "mtp1Configuracion";
+            // 
+            // btConfRoles
+            // 
+            this.btConfRoles.Image = global::PRESENTER.Properties.Resources.ROLES;
+            this.btConfRoles.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btConfRoles.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.btConfRoles.Name = "btConfRoles";
+            this.btConfRoles.SymbolColor = System.Drawing.Color.Black;
+            this.btConfRoles.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btConfRoles.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.btConfRoles.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btConfRoles.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.btConfRoles.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot;
+            this.btConfRoles.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot;
+            this.btConfRoles.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot;
+            this.btConfRoles.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot;
+            this.btConfRoles.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btConfRoles.TileStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btConfRoles.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.btConfRoles.TitleText = "ROLES";
+            this.btConfRoles.TitleTextColor = System.Drawing.Color.White;
+            this.btConfRoles.Visible = false;
+            // 
+            // btConfUsuarios
+            // 
+            this.btConfUsuarios.Image = global::PRESENTER.Properties.Resources.USUARIO;
+            this.btConfUsuarios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btConfUsuarios.Name = "btConfUsuarios";
+            this.btConfUsuarios.SymbolColor = System.Drawing.Color.Empty;
+            this.btConfUsuarios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btConfUsuarios.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.btConfUsuarios.TileStyle.BackColor = System.Drawing.Color.MediumOrchid;
+            this.btConfUsuarios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(75)))), ((int)(((byte)(0)))), ((int)(((byte)(130)))));
+            this.btConfUsuarios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btConfUsuarios.TitleText = "USUARIOS";
+            this.btConfUsuarios.Visible = false;
+            // 
+            // btConfCliente
+            // 
+            this.btConfCliente.Image = global::PRESENTER.Properties.Resources.REPORTE_CHECK;
+            this.btConfCliente.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btConfCliente.Name = "btConfCliente";
+            this.btConfCliente.SymbolColor = System.Drawing.Color.Empty;
+            this.btConfCliente.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
+            this.btConfCliente.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.btConfCliente.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btConfCliente.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(165)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.btConfCliente.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btConfCliente.TitleText = "BITACORA";
+            this.btConfCliente.Visible = false;
+            // 
+            // metroTileItem4
+            // 
+            this.metroTileItem4.Image = global::PRESENTER.Properties.Resources.LIBRERIA;
+            this.metroTileItem4.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTileItem4.Name = "metroTileItem4";
+            this.metroTileItem4.SymbolColor = System.Drawing.Color.Empty;
+            this.metroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.metroTileItem4.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.metroTileItem4.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.metroTileItem4.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(184)))), ((int)(((byte)(134)))), ((int)(((byte)(11)))));
+            this.metroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.metroTileItem4.TitleText = "LIBRERIA";
+            this.metroTileItem4.Visible = false;
+            // 
+            // PictureBox4
+            // 
+            this.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PictureBox4.Location = new System.Drawing.Point(0, 410);
+            this.PictureBox4.Name = "PictureBox4";
+            this.PictureBox4.Size = new System.Drawing.Size(879, 114);
+            this.PictureBox4.TabIndex = 2;
+            this.PictureBox4.TabStop = false;
+            this.PictureBox4.Visible = false;
+            // 
+            // SideNavPanel6
+            // 
+            this.SideNavPanel6.Controls.Add(this.Panel2);
+            this.SideNavPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SideNavPanel6.Location = new System.Drawing.Point(144, 36);
+            this.SideNavPanel6.Name = "SideNavPanel6";
+            this.SideNavPanel6.Size = new System.Drawing.Size(879, 524);
+            this.SideNavPanel6.TabIndex = 109;
+            // 
+            // Panel2
+            // 
+            this.Panel2.Controls.Add(this.MetroTilePanel7);
+            this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel2.Location = new System.Drawing.Point(0, 0);
+            this.Panel2.Name = "Panel2";
+            this.Panel2.Size = new System.Drawing.Size(879, 524);
+            this.Panel2.TabIndex = 1;
+            // 
+            // MetroTilePanel7
+            // 
+            this.MetroTilePanel7.BackColor = System.Drawing.Color.Transparent;
+            this.MetroTilePanel7.BackgroundImage = global::PRESENTER.Properties.Resources.avicola02;
+            this.MetroTilePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            // 
+            // 
+            // 
+            this.MetroTilePanel7.BackgroundStyle.BackColor = System.Drawing.Color.Transparent;
+            this.MetroTilePanel7.BackgroundStyle.Class = "MetroTilePanel";
+            this.MetroTilePanel7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.MetroTilePanel7.ContainerControlProcessDialogKey = true;
+            this.MetroTilePanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MetroTilePanel7.DragDropSupport = true;
+            this.MetroTilePanel7.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.Metro_Proveedor,
+            this.Metro_CompraIngreso,
+            this.Metro_Seleccion,
+            this.Metro_Compra});
+            this.MetroTilePanel7.ItemSpacing = 10;
+            this.MetroTilePanel7.Location = new System.Drawing.Point(0, 0);
+            this.MetroTilePanel7.MultiLine = true;
+            this.MetroTilePanel7.Name = "MetroTilePanel7";
+            this.MetroTilePanel7.Size = new System.Drawing.Size(879, 524);
+            this.MetroTilePanel7.TabIndex = 2;
+            this.MetroTilePanel7.Text = "mtp2Logistica";
+            // 
+            // Metro_Proveedor
+            // 
+            this.Metro_Proveedor.Image = global::PRESENTER.Properties.Resources.VENDEDOR;
+            this.Metro_Proveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_Proveedor.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.Metro_Proveedor.Name = "Metro_Proveedor";
+            this.Metro_Proveedor.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_Proveedor.Text = "PROVEEDOR";
+            this.Metro_Proveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue;
+            this.Metro_Proveedor.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.Metro_Proveedor.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(0)))), ((int)(((byte)(132)))));
+            this.Metro_Proveedor.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Metro_Proveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_Proveedor.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Metro_Proveedor.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.Metro_Proveedor.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.Metro_Proveedor.TitleTextColor = System.Drawing.Color.Red;
+            this.Metro_Proveedor.Click += new System.EventHandler(this.Metro_Proveedor_Click);
+            // 
+            // Metro_CompraIngreso
+            // 
+            this.Metro_CompraIngreso.Image = ((System.Drawing.Image)(resources.GetObject("Metro_CompraIngreso.Image")));
+            this.Metro_CompraIngreso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_CompraIngreso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.Metro_CompraIngreso.Name = "Metro_CompraIngreso";
+            this.Metro_CompraIngreso.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_CompraIngreso.Text = "COMPRA INGRESO";
+            this.Metro_CompraIngreso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal;
+            this.Metro_CompraIngreso.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.Metro_CompraIngreso.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Metro_CompraIngreso.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(47)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.Metro_CompraIngreso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_CompraIngreso.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Metro_CompraIngreso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.Metro_CompraIngreso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.Metro_CompraIngreso.TitleTextColor = System.Drawing.Color.Red;
+            this.Metro_CompraIngreso.Click += new System.EventHandler(this.Metro_CompraIngreso_Click);
+            // 
+            // Metro_Seleccion
+            // 
+            this.Metro_Seleccion.Image = global::PRESENTER.Properties.Resources.hojaruta;
+            this.Metro_Seleccion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_Seleccion.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.Metro_Seleccion.Name = "Metro_Seleccion";
+            this.Metro_Seleccion.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_Seleccion.Text = "SELECCION";
+            this.Metro_Seleccion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum;
+            this.Metro_Seleccion.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.Metro_Seleccion.TileStyle.BackColor = System.Drawing.Color.Red;
+            this.Metro_Seleccion.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.Metro_Seleccion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_Seleccion.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Metro_Seleccion.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.Metro_Seleccion.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.Metro_Seleccion.TitleTextColor = System.Drawing.Color.Red;
+            this.Metro_Seleccion.Click += new System.EventHandler(this.Metro_Transformacion_Click);
+            // 
+            // Metro_Compra
+            // 
+            this.Metro_Compra.Image = global::PRESENTER.Properties.Resources.COMPRAS2;
+            this.Metro_Compra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_Compra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.Metro_Compra.Name = "Metro_Compra";
+            this.Metro_Compra.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_Compra.Text = "COMPRA";
+            this.Metro_Compra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish;
+            this.Metro_Compra.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.Metro_Compra.TileStyle.BackColor = System.Drawing.Color.Blue;
+            this.Metro_Compra.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Metro_Compra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_Compra.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Metro_Compra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.Metro_Compra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.Metro_Compra.TitleTextColor = System.Drawing.Color.Red;
+            this.Metro_Compra.Click += new System.EventHandler(this.Metro_Compra_Click);
             // 
             // SideNavPanel5
             // 
@@ -325,141 +586,6 @@
             this.btnReporteKardex.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnReporteKardex.TitleTextColor = System.Drawing.Color.Red;
             this.btnReporteKardex.Click += new System.EventHandler(this.btnReporteKardex_Click);
-            // 
-            // SideNavPanel6
-            // 
-            this.SideNavPanel6.Controls.Add(this.Panel2);
-            this.SideNavPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SideNavPanel6.Location = new System.Drawing.Point(144, 36);
-            this.SideNavPanel6.Name = "SideNavPanel6";
-            this.SideNavPanel6.Size = new System.Drawing.Size(880, 524);
-            this.SideNavPanel6.TabIndex = 109;
-            this.SideNavPanel6.Visible = false;
-            // 
-            // Panel2
-            // 
-            this.Panel2.Controls.Add(this.MetroTilePanel7);
-            this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel2.Location = new System.Drawing.Point(0, 0);
-            this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(880, 524);
-            this.Panel2.TabIndex = 1;
-            // 
-            // MetroTilePanel7
-            // 
-            this.MetroTilePanel7.BackColor = System.Drawing.Color.Transparent;
-            this.MetroTilePanel7.BackgroundImage = global::PRESENTER.Properties.Resources.avicola02;
-            this.MetroTilePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            // 
-            // 
-            // 
-            this.MetroTilePanel7.BackgroundStyle.BackColor = System.Drawing.Color.Transparent;
-            this.MetroTilePanel7.BackgroundStyle.Class = "MetroTilePanel";
-            this.MetroTilePanel7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.MetroTilePanel7.ContainerControlProcessDialogKey = true;
-            this.MetroTilePanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MetroTilePanel7.DragDropSupport = true;
-            this.MetroTilePanel7.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.Metro_Proveedor,
-            this.Metro_CompraIngreso,
-            this.Metro_Seleccion,
-            this.Metro_Compra});
-            this.MetroTilePanel7.ItemSpacing = 10;
-            this.MetroTilePanel7.Location = new System.Drawing.Point(0, 0);
-            this.MetroTilePanel7.MultiLine = true;
-            this.MetroTilePanel7.Name = "MetroTilePanel7";
-            this.MetroTilePanel7.Size = new System.Drawing.Size(880, 524);
-            this.MetroTilePanel7.TabIndex = 2;
-            this.MetroTilePanel7.Text = "mtp2Logistica";
-            // 
-            // Metro_Proveedor
-            // 
-            this.Metro_Proveedor.Image = global::PRESENTER.Properties.Resources.VENDEDOR;
-            this.Metro_Proveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Metro_Proveedor.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.Metro_Proveedor.Name = "Metro_Proveedor";
-            this.Metro_Proveedor.SymbolColor = System.Drawing.Color.Empty;
-            this.Metro_Proveedor.Text = "PROVEEDOR";
-            this.Metro_Proveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue;
-            this.Metro_Proveedor.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.Metro_Proveedor.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(0)))), ((int)(((byte)(132)))));
-            this.Metro_Proveedor.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Metro_Proveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Metro_Proveedor.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Metro_Proveedor.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
-            this.Metro_Proveedor.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.Metro_Proveedor.TitleTextColor = System.Drawing.Color.Red;
-            this.Metro_Proveedor.Click += new System.EventHandler(this.Metro_Proveedor_Click);
-            // 
-            // Metro_CompraIngreso
-            // 
-            this.Metro_CompraIngreso.Image = ((System.Drawing.Image)(resources.GetObject("Metro_CompraIngreso.Image")));
-            this.Metro_CompraIngreso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Metro_CompraIngreso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.Metro_CompraIngreso.Name = "Metro_CompraIngreso";
-            this.Metro_CompraIngreso.SymbolColor = System.Drawing.Color.Empty;
-            this.Metro_CompraIngreso.Text = "COMPRA INGRESO";
-            this.Metro_CompraIngreso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal;
-            this.Metro_CompraIngreso.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.Metro_CompraIngreso.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Metro_CompraIngreso.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(47)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
-            this.Metro_CompraIngreso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Metro_CompraIngreso.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Metro_CompraIngreso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
-            this.Metro_CompraIngreso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.Metro_CompraIngreso.TitleTextColor = System.Drawing.Color.Red;
-            this.Metro_CompraIngreso.Click += new System.EventHandler(this.Metro_CompraIngreso_Click);
-            // 
-            // Metro_Seleccion
-            // 
-            this.Metro_Seleccion.Image = global::PRESENTER.Properties.Resources.hojaruta;
-            this.Metro_Seleccion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Metro_Seleccion.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.Metro_Seleccion.Name = "Metro_Seleccion";
-            this.Metro_Seleccion.SymbolColor = System.Drawing.Color.Empty;
-            this.Metro_Seleccion.Text = "SELECCION";
-            this.Metro_Seleccion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum;
-            this.Metro_Seleccion.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.Metro_Seleccion.TileStyle.BackColor = System.Drawing.Color.Red;
-            this.Metro_Seleccion.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.Metro_Seleccion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Metro_Seleccion.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Metro_Seleccion.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
-            this.Metro_Seleccion.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.Metro_Seleccion.TitleTextColor = System.Drawing.Color.Red;
-            this.Metro_Seleccion.Click += new System.EventHandler(this.Metro_Transformacion_Click);
-            // 
-            // Metro_Compra
-            // 
-            this.Metro_Compra.Image = global::PRESENTER.Properties.Resources.COMPRAS2;
-            this.Metro_Compra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Metro_Compra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.Metro_Compra.Name = "Metro_Compra";
-            this.Metro_Compra.SymbolColor = System.Drawing.Color.Empty;
-            this.Metro_Compra.Text = "COMPRA";
-            this.Metro_Compra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish;
-            this.Metro_Compra.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.Metro_Compra.TileStyle.BackColor = System.Drawing.Color.Blue;
-            this.Metro_Compra.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Metro_Compra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Metro_Compra.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Metro_Compra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
-            this.Metro_Compra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.Metro_Compra.TitleTextColor = System.Drawing.Color.Red;
-            this.Metro_Compra.Visible = false;
-            this.Metro_Compra.Click += new System.EventHandler(this.Metro_Compra_Click);
             // 
             // sideNavPanel7
             // 
@@ -808,133 +934,6 @@
             this.MetroTileItem10.TileStyle.BackColor2 = System.Drawing.Color.DodgerBlue;
             this.MetroTileItem10.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.MetroTileItem10.TitleText = "PRECIOS";
-            // 
-            // SideNav_Conf
-            // 
-            this.SideNav_Conf.Controls.Add(this.MetroTilePanel1);
-            this.SideNav_Conf.Controls.Add(this.PictureBox4);
-            this.SideNav_Conf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SideNav_Conf.Location = new System.Drawing.Point(144, 36);
-            this.SideNav_Conf.Name = "SideNav_Conf";
-            this.SideNav_Conf.Size = new System.Drawing.Size(880, 524);
-            this.SideNav_Conf.TabIndex = 2;
-            // 
-            // MetroTilePanel1
-            // 
-            this.MetroTilePanel1.BackColor = System.Drawing.Color.Transparent;
-            this.MetroTilePanel1.BackgroundImage = global::PRESENTER.Properties.Resources.avicola02;
-            this.MetroTilePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            // 
-            // 
-            // 
-            this.MetroTilePanel1.BackgroundStyle.BackColor = System.Drawing.Color.Transparent;
-            this.MetroTilePanel1.BackgroundStyle.Class = "MetroTilePanel";
-            this.MetroTilePanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.MetroTilePanel1.ContainerControlProcessDialogKey = true;
-            this.MetroTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MetroTilePanel1.DragDropSupport = true;
-            this.MetroTilePanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MetroTilePanel1.ForeColor = System.Drawing.Color.White;
-            this.MetroTilePanel1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btConfRoles,
-            this.btConfUsuarios,
-            this.btConfCliente,
-            this.metroTileItem4});
-            this.MetroTilePanel1.ItemSpacing = 10;
-            this.MetroTilePanel1.Location = new System.Drawing.Point(0, 0);
-            this.MetroTilePanel1.MultiLine = true;
-            this.MetroTilePanel1.Name = "MetroTilePanel1";
-            this.MetroTilePanel1.Size = new System.Drawing.Size(880, 410);
-            this.MetroTilePanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.MetroTilePanel1.TabIndex = 0;
-            this.MetroTilePanel1.Text = "mtp1Configuracion";
-            // 
-            // btConfRoles
-            // 
-            this.btConfRoles.Image = global::PRESENTER.Properties.Resources.ROLES;
-            this.btConfRoles.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btConfRoles.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.btConfRoles.Name = "btConfRoles";
-            this.btConfRoles.SymbolColor = System.Drawing.Color.Black;
-            this.btConfRoles.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btConfRoles.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.btConfRoles.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.btConfRoles.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(30)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.btConfRoles.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot;
-            this.btConfRoles.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot;
-            this.btConfRoles.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot;
-            this.btConfRoles.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot;
-            this.btConfRoles.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btConfRoles.TileStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btConfRoles.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.btConfRoles.TitleText = "ROLES";
-            this.btConfRoles.TitleTextColor = System.Drawing.Color.White;
-            this.btConfRoles.Visible = false;
-            // 
-            // btConfUsuarios
-            // 
-            this.btConfUsuarios.Image = global::PRESENTER.Properties.Resources.USUARIO;
-            this.btConfUsuarios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btConfUsuarios.Name = "btConfUsuarios";
-            this.btConfUsuarios.SymbolColor = System.Drawing.Color.Empty;
-            this.btConfUsuarios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btConfUsuarios.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.btConfUsuarios.TileStyle.BackColor = System.Drawing.Color.MediumOrchid;
-            this.btConfUsuarios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(75)))), ((int)(((byte)(0)))), ((int)(((byte)(130)))));
-            this.btConfUsuarios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btConfUsuarios.TitleText = "USUARIOS";
-            this.btConfUsuarios.Visible = false;
-            // 
-            // btConfCliente
-            // 
-            this.btConfCliente.Image = global::PRESENTER.Properties.Resources.REPORTE_CHECK;
-            this.btConfCliente.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btConfCliente.Name = "btConfCliente";
-            this.btConfCliente.SymbolColor = System.Drawing.Color.Empty;
-            this.btConfCliente.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
-            this.btConfCliente.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.btConfCliente.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btConfCliente.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(165)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.btConfCliente.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btConfCliente.TitleText = "BITACORA";
-            this.btConfCliente.Visible = false;
-            // 
-            // metroTileItem4
-            // 
-            this.metroTileItem4.Image = global::PRESENTER.Properties.Resources.LIBRERIA;
-            this.metroTileItem4.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTileItem4.Name = "metroTileItem4";
-            this.metroTileItem4.SymbolColor = System.Drawing.Color.Empty;
-            this.metroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.metroTileItem4.TileSize = new System.Drawing.Size(250, 135);
-            // 
-            // 
-            // 
-            this.metroTileItem4.TileStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.metroTileItem4.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(184)))), ((int)(((byte)(134)))), ((int)(((byte)(11)))));
-            this.metroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.metroTileItem4.TitleText = "LIBRERIA";
-            this.metroTileItem4.Visible = false;
-            // 
-            // PictureBox4
-            // 
-            this.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PictureBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PictureBox4.Location = new System.Drawing.Point(0, 410);
-            this.PictureBox4.Name = "PictureBox4";
-            this.PictureBox4.Size = new System.Drawing.Size(880, 114);
-            this.PictureBox4.TabIndex = 2;
-            this.PictureBox4.TabStop = false;
-            this.PictureBox4.Visible = false;
             // 
             // SideNavPanel1
             // 
@@ -1345,7 +1344,6 @@
             // 
             // FP_Administracion
             // 
-            this.FP_Administracion.Checked = true;
             this.FP_Administracion.Name = "FP_Administracion";
             this.FP_Administracion.Panel = this.SideNav_Conf;
             this.FP_Administracion.Symbol = "";
@@ -1383,6 +1381,7 @@
             // 
             // FP_COMPRAS
             // 
+            this.FP_COMPRAS.Checked = true;
             this.FP_COMPRAS.Name = "FP_COMPRAS";
             this.FP_COMPRAS.Panel = this.SideNavPanel6;
             this.FP_COMPRAS.Symbol = "";
@@ -1541,10 +1540,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.SideNav1.ResumeLayout(false);
             this.SideNav1.PerformLayout();
-            this.SideNavPanel5.ResumeLayout(false);
-            this.Panel1.ResumeLayout(false);
+            this.SideNav_Conf.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).EndInit();
             this.SideNavPanel6.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
+            this.SideNavPanel5.ResumeLayout(false);
+            this.Panel1.ResumeLayout(false);
             this.sideNavPanel7.ResumeLayout(false);
             this.sideNavPanel8.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1552,8 +1553,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl3)).EndInit();
             this.superTabControl3.ResumeLayout(false);
             this.SideNavPanel4.ResumeLayout(false);
-            this.SideNav_Conf.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox4)).EndInit();
             this.SideNavPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.SideNavPanel2.ResumeLayout(false);

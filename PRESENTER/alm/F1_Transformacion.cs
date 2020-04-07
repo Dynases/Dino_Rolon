@@ -51,7 +51,7 @@ namespace PRESENTER.com
             {
                 LblTitulo.Text = _NombreFormulario;
                 MP_CargarAlmacenes();
-                btnMax.Visible = false;
+               btnMax.Visible = false;
                 MP_CargarEncabezado();
                 MP_InHabilitar();
             }

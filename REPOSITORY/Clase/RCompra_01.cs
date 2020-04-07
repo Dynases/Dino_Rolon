@@ -168,18 +168,17 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Consultas
-        public List<VCompra_01_Lista> Lista()
+        public List<VCompra_01> Lista()
         {
             try
             {
-
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Compra_01
                                       join b in db.Producto on a.IdProducto equals b.Id
                                       join c in db.Libreria on b.UniVen equals c.IdLibrer
                                       where c.IdGrupo.Equals((int)ENEstaticosGrupo.PRODUCTO) && c.IdOrden.Equals((int)ENEstaticosOrden.PRODUCTO_UN_VENTA)
-                                      select new VCompra_01_Lista
+                                      select new VCompra_01
                                       {
                                           Id = a.Id,
                                           IdCompra = a.IdCompra,

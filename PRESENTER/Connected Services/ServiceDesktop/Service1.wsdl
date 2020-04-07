@@ -494,11 +494,17 @@
   <wsdl:message name="IServiceDesktop_Transformacion_01_TraerFilaProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:Transformacion_01_TraerFilaProductoResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_Guardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:Guardar" />
+  <wsdl:message name="IServiceDesktop_CompraGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraGuardar" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_Guardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GuardarResponse" />
+  <wsdl:message name="IServiceDesktop_CompraGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraModificarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraModificarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraModificarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraModificarEstadoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Compra_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Compra_Lista" />
@@ -869,9 +875,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProducto" message="tns:IServiceDesktop_Transformacion_01_TraerFilaProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Transformacion_01_TraerFilaProductoResponse" message="tns:IServiceDesktop_Transformacion_01_TraerFilaProducto_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Guardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Guardar" message="tns:IServiceDesktop_Guardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/GuardarResponse" message="tns:IServiceDesktop_Guardar_OutputMessage" />
+    <wsdl:operation name="CompraGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraGuardar" message="tns:IServiceDesktop_CompraGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraGuardarResponse" message="tns:IServiceDesktop_CompraGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompraModificarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado" message="tns:IServiceDesktop_CompraModificarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse" message="tns:IServiceDesktop_CompraModificarEstado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_Lista" message="tns:IServiceDesktop_Compra_Lista_InputMessage" />
@@ -1609,8 +1619,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Guardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Guardar" style="document" />
+    <wsdl:operation name="CompraGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraModificarEstado">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraModificarEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
