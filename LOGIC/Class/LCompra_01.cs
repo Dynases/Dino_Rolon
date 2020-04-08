@@ -74,11 +74,24 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
-        public List<VCompra_01> Listar()
+        public List<VCompra_01> Listar(int IdCompra)
         {
             try
             {
-                return iCompra_01.Lista();
+                return iCompra_01.Lista( IdCompra);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, DateTime? fechaVen)
+        {
+            try
+            {
+                return iCompra_01.ExisteEnLoteEnUsoVenta_01(IdProducto, lote, fechaVen);
             }
             catch (Exception ex)
             {

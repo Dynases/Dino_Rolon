@@ -45,7 +45,9 @@ namespace REPOSITORY.Clase
         }
         public bool Modificar(decimal cantidad,
                             int IdDetalle,
-                            int concepto)
+                            int concepto,
+                            string lote,
+                            DateTime? fechaVen)
 
         {
             try
@@ -54,7 +56,9 @@ namespace REPOSITORY.Clase
                 {
                     var ti0021 = db.TI0021.FirstOrDefault(b => b.icibid == db.TI002.FirstOrDefault(c => c.ibiddc == IdDetalle &&
                                                                                                          c.ibconcep == concepto)
-                                                                                                      .ibid);
+                                                                                                        .ibid);
+                    ti0021.iclot = lote;
+                    ti0021.icfvenc = fechaVen;
                     ti0021.iccant = cantidad;            
                     db.TI0021.Attach(ti0021);
                     db.Entry(ti0021).State = EntityState.Modified;

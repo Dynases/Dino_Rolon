@@ -512,6 +512,12 @@
   <wsdl:message name="IServiceDesktop_Compra_Lista_OutputMessage">
     <wsdl:part name="parameters" element="tns:Compra_ListaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01Response" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Compra_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Compra_01_Lista" />
   </wsdl:message>
@@ -886,6 +892,10 @@
     <wsdl:operation name="Compra_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_Lista" message="tns:IServiceDesktop_Compra_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_ListaResponse" message="tns:IServiceDesktop_Compra_Lista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Compra_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_01_Lista" message="tns:IServiceDesktop_Compra_01_Lista_InputMessage" />
@@ -1639,6 +1649,15 @@
     </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Compra_Lista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

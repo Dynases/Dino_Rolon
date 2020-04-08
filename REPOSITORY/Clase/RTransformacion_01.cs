@@ -213,7 +213,9 @@ namespace REPOSITORY.Clase
                                                 //MODIFICA EL DETALLE DE MOVIMIENTO
                                                 if (!this.tI0021.Modificar(i.Total,
                                                                       i.Id,
-                                                                      (int)ENConcepto.TRANSFORMACION_SALIDA))
+                                                                      (int)ENConcepto.TRANSFORMACION_SALIDA,
+                                                                       lote,
+                                                                        fechaVen))
                                                 {
                                                     return false;
                                                 }
@@ -259,7 +261,9 @@ namespace REPOSITORY.Clase
                                                 //MODIFICA EL DETALLE DE MOVIMIENTO
                                                 if (!this.tI0021.Modificar(i.TotalProd,
                                                                       i.Id,
-                                                                      (int)ENConcepto.TRANSFORMACION_INGRESO))
+                                                                      (int)ENConcepto.TRANSFORMACION_INGRESO,
+                                                                      lote,
+                                                                      fechaVen))
                                                 {
                                                     return false;
                                                 }

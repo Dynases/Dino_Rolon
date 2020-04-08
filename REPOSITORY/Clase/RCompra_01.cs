@@ -91,14 +91,15 @@ namespace REPOSITORY.Clase
                                                          Select(c => c.Descrip).FirstOrDefault();                    
 
                     var Observacion = (compra.Id + " - " + " I -Compra numiprod: " + Lista.IdProducto + "| " + Proveedor);
-                    //Modifica el movimiento de inventario y actualiza el stock
+                    //Modifica el movimiento de inventario, actualiza el stock, lote y fechavencimiento.
                     if (!tI001.ModificarMovimientoInventario(Lista.Id,
                                                        Lista.IdProducto.ToString(),
                                                         compra.IdAlmacen,
-                                                        Lista.Lote, Lista.FechaVen,
+                                                        compra_01.Lote, compra_01.FechaVen,
                                                         compra_01.Canti, Lista.Cantidad,
                                                         (int)ENConcepto.COMPRAS,
-                                                        Observacion, usuario))
+                                                        Observacion, usuario,
+                                                        Lista.Lote, Lista.FechaVen))
                     {
                         return false;
                     }
@@ -168,7 +169,7 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Consultas
-        public List<VCompra_01> Lista()
+        public List<VCompra_01> Lista(int IdCompra)
         {
             try
             {
@@ -177,7 +178,8 @@ namespace REPOSITORY.Clase
                     var listResult = (from a in db.Compra_01
                                       join b in db.Producto on a.IdProducto equals b.Id
                                       join c in db.Libreria on b.UniVen equals c.IdLibrer
-                                      where c.IdGrupo.Equals((int)ENEstaticosGrupo.PRODUCTO) && c.IdOrden.Equals((int)ENEstaticosOrden.PRODUCTO_UN_VENTA)
+                                      where c.IdGrupo.Equals((int)ENEstaticosGrupo.PRODUCTO) && c.IdOrden.Equals((int)ENEstaticosOrden.PRODUCTO_UN_VENTA) &&
+                                      a.IdCompra == IdCompra
                                       select new VCompra_01
                                       {
                                           Id = a.Id,
@@ -204,7 +206,29 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Verificaciones
-
+        //Hacer uno para Verificar cambios de lote en VENTA.
+        public bool ExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, DateTime? fechaVen)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Compra
+                                     join b in db.Compra_01 on a.Id equals b.IdCompra
+                                     where b.IdProducto== IdProducto &&
+                                           b.Lote.Equals(lote) &&
+                                           b.FechaVen.Equals(fechaVen)&&
+                                           a.Estado != (int)ENEstado.ELIMINAR
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+       
         #endregion
 
     }

@@ -20,6 +20,7 @@ using ENTITY.Proveedor.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.ven.view;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.Serialization;
@@ -316,10 +317,14 @@ namespace SERVICE
         [OperationContract]
         List<VCompraLista> Compra_Lista();
         #endregion
+        #region Verificaciones
+        [OperationContract]
+        bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, DateTime? fechaVen);
+        #endregion
         #endregion
         #region Compra_01
         [OperationContract]
-        List<VCompra_01> Compra_01_Lista();
+        List<VCompra_01> Compra_01_Lista(int IdCompra);
         #endregion
         ///**********PLANTILLA******************
         ///

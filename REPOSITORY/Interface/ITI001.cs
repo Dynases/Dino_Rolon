@@ -37,7 +37,7 @@ namespace REPOSITORY.Interface
                                decimal cantidad2,
                                int concepto,
                                string Observacion,
-                               string usuario);
+                               string usuario, string loteNuevo, DateTime? fechaVenNuevo);
         bool EliminarMovimientoInventario(int idDetalle,
                               string idProducto,
                               int idAlmacen,

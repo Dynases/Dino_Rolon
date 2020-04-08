@@ -1121,18 +1121,34 @@ namespace SERVICE
             }
         }
 
-        public List<VCompra_01> Compra_01_Lista()
+        public List<VCompra_01> Compra_01_Lista(int IdCompra)
         {
             try
             {
-                var listResult = new LCompra_01().Listar();
+                var listResult = new LCompra_01().Listar(IdCompra);
                 return listResult;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-        }        
+        }
+        #endregion
+        #region Verificaciones
+
+        public bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, DateTime? fechaVen)
+        {
+            try
+            {
+                var listResult = new LCompra_01().ExisteEnLoteEnUsoVenta_01(IdProducto, lote, fechaVen);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
         #endregion
 

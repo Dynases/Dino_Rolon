@@ -155,7 +155,7 @@ namespace PRESENTER.com
         {
             try
             {
-                ListaDetalle = new ServiceDesktop.ServiceDesktopClient().Compra_01_Lista().Where(a => a.IdCompra == id).ToList();
+                ListaDetalle = new ServiceDesktop.ServiceDesktopClient().Compra_01_Lista(id).ToList();
                 MP_ArmarDetalle();
 
             }
@@ -521,7 +521,7 @@ namespace PRESENTER.com
                 List<ENTITY.Producto.View.VProductoLista> result;
                 //Productos materia prima
                 GPanel_Producto.Text = "PRODUCTOS DE COMERCIALES";
-                result = new ServiceDesktop.ServiceDesktopClient().ProductoListar().Where(p => p.Tipo.Equals(2)).ToList();
+                result = new ServiceDesktop.ServiceDesktopClient().ProductoListar().Where(p => p.Tipo.Equals(1)).ToList();
                 MP_CargarProducto(result);
                 MP_HabilitarProducto();
             }
@@ -887,8 +887,90 @@ namespace PRESENTER.com
         {
             MP_ObtenerCalculo();
         }
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = 0;
+                    Dgv_GBuscador.Row = _MPos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _MPos = Dgv_GBuscador.Row;
+                if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = _MPos - 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _MPos = Dgv_GBuscador.Row;
+                if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+                {
+                    _MPos = Dgv_GBuscador.Row + 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _MPos = Dgv_GBuscador.Row;
+                if (Dgv_GBuscador.RowCount > 0)
+                {
+                    _MPos = Dgv_GBuscador.RowCount - 1;
+                    Dgv_GBuscador.Row = _MPos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         #endregion
         #region Metodo heredados
+        private void MP_VerificarExistenciaLote()
+        {
+            int IdCompra = Convert.ToInt32(Tb_Id.Text);
+            var compra_01 = new ServiceDesktop.ServiceDesktopClient().Compra_01_Lista(IdCompra).ToList();
+            var detalle = ((List<VCompra_01>)Dgv_Detalle.DataSource).ToList();
+            foreach (var item in detalle)
+            {
+                if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(IdCompra))
+                {
+                    throw new Exception("La compra esta asociado a una Seleccion.");
+                }
+                var producto = compra_01.Where(p=> p.IdProducto == item.IdProducto).FirstOrDefault();
+                if (item.Lote == producto.Lote && item.FechaVen == producto.FechaVen)
+                {
+
+                }
+            }
+           
+        }
         public override bool MH_NuevoRegistro()
         {
             bool resultado = false;
@@ -985,7 +1067,7 @@ namespace PRESENTER.com
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje = Mensaje.ToArray();
-                    resul = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ModificarEstado(IdCompra, (int)ENEstado.ELIMINAR, ref LMensaje);
+                    resul = new ServiceDesktop.ServiceDesktopClient().CompraModificarEstado(IdCompra, (int)ENEstado.ELIMINAR, ref LMensaje);
                     if (resul)
                     {
                         MP_Filtrar(1);
@@ -1027,6 +1109,7 @@ namespace PRESENTER.com
         }        
         public override void MH_Modificar()
         {
+            
             MP_Habilitar();
         }
         public override void MH_Salir()
@@ -1078,8 +1161,7 @@ namespace PRESENTER.com
             }
         }
 
+       
         #endregion
-
-   
     }
 }

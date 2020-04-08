@@ -163,7 +163,7 @@ namespace REPOSITORY.Clase
         }
         public bool ModificarMovimientoInventario(int idDetalle, string idProducto, int idAlmacen, string lote, 
                                         DateTime? fechaVen, decimal cantidad, decimal cantidad2, int concepto,
-                                        string Observacion, string usuario)
+                                        string Observacion, string usuario, string loteNuevo, DateTime? fechaVenNuevo)
         {
             try
             {
@@ -171,7 +171,7 @@ namespace REPOSITORY.Clase
                 {                   
                     if (!this.ExisteProducto(idProducto, idAlmacen, lote, fechaVen))
                     {
-                        if (!this.Nuevo(idAlmacen, idProducto, cantidad2, lote, fechaVen))
+                        if (!this.Nuevo(idAlmacen, idProducto, cantidad2, loteNuevo, fechaVenNuevo))
                         {
                             return false;
                         }
@@ -180,8 +180,8 @@ namespace REPOSITORY.Clase
                                                     idAlmacen,
                                                     cantidad,
                                                     cantidad2,
-                                                    lote,
-                                                    fechaVen))
+                                                    loteNuevo,
+                                                    fechaVenNuevo))
                     {
                         return false;
                     }
@@ -200,7 +200,9 @@ namespace REPOSITORY.Clase
                         //MODIFICA EL DETALLE DE MOVIMIENTO
                         if (!this.tI0021.Modificar(cantidad2,
                                               idDetalle,
-                                              concepto))
+                                              concepto,
+                                              loteNuevo,
+                                              fechaVenNuevo))
                         {
                             return false;
                         }
