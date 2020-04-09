@@ -1,6 +1,8 @@
 ﻿using ENTITY.Cliente.View;
 using REPOSITORY.Clase;
+using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
+using REPOSITORY.Interface.DiSoft;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +13,14 @@ namespace LOGIC.Class
     public class LCliente
     {
         protected ICliente iCliente;
+        protected IClienteD iClienteD;
+        protected IZonaD iZonaD;
 
         public LCliente()
         {
             iCliente = new RCliente();
+            iClienteD = new RClienteD();
+            iZonaD = new RZonaD();
         }
 
         #region Consultas
@@ -22,7 +28,8 @@ namespace LOGIC.Class
         {
             try
             {
-                return iCliente.Listar();
+                var lista = iCliente.Listar();
+                return lista;
             }
             catch (Exception ex)
             {
@@ -33,6 +40,7 @@ namespace LOGIC.Class
         {
             try
             {
+                
                 return iCliente.ListarCliente(id);
             }
             catch (Exception ex)
@@ -44,7 +52,11 @@ namespace LOGIC.Class
         {
             try
             {
-                return iCliente.ListarClientes();
+                List<VClienteLista> lista = new List<VClienteLista>();
+                lista = iCliente.ListarClientes();
+                //Anade la Zona desde el disoft
+                lista = iZonaD.ListarClienteAdicionarZona(lista);
+                return lista;
             }
             catch (Exception ex)
             {
@@ -71,7 +83,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iCliente.Guardar(vcliente, ref idCliente);
+                    bool result = false;
+                     result = iCliente.Guardar(vcliente, ref idCliente);
+                    //Guarda en el cliente 
+                     result = iClienteD.Guardar(vcliente, ref idCliente);
                     scope.Complete();
                     return result;
                 }
@@ -87,7 +102,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iCliente.Modificar(vcliente, idCliente);
+                    bool result = false;
+                    result = iCliente.Modificar(vcliente, idCliente);
+                    //Guarda en el cliente 
+                    result = iClienteD.Guardar(vcliente,ref idCliente);
                     scope.Complete();
                     return result;
                 }
@@ -103,8 +121,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-
-                    var result = iCliente.Eliminar(IdCliente);
+                    bool result = false;
+                    result = iCliente.Eliminar(IdCliente);
+                    //ELIMINA EL CLIENTE DE DISOFT
+                    result = iClienteD.Eliminar(IdCliente);
                     scope.Complete();
                     return result;
                 }

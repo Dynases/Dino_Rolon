@@ -30,6 +30,7 @@
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd27" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceDesktop_GetData_InputMessage">
@@ -572,6 +573,12 @@
   <wsdl:message name="IServiceDesktop_VentaDetalleListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:VentaDetalleListarResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ZonaListar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ZonaListar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ZonaListar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ZonaListarResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/GetData" message="tns:IServiceDesktop_GetData_InputMessage" />
@@ -932,6 +939,10 @@
     <wsdl:operation name="VentaDetalleListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse" message="tns:IServiceDesktop_VentaDetalleListar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ZonaListar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ZonaListar" message="tns:IServiceDesktop_ZonaListar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ZonaListarResponse" message="tns:IServiceDesktop_ZonaListar_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
@@ -1739,6 +1750,15 @@
     </wsdl:operation>
     <wsdl:operation name="VentaDetalleListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZonaListar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ZonaListar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

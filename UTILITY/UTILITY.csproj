@@ -226,6 +226,7 @@
     <Compile Include="Enum\EnEstaticos\ENLibreriaFacturacion.cs" />
     <Compile Include="Enum\ENConceptoPlantilla.cs" />
     <Compile Include="Enum\ENProductoEstado.cs" />
+    <Compile Include="Enum\EnTipoCategoria.cs" />
     <Compile Include="Enum\ENTipoTelefono.cs" />
     <Compile Include="Global\ConexionGlobal.cs" />
     <Compile Include="Global\GLCelda.cs" />

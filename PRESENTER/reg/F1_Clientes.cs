@@ -26,6 +26,7 @@ using GMap.NET.WindowsForms.ToolTips;
 using System.IO;
 using UTILITY.Enum.EnCarpetas;
 using PRESENTER.frm;
+using UTILITY.Enum.EnEstado;
 
 namespace PRESENTER.reg
 {
@@ -157,8 +158,11 @@ namespace PRESENTER.reg
                 UTGlobal.MG_ArmarCombo(Cb_CliFacturacion,
                                        new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
                                                                                                      Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
-                var comboCatPrecio = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().Where(a => a.Tipo.Equals((int)ENCategoriaPrecio.VENTA)).ToList();
+                var comboCatPrecio = new ServiceDesktop.ServiceDesktopClient().PrecioCategoriaListar().Where(a => a.Tipo.Equals((int)EnTipoCategoria.VENTA)).ToList();
                 UTGlobal.MG_ArmarCombo_CatPrecio(Cb_CatPrecio, comboCatPrecio);
+
+                var LZona = new ServiceDesktop.ServiceDesktopClient().ZonaListar().ToList();
+                UTGlobal.MG_ArmarComboZona(Cb_CliCiudad, LZona);
             }
             catch (Exception ex)
             {
@@ -394,7 +398,7 @@ namespace PRESENTER.reg
                 Tb_TotalCred.Value = 0;
                 if (_Limpiar == false)
                 {
-                    UTGlobal.MG_SeleccionarCombo(Cb_CliCiudad);
+                    UTGlobal.MG_SeleccionarCombo_Zona(Cb_CliCiudad);
                     UTGlobal.MG_SeleccionarCombo(Cb_CliFacturacion);
                     UTGlobal.MG_SeleccionarCombo_CatPrecio(Cb_CatPrecio);
                 }
@@ -419,7 +423,7 @@ namespace PRESENTER.reg
                 Txb_CliRazonSoc.Text = tabla.RazonSocial;
                 Txb_CliNit.Text = tabla.Nit;
                 Chb_CliContado.Checked = tabla.TipoCliente == 1 ? true : false;
-                Chb_CliCredito.Checked = tabla.TipoCliente == 0 ? true : false;
+                Chb_CliCredito.Checked = tabla.TipoCliente == 2 ? true : false;
                 Txb_CliDireccion.Text = tabla.Direcccion;
                 Txb_CliContacto1.Text = tabla.Contacto1;
                 Txb_CliContacto2.Text = tabla.Contacto2;
@@ -563,8 +567,9 @@ namespace PRESENTER.reg
                     IdSpyre = Txb_CliCodSpyre.Text,
                     Descripcion = Txb_CliDescripcion.Text,
                     RazonSocial = Txb_CliRazonSoc.Text,
+                    Estado = (int)ENEstado.GUARDADO,
                     Nit = Txb_CliNit.Text,
-                    TipoCliente = Chb_CliContado.Checked ? 1 : 0,
+                    TipoCliente = Chb_CliContado.Checked ? 1 : 2,
                     Direcccion = Txb_CliDireccion.Text,
                     Contacto1 = Txb_CliContacto1.Text,
                     Contacto2 = Txb_CliContacto2.Text,

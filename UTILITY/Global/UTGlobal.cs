@@ -16,6 +16,7 @@ using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.TipoAlmacen.view;
 using ENTITY.reg.PrecioCategoria.View;
+using ENTITY.DiSoft.Zona;
 
 namespace UTILITY.Global
 {
@@ -62,15 +63,15 @@ namespace UTILITY.Global
             {
                 combo.DropDownList.Columns.Clear();
                 combo.DropDownList.Columns.Add("Id").Width = 50;
-                combo.DropDownList.Columns[0].Caption = "Cod";
-                combo.DropDownList.Columns[0].Visible = false;
+                combo.DropDownList.Columns[0].Caption = "Id";
+                combo.DropDownList.Columns[0].Visible = true;
 
-                combo.DropDownList.Columns.Add("Descrip").Width = 150;
+                combo.DropDownList.Columns.Add("Cod").Width = 150;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
 
                 combo.ValueMember = "Id";
-                combo.DisplayMember = "Descrip";
+                combo.DisplayMember = "Cod";
                 combo.DropDownList.DataSource = lLibreria;
                 combo.DropDownList.Refresh();
             }
@@ -148,6 +149,38 @@ namespace UTILITY.Global
                 throw new Exception(ex.Message);
             }
         }
+        public static void MG_ArmarComboZona(MultiColumnCombo combo, List<VZona> lZona)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Id";
+                combo.DropDownList.Columns[0].Visible = true;
+
+                combo.DropDownList.Columns.Add("Ciudad").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Ciudad";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Provincia").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Provincia";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Zona").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Zona";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Zona";
+                combo.DropDownList.DataSource = lZona;
+                combo.DropDownList.Refresh();
+                combo.Value = 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public static void MG_ArmarComboTipoAlmacen(MultiColumnCombo combo, List<VTipoAlmacenCombo> lTipoAlmacen)
         {
@@ -190,8 +223,26 @@ namespace UTILITY.Global
             {
                 throw new Exception();
             }
-        }      
-         public static void MG_SeleccionarCombo_CatPrecio(MultiColumnCombo combo)
+        }
+        public static void MG_SeleccionarCombo_Zona(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VZona>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarCombo_CatPrecio(MultiColumnCombo combo)
         {
             try
             {

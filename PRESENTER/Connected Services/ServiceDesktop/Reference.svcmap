@@ -52,6 +52,7 @@
     <MetadataFile FileName="ServiceDesktop25.xsd" MetadataType="Schema" ID="95b808cc-fae4-4d49-8fc9-d10248c8bde3" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd20" />
     <MetadataFile FileName="ServiceDesktop26.xsd" MetadataType="Schema" ID="eb0f281f-c0e1-4136-8121-600c415c5a99" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd21" />
     <MetadataFile FileName="ServiceDesktop27.xsd" MetadataType="Schema" ID="05027db7-205a-4247-aa15-88cc57d5aaae" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd9" />
+    <MetadataFile FileName="ServiceDesktop28.xsd" MetadataType="Schema" ID="d082576a-cf3a-4f9d-bd33-e2e2f0c5db68" SourceId="1" SourceUrl="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd28" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

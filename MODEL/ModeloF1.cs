@@ -97,7 +97,7 @@ namespace MODEL
         {
             try
             {
-                VM_Nuevo = false;
+                VM_Nuevo = false;          
                 MH_Modificar();
                 MP_Inhabilitar();
             }

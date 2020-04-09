@@ -121,62 +121,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        //         using (var db = GetEsquema())
-        //                {
-        //                    var cliente = new Cliente();
-        //    cliente.IdSpyre = vcliente.IdSpyre;
-        //                    cliente.Estado = vcliente.Estado;
-        //                    cliente.Descrip = vcliente.Descripcion;
-        //                    cliente.RazonSo = vcliente.RazonSocial;
-        //                    cliente.Nit = vcliente.Nit;
-        //                    cliente.TipoCli = vcliente.TipoCliente;
-        //                    cliente.Nit = vcliente.Nit;
-        //                    cliente.Nit = vcliente.Nit;
-        //                    foreach (var vtelefono in vcliente.Telefonos)
-        //                    {
-        //                        var telefono = new Telefono
-        //                        {
-        //                            Descripcion = vtelefono.Descripcion,
-        //                            Tipo = vtelefono.Tipo
-        //                        };
-        //    cliente.Telefono.Add(telefono);
-        //                    }
-        //db.Cliente.Add(cliente);
-        //                    db.SaveChanges();
-        //                    idCLiente = cliente.Id;
-        //                    return true;
-        //                }
-        //public List<VCliente> Listar(string Nombre)
-        //{
-        //    try
-        //    {
-        //        using (var db= GetEsquema())
-        //        {
-        //            var listResult = (from a in db.Cliente
-        //                              where a.Nombre.Contains(Nombre)
-        //                              select new VCliente
-        //                              {
-        //                                  Id = a.Id,
-        //                                  Nombre = a.Nombre,
-        //                                  Apellido = a.Apellido,
-        //                                  Direccion = a.Direccion,
-        //                                  //Telefonos = a.Telefono.Where(b=>b.Tipo==(int)ENTipoTelefono.Celular).FirstOrDefault() != null ? a.Telefono.FirstOrDefault().Descripcion : string.Empty
-        //                                  Telefonos = (from b in a.Telefono
-        //                                               select new VTelefono
-        //                                               {
-        //                                                   Id = b.Id,
-        //                                                   Descripcion = b.Descripcion,
-        //                                                   Tipo = b.Tipo,
-        //                                               }).ToList()
-        //                              }).ToList();
-        //            return listResult;
-        //        }                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
+      
         public List<VCliente> Listar()
         {
             try
@@ -216,26 +161,14 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.Cliente
-                                      join c in db.Libreria on 
-                                        new {
-                                            Grupo = 1,
-                                            Orden = 1,                                         
-                                            Libreria =a.Ciudad
-                                        }
-                                        equals
-                                        new {
-                                            Grupo = c.IdGrupo,
-                                            Orden = c.IdOrden,
-                                            Libreria = c.IdLibrer
-                                        }                                    
+                    var listResult = (from a in db.Cliente                                                                        
                                       select new VClienteLista
                                       {
                                           Id = a.Id,                                          
                                           Descripcion = a.Descrip,
-                                          RazonSocial = a.RazonSo, 
-                                          Ciudad =a.Ciudad,
-                                          NombreCiudad = c.Descrip,
+                                          RazonSocial = a.RazonSo,
+                                          Ciudad = a.Ciudad,
+                                          NombreCiudad = "",
                                           Contacto1 = a.Contac1,
                                           Contacto2 = a.Contac2,                                    
                                       }).ToList();

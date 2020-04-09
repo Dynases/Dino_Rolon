@@ -98,13 +98,13 @@ namespace PRESENTER.reg
                                                 new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList());
 
                 MP_CargarCategoria();
-                //MP_InHabilitar();
-                BtnExportar.Visible = true;
+                //MP_InHabilitar();              
                 BtnNuevo.Visible = false;
                 BtnEliminar.Visible = false;
                 BtnImprimir.Visible = false;
                 BtnExportar.Text = "IMPORTAR";
                 MP_InHabilitar();
+                BtnExportar.Visible = true;
             }
             catch (Exception ex)
             {

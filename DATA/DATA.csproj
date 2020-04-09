@@ -183,6 +183,39 @@
     <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiSoft\DiSoftModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiSoftModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\DiSoftModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\DiSoftModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiSoftModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC004.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC0041.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC0042.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC004B.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC0051.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TL001.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,15 +227,20 @@
     <None Include="EntityDataModel\DiAvi\DiAviModel.edmx.diagram">
       <DependentUpon>DiAviModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="EntityDataModel\DiSoft\DiSoftModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DiSoftModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityDataModel\DiSoft\DiSoftModel.edmx.diagram">
+      <DependentUpon>DiSoftModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityDataModel\DiSoft\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="EntityDataModel\DiAvi\DiAviModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -213,6 +251,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiAviModel.edmx</DependentUpon>
       <LastGenOutput>DiAviModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityDataModel\DiSoft\DiSoftModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DiSoftModel.edmx</DependentUpon>
+      <LastGenOutput>DiSoftModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityDataModel\DiSoft\DiSoftModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DiSoftModel.edmx</DependentUpon>
+      <LastGenOutput>DiSoftModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

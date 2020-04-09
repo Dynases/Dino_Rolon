@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDDistBHF_RolonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TC004">
+          <Key>
+            <PropertyRef Name="ccnumi" />
+          </Key>
+          <Property Name="ccnumi" Type="int" Nullable="false" />
+          <Property Name="cccod" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ccdesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cczona" Type="int" Nullable="false" />
+          <Property Name="ccdct" Type="int" Nullable="false" />
+          <Property Name="ccdctnum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ccdirec" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="cctelf1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cctelf2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cccat" Type="int" Nullable="false" />
+          <Property Name="ccest" Type="int" Nullable="false" />
+          <Property Name="cclat" Type="decimal" Precision="18" Scale="14" Nullable="false" />
+          <Property Name="cclongi" Type="decimal" Precision="18" Scale="14" Nullable="false" />
+          <Property Name="ccprconsu" Type="int" Nullable="false" />
+          <Property Name="cceven" Type="bit" Nullable="false" />
+          <Property Name="ccobs" Type="nvarchar" MaxLength="150" />
+          <Property Name="ccfnac" Type="date" Nullable="false" />
+          <Property Name="ccnomfac" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ccnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ccultped" Type="date" Nullable="false" />
+          <Property Name="ccfecing" Type="date" Nullable="false" />
+          <Property Name="ccultvent" Type="date" Nullable="false" />
+          <Property Name="ccrecven" Type="int" Nullable="false" />
+          <Property Name="ccsupven" Type="int" Nullable="false" />
+          <Property Name="ccpreven" Type="int" Nullable="false" />
+          <Property Name="ccemail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ccref" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ccpass" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ccfact" Type="date" Nullable="false" />
+          <Property Name="cchact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ccuact" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TC0041">
+          <Key>
+            <PropertyRef Name="chnumi" />
+            <PropertyRef Name="chlin" />
+          </Key>
+          <Property Name="chnumi" Type="int" Nullable="false" />
+          <Property Name="chfec" Type="date" />
+          <Property Name="chcod" Type="nvarchar" MaxLength="10" />
+          <Property Name="chdesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="chtmov" Type="int" />
+          <Property Name="chnrem" Type="int" />
+          <Property Name="chcan" Type="float" />
+          <Property Name="chmonbs" Type="float" />
+          <Property Name="chmonsus" Type="float" />
+          <Property Name="chnota" Type="int" />
+          <Property Name="chlin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chobs" Type="nchar" MaxLength="20" />
+          <Property Name="chfact" Type="date" />
+          <Property Name="chhact" Type="nvarchar" MaxLength="5" />
+          <Property Name="chuact" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TC0042">
+          <Key>
+            <PropertyRef Name="cpnumi" />
+          </Key>
+          <Property Name="cpnumi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpcli" Type="int" />
+          <Property Name="cpprod" Type="int" />
+          <Property Name="cpcat" Type="int" />
+        </EntityType>
+        <EntityType Name="TC004B">
+          <Key>
+            <PropertyRef Name="ccbnumi" />
+          </Key>
+          <Property Name="ccbnumi" Type="int" Nullable="false" />
+          <Property Name="ccbzona" Type="int" Nullable="false" />
+          <Property Name="ccbtcre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TC0051">
+          <Key>
+            <PropertyRef Name="ceId" />
+          </Key>
+          <Property Name="ceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cecon" Type="int" />
+          <Property Name="cenum" Type="int" />
+          <Property Name="cedesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="cefact" Type="date" />
+          <Property Name="cehact" Type="nvarchar" MaxLength="50" />
+          <Property Name="ceuact" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TL001">
+          <Key>
+            <PropertyRef Name="lanumi" />
+          </Key>
+          <Property Name="lanumi" Type="int" Nullable="false" />
+          <Property Name="lacity" Type="int" />
+          <Property Name="laprovi" Type="int" />
+          <Property Name="lazona" Type="int" />
+          <Property Name="lacolor" Type="nvarchar" MaxLength="7" />
+          <Property Name="lafact" Type="date" />
+          <Property Name="lahact" Type="nvarchar" MaxLength="5" />
+          <Property Name="lauact" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="BDDistBHF_RolonModelStoreContainer">
+          <EntitySet Name="TC004" EntityType="Self.TC004" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC0042" EntityType="Self.TC0042" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC004B" EntityType="Self.TC004B" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC0051" EntityType="Self.TC0051" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TL001" EntityType="Self.TL001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC0041" EntityType="Self.TC0041" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TC0041].[chnumi] AS [chnumi], 
+    [TC0041].[chfec] AS [chfec], 
+    [TC0041].[chcod] AS [chcod], 
+    [TC0041].[chdesc] AS [chdesc], 
+    [TC0041].[chtmov] AS [chtmov], 
+    [TC0041].[chnrem] AS [chnrem], 
+    [TC0041].[chcan] AS [chcan], 
+    [TC0041].[chmonbs] AS [chmonbs], 
+    [TC0041].[chmonsus] AS [chmonsus], 
+    [TC0041].[chnota] AS [chnota], 
+    [TC0041].[chlin] AS [chlin], 
+    [TC0041].[chobs] AS [chobs], 
+    [TC0041].[chfact] AS [chfact], 
+    [TC0041].[chhact] AS [chhact], 
+    [TC0041].[chuact] AS [chuact]
+    FROM [dbo].[TC0041] AS [TC0041]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDDistBHF_RolonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDDistBHF_RolonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TC0051" EntityType="BDDistBHF_RolonModel.TC0051" />
+          <EntitySet Name="TL001" EntityType="BDDistBHF_RolonModel.TL001" />
+          <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
+          <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
+          <EntitySet Name="TC0042" EntityType="BDDistBHF_RolonModel.TC0042" />
+          <EntitySet Name="TC0041" EntityType="BDDistBHF_RolonModel.TC0041" />
+        </EntityContainer>
+        <EntityType Name="TC0051">
+          <Key>
+            <PropertyRef Name="ceId" />
+          </Key>
+          <Property Name="ceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cecon" Type="Int32" />
+          <Property Name="cenum" Type="Int32" />
+          <Property Name="cedesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cefact" Type="DateTime" Precision="0" />
+          <Property Name="cehact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ceuact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TL001">
+          <Key>
+            <PropertyRef Name="lanumi" />
+          </Key>
+          <Property Name="lanumi" Type="Int32" Nullable="false" />
+          <Property Name="lacity" Type="Int32" />
+          <Property Name="laprovi" Type="Int32" />
+          <Property Name="lazona" Type="Int32" />
+          <Property Name="lacolor" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="lafact" Type="DateTime" Precision="0" />
+          <Property Name="lahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="lauact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC004B">
+          <Key>
+            <PropertyRef Name="ccbnumi" />
+          </Key>
+          <Property Name="ccbnumi" Type="Int32" Nullable="false" />
+          <Property Name="ccbzona" Type="Int32" Nullable="false" />
+          <Property Name="ccbtcre" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TC004">
+          <Key>
+            <PropertyRef Name="ccnumi" />
+          </Key>
+          <Property Name="ccnumi" Type="Int32" Nullable="false" />
+          <Property Name="cccod" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ccdesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cczona" Type="Int32" Nullable="false" />
+          <Property Name="ccdct" Type="Int32" Nullable="false" />
+          <Property Name="ccdctnum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ccdirec" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cctelf1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cctelf2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cccat" Type="Int32" Nullable="false" />
+          <Property Name="ccest" Type="Int32" Nullable="false" />
+          <Property Name="cclat" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
+          <Property Name="cclongi" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
+          <Property Name="ccprconsu" Type="Int32" Nullable="false" />
+          <Property Name="cceven" Type="Boolean" Nullable="false" />
+          <Property Name="ccobs" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ccfnac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ccnomfac" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ccnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ccultped" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ccfecing" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ccultvent" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ccrecven" Type="Int32" Nullable="false" />
+          <Property Name="ccsupven" Type="Int32" Nullable="false" />
+          <Property Name="ccpreven" Type="Int32" Nullable="false" />
+          <Property Name="ccemail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccref" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccpass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccfact" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cchact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ccuact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC0042">
+          <Key>
+            <PropertyRef Name="cpnumi" />
+          </Key>
+          <Property Name="cpnumi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpcli" Type="Int32" />
+          <Property Name="cpprod" Type="Int32" />
+          <Property Name="cpcat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TC0041">
+          <Key>
+            <PropertyRef Name="chnumi" />
+            <PropertyRef Name="chlin" />
+          </Key>
+          <Property Name="chnumi" Type="Int32" Nullable="false" />
+          <Property Name="chfec" Type="DateTime" Precision="0" />
+          <Property Name="chcod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="chdesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="chtmov" Type="Int32" />
+          <Property Name="chnrem" Type="Int32" />
+          <Property Name="chcan" Type="Double" />
+          <Property Name="chmonbs" Type="Double" />
+          <Property Name="chmonsus" Type="Double" />
+          <Property Name="chnota" Type="Int32" />
+          <Property Name="chlin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chobs" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="chfact" Type="DateTime" Precision="0" />
+          <Property Name="chhact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="chuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDDistBHF_RolonModelStoreContainer" CdmEntityContainer="BDDistBHF_RolonEntities">
+          <EntitySetMapping Name="TC0051">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC0051">
+              <MappingFragment StoreEntitySet="TC0051">
+                <ScalarProperty Name="ceuact" ColumnName="ceuact" />
+                <ScalarProperty Name="cehact" ColumnName="cehact" />
+                <ScalarProperty Name="cefact" ColumnName="cefact" />
+                <ScalarProperty Name="cedesc" ColumnName="cedesc" />
+                <ScalarProperty Name="cenum" ColumnName="cenum" />
+                <ScalarProperty Name="cecon" ColumnName="cecon" />
+                <ScalarProperty Name="ceId" ColumnName="ceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TL001">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TL001">
+              <MappingFragment StoreEntitySet="TL001">
+                <ScalarProperty Name="lauact" ColumnName="lauact" />
+                <ScalarProperty Name="lahact" ColumnName="lahact" />
+                <ScalarProperty Name="lafact" ColumnName="lafact" />
+                <ScalarProperty Name="lacolor" ColumnName="lacolor" />
+                <ScalarProperty Name="lazona" ColumnName="lazona" />
+                <ScalarProperty Name="laprovi" ColumnName="laprovi" />
+                <ScalarProperty Name="lacity" ColumnName="lacity" />
+                <ScalarProperty Name="lanumi" ColumnName="lanumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC004B">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC004B">
+              <MappingFragment StoreEntitySet="TC004B">
+                <ScalarProperty Name="ccbtcre" ColumnName="ccbtcre" />
+                <ScalarProperty Name="ccbzona" ColumnName="ccbzona" />
+                <ScalarProperty Name="ccbnumi" ColumnName="ccbnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC004">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC004">
+              <MappingFragment StoreEntitySet="TC004">
+                <ScalarProperty Name="ccuact" ColumnName="ccuact" />
+                <ScalarProperty Name="cchact" ColumnName="cchact" />
+                <ScalarProperty Name="ccfact" ColumnName="ccfact" />
+                <ScalarProperty Name="ccpass" ColumnName="ccpass" />
+                <ScalarProperty Name="ccref" ColumnName="ccref" />
+                <ScalarProperty Name="ccemail" ColumnName="ccemail" />
+                <ScalarProperty Name="ccpreven" ColumnName="ccpreven" />
+                <ScalarProperty Name="ccsupven" ColumnName="ccsupven" />
+                <ScalarProperty Name="ccrecven" ColumnName="ccrecven" />
+                <ScalarProperty Name="ccultvent" ColumnName="ccultvent" />
+                <ScalarProperty Name="ccfecing" ColumnName="ccfecing" />
+                <ScalarProperty Name="ccultped" ColumnName="ccultped" />
+                <ScalarProperty Name="ccnit" ColumnName="ccnit" />
+                <ScalarProperty Name="ccnomfac" ColumnName="ccnomfac" />
+                <ScalarProperty Name="ccfnac" ColumnName="ccfnac" />
+                <ScalarProperty Name="ccobs" ColumnName="ccobs" />
+                <ScalarProperty Name="cceven" ColumnName="cceven" />
+                <ScalarProperty Name="ccprconsu" ColumnName="ccprconsu" />
+                <ScalarProperty Name="cclongi" ColumnName="cclongi" />
+                <ScalarProperty Name="cclat" ColumnName="cclat" />
+                <ScalarProperty Name="ccest" ColumnName="ccest" />
+                <ScalarProperty Name="cccat" ColumnName="cccat" />
+                <ScalarProperty Name="cctelf2" ColumnName="cctelf2" />
+                <ScalarProperty Name="cctelf1" ColumnName="cctelf1" />
+                <ScalarProperty Name="ccdirec" ColumnName="ccdirec" />
+                <ScalarProperty Name="ccdctnum" ColumnName="ccdctnum" />
+                <ScalarProperty Name="ccdct" ColumnName="ccdct" />
+                <ScalarProperty Name="cczona" ColumnName="cczona" />
+                <ScalarProperty Name="ccdesc" ColumnName="ccdesc" />
+                <ScalarProperty Name="cccod" ColumnName="cccod" />
+                <ScalarProperty Name="ccnumi" ColumnName="ccnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC0042">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC0042">
+              <MappingFragment StoreEntitySet="TC0042">
+                <ScalarProperty Name="cpcat" ColumnName="cpcat" />
+                <ScalarProperty Name="cpprod" ColumnName="cpprod" />
+                <ScalarProperty Name="cpcli" ColumnName="cpcli" />
+                <ScalarProperty Name="cpnumi" ColumnName="cpnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC0041">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC0041">
+              <MappingFragment StoreEntitySet="TC0041">
+                <ScalarProperty Name="chuact" ColumnName="chuact" />
+                <ScalarProperty Name="chhact" ColumnName="chhact" />
+                <ScalarProperty Name="chfact" ColumnName="chfact" />
+                <ScalarProperty Name="chobs" ColumnName="chobs" />
+                <ScalarProperty Name="chlin" ColumnName="chlin" />
+                <ScalarProperty Name="chnota" ColumnName="chnota" />
+                <ScalarProperty Name="chmonsus" ColumnName="chmonsus" />
+                <ScalarProperty Name="chmonbs" ColumnName="chmonbs" />
+                <ScalarProperty Name="chcan" ColumnName="chcan" />
+                <ScalarProperty Name="chnrem" ColumnName="chnrem" />
+                <ScalarProperty Name="chtmov" ColumnName="chtmov" />
+                <ScalarProperty Name="chdesc" ColumnName="chdesc" />
+                <ScalarProperty Name="chcod" ColumnName="chcod" />
+                <ScalarProperty Name="chfec" ColumnName="chfec" />
+                <ScalarProperty Name="chnumi" ColumnName="chnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

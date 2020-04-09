@@ -599,6 +599,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -634,6 +637,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VDetalleKardex.datasource" />

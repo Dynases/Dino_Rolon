@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Data;
 using ENTITY.com.CompraIngreso_02;
 using UTILITY.Enum;
+using ENTITY.DiSoft.Zona;
+using LOGIC.Class.DiSoft;
 
 namespace SERVICE
 {
@@ -76,7 +78,7 @@ namespace SERVICE
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }   
         public bool ClienteModificar(VCliente cliente, int id)
         {
             try
@@ -1259,6 +1261,23 @@ namespace SERVICE
             }
         }
 
+        #endregion
+        ///***********ZONA**************************
+        ///
+        #region ZONA
+        #region Consulta
+        public List<VZona> ZonaListar()
+        {
+            try
+            {
+                return new LZona().Listar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
         #endregion
     }
 }

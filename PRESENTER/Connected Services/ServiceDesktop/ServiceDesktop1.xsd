@@ -25,6 +25,7 @@
   <xs:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
   <xs:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
   <xs:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd27" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
+  <xs:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -1381,6 +1382,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="VentaDetalleListarResult" nillable="true" type="q88:ArrayOfVVenta_01" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZonaListar">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZonaListarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" minOccurs="0" name="ZonaListarResult" nillable="true" type="q89:ArrayOfVZona" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

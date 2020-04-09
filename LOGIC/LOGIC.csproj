@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\DiSoft\LZona.cs" />
     <Compile Include="Class\LAlmacen.cs" />
     <Compile Include="Class\LCliente.cs" />
     <Compile Include="Class\LCompra.cs" />

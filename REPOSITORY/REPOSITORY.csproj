@@ -49,8 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseConexion.cs" />
+    <Compile Include="Base\BaseConexion2.cs" />
     <Compile Include="Base\BaseConexionPrincipal.cs" />
     <Compile Include="Base\BD.cs" />
+    <Compile Include="Clase\DiSoft\RClienteD.cs" />
+    <Compile Include="Clase\DiSoft\RZonaD.cs" />
     <Compile Include="Clase\RAlmacen.cs" />
     <Compile Include="Clase\RCliente.cs" />
     <Compile Include="Clase\RCompra.cs" />
@@ -79,6 +82,8 @@
     <Compile Include="Clase\RTraspaso_01.cs" />
     <Compile Include="Clase\RVenta.cs" />
     <Compile Include="Clase\RVenta_01.cs" />
+    <Compile Include="Interface\DiSoft\IClienteD.cs" />
+    <Compile Include="Interface\DiSoft\IZonaD.cs" />
     <Compile Include="Interface\IAlmacen.cs" />
     <Compile Include="Interface\ICliente.cs" />
     <Compile Include="Interface\ICompra.cs" />

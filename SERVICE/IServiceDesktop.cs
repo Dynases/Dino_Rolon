@@ -6,6 +6,7 @@ using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.CompraIngreso_02;
 using ENTITY.com.Seleccion.View;
 using ENTITY.com.Seleccion_01.View;
+using ENTITY.DiSoft.Zona;
 using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.TipoAlmacen.view;
@@ -356,8 +357,17 @@ namespace SERVICE
         bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId);
 
         [OperationContract]
-        List<VVenta_01> VentaDetalleListar(int VentaId);        
+        List<VVenta_01> VentaDetalleListar(int VentaId);
 
+        #endregion
+
+        ///////******ZONA******************
+        ///
+        #region ZONA
+        #region Consulta
+        [OperationContract]
+        List<VZona> ZonaListar();
+        #endregion
         #endregion
     }
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.

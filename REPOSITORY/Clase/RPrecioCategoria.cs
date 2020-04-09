@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ENTITY.reg.PrecioCategoria.View;
 using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum.EnEstado;
+using UTILITY.Enum;
 
 namespace REPOSITORY.Clase
 {
@@ -65,7 +66,7 @@ namespace REPOSITORY.Clase
                                           Cod = a.Cod,
                                           Descrip = a.Descrip,
                                           Tipo = a.Tipo,
-                                          NombreTipo = a.Tipo == 1 ? "Venta" : "Compra",
+                                          NombreTipo = a.Tipo == (int)EnTipoCategoria.VENTA ? "Venta" : "Compra",
                                           Margen = a.Margen,
                                           Estado = (int)ENEstado.GUARDADO,
                                       }).ToList();
