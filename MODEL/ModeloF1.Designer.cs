@@ -29,20 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModeloF1));
             DevComponents.DotNetBar.Rendering.SuperTabColorTable superTabColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModeloF1));
             this.PanelSuperior = new System.Windows.Forms.Panel();
+            this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnMin = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnMax = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.PanelInferior = new System.Windows.Forms.Panel();
             this.BubbleBarUsuario = new DevComponents.DotNetBar.BubbleBar();
             this.BubbleBarTabUsuario = new DevComponents.DotNetBar.BubbleBarTab(this.components);
             this.TxtNombreUsu = new System.Windows.Forms.TextBox();
             this.PanelNavegacion = new System.Windows.Forms.Panel();
+            this.btnUltimo = new DevComponents.DotNetBar.ButtonX();
+            this.btnSiguiente = new DevComponents.DotNetBar.ButtonX();
             this.LblPaginacion = new System.Windows.Forms.Label();
+            this.btnAnterior = new DevComponents.DotNetBar.ButtonX();
+            this.btnPrimero = new DevComponents.DotNetBar.ButtonX();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.PanelContenidoRegistro = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.LblSubtitulo = new System.Windows.Forms.Label();
+            this.PanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.BtnExportar = new DevComponents.DotNetBar.ButtonX();
+            this.reflectionLabelLogo = new DevComponents.DotNetBar.Controls.ReflectionLabel();
+            this.BtnImprimir = new DevComponents.DotNetBar.ButtonX();
+            this.BtnAtras = new DevComponents.DotNetBar.ButtonX();
+            this.BtnGrabar = new DevComponents.DotNetBar.ButtonX();
+            this.BtnEliminar = new DevComponents.DotNetBar.ButtonX();
+            this.BtnModificar = new DevComponents.DotNetBar.ButtonX();
+            this.BtnNuevo = new DevComponents.DotNetBar.ButtonX();
+            this.PictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.SuperTalRegistro = new DevComponents.DotNetBar.SuperTabItem();
             this.PanelContenidoBuscar = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.GMPanel_Buscardor = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -59,42 +77,24 @@
             this.MEP = new System.Windows.Forms.ErrorProvider(this.components);
             this.MHighlighterFocus = new DevComponents.DotNetBar.Validator.Highlighter();
             this.BubbleButton3 = new DevComponents.DotNetBar.BubbleButton();
-            this.btnUltimo = new DevComponents.DotNetBar.ButtonX();
-            this.btnSiguiente = new DevComponents.DotNetBar.ButtonX();
-            this.btnAnterior = new DevComponents.DotNetBar.ButtonX();
-            this.btnPrimero = new DevComponents.DotNetBar.ButtonX();
-            this.PanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.BtnExportar = new DevComponents.DotNetBar.ButtonX();
-            this.reflectionLabelLogo = new DevComponents.DotNetBar.Controls.ReflectionLabel();
-            this.BtnImprimir = new DevComponents.DotNetBar.ButtonX();
-            this.BtnAtras = new DevComponents.DotNetBar.ButtonX();
-            this.BtnGrabar = new DevComponents.DotNetBar.ButtonX();
-            this.BtnEliminar = new DevComponents.DotNetBar.ButtonX();
-            this.BtnModificar = new DevComponents.DotNetBar.ButtonX();
-            this.BtnNuevo = new DevComponents.DotNetBar.ButtonX();
-            this.PictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnMin = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnMax = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.PanelSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.PanelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).BeginInit();
             this.PanelContenidoBuscar.SuspendLayout();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
-            this.PanelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelSuperior
@@ -110,6 +110,64 @@
             this.PanelSuperior.Name = "PanelSuperior";
             this.PanelSuperior.Size = new System.Drawing.Size(837, 27);
             this.PanelSuperior.TabIndex = 2;
+            // 
+            // PictureBox1
+            // 
+            this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
+            this.PictureBox1.Location = new System.Drawing.Point(3, 1);
+            this.PictureBox1.Name = "PictureBox1";
+            this.PictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox1.TabIndex = 6;
+            this.PictureBox1.TabStop = false;
+            // 
+            // btnMin
+            // 
+            this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
+            this.btnMin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMin.ErrorImage = null;
+            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
+            this.btnMin.ImageActive = null;
+            this.btnMin.Location = new System.Drawing.Point(777, 0);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(20, 27);
+            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnMin.TabIndex = 3;
+            this.btnMin.TabStop = false;
+            this.btnMin.Zoom = 10;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // btnMax
+            // 
+            this.btnMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
+            this.btnMax.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMax.ErrorImage = null;
+            this.btnMax.Image = ((System.Drawing.Image)(resources.GetObject("btnMax.Image")));
+            this.btnMax.ImageActive = null;
+            this.btnMax.Location = new System.Drawing.Point(797, 0);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Size = new System.Drawing.Size(20, 27);
+            this.btnMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnMax.TabIndex = 4;
+            this.btnMax.TabStop = false;
+            this.btnMax.Zoom = 10;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.ErrorImage = null;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageActive = null;
+            this.btnClose.Location = new System.Drawing.Point(817, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(20, 27);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnClose.TabIndex = 5;
+            this.btnClose.TabStop = false;
+            this.btnClose.Zoom = 10;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // LblTitulo
             // 
@@ -204,6 +262,36 @@
             this.PanelNavegacion.Size = new System.Drawing.Size(318, 28);
             this.PanelNavegacion.TabIndex = 26;
             // 
+            // btnUltimo
+            // 
+            this.btnUltimo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUltimo.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnUltimo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnUltimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUltimo.Image = global::MODEL.Properties.Resources.SIGUIENTE2;
+            this.btnUltimo.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnUltimo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnUltimo.Location = new System.Drawing.Point(129, 0);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(43, 28);
+            this.btnUltimo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUltimo.TabIndex = 12;
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSiguiente.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnSiguiente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.Image = global::MODEL.Properties.Resources.SIGUIENTE;
+            this.btnSiguiente.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnSiguiente.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnSiguiente.Location = new System.Drawing.Point(86, 0);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(43, 28);
+            this.btnSiguiente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSiguiente.TabIndex = 13;
+            // 
             // LblPaginacion
             // 
             this.LblPaginacion.Dock = System.Windows.Forms.DockStyle.Right;
@@ -215,6 +303,36 @@
             this.LblPaginacion.TabIndex = 23;
             this.LblPaginacion.Text = "0/0";
             this.LblPaginacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAnterior.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnAnterior.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnterior.Image = global::MODEL.Properties.Resources.ANTERIOR;
+            this.btnAnterior.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnAnterior.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAnterior.Location = new System.Drawing.Point(43, 0);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(43, 28);
+            this.btnAnterior.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAnterior.TabIndex = 14;
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrimero.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.btnPrimero.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrimero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrimero.Image = global::MODEL.Properties.Resources.ANTERIOR2;
+            this.btnPrimero.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnPrimero.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnPrimero.Location = new System.Drawing.Point(0, 0);
+            this.btnPrimero.Name = "btnPrimero";
+            this.btnPrimero.Size = new System.Drawing.Size(43, 28);
+            this.btnPrimero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrimero.TabIndex = 15;
             // 
             // superTabControl1
             // 
@@ -278,6 +396,189 @@
             this.LblSubtitulo.Size = new System.Drawing.Size(837, 36);
             this.LblSubtitulo.TabIndex = 68;
             this.LblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackColor = System.Drawing.Color.White;
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PanelMenu.Controls.Add(this.BtnExportar);
+            this.PanelMenu.Controls.Add(this.reflectionLabelLogo);
+            this.PanelMenu.Controls.Add(this.BtnImprimir);
+            this.PanelMenu.Controls.Add(this.BtnAtras);
+            this.PanelMenu.Controls.Add(this.BtnGrabar);
+            this.PanelMenu.Controls.Add(this.BtnEliminar);
+            this.PanelMenu.Controls.Add(this.BtnModificar);
+            this.PanelMenu.Controls.Add(this.BtnNuevo);
+            this.PanelMenu.Controls.Add(this.PictureBoxLogo);
+            this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelMenu.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(115)))));
+            this.PanelMenu.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.PanelMenu.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
+            this.PanelMenu.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
+            this.PanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.PanelMenu.Name = "PanelMenu";
+            this.PanelMenu.Quality = 10;
+            this.PanelMenu.Size = new System.Drawing.Size(837, 72);
+            this.PanelMenu.TabIndex = 2;
+            // 
+            // BtnExportar
+            // 
+            this.BtnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnExportar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnExportar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnExportar.Enabled = false;
+            this.BtnExportar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExportar.Image = global::MODEL.Properties.Resources.EXCEL;
+            this.BtnExportar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnExportar.Location = new System.Drawing.Point(444, 0);
+            this.BtnExportar.Name = "BtnExportar";
+            this.BtnExportar.Size = new System.Drawing.Size(78, 72);
+            this.BtnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnExportar.TabIndex = 71;
+            this.BtnExportar.Text = "EXPORTAR";
+            this.BtnExportar.TextColor = System.Drawing.Color.White;
+            this.BtnExportar.Visible = false;
+            // 
+            // reflectionLabelLogo
+            // 
+            this.reflectionLabelLogo.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.reflectionLabelLogo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.reflectionLabelLogo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.reflectionLabelLogo.Location = new System.Drawing.Point(624, 0);
+            this.reflectionLabelLogo.Name = "reflectionLabelLogo";
+            this.reflectionLabelLogo.Size = new System.Drawing.Size(213, 72);
+            this.reflectionLabelLogo.TabIndex = 70;
+            this.reflectionLabelLogo.Text = "<b><font size=\"+20\">RO<font color=\"#B02B2C\">LON</font></font></b>";
+            // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnImprimir.BackColor = System.Drawing.Color.Transparent;
+            this.BtnImprimir.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnImprimir.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnImprimir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnImprimir.Image = global::MODEL.Properties.Resources.PRINT;
+            this.BtnImprimir.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnImprimir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnImprimir.Location = new System.Drawing.Point(372, 0);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.Size = new System.Drawing.Size(72, 72);
+            this.BtnImprimir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnImprimir.TabIndex = 12;
+            this.BtnImprimir.Text = "IMPRIMIR";
+            this.BtnImprimir.TextColor = System.Drawing.Color.White;
+            // 
+            // BtnAtras
+            // 
+            this.BtnAtras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAtras.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnAtras.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnAtras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAtras.Image = global::MODEL.Properties.Resources.atras;
+            this.BtnAtras.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnAtras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnAtras.Location = new System.Drawing.Point(300, 0);
+            this.BtnAtras.Name = "BtnAtras";
+            this.BtnAtras.Size = new System.Drawing.Size(72, 72);
+            this.BtnAtras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnAtras.TabIndex = 11;
+            this.BtnAtras.Text = "SALIR";
+            this.BtnAtras.TextColor = System.Drawing.Color.White;
+            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
+            // 
+            // BtnGrabar
+            // 
+            this.BtnGrabar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnGrabar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGrabar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnGrabar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnGrabar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGrabar.Image = global::MODEL.Properties.Resources.save___copia;
+            this.BtnGrabar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnGrabar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnGrabar.Location = new System.Drawing.Point(228, 0);
+            this.BtnGrabar.Name = "BtnGrabar";
+            this.BtnGrabar.Size = new System.Drawing.Size(72, 72);
+            this.BtnGrabar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnGrabar.TabIndex = 10;
+            this.BtnGrabar.Text = "GRABAR";
+            this.BtnGrabar.TextColor = System.Drawing.Color.White;
+            this.BtnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEliminar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnEliminar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnEliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminar.Image = global::MODEL.Properties.Resources.trash;
+            this.BtnEliminar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnEliminar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnEliminar.Location = new System.Drawing.Point(156, 0);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(72, 72);
+            this.BtnEliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnEliminar.TabIndex = 9;
+            this.BtnEliminar.Text = "ELIMINAR";
+            this.BtnEliminar.TextColor = System.Drawing.Color.White;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
+            // BtnModificar
+            // 
+            this.BtnModificar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnModificar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnModificar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnModificar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnModificar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnModificar.Image = global::MODEL.Properties.Resources.edit;
+            this.BtnModificar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnModificar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnModificar.Location = new System.Drawing.Point(72, 0);
+            this.BtnModificar.Name = "BtnModificar";
+            this.BtnModificar.Size = new System.Drawing.Size(84, 72);
+            this.BtnModificar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnModificar.TabIndex = 8;
+            this.BtnModificar.Text = "MODIFICAR";
+            this.BtnModificar.TextColor = System.Drawing.Color.White;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnNuevo.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
+            this.BtnNuevo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnNuevo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNuevo.Image = global::MODEL.Properties.Resources.add;
+            this.BtnNuevo.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnNuevo.Location = new System.Drawing.Point(0, 0);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(72, 72);
+            this.BtnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnNuevo.TabIndex = 7;
+            this.BtnNuevo.Text = "NUEVO";
+            this.BtnNuevo.TextColor = System.Drawing.Color.White;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
+            // 
+            // PictureBoxLogo
+            // 
+            this.PictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.PictureBoxLogo.Location = new System.Drawing.Point(538, 0);
+            this.PictureBoxLogo.Name = "PictureBoxLogo";
+            this.PictureBoxLogo.Size = new System.Drawing.Size(299, 64);
+            this.PictureBoxLogo.TabIndex = 2;
+            this.PictureBoxLogo.TabStop = false;
             // 
             // SuperTalRegistro
             // 
@@ -444,306 +745,6 @@
             this.BubbleButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BubbleButton3.Name = "BubbleButton3";
             // 
-            // btnUltimo
-            // 
-            this.btnUltimo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUltimo.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.btnUltimo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUltimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUltimo.Image = global::MODEL.Properties.Resources.SIGUIENTE2;
-            this.btnUltimo.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnUltimo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnUltimo.Location = new System.Drawing.Point(129, 0);
-            this.btnUltimo.Name = "btnUltimo";
-            this.btnUltimo.Size = new System.Drawing.Size(43, 28);
-            this.btnUltimo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUltimo.TabIndex = 12;
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSiguiente.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.btnSiguiente.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSiguiente.Image = global::MODEL.Properties.Resources.SIGUIENTE;
-            this.btnSiguiente.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSiguiente.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnSiguiente.Location = new System.Drawing.Point(86, 0);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(43, 28);
-            this.btnSiguiente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSiguiente.TabIndex = 13;
-            // 
-            // btnAnterior
-            // 
-            this.btnAnterior.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAnterior.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.btnAnterior.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnterior.Image = global::MODEL.Properties.Resources.ANTERIOR;
-            this.btnAnterior.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnAnterior.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAnterior.Location = new System.Drawing.Point(43, 0);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(43, 28);
-            this.btnAnterior.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAnterior.TabIndex = 14;
-            // 
-            // btnPrimero
-            // 
-            this.btnPrimero.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrimero.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.btnPrimero.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPrimero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrimero.Image = global::MODEL.Properties.Resources.ANTERIOR2;
-            this.btnPrimero.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnPrimero.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnPrimero.Location = new System.Drawing.Point(0, 0);
-            this.btnPrimero.Name = "btnPrimero";
-            this.btnPrimero.Size = new System.Drawing.Size(43, 28);
-            this.btnPrimero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrimero.TabIndex = 15;
-            // 
-            // PanelMenu
-            // 
-            this.PanelMenu.BackColor = System.Drawing.Color.White;
-            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelMenu.Controls.Add(this.BtnExportar);
-            this.PanelMenu.Controls.Add(this.reflectionLabelLogo);
-            this.PanelMenu.Controls.Add(this.BtnImprimir);
-            this.PanelMenu.Controls.Add(this.BtnAtras);
-            this.PanelMenu.Controls.Add(this.BtnGrabar);
-            this.PanelMenu.Controls.Add(this.BtnEliminar);
-            this.PanelMenu.Controls.Add(this.BtnModificar);
-            this.PanelMenu.Controls.Add(this.BtnNuevo);
-            this.PanelMenu.Controls.Add(this.PictureBoxLogo);
-            this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelMenu.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(115)))));
-            this.PanelMenu.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.PanelMenu.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
-            this.PanelMenu.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
-            this.PanelMenu.Location = new System.Drawing.Point(0, 0);
-            this.PanelMenu.Name = "PanelMenu";
-            this.PanelMenu.Quality = 10;
-            this.PanelMenu.Size = new System.Drawing.Size(837, 72);
-            this.PanelMenu.TabIndex = 2;
-            // 
-            // BtnExportar
-            // 
-            this.BtnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnExportar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnExportar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnExportar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExportar.Image = global::MODEL.Properties.Resources.EXCEL;
-            this.BtnExportar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnExportar.Location = new System.Drawing.Point(444, 0);
-            this.BtnExportar.Name = "BtnExportar";
-            this.BtnExportar.Size = new System.Drawing.Size(78, 72);
-            this.BtnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnExportar.TabIndex = 71;
-            this.BtnExportar.Text = "EXPORTAR";
-            this.BtnExportar.TextColor = System.Drawing.Color.White;
-            this.BtnExportar.Visible = false;
-            // 
-            // reflectionLabelLogo
-            // 
-            this.reflectionLabelLogo.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.reflectionLabelLogo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.reflectionLabelLogo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reflectionLabelLogo.Location = new System.Drawing.Point(624, 0);
-            this.reflectionLabelLogo.Name = "reflectionLabelLogo";
-            this.reflectionLabelLogo.Size = new System.Drawing.Size(213, 72);
-            this.reflectionLabelLogo.TabIndex = 70;
-            this.reflectionLabelLogo.Text = "<b><font size=\"+20\">RO<font color=\"#B02B2C\">LON</font></font></b>";
-            // 
-            // BtnImprimir
-            // 
-            this.BtnImprimir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnImprimir.BackColor = System.Drawing.Color.Transparent;
-            this.BtnImprimir.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnImprimir.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnImprimir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnImprimir.Image = global::MODEL.Properties.Resources.PRINT;
-            this.BtnImprimir.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnImprimir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnImprimir.Location = new System.Drawing.Point(372, 0);
-            this.BtnImprimir.Name = "BtnImprimir";
-            this.BtnImprimir.Size = new System.Drawing.Size(72, 72);
-            this.BtnImprimir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnImprimir.TabIndex = 12;
-            this.BtnImprimir.Text = "IMPRIMIR";
-            this.BtnImprimir.TextColor = System.Drawing.Color.White;
-            // 
-            // BtnAtras
-            // 
-            this.BtnAtras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.BtnAtras.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnAtras.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnAtras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAtras.Image = global::MODEL.Properties.Resources.atras;
-            this.BtnAtras.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnAtras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnAtras.Location = new System.Drawing.Point(300, 0);
-            this.BtnAtras.Name = "BtnAtras";
-            this.BtnAtras.Size = new System.Drawing.Size(72, 72);
-            this.BtnAtras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnAtras.TabIndex = 11;
-            this.BtnAtras.Text = "SALIR";
-            this.BtnAtras.TextColor = System.Drawing.Color.White;
-            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
-            // 
-            // BtnGrabar
-            // 
-            this.BtnGrabar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnGrabar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnGrabar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnGrabar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnGrabar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGrabar.Image = global::MODEL.Properties.Resources.save___copia;
-            this.BtnGrabar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnGrabar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnGrabar.Location = new System.Drawing.Point(228, 0);
-            this.BtnGrabar.Name = "BtnGrabar";
-            this.BtnGrabar.Size = new System.Drawing.Size(72, 72);
-            this.BtnGrabar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnGrabar.TabIndex = 10;
-            this.BtnGrabar.Text = "GRABAR";
-            this.BtnGrabar.TextColor = System.Drawing.Color.White;
-            this.BtnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnEliminar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnEliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Image = global::MODEL.Properties.Resources.trash;
-            this.BtnEliminar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnEliminar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnEliminar.Location = new System.Drawing.Point(156, 0);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(72, 72);
-            this.BtnEliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnEliminar.TabIndex = 9;
-            this.BtnEliminar.Text = "ELIMINAR";
-            this.BtnEliminar.TextColor = System.Drawing.Color.White;
-            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
-            // 
-            // BtnModificar
-            // 
-            this.BtnModificar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnModificar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnModificar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnModificar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnModificar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificar.Image = global::MODEL.Properties.Resources.edit;
-            this.BtnModificar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnModificar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnModificar.Location = new System.Drawing.Point(72, 0);
-            this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(84, 72);
-            this.BtnModificar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnModificar.TabIndex = 8;
-            this.BtnModificar.Text = "MODIFICAR";
-            this.BtnModificar.TextColor = System.Drawing.Color.White;
-            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
-            // 
-            // BtnNuevo
-            // 
-            this.BtnNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
-            this.BtnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnNuevo.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta;
-            this.BtnNuevo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnNuevo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevo.Image = global::MODEL.Properties.Resources.add;
-            this.BtnNuevo.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnNuevo.Location = new System.Drawing.Point(0, 0);
-            this.BtnNuevo.Name = "BtnNuevo";
-            this.BtnNuevo.Size = new System.Drawing.Size(72, 72);
-            this.BtnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnNuevo.TabIndex = 7;
-            this.BtnNuevo.Text = "NUEVO";
-            this.BtnNuevo.TextColor = System.Drawing.Color.White;
-            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
-            // 
-            // PictureBoxLogo
-            // 
-            this.PictureBoxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
-            this.PictureBoxLogo.Location = new System.Drawing.Point(538, 0);
-            this.PictureBoxLogo.Name = "PictureBoxLogo";
-            this.PictureBoxLogo.Size = new System.Drawing.Size(299, 64);
-            this.PictureBoxLogo.TabIndex = 2;
-            this.PictureBoxLogo.TabStop = false;
-            // 
-            // PictureBox1
-            // 
-            this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(3, 1);
-            this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(31, 26);
-            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox1.TabIndex = 6;
-            this.PictureBox1.TabStop = false;
-            // 
-            // btnMin
-            // 
-            this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
-            this.btnMin.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMin.ErrorImage = null;
-            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
-            this.btnMin.ImageActive = null;
-            this.btnMin.Location = new System.Drawing.Point(777, 0);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(20, 27);
-            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnMin.TabIndex = 3;
-            this.btnMin.TabStop = false;
-            this.btnMin.Zoom = 10;
-            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
-            // 
-            // btnMax
-            // 
-            this.btnMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
-            this.btnMax.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMax.ErrorImage = null;
-            this.btnMax.Image = ((System.Drawing.Image)(resources.GetObject("btnMax.Image")));
-            this.btnMax.ImageActive = null;
-            this.btnMax.Location = new System.Drawing.Point(797, 0);
-            this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(20, 27);
-            this.btnMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnMax.TabIndex = 4;
-            this.btnMax.TabStop = false;
-            this.btnMax.Zoom = 10;
-            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(65)))));
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.ErrorImage = null;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageActive = null;
-            this.btnClose.Location = new System.Drawing.Point(817, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 27);
-            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnClose.TabIndex = 5;
-            this.btnClose.TabStop = false;
-            this.btnClose.Zoom = 10;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // ModeloF1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -760,6 +761,10 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ModeloF1_MouseMove);
             this.PanelSuperior.ResumeLayout(false);
             this.PanelSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
@@ -767,18 +772,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).EndInit();
             this.PanelContenidoBuscar.ResumeLayout(false);
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
             this.PanelUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
-            this.PanelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
 
         }

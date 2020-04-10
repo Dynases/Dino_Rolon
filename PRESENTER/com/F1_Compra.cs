@@ -87,46 +87,44 @@ namespace PRESENTER.com
                     Dgv_GBuscador.RetrieveStructure();
                     Dgv_GBuscador.AlternatingColors = true;
 
-                    Dgv_GBuscador.RootTable.Columns["id"].Caption = "Id";
-                    Dgv_GBuscador.RootTable.Columns["id"].Width = 250;
-                    Dgv_GBuscador.RootTable.Columns["id"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_GBuscador.RootTable.Columns["id"].CellStyle.FontSize = 8;
-                    Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns["Id"].Caption = "Id";
+                    Dgv_GBuscador.RootTable.Columns["Id"].Width = 250;
+                    Dgv_GBuscador.RootTable.Columns["Id"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                    Dgv_GBuscador.RootTable.Columns["Id"].CellStyle.FontSize = 8;
+                    Dgv_GBuscador.RootTable.Columns["Id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_GBuscador.RootTable.Columns["Id"].Visible = false;
 
                     Dgv_GBuscador.RootTable.Columns["IdAlmacen"].Visible = false;
                     Dgv_GBuscador.RootTable.Columns["IdProvee"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["Estado"].Visible = false;
 
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].Caption = "Proveedor";
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 350;
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.FontSize = 8;
                     Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                    Dgv_GBuscador.RootTable.Columns["Proveedor"].Visible = true;
-
-                    Dgv_GBuscador.RootTable.Columns["Estado"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["Proveedor"].Visible = true;               
 
                     Dgv_GBuscador.RootTable.Columns["FechaDoc"].Caption = "Fecha";
-                    Dgv_GBuscador.RootTable.Columns["FechaDoc"].Width = 350;
+                    Dgv_GBuscador.RootTable.Columns["FechaDoc"].Width = 200;
                     Dgv_GBuscador.RootTable.Columns["FechaDoc"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_GBuscador.RootTable.Columns["FechaDoc"].CellStyle.FontSize = 8;
                     Dgv_GBuscador.RootTable.Columns["FechaDoc"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_GBuscador.RootTable.Columns["FechaDoc"].Visible = true;
 
-                    Dgv_GBuscador.RootTable.Columns["TipoVenta"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["TipoVenta"].Visible = false;                   
 
                     Dgv_GBuscador.RootTable.Columns["NombreTipo"].Caption = "Tipo";
-
-                    Dgv_GBuscador.RootTable.Columns["NombreTipo"].Width = 350;
+                    Dgv_GBuscador.RootTable.Columns["NombreTipo"].Width = 300;
                     Dgv_GBuscador.RootTable.Columns["NombreTipo"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_GBuscador.RootTable.Columns["NombreTipo"].CellStyle.FontSize = 8;
                     Dgv_GBuscador.RootTable.Columns["NombreTipo"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_GBuscador.RootTable.Columns["NombreTipo"].Visible = true;
+                    Dgv_GBuscador.RootTable.Columns["NombreTipo"].Visible = true;                   
 
-                    Dgv_GBuscador.RootTable.Columns["Descu"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["Descu"].Visible = false;                   
 
                     Dgv_GBuscador.RootTable.Columns["Total"].Caption = "Total";
-                    Dgv_GBuscador.RootTable.Columns["Total"].Width = 200;
+                    Dgv_GBuscador.RootTable.Columns["Total"].Width = 250;
                     Dgv_GBuscador.RootTable.Columns["Total"].FormatString = "0.00";
                     Dgv_GBuscador.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                     Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.FontSize = 8;
@@ -136,6 +134,12 @@ namespace PRESENTER.com
                     Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;
                     Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
                     Dgv_GBuscador.RootTable.Columns["Usuario"].Visible = false;
+
+                    Dgv_GBuscador.RootTable.Columns["FechaVen"].Visible = false;                  
+                    Dgv_GBuscador.RootTable.Columns["Factura"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["Recibo"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["TipoFactura"].Visible = false;
+                    Dgv_GBuscador.RootTable.Columns["Observ"].Visible = false;
 
                     //Habilitar filtradores
                     Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;
@@ -416,6 +420,9 @@ namespace PRESENTER.com
                     Tb_Proveedor.Text = Lista.Proveedor.ToString();
                     Tb_Fecha.Value = Lista.FechaDoc;
                     Sw_TipoVenta.Value = Lista.TipoVenta == 1 ? true : false;
+                    Sw_Emision.Value = Lista.TipoFactura == 1 ? true : false;
+                    Tb_NFactura.Text = Lista.Factura;
+                    Tb_Recibo.Text = Lista.Recibo;
                     Tb_MDesc.Value = Convert.ToDouble( Lista.Descu);
                     Tb_Total.Value = Convert.ToDouble( Lista.Total);
                     Tb_Observacion.Text = Lista.Observ;
@@ -986,8 +993,8 @@ namespace PRESENTER.com
                     TipoVenta = Sw_TipoVenta.Value == true ? 1 : 2,
                     FechaVen = Tb_FechaVenc.Value,
                     TipoFactura = Sw_Emision.Value == true ? 1 : 2,
-                    Factura = Tb_NFactura.Text == string.Empty ? "0" : Tb_NFactura.Text,
-                    Recibo = Tb_Recibo.Text == string.Empty ? "0" : Tb_Recibo.Text,
+                    Factura = Sw_Emision.Value? "0" : Tb_NFactura.Text,
+                    Recibo = Sw_Emision.Value? Tb_Recibo.Text:"0",
                     Observ = Tb_Observacion.Text,            
                     Descu = Convert.ToDecimal(Tb_MDesc.Value),                  
                     Total = Convert.ToDecimal(Tb_Total.Value),

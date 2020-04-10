@@ -13,16 +13,16 @@ namespace ENTITY.com.Compra.View
         public int IdProvee { get; set; }
         public int Estado { get; set; }
         public System.DateTime FechaDoc { get; set; }
-        public int TipoVenta { get; set; }
-        public System.DateTime FechaVen { get; set; }
-        public int TipoFactura { get; set; }
-        public string Factura { get; set; }
-        public string Recibo { get; set; }
-        public string Observ { get; set; }
+        public int TipoVenta { get; set; }       
         public decimal Descu { get; set; }
         public decimal Total { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
+        public System.DateTime FechaVen { get; set; }
+        public string Factura { get; set; }
+        public string Recibo { get; set; }
+        public int TipoFactura { get; set; }       
+        public string Observ { get; set; }
     }
 }

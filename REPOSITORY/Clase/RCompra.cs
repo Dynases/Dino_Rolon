@@ -164,7 +164,12 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
-                                          Usuario = a.Usuario
+                                          Usuario = a.Usuario,
+                                          FechaVen = a.FechaVen,
+                                          Factura = a.Factura,
+                                          Recibo = a.Recibo,
+                                          TipoFactura  =a.TipoFactura,
+                                          Observ = a.Observ
                                       }).ToList();
                     return listResult;
                 }

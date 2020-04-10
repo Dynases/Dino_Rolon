@@ -375,20 +375,6 @@ namespace PRESENTER.reg
         {
             try
             {
-                //String name = "LISTA";
-                //String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
-                //               @"D:\DINASES\DiAvi\ARCHIVOS\Plantilla.xlsx" +
-                //                ";Extended Properties='Excel 8.0;HDR=SI;';";
-
-                //OleDbConnection con = new OleDbConnection(constr);
-                //OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", con);
-                //con.Open();
-
-                //OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-                //DataTable data = new DataTable();
-                //sda.Fill(data);
-                //Dgv_Precio.DataSource = data;
-                //con.Close();
                 string folder = "";
                 string doc = "LISTA";
                 OpenFileDialog openfile1 = new OpenFileDialog();
@@ -431,16 +417,21 @@ namespace PRESENTER.reg
                             foreach (var categoria in lresult)
                             {
                                 string e = categoria.Cod;
-                                string z = ((DataTable)Dgv_Precio.DataSource).Rows[i][categoria.Cod].ToString();
-                                string idProducto = ((DataTable)Dgv_Precio.DataSource).Rows[i]["Id"].ToString();
-                                string x = filaImport[categoria.Cod].ToString();
-                                ((DataTable)Dgv_Precio.DataSource).Rows[i][categoria.Cod] = x;
+                                var cantidad = Convert.ToDecimal(((DataTable)Dgv_Precio.DataSource).Rows[i][categoria.Cod].ToString());                                
+                                var cantidadNueva = Convert.ToDecimal(filaImport[categoria.Cod].ToString());
+                                if (cantidad != cantidadNueva)
+                                {
+                                    string idProducto = ((DataTable)Dgv_Precio.DataSource).Rows[i]["Id"].ToString();
 
-                                DataRow[] resultado = tPrecio.Select("IdProducto=" + idProducto + "and Cod='" + categoria.Cod + "'");
+                                    ((DataTable)Dgv_Precio.DataSource).Rows[i][categoria.Cod] = cantidadNueva.ToString();
 
-                                int rowIndex = tPrecio.Rows.IndexOf(resultado[0]);
-                                string columna = resultado[0].Field<int>("Estado").ToString() + "_" + rowIndex.ToString().Trim();
-                                MP_ActualizarPrecio(columna, null, x, 2);
+                                    DataRow[] resultado = tPrecio.Select("IdProducto=" + idProducto + "and Cod='" + categoria.Cod + "'");
+
+                                    int rowIndex = tPrecio.Rows.IndexOf(resultado[0]);
+                                    string columna = resultado[0].Field<int>("Estado").ToString() + "_" + rowIndex.ToString().Trim();
+                                    MP_ActualizarPrecio(columna, null, cantidadNueva.ToString(), 2);
+                                }
+                                
                             }
                             break;
                         }
@@ -605,6 +596,7 @@ namespace PRESENTER.reg
                 List<VPrecioLista> lPrecio = new List<VPrecioLista>();
                 int count = 0;
                 int conntTabla = 0;
+                var total = tPrecio.Select("Estado <>" + "1").Count();
                 using (var scope = new TransactionScope())
                 {
                     foreach (DataRow item in tPrecio.Rows)
@@ -623,46 +615,30 @@ namespace PRESENTER.reg
                             lPrecio.Add(vPrecio);
                             count += 1;
                             conntTabla += 1;
-                            if (count == 100 || conntTabla == tPrecio.Rows.Count - 1)
+                        }
+                        if (_ImportadoExcel)
+                        {
+                            if (count == 150 || conntTabla == total)
                             {
                                 var lista = lPrecio.ToArray();
                                 resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                                 lPrecio = new List<VPrecioLista>();
                                 count = 0;
                             }
-                            if (!_ImportadoExcel)
+                        }
+                        else
+                        {                           
+                            if (lPrecio.Count != 0)
                             {
                                 var lista = lPrecio.ToArray();
                                 resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
                                 lPrecio = new List<VPrecioLista>();
-                            }
+                            }                           
                         }
                     }
                     scope.Complete();
                     resultado = true;
-                }
-
-                //using (var scope = new TransactionScope())
-                //{
-                //    foreach (var item in lPrecio)
-                //    {
-                //        if (item.Estado == 3)
-                //        {
-                //           resultado = new ServiceDesktop.ServiceDesktopClient().PrecioNuevo(item, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
-                //        }
-                //        else
-                //        {
-                //            if (item.Estado == 2)
-                //            {
-                //              resultado = new ServiceDesktop.ServiceDesktopClient().PrecioModificar(item, UTGlobal.Usuario);
-                //            }
-                //        }
-                //    }
-                //    scope.Complete();
-                //    resultado = true;
-                //}
-                //resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
-                //resultado = new ServiceDesktop.ServiceDesktopClient().PrecioGuardar(lista, Convert.ToInt32(Cb_Almacen.Value), UTGlobal.Usuario);
+                }               
                 if (resultado)
                 {
                     MP_CargarPrecio(true);

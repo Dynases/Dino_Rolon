@@ -155,7 +155,7 @@ namespace MODEL
             BtnEliminar.Enabled = false;
             BtnGrabar.Enabled = true;
             BtnImprimir.Enabled = false;
-            BtnExportar.Enabled = false;
+           // BtnExportar.Enabled = false;
             PanelNavegacion.Enabled = false;
             SuperTabBuscar.Enabled = false;
         }
