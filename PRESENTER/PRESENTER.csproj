@@ -535,92 +535,92 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop29.xsd">
+    <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop291.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2910.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2911.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2912.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2913.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2914.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2915.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop15.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2916.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop16.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2917.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop17.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2918.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop18.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2919.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop292.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2920.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop20.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2921.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2922.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop22.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2923.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop23.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2924.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop24.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2925.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop25.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2926.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop26.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2927.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2928.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop293.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop294.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop295.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop296.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop297.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop298.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop299.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -706,7 +706,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
