@@ -533,6 +533,7 @@
             this.Tb_Observacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Observacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Observacion.Location = new System.Drawing.Point(108, 116);
+            this.Tb_Observacion.MaxLength = 250;
             this.Tb_Observacion.Multiline = true;
             this.Tb_Observacion.Name = "Tb_Observacion";
             this.Tb_Observacion.PreventEnterBeep = true;

@@ -832,6 +832,7 @@
             this.Tb_CodProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_CodProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_CodProducto.Location = new System.Drawing.Point(313, 14);
+            this.Tb_CodProducto.MaxLength = 15;
             this.Tb_CodProducto.Name = "Tb_CodProducto";
             this.Tb_CodProducto.PreventEnterBeep = true;
             this.Tb_CodProducto.Size = new System.Drawing.Size(65, 23);
@@ -920,6 +921,7 @@
             this.Tb_Producto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Producto.Location = new System.Drawing.Point(160, 114);
+            this.Tb_Producto.MaxLength = 30;
             this.Tb_Producto.Name = "Tb_Producto";
             this.Tb_Producto.PreventEnterBeep = true;
             this.Tb_Producto.Size = new System.Drawing.Size(167, 23);
@@ -1114,6 +1116,7 @@
             this.Tb_CodBarras.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_CodBarras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_CodBarras.Location = new System.Drawing.Point(114, 43);
+            this.Tb_CodBarras.MaxLength = 15;
             this.Tb_CodBarras.Name = "Tb_CodBarras";
             this.Tb_CodBarras.PreventEnterBeep = true;
             this.Tb_CodBarras.Size = new System.Drawing.Size(264, 23);
@@ -1130,6 +1133,7 @@
             this.Tb_Descripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Descripcion.Location = new System.Drawing.Point(114, 74);
+            this.Tb_Descripcion.MaxLength = 100;
             this.Tb_Descripcion.Name = "Tb_Descripcion";
             this.Tb_Descripcion.PreventEnterBeep = true;
             this.Tb_Descripcion.Size = new System.Drawing.Size(264, 23);

@@ -809,7 +809,7 @@ namespace PRESENTER.reg
                 VProducto Producto = new VProducto()
                 {
                     IdProd = Tb_CodProducto.Text,
-                    Estado = Convert.ToInt32(ENProductoEstado.Activo),
+                    Estado =(int)ENProductoEstado.Activo,
                     Descripcion = Tb_Descripcion.Text,
                     CodBar = Tb_CodBarras.Text,
                     Peso = string.Empty == Tb_Peso.Text ? 0 : Convert.ToDecimal(Tb_Peso.Text),

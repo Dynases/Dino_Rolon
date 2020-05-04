@@ -367,6 +367,7 @@
             this.Tb_Telefono2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Telefono2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Telefono2.Location = new System.Drawing.Point(320, 166);
+            this.Tb_Telefono2.MaxLength = 30;
             this.Tb_Telefono2.Name = "Tb_Telefono2";
             this.Tb_Telefono2.PreventEnterBeep = true;
             this.Tb_Telefono2.Size = new System.Drawing.Size(109, 23);
@@ -383,6 +384,7 @@
             this.Tb_Email2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Email2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Email2.Location = new System.Drawing.Point(474, 166);
+            this.Tb_Email2.MaxLength = 50;
             this.Tb_Email2.Name = "Tb_Email2";
             this.Tb_Email2.PreventEnterBeep = true;
             this.Tb_Email2.Size = new System.Drawing.Size(193, 23);
@@ -399,6 +401,7 @@
             this.Tb_Contacto2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Contacto2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Contacto2.Location = new System.Drawing.Point(103, 166);
+            this.Tb_Contacto2.MaxLength = 50;
             this.Tb_Contacto2.Name = "Tb_Contacto2";
             this.Tb_Contacto2.PreventEnterBeep = true;
             this.Tb_Contacto2.Size = new System.Drawing.Size(153, 23);
@@ -815,6 +818,7 @@
             this.Tb_CodSpyre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_CodSpyre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_CodSpyre.Location = new System.Drawing.Point(262, 14);
+            this.Tb_CodSpyre.MaxLength = 30;
             this.Tb_CodSpyre.Name = "Tb_CodSpyre";
             this.Tb_CodSpyre.PreventEnterBeep = true;
             this.Tb_CodSpyre.Size = new System.Drawing.Size(66, 23);
@@ -831,6 +835,7 @@
             this.Tb_Direccion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Direccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Direccion.Location = new System.Drawing.Point(103, 85);
+            this.Tb_Direccion.MaxLength = 150;
             this.Tb_Direccion.Multiline = true;
             this.Tb_Direccion.Name = "Tb_Direccion";
             this.Tb_Direccion.PreventEnterBeep = true;
@@ -848,6 +853,7 @@
             this.Tb_Telefono.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Telefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Telefono.Location = new System.Drawing.Point(320, 136);
+            this.Tb_Telefono.MaxLength = 30;
             this.Tb_Telefono.Name = "Tb_Telefono";
             this.Tb_Telefono.PreventEnterBeep = true;
             this.Tb_Telefono.Size = new System.Drawing.Size(109, 23);
@@ -864,6 +870,7 @@
             this.Tb_Email1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Email1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Email1.Location = new System.Drawing.Point(474, 136);
+            this.Tb_Email1.MaxLength = 50;
             this.Tb_Email1.Name = "Tb_Email1";
             this.Tb_Email1.PreventEnterBeep = true;
             this.Tb_Email1.Size = new System.Drawing.Size(193, 23);
@@ -880,6 +887,7 @@
             this.Tb_Contacto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Contacto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Contacto.Location = new System.Drawing.Point(103, 136);
+            this.Tb_Contacto.MaxLength = 50;
             this.Tb_Contacto.Name = "Tb_Contacto";
             this.Tb_Contacto.PreventEnterBeep = true;
             this.Tb_Contacto.Size = new System.Drawing.Size(153, 23);
@@ -896,6 +904,7 @@
             this.Tb_Descripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Descripcion.Location = new System.Drawing.Point(103, 42);
+            this.Tb_Descripcion.MaxLength = 250;
             this.Tb_Descripcion.Multiline = true;
             this.Tb_Descripcion.Name = "Tb_Descripcion";
             this.Tb_Descripcion.PreventEnterBeep = true;

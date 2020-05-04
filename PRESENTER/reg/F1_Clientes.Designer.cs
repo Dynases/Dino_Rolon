@@ -883,6 +883,7 @@ namespace PRESENTER.reg
             this.Txb_CliNit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliNit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliNit.Location = new System.Drawing.Point(543, 75);
+            this.Txb_CliNit.MaxLength = 50;
             this.Txb_CliNit.Name = "Txb_CliNit";
             this.Txb_CliNit.PreventEnterBeep = true;
             this.Txb_CliNit.Size = new System.Drawing.Size(167, 23);
@@ -899,6 +900,7 @@ namespace PRESENTER.reg
             this.Txb_CliCodSpyre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliCodSpyre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliCodSpyre.Location = new System.Drawing.Point(262, 14);
+            this.Txb_CliCodSpyre.MaxLength = 50;
             this.Txb_CliCodSpyre.Name = "Txb_CliCodSpyre";
             this.Txb_CliCodSpyre.PreventEnterBeep = true;
             this.Txb_CliCodSpyre.Size = new System.Drawing.Size(66, 23);
@@ -915,6 +917,7 @@ namespace PRESENTER.reg
             this.Txb_CliDireccion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliDireccion.Location = new System.Drawing.Point(101, 133);
+            this.Txb_CliDireccion.MaxLength = 250;
             this.Txb_CliDireccion.Name = "Txb_CliDireccion";
             this.Txb_CliDireccion.PreventEnterBeep = true;
             this.Txb_CliDireccion.Size = new System.Drawing.Size(381, 23);
@@ -931,6 +934,7 @@ namespace PRESENTER.reg
             this.Txb_CliTel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliTel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliTel2.Location = new System.Drawing.Point(338, 196);
+            this.Txb_CliTel2.MaxLength = 30;
             this.Txb_CliTel2.Name = "Txb_CliTel2";
             this.Txb_CliTel2.PreventEnterBeep = true;
             this.Txb_CliTel2.Size = new System.Drawing.Size(144, 23);
@@ -947,6 +951,7 @@ namespace PRESENTER.reg
             this.Txb_CliEmail2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliEmail2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliEmail2.Location = new System.Drawing.Point(543, 193);
+            this.Txb_CliEmail2.MaxLength = 30;
             this.Txb_CliEmail2.Name = "Txb_CliEmail2";
             this.Txb_CliEmail2.PreventEnterBeep = true;
             this.Txb_CliEmail2.Size = new System.Drawing.Size(167, 23);
@@ -963,6 +968,7 @@ namespace PRESENTER.reg
             this.Txb_CliContacto2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliContacto2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliContacto2.Location = new System.Drawing.Point(101, 196);
+            this.Txb_CliContacto2.MaxLength = 50;
             this.Txb_CliContacto2.Name = "Txb_CliContacto2";
             this.Txb_CliContacto2.PreventEnterBeep = true;
             this.Txb_CliContacto2.Size = new System.Drawing.Size(160, 23);
@@ -979,6 +985,7 @@ namespace PRESENTER.reg
             this.Txb_CliTel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliTel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliTel1.Location = new System.Drawing.Point(338, 165);
+            this.Txb_CliTel1.MaxLength = 30;
             this.Txb_CliTel1.Name = "Txb_CliTel1";
             this.Txb_CliTel1.PreventEnterBeep = true;
             this.Txb_CliTel1.Size = new System.Drawing.Size(144, 23);
@@ -995,6 +1002,7 @@ namespace PRESENTER.reg
             this.Txb_CliEmail1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliEmail1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliEmail1.Location = new System.Drawing.Point(543, 162);
+            this.Txb_CliEmail1.MaxLength = 30;
             this.Txb_CliEmail1.Name = "Txb_CliEmail1";
             this.Txb_CliEmail1.PreventEnterBeep = true;
             this.Txb_CliEmail1.Size = new System.Drawing.Size(167, 23);
@@ -1011,6 +1019,7 @@ namespace PRESENTER.reg
             this.Txb_CliContacto1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliContacto1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliContacto1.Location = new System.Drawing.Point(101, 165);
+            this.Txb_CliContacto1.MaxLength = 50;
             this.Txb_CliContacto1.Name = "Txb_CliContacto1";
             this.Txb_CliContacto1.PreventEnterBeep = true;
             this.Txb_CliContacto1.Size = new System.Drawing.Size(160, 23);
@@ -1027,6 +1036,7 @@ namespace PRESENTER.reg
             this.Txb_CliRazonSoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliRazonSoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliRazonSoc.Location = new System.Drawing.Point(103, 73);
+            this.Txb_CliRazonSoc.MaxLength = 250;
             this.Txb_CliRazonSoc.Name = "Txb_CliRazonSoc";
             this.Txb_CliRazonSoc.PreventEnterBeep = true;
             this.Txb_CliRazonSoc.Size = new System.Drawing.Size(379, 23);
@@ -1043,6 +1053,7 @@ namespace PRESENTER.reg
             this.Txb_CliDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliDescripcion.Location = new System.Drawing.Point(103, 42);
+            this.Txb_CliDescripcion.MaxLength = 200;
             this.Txb_CliDescripcion.Name = "Txb_CliDescripcion";
             this.Txb_CliDescripcion.PreventEnterBeep = true;
             this.Txb_CliDescripcion.Size = new System.Drawing.Size(607, 23);
@@ -1060,6 +1071,7 @@ namespace PRESENTER.reg
             this.Txb_CliCod.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txb_CliCod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Txb_CliCod.Location = new System.Drawing.Point(103, 12);
+            this.Txb_CliCod.MaxLength = 10;
             this.Txb_CliCod.Name = "Txb_CliCod";
             this.Txb_CliCod.PreventEnterBeep = true;
             this.Txb_CliCod.Size = new System.Drawing.Size(66, 23);

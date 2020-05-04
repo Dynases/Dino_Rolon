@@ -457,6 +457,7 @@
             this.Tb_Recibido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Recibido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Recibido.Location = new System.Drawing.Point(107, 368);
+            this.Tb_Recibido.MaxLength = 50;
             this.Tb_Recibido.Name = "Tb_Recibido";
             this.Tb_Recibido.PreventEnterBeep = true;
             this.Tb_Recibido.Size = new System.Drawing.Size(196, 23);
@@ -489,6 +490,7 @@
             this.Tb_Entregado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Entregado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Entregado.Location = new System.Drawing.Point(107, 336);
+            this.Tb_Entregado.MaxLength = 50;
             this.Tb_Entregado.Name = "Tb_Entregado";
             this.Tb_Entregado.PreventEnterBeep = true;
             this.Tb_Entregado.Size = new System.Drawing.Size(196, 23);
@@ -521,6 +523,7 @@
             this.Tb_Edad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Edad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Edad.Location = new System.Drawing.Point(107, 307);
+            this.Tb_Edad.MaxLength = 15;
             this.Tb_Edad.Name = "Tb_Edad";
             this.Tb_Edad.PreventEnterBeep = true;
             this.Tb_Edad.Size = new System.Drawing.Size(196, 23);
@@ -747,6 +750,7 @@
             this.Tb_Observacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Observacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_Observacion.Location = new System.Drawing.Point(108, 242);
+            this.Tb_Observacion.MaxLength = 50;
             this.Tb_Observacion.Multiline = true;
             this.Tb_Observacion.Name = "Tb_Observacion";
             this.Tb_Observacion.PreventEnterBeep = true;
@@ -764,6 +768,7 @@
             this.Tb_NUmGranja.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_NUmGranja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
             this.Tb_NUmGranja.Location = new System.Drawing.Point(152, 44);
+            this.Tb_NUmGranja.MaxLength = 26;
             this.Tb_NUmGranja.Name = "Tb_NUmGranja";
             this.Tb_NUmGranja.PreventEnterBeep = true;
             this.Tb_NUmGranja.Size = new System.Drawing.Size(152, 23);

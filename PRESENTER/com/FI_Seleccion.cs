@@ -374,6 +374,7 @@ namespace PRESENTER.com
             Tb_IdCompraIngreso.ReadOnly = false;
             Dgv_Detalle.Enabled = true;
             Dgv_Seleccion.Enabled = true;
+            Cb_Almacen.ReadOnly = false;
         }
         private void MP_InHabilitar()
         {

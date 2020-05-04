@@ -18,33 +18,33 @@ namespace REPOSITORY.Clase
     public class RProducto : BaseConexion, IProducto
     {
         #region Transacciones
-        public bool Guardar(VProducto Producto, ref int id)
+        public bool Guardar(VProducto vProducto, ref int id)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var producto = new Producto();
-                    producto.IdProd = Producto.IdProd;
-                    producto.Estado = producto.Estado;
-                    producto.Tipo = Producto.Tipo;
-                    producto.CodBar = Producto.CodBar;
-                    producto.Descrip = Producto.Descripcion;
-                    producto.UniVen = Producto.UniVenta;
-                    producto.UniPeso = Producto.UniPeso;
-                    producto.Peso = Producto.Peso;
-                    producto.Grupo1 = Producto.Grupo1;
-                    producto.Grupo2 = Producto.Grupo2;
-                    producto.Grupo3 = Producto.Grupo3;
-                    producto.Grupo4 = Producto.Grupo4;
-                    producto.Grupo5 = Producto.Grupo5;
-                    producto.Imagen = Producto.Imagen;
-                    producto.IdProducto = Producto.IdProducto;
-                    producto.DescripProduc = Producto.Producto2;
-                    producto.Cantidad = Producto.Cantidad;
-                    producto.Fecha = Producto.Fecha;
-                    producto.Hora = Producto.Hora;
-                    producto.Usuario = Producto.Usuario;
+                    producto.IdProd = vProducto.IdProd;
+                    producto.Estado = vProducto.Estado;
+                    producto.Tipo = vProducto.Tipo;
+                    producto.CodBar = vProducto.CodBar;
+                    producto.Descrip = vProducto.Descripcion;
+                    producto.UniVen = vProducto.UniVenta;
+                    producto.UniPeso = vProducto.UniPeso;
+                    producto.Peso = vProducto.Peso;
+                    producto.Grupo1 = vProducto.Grupo1;
+                    producto.Grupo2 = vProducto.Grupo2;
+                    producto.Grupo3 = vProducto.Grupo3;
+                    producto.Grupo4 = vProducto.Grupo4;
+                    producto.Grupo5 = vProducto.Grupo5;
+                    producto.Imagen = vProducto.Imagen;
+                    producto.IdProducto = vProducto.IdProducto;
+                    producto.DescripProduc = vProducto.Producto2;
+                    producto.Cantidad = vProducto.Cantidad;
+                    producto.Fecha = vProducto.Fecha;
+                    producto.Hora = vProducto.Hora;
+                    producto.Usuario = vProducto.Usuario;
                     db.Producto.Add(producto);
                     db.SaveChanges();
                     id = producto.Id;
