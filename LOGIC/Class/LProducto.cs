@@ -1,7 +1,9 @@
 ﻿using ENTITY.inv.Almacen.View;
 using ENTITY.Producto.View;
 using REPOSITORY.Clase;
+using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
+using REPOSITORY.Interface.DiSoft;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,11 +17,13 @@ namespace LOGIC.Class
     public class LProducto
     {
         protected IProducto iProducto;
+        protected IProductoD iProductoD;
         protected ITI0021 iTI0021;
 
         public LProducto()
         {
             iProducto = new RProducto();
+            iProductoD = new RProductoD();
             iTI0021 = new RTI0021();
         }
 
@@ -30,7 +34,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iProducto.Guardar(vProducto, ref id);
+                    var result = false;
+                    result = iProducto.Guardar(vProducto, ref id);
+                    //Guarda en Disoft
+                    result = iProductoD.Guardar(vProducto, ref id);
                     scope.Complete();
                     return result;
                 }
@@ -46,7 +53,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iProducto.Modificar(vProducto, idProducto);
+                    var result = false;
+                    result = iProducto.Modificar(vProducto, idProducto);
+                    //modifica en Disoft
+                    result = iProductoD.Guardar(vProducto, ref idProducto);
                     scope.Complete();
                     return result;
                 }
@@ -62,7 +72,10 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iProducto.Eliminar(idProducto);
+                    var result = false;
+                    result = iProducto.Eliminar(idProducto);
+                    //Elimina en Disoft
+                    result = iProductoD.Eliminar(idProducto);
                     scope.Complete();
                     return result;
                 }

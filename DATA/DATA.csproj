@@ -198,6 +198,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DiSoftModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TC001.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiSoft\TC004.cs">
       <DependentUpon>DiSoftModel.tt</DependentUpon>
     </Compile>

@@ -561,7 +561,7 @@ namespace PRESENTER.reg
             Tb_CodCategoria.ReadOnly = false;
             Tb_Descripcion.ReadOnly = false;
             Tb_Margen.ReadOnly = false;
-            Cb_Almacen.ReadOnly = false;
+            //Cb_Almacen.ReadOnly = false;
             Sw_Tipo.IsReadOnly = false;
             BtnExportar.Enabled = true;
         }
@@ -570,7 +570,7 @@ namespace PRESENTER.reg
             Tb_CodCategoria.ReadOnly = true;
             Tb_Descripcion.ReadOnly = true;
             Tb_Margen.ReadOnly = true;
-            Cb_Almacen.ReadOnly = true;
+            //Cb_Almacen.ReadOnly = true;
             Sw_Tipo.IsReadOnly = true;
             BtnExportar.Enabled = false;
             Btn_Agregar.Enabled = false;

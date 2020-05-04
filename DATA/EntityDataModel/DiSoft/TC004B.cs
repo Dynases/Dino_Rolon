@@ -15,7 +15,7 @@ namespace DATA.EntityDataModel.DiSoft
     public partial class TC004B
     {
         public int ccbnumi { get; set; }
-        public int ccbzona { get; set; }
-        public int ccbtcre { get; set; }
+        public Nullable<int> ccbzona { get; set; }
+        public Nullable<int> ccbtcre { get; set; }
     }
 }

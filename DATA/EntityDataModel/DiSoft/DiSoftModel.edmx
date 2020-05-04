@@ -5,41 +5,72 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BDDistBHF_RolonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TC001">
+          <Key>
+            <PropertyRef Name="canumi" />
+          </Key>
+          <Property Name="canumi" Type="int" Nullable="false" />
+          <Property Name="cacod" Type="nvarchar" MaxLength="10" />
+          <Property Name="cadesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="cadesc2" Type="nvarchar" MaxLength="100" />
+          <Property Name="cacat" Type="int" />
+          <Property Name="caimg" Type="nvarchar" MaxLength="30" />
+          <Property Name="castc" Type="bit" />
+          <Property Name="caest" Type="bit" />
+          <Property Name="caserie" Type="bit" />
+          <Property Name="capcom" Type="int" />
+          <Property Name="cafing" Type="date" />
+          <Property Name="cacemp" Type="int" />
+          <Property Name="cafact" Type="date" />
+          <Property Name="cahact" Type="nvarchar" MaxLength="5" />
+          <Property Name="cauact" Type="nvarchar" MaxLength="10" />
+          <Property Name="cacbarra" Type="nvarchar" MaxLength="15" />
+          <Property Name="casmin" Type="int" />
+          <Property Name="cagr1" Type="int" />
+          <Property Name="cagr2" Type="int" />
+          <Property Name="cagr3" Type="int" />
+          <Property Name="cagr4" Type="int" />
+          <Property Name="caumed" Type="int" />
+          <Property Name="cauventa" Type="int" />
+          <Property Name="caumax" Type="int" />
+          <Property Name="caconv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="capack" Type="int" />
+        </EntityType>
         <EntityType Name="TC004">
           <Key>
             <PropertyRef Name="ccnumi" />
           </Key>
           <Property Name="ccnumi" Type="int" Nullable="false" />
-          <Property Name="cccod" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="ccdesc" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cczona" Type="int" Nullable="false" />
+          <Property Name="cccod" Type="nvarchar" MaxLength="15" />
+          <Property Name="ccdesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="cczona" Type="int" />
           <Property Name="ccdct" Type="int" Nullable="false" />
-          <Property Name="ccdctnum" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="ccdirec" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="cctelf1" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cctelf2" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cccat" Type="int" Nullable="false" />
-          <Property Name="ccest" Type="int" Nullable="false" />
-          <Property Name="cclat" Type="decimal" Precision="18" Scale="14" Nullable="false" />
-          <Property Name="cclongi" Type="decimal" Precision="18" Scale="14" Nullable="false" />
-          <Property Name="ccprconsu" Type="int" Nullable="false" />
-          <Property Name="cceven" Type="bit" Nullable="false" />
+          <Property Name="ccdctnum" Type="nvarchar" MaxLength="20" />
+          <Property Name="ccdirec" Type="nvarchar" MaxLength="200" />
+          <Property Name="cctelf1" Type="nvarchar" MaxLength="50" />
+          <Property Name="cctelf2" Type="nvarchar" MaxLength="50" />
+          <Property Name="cccat" Type="int" />
+          <Property Name="ccest" Type="int" />
+          <Property Name="cclat" Type="decimal" Precision="18" Scale="14" />
+          <Property Name="cclongi" Type="decimal" Precision="18" Scale="14" />
+          <Property Name="ccprconsu" Type="int" />
+          <Property Name="cceven" Type="bit" />
           <Property Name="ccobs" Type="nvarchar" MaxLength="150" />
-          <Property Name="ccfnac" Type="date" Nullable="false" />
-          <Property Name="ccnomfac" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ccnit" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ccultped" Type="date" Nullable="false" />
-          <Property Name="ccfecing" Type="date" Nullable="false" />
-          <Property Name="ccultvent" Type="date" Nullable="false" />
-          <Property Name="ccrecven" Type="int" Nullable="false" />
-          <Property Name="ccsupven" Type="int" Nullable="false" />
-          <Property Name="ccpreven" Type="int" Nullable="false" />
-          <Property Name="ccemail" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="ccref" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="ccpass" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="ccfact" Type="date" Nullable="false" />
-          <Property Name="cchact" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ccuact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ccfnac" Type="date" />
+          <Property Name="ccnomfac" Type="nvarchar" MaxLength="200" />
+          <Property Name="ccnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="ccultped" Type="date" />
+          <Property Name="ccfecing" Type="date" />
+          <Property Name="ccultvent" Type="date" />
+          <Property Name="ccrecven" Type="int" />
+          <Property Name="ccsupven" Type="int" />
+          <Property Name="ccpreven" Type="int" />
+          <Property Name="ccemail" Type="nvarchar" MaxLength="255" />
+          <Property Name="ccref" Type="nvarchar" MaxLength="255" />
+          <Property Name="ccpass" Type="nvarchar" MaxLength="255" />
+          <Property Name="ccfact" Type="date" />
+          <Property Name="cchact" Type="nvarchar" MaxLength="50" />
+          <Property Name="ccuact" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -78,8 +109,8 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
             <PropertyRef Name="ccbnumi" />
           </Key>
           <Property Name="ccbnumi" Type="int" Nullable="false" />
-          <Property Name="ccbzona" Type="int" Nullable="false" />
-          <Property Name="ccbtcre" Type="int" Nullable="false" />
+          <Property Name="ccbzona" Type="int" />
+          <Property Name="ccbtcre" Type="int" />
         </EntityType>
         <EntityType Name="TC0051">
           <Key>
@@ -107,6 +138,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="lauact" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="BDDistBHF_RolonModelStoreContainer">
+          <EntitySet Name="TC001" EntityType="Self.TC001" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC004" EntityType="Self.TC004" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC0042" EntityType="Self.TC0042" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC004B" EntityType="Self.TC004B" Schema="dbo" store:Type="Tables" />
@@ -143,6 +175,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
           <EntitySet Name="TC0042" EntityType="BDDistBHF_RolonModel.TC0042" />
           <EntitySet Name="TC0041" EntityType="BDDistBHF_RolonModel.TC0041" />
+          <EntitySet Name="TC001" EntityType="BDDistBHF_RolonModel.TC001" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -174,44 +207,44 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
             <PropertyRef Name="ccbnumi" />
           </Key>
           <Property Name="ccbnumi" Type="Int32" Nullable="false" />
-          <Property Name="ccbzona" Type="Int32" Nullable="false" />
-          <Property Name="ccbtcre" Type="Int32" Nullable="false" />
+          <Property Name="ccbzona" Type="Int32" />
+          <Property Name="ccbtcre" Type="Int32" />
         </EntityType>
         <EntityType Name="TC004">
           <Key>
             <PropertyRef Name="ccnumi" />
           </Key>
           <Property Name="ccnumi" Type="Int32" Nullable="false" />
-          <Property Name="cccod" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ccdesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cczona" Type="Int32" Nullable="false" />
+          <Property Name="cccod" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ccdesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cczona" Type="Int32" />
           <Property Name="ccdct" Type="Int32" Nullable="false" />
-          <Property Name="ccdctnum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ccdirec" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="cctelf1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cctelf2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cccat" Type="Int32" Nullable="false" />
-          <Property Name="ccest" Type="Int32" Nullable="false" />
-          <Property Name="cclat" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
-          <Property Name="cclongi" Type="Decimal" Nullable="false" Precision="18" Scale="14" />
-          <Property Name="ccprconsu" Type="Int32" Nullable="false" />
-          <Property Name="cceven" Type="Boolean" Nullable="false" />
+          <Property Name="ccdctnum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ccdirec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cctelf1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cctelf2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cccat" Type="Int32" />
+          <Property Name="ccest" Type="Int32" />
+          <Property Name="cclat" Type="Decimal" Precision="18" Scale="14" />
+          <Property Name="cclongi" Type="Decimal" Precision="18" Scale="14" />
+          <Property Name="ccprconsu" Type="Int32" />
+          <Property Name="cceven" Type="Boolean" />
           <Property Name="ccobs" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ccfnac" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ccnomfac" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ccnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ccultped" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ccfecing" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ccultvent" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ccrecven" Type="Int32" Nullable="false" />
-          <Property Name="ccsupven" Type="Int32" Nullable="false" />
-          <Property Name="ccpreven" Type="Int32" Nullable="false" />
-          <Property Name="ccemail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ccref" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ccpass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ccfact" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="cchact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ccuact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ccfnac" Type="DateTime" Precision="0" />
+          <Property Name="ccnomfac" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ccnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ccultped" Type="DateTime" Precision="0" />
+          <Property Name="ccfecing" Type="DateTime" Precision="0" />
+          <Property Name="ccultvent" Type="DateTime" Precision="0" />
+          <Property Name="ccrecven" Type="Int32" />
+          <Property Name="ccsupven" Type="Int32" />
+          <Property Name="ccpreven" Type="Int32" />
+          <Property Name="ccemail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccref" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccpass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ccfact" Type="DateTime" Precision="0" />
+          <Property Name="cchact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ccuact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TC0042">
           <Key>
@@ -242,6 +275,37 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="chfact" Type="DateTime" Precision="0" />
           <Property Name="chhact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="chuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC001">
+          <Key>
+            <PropertyRef Name="canumi" />
+          </Key>
+          <Property Name="canumi" Type="Int32" Nullable="false" />
+          <Property Name="cacod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cadesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cadesc2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cacat" Type="Int32" />
+          <Property Name="caimg" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="castc" Type="Boolean" />
+          <Property Name="caest" Type="Boolean" />
+          <Property Name="caserie" Type="Boolean" />
+          <Property Name="capcom" Type="Int32" />
+          <Property Name="cafing" Type="DateTime" Precision="0" />
+          <Property Name="cacemp" Type="Int32" />
+          <Property Name="cafact" Type="DateTime" Precision="0" />
+          <Property Name="cahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="cauact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cacbarra" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="casmin" Type="Int32" />
+          <Property Name="cagr1" Type="Int32" />
+          <Property Name="cagr2" Type="Int32" />
+          <Property Name="cagr3" Type="Int32" />
+          <Property Name="cagr4" Type="Int32" />
+          <Property Name="caumed" Type="Int32" />
+          <Property Name="cauventa" Type="Int32" />
+          <Property Name="caumax" Type="Int32" />
+          <Property Name="caconv" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="capack" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -350,6 +414,38 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="chcod" ColumnName="chcod" />
                 <ScalarProperty Name="chfec" ColumnName="chfec" />
                 <ScalarProperty Name="chnumi" ColumnName="chnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC001">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC001">
+              <MappingFragment StoreEntitySet="TC001">
+                <ScalarProperty Name="capack" ColumnName="capack" />
+                <ScalarProperty Name="caconv" ColumnName="caconv" />
+                <ScalarProperty Name="caumax" ColumnName="caumax" />
+                <ScalarProperty Name="cauventa" ColumnName="cauventa" />
+                <ScalarProperty Name="caumed" ColumnName="caumed" />
+                <ScalarProperty Name="cagr4" ColumnName="cagr4" />
+                <ScalarProperty Name="cagr3" ColumnName="cagr3" />
+                <ScalarProperty Name="cagr2" ColumnName="cagr2" />
+                <ScalarProperty Name="cagr1" ColumnName="cagr1" />
+                <ScalarProperty Name="casmin" ColumnName="casmin" />
+                <ScalarProperty Name="cacbarra" ColumnName="cacbarra" />
+                <ScalarProperty Name="cauact" ColumnName="cauact" />
+                <ScalarProperty Name="cahact" ColumnName="cahact" />
+                <ScalarProperty Name="cafact" ColumnName="cafact" />
+                <ScalarProperty Name="cacemp" ColumnName="cacemp" />
+                <ScalarProperty Name="cafing" ColumnName="cafing" />
+                <ScalarProperty Name="capcom" ColumnName="capcom" />
+                <ScalarProperty Name="caserie" ColumnName="caserie" />
+                <ScalarProperty Name="caest" ColumnName="caest" />
+                <ScalarProperty Name="castc" ColumnName="castc" />
+                <ScalarProperty Name="caimg" ColumnName="caimg" />
+                <ScalarProperty Name="cacat" ColumnName="cacat" />
+                <ScalarProperty Name="cadesc2" ColumnName="cadesc2" />
+                <ScalarProperty Name="cadesc" ColumnName="cadesc" />
+                <ScalarProperty Name="cacod" ColumnName="cacod" />
+                <ScalarProperty Name="canumi" ColumnName="canumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

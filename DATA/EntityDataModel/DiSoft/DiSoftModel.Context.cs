@@ -31,5 +31,6 @@ namespace DATA.EntityDataModel.DiSoft
         public virtual DbSet<TC004> TC004 { get; set; }
         public virtual DbSet<TC0042> TC0042 { get; set; }
         public virtual DbSet<TC0041> TC0041 { get; set; }
+        public virtual DbSet<TC001> TC001 { get; set; }
     }
 }

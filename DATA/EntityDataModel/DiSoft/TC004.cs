@@ -17,32 +17,32 @@ namespace DATA.EntityDataModel.DiSoft
         public int ccnumi { get; set; }
         public string cccod { get; set; }
         public string ccdesc { get; set; }
-        public int cczona { get; set; }
+        public Nullable<int> cczona { get; set; }
         public int ccdct { get; set; }
         public string ccdctnum { get; set; }
         public string ccdirec { get; set; }
         public string cctelf1 { get; set; }
         public string cctelf2 { get; set; }
-        public int cccat { get; set; }
-        public int ccest { get; set; }
-        public decimal cclat { get; set; }
-        public decimal cclongi { get; set; }
-        public int ccprconsu { get; set; }
-        public bool cceven { get; set; }
+        public Nullable<int> cccat { get; set; }
+        public Nullable<int> ccest { get; set; }
+        public Nullable<decimal> cclat { get; set; }
+        public Nullable<decimal> cclongi { get; set; }
+        public Nullable<int> ccprconsu { get; set; }
+        public Nullable<bool> cceven { get; set; }
         public string ccobs { get; set; }
-        public System.DateTime ccfnac { get; set; }
+        public Nullable<System.DateTime> ccfnac { get; set; }
         public string ccnomfac { get; set; }
         public string ccnit { get; set; }
-        public System.DateTime ccultped { get; set; }
-        public System.DateTime ccfecing { get; set; }
-        public System.DateTime ccultvent { get; set; }
-        public int ccrecven { get; set; }
-        public int ccsupven { get; set; }
-        public int ccpreven { get; set; }
+        public Nullable<System.DateTime> ccultped { get; set; }
+        public Nullable<System.DateTime> ccfecing { get; set; }
+        public Nullable<System.DateTime> ccultvent { get; set; }
+        public Nullable<int> ccrecven { get; set; }
+        public Nullable<int> ccsupven { get; set; }
+        public Nullable<int> ccpreven { get; set; }
         public string ccemail { get; set; }
         public string ccref { get; set; }
         public string ccpass { get; set; }
-        public System.DateTime ccfact { get; set; }
+        public Nullable<System.DateTime> ccfact { get; set; }
         public string cchact { get; set; }
         public string ccuact { get; set; }
     }
