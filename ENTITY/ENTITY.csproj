@@ -56,6 +56,7 @@
     <Compile Include="com\Seleccion_01\View\VSeleccion_01.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_Lista.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_ListaDet.cs" />
+    <Compile Include="DiSoft\Libreria\VLibreriaD.cs" />
     <Compile Include="DiSoft\Zona\VZona.cs" />
     <Compile Include="inv\Almacen\View\VAlmacen.cs" />
     <Compile Include="inv\Almacen\View\VAlmacenCombo.cs" />

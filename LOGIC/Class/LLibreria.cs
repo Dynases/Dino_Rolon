@@ -1,4 +1,5 @@
-﻿using ENTITY.Libreria.View;
+﻿using ENTITY.DiSoft.Libreria;
+using ENTITY.Libreria.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum.EnEstaticos;
 
 namespace LOGIC.Class
 {
@@ -17,6 +19,19 @@ namespace LOGIC.Class
         {
             iLibreria = new RLibreria();
         }
+        #region Consultas
+        public List<VLibreria> Listar(int idGrupo, int idOrden)
+        {
+            try
+            {
+                return iLibreria.Listar(idGrupo, idOrden);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
         #region Transacciones
         public bool Guardar(VLibreriaLista vlibreria)
         {
@@ -26,6 +41,17 @@ namespace LOGIC.Class
                 using (var scope = new TransactionScope())
                 {
                     var result = iLibreria.Guardar(vlibreria);
+                    if (vlibreria.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO)
+                    {
+                        VLibreriaD vLibreriaDisoft = new VLibreriaD()
+                        {
+                           cecon = 101,
+                           cenum = vlibreria.IdLibrer,
+                           cefact = vlibreria.Fecha,
+                           cehact = vlibreria.Hora,
+                           ceuact =  vlibreria.Usuario
+                        };
+                    }
                     scope.Complete();
                     return result;
                 }
@@ -36,16 +62,7 @@ namespace LOGIC.Class
             }
         }
         #endregion
-        public List<VLibreria> Listar(int idGrupo,int idOrden)
-        {
-            try
-            {
-                return iLibreria.Listar(idGrupo,idOrden);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+       
+
     }
 }

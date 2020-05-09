@@ -38,7 +38,7 @@ namespace REPOSITORY.Clase
             }
         }
         #endregion
-        #region MyRegion
+        #region Consultas
         public List<VLibreria> Listar(int idGrupo, int idOrden)
         {
             try

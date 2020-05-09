@@ -53,6 +53,7 @@
     <Compile Include="Base\BaseConexionPrincipal.cs" />
     <Compile Include="Base\BD.cs" />
     <Compile Include="Clase\DiSoft\RClienteD.cs" />
+    <Compile Include="Clase\DiSoft\RLibreriaD.cs" />
     <Compile Include="Clase\DiSoft\RProductoD.cs" />
     <Compile Include="Clase\DiSoft\RZonaD.cs" />
     <Compile Include="Clase\RAlmacen.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Clase\RVenta.cs" />
     <Compile Include="Clase\RVenta_01.cs" />
     <Compile Include="Interface\DiSoft\IClienteD.cs" />
+    <Compile Include="Interface\DiSoft\ILibreriaD.cs" />
     <Compile Include="Interface\DiSoft\IProductoD.cs" />
     <Compile Include="Interface\DiSoft\IZonaD.cs" />
     <Compile Include="Interface\IAlmacen.cs" />
