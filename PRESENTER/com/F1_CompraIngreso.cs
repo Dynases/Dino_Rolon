@@ -392,8 +392,31 @@ namespace PRESENTER.com
         private void Cb_Placa_ValueChanged(object sender, EventArgs e)
         {
             MP_SeleccionarButtonCombo(Cb_Placa, btnFacturacion);
-        }     
-      
+        }
+        private void Tb_CantidadCajas_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_RearmarDetalleSegunCantidad();
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void Tb_CantidadGrupos_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_RearmarDetalleSegunCantidad();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Metodos privados
@@ -876,7 +899,30 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
-
+        private void MP_RearmarDetalleSegunCantidad()
+        {
+            if (Dgv_Detalle.RowCount > 0)
+            {
+                Dgv_Detalle.Update();
+                var Detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
+                foreach (var fila in Detalle)
+                {
+                    if (fila.Grupo != 0 || fila.Caja != 0 || fila.Maple != 0 || fila.Cantidad != 0)
+                    {
+                        //fila.Caja = fila.Caja * Convert.ToInt32(Tb_CantidadCajas.Value * 30);
+                        //fila.Grupo = fila.Grupo * Convert.ToInt32(Tb_CantidadGrupos.Value * 30);
+                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + fila.Maple + fila.Cantidad;
+                        fila.Total = fila.TotalCant * fila.PrecioCost;
+                        if (fila.Estado == (int)ENEstado.GUARDADO)
+                        {
+                            fila.Estado = (int)ENEstado.MODIFICAR;
+                        }
+                    }
+                }
+                MP_ArmarDetalle(Detalle);
+                MP_ObtenerCalculo();
+            }
+        }
         #endregion
 
         #region Metodo heredados
@@ -1100,53 +1146,8 @@ namespace PRESENTER.com
 
         #endregion
 
-        private void Tb_CantidadCajas_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MP_RearmarDetalleSegunCantidad();
-            }
-            catch (Exception ex)
-            {
-
-                MP_MostrarMensajeError(ex.Message);
-            }           
-        }
-        private void Tb_CantidadGrupos_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MP_RearmarDetalleSegunCantidad();
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-        private void MP_RearmarDetalleSegunCantidad()
-        {
-            if (Dgv_Detalle.RowCount > 0)
-            {
-                Dgv_Detalle.Update();
-                var Detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
-                foreach (var fila in Detalle)
-                {
-                    if (fila.Grupo != 0 || fila.Caja != 0 || fila.Maple != 0 || fila.Cantidad != 0)
-                    {
-                        //fila.Caja = fila.Caja * Convert.ToInt32(Tb_CantidadCajas.Value * 30);
-                        //fila.Grupo = fila.Grupo * Convert.ToInt32(Tb_CantidadGrupos.Value * 30);
-                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + fila.Maple + fila.Cantidad;
-                        fila.Total = fila.TotalCant * fila.PrecioCost;
-                        if (fila.Estado == (int)ENEstado.GUARDADO)
-                        {
-                            fila.Estado = (int)ENEstado.MODIFICAR;
-                        }
-                    }
-                }
-                MP_ArmarDetalle(Detalle);
-                MP_ObtenerCalculo();
-            }
-        }
+       
+      
 
        
     }
