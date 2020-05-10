@@ -2,6 +2,8 @@
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="VCompraIngresoLista">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadCaja" type="xs:int" />
+      <xs:element minOccurs="0" name="CantidadGrupo" type="xs:int" />
       <xs:element minOccurs="0" name="CantidadSemanas" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entregado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />

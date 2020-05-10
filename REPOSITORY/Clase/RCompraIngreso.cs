@@ -65,6 +65,8 @@ namespace REPOSITORY.Clase
                     CompraIngreso.TotalRecibido = vCompraIngreso.TotalRecibido;
                     CompraIngreso.Total = vCompraIngreso.Total;
                     CompraIngreso.TipoCompra = vCompraIngreso.TipoCompra;
+                    CompraIngreso.CantidadCaja = vCompraIngreso.CantidadCaja;
+                    CompraIngreso.CantidadGrupo = vCompraIngreso.CantidadGrupo;
                     CompraIngreso.Fecha = vCompraIngreso.Fecha;
                     CompraIngreso.Hora = vCompraIngreso.Hora;
                     CompraIngreso.Usuario = vCompraIngreso.Usuario;
@@ -297,6 +299,8 @@ namespace REPOSITORY.Clase
                                           TotalVendido =a.TotalVendido,
                                           TipoCompra = a.TipoCompra,
                                          estado= a.Estado,
+                                         CantidadCaja = a.CantidadCaja,
+                                         CantidadGrupo = a.CantidadGrupo,
                                       }).ToList();
                     return listResult;
                 }

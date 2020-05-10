@@ -150,35 +150,63 @@ namespace PRESENTER.com
         {
             try
             {
-                Dgv_Detalle.UpdateData();
-                int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[10].Value);
-                if (estado == (int)ENEstado.COMPLETADO)
+                if (ValidarCantidad())
                 {
-                    throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
-                }
-                if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
-                {
-                    CalcularFila();
-                }
-                else
-                {
-                    if (estado == (int)ENEstado.GUARDADO)
+                    Dgv_Detalle.UpdateData();
+                    int estado = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[10].Value);
+                    if (estado == (int)ENEstado.COMPLETADO)
+                    {
+                        throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
+                    }
+                    if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                     {
                         CalcularFila();
-                        Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
                     }
-                }
+                    else
+                    {
+                        if (estado == (int)ENEstado.GUARDADO)
+                        {
+                            CalcularFila();
+                            Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
+                        }
+                    }
+                }               
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private bool ValidarCantidad()
+        {
+            try
+            {
+                bool resultado = true;
+                if (Tb_CantidadCajas.Value <= 0)
+                {
+                    resultado = false;
+                    Tb_CantidadCajas.Focus();
+                    throw new Exception("Debe introducir cantidades de conversión para Cajas");
+                }
+                if (Tb_CantidadGrupos.Value <= 0)
+                {
+                    resultado = false;
+                    Tb_CantidadGrupos.Focus();
+                    throw new Exception("Debe introducir cantidades de conversión para Grupos");
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }           
+        }
         private void CalcularFila()
         {
             Double caja, grupo, maple, cantidad, subTotal, precio, total;
-            caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * 360;
-            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * 300;
+            caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * 30);
+            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * (Tb_CantidadGrupos.Value * 30);
             maple = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[5].Value) * 30;
             cantidad = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[6].Value);
             subTotal = caja + grupo + maple + cantidad;
@@ -265,6 +293,7 @@ namespace PRESENTER.com
                         _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
                         tb_Proveedor.Text = Row.Cells["Descrip"].Value.ToString();
                         Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
+                        Cb_Tipo.Focus();
                     }
                 }
             }
@@ -308,8 +337,6 @@ namespace PRESENTER.com
         {
             try
             {
-
-
                 if (Tb_FechaEnt.Enabled == true)
                 {
                     if (e.KeyData == Keys.Enter)
@@ -350,6 +377,7 @@ namespace PRESENTER.com
                             Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
                             Cb_Placa.Value = Convert.ToInt32(Row.Cells["IdLibreria"].Value);
                             Tb_Entregado.Text = Row.Cells["Descripcion"].Value.ToString();
+                            tb_Proveedor.Focus();
                         }
                     }
                 }
@@ -364,7 +392,8 @@ namespace PRESENTER.com
         private void Cb_Placa_ValueChanged(object sender, EventArgs e)
         {
             MP_SeleccionarButtonCombo(Cb_Placa, btnFacturacion);
-        }
+        }     
+      
         #endregion
 
         #region Metodos privados
@@ -679,6 +708,8 @@ namespace PRESENTER.com
                 Tb_FechaRec.Enabled = true;
                 Tb_Recibido.ReadOnly = false;
                 Dgv_Detalle.Enabled = true;
+                Tb_CantidadCajas.IsInputReadOnly = false;
+                Tb_CantidadGrupos.IsInputReadOnly = false;
             }
             catch (Exception ex)
             {
@@ -710,6 +741,8 @@ namespace PRESENTER.com
                 Tb_TotalFisico.IsInputReadOnly = true;
                 Tb_TPrecio.IsInputReadOnly = true;
                 Tb_TSaldoTo.IsInputReadOnly = true;
+                Tb_CantidadCajas.IsInputReadOnly = true;
+                Tb_CantidadGrupos.IsInputReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -743,7 +776,9 @@ namespace PRESENTER.com
                 Tb_TotalMaples.Value = 0;
                 Tb_TotalFisico.Value = 0;
                 Tb_TPrecio.Value = 0;
-                Tb_TSaldoTo.Value = 0;          
+                Tb_TSaldoTo.Value = 0;
+                Tb_CantidadCajas.Value = 12;
+                Tb_CantidadGrupos.Value = 10;
                 MP_LimpiarColor();
                
             }
@@ -783,6 +818,8 @@ namespace PRESENTER.com
                         Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
                         Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
                         Sw_Tipo.Value = registro.TipoCompra == 1 ? true : false;
+                        Tb_CantidadCajas.Value = Convert.ToDouble(registro.CantidadCaja);
+                        Tb_CantidadGrupos.Value = Convert.ToDouble(registro.CantidadGrupo);
                         MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                         MP_ObtenerCalculo();            
                     }
@@ -870,6 +907,8 @@ namespace PRESENTER.com
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = UTGlobal.Usuario,
+                    CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
+                    CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value)
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
@@ -1056,8 +1095,59 @@ namespace PRESENTER.com
             }
         }
 
+
+
+
         #endregion
 
+        private void Tb_CantidadCajas_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_RearmarDetalleSegunCantidad();
+            }
+            catch (Exception ex)
+            {
 
+                MP_MostrarMensajeError(ex.Message);
+            }           
+        }
+        private void Tb_CantidadGrupos_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MP_RearmarDetalleSegunCantidad();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_RearmarDetalleSegunCantidad()
+        {
+            if (Dgv_Detalle.RowCount > 0)
+            {
+                Dgv_Detalle.Update();
+                var Detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
+                foreach (var fila in Detalle)
+                {
+                    if (fila.Grupo != 0 || fila.Caja != 0 || fila.Maple != 0 || fila.Cantidad != 0)
+                    {
+                        //fila.Caja = fila.Caja * Convert.ToInt32(Tb_CantidadCajas.Value * 30);
+                        //fila.Grupo = fila.Grupo * Convert.ToInt32(Tb_CantidadGrupos.Value * 30);
+                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + fila.Maple + fila.Cantidad;
+                        fila.Total = fila.TotalCant * fila.PrecioCost;
+                        if (fila.Estado == (int)ENEstado.GUARDADO)
+                        {
+                            fila.Estado = (int)ENEstado.MODIFICAR;
+                        }
+                    }
+                }
+                MP_ArmarDetalle(Detalle);
+                MP_ObtenerCalculo();
+            }
+        }
+
+       
     }
 }

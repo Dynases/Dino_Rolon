@@ -48,7 +48,7 @@ namespace REPOSITORY.Clase
                         compra_01.Utilidad = i.Utilidad;
                         compra_01.Porcent = i.Porcent;
                         compra_01.Utilidad = i.Utilidad;
-                        compra_01.Total = i.Total;
+                        compra_01.Total = i.Total;                        
                         db.Compra_01.Add(compra_01);
                         db.SaveChanges();
                         //Guarda el movimiento de inventario y actualiza el stock

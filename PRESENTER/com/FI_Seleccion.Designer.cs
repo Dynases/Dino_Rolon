@@ -136,7 +136,7 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.SelectedTabIndex = 1;
-            this.superTabControl1.Size = new System.Drawing.Size(1144, 630);
+            this.superTabControl1.Size = new System.Drawing.Size(1166, 630);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
@@ -162,7 +162,7 @@
             // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1002, 0);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(1024, 0);
             // 
             // BubbleBarUsuario
             // 
@@ -184,7 +184,7 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(952, 0);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(974, 0);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
@@ -195,15 +195,15 @@
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(1084, 0);
+            this.btnMin.Location = new System.Drawing.Point(1106, 0);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(1104, 0);
+            this.btnMax.Location = new System.Drawing.Point(1126, 0);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1124, 0);
+            this.btnClose.Location = new System.Drawing.Point(1146, 0);
             // 
             // GMPanel_Buscardor
             // 
@@ -246,20 +246,20 @@
             // 
             // LblSubtitulo
             // 
-            this.LblSubtitulo.Size = new System.Drawing.Size(1144, 36);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1166, 36);
             this.LblSubtitulo.Text = "Registre una nueva Selección. Visualice y/o modifique la información de una selec" +
     "ción previamente registrado. ";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Size = new System.Drawing.Size(1144, 72);
+            this.PanelMenu.Size = new System.Drawing.Size(1166, 72);
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1144, 597);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1166, 597);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
@@ -267,7 +267,7 @@
             // PanelInferior
             // 
             this.PanelInferior.Location = new System.Drawing.Point(0, 629);
-            this.PanelInferior.Size = new System.Drawing.Size(1144, 28);
+            this.PanelInferior.Size = new System.Drawing.Size(1166, 28);
             // 
             // PanelFondo
             // 
@@ -277,7 +277,7 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1144, 489);
+            this.PanelFondo.Size = new System.Drawing.Size(1166, 489);
             this.PanelFondo.TabIndex = 69;
             // 
             // PanelDerecho
@@ -288,7 +288,7 @@
             this.PanelDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDerecho.Location = new System.Drawing.Point(345, 0);
             this.PanelDerecho.Name = "PanelDerecho";
-            this.PanelDerecho.Size = new System.Drawing.Size(799, 489);
+            this.PanelDerecho.Size = new System.Drawing.Size(821, 489);
             this.PanelDerecho.TabIndex = 1;
             // 
             // panel2
@@ -298,7 +298,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(799, 377);
+            this.panel2.Size = new System.Drawing.Size(821, 377);
             this.panel2.TabIndex = 1;
             // 
             // groupPanel1
@@ -310,9 +310,9 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupPanel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPanel1.Location = new System.Drawing.Point(372, 0);
+            this.groupPanel1.Location = new System.Drawing.Point(369, 0);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(427, 377);
+            this.groupPanel1.Size = new System.Drawing.Size(452, 377);
             // 
             // 
             // 
@@ -351,7 +351,7 @@
             this.Dgv_Seleccion.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Seleccion.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Seleccion.Name = "Dgv_Seleccion";
-            this.Dgv_Seleccion.Size = new System.Drawing.Size(421, 351);
+            this.Dgv_Seleccion.Size = new System.Drawing.Size(446, 351);
             this.Dgv_Seleccion.TabIndex = 4;
             this.Dgv_Seleccion.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Seleccion_CellEdited);
             this.Dgv_Seleccion.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Seleccion_EditingCell);
@@ -429,7 +429,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 377);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 112);
+            this.panel1.Size = new System.Drawing.Size(821, 112);
             this.panel1.TabIndex = 0;
             // 
             // btn_Seleccionar
@@ -1193,7 +1193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 657);
+            this.ClientSize = new System.Drawing.Size(1166, 657);
             this.Name = "FI_Seleccion";
             this.Text = "FI_Transformacio";
             this.Load += new System.EventHandler(this.FI_Seleccion_Load);
