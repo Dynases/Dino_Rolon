@@ -70,6 +70,7 @@ namespace REPOSITORY.Clase
                     CompraIngreso.Fecha = vCompraIngreso.Fecha;
                     CompraIngreso.Hora = vCompraIngreso.Hora;
                     CompraIngreso.Usuario = vCompraIngreso.Usuario;
+                    CompraIngreso.CompraAntiguaFecha = vCompraIngreso.CompraAntiguaFecha;
                     db.SaveChanges();
                     id = CompraIngreso.Id;
                     return true;
@@ -301,6 +302,7 @@ namespace REPOSITORY.Clase
                                          estado= a.Estado,
                                          CantidadCaja = a.CantidadCaja,
                                          CantidadGrupo = a.CantidadGrupo,
+                                         CompraAntiguaFecha = a.CompraAntiguaFecha,
                                       }).ToList();
                     return listResult;
                 }

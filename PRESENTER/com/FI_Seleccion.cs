@@ -471,13 +471,7 @@ namespace PRESENTER.com
             try
             {
                 Dgv_Detalle.UpdateData();
-                Dgv_Seleccion.UpdateData();
-               // decimal Precio = 0;
-                //if (Tb_IdCompraIngreso.Text != "")
-                //{                    
-                //   var lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(Convert.ToInt32(Tb_IdCompraIngreso.Text)).ToList();
-                //   Precio = lresult.Select(c => c.PrecioCost).Sum() / lresult.Where(c => c.PrecioCost > 0).Select(d => d.PrecioCost).Count();
-                //}           
+                Dgv_Seleccion.UpdateData();                    
                 //Totales de recepcion
                 Tb_Recep_TCantidad.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
                 Tb_Recep_Total.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns["Total"], AggregateFunction.Sum));
@@ -499,6 +493,13 @@ namespace PRESENTER.com
                 
                 Tb_Merma.Value = Tb_Recep_TCantidad.Value - Tb_TCantidad.Value;
                 tb_MermaPorc.Value = (Tb_Merma.Value * 100 )/ Tb_Recep_TCantidad.Value;
+                if (tb_MermaPorc.Value > 5)
+                {
+                    tb_MermaPorc.BackColor = Color.Red;
+                    ToastNotification.Show(this, "Porcentaje de merma excede el límite permitido de 5%".ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
+                }
+                else
+                    tb_MermaPorc.BackColor = Color.White;
             }
             catch (Exception ex)
             {

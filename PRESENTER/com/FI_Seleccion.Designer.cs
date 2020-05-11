@@ -704,7 +704,7 @@
             // 
             // 
             this.GPanel_DatosGenerales.Style.BackColor = System.Drawing.SystemColors.Window;
-            this.GPanel_DatosGenerales.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemHotBackground;
+            this.GPanel_DatosGenerales.Style.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.GPanel_DatosGenerales.Style.BackColorGradientAngle = 90;
             this.GPanel_DatosGenerales.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
             this.GPanel_DatosGenerales.Style.BorderBottomWidth = 1;

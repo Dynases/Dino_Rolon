@@ -39,6 +39,8 @@ namespace PRESENTER.com
         int _idOriginal = 0;
         int _idProveedor = 10;
         int _MPos = 0;
+        bool _Nuevo = false; //Especifica si es un nuevo registro o modificacion
+        int _IdCompraIngresoPrecioAntiguo = 0;
         #endregion
         #region Eventos       
 
@@ -733,6 +735,7 @@ namespace PRESENTER.com
                 Dgv_Detalle.Enabled = true;
                 Tb_CantidadCajas.IsInputReadOnly = false;
                 Tb_CantidadGrupos.IsInputReadOnly = false;
+                Tb_CompraIngresoPrecioAntoguo.ReadOnly = false;
             }
             catch (Exception ex)
             {
@@ -766,6 +769,7 @@ namespace PRESENTER.com
                 Tb_TSaldoTo.IsInputReadOnly = true;
                 Tb_CantidadCajas.IsInputReadOnly = true;
                 Tb_CantidadGrupos.IsInputReadOnly = true;
+                Tb_CompraIngresoPrecioAntoguo.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -786,6 +790,7 @@ namespace PRESENTER.com
                 tb_Proveedor.Clear();
                 Tb_Recibido.Clear();
                 Tb_Edad.Clear();
+                Tb_CompraIngresoPrecioAntoguo.Clear();
                 Sw_Tipo.Value = true;
                 if (_Limpiar == false)
                 {
@@ -843,6 +848,7 @@ namespace PRESENTER.com
                         Sw_Tipo.Value = registro.TipoCompra == 1 ? true : false;
                         Tb_CantidadCajas.Value = Convert.ToDouble(registro.CantidadCaja);
                         Tb_CantidadGrupos.Value = Convert.ToDouble(registro.CantidadGrupo);
+                        Tb_CompraIngresoPrecioAntoguo.Text = registro.CompraAntiguaFecha;
                         MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                         MP_ObtenerCalculo();            
                     }
@@ -911,7 +917,7 @@ namespace PRESENTER.com
                     {
                         //fila.Caja = fila.Caja * Convert.ToInt32(Tb_CantidadCajas.Value * 30);
                         //fila.Grupo = fila.Grupo * Convert.ToInt32(Tb_CantidadGrupos.Value * 30);
-                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + fila.Maple + fila.Cantidad;
+                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + (fila.Maple * 30) + fila.Cantidad;
                         fila.Total = fila.TotalCant * fila.PrecioCost;
                         if (fila.Estado == (int)ENEstado.GUARDADO)
                         {
@@ -954,7 +960,8 @@ namespace PRESENTER.com
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = UTGlobal.Usuario,
                     CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
-                    CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value)
+                    CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
+                    CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
@@ -1140,15 +1147,120 @@ namespace PRESENTER.com
                 return _Error;
             }
         }
-
-
-
-
         #endregion
 
-       
-      
+        private void Tb_IdCompraIngreso_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Tb_CompraIngresoPrecioAntoguo.ReadOnly == false)
+                {
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
+                        new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
+                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENTRADA", tamano = 80 },
+                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA RECEPCION", tamano = 80 },
+                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 120 },
+                        new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
+                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
+                        new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
+                        new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
+                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
+                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
+                    };
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN INGRESO";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            _IdCompraIngresoPrecioAntiguo = Convert.ToInt32( Row.Cells["Id"].Value);
+                            int tipoProducto = Convert.ToInt32(Row.Cells["Tipo"].Value);
+                            if (!_Nuevo)
+                            {
+                                if (!MP_VerificarTipoProducto(tipoProducto))
+                                {
+                                    return;
+                                }
+                            }
+                            Cb_Tipo.Value = tipoProducto;
+                            MP_RearmarDetalleAntiguo(_IdCompraIngresoPrecioAntiguo);
+                            Tb_CompraIngresoPrecioAntoguo.Text = Convert.ToDateTime(Row.Cells["FechaEnt"].Value).ToString() + "- Id: " + _IdCompraIngresoPrecioAntiguo;
+                            MP_ObtenerCalculo();                 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_RearmarDetalleAntiguo(int IdCompraingreso)
+        {
+            try
+            {
+                //Consulta segun un Id de Ingreso
+                var lCompraIngresoDetallePrecio = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(IdCompraingreso).ToList();
+                var lCompraIngresoDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
+                foreach (var vCompraIngresoDetalle in lCompraIngresoDetalle)
+                {
+                    foreach (var vCompraIngresoDetallePrecio in lCompraIngresoDetallePrecio)
+                    {
+                        if (vCompraIngresoDetalle.IdProduc == vCompraIngresoDetallePrecio.IdProduc)
+                        {
+                            vCompraIngresoDetalle.PrecioCost = vCompraIngresoDetallePrecio.PrecioCost;
+                            vCompraIngresoDetalle.Total = vCompraIngresoDetalle.PrecioCost * vCompraIngresoDetalle.TotalCant;
+                            vCompraIngresoDetalle.Estado = (int)ENEstado.MODIFICAR;
+                            break;
+                        }                        
+                    }
+                }
+                MP_ArmarDetalle(lCompraIngresoDetalle);
+            }
+            catch (Exception ex)
+            {
 
-       
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private bool MP_VerificarTipoProducto(int tipoProducto)
+        {
+            try
+            {
+                if (Convert.ToInt32(Cb_Tipo.Value) !=  tipoProducto)
+                {
+                    throw new Exception("El tipo de producto es distinto, seleccione otra compra");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            _Nuevo = true;
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            _Nuevo = false;
+        }
     }
 }

@@ -34,6 +34,9 @@
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX20 = new DevComponents.DotNetBar.LabelX();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
+            this.Tb_CompraIngresoPrecioAntoguo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnFacturacion = new DevComponents.DotNetBar.ButtonX();
             this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Cb_Almacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -144,6 +147,14 @@
             // BtnImprimir
             // 
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
+            // BtnModificar
+            // 
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // btnPrimero
             // 
@@ -284,6 +295,9 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX20);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX19);
+            this.GPanel_DatosGenerales.Controls.Add(this.Tb_CompraIngresoPrecioAntoguo);
             this.GPanel_DatosGenerales.Controls.Add(this.btnFacturacion);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Almacen);
@@ -348,6 +362,57 @@
             this.GPanel_DatosGenerales.TabIndex = 80;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
             // 
+            // labelX20
+            // 
+            this.labelX20.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX20.Location = new System.Drawing.Point(107, 456);
+            this.labelX20.Name = "labelX20";
+            this.labelX20.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX20.Size = new System.Drawing.Size(142, 14);
+            this.labelX20.TabIndex = 377;
+            this.labelX20.Text = "Fecha y Código";
+            // 
+            // labelX19
+            // 
+            this.labelX19.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX19.Location = new System.Drawing.Point(4, 466);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX19.Size = new System.Drawing.Size(103, 45);
+            this.labelX19.TabIndex = 376;
+            this.labelX19.Text = "Seleccionar Precio Antiguo:";
+            this.labelX19.WordWrap = true;
+            // 
+            // Tb_CompraIngresoPrecioAntoguo
+            // 
+            this.Tb_CompraIngresoPrecioAntoguo.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // 
+            // 
+            this.Tb_CompraIngresoPrecioAntoguo.Border.Class = "TextBoxBorder";
+            this.Tb_CompraIngresoPrecioAntoguo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tb_CompraIngresoPrecioAntoguo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tb_CompraIngresoPrecioAntoguo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.Tb_CompraIngresoPrecioAntoguo.Location = new System.Drawing.Point(107, 476);
+            this.Tb_CompraIngresoPrecioAntoguo.Name = "Tb_CompraIngresoPrecioAntoguo";
+            this.Tb_CompraIngresoPrecioAntoguo.PreventEnterBeep = true;
+            this.Tb_CompraIngresoPrecioAntoguo.Size = new System.Drawing.Size(198, 23);
+            this.Tb_CompraIngresoPrecioAntoguo.TabIndex = 14;
+            this.Tb_CompraIngresoPrecioAntoguo.WatermarkText = "Ingrese Ctrl + Enter";
+            this.Tb_CompraIngresoPrecioAntoguo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_IdCompraIngreso_KeyDown);
+            // 
             // btnFacturacion
             // 
             this.btnFacturacion.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -399,7 +464,7 @@
             this.Cb_Almacen.SelectedIndex = -1;
             this.Cb_Almacen.SelectedItem = null;
             this.Cb_Almacen.Size = new System.Drawing.Size(195, 22);
-            this.Cb_Almacen.TabIndex = 12;
+            this.Cb_Almacen.TabIndex = 13;
             this.Cb_Almacen.Tag = "1";
             this.Cb_Almacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
@@ -911,7 +976,7 @@
             this.Tb_CantidadGrupos.MinValue = 0D;
             this.Tb_CantidadGrupos.Name = "Tb_CantidadGrupos";
             this.Tb_CantidadGrupos.Size = new System.Drawing.Size(84, 22);
-            this.Tb_CantidadGrupos.TabIndex = 14;
+            this.Tb_CantidadGrupos.TabIndex = 16;
             this.Tb_CantidadGrupos.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.Tb_CantidadGrupos.ValueChanged += new System.EventHandler(this.Tb_CantidadGrupos_ValueChanged);
             // 
@@ -929,7 +994,7 @@
             this.Tb_CantidadCajas.MinValue = 0D;
             this.Tb_CantidadCajas.Name = "Tb_CantidadCajas";
             this.Tb_CantidadCajas.Size = new System.Drawing.Size(84, 22);
-            this.Tb_CantidadCajas.TabIndex = 13;
+            this.Tb_CantidadCajas.TabIndex = 15;
             this.Tb_CantidadCajas.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.Tb_CantidadCajas.ValueChanged += new System.EventHandler(this.Tb_CantidadCajas_ValueChanged);
             // 
@@ -1016,7 +1081,7 @@
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
             this.Dgv_Detalle.Size = new System.Drawing.Size(779, 389);
-            this.Dgv_Detalle.TabIndex = 15;
+            this.Dgv_Detalle.TabIndex = 17;
             this.Dgv_Detalle.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellValueChanged);
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
@@ -1117,7 +1182,7 @@
             this.Tb_TSaldoTo.MinValue = 0D;
             this.Tb_TSaldoTo.Name = "Tb_TSaldoTo";
             this.Tb_TSaldoTo.Size = new System.Drawing.Size(82, 22);
-            this.Tb_TSaldoTo.TabIndex = 232;
+            this.Tb_TSaldoTo.TabIndex = 23;
             this.Tb_TSaldoTo.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_TotalMaples
@@ -1134,7 +1199,7 @@
             this.Tb_TotalMaples.MinValue = 0D;
             this.Tb_TotalMaples.Name = "Tb_TotalMaples";
             this.Tb_TotalMaples.Size = new System.Drawing.Size(80, 22);
-            this.Tb_TotalMaples.TabIndex = 231;
+            this.Tb_TotalMaples.TabIndex = 21;
             this.Tb_TotalMaples.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_TotalVendido
@@ -1151,7 +1216,7 @@
             this.Tb_TotalVendido.MinValue = 0D;
             this.Tb_TotalVendido.Name = "Tb_TotalVendido";
             this.Tb_TotalVendido.Size = new System.Drawing.Size(84, 22);
-            this.Tb_TotalVendido.TabIndex = 17;
+            this.Tb_TotalVendido.TabIndex = 19;
             this.Tb_TotalVendido.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_TPrecio
@@ -1168,7 +1233,7 @@
             this.Tb_TPrecio.MinValue = 0D;
             this.Tb_TPrecio.Name = "Tb_TPrecio";
             this.Tb_TPrecio.Size = new System.Drawing.Size(82, 22);
-            this.Tb_TPrecio.TabIndex = 226;
+            this.Tb_TPrecio.TabIndex = 21;
             this.Tb_TPrecio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_TotalFisico
@@ -1185,7 +1250,7 @@
             this.Tb_TotalFisico.MinValue = 0D;
             this.Tb_TotalFisico.Name = "Tb_TotalFisico";
             this.Tb_TotalFisico.Size = new System.Drawing.Size(80, 22);
-            this.Tb_TotalFisico.TabIndex = 225;
+            this.Tb_TotalFisico.TabIndex = 20;
             this.Tb_TotalFisico.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
             // Tb_TotalEnviado
@@ -1202,7 +1267,7 @@
             this.Tb_TotalEnviado.MinValue = 0D;
             this.Tb_TotalEnviado.Name = "Tb_TotalEnviado";
             this.Tb_TotalEnviado.Size = new System.Drawing.Size(84, 22);
-            this.Tb_TotalEnviado.TabIndex = 16;
+            this.Tb_TotalEnviado.TabIndex = 18;
             this.Tb_TotalEnviado.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.Tb_TotalEnviado.ValueChanged += new System.EventHandler(this.Tb_TotalEnviado_ValueChanged);
             // 
@@ -1326,5 +1391,8 @@
         internal DevComponents.DotNetBar.LabelX labelX17;
         internal DevComponents.Editors.DoubleInput Tb_CantidadGrupos;
         internal DevComponents.Editors.DoubleInput Tb_CantidadCajas;
+        internal DevComponents.DotNetBar.LabelX labelX20;
+        internal DevComponents.DotNetBar.LabelX labelX19;
+        private DevComponents.DotNetBar.Controls.TextBoxX Tb_CompraIngresoPrecioAntoguo;
     }
 }

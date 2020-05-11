@@ -67,7 +67,7 @@
         <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="22.5" PointY="18.25" />
         <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" />
         <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="13.25" PointY="14" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="13.25" PointY="13.875" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />

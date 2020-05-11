@@ -93,6 +93,7 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="TipoCompra" Type="int" Nullable="false" />
           <Property Name="CantidadCaja" Type="int" Nullable="false" />
           <Property Name="CantidadGrupo" Type="int" Nullable="false" />
+          <Property Name="CompraAntiguaFecha" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CompraIng_01">
           <Key>
@@ -2531,6 +2532,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="TipoCompra" Type="Int32" Nullable="false" />
           <Property Name="CantidadCaja" Type="Int32" Nullable="false" />
           <Property Name="CantidadGrupo" Type="Int32" Nullable="false" />
+          <Property Name="CompraAntiguaFecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK__CompraIng__Almacen" FromRole="CompraIng" ToRole="Almacen" />
           <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdCompraIng" FromRole="CompraIng" ToRole="CompraIng_01" />
           <NavigationProperty Name="Proveed" Relationship="DiAviModel.FK__CompraIng__Proveedor" FromRole="CompraIng" ToRole="Proveed" />
@@ -3195,6 +3197,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySetMapping Name="CompraIng">
             <EntityTypeMapping TypeName="DiAviModel.CompraIng">
               <MappingFragment StoreEntitySet="CompraIng">
+                <ScalarProperty Name="CompraAntiguaFecha" ColumnName="CompraAntiguaFecha" />
                 <ScalarProperty Name="CantidadGrupo" ColumnName="CantidadGrupo" />
                 <ScalarProperty Name="CantidadCaja" ColumnName="CantidadCaja" />
                 <ScalarProperty Name="TipoCompra" ColumnName="TipoCompra" />
