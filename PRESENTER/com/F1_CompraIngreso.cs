@@ -419,6 +419,80 @@ namespace PRESENTER.com
             }
         }
 
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            _Nuevo = true;
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            _Nuevo = false;
+        }
+
+        private void Dgv_GBuscador_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            e.Cancel = true;
+        }
+        private void Tb_IdCompraIngreso_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Tb_CompraIngresoPrecioAntoguo.ReadOnly == false)
+                {
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
+                        new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
+                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENTRADA", tamano = 80 },
+                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA RECEPCION", tamano = 80 },
+                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 120 },
+                        new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
+                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
+                        new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
+                        new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
+                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
+                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
+                    };
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN INGRESO";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            _IdCompraIngresoPrecioAntiguo = Convert.ToInt32(Row.Cells["Id"].Value);
+                            int tipoProducto = Convert.ToInt32(Row.Cells["Tipo"].Value);
+                            if (!_Nuevo)
+                            {
+                                if (!MP_VerificarTipoProducto(tipoProducto))
+                                {
+                                    return;
+                                }
+                            }
+                            Cb_Tipo.Value = tipoProducto;
+                            MP_RearmarDetalleAntiguo(_IdCompraIngresoPrecioAntiguo);
+                            Tb_CompraIngresoPrecioAntoguo.Text = Convert.ToDateTime(Row.Cells["FechaEnt"].Value).ToString() + "- Id: " + _IdCompraIngresoPrecioAntiguo;
+                            MP_ObtenerCalculo();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Metodos privados
@@ -929,6 +1003,50 @@ namespace PRESENTER.com
                 MP_ObtenerCalculo();
             }
         }
+        private void MP_RearmarDetalleAntiguo(int IdCompraingreso)
+        {
+            try
+            {
+                //Consulta segun un Id de Ingreso
+                var lCompraIngresoDetallePrecio = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(IdCompraingreso).ToList();
+                var lCompraIngresoDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
+                foreach (var vCompraIngresoDetalle in lCompraIngresoDetalle)
+                {
+                    foreach (var vCompraIngresoDetallePrecio in lCompraIngresoDetallePrecio)
+                    {
+                        if (vCompraIngresoDetalle.IdProduc == vCompraIngresoDetallePrecio.IdProduc)
+                        {
+                            vCompraIngresoDetalle.PrecioCost = vCompraIngresoDetallePrecio.PrecioCost;
+                            vCompraIngresoDetalle.Total = vCompraIngresoDetalle.PrecioCost * vCompraIngresoDetalle.TotalCant;
+                            vCompraIngresoDetalle.Estado = (int)ENEstado.MODIFICAR;
+                            break;
+                        }
+                    }
+                }
+                MP_ArmarDetalle(lCompraIngresoDetalle);
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private bool MP_VerificarTipoProducto(int tipoProducto)
+        {
+            try
+            {
+                if (Convert.ToInt32(Cb_Tipo.Value) != tipoProducto)
+                {
+                    throw new Exception("El tipo de producto es distinto, seleccione otra compra");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         #endregion
 
         #region Metodo heredados
@@ -1149,118 +1267,8 @@ namespace PRESENTER.com
         }
         #endregion
 
-        private void Tb_IdCompraIngreso_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (Tb_CompraIngresoPrecioAntoguo.ReadOnly == false)
-                {
-                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                    {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
-                        List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
-                        new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
-                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENTRADA", tamano = 80 },
-                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA RECEPCION", tamano = 80 },
-                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 120 },
-                        new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
-                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
-                        new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
-                        new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
-                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
-                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
-                    };
-                        Efecto efecto = new Efecto();
-                        efecto.Tipo = 3;
-                        efecto.Tabla = lista;
-                        efecto.SelectCol = 2;
-                        efecto.listaCelda = listEstCeldas;
-                        efecto.Alto = 50;
-                        efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN INGRESO";
-                        efecto.ShowDialog();
-                        bool bandera = false;
-                        bandera = efecto.Band;
-                        if (bandera)
-                        {
-                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                            _IdCompraIngresoPrecioAntiguo = Convert.ToInt32( Row.Cells["Id"].Value);
-                            int tipoProducto = Convert.ToInt32(Row.Cells["Tipo"].Value);
-                            if (!_Nuevo)
-                            {
-                                if (!MP_VerificarTipoProducto(tipoProducto))
-                                {
-                                    return;
-                                }
-                            }
-                            Cb_Tipo.Value = tipoProducto;
-                            MP_RearmarDetalleAntiguo(_IdCompraIngresoPrecioAntiguo);
-                            Tb_CompraIngresoPrecioAntoguo.Text = Convert.ToDateTime(Row.Cells["FechaEnt"].Value).ToString() + "- Id: " + _IdCompraIngresoPrecioAntiguo;
-                            MP_ObtenerCalculo();                 
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-        private void MP_RearmarDetalleAntiguo(int IdCompraingreso)
-        {
-            try
-            {
-                //Consulta segun un Id de Ingreso
-                var lCompraIngresoDetallePrecio = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(IdCompraingreso).ToList();
-                var lCompraIngresoDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
-                foreach (var vCompraIngresoDetalle in lCompraIngresoDetalle)
-                {
-                    foreach (var vCompraIngresoDetallePrecio in lCompraIngresoDetallePrecio)
-                    {
-                        if (vCompraIngresoDetalle.IdProduc == vCompraIngresoDetallePrecio.IdProduc)
-                        {
-                            vCompraIngresoDetalle.PrecioCost = vCompraIngresoDetallePrecio.PrecioCost;
-                            vCompraIngresoDetalle.Total = vCompraIngresoDetalle.PrecioCost * vCompraIngresoDetalle.TotalCant;
-                            vCompraIngresoDetalle.Estado = (int)ENEstado.MODIFICAR;
-                            break;
-                        }                        
-                    }
-                }
-                MP_ArmarDetalle(lCompraIngresoDetalle);
-            }
-            catch (Exception ex)
-            {
+       
+       
 
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-        private bool MP_VerificarTipoProducto(int tipoProducto)
-        {
-            try
-            {
-                if (Convert.ToInt32(Cb_Tipo.Value) !=  tipoProducto)
-                {
-                    throw new Exception("El tipo de producto es distinto, seleccione otra compra");
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-                return false;
-            }
-        }
-
-        private void BtnNuevo_Click(object sender, EventArgs e)
-        {
-            _Nuevo = true;
-        }
-
-        private void BtnModificar_Click(object sender, EventArgs e)
-        {
-            _Nuevo = false;
-        }
     }
 }
