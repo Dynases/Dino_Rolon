@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>C:\librerias\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Design, Version=12.5.0.2, Culture=neutral, PublicKeyToken=2c9ff1fddc42653c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,35 +80,35 @@
       <HintPath>C:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.TreeGX.dll</HintPath>
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding">
-      <HintPath>C:\librerias\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core">
-      <HintPath>C:\librerias\GMap.NET.Core.dll</HintPath>
+      <HintPath>C:\libreriasDiego\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms">
-      <HintPath>C:\librerias\GMap.NET.WindowsForms.dll</HintPath>
+      <HintPath>C:\libreriasDiego\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3">
-      <HintPath>C:\librerias\Janus.Data.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Data.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.CalendarCombo.v3">
-      <HintPath>C:\librerias\Janus.Windows.CalendarCombo.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Windows.CalendarCombo.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Common.v3">
-      <HintPath>C:\librerias\Janus.Windows.Common.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Windows.Common.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.GridEX.v3">
-      <HintPath>C:\librerias\Janus.Windows.GridEX.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Windows.GridEX.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Ribbon.v3">
-      <HintPath>C:\librerias\Janus.Windows.Ribbon.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Windows.Ribbon.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.UI.v3">
-      <HintPath>C:\librerias\Janus.Windows.UI.v3.dll</HintPath>
+      <HintPath>C:\libreriasDiego\Janus.Windows.UI.v3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OnBarcode.Barcode.WinForms">
-      <HintPath>C:\librerias\OnBarcode.Barcode.WinForms.dll</HintPath>
+      <HintPath>C:\libreriasDiego\OnBarcode.Barcode.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
