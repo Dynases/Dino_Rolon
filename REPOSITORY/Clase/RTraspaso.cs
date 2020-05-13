@@ -94,12 +94,12 @@ namespace REPOSITORY.Clase
 
                         var item = new VTListaProducto
                         {
-                            AlmacenId = i.icalm.Value,
+                            AlmacenId = i.icalm,
                             Division = grupo1.Descrip,
                             Marca = grupo2.Descrip,
                             Categoria = grupo3.Descrip,
                             Descripcion = producto.Descrip,
-                            Existencia = Convert.ToInt32(i.iccven.Value),
+                            Existencia = Convert.ToInt32(i.iccven),
                             InventarioId = i.id,
                             ProductoId = Convert.ToInt32(i.iccprod),
                             UnidadVenta = producto.UniVen,

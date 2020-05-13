@@ -71,7 +71,7 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     #region Validacion
-                    DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                    DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                     string lote = "20170101";
 
                     var transformacion = db.Transformacion.Where(c => c.Id.Equals(IdTransformacion)).FirstOrDefault();
@@ -79,8 +79,8 @@ namespace REPOSITORY.Clase
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in transformacion_01)
                     {
-                        var StockActual_MatPrima = this.tI001.StockActual(item.IdProducto_Mat.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen);
-                        var StockActual_Comercial = this.tI001.StockActual(item.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen);
+                        var StockActual_MatPrima = this.tI001.StockActual(item.IdProducto_Mat, transformacion.IdAlmacenSalida, lote, fechaVen);
+                        var StockActual_Comercial = this.tI001.StockActual(item.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen);
                         //if (StockActual_MatPrima < item.Total)
                         //{
                         //    var producto = db.Producto.Where(p => p.Id == item.IdProducto_Mat).Select(p => p.Descrip).FirstOrDefault();
@@ -108,9 +108,9 @@ namespace REPOSITORY.Clase
                     {
                         if (i.Total > 0)
                         {
-                            if (this.tI001.ExisteProducto(i.IdProducto_Mat.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen))
+                            if (this.tI001.ExisteProducto(i.IdProducto_Mat, transformacion.IdAlmacenSalida, lote, fechaVen))
                             {
-                                if (!this.tI001.ActualizarInventario(i.IdProducto_Mat.ToString(),
+                                if (!this.tI001.ActualizarInventario(i.IdProducto_Mat,
                                                                transformacion.IdAlmacenSalida,
                                                                EnAccionEnInventario.Incrementar,
                                                                Convert.ToDecimal(i.Total),
@@ -146,9 +146,9 @@ namespace REPOSITORY.Clase
                         }
                         if (i.TotalProd > 0)
                         {
-                            if (this.tI001.ExisteProducto(i.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen))
+                            if (this.tI001.ExisteProducto(i.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen))
                             {
-                                if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
+                                if (!this.tI001.ActualizarInventario(i.IdProducto,
                                                                transformacion.IdAlmacenIngreso,
                                                                EnAccionEnInventario.Descontar,
                                                                Convert.ToDecimal(i.TotalProd),

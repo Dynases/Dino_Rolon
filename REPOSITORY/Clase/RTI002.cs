@@ -18,7 +18,7 @@ namespace REPOSITORY.Clase
                             int idTraspaso,
                             string usuario,
                             string observaciones,
-                            int? concepto,
+                            int concepto,
                             ref int idTI2)
         {
             try
@@ -57,7 +57,7 @@ namespace REPOSITORY.Clase
                            int? idDetalle,
                            string usuario,
                            string observaciones,
-                           int? concepto)
+                           int concepto)
         {
             try
             {
@@ -126,6 +126,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+     
         #endregion
     }
 }

@@ -15,17 +15,19 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class TI002
     {
         public int ibid { get; set; }
-        public Nullable<System.DateTime> ibfdoc { get; set; }
-        public Nullable<int> ibconcep { get; set; }
+        public System.DateTime ibfdoc { get; set; }
+        public int ibconcep { get; set; }
         public string ibobs { get; set; }
-        public Nullable<int> ibest { get; set; }
-        public Nullable<int> ibalm { get; set; }
+        public int ibest { get; set; }
+        public int ibalm { get; set; }
         public Nullable<int> ibdepdest { get; set; }
         public Nullable<int> ididdestino { get; set; }
         public Nullable<int> ibiddc { get; set; }
-        public Nullable<System.DateTime> ibfact { get; set; }
+        public System.DateTime ibfact { get; set; }
         public string ibhact { get; set; }
         public string ibuact { get; set; }
         public int id { get; set; }
+    
+        public virtual Almacen Almacen { get; set; }
     }
 }

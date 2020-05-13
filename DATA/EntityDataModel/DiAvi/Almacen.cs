@@ -25,6 +25,8 @@ namespace DATA.EntityDataModel.DiAvi
             this.Venta = new HashSet<Venta>();
             this.Compra = new HashSet<Compra>();
             this.CompraIng = new HashSet<CompraIng>();
+            this.TI001 = new HashSet<TI001>();
+            this.TI002 = new HashSet<TI002>();
         }
     
         public int Id { get; set; }
@@ -59,5 +61,9 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Compra> Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng> CompraIng { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TI001> TI001 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TI002> TI002 { get; set; }
     }
 }

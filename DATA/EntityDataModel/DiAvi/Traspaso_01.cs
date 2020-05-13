@@ -15,14 +15,14 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class Traspaso_01
     {
         public int Id { get; set; }
-        public Nullable<int> TraspasoId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<int> Cantidad { get; set; }
+        public int TraspasoId { get; set; }
+        public int ProductId { get; set; }
+        public int Cantidad { get; set; }
         public Nullable<int> Estado { get; set; }
         public string Observaciones { get; set; }
         public string Unidad { get; set; }
         public string Marca { get; set; }
-    
+
         public virtual Traspaso Traspaso { get; set; }
         public virtual Producto Producto { get; set; }
     }

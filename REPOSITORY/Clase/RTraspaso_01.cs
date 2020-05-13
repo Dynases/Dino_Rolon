@@ -26,7 +26,7 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                 string lote = "20170101";
                 using (var db = GetEsquema())
                 {
@@ -46,7 +46,7 @@ namespace REPOSITORY.Clase
 
                         db.Traspaso_01.Add(detalle);
 
-                        if (!this.tI001.ActualizarInventario(detalle.ProductId.ToString(),
+                        if (!this.tI001.ActualizarInventario(detalle.ProductId,
                                                             almacenId,
                                                             EnAccionEnInventario.Descontar,
                                                             Convert.ToDecimal(detalle.Cantidad),
@@ -56,7 +56,7 @@ namespace REPOSITORY.Clase
                             return false;
                         }
 
-                        if (!this.tI0021.Guardar(idTI2, detalle.ProductId.Value, detalle.Cantidad.Value, lote, fechaVen))
+                        if (!this.tI0021.Guardar(idTI2, detalle.ProductId, detalle.Cantidad, lote, fechaVen))
                         {
                             return false;
                         }
@@ -76,17 +76,17 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                 string lote = "20170101";
                 using (var db = GetEsquema())
                 {
                     foreach (var i in detalle)
                     {
                         //ACTUALIZAMOS EL INVENTARIO
-                        if (!this.tI001.ActualizarInventario(i.ProductId.ToString(),
+                        if (!this.tI001.ActualizarInventario(i.ProductId,
                                                             i.Traspaso.AlmacenDestino.Value,
                                                             EnAccionEnInventario.Incrementar,
-                                                            Convert.ToDecimal(i.Cantidad.Value),
+                                                            Convert.ToDecimal(i.Cantidad),
                                                             lote,
                                                             fechaVen))
                         {
@@ -94,7 +94,7 @@ namespace REPOSITORY.Clase
                         }
 
                         //REGISTRAMOS LA CONFIRMACION COMO UN REGISTRO DONDE SE ESPEFICICA LA RECEPCION DE ESE TRASPASO
-                        if (!this.tI0021.Guardar(idTI2, i.ProductId.Value, i.Cantidad.Value,lote, fechaVen))
+                        if (!this.tI0021.Guardar(idTI2, i.ProductId, i.Cantidad,lote, fechaVen))
                         {
                             return false;
                         }
@@ -123,15 +123,15 @@ namespace REPOSITORY.Clase
                        .Where(d => d.TraspasoId == TraspasoId)
                        .Select(d => new VTraspaso_01
                        {
-                           Cantidad = d.Cantidad.Value,
+                           Cantidad = d.Cantidad,
                            Estado = d.Estado.Value,
                            Fecha = DateTime.Now,
                            Id = d.Id,
                            Marca = d.Marca,
                            Unidad = d.Unidad,
-                           ProductoId = d.ProductId.Value,
+                           ProductoId = d.ProductId,
                            ProductoDescripcion = d.Producto.Descrip,
-                           TraspasoId = d.TraspasoId.Value,
+                           TraspasoId = d.TraspasoId,
                        }).ToList();
 
                     return listResult;

@@ -37,8 +37,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Plantilla> Plantilla { get; set; }
         public virtual DbSet<Plantilla_01> Plantilla_01 { get; set; }
         public virtual DbSet<TB001> TB001 { get; set; }
-        public virtual DbSet<TI002> TI002 { get; set; }
-        public virtual DbSet<TI0021> TI0021 { get; set; }
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
@@ -46,7 +44,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Transformacion> Transformacion { get; set; }
         public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<Traspaso> Traspaso { get; set; }
-        public virtual DbSet<Traspaso_01> Traspaso_01 { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Precio> Precio { get; set; }
         public virtual DbSet<PrecioCat> PrecioCat { get; set; }
@@ -63,6 +60,9 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Compra_01> Compra_01 { get; set; }
         public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
+        public virtual DbSet<TI002> TI002 { get; set; }
+        public virtual DbSet<TI0021> TI0021 { get; set; }
+        public virtual DbSet<Traspaso_01> Traspaso_01 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

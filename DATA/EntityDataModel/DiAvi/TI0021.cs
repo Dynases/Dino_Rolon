@@ -15,11 +15,13 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class TI0021
     {
         public int icid { get; set; }
-        public Nullable<int> icibid { get; set; }
-        public Nullable<int> iccprod { get; set; }
-        public Nullable<decimal> iccant { get; set; }
+        public int icibid { get; set; }
+        public int iccprod { get; set; }
+        public decimal iccant { get; set; }
         public string iclot { get; set; }
-        public Nullable<System.DateTime> icfvenc { get; set; }
+        public System.DateTime icfvenc { get; set; }
         public int id { get; set; }
+    
+        public virtual Producto Producto { get; set; }
     }
 }

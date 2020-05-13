@@ -22,7 +22,7 @@ namespace REPOSITORY.Clase
         }
         #region Trasancciones
         
-        public bool Nuevo(int idAlmacen, string idProducto, decimal cantidad, string lote, DateTime? fechaVen)
+        public bool Nuevo(int idAlmacen, int idProducto, decimal cantidad, string lote, DateTime fechaVen)
         {
             try
             {
@@ -46,19 +46,19 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ActualizarInventario(string idProducto,
+        public bool ActualizarInventario(int idProducto,
                                          int idAlmacen,
                                          EnAccionEnInventario accionEnInventario,
                                          decimal cantidad,
                                          string lote,
-                                         DateTime? fechaVen)
+                                         DateTime fechaVen)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
                     var inventario = db.TI001.Where(i => i.icalm == idAlmacen
-                                                    && i.iccprod.Equals(idProducto)
+                                                    && i.iccprod == idProducto
                                                     && i.iclot.Equals(lote)
                                                     && i.icfven == fechaVen)
                                              .FirstOrDefault();
@@ -81,19 +81,19 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ActualizarInventarioModificados(string idProducto,
+        public bool ActualizarInventarioModificados(int idProducto,
                                         int idAlmacen,                                      
                                         decimal cantidadAnterior,
                                         decimal cantidadNueva,
                                         string lote,
-                                        DateTime? fechaVen)
+                                        DateTime fechaVen)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
                     var inventario = db.TI001.Where(i => i.icalm == idAlmacen
-                                                    && i.iccprod.Equals(idProducto)
+                                                    && i.iccprod == idProducto
                                                     && i.iclot.Equals(lote)
                                                     && i.icfven == fechaVen)
                                              .FirstOrDefault();
@@ -111,8 +111,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }     
-        public bool NuevoMovimientoInventario(int idDetalle, string idProducto, int idAlmacen, string lote,
-                                DateTime? fechaVen, decimal cantidad, int concepto, string Observacion,
+        public bool NuevoMovimientoInventario(int idDetalle, int idProducto, int idAlmacen, string lote,
+                                DateTime fechaVen, decimal cantidad, int concepto, string Observacion,
                                 EnAccionEnInventario accion, string usuario)
         {
             try
@@ -161,9 +161,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarMovimientoInventario(int idDetalle, string idProducto, int idAlmacen, string lote, 
-                                        DateTime? fechaVen, decimal cantidad, decimal cantidad2, int concepto,
-                                        string Observacion, string usuario, string loteNuevo, DateTime? fechaVenNuevo)
+        public bool ModificarMovimientoInventario(int idDetalle, int idProducto, int idAlmacen, string lote, 
+                                        DateTime fechaVen, decimal cantidad, decimal cantidad2, int concepto,
+                                        string Observacion, string usuario, string loteNuevo, DateTime fechaVenNuevo)
         {
             try
             {
@@ -239,10 +239,10 @@ namespace REPOSITORY.Clase
             }
         }
         public bool EliminarMovimientoInventario( int idDetalle,
-                               string idProducto,
+                               int idProducto,
                                int idAlmacen,
                                string lote,
-                               DateTime? fechaVen,
+                               DateTime fechaVen,
                                decimal cantidad,
                                int concepto,                               
                                EnAccionEnInventario accion)
@@ -314,14 +314,14 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public decimal? StockActual(string IdProducto, int? idAlmacen, string lote, DateTime? fecha)
+        public decimal StockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var cantidad = db.TI001.Where(c => c.icalm == idAlmacen &&
-                                                       c.iccprod.Equals(IdProducto) &&
+                                                       c.iccprod == IdProducto &&
                                                        c.iclot.Equals(lote) &&
                                                        c.icfven == fecha).Select(c => c.iccven).FirstOrDefault();
                     return cantidad;
@@ -337,14 +337,14 @@ namespace REPOSITORY.Clase
 
         #endregion
         #region Verificacion
-        public bool ExisteProducto(string IdProducto, int? idAlmacen, string lote, DateTime? fecha)
+        public bool ExisteProducto(int IdProducto, int idAlmacen, string lote, DateTime fecha)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var resultado = db.TI001.Where(c => c.icalm == idAlmacen &&
-                                                       c.iccprod.Equals(IdProducto) &&
+                                                       c.iccprod == IdProducto &&
                                                        c.iclot.Equals(lote) &&
                                                        c.icfven == fecha).Count();
                     return resultado != 0 ? true : false;
@@ -355,6 +355,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+
+
         #endregion
     }
 }

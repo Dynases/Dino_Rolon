@@ -87,14 +87,14 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
-                    DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                    DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                     string lote = "20170101";
                     var compraIng = db.CompraIng.Where(c => c.Id.Equals(IdCompraIngreso)).FirstOrDefault();
                     var compraing_01 = db.CompraIng_01.Where(c => c.IdCompra.Equals(IdCompraIngreso)).ToList();
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in compraing_01)
                     {                        
-                        var StockActual = this.tI001.StockActual(item.IdProduc.ToString(), compraIng.IdAlmacen,lote , fechaVen);                                           
+                        var StockActual = this.tI001.StockActual(item.IdProduc, compraIng.IdAlmacen,lote , fechaVen);                                           
                         if (StockActual < item.TotalCant)
                         {
                             var producto = db.Producto.Where(p => p.Id == item.IdProduc).Select(p => p.Descrip).FirstOrDefault();
@@ -115,9 +115,9 @@ namespace REPOSITORY.Clase
                     {
                         if (i.TotalCant > 0)
                         {
-                            if (this.tI001.ExisteProducto(i.IdProduc.ToString(), compraIng.IdAlmacen, lote, fechaVen))
+                            if (this.tI001.ExisteProducto(i.IdProduc, compraIng.IdAlmacen, lote, fechaVen))
                             {
-                                if (!this.tI001.ActualizarInventario(i.IdProduc.ToString(),
+                                if (!this.tI001.ActualizarInventario(i.IdProduc,
                                                                compraIng.IdAlmacen,
                                                                EnAccionEnInventario.Descontar,
                                                                Convert.ToDecimal(i.TotalCant),

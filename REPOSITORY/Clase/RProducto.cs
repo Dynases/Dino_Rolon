@@ -158,68 +158,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        //public List<VProductoLista> Listar2(int idAlmacen)
-        //{
-        //    try
-        //    {
-        //        using (var db = GetEsquema())
-        //        {
-        //            var grupo = Convert.ToInt32(ENEstaticosGrupo.PRODUCTO);
-        //            var Orden1 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO1);
-        //            var Orden2 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2);
-        //            var Orden3 = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO3);
-        //            var listResult = (from a in db.Producto
-        //                              join grupo1 in db.Libreria on
-        //                              new { Grupo = grupo, Orden = Orden1, Libreria = a.Grupo1 }
-        //                                 equals new { Grupo = grupo1.IdGrupo, Orden = grupo1.IdOrden, Libreria = grupo1.IdLibrer }
-        //                              join grupo2 in db.Libreria on
-        //                              new { Grupo = grupo, Orden = Orden2, Libreria = a.Grupo2 }
-        //                                 equals new { Grupo = grupo2.IdGrupo, Orden = grupo2.IdOrden, Libreria = grupo2.IdLibrer }
-        //                              join grupo3 in db.Libreria on
-        //                              new { Grupo = grupo, Orden = Orden3, Libreria = a.Grupo3 }
-        //                                 equals new { Grupo = grupo3.IdGrupo, Orden = grupo3.IdOrden, Libreria = grupo3.IdLibrer }
-        //                             join i in db.TI001 on a.IdProd equals i.iccprod
-        //                             where i.icalm.Equals(idAlmacen)
-        //                              //group new { a, grupo1, grupo2, grupo3, i } by new { a.Id, a.IdProd, a.Descrip, grupo1.Descrip } into newGruop
-        //                              select new VProductoLista
-        //                              {
-        //                                  Id = a.Id,
-        //                                  Codigo = a.IdProd,
-        //                                  Descripcion = a.Descrip,
-        //                                  Grupo1 = grupo1.Descrip,
-        //                                  Grupo2 = grupo2.Descrip,
-        //                                  Grupo3 = grupo3.Descrip,
-        //                                  Tipo = a.Tipo,
-        //                                  Usuario = a.Usuario,
-        //                                  Hora = a.Hora,
-        //                                  Fecha = a.Fecha
-        //                              } into x
-        //                              group x by x.Id  into g
-        //                              select g).ToList();
-        //            var lista = new List<VProductoLista>();
-        //            foreach (var item in listResult)
-        //            {
-        //                lista.Add(item);
-        //            }
-        //            return listResult;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-
-        //join grupo4 in db.Libreria on
-        //new { Grupo = ENEstaticosGrupo.PRODUCTO, Orden = ENEstaticosOrden.PRODUCTO_GRUPO4, Libreria = a.Grupo4 }
-        //   equals new { Grupo = grupo4.IdGrupo, Orden = grupo4.IdOrden, Libreria = grupo4.IdLibrer }
-        //join grupo5 in db.Libreria on
-        //new { Grupo = ENEstaticosGrupo.PRODUCTO, Orden = ENEstaticosOrden.PRODUCTO_GRUPO4, Libreria = a.Grupo5 }
-        //   equals new { Grupo = grupo5.IdGrupo, Orden = grupo5.IdOrden, Libreria = grupo5.IdLibrer }
-        //join uniVenta in db.Libreria on
-        //new { Grupo = ENEstaticosGrupo.PRODUCTO, Orden = ENEstaticosOrden.PRODUCTO_UN_VENTA, Libreria = a.UniVenta }
-        //   equals new { Grupo = uniVenta.IdGrupo, Orden = uniVenta.IdOrden, Libreria = uniVenta.IdLibrer }
+     
         public List<VProducto> ListarXId(int id)
         {
             try
@@ -297,10 +236,13 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = (from p in db.Producto
-                                      join i in db.TI001 on p.Id equals Convert.ToInt32(i.iccprod)
+                                      join i in db.TI001 on p.Id equals i.iccprod
                                       join a in db.Almacen on i.icalm equals a.Id
                                       join s in db.Sucursal on a.IdSuc equals s.Id
-                                      join pr in db.Precio on p.Id equals pr.IdPrecioCat
+                                      join pr in db.Precio on
+                                      new           { idProducto = p.Id, IdAlmacen = s.Id }
+                                         equals new { idProducto = pr.IdProduc, IdAlmacen = pr.IdSucursal }
+                                      //join pr in db.Precio on p.Id equals pr.IdProduc
                                       join prc in db.PrecioCat on pr.IdPrecioCat equals prc.Id
                                       join l in db.Libreria on p.UniVen equals l.IdLibrer
                                       where s.Id ==  pr.IdSucursal &&
@@ -318,12 +260,11 @@ namespace REPOSITORY.Clase
                                           Precio = pr.Precio1,
                                           UnidadVenta = l.Descrip,
                                           CategoriaPrecio = prc.Descrip,
-                                          Stock = (from p in db.Producto
-                                                   join i in db.TI001 on p.Id equals Convert.ToInt32(i.iccprod)
-                                                   join a in db.Almacen on i.icalm equals a.Id 
-                                                   select i.iccven).Sum()                                                
+                                          Stock = (from y in db.TI001 
+                                                   where y.icalm == IdAlmacen  && y.iccprod == p.Id                                           
+                                                   select y.iccven).Sum()                                                
 
-                                      }).ToList();
+                                      }).Distinct().ToList();
                     return listResult;
                 }
             }

@@ -74,7 +74,7 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
-                    DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                    DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                     string lote = "20170101";
                     int idDetalle = 0;
                     foreach (var i in Lista)
@@ -97,80 +97,8 @@ namespace REPOSITORY.Clase
                             if (!Nuevo(detalle, transformacion.Id, ref idDetalle))
                             {
                                 return false;
-                            }                         
-                            //if (i.Total > 0)
-                            //{
-                            //    if (this.tI001.ExisteProducto(i.IdProducto_Mat_Prima.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen))
-                            //    {
-                            //        if (StockActual_MatPrima >= i.Total)
-                            //        {
-                            //            if (!this.tI001.ActualizarInventario(i.IdProducto_Mat_Prima.ToString(),
-                            //                                                                                   transformacion.IdAlmacenSalida,
-                            //                                                                                   EnAccionEnInventario.Descontar,
-                            //                                                                                   Convert.ToDecimal(i.Total),
-                            //                                                                                   lote,
-                            //                                                                                   fechaVen))
-                            //            {
-                            //                return false;
-                            //            }
-
-                                       
-                            //            int idMovimiento = 0;
-                            //            //ACTUALIZACION EN TI002: CABECERA
-                            //            if (!this.tI002.Guardar(transformacion.IdAlmacenSalida, AlmacenSalida,
-                            //                                    0, "",
-                            //                                    idDetalle, usuario,
-                            //                                    (transformacion.Id + " - " + " I -Transformacion Salida numiprod: " + transformacion_01.IdProducto_Mat + "| " + AlmacenSalida),
-                            //                                    (int)ENConcepto.TRANSFORMACION_SALIDA,
-                            //                                    ref idMovimiento))
-                            //            {
-                            //                return false;
-                            //            }
-                            //            //ACTUALIZACION  EN TI0021: DETALLE                                        
-                            //            if (!this.tI0021.Guardar(idMovimiento, i.IdProducto_Mat_Prima, i.Total,lote,fechaVen))
-                            //            {
-                            //                return false;
-                            //            }
-                            //        }
-                            //        else
-                            //        {
-                            //            var producto = db.Producto.Where(p => p.Id == i.IdProducto_Mat_Prima).Select(p => p.Descrip).FirstOrDefault();
-                            //            lMensaje.Add("No existe stock actual suficiente para el producto: " + producto);
-                            //        }
-                            //    }
-
-                            //}
-                            //if (i.TotalProd > 0)
-                            //{
-                            //    if (this.tI001.ExisteProducto(i.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen))
-                            //    {
-                            //        if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
-                            //                                       transformacion.IdAlmacenIngreso,
-                            //                                       EnAccionEnInventario.Incrementar,
-                            //                                       Convert.ToDecimal(i.TotalProd),
-                            //                                       lote,
-                            //                                       fechaVen))
-                            //        {
-                            //            return false;
-                            //        }
-                            //        int idMovimiento = 0;
-                            //        //ACTUALIZACION EN TI002: CABECERA
-                            //        if (!this.tI002.Guardar(transformacion.IdAlmacenIngreso, AlmacenSalida,
-                            //                                0, "",
-                            //                                idDetalle, usuario,
-                            //                                (transformacion.Id + " - " + " I -Transformacion Salida numiprod: " + transformacion_01.IdProducto + "| " + AlmacenIngreso),
-                            //                                (int)ENConcepto.TRANSFORMACION_INGRESO,
-                            //                                ref idMovimiento))
-                            //        {
-                            //            return false;
-                            //        }
-                            //        //ACTUALIZACION  EN TI0021: DETALLE                                        
-                            //        if (!this.tI0021.Guardar(idMovimiento, i.IdProducto, i.TotalProd,lote,fechaVen))
-                            //        {
-                            //            return false;
-                            //        }
-                            //    }
-                            //}
+                            }                       
+                          
                             #endregion
                         }
                         else
@@ -187,9 +115,9 @@ namespace REPOSITORY.Clase
                                         //var saldoModificar = transformacion_01.Total > i.Total ? transformacion_01.Total - i.Total:  i.Total - transformacion_01.Total;
                                         //if (StockActual_MatPrima >= saldoModificar)
                                         //{
-                                        if (this.tI001.ExisteProducto(i.IdProducto_Mat_Prima.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen))
+                                        if (this.tI001.ExisteProducto(i.IdProducto_Mat_Prima, transformacion.IdAlmacenSalida, lote, fechaVen))
                                         {
-                                            if (!this.tI001.ActualizarInventarioModificados(i.IdProducto_Mat_Prima.ToString(),
+                                            if (!this.tI001.ActualizarInventarioModificados(i.IdProducto_Mat_Prima,
                                                                            transformacion.IdAlmacenSalida,                                                                           
                                                                            Convert.ToDecimal(i.Total),
                                                                            transformacion_01.Total,
@@ -221,13 +149,6 @@ namespace REPOSITORY.Clase
                                                 }
                                             }                                            
                                         }
-                                        //}
-                                        //else
-                                        //{
-                                        //    var producto = db.Producto.Where(p => p.Id == i.IdProducto_Mat_Prima).Select(p => p.Descrip).FirstOrDefault();
-                                        //    lMensaje.Add("No existe stock actual suficiente para el producto: " + producto);
-                                        //}
-
                                     }
                                 }
                                 if (i.TotalProd > 0)
@@ -235,9 +156,9 @@ namespace REPOSITORY.Clase
                                     //Modificar Cantidad de Producto comercial
                                     if (transformacion_01.TotalProd != i.TotalProd)
                                     {
-                                        if (this.tI001.ExisteProducto(i.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen))
+                                        if (this.tI001.ExisteProducto(i.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen))
                                         {
-                                            if (!this.tI001.ActualizarInventarioModificados(i.IdProducto.ToString(),
+                                            if (!this.tI001.ActualizarInventarioModificados(i.IdProducto,
                                                                            transformacion.IdAlmacenIngreso,
                                                                            transformacion_01.TotalProd,
                                                                            Convert.ToDecimal(i.TotalProd),
@@ -285,9 +206,9 @@ namespace REPOSITORY.Clase
                             {
                                 if (i.TotalProd > 0)
                                 {
-                                    if (this.tI001.ExisteProducto(i.IdProducto.ToString(), transformacion.IdAlmacenIngreso, lote, fechaVen))
+                                    if (this.tI001.ExisteProducto(i.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen))
                                     {
-                                        if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
+                                        if (!this.tI001.ActualizarInventario(i.IdProducto,
                                                                        transformacion.IdAlmacenIngreso,
                                                                        EnAccionEnInventario.Descontar,
                                                                        Convert.ToDecimal(i.TotalProd),
@@ -315,9 +236,9 @@ namespace REPOSITORY.Clase
                                 if (i.Total > 0)
                                 {
 
-                                    if (this.tI001.ExisteProducto(i.IdProducto_Mat_Prima.ToString(), transformacion.IdAlmacenSalida, lote, fechaVen))
+                                    if (this.tI001.ExisteProducto(i.IdProducto_Mat_Prima, transformacion.IdAlmacenSalida, lote, fechaVen))
                                     {
-                                        if (!this.tI001.ActualizarInventario(i.IdProducto_Mat_Prima.ToString(),
+                                        if (!this.tI001.ActualizarInventario(i.IdProducto_Mat_Prima,
                                                                        transformacion.IdAlmacenSalida,
                                                                        EnAccionEnInventario.Incrementar,
                                                                        Convert.ToDecimal(i.Total),

@@ -15,9 +15,9 @@ namespace REPOSITORY.Clase
 
         public bool Guardar(int idTI002,
                             int idProducto,
-                            decimal? cantidad,
+                            decimal cantidad,
                             string lote,
-                            DateTime? fechaVen)
+                            DateTime fechaVen)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace REPOSITORY.Clase
                             int IdDetalle,
                             int concepto,
                             string lote,
-                            DateTime? fechaVen)
+                            DateTime fechaVen)
 
         {
             try
@@ -127,13 +127,13 @@ namespace REPOSITORY.Clase
                                     i.ibconcep == 5 || i.ibconcep == 8 ||
                                     i.ibconcep == 9)
                                 {
-                                    entradasAnteriores += detalleAnteriorProducto.iccant.Value;
+                                    entradasAnteriores += detalleAnteriorProducto.iccant;
                                 }
                                 //SALIDAS
                                 else if (i.ibconcep == 2 || i.ibconcep == 4 ||
                                     i.ibconcep == 6 || i.ibconcep == 10 || i.ibconcep == 11)
                                 {
-                                    salidasAnteriores += detalleAnteriorProducto.iccant.Value;
+                                    salidasAnteriores += detalleAnteriorProducto.iccant;
                                 }
                             }
                         }
@@ -156,13 +156,13 @@ namespace REPOSITORY.Clase
                                     i.ibconcep == 5 || i.ibconcep == 8 ||
                                     i.ibconcep == 9)
                                 {
-                                    entradasPeriodo += detalleProducto.iccant.Value;
+                                    entradasPeriodo += detalleProducto.iccant;
                                 }
                                 //SALIDAS
                                 else if (i.ibconcep == 2 || i.ibconcep == 4 ||
                                     i.ibconcep == 6 || i.ibconcep == 10)
                                 {
-                                    salidasPeriodo += detalleProducto.iccant.Value;
+                                    salidasPeriodo += detalleProducto.iccant;
                                 }
                             }
                         }

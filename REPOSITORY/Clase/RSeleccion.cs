@@ -77,14 +77,14 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     #region Validacion
-                    DateTime? fechaVen = Convert.ToDateTime("2017-01-01");
+                    DateTime fechaVen = Convert.ToDateTime("2017-01-01");
                     string lote = "20170101";
                     var seleccion = db.Seleccion.Where(c => c.Id.Equals(IdSeleccion)).FirstOrDefault();
                     var seleccion_01 = db.Seleccion_01.Where(c => c.IdSeleccion.Equals(IdSeleccion)).ToList();
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in seleccion_01)
                     {
-                        var StockActual = this.tI001.StockActual(item.IdProducto.ToString(), seleccion.IdAlmacen, lote, fechaVen);
+                        var StockActual = this.tI001.StockActual(item.IdProducto, seleccion.IdAlmacen, lote, fechaVen);
                         if (StockActual < item.Cantidad)
                         {
                             var producto = db.Producto.Where(p => p.Id == item.IdProducto).Select(p => p.Descrip).FirstOrDefault();
@@ -107,9 +107,9 @@ namespace REPOSITORY.Clase
                     {
                         if (i.Cantidad > 0)
                         {
-                            if (this.tI001.ExisteProducto(i.IdProducto.ToString(), seleccion.IdAlmacen, lote, fechaVen))
+                            if (this.tI001.ExisteProducto(i.IdProducto, seleccion.IdAlmacen, lote, fechaVen))
                             {
-                                if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
+                                if (!this.tI001.ActualizarInventario(i.IdProducto,
                                                                seleccion.IdAlmacen,
                                                                EnAccionEnInventario.Descontar,
                                                                Convert.ToDecimal(i.Cantidad),
@@ -151,12 +151,12 @@ namespace REPOSITORY.Clase
                     {
                         if (i.TotalCant > 0)
                         {
-                            if (this.tI001.ExisteProducto(i.IdProduc.ToString(),
+                            if (this.tI001.ExisteProducto(i.IdProduc,
                                                       compraIng.IdAlmacen,
                                                       lote,
                                                       fechaVen))
                             {
-                                if (!this.tI001.ActualizarInventario(i.IdProduc.ToString(),
+                                if (!this.tI001.ActualizarInventario(i.IdProduc,
                                                                compraIng.IdAlmacen,
                                                                EnAccionEnInventario.Incrementar,
                                                                Convert.ToDecimal(i.TotalCant),

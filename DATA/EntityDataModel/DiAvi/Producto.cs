@@ -20,9 +20,11 @@ namespace DATA.EntityDataModel.DiAvi
             this.CompraIng_01 = new HashSet<CompraIng_01>();
             this.Seleccion_01 = new HashSet<Seleccion_01>();
             this.Plantilla_01 = new HashSet<Plantilla_01>();
-            this.Traspaso_01 = new HashSet<Traspaso_01>();
             this.Venta_01 = new HashSet<Venta_01>();
             this.Compra_01 = new HashSet<Compra_01>();
+            this.TI001 = new HashSet<TI001>();
+            this.TI0021 = new HashSet<TI0021>();
+            this.Traspaso_01 = new HashSet<Traspaso_01>();
         }
     
         public int Id { get; set; }
@@ -55,10 +57,14 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plantilla_01> Plantilla_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Traspaso_01> Traspaso_01 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta_01> Venta_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra_01> Compra_01 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TI001> TI001 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TI0021> TI0021 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Traspaso_01> Traspaso_01 { get; set; }
     }
 }

@@ -54,7 +54,7 @@ namespace REPOSITORY.Clase
                         //Guarda el movimiento de inventario y actualiza el stock
                         var Observacion = (compra.Id + " - " + " I -Compra numiprod: " + i.IdProducto + "| " + Proveedor);
                         if (!tI001.NuevoMovimientoInventario(compra_01.Id,
-                                                            i.IdProducto.ToString(),
+                                                            i.IdProducto,
                                                             compra.IdAlmacen,
                                                             i.Lote, i.FechaVen,
                                                             compra_01.Canti,
@@ -93,7 +93,7 @@ namespace REPOSITORY.Clase
                     var Observacion = (compra.Id + " - " + " I -Compra numiprod: " + Lista.IdProducto + "| " + Proveedor);
                     //Modifica el movimiento de inventario, actualiza el stock, lote y fechavencimiento.
                     if (!tI001.ModificarMovimientoInventario(Lista.Id,
-                                                       Lista.IdProducto.ToString(),
+                                                       Lista.IdProducto,
                                                         compra.IdAlmacen,
                                                         compra_01.Lote, compra_01.FechaVen,
                                                         compra_01.Canti, Lista.Cantidad,
@@ -133,7 +133,7 @@ namespace REPOSITORY.Clase
                     if (compra_01 == null)
                     { throw new Exception("No existe la compra con id " + compra_01.Id); }
                     //vERIFICAR ELIMINADOS
-                    var StockActual = this.tI001.StockActual(compra_01.IdProducto.ToString(), compra.IdAlmacen, compra_01.Lote, compra_01.FechaVen);
+                    var StockActual = this.tI001.StockActual(compra_01.IdProducto, compra.IdAlmacen, compra_01.Lote, compra_01.FechaVen);
                     if (StockActual < compra_01.Canti)
                     {
                         var producto = db.Producto.Where(p => p.Id == compra_01.IdProducto).Select(p => p.Descrip).FirstOrDefault();
@@ -151,7 +151,7 @@ namespace REPOSITORY.Clase
 
                    
                     //Elimina el movimiento de inventario y actualiza el stock
-                    if (!this.tI001.EliminarMovimientoInventario(compra_01.Id, compra_01.IdProducto.ToString(), compra.IdAlmacen,
+                    if (!this.tI001.EliminarMovimientoInventario(compra_01.Id, compra_01.IdProducto, compra.IdAlmacen,
                                                                      compra_01.Lote, compra_01.FechaVen, compra_01.Canti,
                                                                      (int)ENConcepto.COMPRAS, EnAccionEnInventario.Descontar))
                     {
