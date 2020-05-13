@@ -88,6 +88,7 @@ namespace LOGIC.Class
         #endregion
 
         #region Consultas
+        /******** VALOR/REGISTRO ÚNICO *********/
 
         public List<VProducto> ListarXId(int id)
         {
@@ -100,6 +101,8 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        /********** VARIOS REGISTROS ***********/
         public List<VProductoLista> Listar()
         {
             try
@@ -125,6 +128,20 @@ namespace LOGIC.Class
             }
         }
 
+       
+        public List<VProductoListaStock> ListarProductosStock(int IdSucursal, int IdAlmacen,
+                                          int IdCategoriaPrecio)
+        {
+            try
+            {
+                return iProducto.ListarProductoStock(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /************** REPORTES ***************/
         public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
         {
             try
@@ -136,7 +153,6 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-
         #endregion
         #region Transacciones
         public bool ExisteEnCompra(int idProducto)

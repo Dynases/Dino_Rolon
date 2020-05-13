@@ -58,11 +58,11 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Vr_CompraIngreso> Vr_CompraIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
-        public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<Compra_01> Compra_01 { get; set; }
         public virtual DbSet<CompraIng> CompraIng { get; set; }
+        public virtual DbSet<TI001> TI001 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

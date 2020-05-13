@@ -5,6 +5,7 @@
       <xs:element minOccurs="0" name="CantidadCaja" type="xs:int" />
       <xs:element minOccurs="0" name="CantidadGrupo" type="xs:int" />
       <xs:element minOccurs="0" name="CantidadSemanas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompraAntiguaFecha" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entregado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaEnt" type="xs:dateTime" />

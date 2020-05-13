@@ -171,6 +171,12 @@
   <wsdl:message name="IServiceDesktop_ListarDetalleKardex_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarDetalleKardexResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarProductosStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProductosStock" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ListarProductosStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProductosStockResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProductoExisteEnCompra_InputMessage">
     <wsdl:part name="parameters" element="tns:ProductoExisteEnCompra" />
   </wsdl:message>
@@ -672,6 +678,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" message="tns:IServiceDesktop_ListarDetalleKardex_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse" message="tns:IServiceDesktop_ListarDetalleKardex_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ListarProductosStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ListarProductosStock" message="tns:IServiceDesktop_ListarProductosStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ListarProductosStockResponse" message="tns:IServiceDesktop_ListarProductosStock_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ProductoExisteEnCompra">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra" message="tns:IServiceDesktop_ProductoExisteEnCompra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse" message="tns:IServiceDesktop_ProductoExisteEnCompra_OutputMessage" />
@@ -1147,6 +1157,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarDetalleKardex">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProductosStock">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ListarProductosStock" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

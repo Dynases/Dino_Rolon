@@ -27,6 +27,7 @@ namespace PRESENTER.ven
             this.TxtNombreUsu.Visible = false;
             this.lblIdCliente.Text = "";
             this.lblId.Text = "";
+            superTabControl1.SelectedTabIndex = 0;
             listaDetalleVenta = new List<VVenta_01>();
         }
 
@@ -38,7 +39,7 @@ namespace PRESENTER.ven
         private static List<VVenta_01> listaDetalleVenta;
         private static int index;
         private static int plantillaIndex;
-
+        private static int idCategoriaPrecio;
         #endregion
 
         #region Metodos Privados
@@ -630,7 +631,7 @@ namespace PRESENTER.ven
                         this.MP_CargarAlmacenes();
                         this.MP_CargarVentas();
                         this.MP_CargarBuscador();
-                        ToastNotification.Show(this, GLMensaje.Modificar_Exito("TRASPASOS", vVenta.Id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                        ToastNotification.Show(this, GLMensaje.Modificar_Exito("VENTAS", vVenta.Id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                         return true;
 
                     }
@@ -667,13 +668,14 @@ namespace PRESENTER.ven
 
         private void TbCliente_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (TbCliente.ReadOnly.Equals(false))
+            try
             {
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                if (TbCliente.ReadOnly.Equals(false))
                 {
-                    var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
-                    List<GLCelda> listEstCeldas = new List<GLCelda>
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
                         new GLCelda() { campo = "Id", visible = true, titulo = "COD", tamano = 50 },
                         new GLCelda() { campo = "IdSpyre", visible = true, titulo = "CÓDIGO SPYRE", tamano = 80 },
@@ -682,33 +684,39 @@ namespace PRESENTER.ven
                         new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
                         new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
                         new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
-                        new GLCelda() { campo = "Factur", visible = true, titulo = "Facturacion", tamano = 100 }
+                        new GLCelda() { campo = "Factur", visible = true, titulo = "Facturacion", tamano = 100 },
+                        new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
                     };
 
-                    Efecto efecto = new Efecto();
-                    efecto.Tipo = 3;
-                    efecto.Tabla = lista;
-                    efecto.SelectCol = 2;
-                    efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
-                    efecto.Context = "SELECCIONE UN CLIENTE";
-                    efecto.ShowDialog();
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN CLIENTE";
+                        efecto.ShowDialog();
 
-                    var bandera = false;
-                    bandera = efecto.Band;
-                    if (bandera)
-                    {
-                        GridEXRow Row = efecto.Row;
-                        lblIdCliente.Text = Row.Cells[0].Value.ToString();
-                        TbCliente.Text = Row.Cells[2].Value.ToString();
-                        TbNitCliente.Text = Row.Cells[4].Value.ToString();
-
-                        var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                                Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
-                        TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
+                        var bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            GridEXRow Row = efecto.Row;
+                            lblIdCliente.Text = Row.Cells[0].Value.ToString();
+                            TbCliente.Text = Row.Cells[2].Value.ToString();
+                            TbNitCliente.Text = Row.Cells[4].Value.ToString();
+                            var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                    Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
+                            TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
+                            idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
             }
         }
 
@@ -726,12 +734,17 @@ namespace PRESENTER.ven
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter &&
                         Dgv_DetalleVenta.Row >= 0)
                     {
+                        if (idCategoriaPrecio == 0)
+                        {
+                            throw new Exception("Seleccione un cliente.");
+                        }
                         var almacen = new ServiceDesktop.ServiceDesktopClient()
                                                         .AlmacenListar()
                                                         .ToList()
                                                         .Find(a => a.Id == Convert.ToInt32(Cb_Origen.Value));
 
-                        var lista = new ServiceDesktop.ServiceDesktopClient().PrductoListarEncabezado(almacen.SucursalId, almacen.Id, 1);
+                        var lista = new ServiceDesktop.ServiceDesktopClient().PrductoListarEncabezado(almacen.SucursalId, almacen.Id, idCategoriaPrecio);
+                        var lista2 = new ServiceDesktop.ServiceDesktopClient().ListarProductosStock(almacen.SucursalId, almacen.Id, idCategoriaPrecio);
 
                         List<GLCelda> listEstCeldas = new List<GLCelda>
                         {
@@ -814,6 +827,7 @@ namespace PRESENTER.ven
             this.lblIdCliente.Text = "";
             this.TbCliente.Text = "";
             this.TbNitCliente.Text = "";
+            idCategoriaPrecio = 0;
             ToastNotification.Show(this, "El cliente fue borrado de la venta con exito", PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
 

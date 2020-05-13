@@ -219,6 +219,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleKardex", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleKardexResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarProductosStock", ReplyAction="http://tempuri.org/IServiceDesktop/ListarProductosStockResponse")]
+        ENTITY.Producto.View.VProductoListaStock[] ListarProductosStock(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarProductosStock", ReplyAction="http://tempuri.org/IServiceDesktop/ListarProductosStockResponse")]
+        System.Threading.Tasks.Task<ENTITY.Producto.View.VProductoListaStock[]> ListarProductosStockAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ProductoExisteEnCompraResponse")]
         bool ProductoExisteEnCompra(int id);
         
@@ -1564,6 +1570,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VDetalleKardex[]> ListarDetalleKardexAsync(System.DateTime inicio, System.DateTime fin, int IdAlmacen) {
             return base.Channel.ListarDetalleKardexAsync(inicio, fin, IdAlmacen);
+        }
+        
+        public ENTITY.Producto.View.VProductoListaStock[] ListarProductosStock(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
+            return base.Channel.ListarProductosStock(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Producto.View.VProductoListaStock[]> ListarProductosStockAsync(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio) {
+            return base.Channel.ListarProductosStockAsync(IdSucursal, IdAlmacen, IdCategoriaPrecio);
         }
         
         public bool ProductoExisteEnCompra(int id) {

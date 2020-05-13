@@ -289,7 +289,49 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VProductoListaStock> ListarProductoStock(int IdSucursal, int IdAlmacen,
+                                          int IdCategoriaPrecio)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from p in db.Producto
+                                      join i in db.TI001 on p.Id equals Convert.ToInt32(i.iccprod)
+                                      join a in db.Almacen on i.icalm equals a.Id
+                                      join s in db.Sucursal on a.IdSuc equals s.Id
+                                      join pr in db.Precio on p.Id equals pr.IdPrecioCat
+                                      join prc in db.PrecioCat on pr.IdPrecioCat equals prc.Id
+                                      join l in db.Libreria on p.UniVen equals l.IdLibrer
+                                      where s.Id ==  pr.IdSucursal &&
+                                            s.Id == IdSucursal &&
+                                            a.Id == IdAlmacen &&
+                                            prc.Id == IdCategoriaPrecio &&
+                                            l.IdGrupo == 3 && l.IdOrden == 6
+                                      select new VProductoListaStock
+                                      {
+                                          IdProducto = p.Id,
+                                          IdAlmacen = a.Id,
+                                          IdCategoriaPrecio = prc.Id,
+                                          Producto = p.Descrip,
+                                          Almacen = a.Descrip,
+                                          Precio = pr.Precio1,
+                                          UnidadVenta = l.Descrip,
+                                          CategoriaPrecio = prc.Descrip,
+                                          Stock = (from p in db.Producto
+                                                   join i in db.TI001 on p.Id equals Convert.ToInt32(i.iccprod)
+                                                   join a in db.Almacen on i.icalm equals a.Id 
+                                                   select i.iccven).Sum()                                                
 
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
         public bool ExisteEnCompra(int IdProducto)

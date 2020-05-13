@@ -659,6 +659,7 @@
     <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProducto.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProductoLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Producto.View.VProductoListaStock.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedorLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor_01Lista.datasource" />

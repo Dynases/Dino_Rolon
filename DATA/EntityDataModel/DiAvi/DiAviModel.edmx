@@ -1481,7 +1481,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
-          <EntitySet Name="TI001" EntityType="DiAviModel.TI001" />
           <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
           <AssociationSet Name="FK__CompraIng__IdPro__46B27FE2" Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2">
             <End Role="Producto" EntitySet="Producto" />
@@ -1538,6 +1537,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="CompraIng" EntitySet="CompraIng" />
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
+          <EntitySet Name="TI001" EntityType="DiAviModel.TI001" />
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -2311,18 +2311,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TI001">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="icalm" Type="Int32" />
-          <Property Name="iccprod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="iccven" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="icuven" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="icfven" Type="DateTime" Precision="0" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="Id" />
@@ -2586,6 +2574,18 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TI001">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="icalm" Type="Int32" />
+          <Property Name="iccprod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="iccven" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="icuven" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="iclot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="icfven" Type="DateTime" Precision="0" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3114,19 +3114,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TI001">
-            <EntityTypeMapping TypeName="DiAviModel.TI001">
-              <MappingFragment StoreEntitySet="TI001">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="icfven" ColumnName="icfven" />
-                <ScalarProperty Name="iclot" ColumnName="iclot" />
-                <ScalarProperty Name="icuven" ColumnName="icuven" />
-                <ScalarProperty Name="iccven" ColumnName="iccven" />
-                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
-                <ScalarProperty Name="icalm" ColumnName="icalm" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="DiAviModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
@@ -3220,6 +3207,19 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="IdProvee" ColumnName="IdProvee" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TI001">
+            <EntityTypeMapping TypeName="DiAviModel.TI001">
+              <MappingFragment StoreEntitySet="TI001">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="icfven" ColumnName="icfven" />
+                <ScalarProperty Name="iclot" ColumnName="iclot" />
+                <ScalarProperty Name="icuven" ColumnName="icuven" />
+                <ScalarProperty Name="iccven" ColumnName="iccven" />
+                <ScalarProperty Name="iccprod" ColumnName="iccprod" />
+                <ScalarProperty Name="icalm" ColumnName="icalm" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -54,4 +54,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VProductoLista" nillable="true" type="tns:VProductoLista" />
+  <xs:complexType name="ArrayOfVProductoListaStock">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProductoListaStock" nillable="true" type="tns:VProductoListaStock" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProductoListaStock" nillable="true" type="tns:ArrayOfVProductoListaStock" />
+  <xs:complexType name="VProductoListaStock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Almacen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoriaPrecio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCategoriaPrecio" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stock" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnidadVenta" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VProductoListaStock" nillable="true" type="tns:VProductoListaStock" />
 </xs:schema>

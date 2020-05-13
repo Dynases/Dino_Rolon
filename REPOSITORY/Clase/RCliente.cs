@@ -234,12 +234,13 @@ namespace REPOSITORY.Clase
                                      C.Nit as 'NIT',
                                      c.Direcc as 'Direccion',
                                      b.Descrip as 'Ciudad',
-                                     c.Factur as 'Facturacion'
+                                     c.Factur as 'Facturacion',
+                                     c.IdCategoria
                                     FROM 
                                         REG.Cliente c
                                         JOIN ADM.Libreria b ON b.IdGrupo = 2 AND b.IdOrden = 1 AND b.IdLibrer = c.Ciudad
                                     GROUP BY
-                                      c.Id, c.IdSpyre, c.Descrip, c.RazonSo, c.Nit, c.Direcc, b.Descrip, c.Factur";
+                                      c.Id, c.IdSpyre, c.Descrip, c.RazonSo, c.Nit, c.Direcc, b.Descrip, c.Factur, c.IdCategoria";
                 return tabla = BD.EjecutarConsulta(consulta).Tables[0];
             }
             catch (Exception ex)

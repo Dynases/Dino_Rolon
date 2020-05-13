@@ -51,8 +51,8 @@ namespace SERVICE
             }
             return composite;
         }
-        ///**********CLIENTE**********************
-        ///
+
+        /********** CLIENTE ***************/
         #region Cliente
         public List<VCliente> ClienteListar()
         {
@@ -143,8 +143,9 @@ namespace SERVICE
             }
         }
         #endregion
-        ///**********LIBRERIA**********************
-        ///
+        
+        /********** LIBRERIA ****************/
+
         #region Libreria
         public List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden)
         {
@@ -172,8 +173,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********PROEVEEDOR**********************
-        ///
+
+        /********** PROVEEDOR **************/
+
         #region Proveedor
         public bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario)
         {
@@ -240,8 +242,9 @@ namespace SERVICE
             }
         }
         #endregion
-        ///**********PRODUCTO**********************
-        ///
+
+        /********** PRODUCTO ****************/
+
         #region PRODUCTO
         #region Transacciones
         public bool ProductoGuardar(VProducto Producto, ref int id)
@@ -285,6 +288,8 @@ namespace SERVICE
         }
         #endregion
         #region Consultas
+
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VProducto> ProductoListarXId(int id)
         {
             try
@@ -297,7 +302,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        /********** VARIOS REGISTROS ***********/
         public List<VProductoLista> ProductoListar()
         {
             try
@@ -326,6 +331,19 @@ namespace SERVICE
             }
         }
 
+       
+        public List<VProductoListaStock> ListarProductosStock(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio)
+        {
+            try
+            {
+                return new LProducto().ListarProductosStock(IdSucursal, IdAlmacen, IdCategoriaPrecio);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /************** REPORTES ***************/
         public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
         {
             try
@@ -417,8 +435,9 @@ namespace SERVICE
         }
         #endregion
         #endregion
-        ///**********ALMACEN**********************
-        ///
+
+        /********** ALMACEN *****************/
+
         #region Almacen        
 
         public bool AlmacenGuardar(VAlmacen vAlmacen)
@@ -460,6 +479,9 @@ namespace SERVICE
         }
 
         #endregion
+
+        /********** TIPO DE ALMACEN *********/
+
         #region TipoAlmacen
 
         public bool TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen)
@@ -502,8 +524,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********SUCURSAL**********************
-        ///
+
+        /********** SUCURSAL ****************/
+
         #region Sucursal
 
         public List<VSucursalCombo> SucursalListarCombo()
@@ -556,8 +579,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********TRASPASO**********************
-        ///
+
+        /********** TRASPASO ****************/
+
         #region Traspasos
 
         public bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
@@ -633,8 +657,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********PRECIO**********************
-        ///
+
+        /********** PRECIO ******************/
+
         #region Precio Categoria
 
         public bool precioCategoria_Guardar(VPrecioCategoria precioCat, ref int id)
@@ -728,8 +753,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********COMPRA INGRESO**********************
-        ///
+
+        /********** COMPRA INGRESO **********/
+
         #region Compra Ingreso
         #region Transacciones
         public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
@@ -892,8 +918,9 @@ namespace SERVICE
             }
         }
         #endregion
-        ///**********SELECCION**********************
-        ///
+
+        /********** SELECCIÓN ***************/
+
         #region Seleccion
         #region Transacciones
         public bool Seleccion_ModificarEstado(int IdSeleccion, int estado,ref List<string> lMensaje)
@@ -975,8 +1002,9 @@ namespace SERVICE
             }
         }
         #endregion
-        ///**********TRANSFORMACION**********************
-        ///
+
+        /********** TRANSFORMACIÓN **********/
+
         #region TRANSFORMACION
         #region Transacciones
         public bool TransformacionGuardar(VTransformacion vSeleccion, List<VTransformacion_01> detalle, ref int Id, ref List<string> lMensaje)
@@ -1079,8 +1107,9 @@ namespace SERVICE
         }
 
         #endregion
-        ///**********COMPRA**********************
-        ///
+
+        /********** COMPRA ******************/
+
         #region Compra
         #region Transacciones
         public bool CompraGuardar(VCompra vCompra, List<VCompra_01> detalle, ref int IdCompra, ref List<string> lMensaje, string usuario)
@@ -1154,8 +1183,8 @@ namespace SERVICE
         #endregion
         #endregion
 
-        ///**********PLANTILLA**********************
-        ///
+        /********** PLANTILLA ****************/
+
         #region Plantilla
 
         public bool PlantillaGuardar(VPlantilla VPlantilla, ref int id)
@@ -1209,8 +1238,8 @@ namespace SERVICE
 
         #endregion
 
-        ///**********VENTA**********************
-        ///
+        /********** VENTA ********************/
+
         #region Ventas
 
         public bool VentaGuardar(VVenta vVenta, ref int id)
@@ -1262,8 +1291,8 @@ namespace SERVICE
         }
 
         #endregion
-        ///***********ZONA**************************
-        ///
+
+        /********** ZONA ********************/
         #region ZONA
         #region Consulta
         public List<VZona> ZonaListar()
@@ -1277,6 +1306,8 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
+     
         #endregion
         #endregion
     }

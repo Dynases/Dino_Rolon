@@ -41,15 +41,15 @@ namespace SERVICE
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        ///**********INICIO**************************
+        /********** INICIO ****************/
         #region Libreria
         [OperationContract]
         List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden);
 
         [OperationContract]
         bool LibreriaGuardar(VLibreriaLista vlibreria);
-        #endregion
-        ///**********CLIENTE*************************
+        #endregion 
+        /********** CLIENTE ***************/
 
         #region Cliente
 
@@ -72,8 +72,8 @@ namespace SERVICE
         [OperationContract]
         DataTable ClienteListarEncabezado();
         #endregion
-        ///**********PROVEEDOR***********************
-        ///
+        /********** PROVEEDOR **************/
+
         #region Proveedor
         [OperationContract]
         bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario);
@@ -90,9 +90,9 @@ namespace SERVICE
         #region Proveedor_01
         [OperationContract]
         List<VProveedor_01Lista> Proveedor_01ListarXId(int Id);
-        #endregion
-        ///**********PRODUCTO************************
-        ///
+        #endregion 
+        /********** PRODUCTO ****************/
+        
         #region PRODUCTO
             #region Transacciones
                 [OperationContract]
@@ -114,9 +114,11 @@ namespace SERVICE
 
                 [OperationContract]
                 List<VDetalleKardex> ListarDetalleKardex(System.DateTime inicio, System.DateTime fin, int IdAlmacen);
-            #endregion
-            #region Verificaciones
                 [OperationContract]
+                List<VProductoListaStock> ListarProductosStock(int IdSucursal, int IdAlmacen, int IdCategoriaPrecio);
+        #endregion
+        #region Verificaciones
+        [OperationContract]
                 bool ProductoExisteEnCompra(int id);
                 [OperationContract]
                 bool ProductoExisteEnCompraNormal(int id);
@@ -130,8 +132,8 @@ namespace SERVICE
                 bool ProductoExisteEnSeleccion(int id);
             #endregion
         #endregion
-        ///**********ALMACEN************************
-        ///
+        /********** ALMACEN *****************/
+       
         #region Almacen
 
         [OperationContract]
@@ -144,8 +146,8 @@ namespace SERVICE
         List<VAlmacenLista> AlmacenListar();
 
         #endregion
-        ///**********TIPO DE ALMACEN************************
-        ///
+        /********** TIPO DE ALMACEN *********/
+      
         #region Tipo de Almacen
 
         [OperationContract]
@@ -158,8 +160,8 @@ namespace SERVICE
         List<VTipoAlmacenListar> TipoAlmacenListar();
 
         #endregion
-        ///**********SUCURSAL************************
-        ///
+        /********** SUCURSAL ****************/
+       
         #region Sucursal
         [OperationContract]
         List<VSucursalCombo> SucursalListarCombo();
@@ -173,8 +175,8 @@ namespace SERVICE
         [OperationContract]
         bool SucursalGuardar(VSucursal vSucursal);
         #endregion
-        ///**********TRASPASO************************
-        ///
+        /********** TRASPASO ****************/
+       
         #region Traspaso
         [OperationContract]
         bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id);
@@ -195,8 +197,8 @@ namespace SERVICE
         bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion);
 
         #endregion       
-        ///**********PRECIO**************************
-        ///
+        /********** PRECIO ******************/
+        
         #region Precio Categoria
         [OperationContract]
         List<VPrecioCategoria> PrecioCategoriaListar();
@@ -217,8 +219,8 @@ namespace SERVICE
         [OperationContract]
         bool PrecioModificar(VPrecioLista vPrecio, string usuario);
         #endregion
-        ///**********COMPRA INGRESO******************
-        ///
+        /********** COMPRA INGRESO **********/
+        
         #region COMPRA INGRESO
             #region Transacciones
                 [OperationContract]
@@ -258,11 +260,12 @@ namespace SERVICE
         [OperationContract]
         DataTable CompraIngreso_02_ListarTabla();
         #endregion
-        ///**********SELECCION**********************
-        ///
+        
+        /********** SELECCIÓN ***************/
+       
         #region SELECCION
-            #region Transacciones
-                [OperationContract]
+        #region Transacciones
+        [OperationContract]
                 bool Seleccion_Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleccion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int id);
                 [OperationContract]
                 bool Seleccion_ModificarEstado(int IdSeleccion, int estado, ref List<string> lMensaje);
@@ -280,8 +283,9 @@ namespace SERVICE
         [OperationContract]
         List<VSeleccion_01_Lista> Seleccion_01_ListarXId_CompraIng_01_XSeleccion(int IdCompraInreso_01);
         #endregion
-        ///**********TRANSFORMACION******************
-        ///
+
+        /********** TRANSFORMACIÓN **********/
+        
         #region TRANSFORMACION
         #region Trnasacciones
         [OperationContract]
@@ -305,8 +309,9 @@ namespace SERVICE
         [OperationContract]
         VTransformacion_01 Transformacion_01_TraerFilaProducto(int IdProducto, int idProducto_Mat);
         #endregion
-        ///**********COMPRA******************
-        ///
+
+        /********** COMPRA ******************/
+       
         #region Compra
         #region Transacciones
         [OperationContract]
@@ -327,8 +332,9 @@ namespace SERVICE
         [OperationContract]
         List<VCompra_01> Compra_01_Lista(int IdCompra);
         #endregion
-        ///**********PLANTILLA******************
-        ///
+
+        /********** PLANTILLA ****************/
+       
         #region Plantilla
 
         [OperationContract]
@@ -343,8 +349,9 @@ namespace SERVICE
         [OperationContract]
         List<VPlantilla01> PlantillaListarDetallePlantilla(int PlantillaId);
         #endregion
-        ///**********VENTA******************
-        ///
+
+        /********** VENTA ********************/
+   
         #region Venta
 
         [OperationContract]
@@ -361,8 +368,7 @@ namespace SERVICE
 
         #endregion
 
-        ///////******ZONA******************
-        ///
+        /********** ZONA ********************/
         #region ZONA
         #region Consulta
         [OperationContract]
