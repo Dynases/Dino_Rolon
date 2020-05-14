@@ -1347,7 +1347,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="vVenta" nillable="true" type="q86:VVenta" />
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="detalle" nillable="true" type="q87:ArrayOfVVenta_01" />
+        <xs:element minOccurs="0" name="IdVenta" type="xs:int" />
+        <xs:element xmlns:q88="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lMensaje" nillable="true" type="q88:ArrayOfstring" />
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1355,7 +1358,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="VentaGuardarResult" type="xs:boolean" />
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="IdVenta" type="xs:int" />
+        <xs:element xmlns:q89="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lMensaje" nillable="true" type="q89:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1367,23 +1371,7 @@
   <xs:element name="VentasListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="VentasListarResult" nillable="true" type="q87:ArrayOfVVenta" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VentaDetalleGuardar">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="lista" nillable="true" type="q88:ArrayOfVVenta_01" />
-        <xs:element minOccurs="0" name="VentaId" type="xs:int" />
-        <xs:element minOccurs="0" name="AlmacenId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VentaDetalleGuardarResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="VentaDetalleGuardarResult" type="xs:boolean" />
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="VentasListarResult" nillable="true" type="q90:ArrayOfVVenta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1397,7 +1385,7 @@
   <xs:element name="VentaDetalleListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="VentaDetalleListarResult" nillable="true" type="q89:ArrayOfVVenta_01" />
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="VentaDetalleListarResult" nillable="true" type="q91:ArrayOfVVenta_01" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1409,7 +1397,7 @@
   <xs:element name="ZonaListarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" minOccurs="0" name="ZonaListarResult" nillable="true" type="q90:ArrayOfVZona" />
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" minOccurs="0" name="ZonaListarResult" nillable="true" type="q92:ArrayOfVZona" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

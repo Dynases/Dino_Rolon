@@ -4,30 +4,40 @@ namespace ENTITY.ven.view
 {
     public class VVenta_01
     {
-        public int Id { get; set; } //0
+        public int Id { get; set; }
+        public int IdVenta { get; set; }
 
-        public int IdProducto { get; set; } //1
+        public int IdProducto { get; set; } 
 
-        public string DescripcionProducto { get; set; } //2
+        public int Estado { get; set; }
 
-        public int Cantidad { get; set; } //3
+        public string CodigoProducto { get; set; }
 
-        public decimal Precio { get; set; } //4
+        public string CodigoBarra { get; set; }
 
-        public string Unidad { get; set; } //5
+        public string Producto { get; set; } 
 
-        public int Estado { get; set; } //6
+        public string Unidad { get; set; } 
+        public int Cantidad { get; set; } 
 
-        public decimal SubTotal //7
+        public decimal PrecioVenta { get; set; } 
+
+        public decimal SubTotal 
         {
             get
-            { return this.Precio * Convert.ToDecimal(this.Cantidad); }
+            { return this.PrecioVenta * Convert.ToDecimal(this.Cantidad); }
         }
+        public decimal PrecioCosto { get; set; }
+        public decimal SubTotalCosto
+        {
+            get
+            { return this.PrecioCosto * Convert.ToDecimal(this.Cantidad); }
+        }      
+        public string Lote { get; set; }
+        public DateTime FechaVencimiento { get; set; }
+        public decimal Stock { get; set; }
+        public string Delete { get; set; }
 
-        public string CodBar { get; set; } //8
 
-        public int IdVenta { get; set; } //9
-
-        public string Delete { get; set; } //10
     }
 }

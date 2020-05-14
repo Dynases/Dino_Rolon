@@ -131,7 +131,7 @@ namespace REPOSITORY.Clase
                     var compra = db.Compra.Where(t => t.Id == IdCompra).FirstOrDefault();
                     Compra_01 compra_01 = db.Compra_01.Where(a => a.Id == IdDetalle).FirstOrDefault();
                     if (compra_01 == null)
-                    { throw new Exception("No existe la compra con id " + compra_01.Id); }
+                    { throw new Exception("No existe la compra con id " + IdDetalle); }
                     //vERIFICAR ELIMINADOS
                     var StockActual = this.tI001.StockActual(compra_01.IdProducto, compra.IdAlmacen, compra_01.Lote, compra_01.FechaVen);
                     if (StockActual < compra_01.Canti)

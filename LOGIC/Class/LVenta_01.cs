@@ -18,30 +18,12 @@ namespace LOGIC.Class
             iTi001 = new RTI001(iTi002, iTi0021);
             iVenta_01 = new RVenta_01(iTi001);
         }
-
-        #region Transacciones
-
-        public bool Guardar(List<VVenta_01> lista, int VentaId, int AlmacenId)
-        {
-            try
-            {
-                using (var scope = new TransactionScope())
-                {
-                    var result = this.iVenta_01.Guardar(lista, VentaId, AlmacenId);
-                    scope.Complete();
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        #endregion
-
         #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
 
+
+
+        /********** VARIOS REGISTROS ***********/
         public List<VVenta_01> ListarDetalle(int VentaId)
         {
             try
@@ -53,6 +35,62 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        #endregion
+
+        #region Transacciones
+
+        public bool Nuevo(List<VVenta_01> lista, int VentaId)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = this.iVenta_01.Nuevo(lista, VentaId);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Modificar(VVenta_01 lista, int VentaId)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = this.iVenta_01.Modificar(lista, VentaId);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Eliminar(int IdVenta, int IdDetalle, ref List<string> lMensaje)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var result = this.iVenta_01.Eliminar(IdVenta, IdDetalle,ref lMensaje);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Verificaciones
 
         #endregion
     }

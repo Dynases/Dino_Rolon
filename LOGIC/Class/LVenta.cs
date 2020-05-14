@@ -4,6 +4,7 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Transactions;
+using UTILITY.Enum.EnEstado;
 
 namespace LOGIC.Class
 {
@@ -18,13 +19,48 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Guardar(VVenta vVenta, ref int id)
+        public bool Guardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje, string usuario)
         {
             try
             {
+                bool result = false;
                 using (var scope = new TransactionScope())
                 {
-                    var result = iVenta.Guardar(vVenta, ref id);
+                    int aux = IdVenta;
+                    result = iVenta.Guardar(vVenta, ref IdVenta);
+                    if (aux == 0)//Nuevo 
+                    {
+                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta);
+                    }
+                    else//Modificar          
+                    {
+                        foreach (var i in detalle)
+                        {
+                            if (i.Estado == (int)ENEstado.NUEVO)
+                            {
+                                List<VVenta_01> detalleNuevo = new List<VVenta_01>();
+                                detalleNuevo.Add(i);                            
+                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta))
+                                {
+                                    return false;
+                                }
+                            }
+                            if (i.Estado == (int)ENEstado.MODIFICAR)
+                            {                            
+                                if (!new LVenta_01().Modificar(i, IdVenta))
+                                {
+                                    return false;
+                                }
+                            }
+                            if (i.Estado == (int)ENEstado.ELIMINAR)
+                            {                                
+                                if (!new LVenta_01().Eliminar(IdVenta, i.Id, ref lMensaje))
+                                {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
                     scope.Complete();
                     return result;
                 }

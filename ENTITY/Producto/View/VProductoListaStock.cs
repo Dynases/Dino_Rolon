@@ -14,15 +14,23 @@ namespace ENTITY.Producto.View
 
         public int IdCategoriaPrecio { get; set; }
 
+        public string CodigoProducto { get; set; }
+
+        public string CodigoBarras { get; set; }
+
         public string Producto { get; set; }
+        public string MarcaProducto { get; set; }
 
-        public string Almacen { get; set; }
-
-        public decimal Precio  { get; set; }
-
+        public string TipoProducto { get; set; }
+        public string CategoriaProducto { get; set; }
         public string UnidadVenta { get; set; }
 
-        public string CategoriaPrecio { get; set; }
+        public decimal PrecioVenta  { get; set; }
+        public decimal PrecioCosto { get; set; }
+
         public decimal? Stock { get; set; }
+
+        public string CategoriaPrecio { get; set; }
+       
     }
 }

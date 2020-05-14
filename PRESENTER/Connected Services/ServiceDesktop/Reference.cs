@@ -634,12 +634,6 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
-        bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse")]
-        System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
         ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
         
@@ -1298,14 +1292,26 @@ namespace PRESENTER.ServiceDesktop {
         public ENTITY.ven.view.VVenta vVenta;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public int id;
+        public ENTITY.ven.view.VVenta_01[] detalle;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int IdVenta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public string[] lMensaje;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public string usuario;
         
         public VentaGuardarRequest() {
         }
         
-        public VentaGuardarRequest(ENTITY.ven.view.VVenta vVenta, int id) {
+        public VentaGuardarRequest(ENTITY.ven.view.VVenta vVenta, ENTITY.ven.view.VVenta_01[] detalle, int IdVenta, string[] lMensaje, string usuario) {
             this.vVenta = vVenta;
-            this.id = id;
+            this.detalle = detalle;
+            this.IdVenta = IdVenta;
+            this.lMensaje = lMensaje;
+            this.usuario = usuario;
         }
     }
     
@@ -1318,14 +1324,18 @@ namespace PRESENTER.ServiceDesktop {
         public bool VentaGuardarResult;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public int id;
+        public int IdVenta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
         
         public VentaGuardarResponse() {
         }
         
-        public VentaGuardarResponse(bool VentaGuardarResult, int id) {
+        public VentaGuardarResponse(bool VentaGuardarResult, int IdVenta, string[] lMensaje) {
             this.VentaGuardarResult = VentaGuardarResult;
-            this.id = id;
+            this.IdVenta = IdVenta;
+            this.lMensaje = lMensaje;
         }
     }
     
@@ -2216,12 +2226,16 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.VentaGuardar(request);
         }
         
-        public bool VentaGuardar(ENTITY.ven.view.VVenta vVenta, ref int id) {
+        public bool VentaGuardar(ENTITY.ven.view.VVenta vVenta, ENTITY.ven.view.VVenta_01[] detalle, ref int IdVenta, ref string[] lMensaje, string usuario) {
             PRESENTER.ServiceDesktop.VentaGuardarRequest inValue = new PRESENTER.ServiceDesktop.VentaGuardarRequest();
             inValue.vVenta = vVenta;
-            inValue.id = id;
+            inValue.detalle = detalle;
+            inValue.IdVenta = IdVenta;
+            inValue.lMensaje = lMensaje;
+            inValue.usuario = usuario;
             PRESENTER.ServiceDesktop.VentaGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).VentaGuardar(inValue);
-            id = retVal.id;
+            IdVenta = retVal.IdVenta;
+            lMensaje = retVal.lMensaje;
             return retVal.VentaGuardarResult;
         }
         
@@ -2235,14 +2249,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync() {
             return base.Channel.VentasListarAsync();
-        }
-        
-        public bool VentaDetalleGuardar(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId) {
-            return base.Channel.VentaDetalleGuardar(lista, VentaId, AlmacenId);
-        }
-        
-        public System.Threading.Tasks.Task<bool> VentaDetalleGuardarAsync(ENTITY.ven.view.VVenta_01[] lista, int VentaId, int AlmacenId) {
-            return base.Channel.VentaDetalleGuardarAsync(lista, VentaId, AlmacenId);
         }
         
         public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {

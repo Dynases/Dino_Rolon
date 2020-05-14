@@ -62,14 +62,19 @@
   <xs:element name="ArrayOfVProductoListaStock" nillable="true" type="tns:ArrayOfVProductoListaStock" />
   <xs:complexType name="VProductoListaStock">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Almacen" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CategoriaPrecio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoriaProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoBarras" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
       <xs:element minOccurs="0" name="IdCategoriaPrecio" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MarcaProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrecioCosto" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrecioVenta" type="xs:decimal" />
       <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Stock" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TipoProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UnidadVenta" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

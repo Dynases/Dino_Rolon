@@ -239,30 +239,48 @@ namespace REPOSITORY.Clase
                                       join i in db.TI001 on p.Id equals i.iccprod
                                       join a in db.Almacen on i.icalm equals a.Id
                                       join s in db.Sucursal on a.IdSuc equals s.Id
+                                      //PrecioVenta
                                       join pr in db.Precio on
                                       new           { idProducto = p.Id, IdAlmacen = s.Id }
                                          equals new { idProducto = pr.IdProduc, IdAlmacen = pr.IdSucursal }
                                       //join pr in db.Precio on p.Id equals pr.IdProduc
                                       join prc in db.PrecioCat on pr.IdPrecioCat equals prc.Id
                                       join l in db.Libreria on p.UniVen equals l.IdLibrer
+                                      join m in db.Libreria on p.Grupo2 equals m.IdLibrer
+                                      join t in db.Libreria on p.Grupo3 equals t.IdLibrer
+                                      join c in db.Libreria on p.Grupo4 equals c.IdLibrer
+                                      //PrecioCosto
+                                      join prcosto in db.Precio on
+                                      new { idProducto = p.Id, IdAlmacen = s.Id }
+                                         equals new { idProducto = prcosto.IdProduc, IdAlmacen = prcosto.IdSucursal }
+                                      join prcc in db.PrecioCat on prcosto.IdPrecioCat equals prcc.Id
                                       where s.Id ==  pr.IdSucursal &&
                                             s.Id == IdSucursal &&
                                             a.Id == IdAlmacen &&
                                             prc.Id == IdCategoriaPrecio &&
-                                            l.IdGrupo == 3 && l.IdOrden == 6
+                                            prcc.Id == 8 && //Precio de costo Id Estatico
+                                            l.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && l.IdOrden == (int)ENEstaticosOrden.PRODUCTO_UN_VENTA &&
+                                            m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
+                                            t.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && t.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
+                                            c.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && c.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO4
                                       select new VProductoListaStock
                                       {
                                           IdProducto = p.Id,
                                           IdAlmacen = a.Id,
                                           IdCategoriaPrecio = prc.Id,
+                                          CodigoProducto = p.IdProd,
+                                          CodigoBarras = p.CodBar,
                                           Producto = p.Descrip,
-                                          Almacen = a.Descrip,
-                                          Precio = pr.Precio1,
+                                          MarcaProducto = m.Descrip,
+                                          TipoProducto = t.Descrip,
+                                          CategoriaProducto = t.Descrip,                                         
+                                          PrecioVenta = pr.Precio1,
+                                          PrecioCosto = prcosto.Precio1,
                                           UnidadVenta = l.Descrip,
-                                          CategoriaPrecio = prc.Descrip,
                                           Stock = (from y in db.TI001 
                                                    where y.icalm == IdAlmacen  && y.iccprod == p.Id                                           
-                                                   select y.iccven).Sum()                                                
+                                                   select y.iccven).Sum(),
+                                          CategoriaPrecio = prc.Descrip,
 
                                       }).Distinct().ToList();
                     return listResult;

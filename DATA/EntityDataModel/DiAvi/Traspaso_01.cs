@@ -22,7 +22,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string Observaciones { get; set; }
         public string Unidad { get; set; }
         public string Marca { get; set; }
-
+    
         public virtual Traspaso Traspaso { get; set; }
         public virtual Producto Producto { get; set; }
     }

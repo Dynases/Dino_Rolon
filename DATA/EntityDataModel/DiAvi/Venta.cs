@@ -23,9 +23,7 @@ namespace DATA.EntityDataModel.DiAvi
         public int Id { get; set; }
         public int IdAlmacen { get; set; }
         public int IdCliente { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
         public System.DateTime FechaVenta { get; set; }
-        public string Usuario { get; set; }
         public int Estado { get; set; }
         public int Tipo { get; set; }
         public string Observaciones { get; set; }
@@ -34,6 +32,9 @@ namespace DATA.EntityDataModel.DiAvi
         public string EncTransporte { get; set; }
         public string EncEntrega { get; set; }
         public string EncRecepcion { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+        public string Usuario { get; set; }
     
         public virtual Almacen Almacen { get; set; }
         public virtual Cliente Cliente { get; set; }

@@ -18,24 +18,34 @@ namespace REPOSITORY.Clase
             {
                 using (var db = this.GetEsquema())
                 {
-                    var venta = new Venta
-                    {
-                        EncEntrega = VVenta.EncEntrega,
-                        EncPrVenta = VVenta.EncPrVenta,
-                        EncRecepcion = VVenta.EncRecepcion,
-                        EncTransporte = VVenta.EncTransporte,
-                        EncVenta = VVenta.EncVenta,
-                        FechaRegistro = VVenta.FechaRegistro,
-                        Estado = VVenta.Estado,
-                        FechaVenta = VVenta.FechaVenta,
-                        IdAlmacen = VVenta.IdAlmacen,
-                        IdCliente = VVenta.IdCliente,
-                        Observaciones = VVenta.Observaciones,
-                        Tipo = VVenta.Tipo,
-                        Usuario = VVenta.Usuario
-                    };
 
-                    db.Venta.Add(venta);
+                    var idAux = id;
+                    Venta venta;
+                    if (id > 0)
+                    {
+                        venta = db.Venta.Where(a => a.Id == idAux).FirstOrDefault();
+                        if (venta == null)
+                            throw new Exception("No existe la Venta con id " + idAux);
+                    }
+                    else
+                    {
+                        venta = new Venta();
+                        db.Venta.Add(venta);
+                    }
+                    venta.IdAlmacen = VVenta.IdAlmacen;
+                    venta.IdCliente = VVenta.IdCliente;
+                    venta.FechaVenta = VVenta.FechaVenta;
+                    venta.Estado = VVenta.Estado;
+                    venta.Tipo = VVenta.Tipo;
+                    venta.Observaciones = VVenta.Observaciones;
+                    venta.EncPrVenta = VVenta.EncPrVenta;
+                    venta.EncTransporte = VVenta.EncTransporte;
+                    venta.EncEntrega = VVenta.EncEntrega;
+                    venta.EncRecepcion = VVenta.EncRecepcion;
+                    venta.EncVenta = VVenta.EncVenta;
+                    venta.Fecha = VVenta.Fecha;
+                    venta.Hora = VVenta.Hora;
+                    venta.Usuario = VVenta.Usuario;                    
                     db.SaveChanges();
                     id = venta.Id;
                     return true;
@@ -68,7 +78,7 @@ namespace REPOSITORY.Clase
                                  EncTransporte = v.EncTransporte,
                                  EncVenta = v.EncVenta,
                                  Estado = v.Estado,
-                                 FechaRegistro = v.FechaRegistro,
+                                 Fecha = v.Fecha,
                                  FechaVenta = v.FechaVenta,
                                  Id = v.Id,
                                  IdAlmacen = v.IdAlmacen,
@@ -76,7 +86,9 @@ namespace REPOSITORY.Clase
                                  NitCliente = v.Cliente.Nit,
                                  Observaciones = v.Observaciones,
                                  Tipo = v.Tipo,
-                                 Usuario = v.Usuario
+                                 Usuario = v.Usuario,
+                                 Hora = v.Hora,
+                                 IdCategoriaCliente=  v.Cliente.IdCategoria
                              }).ToList();
                 }
             }

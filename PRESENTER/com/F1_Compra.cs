@@ -749,7 +749,7 @@ namespace PRESENTER.com
                             {
                                 if (idProducto == fila.IdProducto)
                                 {
-                                    throw new Exception("Producto repetido en el detalle");
+                                    throw new Exception("El producto ya fue seleccionado");
                                 }
                                 if (fila.Id == idDetalle)
                                 {
@@ -1022,8 +1022,7 @@ namespace PRESENTER.com
                 {
                     if (idAux == 0)//Registar
                     {
-                        Tb_Proveedor.Focus();
-                        MP_CargarEncabezado();
+                        Tb_Proveedor.Focus();                      
                         MP_Filtrar(1);
                         MP_Limpiar();
                         _Limpiar = true;

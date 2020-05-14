@@ -567,12 +567,6 @@
   <wsdl:message name="IServiceDesktop_VentasListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:VentasListarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaDetalleGuardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:VentaDetalleGuardar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaDetalleGuardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:VentaDetalleGuardarResponse" />
-  </wsdl:message>
   <wsdl:message name="IServiceDesktop_VentaDetalleListar_InputMessage">
     <wsdl:part name="parameters" element="tns:VentaDetalleListar" />
   </wsdl:message>
@@ -941,10 +935,6 @@
     <wsdl:operation name="VentasListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentasListar" message="tns:IServiceDesktop_VentasListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentasListarResponse" message="tns:IServiceDesktop_VentasListar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="VentaDetalleGuardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar" message="tns:IServiceDesktop_VentaDetalleGuardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleGuardarResponse" message="tns:IServiceDesktop_VentaDetalleGuardar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="VentaDetalleListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
@@ -1751,15 +1741,6 @@
     </wsdl:operation>
     <wsdl:operation name="VentasListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentasListar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="VentaDetalleGuardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleGuardar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

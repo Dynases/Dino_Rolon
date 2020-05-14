@@ -1242,11 +1242,12 @@ namespace SERVICE
 
         #region Ventas
 
-        public bool VentaGuardar(VVenta vVenta, ref int id)
+        public bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje, string usuario)
         {
             try
             {
-                return new LVenta().Guardar(vVenta, ref id);
+                var listResult = new LVenta().Guardar(vVenta, detalle, ref IdVenta, ref lMensaje, usuario);
+                return listResult;
             }
             catch (Exception ex)
             {
@@ -1259,18 +1260,6 @@ namespace SERVICE
             try
             {
                 return new LVenta().Listar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool VentaDetalleGuardar(List<VVenta_01> lista, int VentaId, int AlmacenId)
-        {
-            try
-            {
-                return new LVenta_01().Guardar(lista, VentaId, AlmacenId);
             }
             catch (Exception ex)
             {
@@ -1307,7 +1296,6 @@ namespace SERVICE
             }
         }
 
-     
         #endregion
         #endregion
     }

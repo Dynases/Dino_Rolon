@@ -16,13 +16,9 @@ namespace ENTITY.ven.view
 
         public int IdCliente { get; set; }
 
-        public string DescripcionCliente { get; set; }
-
-        public DateTime FechaRegistro { get; set; }
+        public string DescripcionCliente { get; set; }       
 
         public DateTime FechaVenta { get; set; }
-
-        public string Usuario { get; set; }
 
         public int Estado { get; set; }
 
@@ -41,5 +37,10 @@ namespace ENTITY.ven.view
         public string EncRecepcion { get; set; }
 
         public string NitCliente { get; set; }
+
+        public DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+        public string Usuario { get; set; }
+        public int IdCategoriaCliente { get; set; }
     }
 }
