@@ -77,6 +77,7 @@
             this.MEP = new System.Windows.Forms.ErrorProvider(this.components);
             this.MHighlighterFocus = new DevComponents.DotNetBar.Validator.Highlighter();
             this.BubbleButton3 = new DevComponents.DotNetBar.BubbleButton();
+            this.BunifuEclipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.PanelSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
@@ -745,6 +746,11 @@
             this.BubbleButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BubbleButton3.Name = "BubbleButton3";
             // 
+            // BunifuEclipse
+            // 
+            this.BunifuEclipse.ElipseRadius = 7;
+            this.BunifuEclipse.TargetControl = this;
+            // 
             // ModeloF1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -831,5 +837,6 @@
         public DevComponents.DotNetBar.SuperTabControlPanel PanelContenidoRegistro;
         public DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
         public System.Windows.Forms.Panel PanelInferior;
+        protected Bunifu.Framework.UI.BunifuElipse BunifuEclipse;
     }
 }
