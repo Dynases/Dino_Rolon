@@ -104,5 +104,11 @@ namespace PRESENTER.adm
             F1_ReporteKardex frm = new F1_ReporteKardex();
             frm.Show();
         }
+
+        private void Metro_Usuarios_Click(object sender, EventArgs e)
+        {
+            F1_Usuarios frm = new F1_Usuarios();
+            frm.Show();
+        }
     }
 }
