@@ -110,5 +110,11 @@ namespace PRESENTER.adm
             F1_Usuarios frm = new F1_Usuarios();
             frm.Show();
         }
+
+        private void Metro_Roles_Click(object sender, EventArgs e)
+        {
+            F1_Roles frm = new F1_Roles();
+            frm.Show();
+        }
     }
 }

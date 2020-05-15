@@ -188,7 +188,7 @@
             this.PanelInferior.Controls.Add(this.TxtNombreUsu);
             this.PanelInferior.Controls.Add(this.PanelNavegacion);
             this.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelInferior.Location = new System.Drawing.Point(0, 548);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 488);
             this.PanelInferior.Name = "PanelInferior";
             this.PanelInferior.Size = new System.Drawing.Size(837, 28);
             this.PanelInferior.TabIndex = 3;
@@ -376,6 +376,7 @@
             // 
             // PanelContenidoRegistro
             // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelInferior);
             this.PanelContenidoRegistro.Controls.Add(this.LblSubtitulo);
             this.PanelContenidoRegistro.Controls.Add(this.PanelMenu);
             this.PanelContenidoRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -593,9 +594,9 @@
             this.PanelContenidoBuscar.Controls.Add(this.GMPanel_Buscardor);
             this.PanelContenidoBuscar.Controls.Add(this.PanelUsuario);
             this.PanelContenidoBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 30);
+            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Name = "PanelContenidoBuscar";
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 519);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 516);
             this.PanelContenidoBuscar.TabIndex = 0;
             this.PanelContenidoBuscar.TabItem = this.SuperTabBuscar;
             // 
@@ -610,7 +611,7 @@
             this.GMPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 0);
             this.GMPanel_Buscardor.Name = "GMPanel_Buscardor";
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 519);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -647,7 +648,7 @@
             this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
             this.Dgv_GBuscador.Name = "Dgv_GBuscador";
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 493);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             this.Dgv_GBuscador.TabIndex = 0;
             // 
             // PanelUsuario
@@ -756,7 +757,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 576);
-            this.Controls.Add(this.PanelInferior);
             this.Controls.Add(this.superTabControl1);
             this.Controls.Add(this.PanelSuperior);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -794,7 +794,6 @@
 
         internal System.Windows.Forms.Panel PanelSuperior;
         internal System.Windows.Forms.PictureBox PictureBoxLogo;
-        protected DevComponents.DotNetBar.SuperTabControl superTabControl1;
         protected System.Windows.Forms.Label LblTitulo;
         protected DevComponents.DotNetBar.ButtonX BtnImprimir;
         protected DevComponents.DotNetBar.ButtonX BtnAtras;
@@ -838,5 +837,6 @@
         public DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
         public System.Windows.Forms.Panel PanelInferior;
         protected Bunifu.Framework.UI.BunifuElipse BunifuEclipse;
+        public DevComponents.DotNetBar.SuperTabControl superTabControl1;
     }
 }

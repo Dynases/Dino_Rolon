@@ -271,6 +271,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adm\F1_Roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adm\F1_Roles.Designer.cs">
+      <DependentUpon>F1_Roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="adm\F1_Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +416,9 @@
     <Compile Include="ven\F1_Ventas.Designer.cs">
       <DependentUpon>F1_Ventas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="adm\F1_Roles.resx">
+      <DependentUpon>F1_Roles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adm\F1_Usuarios.resx">
       <DependentUpon>F1_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
