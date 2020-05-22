@@ -71,6 +71,8 @@
     <Compile Include="Clase\RProducto.cs" />
     <Compile Include="Clase\RProvedor.cs" />
     <Compile Include="Clase\RProveedor_01.cs" />
+    <Compile Include="Clase\RRol.cs" />
+    <Compile Include="Clase\RRol_01.cs" />
     <Compile Include="Clase\RSeleccion.cs" />
     <Compile Include="Clase\RSucursal.cs" />
     <Compile Include="Clase\RSeleccion_01.cs" />
@@ -102,6 +104,8 @@
     <Compile Include="Interface\IProducto.cs" />
     <Compile Include="Interface\IProveedor.cs" />
     <Compile Include="Interface\IProveedor_01.cs" />
+    <Compile Include="Interface\IRol.cs" />
+    <Compile Include="Interface\IRol_01.cs" />
     <Compile Include="Interface\ISeleccion.cs" />
     <Compile Include="Interface\ISeleccion_01.cs" />
     <Compile Include="Interface\ISucursal.cs" />

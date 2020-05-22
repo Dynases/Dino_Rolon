@@ -27,6 +27,7 @@ namespace DATA.EntityDataModel.DiAvi
             this.TI001 = new HashSet<TI001>();
             this.TI002 = new HashSet<TI002>();
             this.Venta = new HashSet<Venta>();
+            this.Usuario_01 = new HashSet<Usuario_01>();
         }
     
         public int Id { get; set; }
@@ -65,5 +66,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<TI002> TI002 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Venta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario_01> Usuario_01 { get; set; }
     }
 }

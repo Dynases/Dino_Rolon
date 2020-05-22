@@ -30,17 +30,23 @@ namespace PRESENTER.adm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Roles));
             this.Panel2 = new System.Windows.Forms.Panel();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
-            this.tbNumi = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbIdRol = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbRol = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.GroupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.grDetalle = new Janus.Windows.GridEX.GridEX();
+            this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.grModulos = new Janus.Windows.GridEX.GridEX();
+            this.Dgv_Modulos = new Janus.Windows.GridEX.GridEX();
+            this.msModulos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SELECCIONARTODOSSHOWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SELECCIONARTODOSADDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SELECCIONARTODOSEDITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SELECCIONARTODOSDELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -59,14 +65,31 @@ namespace PRESENTER.adm
             this.Panel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.GroupPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
             this.GroupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grModulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Modulos)).BeginInit();
+            this.msModulos.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(769, 0);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(958, 0);
             // 
             // BubbleBarUsuario
             // 
@@ -88,25 +111,29 @@ namespace PRESENTER.adm
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(719, 0);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(908, 0);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
+            // PanelContenidoBuscar
+            // 
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1100, 609);
+            // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(851, 0);
+            this.btnMin.Location = new System.Drawing.Point(1040, 0);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(871, 0);
+            this.btnMax.Location = new System.Drawing.Point(1060, 0);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(891, 0);
+            this.btnClose.Location = new System.Drawing.Point(1080, 0);
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1100, 609);
             // 
             // 
             // 
@@ -138,23 +165,29 @@ namespace PRESENTER.adm
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1094, 583);
+            this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
+            this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
+            this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
             // 
             // LblSubtitulo
             // 
-            this.LblSubtitulo.Size = new System.Drawing.Size(911, 36);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1100, 36);
+            this.LblSubtitulo.Text = "Registre un nuevo Rol. Visualice y/o modifique la información de un Rol previamen" +
+    "te registrado. ";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Size = new System.Drawing.Size(911, 72);
+            this.PanelMenu.Size = new System.Drawing.Size(1100, 72);
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.Panel1);
             this.PanelContenidoRegistro.Controls.Add(this.Panel2);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(911, 509);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1100, 609);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel2, 0);
@@ -162,8 +195,8 @@ namespace PRESENTER.adm
             // 
             // PanelInferior
             // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 541);
-            this.PanelInferior.Size = new System.Drawing.Size(911, 28);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 581);
+            this.PanelInferior.Size = new System.Drawing.Size(1100, 28);
             // 
             // superTabControl1
             // 
@@ -182,20 +215,21 @@ namespace PRESENTER.adm
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Size = new System.Drawing.Size(911, 542);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(1100, 642);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // Panel2
             // 
             this.Panel2.Controls.Add(this.LabelX2);
             this.Panel2.Controls.Add(this.LabelX3);
-            this.Panel2.Controls.Add(this.tbNumi);
+            this.Panel2.Controls.Add(this.tbIdRol);
             this.Panel2.Controls.Add(this.tbRol);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 108);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(911, 103);
+            this.Panel2.Size = new System.Drawing.Size(1100, 103);
             this.Panel2.TabIndex = 69;
             // 
             // LabelX2
@@ -230,20 +264,21 @@ namespace PRESENTER.adm
             this.LabelX3.TabIndex = 24;
             this.LabelX3.Text = "Rol:";
             // 
-            // tbNumi
+            // tbIdRol
             // 
             // 
             // 
             // 
-            this.tbNumi.Border.Class = "TextBoxBorder";
-            this.tbNumi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbNumi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumi.Location = new System.Drawing.Point(78, 19);
-            this.tbNumi.Name = "tbNumi";
-            this.tbNumi.PreventEnterBeep = true;
-            this.tbNumi.Size = new System.Drawing.Size(100, 21);
-            this.tbNumi.TabIndex = 20;
-            this.tbNumi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbIdRol.Border.Class = "TextBoxBorder";
+            this.tbIdRol.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbIdRol.Enabled = false;
+            this.tbIdRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdRol.Location = new System.Drawing.Point(78, 19);
+            this.tbIdRol.Name = "tbIdRol";
+            this.tbIdRol.PreventEnterBeep = true;
+            this.tbIdRol.Size = new System.Drawing.Size(100, 21);
+            this.tbIdRol.TabIndex = 20;
+            this.tbIdRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbRol
             // 
@@ -266,20 +301,20 @@ namespace PRESENTER.adm
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(0, 211);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(911, 298);
+            this.Panel1.Size = new System.Drawing.Size(1100, 370);
             this.Panel1.TabIndex = 70;
             // 
             // GroupPanel2
             // 
             this.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.GroupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GroupPanel2.Controls.Add(this.grDetalle);
+            this.GroupPanel2.Controls.Add(this.Dgv_Detalle);
             this.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GroupPanel2.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupPanel2.Location = new System.Drawing.Point(257, 0);
             this.GroupPanel2.Name = "GroupPanel2";
-            this.GroupPanel2.Size = new System.Drawing.Size(654, 298);
+            this.GroupPanel2.Size = new System.Drawing.Size(843, 370);
             // 
             // 
             // 
@@ -311,31 +346,33 @@ namespace PRESENTER.adm
             this.GroupPanel2.TabIndex = 25;
             this.GroupPanel2.Text = "P R I V I L E G I O S";
             // 
-            // grDetalle
+            // Dgv_Detalle
             // 
-            this.grDetalle.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.grDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grDetalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grDetalle.Location = new System.Drawing.Point(0, 0);
-            this.grDetalle.Name = "grDetalle";
-            this.grDetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.grDetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.grDetalle.Size = new System.Drawing.Size(648, 272);
-            this.grDetalle.TabIndex = 0;
-            this.grDetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Detalle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dgv_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Detalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Detalle.Name = "Dgv_Detalle";
+            this.Dgv_Detalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Dgv_Detalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Detalle.Size = new System.Drawing.Size(837, 344);
+            this.Dgv_Detalle.TabIndex = 0;
+            this.Dgv_Detalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
+            this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
             // 
             // GroupPanel1
             // 
             this.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GroupPanel1.Controls.Add(this.grModulos);
+            this.GroupPanel1.Controls.Add(this.Dgv_Modulos);
             this.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.GroupPanel1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupPanel1.Location = new System.Drawing.Point(0, 0);
             this.GroupPanel1.Name = "GroupPanel1";
-            this.GroupPanel1.Size = new System.Drawing.Size(257, 298);
+            this.GroupPanel1.Size = new System.Drawing.Size(257, 370);
             // 
             // 
             // 
@@ -367,38 +404,87 @@ namespace PRESENTER.adm
             this.GroupPanel1.TabIndex = 24;
             this.GroupPanel1.Text = "M O D U L O S";
             // 
-            // grModulos
+            // Dgv_Modulos
             // 
-            this.grModulos.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.grModulos.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.grModulos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grModulos.FlatBorderColor = System.Drawing.Color.DodgerBlue;
-            this.grModulos.FocusCellDisplayMode = Janus.Windows.GridEX.FocusCellDisplayMode.UseSelectedFormatStyle;
-            this.grModulos.FocusCellFormatStyle.ForeColor = System.Drawing.Color.White;
-            this.grModulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grModulos.GridLineColor = System.Drawing.Color.DodgerBlue;
-            this.grModulos.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grModulos.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
-            this.grModulos.Hierarchical = true;
-            this.grModulos.Location = new System.Drawing.Point(0, 0);
-            this.grModulos.Name = "grModulos";
-            this.grModulos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.grModulos.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.grModulos.RowFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.grModulos.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.grModulos.SelectedFormatStyle.ForeColor = System.Drawing.Color.White;
-            this.grModulos.SelectedInactiveFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.grModulos.Size = new System.Drawing.Size(251, 275);
-            this.grModulos.TabIndex = 1;
-            this.grModulos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Modulos.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.Dgv_Modulos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dgv_Modulos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Modulos.FlatBorderColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Modulos.FocusCellDisplayMode = Janus.Windows.GridEX.FocusCellDisplayMode.UseSelectedFormatStyle;
+            this.Dgv_Modulos.FocusCellFormatStyle.ForeColor = System.Drawing.Color.White;
+            this.Dgv_Modulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Modulos.GridLineColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Modulos.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Modulos.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
+            this.Dgv_Modulos.Hierarchical = true;
+            this.Dgv_Modulos.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Modulos.Name = "Dgv_Modulos";
+            this.Dgv_Modulos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Dgv_Modulos.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Modulos.RowFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.Dgv_Modulos.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Modulos.SelectedFormatStyle.ForeColor = System.Drawing.Color.White;
+            this.Dgv_Modulos.SelectedInactiveFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.Dgv_Modulos.Size = new System.Drawing.Size(251, 347);
+            this.Dgv_Modulos.TabIndex = 1;
+            this.Dgv_Modulos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Modulos.SelectionChanged += new System.EventHandler(this.Dgv_Modulos_SelectionChanged);
+            // 
+            // msModulos
+            // 
+            this.msModulos.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.msModulos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SELECCIONARTODOSSHOWToolStripMenuItem,
+            this.SELECCIONARTODOSADDToolStripMenuItem,
+            this.SELECCIONARTODOSEDITToolStripMenuItem,
+            this.SELECCIONARTODOSDELToolStripMenuItem});
+            this.msModulos.Name = "msModulos";
+            this.msModulos.Size = new System.Drawing.Size(246, 148);
+            // 
+            // SELECCIONARTODOSSHOWToolStripMenuItem
+            // 
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.Image = global::PRESENTER.Properties.Resources.verRegistros2;
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.Name = "SELECCIONARTODOSSHOWToolStripMenuItem";
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.Text = "SELECCIONAR TODOS SHOW";
+            this.SELECCIONARTODOSSHOWToolStripMenuItem.Click += new System.EventHandler(this.SELECCIONARTODOSSHOWToolStripMenuItem_Click);
+            // 
+            // SELECCIONARTODOSADDToolStripMenuItem
+            // 
+            this.SELECCIONARTODOSADDToolStripMenuItem.Image = global::PRESENTER.Properties.Resources.add2;
+            this.SELECCIONARTODOSADDToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SELECCIONARTODOSADDToolStripMenuItem.Name = "SELECCIONARTODOSADDToolStripMenuItem";
+            this.SELECCIONARTODOSADDToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
+            this.SELECCIONARTODOSADDToolStripMenuItem.Text = "SELECCIONAR TODOS ADD";
+            this.SELECCIONARTODOSADDToolStripMenuItem.Click += new System.EventHandler(this.SELECCIONARTODOSADDToolStripMenuItem_Click);
+            // 
+            // SELECCIONARTODOSEDITToolStripMenuItem
+            // 
+            this.SELECCIONARTODOSEDITToolStripMenuItem.Image = global::PRESENTER.Properties.Resources.edit2;
+            this.SELECCIONARTODOSEDITToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SELECCIONARTODOSEDITToolStripMenuItem.Name = "SELECCIONARTODOSEDITToolStripMenuItem";
+            this.SELECCIONARTODOSEDITToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
+            this.SELECCIONARTODOSEDITToolStripMenuItem.Text = "SELECCIONAR TODOS EDIT";
+            this.SELECCIONARTODOSEDITToolStripMenuItem.Click += new System.EventHandler(this.SELECCIONARTODOSEDITToolStripMenuItem_Click);
+            // 
+            // SELECCIONARTODOSDELToolStripMenuItem
+            // 
+            this.SELECCIONARTODOSDELToolStripMenuItem.Image = global::PRESENTER.Properties.Resources.trash2;
+            this.SELECCIONARTODOSDELToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SELECCIONARTODOSDELToolStripMenuItem.Name = "SELECCIONARTODOSDELToolStripMenuItem";
+            this.SELECCIONARTODOSDELToolStripMenuItem.Size = new System.Drawing.Size(245, 36);
+            this.SELECCIONARTODOSDELToolStripMenuItem.Text = "SELECCIONAR TODOS DELETE";
+            this.SELECCIONARTODOSDELToolStripMenuItem.Click += new System.EventHandler(this.SELECCIONARTODOSDELToolStripMenuItem_Click);
             // 
             // F1_Roles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 569);
+            this.ClientSize = new System.Drawing.Size(1100, 669);
             this.Name = "F1_Roles";
             this.Text = "F1_Roles";
+            this.Controls.SetChildIndex(this.superTabControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -419,9 +505,10 @@ namespace PRESENTER.adm
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.GroupPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
             this.GroupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grModulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Modulos)).EndInit();
+            this.msModulos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -430,13 +517,18 @@ namespace PRESENTER.adm
 
         internal System.Windows.Forms.Panel Panel1;
         internal DevComponents.DotNetBar.Controls.GroupPanel GroupPanel2;
-        internal Janus.Windows.GridEX.GridEX grDetalle;
+        internal Janus.Windows.GridEX.GridEX Dgv_Detalle;
         internal DevComponents.DotNetBar.Controls.GroupPanel GroupPanel1;
-        internal Janus.Windows.GridEX.GridEX grModulos;
+        internal Janus.Windows.GridEX.GridEX Dgv_Modulos;
         internal System.Windows.Forms.Panel Panel2;
         internal DevComponents.DotNetBar.LabelX LabelX2;
         internal DevComponents.DotNetBar.LabelX LabelX3;
-        internal DevComponents.DotNetBar.Controls.TextBoxX tbNumi;
+        internal DevComponents.DotNetBar.Controls.TextBoxX tbIdRol;
         internal DevComponents.DotNetBar.Controls.TextBoxX tbRol;
+        internal System.Windows.Forms.ContextMenuStrip msModulos;
+        internal System.Windows.Forms.ToolStripMenuItem SELECCIONARTODOSSHOWToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem SELECCIONARTODOSADDToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem SELECCIONARTODOSEDITToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem SELECCIONARTODOSDELToolStripMenuItem;
     }
 }

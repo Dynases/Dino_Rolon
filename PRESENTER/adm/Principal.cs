@@ -33,7 +33,7 @@ namespace PRESENTER.adm
             frm.Show();
         }
 
-        private void metroTileItem6_Click(object sender, EventArgs e)
+        private void Metro_Productos_Click(object sender, EventArgs e)
         {
             F1_Productos frm = new F1_Productos();
             frm.Show();

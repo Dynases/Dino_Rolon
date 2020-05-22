@@ -11,6 +11,8 @@ namespace UTILITY.Enum.EnEstaticos
         CLIENTE = 1,
         PROVEEDOR =2,
         PRODUCTO =3,
-        COMPRA_INGRESO = 4
+        COMPRA_INGRESO = 4,
+        ROL=10
+
     }
 }

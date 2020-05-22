@@ -523,6 +523,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ProveedorGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.RolGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -608,6 +611,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop29.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -671,6 +677,8 @@
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor_01Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.reg.Precio.View.VPrecioLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.reg.PrecioCategoria.View.VPrecioCategoria.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Rol.View.VRol.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Rol.View.VRol_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta_01.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -714,6 +722,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Resource\verRegistros2.png" />
+    <None Include="Resource\add2.png" />
+    <None Include="Resource\edit2.png" />
+    <None Include="Resource\trash2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

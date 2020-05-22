@@ -27,6 +27,7 @@ using ENTITY.com.CompraIngreso_02;
 using UTILITY.Enum;
 using ENTITY.DiSoft.Zona;
 using LOGIC.Class.DiSoft;
+using ENTITY.Rol.View;
 
 namespace SERVICE
 {
@@ -51,6 +52,60 @@ namespace SERVICE
             }
             return composite;
         }
+
+        /********** ROL ***************/
+        #region Rol 
+
+        public bool RolGuardar(VRol vRol, List<VRol_01> detalle, ref int IdRol,  string usuario)
+        {
+            try
+            {
+                var listResult = new LRol().Guardar(vRol, detalle, ref IdRol,  usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool RolEliminar(int IdRol, List<VRol_01> detalle)
+        {
+            try
+            {
+                var listResult = new LRol().EliminarRol(IdRol, detalle);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VRol> ListarRol()
+        {
+            try
+            {
+                var listResult = new LRol().Listar();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VRol_01> ListarDetalleRol_01(int IdRol)
+        {
+            try
+            {
+                var listResult = new LRol_01().Listar(IdRol);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
 
         /********** CLIENTE ***************/
         #region Cliente

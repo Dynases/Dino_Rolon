@@ -21,6 +21,7 @@ using ENTITY.Proveedor.View;
 using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.ven.view;
+using ENTITY.Rol.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,9 +49,25 @@ namespace SERVICE
 
         [OperationContract]
         bool LibreriaGuardar(VLibreriaLista vlibreria);
-        #endregion 
-        /********** CLIENTE ***************/
+        #endregion
 
+        /********** ROL ****************/
+        #region Rol
+
+        [OperationContract]
+        bool RolGuardar(VRol Rol, List<VRol_01> detalle, ref int IdRol, string usuario);        
+       
+        [OperationContract]
+        bool RolEliminar(int id, List<VRol_01> detalle);
+        [OperationContract]
+        List<VRol> ListarRol();
+
+        [OperationContract]
+        List<VRol_01> ListarDetalleRol_01(int idRol);
+
+        #endregion
+
+        /********** CLIENTE ***************/
         #region Cliente
 
         [OperationContract]
