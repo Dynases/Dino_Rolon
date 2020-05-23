@@ -19,7 +19,7 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Guardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje, string usuario)
+        public bool Guardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje)
         {
             try
             {
@@ -28,11 +28,11 @@ namespace LOGIC.Class
                 {
                     int aux = IdVenta;
                     result = iVenta.Guardar(vVenta, ref IdVenta);
-                    if (aux == 0)//Nuevo 
+                    if (aux == 0)//Nuevo
                     {
-                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta);
+                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta,vVenta.IdAlmacen, vVenta.Usuario);
                     }
-                    else//Modificar          
+                    else//Modificar
                     {
                         foreach (var i in detalle)
                         {
@@ -40,21 +40,21 @@ namespace LOGIC.Class
                             {
                                 List<VVenta_01> detalleNuevo = new List<VVenta_01>();
                                 detalleNuevo.Add(i);                            
-                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta))
+                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta,vVenta.IdAlmacen, vVenta.Usuario))
                                 {
                                     return false;
                                 }
                             }
                             if (i.Estado == (int)ENEstado.MODIFICAR)
                             {                            
-                                if (!new LVenta_01().Modificar(i, IdVenta))
+                                if (!new LVenta_01().Modificar(i, IdVenta,vVenta.IdAlmacen,vVenta.Usuario))
                                 {
                                     return false;
                                 }
                             }
                             if (i.Estado == (int)ENEstado.ELIMINAR)
                             {                                
-                                if (!new LVenta_01().Eliminar(IdVenta, i.Id, ref lMensaje))
+                                if (!new LVenta_01().Eliminar(IdVenta, i.Id,vVenta.IdAlmacen, ref lMensaje))
                                 {
                                     return false;
                                 }

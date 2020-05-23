@@ -27,12 +27,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VProducto" nillable="true" type="tns:VProducto" />
-  <xs:complexType name="ArrayOfVProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProducto" nillable="true" type="tns:VProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVProducto" nillable="true" type="tns:ArrayOfVProducto" />
   <xs:complexType name="ArrayOfVProductoLista">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VProductoLista" nillable="true" type="tns:VProductoLista" />

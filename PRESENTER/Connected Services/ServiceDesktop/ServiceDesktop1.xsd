@@ -327,7 +327,7 @@
   <xs:element name="ProductoListarXIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" minOccurs="0" name="ProductoListarXIdResult" nillable="true" type="q17:ArrayOfVProducto" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" minOccurs="0" name="ProductoListarXIdResult" nillable="true" type="q17:VProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1350,7 +1350,6 @@
         <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" minOccurs="0" name="detalle" nillable="true" type="q87:ArrayOfVVenta_01" />
         <xs:element minOccurs="0" name="IdVenta" type="xs:int" />
         <xs:element xmlns:q88="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lMensaje" nillable="true" type="q88:ArrayOfstring" />
-        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

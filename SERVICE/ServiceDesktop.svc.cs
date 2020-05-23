@@ -290,7 +290,7 @@ namespace SERVICE
         #region Consultas
 
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VProducto> ProductoListarXId(int id)
+        public VProducto ProductoListarXId(int id)
         {
             try
             {
@@ -1242,11 +1242,11 @@ namespace SERVICE
 
         #region Ventas
 
-        public bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje, string usuario)
+        public bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje)
         {
             try
             {
-                var listResult = new LVenta().Guardar(vVenta, detalle, ref IdVenta, ref lMensaje, usuario);
+                var listResult = new LVenta().Guardar(vVenta, detalle, ref IdVenta, ref lMensaje);
                 return listResult;
             }
             catch (Exception ex)

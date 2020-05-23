@@ -724,8 +724,7 @@ namespace PRESENTER.com
                         if (idDetalle > 0)
                         {
                             var idProducto = Convert.ToInt32(Dgv_Producto.GetValue("Id"));
-                            var Lista = new ServiceDesktop.ServiceDesktopClient().ProductoListarXId(idProducto)
-                                                                                .FirstOrDefault();
+                            var Lista = new ServiceDesktop.ServiceDesktopClient().ProductoListarXId(idProducto);
                             var UnidadVenta = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo((int)ENEstaticosGrupo.PRODUCTO,
                                                                                                              (int)ENEstaticosOrden.PRODUCTO_UN_VENTA)
                                                                                                              .Where(l => l.IdLibreria == Lista.UniVenta)
