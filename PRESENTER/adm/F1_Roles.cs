@@ -240,7 +240,7 @@ namespace PRESENTER.adm
 
                     Dgv_Modulos.RootTable.Columns[1].Key = "Descripcion";
                     Dgv_Modulos.RootTable.Columns[1].Caption = "MÓDULO";
-                    Dgv_Modulos.RootTable.Columns[1].Width = 200;                 
+                    Dgv_Modulos.RootTable.Columns[1].Width = 230;                 
                     Dgv_Modulos.RootTable.Columns[1].CellStyle.FontSize = 9;
                     Dgv_Modulos.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                     Dgv_Modulos.RootTable.Columns[1].Visible = true;
@@ -293,7 +293,7 @@ namespace PRESENTER.adm
 
                     Dgv_Detalle.RootTable.Columns[4].Key = "Descripcion";
                     Dgv_Detalle.RootTable.Columns[4].Caption = "Programa";
-                    Dgv_Detalle.RootTable.Columns[4].Width = 180;
+                    Dgv_Detalle.RootTable.Columns[4].Width = 330;
                     Dgv_Detalle.RootTable.Columns[4].Visible = true;
 
                     Dgv_Detalle.RootTable.Columns[5].Key = "IdModulo";
@@ -401,29 +401,27 @@ namespace PRESENTER.adm
                 Dgv_GBuscador.AlternatingColors = true;
 
                 Dgv_GBuscador.RootTable.Columns["IdRol"].Caption = "Id";
-                Dgv_GBuscador.RootTable.Columns["IdRol"].Width = 80;
-                Dgv_GBuscador.RootTable.Columns["IdRol"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns["IdRol"].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns["IdRol"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["IdRol"].Width = 100;
+                //Dgv_GBuscador.RootTable.Columns["IdRol"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                //Dgv_GBuscador.RootTable.Columns["IdRol"].CellStyle.FontSize = 8;             
                 Dgv_GBuscador.RootTable.Columns["IdRol"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Rol1"].Caption = "Rol";
-                Dgv_GBuscador.RootTable.Columns["Rol1"].Width = 250;
-                Dgv_GBuscador.RootTable.Columns["Rol1"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns["Rol1"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["Rol1"].Width = 450;
+                Dgv_GBuscador.RootTable.Columns["Rol1"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;             
                 Dgv_GBuscador.RootTable.Columns["Rol1"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Rol1"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Caption = "Fecha";
-                Dgv_GBuscador.RootTable.Columns["Fecha"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["Fecha"].Width = 150;
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Hora"].Caption = "Hora";
-                Dgv_GBuscador.RootTable.Columns["Fecha"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["Fecha"].Width = 150;
                 Dgv_GBuscador.RootTable.Columns["Hora"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Usuario"].Caption = "Usuario";
-                Dgv_GBuscador.RootTable.Columns["Usuario"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["Usuario"].Width = 200;
                 Dgv_GBuscador.RootTable.Columns["Usuario"].Visible = true;
 
                 //Habilitar filtradores

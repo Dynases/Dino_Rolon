@@ -71,6 +71,10 @@ namespace PRESENTER.adm
             this.msModulos.SuspendLayout();
             this.SuspendLayout();
             // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Visible = false;
+            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
@@ -115,10 +119,6 @@ namespace PRESENTER.adm
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1100, 609);
-            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(1040, 0);
@@ -133,7 +133,7 @@ namespace PRESENTER.adm
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1100, 609);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -165,7 +165,7 @@ namespace PRESENTER.adm
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1094, 583);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
