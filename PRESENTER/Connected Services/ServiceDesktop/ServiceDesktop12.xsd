@@ -1,65 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="VTraspaso">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VSeleccion">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Concepto" type="xs:int" />
-      <xs:element minOccurs="0" name="Destino" type="xs:int" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaReg" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Origen" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCompraIng" type="xs:int" />
+      <xs:element minOccurs="0" name="Merma" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VTraspaso" nillable="true" type="tns:VTraspaso" />
-  <xs:complexType name="ArrayOfVTraspaso_01">
+  <xs:element name="VSeleccion" nillable="true" type="tns:VSeleccion" />
+  <xs:complexType name="ArrayOfVSeleccionLista">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTraspaso_01" nillable="true" type="tns:VTraspaso_01" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VSeleccionLista" nillable="true" type="tns:VSeleccionLista" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVTraspaso_01" nillable="true" type="tns:ArrayOfVTraspaso_01" />
-  <xs:complexType name="VTraspaso_01">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
-      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Marca" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProductoDescripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProductoId" type="xs:int" />
-      <xs:element minOccurs="0" name="TraspasoId" type="xs:int" />
-      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
-    </xs:sequence>
+  <xs:element name="ArrayOfVSeleccionLista" nillable="true" type="tns:ArrayOfVSeleccionLista" />
+  <xs:complexType name="VSeleccionLista">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VSeleccion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Edad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaEntrega" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FechaRecepcion" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Granja" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Placa" type="xs:int" />
+          <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tipo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="VTraspaso_01" nillable="true" type="tns:VTraspaso_01" />
-  <xs:complexType name="ArrayOfVTraspaso">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTraspaso" nillable="true" type="tns:VTraspaso" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVTraspaso" nillable="true" type="tns:ArrayOfVTraspaso" />
-  <xs:complexType name="ArrayOfVTListaProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTListaProducto" nillable="true" type="tns:VTListaProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVTListaProducto" nillable="true" type="tns:ArrayOfVTListaProducto" />
-  <xs:complexType name="VTListaProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AlmacenId" type="xs:int" />
-      <xs:element minOccurs="0" name="Categoria" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Division" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Existencia" type="xs:int" />
-      <xs:element minOccurs="0" name="InventarioId" type="xs:int" />
-      <xs:element minOccurs="0" name="Marca" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProductoId" type="xs:int" />
-      <xs:element minOccurs="0" name="UnidadVenta" type="xs:int" />
-      <xs:element minOccurs="0" name="UnidadVentaDisplay" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VTListaProducto" nillable="true" type="tns:VTListaProducto" />
+  <xs:element name="VSeleccionLista" nillable="true" type="tns:VSeleccionLista" />
 </xs:schema>
