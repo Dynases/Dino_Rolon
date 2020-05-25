@@ -102,6 +102,31 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/LibreriaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/LibreriaGuardarResponse")]
         System.Threading.Tasks.Task<bool> LibreriaGuardarAsync(ENTITY.Libreria.View.VLibreriaLista vlibreria);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/RolGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/RolGuardarResponse")]
+        PRESENTER.ServiceDesktop.RolGuardarResponse RolGuardar(PRESENTER.ServiceDesktop.RolGuardarRequest request);
+        
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/RolGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/RolGuardarResponse")]
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.RolGuardarResponse> RolGuardarAsync(PRESENTER.ServiceDesktop.RolGuardarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/RolEliminar", ReplyAction="http://tempuri.org/IServiceDesktop/RolEliminarResponse")]
+        bool RolEliminar(int id, ENTITY.Rol.View.VRol_01[] detalle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/RolEliminar", ReplyAction="http://tempuri.org/IServiceDesktop/RolEliminarResponse")]
+        System.Threading.Tasks.Task<bool> RolEliminarAsync(int id, ENTITY.Rol.View.VRol_01[] detalle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarRol", ReplyAction="http://tempuri.org/IServiceDesktop/ListarRolResponse")]
+        ENTITY.Rol.View.VRol[] ListarRol();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarRol", ReplyAction="http://tempuri.org/IServiceDesktop/ListarRolResponse")]
+        System.Threading.Tasks.Task<ENTITY.Rol.View.VRol[]> ListarRolAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleRol_01", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleRol_01Response")]
+        ENTITY.Rol.View.VRol_01[] ListarDetalleRol_01(int idRol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ListarDetalleRol_01", ReplyAction="http://tempuri.org/IServiceDesktop/ListarDetalleRol_01Response")]
+        System.Threading.Tasks.Task<ENTITY.Rol.View.VRol_01[]> ListarDetalleRol_01Async(int idRol);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarResponse")]
         ENTITY.Cliente.View.VCliente[] ClienteListar();
         
@@ -645,6 +670,54 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
         System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RolGuardar", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RolGuardarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ENTITY.Rol.View.VRol Rol;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public ENTITY.Rol.View.VRol_01[] detalle;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int IdRol;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public string usuario;
+        
+        public RolGuardarRequest() {
+        }
+        
+        public RolGuardarRequest(ENTITY.Rol.View.VRol Rol, ENTITY.Rol.View.VRol_01[] detalle, int IdRol, string usuario) {
+            this.Rol = Rol;
+            this.detalle = detalle;
+            this.IdRol = IdRol;
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RolGuardarResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RolGuardarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool RolGuardarResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int IdRol;
+        
+        public RolGuardarResponse() {
+        }
+        
+        public RolGuardarResponse(bool RolGuardarResult, int IdRol) {
+            this.RolGuardarResult = RolGuardarResult;
+            this.IdRol = IdRol;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1392,6 +1465,50 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<bool> LibreriaGuardarAsync(ENTITY.Libreria.View.VLibreriaLista vlibreria) {
             return base.Channel.LibreriaGuardarAsync(vlibreria);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.RolGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.RolGuardar(PRESENTER.ServiceDesktop.RolGuardarRequest request) {
+            return base.Channel.RolGuardar(request);
+        }
+        
+        public bool RolGuardar(ENTITY.Rol.View.VRol Rol, ENTITY.Rol.View.VRol_01[] detalle, ref int IdRol, string usuario) {
+            PRESENTER.ServiceDesktop.RolGuardarRequest inValue = new PRESENTER.ServiceDesktop.RolGuardarRequest();
+            inValue.Rol = Rol;
+            inValue.detalle = detalle;
+            inValue.IdRol = IdRol;
+            inValue.usuario = usuario;
+            PRESENTER.ServiceDesktop.RolGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).RolGuardar(inValue);
+            IdRol = retVal.IdRol;
+            return retVal.RolGuardarResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.RolGuardarResponse> RolGuardarAsync(PRESENTER.ServiceDesktop.RolGuardarRequest request) {
+            return base.Channel.RolGuardarAsync(request);
+        }
+        
+        public bool RolEliminar(int id, ENTITY.Rol.View.VRol_01[] detalle) {
+            return base.Channel.RolEliminar(id, detalle);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RolEliminarAsync(int id, ENTITY.Rol.View.VRol_01[] detalle) {
+            return base.Channel.RolEliminarAsync(id, detalle);
+        }
+        
+        public ENTITY.Rol.View.VRol[] ListarRol() {
+            return base.Channel.ListarRol();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Rol.View.VRol[]> ListarRolAsync() {
+            return base.Channel.ListarRolAsync();
+        }
+        
+        public ENTITY.Rol.View.VRol_01[] ListarDetalleRol_01(int idRol) {
+            return base.Channel.ListarDetalleRol_01(idRol);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Rol.View.VRol_01[]> ListarDetalleRol_01Async(int idRol) {
+            return base.Channel.ListarDetalleRol_01Async(idRol);
         }
         
         public ENTITY.Cliente.View.VCliente[] ClienteListar() {
