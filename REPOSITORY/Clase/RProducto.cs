@@ -116,6 +116,48 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Consultas
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public VProducto ListarXId(int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Producto
+                                      where a.Id.Equals(id)
+                                      select new VProducto
+                                      {
+                                          Id = a.Id,
+                                          IdProd = a.IdProd,
+                                          CodBar = a.CodBar,
+                                          Tipo = a.Tipo,
+                                          Descripcion = a.Descrip,
+                                          Peso = a.Peso,
+                                          UniVenta = a.UniVen,
+                                          UniPeso = a.UniPeso,
+                                          Grupo1 = a.Grupo1,
+                                          Grupo2 = a.Grupo2,
+                                          Grupo3 = a.Grupo3,
+                                          Grupo4 = a.Grupo4,
+                                          Grupo5 = a.Grupo5,
+                                          Imagen = a.Imagen,
+                                          IdProducto = a.IdProducto,
+                                          Producto2 = a.DescripProduc,
+                                          Cantidad = a.Cantidad,
+                                          Usuario = a.Usuario,
+                                          Hora = a.Hora,
+                                          Fecha = a.Fecha
+                                      }).FirstOrDefault();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /********** VARIOS REGISTROS ***********/
         public List<VProductoLista> Listar()
         {
             try
@@ -159,45 +201,7 @@ namespace REPOSITORY.Clase
             }
         }
      
-        public List<VProducto> ListarXId(int id)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var listResult = (from a in db.Producto
-                                      where a.Id.Equals(id)
-                                      select new VProducto
-                                      {
-                                          Id = a.Id,
-                                          IdProd = a.IdProd,
-                                          CodBar = a.CodBar,
-                                          Tipo = a.Tipo,
-                                          Descripcion = a.Descrip,
-                                          Peso = a.Peso,
-                                          UniVenta = a.UniVen,
-                                          UniPeso = a.UniPeso,
-                                          Grupo1 = a.Grupo1,
-                                          Grupo2 = a.Grupo2,
-                                          Grupo3 = a.Grupo3,
-                                          Grupo4 = a.Grupo4,
-                                          Grupo5 = a.Grupo5,
-                                          Imagen = a.Imagen,
-                                          IdProducto = a.IdProducto,
-                                          Producto2 = a.DescripProduc,
-                                          Cantidad = a.Cantidad,
-                                          Usuario = a.Usuario,
-                                          Hora = a.Hora,
-                                          Fecha = a.Fecha
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+       
     
         public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)

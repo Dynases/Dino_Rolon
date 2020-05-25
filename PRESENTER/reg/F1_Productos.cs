@@ -638,27 +638,26 @@ namespace PRESENTER.reg
             {
                 Dgv_Buscardor.Row = _Pos;
                 _idOriginal = (int)Dgv_Buscardor.GetValue("id");
-                var tabla = new ServiceDesktop.ServiceDesktopClient().ProductoListarXId(_idOriginal).ToArray();
-                var lista = tabla.First();
-                Tb_Id.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Id.ToString())).Count() > 0 ? tabla.Select(x => x.Id).First().ToString() : "";
-                Tb_CodProducto.Text = tabla.Where(x => !string.IsNullOrEmpty(x.IdProd)).Count() > 0 ? tabla.Select(x => x.IdProd).First().ToString() : "";
-                Tb_Descripcion.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Descripcion)).Count() > 0 ? tabla.Select(x => x.Descripcion).First().ToString() : "";
-                Tb_CodBarras.Text = tabla.Where(x => !string.IsNullOrEmpty(x.CodBar)).Count() > 0 ? tabla.Select(x => x.CodBar).First().ToString() : "";
-                Tb_Peso.Text = tabla.Where(x => !string.IsNullOrEmpty(x.Peso.ToString())).Count() > 0 ? tabla.Select(x => x.Peso).First().ToString() : "";
-                Cb_UnidadVenta.Value = tabla.Select(x => x.UniVenta).First();
-                Cb_UniPeso.Value = tabla.Select(x => x.UniPeso).First();
-                Cb_Grupo1.Value = tabla.Select(x => x.Grupo1).First();
-                Cb_Grupo2.Value = tabla.Select(x => x.Grupo2).First();
-                Cb_Grupo3.Value = tabla.Select(x => x.Grupo3).First();
-                Cb_Grupo4.Value = tabla.Select(x => x.Grupo4).First();
-                Cb_Grupo5.Value = tabla.Select(x => x.Grupo5).First();
-                Tb_IdProducto.Value = lista.IdProducto;
-                Tb_Producto.Text = lista.Producto2;
-                sw_TipoPro.Value = lista.Tipo == 1 ? true : false;
-                _imagen = lista.Imagen;
-                Tb_Cantidad.Value = Convert.ToDouble(lista.Cantidad);
+                var tabla = new ServiceDesktop.ServiceDesktopClient().ProductoListarXId(_idOriginal);              
+                Tb_Id.Text = tabla.Id.ToString();
+                Tb_CodProducto.Text = tabla.IdProd;
+                Tb_Descripcion.Text = tabla.Descripcion;
+                Tb_CodBarras.Text = tabla.CodBar;
+                Tb_Peso.Text = tabla.Peso.ToString();
+                Cb_UnidadVenta.Value = tabla.UniVenta;
+                Cb_UniPeso.Value = tabla.UniPeso;
+                Cb_Grupo1.Value = tabla.Grupo1;
+                Cb_Grupo2.Value = tabla.Grupo2;
+                Cb_Grupo3.Value = tabla.Grupo3;
+                Cb_Grupo4.Value = tabla.Grupo4;
+                Cb_Grupo5.Value = tabla.Grupo5;
+                Tb_IdProducto.Value = tabla.IdProducto;
+                Tb_Producto.Text = tabla.Producto2;
+                sw_TipoPro.Value = tabla.Tipo == 1 ? true : false;
+                _imagen = tabla.Imagen;
+                Tb_Cantidad.Value = Convert.ToDouble(tabla.Cantidad);
                 //Mostrar Imagenes
-                MP_MostrarImagen(tabla.Select(x => x.Imagen).First());
+                MP_MostrarImagen(tabla.Imagen);
                 LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_Buscardor.RowCount.ToString();
             }
             catch (Exception ex)

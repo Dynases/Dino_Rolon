@@ -90,7 +90,7 @@ namespace LOGIC.Class
         #region Consultas
         /******** VALOR/REGISTRO ÚNICO *********/
 
-        public List<VProducto> ListarXId(int id)
+        public VProducto ListarXId(int id)
         {
             try
             {

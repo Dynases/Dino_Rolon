@@ -16,7 +16,7 @@ namespace REPOSITORY.Interface
                                         string lote,
                                         DateTime fechaVen);
         List<VTI001> Listar(int IdProducto);
-        decimal StockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha);
+        decimal TraerStockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha);
         bool ExisteProducto(int IdProducto, int idAlmacen, string lote, DateTime fecha);
         bool NuevoMovimientoInventario(int idDetalle,
                                  int idProducto,

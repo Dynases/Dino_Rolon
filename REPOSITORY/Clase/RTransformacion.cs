@@ -79,8 +79,8 @@ namespace REPOSITORY.Clase
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in transformacion_01)
                     {
-                        var StockActual_MatPrima = this.tI001.StockActual(item.IdProducto_Mat, transformacion.IdAlmacenSalida, lote, fechaVen);
-                        var StockActual_Comercial = this.tI001.StockActual(item.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen);
+                        var StockActual_MatPrima = this.tI001.TraerStockActual(item.IdProducto_Mat, transformacion.IdAlmacenSalida, lote, fechaVen);
+                        var StockActual_Comercial = this.tI001.TraerStockActual(item.IdProducto, transformacion.IdAlmacenIngreso, lote, fechaVen);
                         //if (StockActual_MatPrima < item.Total)
                         //{
                         //    var producto = db.Producto.Where(p => p.Id == item.IdProducto_Mat).Select(p => p.Descrip).FirstOrDefault();

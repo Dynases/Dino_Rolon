@@ -735,7 +735,7 @@ namespace PRESENTER.ven
                 this.MP_MostrarMensajeError("Debe seleccionar un cliente. ingrese al buscador con las teclas: Ctrl + Enter");
                 return flag;
             }
-            if (this.Dgv_DetalleVenta.RowCount <= 1)
+            if (this.Dgv_DetalleVenta.RowCount == 0 )
             {
                 this.MP_MostrarMensajeError("Debe seleccionar productos para realizar una venta");
                 return flag;
@@ -756,7 +756,7 @@ namespace PRESENTER.ven
                     EncRecepcion = this.TbEncRecepcion.Text,
                     EncTransporte = this.TbEncTransporte.Text,
                     EncVenta = this.TbEncVenta.Text,
-                    Estado = (int)ENEstado.GUARDADO,                 
+                    Estado = (int)ENEstado.GUARDADO,
                     FechaVenta = this.Dt_FechaVenta.Value,
                     IdAlmacen = Convert.ToInt32(this.Cb_Origen.Value),
                     IdCliente = Convert.ToInt32(this.lblIdCliente.Text),
@@ -764,7 +764,7 @@ namespace PRESENTER.ven
                     Tipo = 1,
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario
+                    Usuario = lblUsuario.Text
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
@@ -773,16 +773,13 @@ namespace PRESENTER.ven
                 var LMensaje = Mensaje.ToArray();
                 try
                 {                  
-                    if (new ServiceDesktop.ServiceDesktopClient().VentaGuardar(vVenta, detalle, ref id, ref LMensaje, TxtNombreUsu.Text))
+                    if (new ServiceDesktop.ServiceDesktopClient().VentaGuardar(vVenta, detalle, ref id, ref LMensaje))
                     {
                         if (idAux == 0)//Registar
                         {
                            
                             this.MP_Filtrar(1);
-                            this.MP_Reiniciar();
-                            //this.MP_CargarAlmacenes();
-                            //this.MP_CargarVentas();
-                            //this.MP_CargarBuscador();
+                            this.MP_Reiniciar();                           
                             ToastNotification.Show(this, GLMensaje.Nuevo_Exito("VENTAS", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                             return true;
                         }

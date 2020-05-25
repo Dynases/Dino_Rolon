@@ -121,7 +121,7 @@ namespace SERVICE
             #endregion
             #region Consultas
                 [OperationContract]
-                List<VProducto> ProductoListarXId(int id);
+                VProducto ProductoListarXId(int id);
 
                 [OperationContract]
                 List<VProductoLista> ProductoListar();       
@@ -372,7 +372,7 @@ namespace SERVICE
         #region Venta
 
         [OperationContract]
-        bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje, string usuario);
+        bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje);
 
         [OperationContract]
         List<VVenta> VentasListar();

@@ -17,7 +17,7 @@ namespace REPOSITORY.Clase
         private readonly ITI0021 tI0021;
         public RTI001(ITI002 tI002, ITI0021 tI0021)
         {
-            this.tI002 = tI002;
+            this.tI002 =  tI002;
             this.tI0021 = tI0021;
         }
         #region Trasancciones
@@ -135,7 +135,7 @@ namespace REPOSITORY.Clase
                 }
                 int idMovimiento = 0;
                 //NUEVO EL MOVIMIENTO
-                if (!tI002.Guardar(idAlmacen, "",
+                if (!this.tI002.Guardar(idAlmacen, "",
                                     0, "",
                                     idDetalle,
                                     usuario,
@@ -146,7 +146,7 @@ namespace REPOSITORY.Clase
                     return false;
                 }
                 //NUEVO DETALLE DE MOVIMIENTO
-                if (!tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
+                if (!this.tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
                                       cantidad,
                                       lote,
                                       fechaVen))
@@ -287,6 +287,28 @@ namespace REPOSITORY.Clase
             }
         }
         #region Consulta
+
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public decimal TraerStockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var cantidad = db.TI001.Where(c => c.icalm == idAlmacen &&
+                                                       c.iccprod == IdProducto &&
+                                                       c.iclot.Equals(lote) &&
+                                                       c.icfven == fecha).Select(c => c.iccven).FirstOrDefault();
+                    return cantidad;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /********** VARIOS REGISTROS ***********/
         public List<VTI001> Listar(int IdProducto)
         {
             try
@@ -314,24 +336,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public decimal StockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var cantidad = db.TI001.Where(c => c.icalm == idAlmacen &&
-                                                       c.iccprod == IdProducto &&
-                                                       c.iclot.Equals(lote) &&
-                                                       c.icfven == fecha).Select(c => c.iccven).FirstOrDefault();
-                    return cantidad;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+       
         #endregion
 
 

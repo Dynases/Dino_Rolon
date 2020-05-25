@@ -94,7 +94,7 @@ namespace REPOSITORY.Clase
                     //Verifica si existe stock para todos los productos a Eliminar
                     foreach (var item in compraing_01)
                     {                        
-                        var StockActual = this.tI001.StockActual(item.IdProduc, compraIng.IdAlmacen,lote , fechaVen);                                           
+                        var StockActual = this.tI001.TraerStockActual(item.IdProduc, compraIng.IdAlmacen,lote , fechaVen);                                           
                         if (StockActual < item.TotalCant)
                         {
                             var producto = db.Producto.Where(p => p.Id == item.IdProduc).Select(p => p.Descrip).FirstOrDefault();

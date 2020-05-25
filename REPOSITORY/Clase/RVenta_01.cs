@@ -13,17 +13,10 @@ using UTILITY.Enum.EnEstado;
 namespace REPOSITORY.Clase
 {
     public class RVenta_01 : BaseConexion, IVenta_01
-    {
-        private readonly ITI001 tI001;
-
-        public RVenta_01(ITI001 tI001)
-        {
-            this.tI001 = tI001;
-        }
-
+    {         
         #region Trasancciones
 
-        public bool Nuevo(List<VVenta_01> lventa_01, int ventaId)
+        public bool Nuevo(VVenta_01 vventa_01, int ventaId, ref int idVentaDetalle)
         {
             try
             {
@@ -34,33 +27,21 @@ namespace REPOSITORY.Clase
                     {
                         throw new Exception("No existe la venta con id:" + ventaId);
                     }
-                    foreach (var vventa_01 in lventa_01)
+                    var detalle = new Venta_01
                     {
-                        var detalle = new Venta_01
-                        {
-                            IdVenta = ventaId,
-                            IdProducto = vventa_01.IdProducto,
-                            Estado = (int)ENEstado.GUARDADO,
-                            Unidad = vventa_01.Unidad,
-                            Cantidad = vventa_01.Cantidad,                                                   
-                            Precio = vventa_01.PrecioVenta,
-                            PrecioCosto = vventa_01.PrecioCosto,
-                            Lote = vventa_01.Lote,
-                            FechaVencimiento = vventa_01.FechaVencimiento
-                        };
-                        db.Venta_01.Add(detalle);
-                        if (!this.tI001.ActualizarInventario(detalle.IdProducto,
-                                                            venta.IdAlmacen,
-                                                            EnAccionEnInventario.Descontar,
-                                                            Convert.ToDecimal(detalle.Cantidad),
-                                                            vventa_01.Lote,
-                                                            vventa_01.FechaVencimiento))
-                        {
-                            return false;
-                        }
-                    }
-
+                        IdVenta = ventaId,
+                        IdProducto = vventa_01.IdProducto,
+                        Estado = (int)ENEstado.GUARDADO,
+                        Unidad = vventa_01.Unidad,
+                        Cantidad = vventa_01.Cantidad,
+                        Precio = vventa_01.PrecioVenta,
+                        PrecioCosto = vventa_01.PrecioCosto,
+                        Lote = vventa_01.Lote,
+                        FechaVencimiento = vventa_01.FechaVencimiento
+                    };
+                    db.Venta_01.Add(detalle);
                     db.SaveChanges();
+                    idVentaDetalle = detalle.Id;                   
                     return true;
                 }
             }
@@ -97,7 +78,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Eliminar(int IdVenta, int IdDetalle, ref List<string> lMensaje)
+        public bool Eliminar(int IdVenta, int IdDetalle)
         {
             try
             {
@@ -120,22 +101,53 @@ namespace REPOSITORY.Clase
 
         #region Consultas
 
-
-        #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-
-
-
-        /********** VARIOS REGISTROS ***********/
-        #endregion
-        public List<VVenta_01> ListarDetalle(int VentaId)
+        public VVenta_01 TraerVenta_01(int idVentaDetalle)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
                     var listResult = db.Venta_01
-                       .Where(v => v.Venta.Id == VentaId)
+                       .Where(v => v.Id == idVentaDetalle && v.Venta.Estado != (int)ENEstado.ELIMINAR)
+                       .Select(v => new VVenta_01
+                       {
+                           Id = v.Id,
+                           IdVenta = v.IdVenta,
+                           IdProducto = v.IdProducto,
+                           Estado = v.Estado,
+                           CodigoProducto = v.Producto.IdProd,
+                           CodigoBarra = v.Producto.CodBar,
+                           Producto = v.Producto.Descrip,
+                           Unidad = v.Unidad,
+                           Cantidad = v.Cantidad,
+                           PrecioVenta = v.Precio,
+                           PrecioCosto = v.PrecioCosto,
+                           Lote = v.Lote,
+                           FechaVencimiento = v.FechaVencimiento,
+                           Delete = ""
+                       }).FirstOrDefault();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        /********** VARIOS REGISTROS ***********/
+      
+        public List<VVenta_01> TraerVentas_01(int VentaId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.Venta_01
+                       .Where(v => v.Venta.Id == VentaId && v.Venta.Estado != (int)ENEstado.ELIMINAR)
                        .Select(v => new VVenta_01
                        {
                            Id = v.Id,
