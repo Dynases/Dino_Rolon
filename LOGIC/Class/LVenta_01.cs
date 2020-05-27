@@ -45,8 +45,7 @@ namespace LOGIC.Class
             try
             {
                 using (var scope = new TransactionScope())
-                {
-                    var result = false;                    
+                {                                  
                     foreach (var vVenta_01 in lVenta_01)
                     {
                         var idVentaDetalle = 0;
@@ -71,7 +70,7 @@ namespace LOGIC.Class
                         }
                     }
                     scope.Complete();
-                    return result;
+                    return true;
                 }
             }
             catch (Exception ex)

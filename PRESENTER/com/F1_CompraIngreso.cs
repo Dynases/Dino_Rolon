@@ -42,7 +42,7 @@ namespace PRESENTER.com
         bool _Nuevo = false; //Especifica si es un nuevo registro o modificacion
         int _IdCompraIngresoPrecioAntiguo = 0;
         #endregion
-        #region Eventos       
+        #region Eventos      
 
         private void Cb_Tipo_ValueChanged(object sender, EventArgs e)
         {
@@ -208,7 +208,7 @@ namespace PRESENTER.com
         {
             Double caja, grupo, maple, cantidad, subTotal, precio, total;
             caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * 30);
-            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * (Tb_CantidadGrupos.Value * 30);
+            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * 300;
             maple = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[5].Value) * 30;
             cantidad = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[6].Value);
             subTotal = caja + grupo + maple + cantidad;
@@ -939,10 +939,21 @@ namespace PRESENTER.com
             try
             {
                 Dgv_Detalle.UpdateData();
+               
                 Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[7], AggregateFunction.Sum));
                 Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[9], AggregateFunction.Sum));
                 Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
-                Tb_TotalMaples.Value = Tb_TotalFisico.Value / 30;
+                //Calculo de MAPLES
+                
+                var sumaCaja = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[3], AggregateFunction.Sum));
+                var sumaGrupo = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[4], AggregateFunction.Sum));
+                var sumaMaple = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[5], AggregateFunction.Sum));
+                var sumaUnidades = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[6], AggregateFunction.Sum));
+
+                var totalCaja = sumaCaja * Tb_CantidadCajas.Value;
+                var totalGrupo = sumaGrupo * Tb_CantidadGrupos.Value;
+                var totalUnidades = sumaUnidades > 30 ? (sumaUnidades / 300) * Tb_CantidadGrupos.Value : 1;
+                Tb_TotalMaples.Value = totalCaja + totalGrupo + sumaMaple + totalUnidades;
             }
             catch (Exception ex)
             {

@@ -62,7 +62,7 @@ namespace LOGIC.Class
                         }
                     }
                     scope.Complete();
-                    return result;
+                    return true;
                 }
             }
             catch (Exception ex)
