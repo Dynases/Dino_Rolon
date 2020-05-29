@@ -11,8 +11,8 @@ namespace ENTITY.Rol.View
     public class VRol_01
     {
         public int IdRol_01 { get; set; }
-        public Nullable<int> IdRol { get; set; }
-        public Nullable<int> IdPrograma { get; set; }        
+        public int IdRol { get; set; }
+        public int IdPrograma { get; set; }        
         public string NombreProg { get; set; }
         public string Descripcion { get; set; }
         public int IdModulo { get; set; }

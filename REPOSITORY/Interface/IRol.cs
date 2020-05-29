@@ -13,6 +13,7 @@ namespace REPOSITORY.Interface
         bool Guardar(VRol Rol, ref int idRol);
         bool Eliminar(int idRol);
         List<VRol> ListaRol();
-       
+        System.Data.DataTable AsignarPermisos(string idRol, string NombreProg);
+        bool ExisteEnUsuario(int IdRol);
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="23">
+      <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="10.5" PointY="10.375" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_02" Width="1.5" PointX="7.75" PointY="0.75" />
@@ -77,11 +77,11 @@
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
         <EntityTypeShape EntityType="DiAviModel.Programa" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.Rol" Width="1.5" PointX="0.75" PointY="29.625" />
-        <EntityTypeShape EntityType="DiAviModel.Rol_01" Width="1.5" PointX="3" PointY="33.25" />
-        <EntityTypeShape EntityType="DiAviModel.Usuario" Width="1.5" PointX="3" PointY="29.25" />
-        <EntityTypeShape EntityType="DiAviModel.Usuario_01" Width="1.5" PointX="5.25" PointY="11.375" />
+        <EntityTypeShape EntityType="DiAviModel.Rol" Width="1.5" PointX="20.375" PointY="3.375" />
+        <EntityTypeShape EntityType="DiAviModel.Rol_01" Width="1.5" PointX="22.625" PointY="4.875" />
         <AssociationConnector Association="DiAviModel.FK_Rol_01_Rol" />
+        <EntityTypeShape EntityType="DiAviModel.Usuario" Width="1.5" PointX="22.625" PointY="1.125" />
+        <EntityTypeShape EntityType="DiAviModel.Usuario_01" Width="1.5" PointX="24.875" PointY="9.5" />
         <AssociationConnector Association="DiAviModel.FK_Usuario_Rol" />
         <AssociationConnector Association="DiAviModel.FK_Usuario_01_Usuario" />
         <AssociationConnector Association="DiAviModel.FK_Usuario_01_Almacen" />

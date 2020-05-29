@@ -74,6 +74,8 @@
     <Compile Include="Class\LTransformacion_01.cs" />
     <Compile Include="Class\LTraspaso.cs" />
     <Compile Include="Class\LTraspaso_01.cs" />
+    <Compile Include="Class\LUsuario.cs" />
+    <Compile Include="Class\LUsuario_01.cs" />
     <Compile Include="Class\LVenta.cs" />
     <Compile Include="Class\LVenta_01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

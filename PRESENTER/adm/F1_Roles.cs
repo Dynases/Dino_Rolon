@@ -33,7 +33,8 @@ namespace PRESENTER.adm
         string _NombreFormulario = "ROLES";       
         int _idOriginal = 0;
         int _MPos;
-        bool _Limpiar = false;        
+        bool _Limpiar = false;
+        public string _NombreProg;
 
         #endregion
 
@@ -155,21 +156,21 @@ namespace PRESENTER.adm
 
         private void SELECCIONARTODOSSHOWToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _prSeleccionarTodos("Show");
+            MP_SeleccionarTodos("Show");
         }
         private void SELECCIONARTODOSADDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _prSeleccionarTodos("Add");
+            MP_SeleccionarTodos("Add");
         }
 
         private void SELECCIONARTODOSEDITToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _prSeleccionarTodos("Mod");
+            MP_SeleccionarTodos("Mod");
         }
 
         private void SELECCIONARTODOSDELToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _prSeleccionarTodos("Del");
+            MP_SeleccionarTodos("Del");
         }
 
         private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
@@ -192,6 +193,7 @@ namespace PRESENTER.adm
                 MP_CargarModulos();
                 MP_CargarEncabezado();
                 MP_InHabilitar();
+                MP_AsignarPermisos();
 
             }
             catch (Exception ex)
@@ -203,11 +205,25 @@ namespace PRESENTER.adm
         }
         void MP_SeleccionarModulo()
         {
-            string numiModulo = Dgv_Modulos.GetValue("IdLibreria").ToString();
-            string desc = Dgv_Modulos.GetValue("Descripcion").ToString();
-            Dgv_Detalle.RemoveFilters();
-            Dgv_Detalle.RootTable.ApplyFilter(new Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Detalle.RootTable.Columns[5], Janus.Windows.GridEX.ConditionOperator.Equal, numiModulo));
-            GroupPanel2.Text = "privilegios del modulo ".ToUpper() + desc;
+            try
+            {
+                if (Dgv_Detalle.RowCount > 0)
+                {
+                    string numiModulo = Dgv_Modulos.GetValue("IdLibreria").ToString();
+                    string desc = Dgv_Modulos.GetValue("Descripcion").ToString();
+                    Dgv_Detalle.RemoveFilters();
+                    Dgv_Detalle.RootTable.ApplyFilter(new Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Detalle.RootTable.Columns["IdModulo"], Janus.Windows.GridEX.ConditionOperator.Equal, numiModulo));
+                    GroupPanel2.Text = "privilegios del modulo ".ToUpper() + desc;
+                }
+                else
+                    MP_MostrarMensajeError("No existe datos para mostrar, agregué nuevo rol");
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+            
         }
 
         void MP_MostrarMensajeExito(string mensaje)
@@ -233,17 +249,17 @@ namespace PRESENTER.adm
                     Dgv_Modulos.RetrieveStructure();
                     Dgv_Modulos.AlternatingColors = true;
 
-                    Dgv_Modulos.RootTable.Columns[0].Key = "IdLibreria";
-                    Dgv_Modulos.RootTable.Columns[0].Caption = "Id";                  
-                    Dgv_Modulos.RootTable.Columns[0].Visible = false;              
+                    Dgv_Modulos.RootTable.Columns["IdLibreria"].Key = "IdLibreria";
+                    Dgv_Modulos.RootTable.Columns["IdLibreria"].Caption = "Id";                  
+                    Dgv_Modulos.RootTable.Columns["IdLibreria"].Visible = false;              
 
 
-                    Dgv_Modulos.RootTable.Columns[1].Key = "Descripcion";
-                    Dgv_Modulos.RootTable.Columns[1].Caption = "MÓDULO";
-                    Dgv_Modulos.RootTable.Columns[1].Width = 230;                 
-                    Dgv_Modulos.RootTable.Columns[1].CellStyle.FontSize = 9;
-                    Dgv_Modulos.RootTable.Columns[1].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                    Dgv_Modulos.RootTable.Columns[1].Visible = true;
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].Key = "Descripcion";
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].Caption = "MÓDULO";
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].Width = 230;                 
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].CellStyle.FontSize = 9;
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                    Dgv_Modulos.RootTable.Columns["Descripcion"].Visible = true;
 
                    
 
@@ -276,55 +292,55 @@ namespace PRESENTER.adm
                 if (result.Count > 0)
                 {
 
-                    Dgv_Detalle.RootTable.Columns[0].Key = "IdRol_01";                  
-                    Dgv_Detalle.RootTable.Columns[0].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["IdRol_01"].Key = "IdRol_01";                  
+                    Dgv_Detalle.RootTable.Columns["IdRol_01"].Visible = false;
 
 
-                    Dgv_Detalle.RootTable.Columns[1].Key = "IdRol";         
-                    Dgv_Detalle.RootTable.Columns[1].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["IdRol"].Key = "IdRol";         
+                    Dgv_Detalle.RootTable.Columns["IdRol"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[2].Key = "IdPrograma";
-                    Dgv_Detalle.RootTable.Columns[2].Caption = "IdPrograma";                   
-                    Dgv_Detalle.RootTable.Columns[2].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["IdPrograma"].Key = "IdPrograma";
+                    Dgv_Detalle.RootTable.Columns["IdPrograma"].Caption = "IdPrograma";                   
+                    Dgv_Detalle.RootTable.Columns["IdPrograma"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[3].Key = "NombreProg";
-                    Dgv_Detalle.RootTable.Columns[3].Caption = "Nombre";
-                    Dgv_Detalle.RootTable.Columns[3].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["NombreProg"].Key = "NombreProg";
+                    Dgv_Detalle.RootTable.Columns["NombreProg"].Caption = "Nombre";
+                    Dgv_Detalle.RootTable.Columns["NombreProg"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[4].Key = "Descripcion";
-                    Dgv_Detalle.RootTable.Columns[4].Caption = "Programa";
-                    Dgv_Detalle.RootTable.Columns[4].Width = 330;
-                    Dgv_Detalle.RootTable.Columns[4].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["Descripcion"].Key = "Descripcion";
+                    Dgv_Detalle.RootTable.Columns["Descripcion"].Caption = "Programa";
+                    Dgv_Detalle.RootTable.Columns["Descripcion"].Width = 330;
+                    Dgv_Detalle.RootTable.Columns["Descripcion"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[5].Key = "IdModulo";
-                    Dgv_Detalle.RootTable.Columns[5].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["IdModulo"].Key = "IdModulo";
+                    Dgv_Detalle.RootTable.Columns["IdModulo"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[6].Key = "Estado";
-                    Dgv_Detalle.RootTable.Columns[6].Visible = false;                   
+                    Dgv_Detalle.RootTable.Columns["Estado"].Key = "Estado";
+                    Dgv_Detalle.RootTable.Columns["Estado"].Visible = false;                   
 
-                    Dgv_Detalle.RootTable.Columns[7].Key = "Show";
-                    Dgv_Detalle.RootTable.Columns[7].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["Show"].Key = "Show";
+                    Dgv_Detalle.RootTable.Columns["Show"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[8].Key = "Add";
-                    Dgv_Detalle.RootTable.Columns[8].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["Add"].Key = "Add";
+                    Dgv_Detalle.RootTable.Columns["Add"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[9].Key = "Mod";
-                    Dgv_Detalle.RootTable.Columns[9].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["Mod"].Key = "Mod";
+                    Dgv_Detalle.RootTable.Columns["Mod"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[10].Key = "Del";
-                    Dgv_Detalle.RootTable.Columns[10].Visible = true;
+                    Dgv_Detalle.RootTable.Columns["Del"].Key = "Del";
+                    Dgv_Detalle.RootTable.Columns["Del"].Visible = true;
 
-                    Dgv_Detalle.RootTable.Columns[11].Key = "Fecha";
-                    Dgv_Detalle.RootTable.Columns[11].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["Fecha"].Key = "Fecha";
+                    Dgv_Detalle.RootTable.Columns["Fecha"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[12].Key = "Hora";
-                    Dgv_Detalle.RootTable.Columns[12].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["Hora"].Key = "Hora";
+                    Dgv_Detalle.RootTable.Columns["Hora"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[13].Key = "Usuario";
-                    Dgv_Detalle.RootTable.Columns[13].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["Usuario"].Key = "Usuario";
+                    Dgv_Detalle.RootTable.Columns["Usuario"].Visible = false;
 
-                    Dgv_Detalle.RootTable.Columns[14].Key = "Rol";
-                    Dgv_Detalle.RootTable.Columns[14].Visible = false;
+                    Dgv_Detalle.RootTable.Columns["Rol"].Key = "Rol";
+                    Dgv_Detalle.RootTable.Columns["Rol"].Visible = false;
 
 
                     //Habilitar filtradores
@@ -459,7 +475,7 @@ namespace PRESENTER.adm
             }
         }
 
-        private void _prSeleccionarTodos(string columna)
+        private void MP_SeleccionarTodos(string columna)
         {           
             var ListaDetalle = ((List<VRol_01>)Dgv_Detalle.DataSource).ToList();
             int numiModulo = Convert.ToInt32(Dgv_Modulos.GetValue("IdLibreria"));
@@ -490,13 +506,38 @@ namespace PRESENTER.adm
                         fila.Estado = 2;
                     }
                 }
-
             }
-
             Dgv_Detalle.DataSource = ListaDetalle;             
 
         }
+        private void MP_AsignarPermisos()
+        {
+            try
+            {
+                DataTable dtRolUsu = new ServiceDesktop.ServiceDesktopClient().AsignarPermisos((UTGlobal.UsuarioRol).ToString(), _NombreProg);
+                
+                if (dtRolUsu.Rows.Count > 0)
+                {
+                    bool show = Convert.ToBoolean(dtRolUsu.Rows[0]["Show"]);
+                    bool add = Convert.ToBoolean(dtRolUsu.Rows[0]["Add"]);
+                    bool modif = Convert.ToBoolean(dtRolUsu.Rows[0]["Mod"]);
+                    bool del = Convert.ToBoolean(dtRolUsu.Rows[0]["Del"]);
 
+                    if (add == false)
+                        BtnNuevo.Visible = false;
+                    if (modif == false)
+                        BtnModificar.Visible = false;
+                    if (del == false)
+                        BtnEliminar.Visible = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         #endregion
 
         #region Métodos Heredados
@@ -547,13 +588,12 @@ namespace PRESENTER.adm
                     Hora = DateTime.Now.ToString("HH:mm"),
                     Usuario = UTGlobal.Usuario,
                 };
-                int idRol = tbIdRol.Text == string.Empty ? 0 : Convert.ToInt32(tbIdRol.Text);
-                string aaaa = DateTime.Now.ToString("hh:mm");
+                int idRol = tbIdRol.Text == string.Empty ? 0 : Convert.ToInt32(tbIdRol.Text);              
                 int idAux = idRol;
                 var detalle = ((List<VRol_01>)Dgv_Detalle.DataSource).ToArray<VRol_01>();
                 List<string> Mensaje = new List<string>();
                 var LMensaje = Mensaje.ToArray();
-                resultado = new ServiceDesktop.ServiceDesktopClient().RolGuardar(vRol, detalle, ref idRol,  TxtNombreUsu.Text);
+                resultado = new ServiceDesktop.ServiceDesktopClient().RolGuardar(vRol, detalle, ref idRol, UTGlobal.Usuario);
                 if (resultado)
                 {
                     if (idAux == 0)//Registar
@@ -602,6 +642,23 @@ namespace PRESENTER.adm
             try
             {
                 int IdRol = Convert.ToInt32(tbIdRol.Text);
+               
+                List<string> lMensaje = new List<string>();
+                if (new ServiceDesktop.ServiceDesktopClient().RolExisteEnUsuario(IdRol))
+                {
+                    lMensaje.Add("El Rol esta asociado a un Usuario, no puede eliminarlo. Modifique o elimine primero el Usuario.");
+                }
+                if (lMensaje.Count > 0)
+                {
+                    var mensaje = "";
+                    foreach (var item in lMensaje)
+                    {
+                        mensaje = mensaje + "- " + item + "\n";
+                    }
+                    MP_MostrarMensajeError(mensaje);
+                    return false;
+                }
+
                 Efecto efecto = new Efecto();
                 efecto.Tipo = 2;
                 efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();

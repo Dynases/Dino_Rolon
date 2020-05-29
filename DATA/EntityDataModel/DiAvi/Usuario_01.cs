@@ -15,9 +15,9 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class Usuario_01
     {
         public int IdUsuario_01 { get; set; }
-        public Nullable<int> IdUsuario { get; set; }
-        public Nullable<int> IdAlmacen { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdAlmacen { get; set; }
+        public Nullable<bool> Acceso { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }

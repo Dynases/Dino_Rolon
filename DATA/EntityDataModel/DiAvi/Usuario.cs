@@ -23,8 +23,8 @@ namespace DATA.EntityDataModel.DiAvi
         public int IdUsuario { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
-        public Nullable<int> IdRol { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public int IdRol { get; set; }
+        public Nullable<int> Estado { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario1 { get; set; }

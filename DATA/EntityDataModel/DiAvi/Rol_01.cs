@@ -15,8 +15,8 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class Rol_01
     {
         public int IdRol_01 { get; set; }
-        public Nullable<int> IdRol { get; set; }
-        public Nullable<int> IdPrograma { get; set; }
+        public int IdRol { get; set; }
+        public int IdPrograma { get; set; }
         public Nullable<bool> Show { get; set; }
         public Nullable<bool> Add { get; set; }
         public Nullable<bool> Mod { get; set; }

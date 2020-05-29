@@ -92,6 +92,8 @@
     <Compile Include="Rol\View\VRol.cs" />
     <Compile Include="Rol\View\VRol_01.cs" />
     <Compile Include="Telefono\View\VTelefono.cs" />
+    <Compile Include="Usuario\View\VUsuario.cs" />
+    <Compile Include="Usuario\View\VUsuario_01.cs" />
     <Compile Include="ven\view\VVenta.cs" />
     <Compile Include="ven\view\VVenta_01.cs" />
   </ItemGroup>

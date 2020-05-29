@@ -280,7 +280,7 @@
     <Compile Include="adm\F1_Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="adm\F1_Usuarios.designer.cs">
+    <Compile Include="adm\F1_Usuarios.Designer.cs">
       <DependentUpon>F1_Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="adm\Principal.cs">
@@ -541,6 +541,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TraspasoGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.UsuarioGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -617,6 +620,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop30.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -679,6 +685,8 @@
     <None Include="Properties\DataSources\ENTITY.reg.PrecioCategoria.View.VPrecioCategoria.datasource" />
     <None Include="Properties\DataSources\ENTITY.Rol.View.VRol.datasource" />
     <None Include="Properties\DataSources\ENTITY.Rol.View.VRol_01.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Usuario.View.VUsuario.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Usuario.View.VUsuario_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta_01.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
