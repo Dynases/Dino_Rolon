@@ -28,6 +28,7 @@ using UTILITY.Enum;
 using ENTITY.DiSoft.Zona;
 using LOGIC.Class.DiSoft;
 using ENTITY.Rol.View;
+using ENTITY.Usuario.View;
 
 namespace SERVICE
 {
@@ -97,6 +98,85 @@ namespace SERVICE
             try
             {
                 var listResult = new LRol_01().Listar(IdRol);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable AsignarPermisos(string idRol, string NombreProg)
+        {
+            try
+            {
+                DataTable dt  = new LRol().AsignarPermisos(idRol, NombreProg);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool RolExisteEnUsuario(int IdRol)
+        {
+            try
+            {
+                var listResult = new LRol().ExisteEnUsuario(IdRol);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+
+        /********** USUARIO ***************/
+        #region Usuario 
+
+        public bool UsuarioGuardar(VUsuario vUsuario, List<VUsuario_01> detalle, ref int IdUsuario, string usuario)
+        {
+            try
+            {
+                var listResult = new LUsuario().Guardar(vUsuario, detalle, ref IdUsuario, usuario);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool UsuarioEliminar(int IdUsuario, List<VUsuario_01> detalle)
+        {
+            try
+            {
+                var listResult = new LUsuario().EliminarUsuario(IdUsuario, detalle);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VUsuario> ListarUsuario()
+        {
+            try
+            {
+                var listResult = new LUsuario().Listar();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VUsuario_01> ListarDetalleUsuario_01(int IdUsuario)
+        {
+            try
+            {
+                var listResult = new LUsuario_01().Listar(IdUsuario);
                 return listResult;
             }
             catch (Exception ex)

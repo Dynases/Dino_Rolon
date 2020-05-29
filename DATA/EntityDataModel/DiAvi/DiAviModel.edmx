@@ -37,7 +37,7 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="IdPrograma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreProg" Type="nvarchar" MaxLength="80" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
-          <Property Name="IdModulo" Type="int" />
+          <Property Name="IdModulo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -54,8 +54,8 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
             <PropertyRef Name="IdRol_01" />
           </Key>
           <Property Name="IdRol_01" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdRol" Type="int" />
-          <Property Name="IdPrograma" Type="int" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="IdPrograma" Type="int" Nullable="false" />
           <Property Name="Show" Type="bit" />
           <Property Name="Add" Type="bit" />
           <Property Name="Mod" Type="bit" />
@@ -69,10 +69,10 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="User" Type="nvarchar" MaxLength="10" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" />
-          <Property Name="IdRol" Type="int" />
-          <Property Name="Estado" Type="bit" />
+          <Property Name="User" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" />
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="nvarchar" MaxLength="5" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
@@ -82,9 +82,9 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
             <PropertyRef Name="IdUsuario_01" />
           </Key>
           <Property Name="IdUsuario_01" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdUsuario" Type="int" />
-          <Property Name="IdAlmacen" Type="int" />
-          <Property Name="Estado" Type="bit" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdAlmacen" Type="int" Nullable="false" />
+          <Property Name="Acceso" Type="bit" />
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="nvarchar" MaxLength="5" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
@@ -872,7 +872,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Rol_01_Rol">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
           <End Role="Rol_01" Type="Self.Rol_01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rol">
@@ -1064,7 +1064,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_01_Almacen">
-          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
           <End Role="Usuario_01" Type="Self.Usuario_01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Almacen">
@@ -1076,7 +1076,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_01_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Usuario_01" Type="Self.Usuario_01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -1088,7 +1088,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_Rol">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rol">
@@ -1740,12 +1740,12 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="Programa" EntityType="DiAviModel.Programa" />
           <EntitySet Name="Rol" EntityType="DiAviModel.Rol" />
           <EntitySet Name="Rol_01" EntityType="DiAviModel.Rol_01" />
-          <EntitySet Name="Usuario" EntityType="DiAviModel.Usuario" />
-          <EntitySet Name="Usuario_01" EntityType="DiAviModel.Usuario_01" />
           <AssociationSet Name="FK_Rol_01_Rol" Association="DiAviModel.FK_Rol_01_Rol">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Rol_01" EntitySet="Rol_01" />
           </AssociationSet>
+          <EntitySet Name="Usuario" EntityType="DiAviModel.Usuario" />
+          <EntitySet Name="Usuario_01" EntityType="DiAviModel.Usuario_01" />
           <AssociationSet Name="FK_Usuario_Rol" Association="DiAviModel.FK_Usuario_Rol">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
@@ -2784,7 +2784,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="IdPrograma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreProg" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="IdModulo" Type="Int32" />
+          <Property Name="IdModulo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -2803,8 +2803,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <PropertyRef Name="IdRol_01" />
           </Key>
           <Property Name="IdRol_01" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdRol" Type="Int32" />
-          <Property Name="IdPrograma" Type="Int32" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="IdPrograma" Type="Int32" Nullable="false" />
           <Property Name="Show" Type="Boolean" />
           <Property Name="Add" Type="Boolean" />
           <Property Name="Mod" Type="Boolean" />
@@ -2814,15 +2814,27 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Rol" Relationship="DiAviModel.FK_Rol_01_Rol" FromRole="Rol_01" ToRole="Rol" />
         </EntityType>
+        <Association Name="FK_Rol_01_Rol">
+          <End Type="DiAviModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="DiAviModel.Rol_01" Role="Rol_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Rol_01">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IdRol" Type="Int32" />
-          <Property Name="Estado" Type="Boolean" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Usuario1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -2834,29 +2846,17 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <PropertyRef Name="IdUsuario_01" />
           </Key>
           <Property Name="IdUsuario_01" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdUsuario" Type="Int32" />
-          <Property Name="IdAlmacen" Type="Int32" />
-          <Property Name="Estado" Type="Boolean" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdAlmacen" Type="Int32" Nullable="false" />
+          <Property Name="Acceso" Type="Boolean" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Usuario1" Relationship="DiAviModel.FK_Usuario_01_Usuario" FromRole="Usuario_01" ToRole="Usuario" />
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Usuario_01_Almacen" FromRole="Usuario_01" ToRole="Almacen" />
         </EntityType>
-        <Association Name="FK_Rol_01_Rol">
-          <End Type="DiAviModel.Rol" Role="Rol" Multiplicity="0..1" />
-          <End Type="DiAviModel.Rol_01" Role="Rol_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="IdRol" />
-            </Principal>
-            <Dependent Role="Rol_01">
-              <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Usuario_Rol">
-          <End Type="DiAviModel.Rol" Role="Rol" Multiplicity="0..1" />
+          <End Type="DiAviModel.Rol" Role="Rol" Multiplicity="1" />
           <End Type="DiAviModel.Usuario" Role="Usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rol">
@@ -2868,7 +2868,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_01_Usuario">
-          <End Type="DiAviModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="DiAviModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="DiAviModel.Usuario_01" Role="Usuario_01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -2880,7 +2880,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_01_Almacen">
-          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="0..1" />
+          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
           <End Type="DiAviModel.Usuario_01" Role="Usuario_01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Almacen">
@@ -3653,7 +3653,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Acceso" ColumnName="Acceso" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdUsuario_01" ColumnName="IdUsuario_01" />

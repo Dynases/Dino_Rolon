@@ -108,12 +108,14 @@ namespace PRESENTER.adm
         private void Metro_Usuarios_Click(object sender, EventArgs e)
         {
             F1_Usuarios frm = new F1_Usuarios();
+            frm._NombreProg = Metro_Usuarios.Name;
             frm.Show();
         }
 
         private void Metro_Roles_Click(object sender, EventArgs e)
         {
             F1_Roles frm = new F1_Roles();
+            frm._NombreProg = Metro_Roles.Name;
             frm.Show();
         }
     }

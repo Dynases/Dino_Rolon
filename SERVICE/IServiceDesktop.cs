@@ -22,6 +22,7 @@ using ENTITY.reg.Precio.View;
 using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.ven.view;
 using ENTITY.Rol.View;
+using ENTITY.Usuario.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -64,6 +65,28 @@ namespace SERVICE
 
         [OperationContract]
         List<VRol_01> ListarDetalleRol_01(int idRol);
+
+        [OperationContract]
+        DataTable AsignarPermisos(string idRol, string NombreProg);
+
+        [OperationContract]
+        bool RolExisteEnUsuario(int IdRol);
+
+        #endregion
+
+        /********** USUARIO ****************/
+        #region Usuario
+
+        [OperationContract]
+        bool UsuarioGuardar(VUsuario Rol, List<VUsuario_01> detalle, ref int IdUsuario, string usuario);
+
+        [OperationContract]
+        bool UsuarioEliminar(int id, List<VUsuario_01> detalle);
+        [OperationContract]
+        List<VUsuario> ListarUsuario();
+
+        [OperationContract]
+        List<VUsuario_01> ListarDetalleUsuario_01(int idUsuario);
 
         #endregion
 

@@ -95,8 +95,48 @@ namespace REPOSITORY.Clase
             }
         }
 
-        #endregion
+        public DataTable AsignarPermisos(string idRol, string NombreProg)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                string consulta = "SELECT * " +
+                                  "FROM " + " ADM.Rol_01 a " +
+                                  "JOIN ADM.Programa b ON a.IdPrograma=b.IdPrograma " +
+                                   "WHERE " +
+                                        "a.IdRol= " + idRol + " and b.NombreProg = '" + NombreProg + "'";
+                                    
+                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnUsuario(int IdRol)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Rol
+                                     join b in db.Usuario on  a.IdRol equals b.IdRol
+                                     where a.IdRol.Equals(IdRol) && b.Estado > 0
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        #endregion
     }
 
 }
