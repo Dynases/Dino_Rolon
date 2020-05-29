@@ -6,6 +6,9 @@ namespace REPOSITORY.Interface
     public interface IVenta
     {
         bool Guardar(VVenta VVenta, ref int id);
-        List<VVenta> Listar();
+        bool ModificarEstado(int IdVenta, int estado);
+
+        VVenta TraerVenta(int idVenta);
+        List<VVenta> TraerVentas();
     }
 }

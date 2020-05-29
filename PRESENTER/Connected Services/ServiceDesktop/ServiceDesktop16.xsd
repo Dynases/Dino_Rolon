@@ -24,7 +24,7 @@
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdModulo" type="xs:int" />
+      <xs:element minOccurs="0" name="IdModulo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdPrograma" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdRol" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdRol_01" type="xs:int" />

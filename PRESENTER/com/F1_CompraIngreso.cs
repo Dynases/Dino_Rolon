@@ -58,6 +58,10 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void cb_Recibido_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(cb_Recibido, btnRecibido);
+        }
         private void Dgv_GBuscador_SelectionChanged(object sender, EventArgs e)
         {
             if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
@@ -627,6 +631,41 @@ namespace PRESENTER.com
                 this.MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void btnRecibido_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_RECIBIDO));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_RECIBIDO),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = cb_Recibido.Text == "" ? "" : cb_Recibido.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(cb_Recibido,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_RECIBIDO)).ToList());
+                    cb_Recibido.SelectedIndex = ((List<VLibreria>)cb_Recibido.DataSource).Count() - 1;
+                }
+                MP_RegistrarEntregaPlaca();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void MP_ArmarDetalle(List<VCompraIngreso_01> lresult)
         {
             try
@@ -742,6 +781,10 @@ namespace PRESENTER.com
                                       new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
                                                                                                     Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
 
+                UTGlobal.MG_ArmarCombo(cb_Recibido,
+                                     new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                                                                                                   Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_RECIBIDO)).ToList());
+
             }
             catch (Exception ex)
             {
@@ -805,7 +848,8 @@ namespace PRESENTER.com
                 Tb_Entregado.ReadOnly = false;
                 Tb_FechaEnt.Enabled = true;
                 Tb_FechaRec.Enabled = true;
-                Tb_Recibido.ReadOnly = false;
+                cb_Recibido.ReadOnly = false;
+               
                 Dgv_Detalle.Enabled = true;
                 Tb_CantidadCajas.IsInputReadOnly = false;
                 Tb_CantidadGrupos.IsInputReadOnly = false;
@@ -834,7 +878,7 @@ namespace PRESENTER.com
                 Tb_FechaEnt.Enabled = false;
                 Tb_FechaRec.Enabled = false;
                 _Limpiar = false;
-                Tb_Recibido.ReadOnly = true;
+                cb_Recibido.ReadOnly = true;
                 Dgv_Detalle.Enabled = false;
                 Tb_TotalMaples.IsInputReadOnly = true;
                 Tb_TotalVendido.IsInputReadOnly = true;
@@ -861,8 +905,7 @@ namespace PRESENTER.com
                 Tb_Entregado.Clear();
                 Tb_FechaEnt.Value = DateTime.Now;
                 Tb_FechaRec.Value = DateTime.Now;
-                tb_Proveedor.Clear();
-                Tb_Recibido.Clear();
+                tb_Proveedor.Clear();            
                 Tb_Edad.Clear();
                 Tb_CompraIngresoPrecioAntoguo.Clear();
                 Sw_Tipo.Value = true;
@@ -870,7 +913,8 @@ namespace PRESENTER.com
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
                     UTGlobal.MG_SeleccionarCombo(Cb_Placa);
-                   // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
+                    UTGlobal.MG_SeleccionarCombo(cb_Recibido);
+                    // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
                 Tb_TotalVendido.Value = 0;
@@ -913,7 +957,7 @@ namespace PRESENTER.com
                         _idProveedor = registro.IdProvee;
                         Tb_Observacion.Text = registro.Observacion;
                         Cb_Tipo.Value = registro.Tipo;
-                        Tb_Recibido.Text = registro.Recibido;
+                        cb_Recibido.Value = registro.Recibido;
                         Tb_Edad.Text = registro.CantidadSemanas;
                         Tb_Entregado.Text = registro.Entregado;
                         Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
@@ -1080,7 +1124,7 @@ namespace PRESENTER.com
                     Tipo = Convert.ToInt32(Cb_Tipo.Value),
                     Observacion = Tb_Observacion.Text,
                     Entregado = Tb_Entregado.Text,
-                    Recibido = Tb_Recibido.Text,
+                    Recibido = Convert.ToInt32(cb_Recibido.Value),
                     TotalRecibido = Convert.ToDecimal(Tb_TotalEnviado.Value),
                     TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
                     TipoCompra = Sw_Tipo.Value == true ? 1 : 2,
@@ -1276,10 +1320,9 @@ namespace PRESENTER.com
                 return _Error;
             }
         }
+
         #endregion
 
        
-       
-
     }
 }

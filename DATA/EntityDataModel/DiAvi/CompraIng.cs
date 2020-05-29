@@ -33,7 +33,7 @@ namespace DATA.EntityDataModel.DiAvi
         public int Tipo { get; set; }
         public string Obser { get; set; }
         public string Entregado { get; set; }
-        public string Recibido { get; set; }
+        public int Recibido { get; set; }
         public decimal TotalRecibido { get; set; }
         public decimal TotalVendido { get; set; }
         public decimal Total { get; set; }

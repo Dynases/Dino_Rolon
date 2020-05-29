@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_CompraIngreso));
+            Janus.Windows.GridEX.GridEXLayout cb_Recibido_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnRecibido = new DevComponents.DotNetBar.ButtonX();
+            this.cb_Recibido = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.Tb_CompraIngresoPrecioAntoguo = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -43,7 +46,6 @@
             this.LblSucursal = new DevComponents.DotNetBar.LabelX();
             this.Sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
-            this.Tb_Recibido = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Entregado = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
@@ -85,8 +87,6 @@
             this.Tb_TotalFisico = new DevComponents.Editors.DoubleInput();
             this.Tb_TotalEnviado = new DevComponents.Editors.DoubleInput();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -100,8 +100,11 @@
             this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Recibido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
@@ -122,28 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).BeginInit();
             this.SuspendLayout();
-            // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.SelectedTabIndex = 1;
-            this.superTabControl1.Size = new System.Drawing.Size(1133, 709);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // BtnImprimir
             // 
@@ -201,11 +182,6 @@
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1133, 676);
-            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(1073, 0);
@@ -220,7 +196,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1133, 676);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -252,7 +228,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1127, 650);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
@@ -273,6 +249,7 @@
             this.PanelContenidoRegistro.Controls.Add(this.panel1);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1133, 676);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel1, 0);
@@ -280,8 +257,30 @@
             // 
             // PanelInferior
             // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 708);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 648);
             this.PanelInferior.Size = new System.Drawing.Size(1133, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(1133, 709);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // panel1
             // 
@@ -290,13 +289,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 108);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(348, 568);
+            this.panel1.Size = new System.Drawing.Size(348, 540);
             this.panel1.TabIndex = 69;
             // 
             // GPanel_DatosGenerales
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.btnRecibido);
+            this.GPanel_DatosGenerales.Controls.Add(this.cb_Recibido);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX20);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX19);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_CompraIngresoPrecioAntoguo);
@@ -306,7 +307,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.LblSucursal);
             this.GPanel_DatosGenerales.Controls.Add(this.Sw_Tipo);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX16);
-            this.GPanel_DatosGenerales.Controls.Add(this.Tb_Recibido);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX11);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Entregado);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX10);
@@ -332,7 +332,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(348, 568);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(348, 540);
             // 
             // 
             // 
@@ -363,6 +363,41 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 80;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // btnRecibido
+            // 
+            this.btnRecibido.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRecibido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRecibido.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnRecibido.Image = global::PRESENTER.Properties.Resources.AGREGAR;
+            this.btnRecibido.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnRecibido.Location = new System.Drawing.Point(311, 364);
+            this.btnRecibido.Name = "btnRecibido";
+            this.btnRecibido.Size = new System.Drawing.Size(28, 27);
+            this.btnRecibido.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRecibido.TabIndex = 379;
+            this.btnRecibido.Visible = false;
+            this.btnRecibido.Click += new System.EventHandler(this.btnRecibido_Click);
+            // 
+            // cb_Recibido
+            // 
+            this.cb_Recibido.BackColor = System.Drawing.Color.White;
+            cb_Recibido_DesignTimeLayout.LayoutString = resources.GetString("cb_Recibido_DesignTimeLayout.LayoutString");
+            this.cb_Recibido.DesignTimeLayout = cb_Recibido_DesignTimeLayout;
+            this.cb_Recibido.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cb_Recibido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Recibido.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cb_Recibido.Location = new System.Drawing.Point(107, 364);
+            this.cb_Recibido.Name = "cb_Recibido";
+            this.cb_Recibido.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cb_Recibido.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cb_Recibido.SelectedIndex = -1;
+            this.cb_Recibido.SelectedItem = null;
+            this.cb_Recibido.Size = new System.Drawing.Size(194, 22);
+            this.cb_Recibido.TabIndex = 378;
+            this.cb_Recibido.Tag = "1";
+            this.cb_Recibido.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.cb_Recibido.ValueChanged += new System.EventHandler(this.cb_Recibido_ValueChanged);
             // 
             // labelX20
             // 
@@ -520,23 +555,6 @@
             this.labelX16.Size = new System.Drawing.Size(104, 23);
             this.labelX16.TabIndex = 343;
             this.labelX16.Text = "Tipo de compra";
-            // 
-            // Tb_Recibido
-            // 
-            this.Tb_Recibido.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.Tb_Recibido.Border.Class = "TextBoxBorder";
-            this.Tb_Recibido.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_Recibido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_Recibido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Recibido.Location = new System.Drawing.Point(107, 368);
-            this.Tb_Recibido.MaxLength = 50;
-            this.Tb_Recibido.Name = "Tb_Recibido";
-            this.Tb_Recibido.PreventEnterBeep = true;
-            this.Tb_Recibido.Size = new System.Drawing.Size(196, 23);
-            this.Tb_Recibido.TabIndex = 11;
             // 
             // labelX11
             // 
@@ -938,7 +956,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(348, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(785, 568);
+            this.panel2.Size = new System.Drawing.Size(785, 540);
             this.panel2.TabIndex = 70;
             // 
             // panel4
@@ -948,7 +966,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(785, 451);
+            this.panel4.Size = new System.Drawing.Size(785, 423);
             this.panel4.TabIndex = 1;
             // 
             // panel5
@@ -1041,7 +1059,7 @@
             this.GPanel_Detalle.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 36);
+            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 8);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
             this.GPanel_Detalle.Size = new System.Drawing.Size(785, 415);
             // 
@@ -1103,7 +1121,7 @@
             this.panel3.Controls.Add(this.Tb_TotalEnviado);
             this.panel3.Controls.Add(this.labelX12);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 451);
+            this.panel3.Location = new System.Drawing.Point(0, 423);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(785, 117);
             this.panel3.TabIndex = 0;
@@ -1297,8 +1315,6 @@
             this.ClientSize = new System.Drawing.Size(1133, 736);
             this.Name = "F1_CompraIngreso";
             this.Text = "F1_CompraIngreso";
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -1314,9 +1330,12 @@
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Recibido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
@@ -1381,7 +1400,6 @@
         internal DevComponents.DotNetBar.LabelX labelX14;
         internal DevComponents.DotNetBar.LabelX labelX15;
         private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.Controls.TextBoxX Tb_Recibido;
         internal DevComponents.DotNetBar.LabelX labelX16;
         internal DevComponents.DotNetBar.Controls.SwitchButton Sw_Tipo;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Almacen;
@@ -1396,5 +1414,7 @@
         internal DevComponents.DotNetBar.LabelX labelX20;
         internal DevComponents.DotNetBar.LabelX labelX19;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_CompraIngresoPrecioAntoguo;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_Recibido;
+        internal DevComponents.DotNetBar.ButtonX btnRecibido;
     }
 }

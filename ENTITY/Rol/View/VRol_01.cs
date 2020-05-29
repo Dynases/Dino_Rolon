@@ -15,7 +15,7 @@ namespace ENTITY.Rol.View
         public Nullable<int> IdPrograma { get; set; }        
         public string NombreProg { get; set; }
         public string Descripcion { get; set; }
-        public int IdModulo { get; set; }
+        public int? IdModulo { get; set; }
         public int Estado { get; set; }
         public Nullable<bool> Show { get; set; }
         public Nullable<bool> Add { get; set; }

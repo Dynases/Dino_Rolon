@@ -373,12 +373,17 @@ namespace SERVICE
 
         [OperationContract]
         bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje);
+        [OperationContract]
+        bool VentaModificarEstado(int IdVenta, int estado, ref List<string> lMensaje);
 
         [OperationContract]
-        List<VVenta> VentasListar();
+        VVenta TraerVenta(int idVenta);
 
         [OperationContract]
         List<VVenta_01> VentaDetalleListar(int VentaId);
+
+        [OperationContract]
+       List<VVenta> TraerVentas();
 
         #endregion
 

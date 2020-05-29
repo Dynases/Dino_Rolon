@@ -19,7 +19,7 @@
       <xs:element minOccurs="0" name="Observacion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Placa" type="xs:int" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Recibido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recibido" type="xs:int" />
       <xs:element minOccurs="0" name="Tipo" type="xs:int" />
       <xs:element minOccurs="0" name="TipoCompra" type="xs:int" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
@@ -66,13 +66,12 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:VCompraIngresoLista">
         <xs:sequence>
+          <xs:element minOccurs="0" name="DescripcionRecibido" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
           <xs:element minOccurs="0" name="IdSkype" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="MarcaTipo" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PrecioCost" type="xs:decimal" />
           <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Total" type="xs:decimal" />
           <xs:element minOccurs="0" name="TotalCant" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>

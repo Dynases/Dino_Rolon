@@ -50,7 +50,10 @@ namespace PRESENTER.ven
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         private void MP_InHabilitar()
         {
             this.lblId.Visible = false;
@@ -130,7 +133,7 @@ namespace PRESENTER.ven
             index = 0;
             try
             {
-                listaVentas = new ServiceDesktop.ServiceDesktopClient().VentasListar().ToList();
+                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas().ToList();
                 if (listaVentas != null && listaVentas.Count > 0)
                 {
                     this.MP_MostrarRegistro(index);
@@ -319,7 +322,7 @@ namespace PRESENTER.ven
         {
             try
             {
-                listaVentas = new ServiceDesktop.ServiceDesktopClient().VentasListar().ToList();
+                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas().ToList();
                 Dgv_GBuscador.DataSource = listaVentas;
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;
@@ -812,7 +815,54 @@ namespace PRESENTER.ven
                 return false;
             }
         }
-
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    resul = new ServiceDesktop.ServiceDesktopClient().VentaModificarEstado(Convert.ToInt32(Tb_Cod.Text), (int)ENEstado.ELIMINAR, ref LMensaje);
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito("Venta", Tb_Cod.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error("Venta", Tb_Cod.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         #endregion
 
         #region Eventos

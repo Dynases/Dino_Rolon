@@ -1310,18 +1310,40 @@ namespace SERVICE
             }
         }
 
-        public List<VVenta> VentasListar()
+        public bool VentaModificarEstado(int IdVenta, int estado, ref List<string> lMensaje)
         {
             try
             {
-                return new LVenta().Listar();
+                var listResult = new LVenta().ModificarEstado(IdVenta, estado, ref lMensaje);
+                return listResult;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
+        public VVenta TraerVenta(int idVenta)
+        {
+            try
+            {
+                return new LVenta().TraerVenta(idVenta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VVenta> TraerVentas()
+        {
+            try
+            {
+                return new LVenta().TraerVentas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VVenta_01> VentaDetalleListar(int VentaId)
         {
             try

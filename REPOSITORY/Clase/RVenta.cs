@@ -4,7 +4,9 @@ using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using UTILITY.Enum.EnEstado;
 
 namespace REPOSITORY.Clase
 {
@@ -57,17 +59,37 @@ namespace REPOSITORY.Clase
             }
         }
 
+        public bool ModificarEstado(int IdVenta, int estado)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {                   
+                    var venta = db.Venta.Where(c => c.Id.Equals(IdVenta)).FirstOrDefault();
+                    venta.Estado = estado;
+                    db.Venta.Attach(venta);
+                    db.Entry(venta).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Consultas
-
-        public List<VVenta> Listar()
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public VVenta TraerVenta(int idVenta)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    return db.Venta
+                    return db.Venta.Where(c => c.Id == idVenta &&
+                                          c.Estado != (int)ENEstado.ELIMINAR)
                              .Select(v => new VVenta
                              {
                                  DescripcionAlmacen = v.Almacen.Descrip,
@@ -89,6 +111,44 @@ namespace REPOSITORY.Clase
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
                                  IdCategoriaCliente=  v.Cliente.IdCategoria
+                             }).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        public List<VVenta> TraerVentas()
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    return db.Venta.Where(
+                                    c => c.Estado != (int)ENEstado.ELIMINAR)
+                             .Select(v => new VVenta
+                             {
+                                 DescripcionAlmacen = v.Almacen.Descrip,
+                                 DescripcionCliente = v.Cliente.Descrip,
+                                 EncEntrega = v.EncEntrega,
+                                 EncPrVenta = v.EncPrVenta,
+                                 EncRecepcion = v.EncRecepcion,
+                                 EncTransporte = v.EncTransporte,
+                                 EncVenta = v.EncVenta,
+                                 Estado = v.Estado,
+                                 Fecha = v.Fecha,
+                                 FechaVenta = v.FechaVenta,
+                                 Id = v.Id,
+                                 IdAlmacen = v.IdAlmacen,
+                                 IdCliente = v.IdCliente,
+                                 NitCliente = v.Cliente.Nit,
+                                 Observaciones = v.Observaciones,
+                                 Tipo = v.Tipo,
+                                 Usuario = v.Usuario,
+                                 Hora = v.Hora,
+                                 IdCategoriaCliente = v.Cliente.IdCategoria
                              }).ToList();
                 }
             }
@@ -97,7 +157,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
         #endregion
     }
 }

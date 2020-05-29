@@ -17,6 +17,6 @@ namespace DATA.EntityDataModel.DiAvi
         public int IdPrograma { get; set; }
         public string NombreProg { get; set; }
         public string Descripcion { get; set; }
-        public int IdModulo { get; set; }
+        public Nullable<int> IdModulo { get; set; }
     }
 }

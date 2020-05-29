@@ -21,6 +21,8 @@ namespace DATA.EntityDataModel.DiAvi
         public string Proveedor { get; set; }
         public string IdSpyre { get; set; }
         public string MarcaTipo { get; set; }
+        public string Entregado { get; set; }
+        public string DescripcionRecibido { get; set; }
         public int IdProduc { get; set; }
         public string Producto { get; set; }
         public decimal TotalCant { get; set; }

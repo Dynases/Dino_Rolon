@@ -242,6 +242,8 @@ namespace REPOSITORY.Clase
                                           TotalCant = a.TotalCant,
                                           PrecioCost = a.PrecioCost,
                                           Total = a.Total,
+                                          Entregado = a.Entregado,
+                                          DescripcionRecibido = a.DescripcionRecibido
                                       }).ToList();
                     return listResult;
                 }

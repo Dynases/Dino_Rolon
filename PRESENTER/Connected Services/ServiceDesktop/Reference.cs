@@ -653,17 +653,30 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaGuardarResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaGuardarResponse> VentaGuardarAsync(PRESENTER.ServiceDesktop.VentaGuardarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
-        ENTITY.ven.view.VVenta[] VentasListar();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/VentaModificarEstadoResponse")]
+        PRESENTER.ServiceDesktop.VentaModificarEstadoResponse VentaModificarEstado(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentasListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentasListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync();
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/VentaModificarEstadoResponse")]
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaModificarEstadoResponse> VentaModificarEstadoAsync(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        ENTITY.ven.view.VVenta TraerVenta(int idVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
         ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        ENTITY.ven.view.VVenta[] TraerVentas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
         ENTITY.DiSoft.Zona.VZona[] ZonaListar();
@@ -1404,6 +1417,50 @@ namespace PRESENTER.ServiceDesktop {
         public VentaGuardarResponse(bool VentaGuardarResult, int IdVenta, string[] lMensaje) {
             this.VentaGuardarResult = VentaGuardarResult;
             this.IdVenta = IdVenta;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VentaModificarEstado", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class VentaModificarEstadoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int IdVenta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int estado;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
+        
+        public VentaModificarEstadoRequest() {
+        }
+        
+        public VentaModificarEstadoRequest(int IdVenta, int estado, string[] lMensaje) {
+            this.IdVenta = IdVenta;
+            this.estado = estado;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VentaModificarEstadoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class VentaModificarEstadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool VentaModificarEstadoResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] lMensaje;
+        
+        public VentaModificarEstadoResponse() {
+        }
+        
+        public VentaModificarEstadoResponse(bool VentaModificarEstadoResult, string[] lMensaje) {
+            this.VentaModificarEstadoResult = VentaModificarEstadoResult;
             this.lMensaje = lMensaje;
         }
     }
@@ -2355,12 +2412,31 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.VentaGuardarAsync(request);
         }
         
-        public ENTITY.ven.view.VVenta[] VentasListar() {
-            return base.Channel.VentasListar();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.VentaModificarEstadoResponse PRESENTER.ServiceDesktop.IServiceDesktop.VentaModificarEstado(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request) {
+            return base.Channel.VentaModificarEstado(request);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> VentasListarAsync() {
-            return base.Channel.VentasListarAsync();
+        public bool VentaModificarEstado(int IdVenta, int estado, ref string[] lMensaje) {
+            PRESENTER.ServiceDesktop.VentaModificarEstadoRequest inValue = new PRESENTER.ServiceDesktop.VentaModificarEstadoRequest();
+            inValue.IdVenta = IdVenta;
+            inValue.estado = estado;
+            inValue.lMensaje = lMensaje;
+            PRESENTER.ServiceDesktop.VentaModificarEstadoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).VentaModificarEstado(inValue);
+            lMensaje = retVal.lMensaje;
+            return retVal.VentaModificarEstadoResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaModificarEstadoResponse> VentaModificarEstadoAsync(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request) {
+            return base.Channel.VentaModificarEstadoAsync(request);
+        }
+        
+        public ENTITY.ven.view.VVenta TraerVenta(int idVenta) {
+            return base.Channel.TraerVenta(idVenta);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta) {
+            return base.Channel.TraerVentaAsync(idVenta);
         }
         
         public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
@@ -2369,6 +2445,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
             return base.Channel.VentaDetalleListarAsync(VentaId);
+        }
+        
+        public ENTITY.ven.view.VVenta[] TraerVentas() {
+            return base.Channel.TraerVentas();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
+            return base.Channel.TraerVentasAsync();
         }
         
         public ENTITY.DiSoft.Zona.VZona[] ZonaListar() {

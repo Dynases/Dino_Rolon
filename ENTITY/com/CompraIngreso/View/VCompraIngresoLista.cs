@@ -22,7 +22,7 @@ namespace ENTITY.com.CompraIngreso.View
         public string CantidadSemanas { get; set; }
         public string Observacion { get; set; }
         public string Entregado { get; set; }
-        public string Recibido { get; set; }
+        public int Recibido { get; set; }
         public decimal Total { get; set; }
         public decimal TotalRecibido { get; set; }
         public decimal TotalVendido { get; set; }
