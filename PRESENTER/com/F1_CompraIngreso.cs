@@ -972,6 +972,7 @@ namespace PRESENTER.com
                         Tb_CantidadCajas.Value = Convert.ToDouble(registro.CantidadCaja);
                         Tb_CantidadGrupos.Value = Convert.ToDouble(registro.CantidadGrupo);
                         Tb_CompraIngresoPrecioAntoguo.Text = registro.CompraAntiguaFecha;
+                        Tb_TotalMaples.Value = registro.TotalMaple;
                         MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                         MP_ObtenerCalculo();            
                     }
@@ -1143,7 +1144,8 @@ namespace PRESENTER.com
                     Usuario = UTGlobal.Usuario,
                     CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
                     CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
-                    CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text
+                    CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
+                    TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value)
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;

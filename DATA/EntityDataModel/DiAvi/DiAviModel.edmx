@@ -153,6 +153,7 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="CantidadCaja" Type="int" Nullable="false" />
           <Property Name="CantidadGrupo" Type="int" Nullable="false" />
           <Property Name="CompraAntiguaFecha" Type="varchar" MaxLength="50" />
+          <Property Name="TotalMaple" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CompraIng_01">
           <Key>
@@ -595,6 +596,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene defi
             <PropertyRef Name="TotalCant" />
             <PropertyRef Name="PrecioCost" />
             <PropertyRef Name="Total" />
+            <PropertyRef Name="TotalMaple" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="NumNota" Type="nvarchar" MaxLength="26" Nullable="false" />
@@ -610,6 +612,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene defi
           <Property Name="TotalCant" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="10" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalMaple" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -1301,7 +1304,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [V_NotaCompraIngreso].[Producto] AS [Producto], 
     [V_NotaCompraIngreso].[TotalCant] AS [TotalCant], 
     [V_NotaCompraIngreso].[PrecioCost] AS [PrecioCost], 
-    [V_NotaCompraIngreso].[Total] AS [Total]
+    [V_NotaCompraIngreso].[Total] AS [Total], 
+    [V_NotaCompraIngreso].[TotalMaple] AS [TotalMaple]
     FROM [dbo].[V_NotaCompraIngreso] AS [V_NotaCompraIngreso]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vr_CompraIngreso" EntityType="Self.Vr_CompraIngreso" store:Type="Views" store:Schema="dbo">
@@ -2922,6 +2926,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="CompraIng_01" Relationship="DiAviModel.FK__CompraIng__IdCompraIng" FromRole="CompraIng" ToRole="CompraIng_01" />
           <NavigationProperty Name="Proveed" Relationship="DiAviModel.FK__CompraIng__Proveedor" FromRole="CompraIng" ToRole="Proveed" />
           <NavigationProperty Name="Seleccion" Relationship="DiAviModel.FK_Seleccion_CompraIng" FromRole="CompraIng" ToRole="Seleccion" />
+          <Property Name="TotalMaple" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK__CompraIng__Almacen">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
@@ -2986,6 +2991,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <PropertyRef Name="TotalCant" />
             <PropertyRef Name="PrecioCost" />
             <PropertyRef Name="Total" />
+            <PropertyRef Name="TotalMaple" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
@@ -3001,6 +3007,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="10" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalMaple" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3663,6 +3670,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySetMapping Name="CompraIng">
             <EntityTypeMapping TypeName="DiAviModel.CompraIng">
               <MappingFragment StoreEntitySet="CompraIng">
+                <ScalarProperty Name="TotalMaple" ColumnName="TotalMaple" />
                 <ScalarProperty Name="CompraAntiguaFecha" ColumnName="CompraAntiguaFecha" />
                 <ScalarProperty Name="CantidadGrupo" ColumnName="CantidadGrupo" />
                 <ScalarProperty Name="CantidadCaja" ColumnName="CantidadCaja" />
@@ -3692,6 +3700,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySetMapping Name="V_NotaCompraIngreso">
             <EntityTypeMapping TypeName="DiAviModel.V_NotaCompraIngreso">
               <MappingFragment StoreEntitySet="V_NotaCompraIngreso">
+                <ScalarProperty Name="TotalMaple" ColumnName="TotalMaple" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="PrecioCost" ColumnName="PrecioCost" />
                 <ScalarProperty Name="TotalCant" ColumnName="TotalCant" />

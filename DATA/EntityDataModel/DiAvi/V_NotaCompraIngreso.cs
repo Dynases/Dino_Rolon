@@ -28,5 +28,6 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
         public decimal Total { get; set; }
+        public int TotalMaple { get; set; }
     }
 }

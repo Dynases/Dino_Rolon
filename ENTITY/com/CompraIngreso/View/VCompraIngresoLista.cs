@@ -33,5 +33,6 @@ namespace ENTITY.com.CompraIngreso.View
         public int CantidadCaja { get; set; }
         public int CantidadGrupo { get; set; }
         public string CompraAntiguaFecha { get; set; }
+        public int TotalMaple { get; set; }
     }
 }

@@ -71,6 +71,7 @@ namespace REPOSITORY.Clase
                     CompraIngreso.Hora = vCompraIngreso.Hora;
                     CompraIngreso.Usuario = vCompraIngreso.Usuario;
                     CompraIngreso.CompraAntiguaFecha = vCompraIngreso.CompraAntiguaFecha;
+                    CompraIngreso.TotalMaple = vCompraIngreso.TotalMaple;
                     db.SaveChanges();
                     id = CompraIngreso.Id;
                     return true;
@@ -243,7 +244,8 @@ namespace REPOSITORY.Clase
                                           PrecioCost = a.PrecioCost,
                                           Total = a.Total,
                                           Entregado = a.Entregado,
-                                          DescripcionRecibido = a.DescripcionRecibido
+                                          DescripcionRecibido = a.DescripcionRecibido,
+                                          TotalMaple = a.TotalMaple
                                       }).ToList();
                     return listResult;
                 }
@@ -305,6 +307,7 @@ namespace REPOSITORY.Clase
                                          CantidadCaja = a.CantidadCaja,
                                          CantidadGrupo = a.CantidadGrupo,
                                          CompraAntiguaFecha = a.CompraAntiguaFecha,
+                                         TotalMaple = a.TotalMaple
                                       }).ToList();
                     return listResult;
                 }
