@@ -210,10 +210,15 @@ namespace PRESENTER.com
         }
         private void CalcularFila()
         {
+            var idProducto = Convert.ToInt32(Dgv_Detalle.CurrentRow.Cells[1].Value);
+            var esCategoriaSuper = new ServiceDesktop.ServiceDesktopClient().ProductoEsCategoriaSuper(idProducto);
+            //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades - 1 = Maple
+            var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
+
             Double caja, grupo, maple, cantidad, subTotal, precio, total;
-            caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * 30);
-            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * 300;
-            maple = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[5].Value) * 30;
+            caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * valorContenidoDeMaple);
+            grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * (10 * valorContenidoDeMaple);
+            maple = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[5].Value) * valorContenidoDeMaple;
             cantidad = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[6].Value);
             subTotal = caja + grupo + maple + cantidad;
             Dgv_Detalle.CurrentRow.Cells[7].Value = subTotal;
@@ -996,8 +1001,9 @@ namespace PRESENTER.com
 
                 var totalCaja = sumaCaja * Tb_CantidadCajas.Value;
                 var totalGrupo = sumaGrupo * Tb_CantidadGrupos.Value;
-                var totalUnidades = sumaUnidades > 30 ? (sumaUnidades / 300) * Tb_CantidadGrupos.Value : 1;
-                Tb_TotalMaples.Value = totalCaja + totalGrupo + sumaMaple + totalUnidades;
+                var totalUnidades = sumaUnidades != 0 ? (sumaUnidades > 30 ? (sumaUnidades / 300) * Tb_CantidadGrupos.Value : 1) : 0;
+
+                Tb_TotalMaples.Value = Convert.ToInt32( totalCaja + totalGrupo + sumaMaple + totalUnidades);
             }
             catch (Exception ex)
             {
@@ -1043,10 +1049,13 @@ namespace PRESENTER.com
                 foreach (var fila in Detalle)
                 {
                     if (fila.Grupo != 0 || fila.Caja != 0 || fila.Maple != 0 || fila.Cantidad != 0)
-                    {
-                        //fila.Caja = fila.Caja * Convert.ToInt32(Tb_CantidadCajas.Value * 30);
-                        //fila.Grupo = fila.Grupo * Convert.ToInt32(Tb_CantidadGrupos.Value * 30);
-                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * 30))) + (fila.Grupo * (Convert.ToInt32(Tb_CantidadGrupos.Value * 30))) + (fila.Maple * 30) + fila.Cantidad;
+                    {                    
+                        var esCategoriaSuper = new ServiceDesktop.ServiceDesktopClient().ProductoEsCategoriaSuper(fila.IdProduc);
+
+                        //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades en 1 Maple
+                        var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
+
+                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * valorContenidoDeMaple))) + (fila.Grupo * (10 * valorContenidoDeMaple)) + (fila.Maple * valorContenidoDeMaple) + fila.Cantidad;
                         fila.Total = fila.TotalCant * fila.PrecioCost;
                         if (fila.Estado == (int)ENEstado.GUARDADO)
                         {

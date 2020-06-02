@@ -297,6 +297,27 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Verificaciones
+        public bool EsCategoriaSuper(int IdProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.Producto
+                                     from b in db.Libreria
+                                     where a.Id.Equals(IdProducto) &&
+                                     b.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && 
+                                     b.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
+                                     a.Grupo3 == b.IdLibrer
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public bool ExisteEnCompra(int IdProducto)
         {
             try

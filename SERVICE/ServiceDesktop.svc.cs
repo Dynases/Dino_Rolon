@@ -568,6 +568,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool ProductoEsCategoriaSuper(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().EsCategoriaSuper(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #endregion
 

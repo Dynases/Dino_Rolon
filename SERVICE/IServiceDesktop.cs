@@ -170,10 +170,12 @@ namespace SERVICE
                 bool ProductoExisteEnTransformacion(int id);
                 [OperationContract]
                 bool ProductoExisteEnSeleccion(int id);
-            #endregion
+                [OperationContract]
+                bool ProductoEsCategoriaSuper(int id);
+        #endregion
         #endregion
         /********** ALMACEN *****************/
-       
+
         #region Almacen
 
         [OperationContract]
