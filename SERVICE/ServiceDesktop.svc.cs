@@ -996,11 +996,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable CompraIngreso_ListarEncabezado()
+        public DataTable CompraIngresoBuscar(int estado)
         {
             try
             {
-                var listResult = new LCompraIngreso().ListarEncabezado();
+                var listResult = new LCompraIngreso().BuscarCompraIngreso(estado);
                 return listResult;
             }
             catch (Exception ex)

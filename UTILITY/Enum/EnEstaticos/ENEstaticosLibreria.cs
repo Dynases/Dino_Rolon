@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace UTILITY.Enum.EnEstaticos
 {
-    public enum ENLibreriaCiudad
+    public enum ENEstaticosLibreria
     {
-        SantaCruz =1,
-        Cochabamba =2,
-        LaPaz=3
+        PRODUCTO_SUPER= 2
     }
 }

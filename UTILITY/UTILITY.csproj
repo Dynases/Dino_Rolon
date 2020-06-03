@@ -221,9 +221,8 @@
     <Compile Include="Enum\ENConcepto\ENConcepto.cs" />
     <Compile Include="Enum\EnEstado\ENEstado.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosGrupo.cs" />
+    <Compile Include="Enum\EnEstaticos\ENEstaticosLibreria.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosOrden.cs" />
-    <Compile Include="Enum\EnEstaticos\ENLibreriaCiudad.cs" />
-    <Compile Include="Enum\EnEstaticos\ENLibreriaFacturacion.cs" />
     <Compile Include="Enum\ENConceptoPlantilla.cs" />
     <Compile Include="Enum\ENProductoEstado.cs" />
     <Compile Include="Enum\EnTipoCategoria.cs" />

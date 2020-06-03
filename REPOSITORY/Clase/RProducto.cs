@@ -308,7 +308,7 @@ namespace REPOSITORY.Clase
                                      where a.Id.Equals(IdProducto) &&
                                      b.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && 
                                      b.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
-                                     a.Grupo3 == b.IdLibrer
+                                     a.Grupo3 == (int)ENEstaticosLibreria.PRODUCTO_SUPER
                                      select a).Count();
                     return resultado != 0 ? true : false;
                 }

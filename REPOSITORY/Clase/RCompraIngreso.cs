@@ -155,72 +155,7 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region Consulta
-        public List<VTI001> ListarStock(int IdProducto)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var compraIng = db.TI001.Where(c => c.iccprod.Equals(IdProducto)).ToList();
-                    var listResult = (from a in db.TI001
-                                      where a.iccprod.Equals(IdProducto) && a.iccven > 0
-                                      select new VTI001
-                                      {
-                                          id = a.id,
-                                          IdAlmacen = a.icalm,
-                                          IdProducto = a.iccprod,
-                                          Cantidad = a.iccven,
-                                          Unidad = a.icuven,
-                                          Lote = a.iclot,
-                                          FechaVen = a.icfven
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public List<VCompraIngreso> Listar()
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var listResult = (from a in db.CompraIng
-                                      join c in db.Proveed on 
-                                       new
-                                       {
-                                           idProve = a.IdProvee                                          
-                                       }
-                                       equals
-                                       new
-                                       {
-                                           idProve = c.Id                                          
-                                       }
-                                       where  a.Estado != (int)ENEstado.ELIMINAR
-                                      select new VCompraIngreso
-                                      {
-                                          Id = a.Id,
-                                          Proveedor = c.Descrip,
-                                          FechaEnt = a.FechaEnt,
-                                          FechaRec = a.FechaRec,
-                                          Entregado = a.Entregado,
-                                          Total = a.Total,
-                                          Fecha = a.Fecha,
-                                          Hora = a.Hora,
-                                          Usuario = a.Usuario,
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCompraIngresoNota> ListarNotaXId(int Id)
         {
             try
@@ -317,12 +252,15 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable ListarEncabezado()
+
+        /********** VARIOS REGISTROS ***********/
+        public DataTable BuscarCompraIngreso(int estado)
         {
             try
             {
                 DataTable tabla = new DataTable();
-                string consulta = @"SELECT	
+                StringBuilder sb = new StringBuilder();
+                sb.Append( @"SELECT	
 	                                a.Id,
 	                                a.NumNota,
 	                                a.FechaEnt,
@@ -338,8 +276,52 @@ namespace REPOSITORY.Clase
 	                                COM.CompraIng a JOIN
 	                                COM.Proveed b ON b.Id = a.IdProvee 
                                 WHERE
-                                    a.Estado <> 3 AND a.Estado <> -1";
-                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
+                                    a.Estado <> -1 AND   ");
+                if (estado == (int)ENEstado.COMPLETADO)
+                {
+                    sb.AppendFormat("a.Estado <> 3 AND   ");
+                }
+                sb.Length -= 7;
+                return tabla = BD.EjecutarConsulta(sb.ToString()).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VCompraIngreso> Listar()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.CompraIng
+                                      join c in db.Proveed on
+                                       new
+                                       {
+                                           idProve = a.IdProvee
+                                       }
+                                       equals
+                                       new
+                                       {
+                                           idProve = c.Id
+                                       }
+                                      where a.Estado != (int)ENEstado.ELIMINAR
+                                      select new VCompraIngreso
+                                      {
+                                          Id = a.Id,
+                                          Proveedor = c.Descrip,
+                                          FechaEnt = a.FechaEnt,
+                                          FechaRec = a.FechaRec,
+                                          Entregado = a.Entregado,
+                                          Total = a.Total,
+                                          Fecha = a.Fecha,
+                                          Hora = a.Hora,
+                                          Usuario = a.Usuario,
+                                      }).ToList();
+                    return listResult;
+                }
             }
             catch (Exception ex)
             {

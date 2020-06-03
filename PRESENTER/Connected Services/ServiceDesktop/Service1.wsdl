@@ -449,11 +449,11 @@
   <wsdl:message name="IServiceDesktop_CompraIngreso_NotaXId_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngreso_NotaXIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraIngreso_ListarEncabezado_InputMessage">
-    <wsdl:part name="parameters" element="tns:CompraIngreso_ListarEncabezado" />
+  <wsdl:message name="IServiceDesktop_CompraIngresoBuscar_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraIngresoBuscar" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraIngreso_ListarEncabezado_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CompraIngreso_ListarEncabezadoResponse" />
+  <wsdl:message name="IServiceDesktop_CompraIngresoBuscar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraIngresoBuscarResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_CompraIngreso_ExisteEnSeleccion_InputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngreso_ExisteEnSeleccion" />
@@ -936,9 +936,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXId" message="tns:IServiceDesktop_CompraIngreso_NotaXId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXIdResponse" message="tns:IServiceDesktop_CompraIngreso_NotaXId_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CompraIngreso_ListarEncabezado">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezado" message="tns:IServiceDesktop_CompraIngreso_ListarEncabezado_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezadoResponse" message="tns:IServiceDesktop_CompraIngreso_ListarEncabezado_OutputMessage" />
+    <wsdl:operation name="CompraIngresoBuscar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar" message="tns:IServiceDesktop_CompraIngresoBuscar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscarResponse" message="tns:IServiceDesktop_CompraIngresoBuscar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CompraIngreso_ExisteEnSeleccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ExisteEnSeleccion" message="tns:IServiceDesktop_CompraIngreso_ExisteEnSeleccion_InputMessage" />
@@ -1700,8 +1700,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CompraIngreso_ListarEncabezado">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezado" style="document" />
+    <wsdl:operation name="CompraIngresoBuscar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

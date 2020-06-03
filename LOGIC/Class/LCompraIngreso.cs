@@ -106,11 +106,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable ListarEncabezado()
+        public DataTable BuscarCompraIngreso(int estado)
         {
             try
             {
-                return iCompraIngreso.ListarEncabezado();
+                return iCompraIngreso.BuscarCompraIngreso(estado);
             }
             catch (Exception ex)
             {

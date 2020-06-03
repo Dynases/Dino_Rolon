@@ -23,6 +23,7 @@
       <xs:element minOccurs="0" name="Tipo" type="xs:int" />
       <xs:element minOccurs="0" name="TipoCompra" type="xs:int" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalMaple" type="xs:int" />
       <xs:element minOccurs="0" name="TotalRecibido" type="xs:decimal" />
       <xs:element minOccurs="0" name="TotalVendido" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />

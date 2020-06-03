@@ -1070,15 +1070,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CompraIngreso_ListarEncabezado">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CompraIngreso_ListarEncabezadoResponse">
+  <xs:element name="CompraIngresoBuscar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CompraIngreso_ListarEncabezadoResult" nillable="true">
+        <xs:element minOccurs="0" name="estado" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompraIngresoBuscarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompraIngresoBuscarResult" nillable="true">
           <xs:complexType>
             <xs:annotation>
               <xs:appinfo>

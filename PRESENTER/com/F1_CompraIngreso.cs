@@ -311,39 +311,8 @@ namespace PRESENTER.com
         }
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
-            if (Tb_Cod.ReadOnly == true)
-            {
-                try
-                {
-                    if (Tb_Cod.Text == string.Empty)
-                    {
-                        throw new Exception("No existen registros");
-                    }
-                    if (UTGlobal.visualizador != null)
-                    {
-                        UTGlobal.visualizador.Close();
-                    }
-                    UTGlobal.visualizador = new Visualizador();
-                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(Convert.ToInt32(Tb_Cod.Text));
-                    if (lista != null)
-                    {
-                        var ObjetoReport = new RCompraIngreso();
-                        ObjetoReport.SetDataSource(lista);
-                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                        UTGlobal.visualizador.ShowDialog();
-                        UTGlobal.visualizador.BringToFront();
-                    }
-                    else
-                        throw new Exception("No se encontraron registros");
-
-
-                }
-                catch (Exception ex)
-                {
-                    MP_MostrarMensajeError(ex.Message);
-                }
-            }
-        }
+            MH_Imprimir(Convert.ToInt32(Tb_Cod.Text));
+        }        
         private void Cb_Placa_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -379,7 +348,7 @@ namespace PRESENTER.com
                         efecto.listaCelda = listEstCeldas;
                         efecto.Alto = 50;
                         efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN PLACA";
+                        efecto.Context = "SELECCIONE UNA PLACA";
                         efecto.ShowDialog();
                         bool bandera = false;
                         bandera = efecto.Band;
@@ -450,16 +419,16 @@ namespace PRESENTER.com
                 {
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.TODOS);
                         List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
-                        new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
-                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENTRADA", tamano = 80 },
-                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA RECEPCION", tamano = 80 },
-                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 120 },
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
+                        new GLCelda() { campo = "NumNota", visible = true, titulo = "N.GRANJA", tamano = 100 },
+                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENT.", tamano = 100 },
+                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA REC.", tamano = 100 },
+                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 130 },
                         new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
-                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
+                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 240 },
                         new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
                         new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
                         new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
@@ -472,7 +441,7 @@ namespace PRESENTER.com
                         efecto.listaCelda = listEstCeldas;
                         efecto.Alto = 50;
                         efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN INGRESO";
+                        efecto.Context = "SELECCIONE UNA COMPRA";
                         efecto.ShowDialog();
                         bool bandera = false;
                         bandera = efecto.Band;
@@ -598,6 +567,41 @@ namespace PRESENTER.com
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+            }
+        }
+        private void MH_Imprimir(int idCompra)
+        {
+            if (Tb_Cod.ReadOnly == true)
+            {
+                try
+                {
+                    if (Tb_Cod.Text == string.Empty)
+                    {
+                        throw new Exception("No existen registros");
+                    }
+                    if (UTGlobal.visualizador != null)
+                    {
+                        UTGlobal.visualizador.Close();
+                    }
+                    UTGlobal.visualizador = new Visualizador();
+                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_NotaXId(idCompra);
+                    if (lista != null)
+                    {
+                        var ObjetoReport = new RCompraIngreso();
+                        ObjetoReport.SetDataSource(lista);
+                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        UTGlobal.visualizador.ShowDialog();
+                        UTGlobal.visualizador.BringToFront();
+                    }
+                    else
+                        throw new Exception("No se encontraron registros");
+
+
+                }
+                catch (Exception ex)
+                {
+                    MP_MostrarMensajeError(ex.Message);
+                }
             }
         }
         private void MP_CargarDetalle(int id, int tipo)
@@ -929,7 +933,7 @@ namespace PRESENTER.com
                 Tb_TPrecio.Value = 0;
                 Tb_TSaldoTo.Value = 0;
                 Tb_CantidadCajas.Value = 12;
-                Tb_CantidadGrupos.Value = 10;
+                Tb_CantidadGrupos.Value = 11;
                 MP_LimpiarColor();
                
             }
@@ -1020,6 +1024,7 @@ namespace PRESENTER.com
                 {
                     //_MPos = 0;
                     MP_MostrarRegistro(tipo == 1 ? 0 : Dgv_GBuscador.Row);
+                    MP_LimpiarColor();
                 }
                 else
                 {
@@ -1162,6 +1167,7 @@ namespace PRESENTER.com
                         MP_Limpiar();
                         _Limpiar = true;
                         mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                        MH_Imprimir(id);
                     }
                     else//Modificar
                     {
@@ -1169,7 +1175,8 @@ namespace PRESENTER.com
                         MP_InHabilitar();//El formulario
                         _Limpiar = true;
                         mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
+                        MH_Habilitar();//El menu   
+                        MH_Imprimir(id);
                     }
                 }
                 //Resultado
@@ -1194,8 +1201,8 @@ namespace PRESENTER.com
         {
             try
             {
-                int IdSeleccion = Convert.ToInt32(Tb_Cod.Text);               
-                if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(IdSeleccion))
+                int idCompra = Convert.ToInt32(Tb_Cod.Text);               
+                if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(idCompra))
                 {
                    MP_MostrarMensajeError("La compra esta asociado a una Seleccion.");
                    return false;
@@ -1209,12 +1216,12 @@ namespace PRESENTER.com
                 if (efecto.Band)
                 {
                     List<string> Mensaje = new List<string>();
-                    var LMensaje= Mensaje.ToArray();
-                    resul = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ModificarEstado(IdSeleccion, (int)ENEstado.ELIMINAR,ref LMensaje);
+                    var LMensaje= Mensaje.ToArray();                   
+                    resul = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ModificarEstado(idCompra, (int)ENEstado.ELIMINAR,ref LMensaje);
                     if (resul)
                     {
                         MP_Filtrar(1);
-                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Cod.Text));                        
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, idCompra.ToString()));                        
                     }
                     else
                     {
@@ -1232,7 +1239,7 @@ namespace PRESENTER.com
                         }
                         else
                         {
-                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, Tb_Cod.Text));
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, idCompra.ToString()));
                         }                       
                     }
                 }
@@ -1263,6 +1270,7 @@ namespace PRESENTER.com
         {
             MP_InHabilitar();
             MP_Filtrar(1);
+            
         }
         public void MP_LimpiarColor()
         {

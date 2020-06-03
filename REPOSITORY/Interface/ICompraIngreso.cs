@@ -15,9 +15,8 @@ namespace REPOSITORY.Interface
         List<VCompraIngreso> Listar();
         List<VCompraIngresoLista> ListarXId(int id);
         List<VCompraIngresoNota> ListarNotaXId(int Id);
-        DataTable ListarEncabezado();
+        DataTable BuscarCompraIngreso(int estado);
         bool ModificarEstado(int IdCompraIngreso, int estado, ref List<string> lMensaje);
-        bool ExisteEnSeleccion(int IdCompraIngreso);
-        List<VTI001> ListarStock(int IdProducto);
+        bool ExisteEnSeleccion(int IdCompraIngreso);       
     }
 }

@@ -502,11 +502,11 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXId", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXIdResponse")]
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoNota[]> CompraIngreso_NotaXIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezadoResponse")]
-        System.Data.DataTable CompraIngreso_ListarEncabezado();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoBuscarResponse")]
+        System.Data.DataTable CompraIngresoBuscar(int estado);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_ListarEncabezadoResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngreso_ListarEncabezadoAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoBuscarResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ExisteEnSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_ExisteEnSeleccionResponse")]
         bool CompraIngreso_ExisteEnSeleccion(int id);
@@ -2236,12 +2236,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CompraIngreso_NotaXIdAsync(id);
         }
         
-        public System.Data.DataTable CompraIngreso_ListarEncabezado() {
-            return base.Channel.CompraIngreso_ListarEncabezado();
+        public System.Data.DataTable CompraIngresoBuscar(int estado) {
+            return base.Channel.CompraIngresoBuscar(estado);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngreso_ListarEncabezadoAsync() {
-            return base.Channel.CompraIngreso_ListarEncabezadoAsync();
+        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado) {
+            return base.Channel.CompraIngresoBuscarAsync(estado);
         }
         
         public bool CompraIngreso_ExisteEnSeleccion(int id) {

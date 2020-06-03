@@ -280,7 +280,7 @@ namespace SERVICE
                 [OperationContract]
                 List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
                 [OperationContract]
-                DataTable CompraIngreso_ListarEncabezado();
+                DataTable CompraIngresoBuscar(int estado);
                 #endregion
             #region Verficaciones
                 [OperationContract]
