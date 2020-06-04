@@ -12,5 +12,6 @@ namespace REPOSITORY.Interface
         bool Guardar(VUsuario Usuario, ref int idUsuario);
         bool Eliminar(int idUsuario);
         List<VUsuario> ListaUsuarios();
+        List<VUsuario> ValidarUsuario(string user, string password);
     }
 }

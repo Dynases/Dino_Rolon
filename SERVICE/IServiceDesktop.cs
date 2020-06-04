@@ -72,6 +72,9 @@ namespace SERVICE
         [OperationContract]
         bool RolExisteEnUsuario(int IdRol);
 
+        [OperationContract]
+        List<VRol_01> ListarDetalle(int IdRol, int IdModulo);
+
         #endregion
 
         /********** USUARIO ****************/
@@ -82,11 +85,15 @@ namespace SERVICE
 
         [OperationContract]
         bool UsuarioEliminar(int id, List<VUsuario_01> detalle);
+
         [OperationContract]
         List<VUsuario> ListarUsuario();
 
         [OperationContract]
         List<VUsuario_01> ListarDetalleUsuario_01(int idUsuario);
+
+        [OperationContract]
+        List<VUsuario> ValidarUsuario(string user, string password);
 
         #endregion
 

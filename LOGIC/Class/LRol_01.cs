@@ -98,6 +98,18 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VRol_01> ListaDetalle(int IdRol, int IdModulo)
+        {
+            try
+            {
+                return iRol_01.ListaDetalle(IdRol, IdModulo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

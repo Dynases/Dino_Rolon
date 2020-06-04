@@ -33,7 +33,7 @@ namespace PRESENTER.adm
         int _idOriginal = 0;
         int _MPos;
         bool _Limpiar = false;
-        public string _NombreProg;
+        
         #endregion
 
         #region Manejo de eventos
@@ -152,6 +152,30 @@ namespace PRESENTER.adm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+
+        private void btnSeleccionarTodos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ListaDetalle = ((List<VUsuario_01>)Dgv_Detalle.DataSource).ToList();
+               
+                foreach (var fila in ListaDetalle)
+                {
+                    fila.Acceso = true;
+
+                    if (fila.Estado == 1)
+                    {
+                        fila.Estado = 2;
+                    }
+                }
+                Dgv_Detalle.DataSource = ListaDetalle;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
         #endregion
 
 
@@ -194,6 +218,8 @@ namespace PRESENTER.adm
                 swEstado.Value = true;                
 
                 MP_CargarGridDetalle(-1);
+
+                tbUsuario.Focus();
             }
             catch (Exception ex)
             {
@@ -207,7 +233,8 @@ namespace PRESENTER.adm
             tbContraseña.ReadOnly = false;
             cbRol.ReadOnly = false;
             swEstado.IsReadOnly = false;
-            Dgv_Detalle.Enabled = true;         
+            Dgv_Detalle.Enabled = true;
+            btnSeleccionarTodos.Enabled = true;
 
         }
         private void MP_InHabilitar()
@@ -217,6 +244,7 @@ namespace PRESENTER.adm
             tbContraseña.ReadOnly = true;
             cbRol.ReadOnly = true;
             swEstado.IsReadOnly = true;
+            btnSeleccionarTodos.Enabled = false;
             //Dgv_Detalle.Enabled = false;        
             
             
@@ -620,8 +648,9 @@ namespace PRESENTER.adm
             MP_InHabilitar();
             MP_Filtrar(1);
         }
+
         #endregion
 
-
+       
     }
 }

@@ -34,7 +34,7 @@ namespace PRESENTER.adm
         int _idOriginal = 0;
         int _MPos;
         bool _Limpiar = false;
-        public string _NombreProg;
+        
 
         #endregion
 
@@ -476,38 +476,46 @@ namespace PRESENTER.adm
         }
 
         private void MP_SeleccionarTodos(string columna)
-        {           
-            var ListaDetalle = ((List<VRol_01>)Dgv_Detalle.DataSource).ToList();
-            int numiModulo = Convert.ToInt32(Dgv_Modulos.GetValue("IdLibreria"));
-            
-            foreach (var fila in ListaDetalle)
+        {
+            try
             {
-                if (fila.IdModulo == numiModulo)
-                {
-                    if (columna == "Show")
-                    {
-                        fila.Show = true;
-                    }
-                    if (columna == "Add")
-                    {
-                        fila.Add = true;
-                    }
-                    if (columna == "Mod")
-                    {
-                        fila.Mod = true;
-                    }
-                    if (columna == "Del")
-                    {
-                        fila.Del = true;
-                    }
+                var ListaDetalle = ((List<VRol_01>)Dgv_Detalle.DataSource).ToList();
+                int numiModulo = Convert.ToInt32(Dgv_Modulos.GetValue("IdLibreria"));
 
-                    if (fila.Estado == 1)
+                foreach (var fila in ListaDetalle)
+                {
+                    if (fila.IdModulo == numiModulo)
                     {
-                        fila.Estado = 2;
+                        if (columna == "Show")
+                        {
+                            fila.Show = true;
+                        }
+                        if (columna == "Add")
+                        {
+                            fila.Add = true;
+                        }
+                        if (columna == "Mod")
+                        {
+                            fila.Mod = true;
+                        }
+                        if (columna == "Del")
+                        {
+                            fila.Del = true;
+                        }
+
+                        if (fila.Estado == 1)
+                        {
+                            fila.Estado = 2;
+                        }
                     }
                 }
+                Dgv_Detalle.DataSource = ListaDetalle;
             }
-            Dgv_Detalle.DataSource = ListaDetalle;             
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+              
 
         }
         private void MP_AsignarPermisos()

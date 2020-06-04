@@ -101,6 +101,31 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VUsuario> ValidarUsuario(string user, string password)
+        {
+
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Usuario
+                                      where a.User.Equals(user) && a.Password.Equals(password)
+                                      select new VUsuario
+                                      {
+                                          IdUsuario = a.IdUsuario,
+                                          User = a.User,
+                                          Password = a.Password,
+                                          IdRol = a.IdRol,
+                                         
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
 

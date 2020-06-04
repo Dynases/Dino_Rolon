@@ -130,7 +130,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        public List<VRol_01> ListarDetalle(int IdRol, int IdModulo)
+        {
+            try
+            {
+                var listResult = new LRol_01().ListaDetalle(IdRol, IdModulo);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         /********** USUARIO ***************/
@@ -184,7 +195,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        public List<VUsuario> ValidarUsuario(string user, string password)
+        {
+            try
+            {
+                var listResult = new LUsuario().ValidarUsuario(user,password);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         /********** CLIENTE ***************/

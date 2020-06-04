@@ -112,6 +112,18 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VUsuario> ValidarUsuario(string user, string password)
+        {
+            try
+            {
+                return iUsuario.ValidarUsuario(user, password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

@@ -283,6 +283,12 @@
     <Compile Include="adm\F1_Usuarios.Designer.cs">
       <DependentUpon>F1_Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="adm\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adm\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="adm\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -421,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adm\F1_Usuarios.resx">
       <DependentUpon>F1_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adm\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -737,6 +746,10 @@
     <None Include="Resource\add2.png" />
     <None Include="Resource\edit2.png" />
     <None Include="Resource\trash2.png" />
+    <None Include="Resource\LogoDynasys.png" />
+    <None Include="Resource\User1.png" />
+    <None Include="Resource\Password.png" />
+    <None Include="Resource\checked.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

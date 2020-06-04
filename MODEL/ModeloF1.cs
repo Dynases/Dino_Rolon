@@ -17,6 +17,8 @@ namespace MODEL
         #region VARIABLES 
         //VM= VARIABLE DE MODELO
         public static bool VM_Nuevo;
+        public static string MUsuario;
+        public static string _NombreProg;
         #endregion
         #region CONFIGURACION DEL FORMULARIO
         public ModeloF1()
@@ -144,9 +146,9 @@ namespace MODEL
         }
         public void MP_IniciarTodo()
         {
-            TxtNombreUsu.Text = UTGlobal.Usuario;
+            TxtNombreUsu.Text = MUsuario;
             TxtNombreUsu.ReadOnly = true;
-            this.SuperTabBuscar.Visible = false;
+            //this.SuperTabBuscar.Visible = false;
         }
         private void MP_Inhabilitar()
         {
@@ -193,8 +195,12 @@ namespace MODEL
         public virtual void MH_Salir() { }
         public virtual void MH_Limpiar() { }
 
+
         #endregion
 
-
+        private void ModeloF1_Load(object sender, EventArgs e)
+        {
+            MP_IniciarTodo();
+        }
     }
 }

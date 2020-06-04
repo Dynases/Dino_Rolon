@@ -337,6 +337,7 @@
             // 
             // superTabControl1
             // 
+            this.superTabControl1.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -355,6 +356,7 @@
             this.superTabControl1.Controls.Add(this.PanelContenidoRegistro);
             this.superTabControl1.Controls.Add(this.PanelContenidoBuscar);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControl1.ForeColor = System.Drawing.Color.Black;
             this.superTabControl1.HorizontalText = false;
             this.superTabControl1.Location = new System.Drawing.Point(0, 27);
             this.superTabControl1.Name = "superTabControl1";
@@ -763,6 +765,7 @@
             this.Name = "ModeloF1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModeloF1";
+            this.Load += new System.EventHandler(this.ModeloF1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ModeloF1_KeyPress);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ModeloF1_MouseMove);
             this.PanelSuperior.ResumeLayout(false);
@@ -807,7 +810,6 @@
         protected DevComponents.DotNetBar.ButtonX btnSiguiente;
         protected DevComponents.DotNetBar.ButtonX btnUltimo;
         private DevComponents.DotNetBar.Controls.ReflectionLabel reflectionLabelLogo;
-        protected System.Windows.Forms.TextBox TxtNombreUsu;
         private System.Windows.Forms.Panel PanelNavegacion;
         protected DevComponents.DotNetBar.Controls.Flyout MFlyoutUsuario;
         protected System.Windows.Forms.ErrorProvider MEP;
@@ -838,5 +840,6 @@
         public System.Windows.Forms.Panel PanelInferior;
         protected Bunifu.Framework.UI.BunifuElipse BunifuEclipse;
         public DevComponents.DotNetBar.SuperTabControl superTabControl1;
+        public System.Windows.Forms.TextBox TxtNombreUsu;
     }
 }

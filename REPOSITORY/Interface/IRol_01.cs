@@ -15,6 +15,6 @@ namespace REPOSITORY.Interface
         bool Modificar(VRol_01 Lista, string usuario);
         bool EliminarDetalle(int IdRol, List<VRol_01> detalle);
         bool Eliminar(int IdDeltalle);
-
+        List<VRol_01> ListaDetalle(int IdRol, int IdModulo);
     }
 }

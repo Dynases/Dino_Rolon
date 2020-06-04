@@ -181,6 +181,38 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VRol_01> ListaDetalle(int IdRol, int IdModulo)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Rol_01
+                                      join b in db.Programa on a.IdPrograma equals b.IdPrograma
+                                      where a.IdRol == IdRol && b.IdModulo==IdModulo
+                                      select new VRol_01
+                                      {                                          
+                                          IdRol = a.IdRol,
+                                          IdPrograma = a.IdPrograma,
+                                          NombreProg = b.NombreProg,
+                                          Descripcion = b.Descripcion,
+                                          IdModulo = b.IdModulo,
+                                          Show = a.Show,
+                                          Add = a.Add,
+                                          Mod = a.Mod,
+                                          Del = a.Del,                                         
+
+                                      }).ToList();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

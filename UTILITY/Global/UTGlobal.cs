@@ -25,6 +25,7 @@ namespace UTILITY.Global
         public static string Usuario = "DEFAULT";
         public static int Mayusculas = 0;
         public static int UsuarioRol = 0;
+        public static int UsuarioId = 0;
         public static string NombreButton = "";
         public static Visualizador visualizador;
         //**Carpetas

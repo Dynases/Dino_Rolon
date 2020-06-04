@@ -11,6 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
+using DevComponents.DotNetBar.Metro;
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Rendering;
 
 namespace PRESENTER.adm
 {
@@ -107,16 +111,61 @@ namespace PRESENTER.adm
 
         private void Metro_Usuarios_Click(object sender, EventArgs e)
         {
-            F1_Usuarios frm = new F1_Usuarios();
-            frm._NombreProg = Metro_Usuarios.Name;
+            MODEL.ModeloF1._NombreProg = Metro_Usuarios.Name;
+            F1_Usuarios frm = new F1_Usuarios();                      
             frm.Show();
-        }
+        }       
+     
 
         private void Metro_Roles_Click(object sender, EventArgs e)
         {
-            F1_Roles frm = new F1_Roles();
-            frm._NombreProg = Metro_Roles.Name;
-            frm.Show();
+            MODEL.ModeloF1._NombreProg = Metro_Roles.Name;
+            F1_Roles frm = new F1_Roles();           
+            frm.Show();           
         }
+
+        private void CerrarSesion_Click(object sender, EventArgs e)
+        {
+            rmSesion.IsOpen = true;
+            rmSesion.MenuLocation = new Point(this.Width / 2, this.Height / 3);
+        }
+
+        private void rmSesion_ItemClick(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            RadialMenuItem item = sender as RadialMenuItem;
+            if (item != null && (!string.IsNullOrEmpty(item.Text)))
+            {                
+                switch (item.Name)
+                {
+                    case "btnCerrarSesion":
+                        {
+                            this.Hide();                           
+                            FP_Administracion.Select();
+                            login.Show();
+                            break;
+                        }
+
+                    case "btnSalir":
+                        {
+                            _Salir();
+                            break;
+                        }
+
+                    case "btnAbout":
+                        {
+                            break;
+                        }
+                }
+            }
+        }
+        private void _Salir()
+        {
+            //this.Close();
+            Application.ExitThread();
+        }
+        
+
+    
     }
 }
