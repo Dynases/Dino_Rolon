@@ -328,6 +328,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+ 
         #endregion
         #region Verificaciones
         public bool ExisteEnSeleccion(int IdCompraIngreso)
@@ -342,6 +343,41 @@ namespace REPOSITORY.Clase
                                      select a).Count();
                     return resultado != 0 ? true : false;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCompraIngreso(int estado)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"SELECT	
+	                                a.Id,
+	                                a.NumNota,
+	                               
+	                                a.FechaRec,
+	                                
+	                               
+	                                b.Descrip as Proveedor,
+	                          
+	                           
+	                                a.IdAlmacen,
+                                    a.TipoCompra
+                                FROM 
+	                                COM.CompraIng a JOIN
+	                                COM.Proveed b ON b.Id = a.IdProvee 
+                                WHERE
+                                    a.Estado <> -1 AND   ");
+                if (estado == (int)ENEstado.COMPLETADO)
+                {
+                    sb.AppendFormat("a.Estado <> 3 AND   ");
+                }
+                sb.Length -= 7;
+                return tabla = BD.EjecutarConsulta(sb.ToString()).Tables[0];
             }
             catch (Exception ex)
             {
