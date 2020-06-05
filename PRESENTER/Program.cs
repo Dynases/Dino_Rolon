@@ -16,7 +16,7 @@ namespace PRESENTER
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new adm.Login());
+            Application.Run(new adm.Principal());
         }
     }
 }

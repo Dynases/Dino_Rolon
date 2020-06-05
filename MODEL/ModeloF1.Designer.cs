@@ -399,7 +399,7 @@
             this.LblSubtitulo.Name = "LblSubtitulo";
             this.LblSubtitulo.Size = new System.Drawing.Size(837, 36);
             this.LblSubtitulo.TabIndex = 68;
-            this.LblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PanelMenu
             // 
