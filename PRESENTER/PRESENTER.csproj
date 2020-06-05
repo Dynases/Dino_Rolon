@@ -337,17 +337,17 @@
     <Compile Include="alm\F1_Transformacion.Designer.cs">
       <DependentUpon>F1_Transformacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="com\F2_CompraIngreso_Reporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="com\F2_CompraIngreso_Reporte.Designer.cs">
-      <DependentUpon>F2_CompraIngreso_Reporte.cs</DependentUpon>
-    </Compile>
     <Compile Include="com\FI_Seleccion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="com\FI_Seleccion.Designer.cs">
       <DependentUpon>FI_Seleccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngreso.Designer.cs">
+      <DependentUpon>F2_CompraIngreso.cs</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceDesktop\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -457,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="com\FI_Seleccion.resx">
       <DependentUpon>FI_Seleccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com\Reporte\F2_CompraIngreso.resx">
+      <DependentUpon>F2_CompraIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\Efecto.resx">
       <DependentUpon>Efecto.cs</DependentUpon>

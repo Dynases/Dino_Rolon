@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Almacenes_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_ReporteKardex));
+            Janus.Windows.GridEX.GridEXLayout Cb_Almacenes_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.GPanel_KardexGeneral = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.BtKardexGeneral = new DevComponents.DotNetBar.ButtonX();
@@ -39,8 +39,6 @@
             this.Dt_FechaInicio = new MetroFramework.Controls.MetroDateTime();
             this.Cb_Almacenes = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -52,37 +50,19 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
-            this.PanelInferior.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.GPanel_KardexGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacenes)).BeginInit();
             this.SuspendLayout();
             // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Size = new System.Drawing.Size(1008, 567);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            // 
             // TxtNombreUsu
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(820, 0);
+            this.TxtNombreUsu.Location = new System.Drawing.Point(614, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // BubbleBarUsuario
             // 
@@ -104,29 +84,35 @@
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingLeft = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingRight = 3;
             this.BubbleBarUsuario.ButtonBackAreaStyle.PaddingTop = 3;
-            this.BubbleBarUsuario.Location = new System.Drawing.Point(753, 0);
+            this.BubbleBarUsuario.Location = new System.Drawing.Point(564, 0);
+            this.BubbleBarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(800, 530);
+            this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(756, 428);
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(948, 0);
+            this.btnMin.Location = new System.Drawing.Point(696, 0);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(968, 0);
+            this.btnMax.Location = new System.Drawing.Point(716, 0);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(988, 0);
+            this.btnClose.Location = new System.Drawing.Point(736, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(800, 530);
+            this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(756, 428);
             // 
             // 
             // 
@@ -158,41 +144,71 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(794, 499);
+            this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(750, 402);
             // 
             // LblSubtitulo
             // 
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSubtitulo.Size = new System.Drawing.Size(1008, 44);
+            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblSubtitulo.Size = new System.Drawing.Size(756, 36);
             this.LblSubtitulo.Text = "SELECCIONA LOS PARAMETROS DEL REPORTE";
             // 
             // PanelMenu
             // 
             this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Size = new System.Drawing.Size(1008, 89);
-            // 
-            // PanelInferior
-            // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 566);
-            this.PanelInferior.Size = new System.Drawing.Size(1008, 34);
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelMenu.Size = new System.Drawing.Size(756, 72);
             // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 37);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1008, 530);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(756, 428);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 400);
+            this.PanelInferior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelInferior.Size = new System.Drawing.Size(756, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(756, 461);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // PanelFondo
             // 
             this.PanelFondo.BackColor = System.Drawing.Color.Transparent;
             this.PanelFondo.Controls.Add(this.GPanel_KardexGeneral);
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFondo.Location = new System.Drawing.Point(0, 133);
+            this.PanelFondo.Location = new System.Drawing.Point(0, 108);
+            this.PanelFondo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1008, 397);
+            this.PanelFondo.Size = new System.Drawing.Size(756, 292);
             this.PanelFondo.TabIndex = 69;
             // 
             // GPanel_KardexGeneral
@@ -208,10 +224,9 @@
             this.GPanel_KardexGeneral.Controls.Add(this.labelX1);
             this.GPanel_KardexGeneral.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_KardexGeneral.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.GPanel_KardexGeneral.Location = new System.Drawing.Point(13, 18);
-            this.GPanel_KardexGeneral.Margin = new System.Windows.Forms.Padding(4);
+            this.GPanel_KardexGeneral.Location = new System.Drawing.Point(10, 15);
             this.GPanel_KardexGeneral.Name = "GPanel_KardexGeneral";
-            this.GPanel_KardexGeneral.Size = new System.Drawing.Size(982, 119);
+            this.GPanel_KardexGeneral.Size = new System.Drawing.Size(736, 97);
             // 
             // 
             // 
@@ -250,11 +265,11 @@
             this.BtKardexGeneral.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtKardexGeneral.ImageFixedSize = new System.Drawing.Size(40, 40);
             this.BtKardexGeneral.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.BtKardexGeneral.Location = new System.Drawing.Point(781, 7);
+            this.BtKardexGeneral.Location = new System.Drawing.Point(586, 6);
             this.BtKardexGeneral.Margin = new System.Windows.Forms.Padding(0);
             this.BtKardexGeneral.Name = "BtKardexGeneral";
             this.BtKardexGeneral.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4);
-            this.BtKardexGeneral.Size = new System.Drawing.Size(130, 62);
+            this.BtKardexGeneral.Size = new System.Drawing.Size(98, 50);
             this.BtKardexGeneral.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014;
             this.BtKardexGeneral.SubItemsExpandWidth = 10;
             this.BtKardexGeneral.TabIndex = 367;
@@ -271,11 +286,10 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX3.Location = new System.Drawing.Point(576, 7);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX3.Location = new System.Drawing.Point(432, 6);
             this.labelX3.Name = "labelX3";
             this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX3.Size = new System.Drawing.Size(182, 28);
+            this.labelX3.Size = new System.Drawing.Size(136, 23);
             this.labelX3.TabIndex = 366;
             this.labelX3.Text = "Hasta:";
             // 
@@ -283,11 +297,10 @@
             // 
             this.Dt_FechaFin.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.Dt_FechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Dt_FechaFin.Location = new System.Drawing.Point(576, 39);
-            this.Dt_FechaFin.Margin = new System.Windows.Forms.Padding(4);
+            this.Dt_FechaFin.Location = new System.Drawing.Point(432, 32);
             this.Dt_FechaFin.MinimumSize = new System.Drawing.Size(0, 25);
             this.Dt_FechaFin.Name = "Dt_FechaFin";
-            this.Dt_FechaFin.Size = new System.Drawing.Size(182, 30);
+            this.Dt_FechaFin.Size = new System.Drawing.Size(138, 25);
             this.Dt_FechaFin.TabIndex = 365;
             // 
             // labelX2
@@ -299,11 +312,10 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX2.Location = new System.Drawing.Point(370, 7);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX2.Location = new System.Drawing.Point(278, 6);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX2.Size = new System.Drawing.Size(182, 28);
+            this.labelX2.Size = new System.Drawing.Size(136, 23);
             this.labelX2.TabIndex = 364;
             this.labelX2.Text = "Desde:";
             // 
@@ -312,11 +324,10 @@
             this.Dt_FechaInicio.CalendarFont = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.Dt_FechaInicio.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.Dt_FechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Dt_FechaInicio.Location = new System.Drawing.Point(370, 40);
-            this.Dt_FechaInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.Dt_FechaInicio.Location = new System.Drawing.Point(278, 32);
             this.Dt_FechaInicio.MinimumSize = new System.Drawing.Size(0, 25);
             this.Dt_FechaInicio.Name = "Dt_FechaInicio";
-            this.Dt_FechaInicio.Size = new System.Drawing.Size(182, 30);
+            this.Dt_FechaInicio.Size = new System.Drawing.Size(138, 25);
             this.Dt_FechaInicio.TabIndex = 363;
             // 
             // Cb_Almacenes
@@ -327,14 +338,13 @@
             this.Cb_Almacenes.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Almacenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Almacenes.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacenes.Location = new System.Drawing.Point(20, 42);
-            this.Cb_Almacenes.Margin = new System.Windows.Forms.Padding(4);
+            this.Cb_Almacenes.Location = new System.Drawing.Point(15, 34);
             this.Cb_Almacenes.Name = "Cb_Almacenes";
             this.Cb_Almacenes.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacenes.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Almacenes.SelectedIndex = -1;
             this.Cb_Almacenes.SelectedItem = null;
-            this.Cb_Almacenes.Size = new System.Drawing.Size(331, 27);
+            this.Cb_Almacenes.Size = new System.Drawing.Size(248, 22);
             this.Cb_Almacenes.TabIndex = 349;
             this.Cb_Almacenes.Tag = "1";
             this.Cb_Almacenes.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -348,24 +358,22 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(20, 6);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX1.Location = new System.Drawing.Point(15, 5);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(167, 28);
+            this.labelX1.Size = new System.Drawing.Size(125, 23);
             this.labelX1.TabIndex = 350;
             this.labelX1.Text = "Almacen:";
             // 
             // F1_ReporteKardex
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 600);
+            this.ClientSize = new System.Drawing.Size(756, 488);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "F1_ReporteKardex";
             this.Text = "F1_ReporteKardex";
             this.Load += new System.EventHandler(this.F1_ReporteKardex_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -378,9 +386,11 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
-            this.PanelContenidoRegistro.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.GPanel_KardexGeneral.ResumeLayout(false);
             this.GPanel_KardexGeneral.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MODEL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PRESENTER.com
+namespace PRESENTER.com.Reporte
 {
-    public partial class F2_CompraIngreso_Reporte : Form
+    public partial class F2_CompraIngreso : ModeloF2
     {
-        public F2_CompraIngreso_Reporte()
+        public F2_CompraIngreso()
         {
             InitializeComponent();
         }
