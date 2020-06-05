@@ -639,16 +639,16 @@ namespace PRESENTER.com
                 {
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ListarEncabezado();
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO); 
                         List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
-                        new GLCelda() { campo = "NumNota", visible = true, titulo = "NOTA DE GRANJA", tamano = 80 },
-                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENTRADA", tamano = 80 },
-                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA RECEPCION", tamano = 80 },
-                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 120 },
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
+                        new GLCelda() { campo = "NumNota", visible = true, titulo = "N.GRANJA", tamano = 100 },
+                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENT.", tamano = 100 },
+                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA REC.", tamano = 100 },
+                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 130 },
                         new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
-                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 150 },
+                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 240 },
                         new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
                         new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
                         new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },

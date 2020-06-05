@@ -71,7 +71,7 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
-
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCompraIngresoLista> ListarXId(int id)
         {
             try
@@ -83,6 +83,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        /********** VARIOS REGISTROS ***********/
         public List<VCompraIngreso> Listar()
         {
             try
@@ -94,7 +95,18 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-
+        public DataTable BuscarCompraIngreso(int estado)
+        {
+            try
+            {
+                return iCompraIngreso.BuscarCompraIngreso(estado);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTES ***********/
         public List<VCompraIngresoNota> ListarNotaXId(int id)
         {
             try
@@ -106,11 +118,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable ListarEncabezado()
+        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)
         {
             try
             {
-                return iCompraIngreso.ListarEncabezado();
+                return iCompraIngreso.ReporteCompraIngreso(fechaDesde, fechaHasta, estados);
             }
             catch (Exception ex)
             {

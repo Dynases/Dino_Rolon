@@ -154,7 +154,7 @@ namespace LOGIC.Class
             }
         }
         #endregion
-        #region Transacciones
+        #region Verficaciones
         public bool ExisteEnCompra(int idProducto)
         {
             try
@@ -215,6 +215,17 @@ namespace LOGIC.Class
             try
             {
                 return iProducto.ExisteEnMovimiento(idProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EsCategoriaSuper(int idProducto)
+        {
+            try
+            {
+                return iProducto.EsCategoriaSuper(idProducto);
             }
             catch (Exception ex)
             {

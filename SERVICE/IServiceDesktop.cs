@@ -177,10 +177,12 @@ namespace SERVICE
                 bool ProductoExisteEnTransformacion(int id);
                 [OperationContract]
                 bool ProductoExisteEnSeleccion(int id);
-            #endregion
+                [OperationContract]
+                bool ProductoEsCategoriaSuper(int id);
+        #endregion
         #endregion
         /********** ALMACEN *****************/
-       
+
         #region Almacen
 
         [OperationContract]
@@ -274,21 +276,26 @@ namespace SERVICE
                 bool CompraIngreso_Guardar(VCompraIngresoLista proveedor, List<VCompraIngreso_01> detalle, ref int id, string usuario);
                 [OperationContract]
                 bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado,  ref List<string>lMensaje);
-            #endregion
-            #region Consulta
-                [OperationContract]
-                List<VCompraIngreso> CmmpraIngresoListar();
-
+        #endregion
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/              
                 [OperationContract]
                 List<VCompraIngresoLista> CmmpraIngresoListarXId(int id);
+        /********** VARIOS REGISTROS ***********/               
+                [OperationContract]
+                DataTable CompraIngresoBuscar(int estado);
+
+                [OperationContract]
+                List<VCompraIngreso> CmmpraIngresoListar();
+        /********** REPORTES ***********/
+                [OperationContract]
+                DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados);
 
                 [OperationContract]
                 List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
-                [OperationContract]
-                DataTable CompraIngreso_ListarEncabezado();
-                #endregion
-            #region Verficaciones
-                [OperationContract]
+        #endregion
+        #region Verficaciones
+        [OperationContract]
                 bool CompraIngreso_ExisteEnSeleccion(int id);
             #endregion
         #endregion

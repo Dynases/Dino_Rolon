@@ -12,6 +12,8 @@ namespace UTILITY.Enum.EnEstado
         NUEVO = 0,
         GUARDADO= 1,
         MODIFICAR = 2,
-        COMPLETADO= 3
+        COMPLETADO= 3,
+        TODOS = 4
+
     }
 }

@@ -590,6 +590,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool ProductoEsCategoriaSuper(int id)
+        {
+            try
+            {
+                var listResult = new LProducto().EsCategoriaSuper(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #endregion
 
@@ -1006,11 +1018,23 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable CompraIngreso_ListarEncabezado()
+        public DataTable CompraIngresoBuscar(int estado)
         {
             try
             {
-                var listResult = new LCompraIngreso().ListarEncabezado();
+                var listResult = new LCompraIngreso().BuscarCompraIngreso(estado);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)  
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteCompraIngreso(fechaDesde, fechaHasta, estados);
                 return listResult;
             }
             catch (Exception ex)
