@@ -156,41 +156,7 @@ namespace REPOSITORY.Clase
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngresoNota> ListarNotaXId(int Id)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var listResult = (from a in db.V_NotaCompraIngreso
-                                      where a.Id.Equals(Id)
-                                      select new VCompraIngresoNota
-                                      {
-                                          Id = a.Id,
-                                          NumNota=a.NumNota,
-                                          FechaRec = a.FechaRec,
-                                          FechaEnt = a.FechaEnt,
-                                          Proveedor= a.Proveedor,
-                                          IdSkype= a.IdSpyre,
-                                          MarcaTipo =a.MarcaTipo,
-                                          IdProducto = a.IdProduc,
-                                          Producto = a.Producto,
-                                          TotalCant = a.TotalCant,
-                                          PrecioCost = a.PrecioCost,
-                                          Total = a.Total,
-                                          Entregado = a.Entregado,
-                                          DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = a.TotalMaple
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
+   
         public List<VCompraIngresoLista> ListarXId(int id)
         {
             try
@@ -328,7 +294,95 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
- 
+
+        /********** REPORTES ***********/
+        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"SELECT	
+                                a.Id,
+                                a.NumNota,
+                                a.FechaRec,
+                                b.Descrip as Proveedor,
+                                a.IdAlmacen,
+                                c.Descrip as Almacen,
+                                SUM(e.TotalCant) AS TotalCantidad,
+                                a.TotalMaple,
+                                DATEDIFF(Day, a.FechaRec, GETDATE()) Dias
+                            FROM 
+                                COM.CompraIng a JOIN
+                                COM.Proveed b ON b.Id = a.IdProvee JOIN
+                                INV.Almacen c ON c.Id = a.IdAlmacen JOIN
+                                COM.CompraIng_01 e ON e.IdCompra = a.Id
+                                WHERE
+                                a.Estado <> -1  and a.Estado <> 3 AND   ");
+                if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 
+                {
+                    sb.Append(string.Format("a.FechaRec between '{0}' and '{1}' AND   ", fechaDesde, fechaHasta));
+                }
+                else if (fechaDesde.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec >= '{0}' AND   ", fechaDesde));
+                }
+                else if (fechaHasta.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec <= '{0}' AND   ", fechaHasta));
+                }
+                if (estados.Length > 0)
+                {
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", string.Join(",", estados)));
+                }
+                sb.Length -= 7;
+                sb.Append(@"GROUP BY 
+                                a.Id, a.NumNota, a.FechaRec, b.Descrip, a.IdAlmacen, c.Descrip, a.TotalMaple
+                            ORDER BY
+                                a.FechaRec ASC");
+                return tabla = BD.EjecutarConsulta(sb.ToString()).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VCompraIngresoNota> ListarNotaXId(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.V_NotaCompraIngreso
+                                      where a.Id.Equals(Id)
+                                      select new VCompraIngresoNota
+                                      {
+                                          Id = a.Id,
+                                          NumNota = a.NumNota,
+                                          FechaRec = a.FechaRec,
+                                          FechaEnt = a.FechaEnt,
+                                          Proveedor = a.Proveedor,
+                                          IdSkype = a.IdSpyre,
+                                          MarcaTipo = a.MarcaTipo,
+                                          IdProducto = a.IdProduc,
+                                          Producto = a.Producto,
+                                          TotalCant = a.TotalCant,
+                                          PrecioCost = a.PrecioCost,
+                                          Total = a.Total,
+                                          Entregado = a.Entregado,
+                                          DescripcionRecibido = a.DescripcionRecibido,
+                                          TotalMaple = a.TotalMaple
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion
         #region Verificaciones
         public bool ExisteEnSeleccion(int IdCompraIngreso)
@@ -349,41 +403,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable ReporteCompraIngreso(int estado)
-        {
-            try
-            {
-                DataTable tabla = new DataTable();
-                StringBuilder sb = new StringBuilder();
-                sb.Append(@"SELECT	
-	                                a.Id,
-	                                a.NumNota,
-	                               
-	                                a.FechaRec,
-	                                
-	                               
-	                                b.Descrip as Proveedor,
-	                          
-	                           
-	                                a.IdAlmacen,
-                                    a.TipoCompra
-                                FROM 
-	                                COM.CompraIng a JOIN
-	                                COM.Proveed b ON b.Id = a.IdProvee 
-                                WHERE
-                                    a.Estado <> -1 AND   ");
-                if (estado == (int)ENEstado.COMPLETADO)
-                {
-                    sb.AppendFormat("a.Estado <> 3 AND   ");
-                }
-                sb.Length -= 7;
-                return tabla = BD.EjecutarConsulta(sb.ToString()).Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        
         #endregion
 
     }

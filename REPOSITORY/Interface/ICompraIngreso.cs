@@ -17,6 +17,7 @@ namespace REPOSITORY.Interface
         List<VCompraIngresoNota> ListarNotaXId(int Id);
         DataTable BuscarCompraIngreso(int estado);
         bool ModificarEstado(int IdCompraIngreso, int estado, ref List<string> lMensaje);
-        bool ExisteEnSeleccion(int IdCompraIngreso);       
+        bool ExisteEnSeleccion(int IdCompraIngreso);
+        DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados);
     }
 }

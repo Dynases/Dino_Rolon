@@ -1008,6 +1008,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)  
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteCompraIngreso(fechaDesde, fechaHasta, estados);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
         public bool CompraIngreso_ExisteEnSeleccion(int id)

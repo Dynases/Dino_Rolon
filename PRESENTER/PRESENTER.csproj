@@ -337,6 +337,12 @@
     <Compile Include="alm\F1_Transformacion.Designer.cs">
       <DependentUpon>F1_Transformacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="com\F2_CompraIngreso_Reporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com\F2_CompraIngreso_Reporte.Designer.cs">
+      <DependentUpon>F2_CompraIngreso_Reporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="com\FI_Seleccion.cs">
       <SubType>Form</SubType>
     </Compile>
