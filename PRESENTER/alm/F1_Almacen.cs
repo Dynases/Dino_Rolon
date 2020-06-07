@@ -6,6 +6,7 @@ using GMap.NET.WindowsForms;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace PRESENTER.alm
             this.MP_InHabilitar();
             this.MP_CargarTiposAlmacen();
             this.MP_CargarSucursales();
-            this.MP_CargarAlmacenes();
+            this.MP_CargarAlmacenes(); 
+            this.MP_AsignarPermisos();
         }
 
         //==================================
@@ -49,7 +51,31 @@ namespace PRESENTER.alm
             Gmc_Almacen.Overlays.Add(_overlay);
             MP_Map();
         }
+        private void MP_AsignarPermisos()
+        {
+            try
+            {
+                DataTable dtRolUsu = new ServiceDesktop.ServiceDesktopClient().AsignarPermisos((UTGlobal.UsuarioRol).ToString(), _NombreProg);
+                if (dtRolUsu.Rows.Count > 0)
+                {
+                    bool show = Convert.ToBoolean(dtRolUsu.Rows[0]["Show"]);
+                    bool add = Convert.ToBoolean(dtRolUsu.Rows[0]["Add"]);
+                    bool modif = Convert.ToBoolean(dtRolUsu.Rows[0]["Mod"]);
+                    bool del = Convert.ToBoolean(dtRolUsu.Rows[0]["Del"]);
 
+                    if (add == false)
+                        BtnNuevo.Visible = false;
+                    if (modif == false)
+                        BtnModificar.Visible = false;
+                    if (del == false)
+                        BtnEliminar.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void MP_Map()
         {
             Gmc_Almacen.DragButton = MouseButtons.Left;

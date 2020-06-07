@@ -3,6 +3,7 @@ using ENTITY.inv.TipoAlmacen.view;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using UTILITY.Global;
@@ -16,6 +17,7 @@ namespace PRESENTER.reg
             InitializeComponent();
             this.MP_Inhabilitar();
             this.MP_CargarTiposDeAlmacen();
+            MP_AsignarPermisos();
         }
 
         #region Variables de instancia
@@ -32,6 +34,31 @@ namespace PRESENTER.reg
             ToastNotification.Show(this, mensaje.ToUpper(),
                 PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano,
                 eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
+        private void MP_AsignarPermisos()
+        {
+            try
+            {
+                DataTable dtRolUsu = new ServiceDesktop.ServiceDesktopClient().AsignarPermisos((UTGlobal.UsuarioRol).ToString(), _NombreProg);
+                if (dtRolUsu.Rows.Count > 0)
+                {
+                    bool show = Convert.ToBoolean(dtRolUsu.Rows[0]["Show"]);
+                    bool add = Convert.ToBoolean(dtRolUsu.Rows[0]["Add"]);
+                    bool modif = Convert.ToBoolean(dtRolUsu.Rows[0]["Mod"]);
+                    bool del = Convert.ToBoolean(dtRolUsu.Rows[0]["Del"]);
+
+                    if (add == false)
+                        BtnNuevo.Visible = false;
+                    if (modif == false)
+                        BtnModificar.Visible = false;
+                    if (del == false)
+                        BtnEliminar.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
         }
 
         private void MP_Inhabilitar()

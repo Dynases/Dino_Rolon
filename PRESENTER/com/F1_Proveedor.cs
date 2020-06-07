@@ -342,11 +342,37 @@ namespace PRESENTER.com
                 Btn_LineaGen.Visible = false;
                 btn_TipoAlojamiento.Visible = false;
                 btn_TipoProveedor.Visible = false;
+                MP_AsignarPermisos();
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
             }                    
+        }
+        private void MP_AsignarPermisos()
+        {
+            try
+            {
+                DataTable dtRolUsu = new ServiceDesktop.ServiceDesktopClient().AsignarPermisos((UTGlobal.UsuarioRol).ToString(), _NombreProg);
+                if (dtRolUsu.Rows.Count > 0)
+                {
+                    bool show = Convert.ToBoolean(dtRolUsu.Rows[0]["Show"]);
+                    bool add = Convert.ToBoolean(dtRolUsu.Rows[0]["Add"]);
+                    bool modif = Convert.ToBoolean(dtRolUsu.Rows[0]["Mod"]);
+                    bool del = Convert.ToBoolean(dtRolUsu.Rows[0]["Del"]);
+
+                    if (add == false)
+                        BtnNuevo.Visible = false;
+                    if (modif == false)
+                        BtnModificar.Visible = false;
+                    if (del == false)
+                        BtnEliminar.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
         }
         private void MP_InicioArmarCombo(int detalle)
         {
