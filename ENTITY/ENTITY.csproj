@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Cliente\View\VCliente.cs" />
     <Compile Include="Cliente\View\VClienteLista.cs" />
+    <Compile Include="com\CompraIngreso\Report\RepCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngresoLista.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngresoNota.cs" />

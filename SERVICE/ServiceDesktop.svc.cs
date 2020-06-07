@@ -1030,11 +1030,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)  
+        public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estado)  
         {
             try
             {
-                var listResult = new LCompraIngreso().ReporteCompraIngreso(fechaDesde, fechaHasta, estados);
+                var listResult = new LCompraIngreso().ReporteCompraIngreso(fechaDesde, fechaHasta, estado);
                 return listResult;
             }
             catch (Exception ex)

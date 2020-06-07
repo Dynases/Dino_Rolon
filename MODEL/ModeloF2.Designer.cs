@@ -28,46 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModeloF2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelSuperior = new System.Windows.Forms.Panel();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMin = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnMax = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.LblTitulo = new System.Windows.Forms.Label();
-            this.PanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.BtnExportar = new DevComponents.DotNetBar.ButtonX();
-            this.BtnImprimir = new DevComponents.DotNetBar.ButtonX();
-            this.BtnAtras = new DevComponents.DotNetBar.ButtonX();
-            this.BtnGrabar = new DevComponents.DotNetBar.ButtonX();
-            this.BtnEliminar = new DevComponents.DotNetBar.ButtonX();
-            this.reflectionLabelLogo = new DevComponents.DotNetBar.Controls.ReflectionLabel();
             this.LblSubtitulo = new System.Windows.Forms.Label();
             this.PanelInferior = new System.Windows.Forms.Panel();
             this.BubbleBarUsuario = new DevComponents.DotNetBar.BubbleBar();
-            this.BubbleBarTabUsuario = new DevComponents.DotNetBar.BubbleBarTab();
+            this.BubbleBarTabUsuario = new DevComponents.DotNetBar.BubbleBarTab(this.components);
             this.TxtNombreUsu = new System.Windows.Forms.TextBox();
             this.PanelNavegacion = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.LblPaginacion = new System.Windows.Forms.Label();
             this.GPanel_Criterio = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.Dgv_Busqueda = new MetroFramework.Controls.MetroGrid();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.PanelMenu = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.BtnExportar = new DevComponents.DotNetBar.ButtonX();
+            this.BtnGenerar = new DevComponents.DotNetBar.ButtonX();
+            this.BtnAtras = new DevComponents.DotNetBar.ButtonX();
+            this.reflectionLabelLogo = new DevComponents.DotNetBar.Controls.ReflectionLabel();
             this.PanelSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-            this.PanelMenu.SuspendLayout();
             this.PanelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelNavegacion.SuspendLayout();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Busqueda)).BeginInit();
+            this.PanelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelSuperior
@@ -108,6 +104,7 @@
             this.btnMin.TabIndex = 3;
             this.btnMin.TabStop = false;
             this.btnMin.Zoom = 10;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // btnMax
             // 
@@ -123,6 +120,7 @@
             this.btnMax.TabIndex = 4;
             this.btnMax.TabStop = false;
             this.btnMax.Zoom = 10;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
             // 
             // btnClose
             // 
@@ -138,6 +136,7 @@
             this.btnClose.TabIndex = 5;
             this.btnClose.TabStop = false;
             this.btnClose.Zoom = 10;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // LblTitulo
             // 
@@ -149,134 +148,6 @@
             this.LblTitulo.Size = new System.Drawing.Size(63, 17);
             this.LblTitulo.TabIndex = 0;
             this.LblTitulo.Text = "NOMBRE";
-            // 
-            // PanelMenu
-            // 
-            this.PanelMenu.BackColor = System.Drawing.Color.White;
-            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelMenu.Controls.Add(this.BtnExportar);
-            this.PanelMenu.Controls.Add(this.BtnImprimir);
-            this.PanelMenu.Controls.Add(this.BtnAtras);
-            this.PanelMenu.Controls.Add(this.BtnGrabar);
-            this.PanelMenu.Controls.Add(this.BtnEliminar);
-            this.PanelMenu.Controls.Add(this.reflectionLabelLogo);
-            this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelMenu.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(115)))));
-            this.PanelMenu.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.PanelMenu.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
-            this.PanelMenu.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
-            this.PanelMenu.Location = new System.Drawing.Point(0, 27);
-            this.PanelMenu.Name = "PanelMenu";
-            this.PanelMenu.Quality = 10;
-            this.PanelMenu.Size = new System.Drawing.Size(921, 72);
-            this.PanelMenu.TabIndex = 4;
-            // 
-            // BtnExportar
-            // 
-            this.BtnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnExportar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnExportar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnExportar.Enabled = false;
-            this.BtnExportar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExportar.Image = global::MODEL.Properties.Resources.EXCEL;
-            this.BtnExportar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnExportar.Location = new System.Drawing.Point(288, 0);
-            this.BtnExportar.Name = "BtnExportar";
-            this.BtnExportar.Size = new System.Drawing.Size(78, 72);
-            this.BtnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnExportar.TabIndex = 76;
-            this.BtnExportar.Text = "EXPORTAR";
-            this.BtnExportar.TextColor = System.Drawing.Color.White;
-            this.BtnExportar.Visible = false;
-            // 
-            // BtnImprimir
-            // 
-            this.BtnImprimir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnImprimir.BackColor = System.Drawing.Color.Transparent;
-            this.BtnImprimir.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnImprimir.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnImprimir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnImprimir.Image = global::MODEL.Properties.Resources.PRINT;
-            this.BtnImprimir.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnImprimir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnImprimir.Location = new System.Drawing.Point(216, 0);
-            this.BtnImprimir.Name = "BtnImprimir";
-            this.BtnImprimir.Size = new System.Drawing.Size(72, 72);
-            this.BtnImprimir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnImprimir.TabIndex = 75;
-            this.BtnImprimir.Text = "IMPRIMIR";
-            this.BtnImprimir.TextColor = System.Drawing.Color.White;
-            // 
-            // BtnAtras
-            // 
-            this.BtnAtras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.BtnAtras.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnAtras.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnAtras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAtras.Image = global::MODEL.Properties.Resources.atras;
-            this.BtnAtras.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnAtras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnAtras.Location = new System.Drawing.Point(144, 0);
-            this.BtnAtras.Name = "BtnAtras";
-            this.BtnAtras.Size = new System.Drawing.Size(72, 72);
-            this.BtnAtras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnAtras.TabIndex = 74;
-            this.BtnAtras.Text = "SALIR";
-            this.BtnAtras.TextColor = System.Drawing.Color.White;
-            // 
-            // BtnGrabar
-            // 
-            this.BtnGrabar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnGrabar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnGrabar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnGrabar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnGrabar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGrabar.Image = global::MODEL.Properties.Resources.save___copia;
-            this.BtnGrabar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnGrabar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnGrabar.Location = new System.Drawing.Point(72, 0);
-            this.BtnGrabar.Name = "BtnGrabar";
-            this.BtnGrabar.Size = new System.Drawing.Size(72, 72);
-            this.BtnGrabar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnGrabar.TabIndex = 73;
-            this.BtnGrabar.Text = "GENERAR";
-            this.BtnGrabar.TextColor = System.Drawing.Color.White;
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
-            this.BtnEliminar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BtnEliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Image = global::MODEL.Properties.Resources.trash;
-            this.BtnEliminar.ImageFixedSize = new System.Drawing.Size(48, 48);
-            this.BtnEliminar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnEliminar.Location = new System.Drawing.Point(0, 0);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(72, 72);
-            this.BtnEliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnEliminar.TabIndex = 72;
-            this.BtnEliminar.Text = "BUSCAR";
-            this.BtnEliminar.TextColor = System.Drawing.Color.White;
-            // 
-            // reflectionLabelLogo
-            // 
-            this.reflectionLabelLogo.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.reflectionLabelLogo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.reflectionLabelLogo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.reflectionLabelLogo.Location = new System.Drawing.Point(776, 0);
-            this.reflectionLabelLogo.Name = "reflectionLabelLogo";
-            this.reflectionLabelLogo.Size = new System.Drawing.Size(145, 72);
-            this.reflectionLabelLogo.TabIndex = 70;
-            this.reflectionLabelLogo.Text = "<b><font size=\"+20\">RO<font color=\"#B02B2C\">LON</font></font></b>";
             // 
             // LblSubtitulo
             // 
@@ -398,12 +269,12 @@
             this.GPanel_Criterio.BackColor = System.Drawing.Color.Transparent;
             this.GPanel_Criterio.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Criterio.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Criterio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GPanel_Criterio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.GPanel_Criterio.Dock = System.Windows.Forms.DockStyle.Left;
+            this.GPanel_Criterio.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Criterio.Location = new System.Drawing.Point(0, 135);
             this.GPanel_Criterio.Name = "GPanel_Criterio";
             this.GPanel_Criterio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.GPanel_Criterio.Size = new System.Drawing.Size(921, 131);
+            this.GPanel_Criterio.Size = new System.Drawing.Size(346, 336);
             // 
             // 
             // 
@@ -433,18 +304,28 @@
             this.GPanel_Criterio.TabIndex = 352;
             this.GPanel_Criterio.Text = "Filtro de búsqueda";
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Selectable;
+            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
+            this.metroLabel1.TabIndex = 0;
+            this.metroLabel1.Text = "Cantidad de filas";
+            // 
             // groupPanel1
             // 
             this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.Dgv_Busqueda);
+            this.groupPanel1.Controls.Add(this.panel1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupPanel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupPanel1.Location = new System.Drawing.Point(0, 266);
+            this.groupPanel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupPanel1.Location = new System.Drawing.Point(346, 135);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupPanel1.Size = new System.Drawing.Size(921, 205);
+            this.groupPanel1.Size = new System.Drawing.Size(575, 336);
             // 
             // 
             // 
@@ -472,66 +353,115 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 353;
-            this.groupPanel1.Text = "Búsqueda";
+            this.groupPanel1.Text = "Reporte";
             // 
-            // Dgv_Busqueda
+            // panel1
             // 
-            this.Dgv_Busqueda.AllowUserToAddRows = false;
-            this.Dgv_Busqueda.AllowUserToDeleteRows = false;
-            this.Dgv_Busqueda.AllowUserToResizeRows = false;
-            this.Dgv_Busqueda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Dgv_Busqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dgv_Busqueda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.Dgv_Busqueda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dgv_Busqueda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Dgv_Busqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Busqueda.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Dgv_Busqueda.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Busqueda.EnableHeadersVisualStyles = false;
-            this.Dgv_Busqueda.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.Dgv_Busqueda.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Dgv_Busqueda.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Busqueda.Name = "Dgv_Busqueda";
-            this.Dgv_Busqueda.ReadOnly = true;
-            this.Dgv_Busqueda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dgv_Busqueda.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.Dgv_Busqueda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.Dgv_Busqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_Busqueda.Size = new System.Drawing.Size(915, 179);
-            this.Dgv_Busqueda.Style = MetroFramework.MetroColorStyle.Silver;
-            this.Dgv_Busqueda.TabIndex = 0;
-            this.Dgv_Busqueda.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(569, 308);
+            this.panel1.TabIndex = 0;
             // 
-            // metroLabel1
+            // reportViewer1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Selectable;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Cantidad de filas";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackColor = System.Drawing.Color.White;
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PanelMenu.Controls.Add(this.BtnExportar);
+            this.PanelMenu.Controls.Add(this.BtnGenerar);
+            this.PanelMenu.Controls.Add(this.BtnAtras);
+            this.PanelMenu.Controls.Add(this.reflectionLabelLogo);
+            this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelMenu.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(115)))));
+            this.PanelMenu.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.PanelMenu.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
+            this.PanelMenu.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
+            this.PanelMenu.Location = new System.Drawing.Point(0, 27);
+            this.PanelMenu.Name = "PanelMenu";
+            this.PanelMenu.Quality = 10;
+            this.PanelMenu.Size = new System.Drawing.Size(921, 72);
+            this.PanelMenu.TabIndex = 4;
+            // 
+            // BtnExportar
+            // 
+            this.BtnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnExportar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnExportar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnExportar.Enabled = false;
+            this.BtnExportar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExportar.Image = global::MODEL.Properties.Resources.EXCEL;
+            this.BtnExportar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnExportar.Location = new System.Drawing.Point(144, 0);
+            this.BtnExportar.Name = "BtnExportar";
+            this.BtnExportar.Size = new System.Drawing.Size(78, 72);
+            this.BtnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnExportar.TabIndex = 76;
+            this.BtnExportar.Text = "EXPORTAR";
+            this.BtnExportar.TextColor = System.Drawing.Color.White;
+            this.BtnExportar.Visible = false;
+            // 
+            // BtnGenerar
+            // 
+            this.BtnGenerar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnGenerar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnGenerar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnGenerar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGenerar.Image = global::MODEL.Properties.Resources.PRINT;
+            this.BtnGenerar.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnGenerar.Location = new System.Drawing.Point(72, 0);
+            this.BtnGenerar.Name = "BtnGenerar";
+            this.BtnGenerar.Size = new System.Drawing.Size(72, 72);
+            this.BtnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnGenerar.TabIndex = 75;
+            this.BtnGenerar.Text = "GENERAR";
+            this.BtnGenerar.TextColor = System.Drawing.Color.White;
+            // 
+            // BtnAtras
+            // 
+            this.BtnAtras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnAtras.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAtras.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.BtnAtras.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnAtras.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAtras.Image = global::MODEL.Properties.Resources.atras;
+            this.BtnAtras.ImageFixedSize = new System.Drawing.Size(48, 48);
+            this.BtnAtras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnAtras.Location = new System.Drawing.Point(0, 0);
+            this.BtnAtras.Name = "BtnAtras";
+            this.BtnAtras.Size = new System.Drawing.Size(72, 72);
+            this.BtnAtras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnAtras.TabIndex = 74;
+            this.BtnAtras.Text = "SALIR";
+            this.BtnAtras.TextColor = System.Drawing.Color.White;
+            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
+            // 
+            // reflectionLabelLogo
+            // 
+            this.reflectionLabelLogo.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.reflectionLabelLogo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.reflectionLabelLogo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.reflectionLabelLogo.Location = new System.Drawing.Point(776, 0);
+            this.reflectionLabelLogo.Name = "reflectionLabelLogo";
+            this.reflectionLabelLogo.Size = new System.Drawing.Size(145, 72);
+            this.reflectionLabelLogo.TabIndex = 70;
+            this.reflectionLabelLogo.Text = "<b><font size=\"+20\">RO<font color=\"#B02B2C\">LON</font></font></b>";
             // 
             // ModeloF2
             // 
@@ -548,20 +478,22 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModeloF2";
             this.Text = "ModeloF2";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ModeloF2_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ModeloF2_MouseMove);
             this.PanelSuperior.ResumeLayout(false);
             this.PanelSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-            this.PanelMenu.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelNavegacion.ResumeLayout(false);
             this.PanelNavegacion.PerformLayout();
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Busqueda)).EndInit();
+            this.PanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -583,15 +515,14 @@
         protected System.Windows.Forms.TextBox TxtNombreUsu;
         private System.Windows.Forms.Panel PanelNavegacion;
         protected DevComponents.DotNetBar.ButtonX BtnExportar;
-        protected DevComponents.DotNetBar.ButtonX BtnImprimir;
+        protected DevComponents.DotNetBar.ButtonX BtnGenerar;
         protected DevComponents.DotNetBar.ButtonX BtnAtras;
-        protected DevComponents.DotNetBar.ButtonX BtnGrabar;
-        protected DevComponents.DotNetBar.ButtonX BtnEliminar;
-        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         protected System.Windows.Forms.Label LblPaginacion;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private MetroFramework.Controls.MetroGrid Dgv_Busqueda;
         public DevComponents.DotNetBar.Controls.GroupPanel GPanel_Criterio;
+        public DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        public System.Windows.Forms.Panel panel1;
     }
 }

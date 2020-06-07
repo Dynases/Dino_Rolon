@@ -112,6 +112,14 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>C:\libreriasDiego\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.337.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OnBarcode.Barcode.WinForms">
       <HintPath>C:\libreriasDiego\OnBarcode.Barcode.WinForms.dll</HintPath>
@@ -120,6 +128,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -149,6 +158,12 @@
     <Compile Include="ModeloF2.Designer.cs">
       <DependentUpon>ModeloF2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModeloF3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModeloF3.Designer.cs">
+      <DependentUpon>ModeloF3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ModeloAyuda.resx">
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModeloF2.resx">
       <DependentUpon>ModeloF2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModeloF3.resx">
+      <DependentUpon>ModeloF3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -246,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\WARNING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\GENERAR.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

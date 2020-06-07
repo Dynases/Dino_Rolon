@@ -515,10 +515,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngreso[]> CmmpraIngresoListarAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporte", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoReporteResponse")]
-        System.Data.DataTable CompraIngresoReporte(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int[] estados);
+        System.Data.DataTable CompraIngresoReporte(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int estados);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporte", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoReporteResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoReporteAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int[] estados);
+        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoReporteAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int estados);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXId", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_NotaXIdResponse")]
         ENTITY.com.CompraIngreso.View.VCompraIngresoNota[] CompraIngreso_NotaXId(int id);
@@ -2270,11 +2270,11 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CmmpraIngresoListarAsync();
         }
         
-        public System.Data.DataTable CompraIngresoReporte(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int[] estados) {
+        public System.Data.DataTable CompraIngresoReporte(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int estados) {
             return base.Channel.CompraIngresoReporte(fechaDesde, fechaHasta, estados);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoReporteAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int[] estados) {
+        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoReporteAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta, int estados) {
             return base.Channel.CompraIngresoReporteAsync(fechaDesde, fechaHasta, estados);
         }
         

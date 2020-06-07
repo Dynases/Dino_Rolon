@@ -403,6 +403,14 @@
       <DependentUpon>RCompraIngreso.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ReportViewer\CompraIngresoDatos.cs">
+      <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer\CompraIngresoDatos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\RTransformacionIngreso.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -496,6 +504,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RCompraIngreso.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
     <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionIngreso.cs</LastGenOutput>
@@ -751,6 +760,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Report\ReportViewer\CompraIngresoDatos.xsc">
+      <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
+    </None>
+    <None Include="Report\ReportViewer\CompraIngresoDatos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompraIngresoDatos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\ReportViewer\CompraIngresoDatos.xss">
+      <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
+    </None>
     <None Include="Resource\verRegistros2.png" />
     <None Include="Resource\add2.png" />
     <None Include="Resource\edit2.png" />

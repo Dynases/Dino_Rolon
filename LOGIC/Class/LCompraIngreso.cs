@@ -118,11 +118,11 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)
+        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
         {
             try
             {
-                return iCompraIngreso.ReporteCompraIngreso(fechaDesde, fechaHasta, estados);
+                return iCompraIngreso.ReporteCompraIngreso(fechaDesde, fechaHasta, estado);
             }
             catch (Exception ex)
             {

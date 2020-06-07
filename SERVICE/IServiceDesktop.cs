@@ -289,7 +289,7 @@ namespace SERVICE
                 List<VCompraIngreso> CmmpraIngresoListar();
         /********** REPORTES ***********/
                 [OperationContract]
-                DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados);
+                DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estados);
 
                 [OperationContract]
                 List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);

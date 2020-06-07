@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F2_CompraIngreso));
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.Dt_FechaFin = new MetroFramework.Controls.MetroDateTime();
+            this.Dt_FechaHasta = new MetroFramework.Controls.MetroDateTime();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.Dt_FechaInicio = new MetroFramework.Controls.MetroDateTime();
+            this.Dt_FechaDesde = new MetroFramework.Controls.MetroDateTime();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.Cb_Estado = new MetroFramework.Controls.MetroComboBox();
+            this.Rpt_Reporte = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
@@ -44,6 +45,8 @@
             this.PanelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.GPanel_Criterio.SuspendLayout();
+            this.groupPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnMin
@@ -102,17 +105,22 @@
             // TxtNombreUsu
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(724, 0);
+            this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnGenerar
+            // 
+            this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
             // 
             // GPanel_Criterio
             // 
-            this.GPanel_Criterio.Controls.Add(this.metroComboBox1);
+            this.GPanel_Criterio.Controls.Add(this.Cb_Estado);
             this.GPanel_Criterio.Controls.Add(this.labelX4);
             this.GPanel_Criterio.Controls.Add(this.labelX1);
             this.GPanel_Criterio.Controls.Add(this.labelX3);
-            this.GPanel_Criterio.Controls.Add(this.Dt_FechaFin);
+            this.GPanel_Criterio.Controls.Add(this.Dt_FechaHasta);
             this.GPanel_Criterio.Controls.Add(this.labelX2);
-            this.GPanel_Criterio.Controls.Add(this.Dt_FechaInicio);
-            this.GPanel_Criterio.Size = new System.Drawing.Size(866, 94);
+            this.GPanel_Criterio.Controls.Add(this.Dt_FechaDesde);
+            this.GPanel_Criterio.Size = new System.Drawing.Size(265, 406);
             // 
             // 
             // 
@@ -140,6 +148,42 @@
             // 
             this.GPanel_Criterio.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // groupPanel1
+            // 
+            this.groupPanel1.Location = new System.Drawing.Point(265, 135);
+            this.groupPanel1.Size = new System.Drawing.Size(601, 406);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor = System.Drawing.Color.Transparent;
+            this.groupPanel1.Style.BackColor2 = System.Drawing.Color.Transparent;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColor = System.Drawing.Color.Transparent;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.Rpt_Reporte);
+            this.panel1.Size = new System.Drawing.Size(595, 380);
+            // 
             // labelX3
             // 
             this.labelX3.BackColor = System.Drawing.Color.Transparent;
@@ -149,25 +193,26 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(272, 4);
+            this.labelX3.Location = new System.Drawing.Point(62, 46);
             this.labelX3.Name = "labelX3";
             this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX3.Size = new System.Drawing.Size(40, 23);
             this.labelX3.TabIndex = 372;
             this.labelX3.Text = "Hasta";
             // 
-            // Dt_FechaFin
+            // Dt_FechaHasta
             // 
-            this.Dt_FechaFin.FontSize = MetroFramework.MetroDateTimeSize.Small;
-            this.Dt_FechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Dt_FechaFin.Location = new System.Drawing.Point(322, 4);
-            this.Dt_FechaFin.MinimumSize = new System.Drawing.Size(0, 25);
-            this.Dt_FechaFin.Name = "Dt_FechaFin";
-            this.Dt_FechaFin.ShowCheckBox = true;
-            this.Dt_FechaFin.Size = new System.Drawing.Size(138, 25);
-            this.Dt_FechaFin.Style = MetroFramework.MetroColorStyle.White;
-            this.Dt_FechaFin.TabIndex = 371;
-            this.Dt_FechaFin.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Dt_FechaHasta.Checked = false;
+            this.Dt_FechaHasta.FontSize = MetroFramework.MetroDateTimeSize.Small;
+            this.Dt_FechaHasta.FontWeight = MetroFramework.MetroDateTimeWeight.Bold;
+            this.Dt_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Dt_FechaHasta.Location = new System.Drawing.Point(112, 46);
+            this.Dt_FechaHasta.MinimumSize = new System.Drawing.Size(0, 25);
+            this.Dt_FechaHasta.Name = "Dt_FechaHasta";
+            this.Dt_FechaHasta.ShowCheckBox = true;
+            this.Dt_FechaHasta.Size = new System.Drawing.Size(138, 25);
+            this.Dt_FechaHasta.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Dt_FechaHasta.TabIndex = 371;
             // 
             // labelX2
             // 
@@ -178,26 +223,27 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(61, 6);
+            this.labelX2.Location = new System.Drawing.Point(61, 14);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX2.Size = new System.Drawing.Size(46, 23);
             this.labelX2.TabIndex = 370;
             this.labelX2.Text = "Desde";
             // 
-            // Dt_FechaInicio
+            // Dt_FechaDesde
             // 
-            this.Dt_FechaInicio.CalendarFont = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.Dt_FechaInicio.FontSize = MetroFramework.MetroDateTimeSize.Small;
-            this.Dt_FechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Dt_FechaInicio.Location = new System.Drawing.Point(112, 4);
-            this.Dt_FechaInicio.MinimumSize = new System.Drawing.Size(0, 25);
-            this.Dt_FechaInicio.Name = "Dt_FechaInicio";
-            this.Dt_FechaInicio.ShowCheckBox = true;
-            this.Dt_FechaInicio.Size = new System.Drawing.Size(138, 25);
-            this.Dt_FechaInicio.Style = MetroFramework.MetroColorStyle.White;
-            this.Dt_FechaInicio.TabIndex = 369;
-            this.Dt_FechaInicio.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Dt_FechaDesde.CalendarFont = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.Dt_FechaDesde.Checked = false;
+            this.Dt_FechaDesde.FontSize = MetroFramework.MetroDateTimeSize.Small;
+            this.Dt_FechaDesde.FontWeight = MetroFramework.MetroDateTimeWeight.Bold;
+            this.Dt_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Dt_FechaDesde.Location = new System.Drawing.Point(112, 12);
+            this.Dt_FechaDesde.MinimumSize = new System.Drawing.Size(0, 25);
+            this.Dt_FechaDesde.Name = "Dt_FechaDesde";
+            this.Dt_FechaDesde.ShowCheckBox = true;
+            this.Dt_FechaDesde.Size = new System.Drawing.Size(138, 25);
+            this.Dt_FechaDesde.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Dt_FechaDesde.TabIndex = 369;
             // 
             // labelX1
             // 
@@ -208,7 +254,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(9, 6);
+            this.labelX1.Location = new System.Drawing.Point(9, 14);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX1.Size = new System.Drawing.Size(46, 23);
@@ -224,33 +270,50 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(9, 35);
+            this.labelX4.Location = new System.Drawing.Point(9, 79);
             this.labelX4.Name = "labelX4";
             this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX4.Size = new System.Drawing.Size(46, 23);
             this.labelX4.TabIndex = 374;
             this.labelX4.Text = "Estado:";
             // 
-            // metroComboBox1
+            // Cb_Estado
             // 
-            this.metroComboBox1.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 19;
-            this.metroComboBox1.Location = new System.Drawing.Point(112, 36);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(138, 25);
-            this.metroComboBox1.Style = MetroFramework.MetroColorStyle.White;
-            this.metroComboBox1.TabIndex = 375;
-            this.metroComboBox1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroComboBox1.UseSelectable = true;
+            this.Cb_Estado.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.Cb_Estado.FormattingEnabled = true;
+            this.Cb_Estado.ItemHeight = 19;
+            this.Cb_Estado.Items.AddRange(new object[] {
+            "S/Selección",
+            "C/Selección",
+            "TODOS"});
+            this.Cb_Estado.Location = new System.Drawing.Point(112, 80);
+            this.Cb_Estado.Name = "Cb_Estado";
+            this.Cb_Estado.Size = new System.Drawing.Size(138, 25);
+            this.Cb_Estado.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Cb_Estado.TabIndex = 375;
+            this.Cb_Estado.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Cb_Estado.UseSelectable = true;
+            // 
+            // Rpt_Reporte
+            // 
+            this.Rpt_Reporte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Rpt_Reporte.LocalReport.ReportEmbeddedResource = "PRESENTER.Report.ReportViewer.CompraIngreso.rdlc";
+            this.Rpt_Reporte.Location = new System.Drawing.Point(0, 0);
+            this.Rpt_Reporte.Name = "Rpt_Reporte";
+            this.Rpt_Reporte.ServerReport.BearerToken = null;
+            this.Rpt_Reporte.Size = new System.Drawing.Size(595, 380);
+            this.Rpt_Reporte.TabIndex = 0;
+            this.Rpt_Reporte.Visible = false;
             // 
             // F2_CompraIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 569);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "F2_CompraIngreso";
             this.Text = "F2_CompraIngreso";
+            this.Load += new System.EventHandler(this.F2_CompraIngreso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).EndInit();
@@ -260,6 +323,8 @@
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.GPanel_Criterio.ResumeLayout(false);
+            this.groupPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -268,10 +333,14 @@
 
         protected internal DevComponents.DotNetBar.LabelX labelX1;
         protected internal DevComponents.DotNetBar.LabelX labelX3;
-        private MetroFramework.Controls.MetroDateTime Dt_FechaFin;
+        private MetroFramework.Controls.MetroDateTime Dt_FechaHasta;
         protected internal DevComponents.DotNetBar.LabelX labelX2;
-        private MetroFramework.Controls.MetroDateTime Dt_FechaInicio;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroDateTime Dt_FechaDesde;
+        private MetroFramework.Controls.MetroComboBox Cb_Estado;
         protected internal DevComponents.DotNetBar.LabelX labelX4;
+        private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
+        //private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
+        //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Report;
     }
 }

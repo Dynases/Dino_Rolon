@@ -296,7 +296,7 @@ namespace REPOSITORY.Clase
         }
 
         /********** REPORTES ***********/
-        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int[] estados)
+        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
         {
             try
             {
@@ -318,7 +318,7 @@ namespace REPOSITORY.Clase
                                 INV.Almacen c ON c.Id = a.IdAlmacen JOIN
                                 COM.CompraIng_01 e ON e.IdCompra = a.Id
                                 WHERE
-                                a.Estado <> -1  and a.Estado <> 3 AND   ");
+                                a.Estado <> -1  AND   ");
                 if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 
                 {
                     sb.Append(string.Format("a.FechaRec between '{0}' and '{1}' AND   ", fechaDesde, fechaHasta));
@@ -331,10 +331,16 @@ namespace REPOSITORY.Clase
                 {
                     sb.Append(string.Format("a.FechaRec <= '{0}' AND   ", fechaHasta));
                 }
-                if (estados.Length > 0)
+                if (estado == (int)ENEstado.TODOS)
                 {
-                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", string.Join(",", estados)));
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.Estado IN ({0},{1}) AND   ", (int)ENEstado.GUARDADO, (int)ENEstado.COMPLETADO));
                 }
+                else
+                {
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", estado));
+                }
+
                 sb.Length -= 7;
                 sb.Append(@"GROUP BY 
                                 a.Id, a.NumNota, a.FechaRec, b.Descrip, a.IdAlmacen, c.Descrip, a.TotalMaple
