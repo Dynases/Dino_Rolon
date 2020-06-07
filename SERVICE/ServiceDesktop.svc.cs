@@ -29,6 +29,7 @@ using ENTITY.DiSoft.Zona;
 using LOGIC.Class.DiSoft;
 using ENTITY.Rol.View;
 using ENTITY.Usuario.View;
+using ENTITY.com.CompraIngreso_03.View;
 
 namespace SERVICE
 {
@@ -927,11 +928,11 @@ namespace SERVICE
 
         #region Compra Ingreso
         #region Transacciones
-        public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int id, string usuario)
+        public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id, string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
         {
             try
             {
-                var result = new LCompraIngreso().Guardar(vCompraIngreso, detalle, ref id, usuario);
+                var result = new LCompraIngreso().Guardar(vCompraIngreso, vCompraIngreso_01, ref Id, usuario, EsDevolucion, vCompraIngreso_03);
                 return result;
             }
             catch (Exception ex)
@@ -978,7 +979,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        //Obtiene CompraIngreso0_01 = Detalle de compra
         public List<VCompraIngreso_01> CmmpraIngreso_01ListarXId(int id)
         {
             try
@@ -997,6 +998,32 @@ namespace SERVICE
             try
             {
                 var listResult = new LCompraIngreso_01().ListarXId2(IdGrupo2, idAlmacen);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        //Obtiene CompraIngreso0_03 = Devoluciones
+        public List<VCompraIngreso_03> CmmpraIngreso_03ListarXId(int id)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso_03().ListarXId(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VCompraIngreso_03> CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso_03().ListarXId2(IdGrupo2, idAlmacen);
                 return listResult;
             }
             catch (Exception ex)

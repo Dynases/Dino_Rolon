@@ -3,6 +3,7 @@ using DevComponents.DotNetBar.Keyboard;
 using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.CompraIngreso_02;
+using ENTITY.com.CompraIngreso_03.View;
 using ENTITY.Libreria.View;
 using Janus.Windows.GridEX;
 using Janus.Windows.GridEX.EditControls;
@@ -50,7 +51,8 @@ namespace PRESENTER.com
             {
                 if (Cb_Tipo.Enabled == true)
                 {                    
-                    MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value),2);                    
+                    MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value),2);
+                    MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
                 }
             }
             catch (Exception ex)
@@ -67,6 +69,14 @@ namespace PRESENTER.com
             if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
             {
                 MP_MostrarRegistro(Dgv_GBuscador.Row);
+            }
+        }
+        private void Sw_Devolucion_ValueChanged(object sender, EventArgs e)
+        {
+            Tap_Devolucion.Visible = Sw_Devolucion.Value ? false : true;
+            if (Dgv_Devolucion.RowCount == 0)
+            {
+                MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
             }
         }
         private void Dgv_Detalle_EditingCell(object sender, EditingCellEventArgs e)
@@ -166,17 +176,48 @@ namespace PRESENTER.com
                     }
                     if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                     {
-                        CalcularFila();
+                        CalcularFila();                        
                     }
                     else
                     {
                         if (estado == (int)ENEstado.GUARDADO)
                         {
-                            CalcularFila();
+                            CalcularFila();                           
                             Dgv_Detalle.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
                         }
                     }
                 }               
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void Dgv_Devolucion_CellEdited(object sender, ColumnActionEventArgs e)
+        {
+            try
+            {
+                if (ValidarCantidad())
+                {
+                    Dgv_Devolucion.UpdateData();
+                    int estado = Convert.ToInt32(Dgv_Devolucion.CurrentRow.Cells[10].Value);
+                    if (estado == (int)ENEstado.COMPLETADO)
+                    {
+                        throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
+                    }
+                    if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
+                    {
+                        CalcularFilaDevolocion();
+                    }
+                    else
+                    {
+                        if (estado == (int)ENEstado.GUARDADO)
+                        {
+                            CalcularFilaDevolocion();
+                            Dgv_Devolucion.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -226,6 +267,25 @@ namespace PRESENTER.com
             total = subTotal * precio;
             Dgv_Detalle.CurrentRow.Cells[9].Value = total;
             MP_ObtenerCalculo();
+        }
+        private void CalcularFilaDevolocion()
+        {
+            var idProducto = Convert.ToInt32(Dgv_Devolucion.CurrentRow.Cells[1].Value);
+            var esCategoriaSuper = new ServiceDesktop.ServiceDesktopClient().ProductoEsCategoriaSuper(idProducto);
+            //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades | 1 = Maple
+            var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
+
+            Double caja, grupo, maple, cantidad, subTotal, precio, total;
+            caja = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * valorContenidoDeMaple);
+            grupo = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[4].Value) * (10 * valorContenidoDeMaple);
+            maple = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[5].Value) * valorContenidoDeMaple;
+            cantidad = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[6].Value);
+            subTotal = caja + grupo + maple + cantidad;
+            Dgv_Devolucion.CurrentRow.Cells[7].Value = subTotal;
+            precio = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[8].Value);
+            total = subTotal * precio;
+            Dgv_Devolucion.CurrentRow.Cells[9].Value = total;
+            //MP_ObtenerCalculo();
         }
 
         private void Dgv_Detalle_CellValueChanged(object sender, ColumnActionEventArgs e)
@@ -378,6 +438,7 @@ namespace PRESENTER.com
             try
             {
                 MP_RearmarDetalleSegunCantidad();
+                MP_RearmarDetalleSegunCantidadDevolucion();
             }
             catch (Exception ex)
             {
@@ -389,7 +450,7 @@ namespace PRESENTER.com
         {
             try
             {
-                MP_RearmarDetalleSegunCantidad();
+                MP_ObtenerCalculo();
             }
             catch (Exception ex)
             {
@@ -485,7 +546,9 @@ namespace PRESENTER.com
                 MP_CargarEncabezado();
                 MP_InHabilitar();
                 btnFacturacion.Visible = false;
-             
+                btnRecibido.Visible = false;
+
+
             }
             catch (Exception ex)
             {
@@ -575,7 +638,7 @@ namespace PRESENTER.com
             {
                 try
                 {
-                    if (Tb_Cod.Text == string.Empty)
+                    if (idCompra == 0)
                     {
                         throw new Exception("No existen registros");
                     }
@@ -616,11 +679,37 @@ namespace PRESENTER.com
                 }
                 else
                 {
+                    int ValorTipo = id;
                     //Consulta segun un Categoria 
-                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(id, Convert.ToInt32(Cb_Almacen.Value)).ToList();
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(ValorTipo, Convert.ToInt32(Cb_Almacen.Value)).ToList();
                 }
 
                 MP_ArmarDetalle(lresult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+            }
+
+        }
+        private void MP_CargarDevolucion(int id, int tipo)
+        {
+            try
+            {
+                List<VCompraIngreso_03> lresult = new List<VCompraIngreso_03>();
+                if (tipo == 1)
+                {
+                    //Consulta segun un Id de Ingreso
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_03ListarXId(id).ToList();
+                }
+                else
+                {
+                    int ValorTipo = id;
+                    //Consulta segun un Categoria 
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_03ListarXId2(ValorTipo, Convert.ToInt32(Cb_Almacen.Value)).ToList();
+                }
+
+                MP_ArmarDevolucion(lresult);
             }
             catch (Exception ex)
             {
@@ -778,6 +867,107 @@ namespace PRESENTER.com
             
         }
 
+        private void MP_ArmarDevolucion(List<VCompraIngreso_03> lresult)
+        {
+            try
+            {
+                //DataTable result = ListaATabla(lresult);
+                Dgv_Devolucion.DataSource = lresult;
+                Dgv_Devolucion.RetrieveStructure();
+                Dgv_Devolucion.AlternatingColors = true;
+
+                Dgv_Devolucion.RootTable.Columns[0].Key = "id";
+                Dgv_Devolucion.RootTable.Columns[0].Visible = false;
+
+                Dgv_Devolucion.RootTable.Columns[1].Key = "IdProduc";
+                Dgv_Devolucion.RootTable.Columns[1].Visible = false;
+
+                Dgv_Devolucion.RootTable.Columns[2].Key = "Producto";
+                Dgv_Devolucion.RootTable.Columns[2].Caption = "PRODUCTO";
+                Dgv_Devolucion.RootTable.Columns[2].Width = 105;
+                Dgv_Devolucion.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[2].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Devolucion.RootTable.Columns[2].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[3].Key = "Caja";
+                Dgv_Devolucion.RootTable.Columns[3].Caption = "CAJA";
+                Dgv_Devolucion.RootTable.Columns[3].FormatString = "0";
+                Dgv_Devolucion.RootTable.Columns[3].Width = 90;
+                Dgv_Devolucion.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[3].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[3].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[4].Key = "Grupo";
+                Dgv_Devolucion.RootTable.Columns[4].Caption = "GRUPO";
+                Dgv_Devolucion.RootTable.Columns[4].FormatString = "0";
+                Dgv_Devolucion.RootTable.Columns[4].Width = 90;
+                Dgv_Devolucion.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[4].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[4].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[5].Key = "Maple";
+                Dgv_Devolucion.RootTable.Columns[5].Caption = "MAPLE";
+                Dgv_Devolucion.RootTable.Columns[5].FormatString = "0";
+                Dgv_Devolucion.RootTable.Columns[5].Width = 90;
+                Dgv_Devolucion.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[5].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[5].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[6].Key = "Cantidad";
+                Dgv_Devolucion.RootTable.Columns[6].Caption = "UNIDADES";
+                Dgv_Devolucion.RootTable.Columns[6].FormatString = "0";
+                Dgv_Devolucion.RootTable.Columns[6].Width = 90;
+                Dgv_Devolucion.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[6].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[6].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[7].Key = "TotalCant";
+                Dgv_Devolucion.RootTable.Columns[7].Caption = "TOTAL U.";
+                Dgv_Devolucion.RootTable.Columns[7].FormatString = "0";
+                Dgv_Devolucion.RootTable.Columns[7].Width = 110;
+                Dgv_Devolucion.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[7].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[7].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[8].Key = "PrecioCost";
+                Dgv_Devolucion.RootTable.Columns[8].Caption = "PRECIO";
+                Dgv_Devolucion.RootTable.Columns[8].FormatString = "0.0000";
+                Dgv_Devolucion.RootTable.Columns[8].Width = 90;
+                Dgv_Devolucion.RootTable.Columns[8].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[8].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[8].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[8].Visible = true;
+
+                Dgv_Devolucion.RootTable.Columns[9].Key = "Total";
+                Dgv_Devolucion.RootTable.Columns[9].Caption = "TOTAL BS";
+                Dgv_Devolucion.RootTable.Columns[9].FormatString = "0.00";
+                Dgv_Devolucion.RootTable.Columns[9].Width = 110;
+                Dgv_Devolucion.RootTable.Columns[9].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Devolucion.RootTable.Columns[9].CellStyle.FontSize = 9;
+                Dgv_Devolucion.RootTable.Columns[9].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Devolucion.RootTable.Columns[9].Visible = true;
+
+
+                Dgv_Devolucion.RootTable.Columns[10].Key = "Estado";
+                Dgv_Devolucion.RootTable.Columns[10].Visible = false;
+
+                //Habilitar filtradores              
+                //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                Dgv_Devolucion.GroupByBoxVisible = false;
+                Dgv_Devolucion.VisualStyle = VisualStyle.Office2007;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
         private void MP_InicioArmarCombo()
         {
             try
@@ -863,6 +1053,7 @@ namespace PRESENTER.com
                 Tb_CantidadCajas.IsInputReadOnly = false;
                 Tb_CantidadGrupos.IsInputReadOnly = false;
                 Tb_CompraIngresoPrecioAntoguo.ReadOnly = false;
+                Sw_Devolucion.IsReadOnly = false;
             }
             catch (Exception ex)
             {
@@ -897,6 +1088,7 @@ namespace PRESENTER.com
                 Tb_CantidadCajas.IsInputReadOnly = true;
                 Tb_CantidadGrupos.IsInputReadOnly = true;
                 Tb_CompraIngresoPrecioAntoguo.ReadOnly = true;
+                Sw_Devolucion.IsReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -926,6 +1118,7 @@ namespace PRESENTER.com
                     // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
+                MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
                 Tb_TotalVendido.Value = 0;
                 Tb_TotalEnviado.Value = 0;
                 Tb_TotalMaples.Value = 0;
@@ -935,6 +1128,7 @@ namespace PRESENTER.com
                 Tb_CantidadCajas.Value = 12;
                 Tb_CantidadGrupos.Value = 11;
                 MP_LimpiarColor();
+                Sw_Devolucion.Value = true;
                
             }
             catch (Exception ex)
@@ -978,6 +1172,8 @@ namespace PRESENTER.com
                         Tb_CompraIngresoPrecioAntoguo.Text = registro.CompraAntiguaFecha;
                         Tb_TotalMaples.Value = registro.TotalMaple;
                         MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
+                        MP_CargarDevolucion(Convert.ToInt32(Tb_Cod.Text), 1);
+                        Sw_Devolucion.Value = Dgv_Devolucion.RowCount == 0 ? true : false;
                         MP_ObtenerCalculo();            
                     }
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
@@ -1073,6 +1269,33 @@ namespace PRESENTER.com
                 MP_ObtenerCalculo();
             }
         }
+        private void MP_RearmarDetalleSegunCantidadDevolucion()
+        {
+            if (Dgv_Devolucion.RowCount > 0)
+            {
+                Dgv_Devolucion.Update();
+                var Detalle = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToList();
+                foreach (var fila in Detalle)
+                {
+                    if (fila.Grupo != 0 || fila.Caja != 0 || fila.Maple != 0 || fila.Cantidad != 0)
+                    {
+                        var esCategoriaSuper = new ServiceDesktop.ServiceDesktopClient().ProductoEsCategoriaSuper(fila.IdProduc);
+
+                        //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades en 1 Maple
+                        var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
+
+                        fila.TotalCant = (fila.Caja * (Convert.ToInt32(Tb_CantidadCajas.Value * valorContenidoDeMaple))) + (fila.Grupo * (10 * valorContenidoDeMaple)) + (fila.Maple * valorContenidoDeMaple) + fila.Cantidad;
+                        fila.Total = fila.TotalCant * fila.PrecioCost;
+                        if (fila.Estado == (int)ENEstado.GUARDADO)
+                        {
+                            fila.Estado = (int)ENEstado.MODIFICAR;
+                        }
+                    }
+                }
+                MP_ArmarDevolucion(Detalle);                
+                //MP_ObtenerCalculo();
+            }
+        }
         private void MP_RearmarDetalleAntiguo(int IdCompraingreso)
         {
             try
@@ -1154,9 +1377,11 @@ namespace PRESENTER.com
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
-                var detalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
-
-                resultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_Guardar(CompraIngreso, detalle, ref id, TxtNombreUsu.Text);
+                var vCompraIngreso_01 = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
+                var vCompraIngreso_03 = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToArray<VCompraIngreso_03>();
+                resultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_Guardar(CompraIngreso, vCompraIngreso_01, ref id, 
+                                                                                            TxtNombreUsu.Text,
+                                                                                            Sw_Devolucion.Value, vCompraIngreso_03);
                 if (resultado)
                 {
                     if (idAux == 0)//Registar
@@ -1340,8 +1565,10 @@ namespace PRESENTER.com
             }
         }
 
+
+
         #endregion
 
-       
+      
     }
 }

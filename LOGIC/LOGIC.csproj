@@ -55,6 +55,7 @@
     <Compile Include="Class\LCompraIngreso.cs" />
     <Compile Include="Class\LCompraIngreso_01.cs" />
     <Compile Include="Class\LCompraIngreso_02.cs" />
+    <Compile Include="Class\LCompraIngreso_03.cs" />
     <Compile Include="Class\LCompra_01.cs" />
     <Compile Include="Class\LInventario.cs" />
     <Compile Include="Class\LPlantilla.cs" />

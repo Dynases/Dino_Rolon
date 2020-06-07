@@ -182,6 +182,22 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="IdLibreria" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="CompraIng_03">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCompra" Type="int" Nullable="false" />
+          <Property Name="IdProduc" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Caja" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Grupo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Maple" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalCant" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Proveed">
           <Key>
             <PropertyRef Name="Id" />
@@ -838,6 +854,30 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CompraIng_03_IdCompraIng">
+          <End Role="CompraIng" Type="Self.CompraIng" Multiplicity="1" />
+          <End Role="CompraIng_03" Type="Self.CompraIng_03" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompraIng">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompraIng_03">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraIng_03_IdProducto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="CompraIng_03" Type="Self.CompraIng_03" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompraIng_03">
+              <PropertyRef Name="IdProduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Plantilla01_Plantilla">
           <End Role="Plantilla" Type="Self.Plantilla" Multiplicity="1" />
           <End Role="Plantilla_01" Type="Self.Plantilla_01" Multiplicity="*" />
@@ -1237,6 +1277,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="CompraIng" EntityType="Self.CompraIng" Schema="COM" store:Type="Tables" />
           <EntitySet Name="CompraIng_01" EntityType="Self.CompraIng_01" Schema="COM" store:Type="Tables" />
           <EntitySet Name="CompraIng_02" EntityType="Self.CompraIng_02" Schema="COM" store:Type="Tables" />
+          <EntitySet Name="CompraIng_03" EntityType="Self.CompraIng_03" Schema="COM" store:Type="Tables" />
           <EntitySet Name="Proveed" EntityType="Self.Proveed" Schema="COM" store:Type="Tables" />
           <EntitySet Name="Proveed_01" EntityType="Self.Proveed_01" Schema="COM" store:Type="Tables" />
           <EntitySet Name="Seleccion" EntityType="Self.Seleccion" Schema="COM" store:Type="Tables" />
@@ -1397,6 +1438,14 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <AssociationSet Name="FK_Compra_IdProveedor" Association="Self.FK_Compra_IdProveedor">
             <End Role="Proveed" EntitySet="Proveed" />
             <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraIng_03_IdCompraIng" Association="Self.FK_CompraIng_03_IdCompraIng">
+            <End Role="CompraIng" EntitySet="CompraIng" />
+            <End Role="CompraIng_03" EntitySet="CompraIng_03" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraIng_03_IdProducto" Association="Self.FK_CompraIng_03_IdProducto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="CompraIng_03" EntitySet="CompraIng_03" />
           </AssociationSet>
           <AssociationSet Name="FK_Plantilla01_Plantilla" Association="Self.FK_Plantilla01_Plantilla">
             <End Role="Plantilla" EntitySet="Plantilla" />
@@ -1780,6 +1829,15 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
           <EntitySet Name="V_NotaCompraIngreso" EntityType="DiAviModel.V_NotaCompraIngreso" />
+          <EntitySet Name="CompraIng_03" EntityType="DiAviModel.CompraIng_03" />
+          <AssociationSet Name="FK_CompraIng_03_IdCompraIng" Association="DiAviModel.FK_CompraIng_03_IdCompraIng">
+            <End Role="CompraIng" EntitySet="CompraIng" />
+            <End Role="CompraIng_03" EntitySet="CompraIng_03" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraIng_03_IdProducto" Association="DiAviModel.FK_CompraIng_03_IdProducto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="CompraIng_03" EntitySet="CompraIng_03" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -2433,6 +2491,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="TI0021" Relationship="DiAviModel.FK_TI0021_IdProducto" FromRole="Producto" ToRole="TI0021" />
           <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Producto" FromRole="Producto" ToRole="Traspaso_01" />
           <NavigationProperty Name="Venta_01" Relationship="DiAviModel.FK_Venta_01_IdProducto" FromRole="Producto" ToRole="Venta_01" />
+          <NavigationProperty Name="CompraIng_03" Relationship="DiAviModel.FK_CompraIng_03_IdProducto" FromRole="Producto" ToRole="CompraIng_03" />
         </EntityType>
         <Association Name="FK__CompraIng__IdPro__46B27FE2">
           <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
@@ -2927,6 +2986,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Proveed" Relationship="DiAviModel.FK__CompraIng__Proveedor" FromRole="CompraIng" ToRole="Proveed" />
           <NavigationProperty Name="Seleccion" Relationship="DiAviModel.FK_Seleccion_CompraIng" FromRole="CompraIng" ToRole="Seleccion" />
           <Property Name="TotalMaple" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompraIng_03" Relationship="DiAviModel.FK_CompraIng_03_IdCompraIng" FromRole="CompraIng" ToRole="CompraIng_03" />
         </EntityType>
         <Association Name="FK__CompraIng__Almacen">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
@@ -3009,6 +3069,48 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="TotalMaple" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="CompraIng_03">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompra" Type="Int32" Nullable="false" />
+          <Property Name="IdProduc" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Caja" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Grupo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Maple" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="10" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="CompraIng" Relationship="DiAviModel.FK_CompraIng_03_IdCompraIng" FromRole="CompraIng_03" ToRole="CompraIng" />
+          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_CompraIng_03_IdProducto" FromRole="CompraIng_03" ToRole="Producto" />
+        </EntityType>
+        <Association Name="FK_CompraIng_03_IdCompraIng">
+          <End Type="DiAviModel.CompraIng" Role="CompraIng" Multiplicity="1" />
+          <End Type="DiAviModel.CompraIng_03" Role="CompraIng_03" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompraIng">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompraIng_03">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraIng_03_IdProducto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.CompraIng_03" Role="CompraIng_03" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompraIng_03">
+              <PropertyRef Name="IdProduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3714,6 +3816,23 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="FechaEnt" ColumnName="FechaEnt" />
                 <ScalarProperty Name="FechaRec" ColumnName="FechaRec" />
                 <ScalarProperty Name="NumNota" ColumnName="NumNota" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompraIng_03">
+            <EntityTypeMapping TypeName="DiAviModel.CompraIng_03">
+              <MappingFragment StoreEntitySet="CompraIng_03">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PrecioCost" ColumnName="PrecioCost" />
+                <ScalarProperty Name="TotalCant" ColumnName="TotalCant" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Maple" ColumnName="Maple" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Caja" ColumnName="Caja" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProduc" ColumnName="IdProduc" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

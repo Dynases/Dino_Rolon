@@ -48,6 +48,7 @@
     <Compile Include="com\CompraIngreso\View\VCompraIngresoNota.cs" />
     <Compile Include="com\CompraIngreso_01\VCompraIngreso_01.cs" />
     <Compile Include="com\CompraIngreso_02\VCompraIngreso_02.cs" />
+    <Compile Include="com\CompraIngreso_03\View\VCompraIngreso_03.cs" />
     <Compile Include="com\Compra\View\VCompra.cs" />
     <Compile Include="com\Compra\View\VCompraLista.cs" />
     <Compile Include="com\Compra_01\View\VCompra_01.cs" />

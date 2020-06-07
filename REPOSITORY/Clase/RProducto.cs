@@ -200,9 +200,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-     
-       
-    
         public DataTable ListarEncabezado(int IdSucursal, int IdAlmacen,
                                           int IdCategoriaPrecio)
         {

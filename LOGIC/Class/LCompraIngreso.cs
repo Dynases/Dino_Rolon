@@ -1,5 +1,6 @@
 ﻿using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
+using ENTITY.com.CompraIngreso_03.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -26,25 +27,28 @@ namespace LOGIC.Class
             iCompraIngreso = new RCompraIngreso(iTi001, iTi002, iTi0021);
         }
         #region Transacciones
-        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> detalle, ref int Id,string usuario)
+        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id,string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
         {
             try
-            {
-                bool result = false;
+            {               
                 using (var scope =new TransactionScope())
                 {
                     if (Id == 0) //Nuevo
                     {
-                        result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
-                        var resultDetalle = new LCompraIngreso_01().Guardar(detalle, Id, usuario);                       
+                        iCompraIngreso.Guardar(vCompraIngreso, ref Id);
+                        new LCompraIngreso_01().Guardar(vCompraIngreso_01, Id, usuario);                        
                     }
                     else
                     {
-                        result = iCompraIngreso.Guardar(vCompraIngreso, ref Id);
-                        var resultDetalle = new LCompraIngreso_01().GuardarModificado(detalle, Id, usuario);
+                        iCompraIngreso.Guardar(vCompraIngreso, ref Id);
+                        new LCompraIngreso_01().GuardarModificado(vCompraIngreso_01, Id, usuario);                       
+                    }
+                    if (!EsDevolucion)
+                    {
+                        new LCompraIngreso_03().Guardar(vCompraIngreso_03, Id);
                     }
                     scope.Complete();
-                    return result;
+                    return true;
                 }
             }
             catch (Exception ex)

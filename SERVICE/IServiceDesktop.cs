@@ -29,6 +29,7 @@ using System.Data;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using UTILITY.Enum;
+using ENTITY.com.CompraIngreso_03.View;
 
 namespace SERVICE
 {
@@ -269,11 +270,11 @@ namespace SERVICE
         bool PrecioModificar(VPrecioLista vPrecio, string usuario);
         #endregion
         /********** COMPRA INGRESO **********/
-        
+
         #region COMPRA INGRESO
-            #region Transacciones
-                [OperationContract]
-                bool CompraIngreso_Guardar(VCompraIngresoLista proveedor, List<VCompraIngreso_01> detalle, ref int id, string usuario);
+        #region Transacciones
+        [OperationContract]
+                 bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id, string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03);
                 [OperationContract]
                 bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado,  ref List<string>lMensaje);
         #endregion
@@ -314,9 +315,15 @@ namespace SERVICE
         [OperationContract]
         DataTable CompraIngreso_02_ListarTabla();
         #endregion
-        
+        #region COMPRA Ingreso_03      
+        [OperationContract]
+        List<VCompraIngreso_03> CmmpraIngreso_03ListarXId(int id);
+        [OperationContract]
+        List<VCompraIngreso_03> CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen);
+        #endregion
+
         /********** SELECCIÓN ***************/
-       
+
         #region SELECCION
         #region Transacciones
         [OperationContract]

@@ -52,6 +52,7 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
 
         public List<VCompraIngreso_01> ListarXId(int id)
         {
@@ -75,6 +76,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        /********** VARIOS REGISTROS ***********/
         #endregion
     }
 }

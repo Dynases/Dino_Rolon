@@ -653,6 +653,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop30.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop31.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -680,6 +683,7 @@
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoNota.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_01.VCompraIngreso_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_02.VCompraIngreso_02.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />

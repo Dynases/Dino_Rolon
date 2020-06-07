@@ -1,45 +1,40 @@
-﻿using REPOSITORY.Base;
+﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.com.CompraIngreso_01;
+using ENTITY.com.CompraIngreso_03.View;
+using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ENTITY.com.CompraIngreso_01;
-using DATA.EntityDataModel.DiAvi;
-using System.Data.Entity;
 using UTILITY.Enum.EnEstado;
 
 namespace REPOSITORY.Clase
 {
-    public class RCompraIngreso_01 : BaseConexion, ICompraIngreso_01
+    public class RCompraIngreso_03:BaseConexion, ICompraIngreso_03
     {
-        #region Transacciones
-        public bool Guardar(List<VCompraIngreso_01> Lista, int Id, string usuario)
+        #region MyRegion
+        public bool Guardar(VCompraIngreso_03 vCompraIngreso_03, int Id)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    foreach (var vCompraIngreso_01 in Lista)
-                    {
-                        var compraIng_01 = new CompraIng_01();
-                        compraIng_01.IdCompra = Id;
-                        compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                        compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
-                        compraIng_01.Caja = vCompraIngreso_01.Caja;
-                        compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                        compraIng_01.Grupo = vCompraIngreso_01.Grupo;
-                        compraIng_01.Maple = vCompraIngreso_01.Maple;
-                        compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                        compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
-                        compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
-                        compraIng_01.Total = vCompraIngreso_01.Total;
-                        compraIng_01.Fecha = DateTime.Now.Date;
-                        compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
-                        compraIng_01.Usuario = usuario;
-                        db.CompraIng_01.Add(compraIng_01);
-                    }
+                    var compraIng_03 = new CompraIng_03();
+                    compraIng_03.IdCompra = Id;
+                    compraIng_03.IdProduc = vCompraIngreso_03.IdProduc;
+                    compraIng_03.Estado = (int)ENEstado.GUARDADO; //Estatico                       
+                    compraIng_03.Caja = vCompraIngreso_03.Caja;
+                    compraIng_03.Cantidad = vCompraIngreso_03.Cantidad;
+                    compraIng_03.Grupo = vCompraIngreso_03.Grupo;
+                    compraIng_03.Maple = vCompraIngreso_03.Maple;
+                    compraIng_03.Cantidad = vCompraIngreso_03.Cantidad;
+                    compraIng_03.TotalCant = vCompraIngreso_03.TotalCant;
+                    compraIng_03.PrecioCost = vCompraIngreso_03.PrecioCost;
+                    compraIng_03.Total = vCompraIngreso_03.Total;
+                    db.CompraIng_03.Add(compraIng_03);
                     db.SaveChanges();
                     return true;
                 }
@@ -49,37 +44,28 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool GuardarModificar(List<VCompraIngreso_01> Lista, int Id, string usuario)
+        public bool Modificar(VCompraIngreso_03 vCompraIngreso_03, int Id)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    foreach (var vCompraIngreso_01 in Lista)
-                    {
-                        if (vCompraIngreso_01.Estado == (int)ENEstado.MODIFICAR)
-                        {
-                            var compraIng_01 = db.CompraIng_01
-                                             .Where(d => d.Id.Equals(vCompraIngreso_01.Id))
-                                             .FirstOrDefault();
 
-                            compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                            compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
-                            compraIng_01.Caja = vCompraIngreso_01.Caja;
-                            compraIng_01.Grupo = vCompraIngreso_01.Grupo;
-                            compraIng_01.Maple = vCompraIngreso_01.Maple;
-                            compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                            compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
-                            compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
-                            compraIng_01.Total = vCompraIngreso_01.Total;
-                            compraIng_01.Fecha = DateTime.Now.Date;
-                            compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
-                            compraIng_01.Usuario = usuario;
-                            db.CompraIng_01.Attach(compraIng_01);
-                            db.Entry(compraIng_01).State = EntityState.Modified;
-                            db.SaveChanges();
-                        }
-                    }
+                    var compraIng_03 = db.CompraIng_03
+                                     .Where(d => d.Id.Equals(vCompraIngreso_03.Id))
+                                     .FirstOrDefault();
+                    compraIng_03.IdProduc = vCompraIngreso_03.IdProduc;
+                    compraIng_03.Estado = (int)ENEstado.GUARDADO; //Estatico                       
+                    compraIng_03.Caja = vCompraIngreso_03.Caja;
+                    compraIng_03.Grupo = vCompraIngreso_03.Grupo;
+                    compraIng_03.Maple = vCompraIngreso_03.Maple;
+                    compraIng_03.Cantidad = vCompraIngreso_03.Cantidad;
+                    compraIng_03.TotalCant = vCompraIngreso_03.TotalCant;
+                    compraIng_03.PrecioCost = vCompraIngreso_03.PrecioCost;
+                    compraIng_03.Total = vCompraIngreso_03.Total;
+                    db.CompraIng_03.Attach(compraIng_03);
+                    db.Entry(compraIng_03).State = EntityState.Modified;
+                    db.SaveChanges();                                  
                     return true;
                 }
             }
@@ -89,16 +75,17 @@ namespace REPOSITORY.Clase
             }
         }
         #endregion
+
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngreso_01> ListarXId(int id)
+        public List<VCompraIngreso_03> ListarXId(int id)
         {
 
             try
             {
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.CompraIng_01
+                    var listResult = (from a in db.CompraIng_03
                                       join c in db.Producto on
                                        new
                                        {
@@ -110,7 +97,7 @@ namespace REPOSITORY.Clase
                                            idProve = c.Id
                                        }
                                       where a.IdCompra.Equals(id)
-                                      select new VCompraIngreso_01
+                                      select new VCompraIngreso_03
                                       {
                                           Id = a.Id,
                                           IdProduc = a.IdProduc,
@@ -132,8 +119,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        /********** VARIOS REGISTROS ***********/
-        public List<VCompraIngreso_01> ListarXId2(int IdGrupo2, int idAlmacen)
+
+        public List<VCompraIngreso_03> ListarXId2(int IdGrupo2, int idAlmacen)
         {
 
             try
@@ -145,7 +132,7 @@ namespace REPOSITORY.Clase
                                       join s in db.Sucursal on b.IdSucursal equals s.Id
                                       join a in db.Almacen on s.Id equals a.IdSuc
                                       where b.IdPrecioCat.Equals(8) && c.Grupo2.Equals(IdGrupo2) && c.Tipo.Equals(2) && a.Id.Equals(idAlmacen)
-                                      select new VCompraIngreso_01
+                                      select new VCompraIngreso_03
                                       {
                                           Id = 0,
                                           IdProduc = c.Id,
@@ -167,9 +154,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        /********** VARIOS REGISTROS ***********/
+
         #endregion
-
-
-
     }
 }
