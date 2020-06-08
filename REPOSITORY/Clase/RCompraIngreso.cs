@@ -324,19 +324,19 @@ namespace REPOSITORY.Clase
                 List<SqlParameter> lPars = new List<SqlParameter>();
                 if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 
                 {
-                    sb.Append(string.Format("a.FechaRec between '{0}' and '{1}' AND   ",fechaDesde, fechaHasta));
+                    sb.Append(string.Format("a.FechaRec between {0} and {1} AND   ", "@fechaDesde", "@fechaHasta"));
                     lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime,0, fechaDesde.Value));
                     lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime,0, fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59) ));
                 }
                 else if (fechaDesde.HasValue) //Consulta por fecha especifica
                 {
-                    sb.Append(string.Format("a.FechaRec >= '{0}' AND   ", fechaDesde));
-                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fechaDesde.Value));
+                    sb.Append(string.Format("a.FechaRec >= {0} AND   ", "@fechaDesde"));
+                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fechaDesde.Value));
                 }
                 else if (fechaHasta.HasValue) //Consulta por fecha especifica
                 {
-                    sb.Append(string.Format("a.FechaRec <= '{0}' AND   ", fechaHasta));
-                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
+                    sb.Append(string.Format("a.FechaRec <= {0} AND   ", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fechaHasta.Value.AddDays(1)));
                 }
                 if (estado == (int)ENEstado.TODOS)
                 {
