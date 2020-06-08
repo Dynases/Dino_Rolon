@@ -111,17 +111,29 @@ namespace LOGIC.Class
             }
         }
         /********** REPORTES ***********/
-        public List<VCompraIngresoNota> ListarNotaXId(int id)
+        public List<VCompraIngresoNota> NotaCompraIngreso(int id)
         {
             try
             {
-                return iCompraIngreso.ListarNotaXId(id);
+                return iCompraIngreso.NotaCompraIngreso(id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int id)
+        {
+            try
+            {
+                return iCompraIngreso.NotaCompraIngresoDevolucion(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        //Reporte de inventario de compra ingreso
         public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
         {
             try

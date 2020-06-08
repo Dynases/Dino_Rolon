@@ -12,7 +12,7 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class V_NotaCompraIngreso
+    public partial class Vr_CompraIngresoDevolucion
     {
         public int Id { get; set; }
         public string NumNota { get; set; }

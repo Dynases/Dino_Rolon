@@ -16,14 +16,14 @@ namespace PRESENTER.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RCompraIngreso : ReportClass {
+    public class RCompraIngreso_Devolucion : ReportClass {
         
-        public RCompraIngreso() {
+        public RCompraIngreso_Devolucion() {
         }
         
         public override string ResourceName {
             get {
-                return "RCompraIngreso.rpt";
+                return "RCompraIngreso_Devolucion.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PRESENTER.Report {
         
         public override string FullResourceName {
             get {
-                return "PRESENTER.Report.RCompraIngreso.rpt";
+                return "PRESENTER.Report.RCompraIngreso_Devolucion.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PRESENTER.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRCompraIngreso : Component, ICachedReport {
+    public class CachedRCompraIngreso_Devolucion : Component, ICachedReport {
         
-        public CachedRCompraIngreso() {
+        public CachedRCompraIngreso_Devolucion() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PRESENTER.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RCompraIngreso rpt = new RCompraIngreso();
+            RCompraIngreso_Devolucion rpt = new RCompraIngreso_Devolucion();
             rpt.Site = this.Site;
             return rpt;
         }

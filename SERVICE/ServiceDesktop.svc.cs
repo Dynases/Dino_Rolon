@@ -1037,7 +1037,20 @@ namespace SERVICE
 
             try
             {
-                var listResult = new LCompraIngreso().ListarNotaXId(id);
+                var listResult = new LCompraIngreso().NotaCompraIngreso(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VCompraIngresoNota> CompraIngreso_DevolucionNotaXId(int id)
+        {
+
+            try
+            {
+                var listResult = new LCompraIngreso().NotaCompraIngresoDevolucion(id);
                 return listResult;
             }
             catch (Exception ex)

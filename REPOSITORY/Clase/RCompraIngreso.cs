@@ -354,13 +354,47 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VCompraIngresoNota> ListarNotaXId(int Id)
+        public List<VCompraIngresoNota> NotaCompraIngreso(int Id)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.V_NotaCompraIngreso
+                                      where a.Id.Equals(Id)
+                                      select new VCompraIngresoNota
+                                      {
+                                          Id = a.Id,
+                                          NumNota = a.NumNota,
+                                          FechaRec = a.FechaRec,
+                                          FechaEnt = a.FechaEnt,
+                                          Proveedor = a.Proveedor,
+                                          IdSkype = a.IdSpyre,
+                                          MarcaTipo = a.MarcaTipo,
+                                          IdProducto = a.IdProduc,
+                                          Producto = a.Producto,
+                                          TotalCant = a.TotalCant,
+                                          PrecioCost = a.PrecioCost,
+                                          Total = a.Total,
+                                          Entregado = a.Entregado,
+                                          DescripcionRecibido = a.DescripcionRecibido,
+                                          TotalMaple = a.TotalMaple
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_CompraIngresoDevolucion
                                       where a.Id.Equals(Id)
                                       select new VCompraIngresoNota
                                       {

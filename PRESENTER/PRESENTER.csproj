@@ -403,6 +403,12 @@
       <DependentUpon>RCompraIngreso.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\RCompraIngreso_Devolucion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RCompraIngreso_Devolucion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\ReportViewer\CompraIngresoDatos.cs">
       <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
     </Compile>
@@ -503,6 +509,10 @@
     <EmbeddedResource Include="Report\RCompraIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RCompraIngreso.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RCompraIngreso_Devolucion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RCompraIngreso_Devolucion.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
     <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">

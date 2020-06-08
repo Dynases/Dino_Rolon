@@ -371,7 +371,9 @@ namespace PRESENTER.com
         }
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
-            MH_Imprimir(Convert.ToInt32(Tb_Cod.Text));
+            MP_ReporteCompraIngreso(Convert.ToInt32(Tb_Cod.Text));
+            var auxExisteDevolucion = Sw_Devolucion.Value ? false : true;
+            MP_ImprimirNotaDevolcion(Convert.ToInt32(Tb_Cod.Text), auxExisteDevolucion);
         }        
         private void Cb_Placa_KeyDown(object sender, KeyEventArgs e)
         {
@@ -656,7 +658,7 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
         }
-        private void MH_Imprimir(int idCompra)
+        private void MP_ReporteCompraIngreso(int idCompra)
         {
             if (Tb_Cod.ReadOnly == true)
             {
@@ -675,6 +677,41 @@ namespace PRESENTER.com
                     if (lista != null)
                     {
                         var ObjetoReport = new RCompraIngreso();
+                        ObjetoReport.SetDataSource(lista);
+                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        UTGlobal.visualizador.ShowDialog();
+                        UTGlobal.visualizador.BringToFront();
+                    }
+                    else
+                        throw new Exception("No se encontraron registros");
+
+
+                }
+                catch (Exception ex)
+                {
+                    MP_MostrarMensajeError(ex.Message);
+                }
+            }
+        }
+        private void MP_ReporteNotaDevolucion(int idCompra)
+        {
+            if (Tb_Cod.ReadOnly == true)
+            {
+                try
+                {
+                    if (idCompra == 0)
+                    {
+                        throw new Exception("No existen registros");
+                    }
+                    if (UTGlobal.visualizador != null)
+                    {
+                        UTGlobal.visualizador.Close();
+                    }
+                    UTGlobal.visualizador = new Visualizador();
+                    var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_DevolucionNotaXId(idCompra);
+                    if (lista != null)
+                    {
+                        var ObjetoReport = new RCompraIngreso_Devolucion();
                         ObjetoReport.SetDataSource(lista);
                         UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
                         UTGlobal.visualizador.ShowDialog();
@@ -1399,6 +1436,7 @@ namespace PRESENTER.com
                     CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
                     TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value)
                 };
+                var auxImprimirDevolucion = Sw_Devolucion.Value ? false :true;
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
                 var vCompraIngreso_01 = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
@@ -1410,22 +1448,24 @@ namespace PRESENTER.com
                 {
                     if (idAux == 0)//Registar
                     {
+                        MP_ReporteCompraIngreso(id);
+                        MP_ImprimirNotaDevolcion(id, auxImprimirDevolucion);
                         Tb_NUmGranja.Focus();
                         MP_CargarEncabezado();
                         MP_Filtrar(1);
                         MP_Limpiar();
                         _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
-                        MH_Imprimir(id);
+                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());                 
                     }
                     else//Modificar
                     {
+                        MP_ReporteCompraIngreso(id);
+                        MP_ImprimirNotaDevolcion(id, auxImprimirDevolucion);
                         MP_Filtrar(2);
                         MP_InHabilitar();//El formulario
                         _Limpiar = true;
                         mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu   
-                        MH_Imprimir(id);
+                        MH_Habilitar();//El menu                     
                     }
                 }
                 //Resultado
@@ -1445,6 +1485,33 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
                 return resultado;
             }           
+        }
+        private void MP_ImprimirNotaDevolcion(int id, bool auxImprimirDevolucion)
+        {
+            try
+            {
+                if (auxImprimirDevolucion)
+                {
+                    if (MP_DeseaImprimir())
+                    {
+                        MP_ReporteNotaDevolucion(id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+            
+        }
+        public bool MP_DeseaImprimir()
+        {
+            Efecto efecto = new Efecto();
+            efecto.Tipo = 2;
+            efecto.Context = GLMensaje.Pregunta_Imprimir.ToUpper() + "LA NOTA DE DEVOLUCIÓN?";
+            efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+            efecto.ShowDialog();
+            return efecto.Band;
         }
         public override bool MH_Eliminar()
         {
