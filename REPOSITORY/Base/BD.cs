@@ -296,7 +296,7 @@ namespace REPOSITORY.Base
             return retVal;
         }
 
-        public static SqlParameter insertarParametro(string paramName, SqlDbType dbType, int size, object objValue)
+        public static SqlParameter CrearParametro(string paramName, SqlDbType dbType, int size, object objValue)
         {
             SqlParameter param;
 

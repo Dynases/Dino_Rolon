@@ -13,6 +13,8 @@ using System.Data.Entity;
 using ENTITY.inv.TI001.VIew;
 using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
+using System.Data.SqlClient;
+using System.Data.Common;
 
 namespace REPOSITORY.Clase
 {
@@ -319,17 +321,22 @@ namespace REPOSITORY.Clase
                                 COM.CompraIng_01 e ON e.IdCompra = a.Id
                                 WHERE
                                 a.Estado <> -1  AND   ");
+                List<SqlParameter> lPars = new List<SqlParameter>();
                 if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 
                 {
-                    sb.Append(string.Format("a.FechaRec between '{0}' and '{1}' AND   ", fechaDesde, fechaHasta));
+                    sb.Append(string.Format("a.FechaRec between '{0}' and '{1}' AND   ",fechaDesde, fechaHasta));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime,0, fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime,0, fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59) ));
                 }
                 else if (fechaDesde.HasValue) //Consulta por fecha especifica
                 {
                     sb.Append(string.Format("a.FechaRec >= '{0}' AND   ", fechaDesde));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fechaDesde.Value));
                 }
                 else if (fechaHasta.HasValue) //Consulta por fecha especifica
                 {
                     sb.Append(string.Format("a.FechaRec <= '{0}' AND   ", fechaHasta));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
                 }
                 if (estado == (int)ENEstado.TODOS)
                 {
@@ -346,7 +353,7 @@ namespace REPOSITORY.Clase
                                 a.Id, a.NumNota, a.FechaRec, b.Descrip, a.IdAlmacen, c.Descrip, a.TotalMaple
                             ORDER BY
                                 a.FechaRec ASC");
-                return tabla = BD.EjecutarConsulta(sb.ToString()).Tables[0];
+                return tabla = BD.EjecutarConsulta(sb.ToString(), lPars.ToArray()).Tables[0];
             }
             catch (Exception ex)
             {
