@@ -279,10 +279,15 @@ namespace REPOSITORY.Clase
                                       select new VCompraIngreso
                                       {
                                           Id = a.Id,
+                                          NotaProveedor=a.NumNota,
                                           Proveedor = c.Descrip,
                                           FechaEnt = a.FechaEnt,
                                           FechaRec = a.FechaRec,
                                           Entregado = a.Entregado,
+                                          TotalMaple = a.TotalMaple,
+                                          TotalUnidades = (from y in db.CompraIng_01
+                                                           where y.IdCompra == a.Id
+                                                           select y.TotalCant).Sum(),
                                           Total = a.Total,
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Almacen2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Transformacion));
+            Janus.Windows.GridEX.GridEXLayout Cb_Almacen2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelDerecho = new System.Windows.Forms.Panel();
@@ -52,8 +52,6 @@
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Almacen1 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -67,6 +65,8 @@
             this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecho.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,29 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.superTabControl1.SelectedTabIndex = 1;
-            this.superTabControl1.Size = new System.Drawing.Size(950, 660);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // BtnImprimir
             // 
@@ -125,11 +102,6 @@
             // btnUltimo
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
-            // 
-            // TxtNombreUsu
-            // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
             // 
             // BubbleBarUsuario
             // 
@@ -158,7 +130,6 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(950, 627);
             // 
@@ -214,6 +185,7 @@
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_GBuscador.Size = new System.Drawing.Size(944, 601);
+            this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -235,14 +207,44 @@
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(950, 627);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
             // 
             // PanelInferior
             // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 659);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 599);
             this.PanelInferior.Size = new System.Drawing.Size(950, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(950, 660);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Location = new System.Drawing.Point(808, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNombreUsu.ReadOnly = true;
             // 
             // PanelFondo
             // 
@@ -252,7 +254,7 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(950, 519);
+            this.PanelFondo.Size = new System.Drawing.Size(950, 491);
             this.PanelFondo.TabIndex = 70;
             // 
             // PanelDerecho
@@ -263,7 +265,7 @@
             this.PanelDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDerecho.Location = new System.Drawing.Point(315, 0);
             this.PanelDerecho.Name = "PanelDerecho";
-            this.PanelDerecho.Size = new System.Drawing.Size(635, 519);
+            this.PanelDerecho.Size = new System.Drawing.Size(635, 491);
             this.PanelDerecho.TabIndex = 1;
             // 
             // panel2
@@ -272,7 +274,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(635, 454);
+            this.panel2.Size = new System.Drawing.Size(635, 426);
             this.panel2.TabIndex = 1;
             // 
             // GPanel_Detalle
@@ -287,7 +289,7 @@
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Detalle.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(635, 454);
+            this.GPanel_Detalle.Size = new System.Drawing.Size(635, 426);
             // 
             // 
             // 
@@ -377,7 +379,7 @@
             this.Dgv_Detalle.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(629, 428);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(629, 400);
             this.Dgv_Detalle.TabIndex = 258;
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
@@ -391,7 +393,7 @@
             this.panel1.Controls.Add(this.Tb_Total1);
             this.panel1.Controls.Add(this.labelX12);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 454);
+            this.panel1.Location = new System.Drawing.Point(0, 426);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(635, 65);
             this.panel1.TabIndex = 0;
@@ -454,7 +456,7 @@
             this.PanelIzquierda.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelIzquierda.Location = new System.Drawing.Point(0, 0);
             this.PanelIzquierda.Name = "PanelIzquierda";
-            this.PanelIzquierda.Size = new System.Drawing.Size(315, 519);
+            this.PanelIzquierda.Size = new System.Drawing.Size(315, 491);
             this.PanelIzquierda.TabIndex = 0;
             // 
             // GPanel_DatosGenerales
@@ -474,7 +476,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(318, 519);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(318, 491);
             // 
             // 
             // 
@@ -652,8 +654,6 @@
             this.Name = "F1_Transformacion";
             this.Text = "F1_Transformacion";
             this.Load += new System.EventHandler(this.F1_Transformacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -669,6 +669,8 @@
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecho.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

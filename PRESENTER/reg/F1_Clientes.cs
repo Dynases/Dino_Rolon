@@ -948,5 +948,13 @@ namespace PRESENTER.reg
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+
+        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row > -1)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+            }
+        }
     }
 }

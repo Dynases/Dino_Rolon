@@ -1142,9 +1142,9 @@ namespace PRESENTER.com
 
         }
 
-
-
-
-
+        private void Dgv_GBuscador_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }

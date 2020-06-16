@@ -30,8 +30,8 @@ namespace PRESENTER.reg
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_CatPrecio_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Clientes));
+            Janus.Windows.GridEX.GridEXLayout Cb_CatPrecio_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_CliCiudad_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_CliFacturacion_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -94,8 +94,6 @@ namespace PRESENTER.reg
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.Dgv_Buscardor = new Janus.Windows.GridEX.GridEX();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -109,6 +107,8 @@ namespace PRESENTER.reg
             this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.GPanel_Buscador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).BeginInit();
@@ -130,27 +130,6 @@ namespace PRESENTER.reg
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).BeginInit();
             this.SuspendLayout();
             // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Size = new System.Drawing.Size(1043, 641);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
@@ -166,12 +145,6 @@ namespace PRESENTER.reg
             // btnUltimo
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
-            // 
-            // TxtNombreUsu
-            // 
-            this.TxtNombreUsu.Dock = System.Windows.Forms.DockStyle.None;
-            this.TxtNombreUsu.Location = new System.Drawing.Point(837, 1);
-            this.TxtNombreUsu.Size = new System.Drawing.Size(137, 28);
             // 
             // BubbleBarUsuario
             // 
@@ -201,7 +174,6 @@ namespace PRESENTER.reg
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
             // 
             // btnMin
@@ -251,6 +223,7 @@ namespace PRESENTER.reg
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 582);
+            this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
             // 
             // LblSubtitulo
             // 
@@ -269,14 +242,44 @@ namespace PRESENTER.reg
             this.PanelContenidoRegistro.Controls.Add(this.panel3);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.panel3, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             // 
             // PanelInferior
             // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 640);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 580);
             this.PanelInferior.Size = new System.Drawing.Size(1043, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(1043, 641);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Dock = System.Windows.Forms.DockStyle.None;
+            this.TxtNombreUsu.Location = new System.Drawing.Point(837, 1);
+            this.TxtNombreUsu.ReadOnly = true;
+            this.TxtNombreUsu.Size = new System.Drawing.Size(137, 28);
             // 
             // panel3
             // 
@@ -287,7 +290,7 @@ namespace PRESENTER.reg
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 72);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1043, 536);
+            this.panel3.Size = new System.Drawing.Size(1043, 508);
             this.panel3.TabIndex = 232;
             // 
             // GPanel_Buscador
@@ -299,7 +302,7 @@ namespace PRESENTER.reg
             this.GPanel_Buscador.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Buscador.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GPanel_Buscador.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Buscador.Location = new System.Drawing.Point(0, 335);
+            this.GPanel_Buscador.Location = new System.Drawing.Point(0, 307);
             this.GPanel_Buscador.Name = "GPanel_Buscador";
             this.GPanel_Buscador.Size = new System.Drawing.Size(1043, 201);
             // 
@@ -1351,8 +1354,6 @@ namespace PRESENTER.reg
             this.Text = "F1_Clientes";
             this.Load += new System.EventHandler(this.F1_Clientes_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.F1_Clientes_MouseMove);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -1368,6 +1369,8 @@ namespace PRESENTER.reg
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.GPanel_Buscador.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).EndInit();

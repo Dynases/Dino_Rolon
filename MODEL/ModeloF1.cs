@@ -202,5 +202,18 @@ namespace MODEL
         {
             MP_IniciarTodo();
         }
+
+        private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row > -1)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+            }
+        }
     }
 }

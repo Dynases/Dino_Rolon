@@ -489,7 +489,7 @@ namespace PRESENTER.com
                     Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;
                     Dgv_GBuscador.FilterMode = FilterMode.Automatic;
                     Dgv_GBuscador.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
-                    //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                    Dgv_GBuscador.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_GBuscador.GroupByBoxVisible = false;
                     Dgv_GBuscador.VisualStyle = VisualStyle.Office2007;
                 }                
@@ -1167,6 +1167,14 @@ namespace PRESENTER.com
             {
                 superTabControl1.SelectedTabIndex = 0;
                 Tb_CodSpyre.Focus();
+            }
+        }
+
+        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row > -1)
+            {
+                superTabControl1.SelectedTabIndex = 0;
             }
         }
     }
