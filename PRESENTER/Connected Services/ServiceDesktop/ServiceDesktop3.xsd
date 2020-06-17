@@ -31,12 +31,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VCompraIngresoLista" nillable="true" type="tns:VCompraIngresoLista" />
-  <xs:complexType name="ArrayOfVCompraIngresoLista">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VCompraIngresoLista" nillable="true" type="tns:VCompraIngresoLista" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVCompraIngresoLista" nillable="true" type="tns:ArrayOfVCompraIngresoLista" />
   <xs:complexType name="ArrayOfVCompraIngreso">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VCompraIngreso" nillable="true" type="tns:VCompraIngreso" />
@@ -51,8 +45,11 @@
       <xs:element minOccurs="0" name="FechaRec" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NotaProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalMaple" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalUnidades" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

@@ -10,42 +10,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
+using UTILITY.Enum.EnEstado;
+using UTILITY.Global;
 
 namespace LOGIC.Class
 {
    public class LCompraIngreso
     {
         protected ICompraIngreso iCompraIngreso;
-        protected ITI001 iTi001;
-        protected ITI002 iTi002;
-        protected ITI0021 iTi0021;
-        public LCompraIngreso()
-        {
-            iTi001 = new RTI001(iTi002, iTi0021);
-            iTi002 = new RTI002();
-            iTi0021 = new RTI0021();
-            iCompraIngreso = new RCompraIngreso(iTi001, iTi002, iTi0021);
+        protected ICompraIngreso_01 iCompraIngreso_01;
+        protected IProducto iProducto;
+        public LCompraIngreso()        
+        {           
+            iCompraIngreso = new RCompraIngreso();
+            iCompraIngreso_01 = new RCompraIngreso_01();
+            iProducto = new RProducto();
         }
         #region Transacciones
-        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id,string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
+        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIngreso, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
         {
             try
-            {               
+            {
+                bool result = false;
                 using (var scope =new TransactionScope())
                 {
-                    if (Id == 0) //Nuevo
+                    int aux = idCompraIngreso;
+                    result = iCompraIngreso.Guardar(vCompraIngreso, ref idCompraIngreso);
+                    if (aux == 0) //Nuevo
                     {
-                        iCompraIngreso.Guardar(vCompraIngreso, ref Id);
-                        new LCompraIngreso_01().Guardar(vCompraIngreso_01, Id, usuario);                        
+                        new LCompraIngreso_01().Nuevo(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen);
                     }
                     else
                     {
-                        iCompraIngreso.Guardar(vCompraIngreso, ref Id);
-                        new LCompraIngreso_01().GuardarModificado(vCompraIngreso_01, Id, usuario);                       
+                        foreach (var i in vCompraIngreso_01)
+                        {
+                            if (i.Estado == (int)ENEstado.NUEVO)
+                            {
+                                List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
+                                detalleNuevo.Add(i);
+                                new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                //if (!new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen))
+                                //{
+                                //    return false;
+                                //}
+                            }
+                            if (i.Estado == (int)ENEstado.MODIFICAR)
+                            {
+                                new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                //if (!new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen))
+                                //{
+                                //    return false;
+                                //}
+                            }
+                        }
                     }
                     if (!EsDevolucion)
                     {
-                        new LCompraIngreso_03().Guardar(vCompraIngreso_03, Id);
+                        new LCompraIngreso_03().Guardar(vCompraIngreso_03, idCompraIngreso);
                     }
                     scope.Complete();
                     return true;
@@ -62,8 +85,39 @@ namespace LOGIC.Class
             {
                 bool result = false;
                 using (var scope = new TransactionScope())
-                {                     
-                    result= iCompraIngreso.ModificarEstado(IdCompraIng, estado, ref lMensaje);                    
+                {
+                    //Trae el detalle de venta completo
+                    var compraIng = this.TraerCompraIngreso(IdCompraIng);
+                    var compraIng_01 = this.iCompraIngreso_01.ListarXId(IdCompraIng);
+                    foreach (var vCompraIng_01 in compraIng_01)
+                    {
+                        if (compraIng_01 == null) { return false; }
+
+                        var StockActual = new LInventario().TraerStockActual(vCompraIng_01.IdProduc, compraIng.IdAlmacen, UTGlobal.lote, UTGlobal.fechaVencimiento);
+                        if (StockActual < vCompraIng_01.Cantidad)
+                        {
+                            var producto = iProducto.ListarXId(vCompraIng_01.IdProduc);
+                            lMensaje.Add("No existe stock actual suficiente para el producto: " + producto.Id + " - " + producto.Descripcion);
+                        }
+                        if (lMensaje.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in lMensaje)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            return false;
+                        }
+
+                        //Elimina el movimiento de inventario y actualiza el stock
+                        if (!new LInventario().EliminarMovimientoInventario(vCompraIng_01.Id, vCompraIng_01.IdProduc, compraIng.IdAlmacen,
+                                                                              UTGlobal.lote, UTGlobal.fechaVencimiento, vCompraIng_01.Cantidad,
+                                                                             (int)ENConcepto.COMPRA_INGRES0, EnAccionEnInventario.Descontar))
+                        {
+                            return false;
+                        }
+                    }
+                    result = iCompraIngreso.ModificarEstado(IdCompraIng, estado);                    
                     scope.Complete();
                     return result;
                 }
@@ -76,11 +130,11 @@ namespace LOGIC.Class
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngresoLista> ListarXId(int id)
+        public VCompraIngresoLista TraerCompraIngreso(int id)
         {
             try
             {
-                return iCompraIngreso.ListarXId(id);
+                return iCompraIngreso.TraerCompraIngreso(id);
             }
             catch (Exception ex)
             {
@@ -88,11 +142,11 @@ namespace LOGIC.Class
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VCompraIngreso> Listar()
+        public List<VCompraIngreso> TraerComprasIngreso()
         {
             try
             {
-                return iCompraIngreso.Listar();
+                return iCompraIngreso.TraerComprasIngreso();
             }
             catch (Exception ex)
             {

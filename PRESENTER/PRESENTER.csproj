@@ -539,13 +539,13 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_GuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraIngreso_ModificarEstadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraModificarEstadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarCompraIngresoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.PlantillaGuardarResponse.datasource">

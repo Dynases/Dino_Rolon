@@ -15,7 +15,6 @@ namespace REPOSITORY.Clase
     public class RVenta_01 : BaseConexion, IVenta_01
     {         
         #region Trasancciones
-
         public bool Nuevo(VVenta_01 vventa_01, int ventaId, ref int idVentaDetalle)
         {
             try
@@ -50,7 +49,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(VVenta_01 vventa_01, int ventaId)
+        public bool Modificar(VVenta_01 vventa_01)
         {
             try
             {               
@@ -58,9 +57,7 @@ namespace REPOSITORY.Clase
                 {
                     Venta_01 venta_01 = db.Venta_01.Where(a => a.Id == vventa_01.Id).FirstOrDefault();
                     if (venta_01 == null)
-                    { throw new Exception("No existe la venta con id " + vventa_01.Id); }
-
-                    venta_01.IdVenta = ventaId;
+                    { throw new Exception("No existe el detalle de venta con id " + vventa_01.Id); }                    
                     venta_01.IdProducto = vventa_01.IdProducto;
                     venta_01.Estado = (int)ENEstado.GUARDADO;
                     venta_01.Unidad = vventa_01.Unidad;

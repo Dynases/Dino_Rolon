@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
+using UTILITY.Global;
 
 namespace LOGIC.Class
 {
@@ -40,7 +41,7 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Nuevo(List<VVenta_01> lVenta_01, int VentaId, int idAlmacen, string usuario)
+        public bool Nuevo(List<VVenta_01> lVenta_01, int VentaId, int idAlmacen)
         {
             try
             {
@@ -64,7 +65,7 @@ namespace LOGIC.Class
                                                                     (int)ENConcepto.VENTAS,
                                                                     Observacion,
                                                                     EnAccionEnInventario.Descontar,
-                                                                    usuario))
+                                                                    UTGlobal.Usuario))
                         {
                             return false;
                         }
@@ -78,7 +79,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(VVenta_01 vVenta_01, int VentaId, int idAlmacen, string usuario)
+        public bool Modificar(VVenta_01 vVenta_01, int VentaId, int idAlmacen)
         {
             try
             {
@@ -97,12 +98,12 @@ namespace LOGIC.Class
                                                                         venta_01Antiguo.Lote, venta_01Antiguo.FechaVencimiento,
                                                                         venta_01Antiguo.Cantidad, vVenta_01.Cantidad,
                                                                         (int)ENConcepto.VENTAS,
-                                                                        observacion, usuario,
+                                                                        observacion, UTGlobal.Usuario,
                                                                         vVenta_01.Lote, vVenta_01.FechaVencimiento))
                     { return false; }
 
                     //Modifica el detalle de venta
-                    if (!this.iVenta_01.Modificar(vVenta_01, VentaId)) { return false; }
+                    if (!this.iVenta_01.Modificar(vVenta_01)) { return false; }
                     scope.Complete();
                     return true;
                 }

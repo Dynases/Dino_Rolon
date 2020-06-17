@@ -28,6 +28,8 @@ namespace UTILITY.Global
         public static int UsuarioId = 0;
         public static string NombreButton = "";
         public static Visualizador visualizador;
+        public static string lote = "20500101";
+        public static DateTime fechaVencimiento = Convert.ToDateTime("2050-01-01");
         //**Carpetas
         #region Carpetas
         public static string RutaTemporal = @"C:\Temporal";

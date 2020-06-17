@@ -15,32 +15,32 @@ namespace REPOSITORY.Clase
     public class RCompraIngreso_01 : BaseConexion, ICompraIngreso_01
     {
         #region Transacciones
-        public bool Guardar(List<VCompraIngreso_01> Lista, int Id, string usuario)
+        public bool Nuevo(VCompraIngreso_01 vCompraIngreso_01, int IdCommpra, ref int IdDetalle)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    foreach (var vCompraIngreso_01 in Lista)
+                    var compra = db.CompraIng.Where(c => c.Id == IdCommpra).FirstOrDefault();
+                    if (compra == null)
                     {
-                        var compraIng_01 = new CompraIng_01();
-                        compraIng_01.IdCompra = Id;
-                        compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                        compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
-                        compraIng_01.Caja = vCompraIngreso_01.Caja;
-                        compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                        compraIng_01.Grupo = vCompraIngreso_01.Grupo;
-                        compraIng_01.Maple = vCompraIngreso_01.Maple;
-                        compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                        compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
-                        compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
-                        compraIng_01.Total = vCompraIngreso_01.Total;
-                        compraIng_01.Fecha = DateTime.Now.Date;
-                        compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
-                        compraIng_01.Usuario = usuario;
-                        db.CompraIng_01.Add(compraIng_01);
+                        throw new Exception("No existe la compra con id:" + IdCommpra);
                     }
+                    var compraIng_01 = new CompraIng_01();
+                    compraIng_01.IdCompra = IdCommpra;
+                    compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
+                    compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
+                    compraIng_01.Caja = vCompraIngreso_01.Caja;
+                    compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
+                    compraIng_01.Grupo = vCompraIngreso_01.Grupo;
+                    compraIng_01.Maple = vCompraIngreso_01.Maple;
+                    compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
+                    compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
+                    compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
+                    compraIng_01.Total = vCompraIngreso_01.Total;
+                    db.CompraIng_01.Add(compraIng_01);
                     db.SaveChanges();
+                    IdDetalle = compraIng_01.Id;
                     return true;
                 }
             }
@@ -49,37 +49,29 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool GuardarModificar(List<VCompraIngreso_01> Lista, int Id, string usuario)
+        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01)
         {
             try
             {
                 using (var db = GetEsquema())
-                {
-                    foreach (var vCompraIngreso_01 in Lista)
+                {                  
+                    var compraIng_01 = db.CompraIng_01
+                                  .Where(d => d.Id == vCompraIngreso_01.Id)
+                                  .FirstOrDefault();
+                    if (compraIng_01 == null)
                     {
-                        if (vCompraIngreso_01.Estado == (int)ENEstado.MODIFICAR)
-                        {
-                            var compraIng_01 = db.CompraIng_01
-                                             .Where(d => d.Id.Equals(vCompraIngreso_01.Id))
-                                             .FirstOrDefault();
-
-                            compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
-                            compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
-                            compraIng_01.Caja = vCompraIngreso_01.Caja;
-                            compraIng_01.Grupo = vCompraIngreso_01.Grupo;
-                            compraIng_01.Maple = vCompraIngreso_01.Maple;
-                            compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
-                            compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
-                            compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
-                            compraIng_01.Total = vCompraIngreso_01.Total;
-                            compraIng_01.Fecha = DateTime.Now.Date;
-                            compraIng_01.Hora = DateTime.Now.ToString("HH:mm");
-                            compraIng_01.Usuario = usuario;
-                            db.CompraIng_01.Attach(compraIng_01);
-                            db.Entry(compraIng_01).State = EntityState.Modified;
-                            db.SaveChanges();
-                        }
+                        throw new Exception("No existe el detalle de compra con id:" + vCompraIngreso_01.Id);
                     }
+                    compraIng_01.IdProduc = vCompraIngreso_01.IdProduc;
+                    compraIng_01.Estado = (int)ENEstado.GUARDADO; //Estatico                       
+                    compraIng_01.Caja = vCompraIngreso_01.Caja;
+                    compraIng_01.Grupo = vCompraIngreso_01.Grupo;
+                    compraIng_01.Maple = vCompraIngreso_01.Maple;
+                    compraIng_01.Cantidad = vCompraIngreso_01.Cantidad;
+                    compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
+                    compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
+                    compraIng_01.Total = vCompraIngreso_01.Total;
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -91,6 +83,47 @@ namespace REPOSITORY.Clase
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
+        public VCompraIngreso_01 TraerCompraIngreso_01(int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.CompraIng_01
+                                      join c in db.Producto on
+                                       new
+                                       {
+                                           idProve = a.IdProduc
+                                       }
+                                       equals
+                                       new
+                                       {
+                                           idProve = c.Id
+                                       }
+                                      where a.Id.Equals(id)
+                                      select new VCompraIngreso_01
+                                      {
+                                          Id = a.Id,
+                                          IdProduc = a.IdProduc,
+                                          Producto = c.Descrip,
+                                          Caja = a.Caja,
+                                          Grupo = a.Grupo,
+                                          Maple = a.Maple,
+                                          Cantidad = a.Cantidad,
+                                          TotalCant = a.TotalCant,
+                                          PrecioCost = a.PrecioCost,
+                                          Total = a.Total,
+                                          Estado = a.Estado
+                                      }).FirstOrDefault();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
         public List<VCompraIngreso_01> ListarXId(int id)
         {
 
@@ -132,7 +165,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        /********** VARIOS REGISTROS ***********/
         public List<VCompraIngreso_01> ListarXId2(int IdGrupo2, int idAlmacen)
         {
 

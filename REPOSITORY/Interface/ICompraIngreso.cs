@@ -13,11 +13,11 @@ namespace REPOSITORY.Interface
     {
         //Transaccioness
         bool Guardar(VCompraIngresoLista vCompraIngreso, ref int id);
-        bool ModificarEstado(int IdCompraIngreso, int estado, ref List<string> lMensaje);
-     
+        bool ModificarEstado(int IdCompraIngreso, int estado);
+
         //Consultas
-        List<VCompraIngreso> Listar();
-        List<VCompraIngresoLista> ListarXId(int id);       
+        VCompraIngresoLista TraerCompraIngreso(int id);
+        List<VCompraIngreso> TraerComprasIngreso();           
         DataTable BuscarCompraIngreso(int estado);
         
         //Reportes

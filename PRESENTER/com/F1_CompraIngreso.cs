@@ -591,7 +591,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var result = new ServiceDesktop.ServiceDesktopClient().CmmpraIngresoListar().ToList();
+                var result = new ServiceDesktop.ServiceDesktopClient().TraerComprasIngreso().ToList();
                 Dgv_GBuscador.DataSource = result;
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;
@@ -1247,9 +1247,8 @@ namespace PRESENTER.com
                     _idOriginal = (int)Dgv_GBuscador.GetValue("id");
                     if (_idOriginal != 0)
                     {
-                        var tabla = new ServiceDesktop.ServiceDesktopClient().CmmpraIngresoListarXId(_idOriginal).ToArray();
-                        var registro = tabla.First();
-                        if (tabla.Length > 0)
+                        var registro = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngreso(_idOriginal);
+                        if (registro != null)
                         {
                             Tb_Cod.Text = registro.Id.ToString();
                             Cb_Almacen.Value = registro.IdAlmacen;
@@ -1483,8 +1482,7 @@ namespace PRESENTER.com
                 int idAux = id;
                 var vCompraIngreso_01 = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
                 var vCompraIngreso_03 = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToArray<VCompraIngreso_03>();
-                resultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_Guardar(CompraIngreso, vCompraIngreso_01, ref id, 
-                                                                                            TxtNombreUsu.Text,
+                resultado = new ServiceDesktop.ServiceDesktopClient().GuardarCompraIngreso(CompraIngreso, vCompraIngreso_01, ref id, 
                                                                                             Sw_Devolucion.Value, vCompraIngreso_03);
                 if (resultado)
                 {
@@ -1575,7 +1573,7 @@ namespace PRESENTER.com
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje= Mensaje.ToArray();                   
-                    resul = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ModificarEstado(idCompra, (int)ENEstado.ELIMINAR,ref LMensaje);
+                    resul = new ServiceDesktop.ServiceDesktopClient().ModificarEstadoCompraIngreso(idCompra, (int)ENEstado.ELIMINAR,ref LMensaje);
                     if (resul)
                     {
                         MP_Filtrar(1);

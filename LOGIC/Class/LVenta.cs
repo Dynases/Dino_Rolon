@@ -34,7 +34,7 @@ namespace LOGIC.Class
                     result = iVenta.Guardar(vVenta, ref IdVenta);
                     if (aux == 0)//Nuevo
                     {
-                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta,vVenta.IdAlmacen, vVenta.Usuario);
+                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta,vVenta.IdAlmacen);
                     }
                     else//Modificar
                     {
@@ -44,14 +44,14 @@ namespace LOGIC.Class
                             {
                                 List<VVenta_01> detalleNuevo = new List<VVenta_01>();
                                 detalleNuevo.Add(i);                            
-                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta,vVenta.IdAlmacen, vVenta.Usuario))
+                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta,vVenta.IdAlmacen))
                                 {
                                     return false;
                                 }
                             }
                             if (i.Estado == (int)ENEstado.MODIFICAR)
                             {                            
-                                if (!new LVenta_01().Modificar(i, IdVenta,vVenta.IdAlmacen,vVenta.Usuario))
+                                if (!new LVenta_01().Modificar(i, IdVenta,vVenta.IdAlmacen))
                                 {
                                     return false;
                                 }

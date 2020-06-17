@@ -19,17 +19,7 @@ using System.Data.Common;
 namespace REPOSITORY.Clase
 {
     public class RCompraIngreso : BaseConexion, ICompraIngreso
-    {
-        private readonly ITI001 tI001;
-        private readonly ITI002 tI002;
-        private readonly ITI0021 tI0021;
-
-        public RCompraIngreso(ITI001 tI001, ITI002 tI002, ITI0021 tI0021)
-        {
-            this.tI001 = tI001;
-            this.tI002 = tI002;
-            this.tI0021 = tI0021;
-        }
+    {   
         #region Transacciones
         public bool Guardar(VCompraIngresoLista vCompraIngreso, ref int id)
         {
@@ -84,65 +74,13 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarEstado(int IdCompraIngreso, int estado,ref List<string> lMensaje)
+        public bool ModificarEstado(int IdCompraIngreso, int estado)
         {
             try
             {
                 using (var db = GetEsquema())
-                {
-                    DateTime fechaVen = Convert.ToDateTime("2017-01-01");
-                    string lote = "20170101";
-                    var compraIng = db.CompraIng.Where(c => c.Id.Equals(IdCompraIngreso)).FirstOrDefault();
-                    var compraing_01 = db.CompraIng_01.Where(c => c.IdCompra.Equals(IdCompraIngreso)).ToList();
-                    //Verifica si existe stock para todos los productos a Eliminar
-                    foreach (var item in compraing_01)
-                    {                        
-                        var StockActual = this.tI001.TraerStockActual(item.IdProduc, compraIng.IdAlmacen,lote , fechaVen);                                           
-                        if (StockActual < item.TotalCant)
-                        {
-                            var producto = db.Producto.Where(p => p.Id == item.IdProduc).Select(p => p.Descrip).FirstOrDefault();
-                            lMensaje.Add("No existe stock actual suficiente para el producto: " + producto);
-                        }
-                    }
-                    if (lMensaje.Count > 0)
-                    {
-                        var mensaje = "";
-                        foreach (var item in lMensaje)
-                        {
-                            mensaje = mensaje + "- " + item + "\n";
-                        }
-                        return false;
-                    }
-                    //Actualizar saldo, Eliminar Movimientos
-                    foreach (var i in compraing_01)
-                    {
-                        if (i.TotalCant > 0)
-                        {
-                            if (this.tI001.ExisteProducto(i.IdProduc, compraIng.IdAlmacen, lote, fechaVen))
-                            {
-                                if (!this.tI001.ActualizarInventario(i.IdProduc,
-                                                               compraIng.IdAlmacen,
-                                                               EnAccionEnInventario.Descontar,
-                                                               Convert.ToDecimal(i.TotalCant),
-                                                               lote,
-                                                               fechaVen))
-                                {
-                                    return false;
-                                }
-                                //ELIMINA EL DETALLE DE MOVIMIENTO
-                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRA_INGRES0);
-                                //ELIMINA EL MOVIMIENTO
-                                this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRA_INGRES0);
-                            }
-                            else
-                            {
-                                //ELIMINA EL DETALLE DE MOVIMIENTO
-                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRA_INGRES0);
-                                //ELIMINA EL MOVIMIENTO
-                                this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRA_INGRES0);
-                            }
-                        }                                               
-                    }
+                {                  
+                    var compraIng = db.CompraIng.Where(c => c.Id.Equals(IdCompraIngreso)).FirstOrDefault();                    
                     compraIng.Estado = estado;
                     db.CompraIng.Attach(compraIng);
                     db.Entry(compraIng).State = EntityState.Modified;                   
@@ -159,7 +97,7 @@ namespace REPOSITORY.Clase
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
    
-        public List<VCompraIngresoLista> ListarXId(int id)
+        public VCompraIngresoLista TraerCompraIngreso(int id)
         {
             try
             {
@@ -211,7 +149,7 @@ namespace REPOSITORY.Clase
                                          CantidadGrupo = a.CantidadGrupo,
                                          CompraAntiguaFecha = a.CompraAntiguaFecha,
                                          TotalMaple = a.TotalMaple
-                                      }).ToList();
+                                      }).FirstOrDefault();
                     return listResult;
                 }
             }
@@ -258,7 +196,7 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VCompraIngreso> Listar()
+        public List<VCompraIngreso> TraerComprasIngreso()
         {
             try
             {

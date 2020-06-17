@@ -15,13 +15,13 @@ namespace REPOSITORY.Clase
 {
     public class RCompra : BaseConexion, ICompra
     {
-        private readonly ITI001 tI001;
-       
+        private readonly ITI001 tI001;       
         public RCompra(ITI001 tI001)       
         {
             this.tI001 = tI001;
          
         }
+        #region Transacciones
         public bool Guardar(VCompra vcompra, ref int id)
         {
             try
@@ -71,7 +71,7 @@ namespace REPOSITORY.Clase
             try
             {
                 using (var db = GetEsquema())
-                {                
+                {
                     var compra = db.Compra.Where(c => c.Id.Equals(IdCompra)).FirstOrDefault();
                     var compra_01 = db.Compra_01.Where(c => c.IdCompra.Equals(IdCompra)).ToList();
                     //Verifica si existe stock para todos los productos a Eliminar
@@ -101,31 +101,7 @@ namespace REPOSITORY.Clase
                                                                          (int)ENConcepto.COMPRAS, EnAccionEnInventario.Descontar))
                         {
                             return false;
-                        }
-
-                        //if (this.tI001.ExisteProducto(i.IdProducto.ToString(), compra.IdAlmacen, i.Lote, i.FechaVen))
-                        //{
-                        //    if (!this.tI001.ActualizarInventario(i.IdProducto.ToString(),
-                        //                                   compra.IdAlmacen,
-                        //                                   EnAccionEnInventario.Descontar,
-                        //                                   Convert.ToDecimal(i.Canti),
-                        //                                   i.Lote,
-                        //                                   i.FechaVen))
-                        //    {
-                        //        return false;
-                        //    }
-                        //    //ELIMINA EL DETALLE DE MOVIMIENTO
-                        //    this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
-                        //    //ELIMINA EL MOVIMIENTO
-                        //    this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
-                        //}
-                        //else
-                        //{
-                        //    //ELIMINA EL DETALLE DE MOVIMIENTO
-                        //    this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
-                        //    //ELIMINA EL MOVIMIENTO
-                        //    this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRAS);
-                        //}
+                        }                    
                     }
                     compra.Estado = estado;
                     db.Compra.Attach(compra);
@@ -139,7 +115,10 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+
         #region CONSULTA
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCompraLista> Lista()
         {
 
@@ -179,8 +158,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-       
+        /********** VARIOS REGISTROS ***********/
         #endregion
 
     }

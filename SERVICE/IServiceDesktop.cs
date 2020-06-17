@@ -273,21 +273,23 @@ namespace SERVICE
 
         #region COMPRA INGRESO
         #region Transacciones
+
         [OperationContract]
-                 bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id, string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03);
-                [OperationContract]
-                bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado,  ref List<string>lMensaje);
+        bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03);
+        [OperationContract]
+        bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado,  ref List<string>lMensaje);
+
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/              
                 [OperationContract]
-                List<VCompraIngresoLista> CmmpraIngresoListarXId(int id);
+       VCompraIngresoLista TraerCompraIngreso(int id);
         /********** VARIOS REGISTROS ***********/               
                 [OperationContract]
                 DataTable CompraIngresoBuscar(int estado);
 
                 [OperationContract]
-                List<VCompraIngreso> CmmpraIngresoListar();
+                List<VCompraIngreso> TraerComprasIngreso();
         /********** REPORTES ***********/
                 [OperationContract]
                 DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estados);

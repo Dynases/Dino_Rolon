@@ -117,43 +117,45 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                if (!this.ExisteProducto(idProducto, idAlmacen, lote, fechaVen))
+                if (cantidad > 0)
                 {
-                    if (!this.Nuevo(idAlmacen, idProducto, cantidad, lote, fechaVen))
+                    if (!this.ExisteProducto(idProducto, idAlmacen, lote, fechaVen))
+                    {
+                        if (!this.Nuevo(idAlmacen, idProducto, cantidad, lote, fechaVen))
+                        {
+                            return false;
+                        }
+                    }
+                    if (!this.ActualizarInventario(idProducto,
+                                                     idAlmacen,
+                                                     accion,
+                                                     cantidad,
+                                                     lote,
+                                                     fechaVen))
                     {
                         return false;
                     }
+                    int idMovimiento = 0;
+                    //NUEVO EL MOVIMIENTO
+                    if (!this.tI002.Guardar(idAlmacen, "",
+                                        0, "",
+                                        idDetalle,
+                                        usuario,
+                                        Observacion,
+                                        concepto,
+                                        ref idMovimiento))
+                    {
+                        return false;
+                    }
+                    //NUEVO DETALLE DE MOVIMIENTO
+                    if (!this.tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
+                                          cantidad,
+                                          lote,
+                                          fechaVen))
+                    {
+                        return false;
+                    }                  
                 }
-                if (!this.ActualizarInventario(idProducto,
-                                                 idAlmacen,
-                                                 accion,
-                                                 cantidad,
-                                                 lote,
-                                                 fechaVen))
-                {
-                    return false;
-                }
-                int idMovimiento = 0;
-                //NUEVO EL MOVIMIENTO
-                if (!this.tI002.Guardar(idAlmacen, "",
-                                    0, "",
-                                    idDetalle,
-                                    usuario,
-                                    Observacion,
-                                    concepto,
-                                    ref idMovimiento))
-                {
-                    return false;
-                }
-                //NUEVO DETALLE DE MOVIMIENTO
-                if (!this.tI0021.Guardar(idMovimiento, Convert.ToInt32(idProducto),
-                                      cantidad,
-                                      lote,
-                                      fechaVen))
-                {
-                    return false;
-                }
-
                 return true;
             }
             catch (Exception ex)

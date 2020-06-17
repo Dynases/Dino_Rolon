@@ -928,11 +928,11 @@ namespace SERVICE
 
         #region Compra Ingreso
         #region Transacciones
-        public bool CompraIngreso_Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int Id, string usuario, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
+        public bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
         {
             try
             {
-                var result = new LCompraIngreso().Guardar(vCompraIngreso, vCompraIngreso_01, ref Id, usuario, EsDevolucion, vCompraIngreso_03);
+                var result = new LCompraIngreso().Guardar(vCompraIngreso, vCompraIngreso_01, ref idCompraIng, EsDevolucion, vCompraIngreso_03);
                 return result;
             }
             catch (Exception ex)
@@ -940,7 +940,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public bool CompraIngreso_ModificarEstado(int IdCompraIng, int estado, ref List<string> lMensaje)
+        public bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado, ref List<string> lMensaje)
         {
             try
             {
@@ -953,12 +953,12 @@ namespace SERVICE
             }
         }
         #endregion
-        #region COnsulta
-        public List<VCompraIngreso> CmmpraIngresoListar()
+        #region Consulta
+        public List<VCompraIngreso> TraerComprasIngreso()
         {
             try
             {
-                var listResult = new LCompraIngreso().Listar();
+                var listResult = new LCompraIngreso().TraerComprasIngreso();
                 return listResult;
             }
             catch (Exception ex)
@@ -967,11 +967,11 @@ namespace SERVICE
             }
         }
 
-        public List<VCompraIngresoLista> CmmpraIngresoListarXId(int id)
+        public VCompraIngresoLista TraerCompraIngreso(int id)
         {
             try
             {
-                var listResult = new LCompraIngreso().ListarXId(id);
+                var listResult = new LCompraIngreso().TraerCompraIngreso(id);
                 return listResult;
             }
             catch (Exception ex)
@@ -1538,6 +1538,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
 
         #endregion
         #endregion

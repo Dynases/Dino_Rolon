@@ -551,16 +551,6 @@ namespace PRESENTER.adm
                 int idUsuario = tbIdUsuario.Text == string.Empty ? 0 : Convert.ToInt32(tbIdUsuario.Text);                
                 int idAux = idUsuario;
 
-                //List<VUsuario_01> List1 = (List<VUsuario_01>)Dgv_Detalle.DataSource;
-                //List<VUsuario_01> List2 = new List<VUsuario_01>();               
-
-                //for (int i = 0; i <= List1.Count - 1; i += 1)
-                //{                   
-                //    if (List1[i].Acceso == true)
-                //        List2.Add(List1[i]);                    
-                //}                                
-                //var detalle = ((List<VUsuario_01>)List2).ToArray<VUsuario_01>();
-
                 var detalle = ((List<VUsuario_01>)Dgv_Detalle.DataSource).ToArray<VUsuario_01>();
                 List<string> Mensaje = new List<string>();
                 var LMensaje = Mensaje.ToArray();

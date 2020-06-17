@@ -7,26 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
+using UTILITY.Global;
 
 namespace LOGIC.Class
 {
   public  class LCompraIngreso_01
     {
         protected ICompraIngreso_01 iCompraIngreso_01;
+        protected IProducto iProducto;
         public LCompraIngreso_01()
         {
+            iProducto = new RProducto();
             iCompraIngreso_01 = new RCompraIngreso_01();
         }
         #region Transacciones
-        public bool Guardar(List<VCompraIngreso_01> lista, int Id,string usuario)
+        public bool Nuevo(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iCompraIngreso_01.Guardar(lista, Id, usuario);
+                    foreach (var vCompraIngreso_01 in lCompra_01)
+                    {
+                        var idCompraDetalle = 0;                   
+                        //Registra el detalle de venta
+                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle)) { return false; }
+
+                        var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
+                        //Registra el movimiento de inventario y actualiza el stock
+                        var Observacion = "Compra Ingreso: " + idCompra + " - IdProducto: " + vCompraIngreso_01.IdProduc + " | " + producto.Descripcion;
+                        if (!new LInventario().NuevoMovimientoInventario(idCompraDetalle,
+                                                                       vCompraIngreso_01.IdProduc  ,
+                                                                       idAlmacen,
+                                                                       UTGlobal.lote, UTGlobal.fechaVencimiento,
+                                                                       vCompraIngreso_01.TotalCant,
+                                                                       (int)ENConcepto.COMPRA_INGRES0,
+                                                                       Observacion,
+                                                                       EnAccionEnInventario.Incrementar,
+                                                                       UTGlobal.Usuario))
+                        {
+                            return false;
+                        }
+                    }
                     scope.Complete();
-                    return result;
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -34,15 +60,33 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool GuardarModificado(List<VCompraIngreso_01> lista, int Id, string usuario)
+        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01, int idCompra, int idAlmacen)
         {
             try
             {
                 using (var scope = new TransactionScope())
-                {
-                    var result = iCompraIngreso_01.GuardarModificar(lista, Id, usuario);
+                {                   
+                    //Trae el detalle de antiguo
+                    var compraIngreso_01Antiguo = this.iCompraIngreso_01.TraerCompraIngreso_01(vCompraIngreso_01.Id);
+                    if (compraIngreso_01Antiguo == null) { return false; }
+
+                    var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
+                    var Observacion = "Compra Ingreso: " + idCompra + " - IdProducto: " + vCompraIngreso_01.IdProduc + " | " + producto.Descripcion;
+                    //Modifica el movimiento de inventario y actualiza el stock
+                    if (!new LInventario().ModificarMovimientoInventario(vCompraIngreso_01.Id,
+                                                                        vCompraIngreso_01.IdProduc,
+                                                                        idAlmacen,
+                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento,
+                                                                        compraIngreso_01Antiguo.TotalCant, vCompraIngreso_01.TotalCant,
+                                                                        (int)ENConcepto.VENTAS,
+                                                                        Observacion, UTGlobal.Usuario,
+                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento))
+                    { return false; }
+
+                    //Modifica el detalle de venta
+                    if (!this.iCompraIngreso_01.Modificar(vCompraIngreso_01)) { return false; }
                     scope.Complete();
-                    return result;
+                    return true;
                 }
             }
             catch (Exception ex)
