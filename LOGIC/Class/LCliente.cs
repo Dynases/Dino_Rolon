@@ -135,7 +135,19 @@ namespace LOGIC.Class
             }
         }
         #endregion
-
+        #region Verificaciones
+        public bool ExisteEnVenta(int idCliente)
+        {
+            try
+            {
+                return iCliente.ExisteEnVenta(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
 
 
     }

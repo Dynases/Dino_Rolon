@@ -19,10 +19,141 @@ namespace REPOSITORY.Clase
 
     public class RCliente : BaseConexion, ICliente
     {
+        #region Consultas
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public List<VCliente> ListarCliente(int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Cliente
+                                      where a.Id.Equals(id)
+                                      select new VCliente
+                                      {
+                                          Id = a.Id,
+                                          IdSpyre = a.IdSpyre,
+                                          Descripcion = a.Descrip,
+                                          RazonSocial = a.RazonSo,
+                                          TipoCliente = a.TipoCli,
+                                          Nit = a.Nit,
+                                          Direcccion = a.Direcc,
+                                          Contacto1 = a.Contac1,
+                                          Contacto2 = a.Contac2,
+                                          Telfono1 = a.Telfo1,
+                                          Telfono2 = a.Telfo2,
+                                          Email1 = a.Email1,
+                                          Email2 = a.Email2,
+                                          Ciudad = a.Ciudad,
+                                          Facturacion = a.Factur,
+                                          Latitud = a.Latitud,
+                                          Longittud = a.Longit,
+                                          Imagen = a.Imagen,
+                                          TotalCred = a.TotalCred,
+                                          Dias = a.Dias,
+                                          IdCategoria = a.IdCategoria,
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        public List<VCliente> Listar()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Cliente
+                                      select new VCliente
+                                      {
+                                          Id = a.Id,
+                                          IdSpyre = a.IdSpyre,
+                                          Descripcion = a.Descrip,
+                                          RazonSocial = a.RazonSo,
+                                          TipoCliente = a.TipoCli,
+                                          Nit = a.Nit,
+                                          Direcccion = a.Direcc,
+                                          Contacto1 = a.Contac1,
+                                          Contacto2 = a.Contac2,
+                                          Telfono1 = a.Telfo1,
+                                          Telfono2 = a.Telfo2,
+                                          Email1 = a.Email1,
+                                          Email2 = a.Email2,
+                                          Ciudad = a.Ciudad,
+                                          Facturacion = a.Factur
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VClienteLista> ListarClientes()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Cliente
+                                      select new VClienteLista
+                                      {
+                                          Id = a.Id,
+                                          Descripcion = a.Descrip,
+                                          RazonSocial = a.RazonSo,
+                                          Ciudad = a.Ciudad,
+                                          NombreCiudad = "",
+                                          Contacto1 = a.Contac1,
+                                          Contacto2 = a.Contac2,
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ListarEncabezado()
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                string consulta = @"SELECT
+                                     c.Id as 'COD',
+                                     C.IdSpyre as 'CÓDIGO SPYRE',
+                                     c.Descrip as 'Nombre y Apellido', 
+                                     c.RazonSo as 'Razon Social', 
+                                     C.Nit as 'NIT',
+                                     c.Direcc as 'Direccion',
+                                     b.Descrip as 'Ciudad',
+                                     c.Factur as 'Facturacion',
+                                     c.IdCategoria
+                                    FROM 
+                                        REG.Cliente c
+                                        JOIN ADM.Libreria b ON b.IdGrupo = 2 AND b.IdOrden = 1 AND b.IdLibrer = c.Ciudad
+                                    GROUP BY
+                                      c.Id, c.IdSpyre, c.Descrip, c.RazonSo, c.Nit, c.Direcc, b.Descrip, c.Factur, c.IdCategoria";
+                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
         public bool Guardar(VCliente vcliente, ref int idCLiente)
         {
             try
-            {                
+            {
                 using (var db = GetEsquema())
                 {
                     var cliente = new Cliente();
@@ -121,33 +252,19 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-      
-        public List<VCliente> Listar()
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnVenta(int idCliente)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.Cliente
-                                      select new VCliente
-                                      {
-                                          Id = a.Id,
-                                          IdSpyre = a.IdSpyre,
-                                          Descripcion = a.Descrip,
-                                          RazonSocial = a.RazonSo,
-                                          TipoCliente = a.TipoCli,
-                                          Nit = a.Nit,
-                                          Direcccion = a.Direcc,
-                                          Contacto1 = a.Contac1,
-                                          Contacto2 = a.Contac2,
-                                          Telfono1 = a.Telfo1,
-                                          Telfono2= a.Telfo2,
-                                          Email1= a.Email1,
-                                          Email2 = a.Email2,
-                                          Ciudad = a.Ciudad,
-                                          Facturacion = a.Factur
-                                      }).ToList();
-                    return listResult;
+                    var resultado = (from a in db.Cliente
+                                     join b in db.Venta on a.Id equals b.IdCliente
+                                     where b.IdCliente.Equals(idCliente) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
                 }
             }
             catch (Exception ex)
@@ -155,98 +272,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public List<VClienteLista> ListarClientes()
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var listResult = (from a in db.Cliente                                                                        
-                                      select new VClienteLista
-                                      {
-                                          Id = a.Id,                                          
-                                          Descripcion = a.Descrip,
-                                          RazonSocial = a.RazonSo,
-                                          Ciudad = a.Ciudad,
-                                          NombreCiudad = "",
-                                          Contacto1 = a.Contac1,
-                                          Contacto2 = a.Contac2,                                    
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public List<VCliente> ListarCliente(int id)
-        {
-            try
-            {
-                using (var db = GetEsquema())
-                {
-                    var listResult = (from a in db.Cliente
-                                      where a.Id.Equals(id)
-                                      select new VCliente
-                                      {
-                                          Id = a.Id,
-                                          IdSpyre = a.IdSpyre,
-                                          Descripcion = a.Descrip,
-                                          RazonSocial = a.RazonSo,
-                                          TipoCliente = a.TipoCli,
-                                          Nit = a.Nit,
-                                          Direcccion = a.Direcc,
-                                          Contacto1 = a.Contac1,
-                                          Contacto2 = a.Contac2,
-                                          Telfono1 = a.Telfo1,
-                                          Telfono2 = a.Telfo2,
-                                          Email1 = a.Email1,
-                                          Email2 = a.Email2,
-                                          Ciudad = a.Ciudad,
-                                          Facturacion = a.Factur,
-                                          Latitud = a.Latitud,
-                                          Longittud = a.Longit,
-                                          Imagen = a.Imagen,
-                                          TotalCred = a.TotalCred,
-                                          Dias = a.Dias,
-                                          IdCategoria = a.IdCategoria,
-                                      }).ToList();
-                    return listResult;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        #endregion
 
-        public DataTable ListarEncabezado()
-        {
-            try
-            {
-                DataTable tabla = new DataTable();
-                string consulta = @"SELECT
-                                     c.Id as 'COD',
-                                     C.IdSpyre as 'CÓDIGO SPYRE',
-                                     c.Descrip as 'Nombre y Apellido', 
-                                     c.RazonSo as 'Razon Social', 
-                                     C.Nit as 'NIT',
-                                     c.Direcc as 'Direccion',
-                                     b.Descrip as 'Ciudad',
-                                     c.Factur as 'Facturacion',
-                                     c.IdCategoria
-                                    FROM 
-                                        REG.Cliente c
-                                        JOIN ADM.Libreria b ON b.IdGrupo = 2 AND b.IdOrden = 1 AND b.IdLibrer = c.Ciudad
-                                    GROUP BY
-                                      c.Id, c.IdSpyre, c.Descrip, c.RazonSo, c.Nit, c.Direcc, b.Descrip, c.Factur, c.IdCategoria";
-                return tabla = BD.EjecutarConsulta(consulta).Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+
+
     }
 }

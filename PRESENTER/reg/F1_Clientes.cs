@@ -673,7 +673,22 @@ namespace PRESENTER.reg
             bool resultadoRegistro = false;
             try
             {
-                int IdCliente = Convert.ToInt32(Txb_CliCod.Text);                
+                int IdCliente = Convert.ToInt32(Txb_CliCod.Text);
+                List<string> lMensaje = new List<string>();
+                if (new ServiceDesktop.ServiceDesktopClient().ExisteClienteEnVenta(IdCliente))
+                {
+                    lMensaje.Add("El cliente esta asociado a una venta.");
+                }
+                if (lMensaje.Count > 0)
+                {
+                    var mensaje = "";
+                    foreach (var item in lMensaje)
+                    {
+                        mensaje = mensaje + "- " + item + "\n";
+                    }
+                    MP_MostrarMensajeError(mensaje);
+                    return false;
+                }
                 //Pregunta si eliminara el registro
                 Efecto efecto = new Efecto();
                 efecto.Tipo = 2;
@@ -686,21 +701,13 @@ namespace PRESENTER.reg
                     var resul = new ServiceDesktop.ServiceDesktopClient().ClienteEliminar(IdCliente);
                     if (resul)
                     {
-                        ToastNotification.Show(this, GLMensaje.Eliminar_Exito(_NombreFormulario, IdCliente.ToString()),
-                                               PRESENTER.Properties.Resources.GRABACION_EXITOSA,
-                                               (int)GLMensajeTamano.Chico,
-                                                eToastGlowColor.Green,
-                                               eToastPosition.TopCenter);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Txb_CliCod.Text));
                         MP_Filtrar(1);
                         resultadoRegistro = true;
                     }
                     else
                     {
-                        Bitmap img = new Bitmap(PRESENTER.Properties.Resources.WARNING, 50, 50);
-                        ToastNotification.Show(this, GLMensaje.Eliminar_Error(_NombreFormulario, IdCliente.ToString()),
-                                                    img, (int)GLMensajeTamano.Mediano,
-                                                    eToastGlowColor.Green,
-                                                    eToastPosition.TopCenter);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Txb_CliCod.Text));
                         resultadoRegistro = false;
                     }
                 }
@@ -871,6 +878,10 @@ namespace PRESENTER.reg
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
 
+        }
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
         private void btn_Ciudad_Click(object sender, EventArgs e)
         {

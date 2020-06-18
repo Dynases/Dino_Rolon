@@ -174,11 +174,11 @@
   <wsdl:message name="IServiceDesktop_ClienteListarEncabezado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ClienteListarEncabezadoResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ProveedorGuardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:ProveedorGuardar" />
+  <wsdl:message name="IServiceDesktop_ExisteClienteEnVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteClienteEnVenta" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_ProveedorGuardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ProveedorGuardarResponse" />
+  <wsdl:message name="IServiceDesktop_ExisteClienteEnVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteClienteEnVentaResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProveedorListarXId_InputMessage">
     <wsdl:part name="parameters" element="tns:ProveedorListarXId" />
@@ -197,6 +197,30 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProveedorListarEncabezado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProveedorListarEncabezadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProveedorGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProveedorGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ProveedorGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProveedorGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_EliminarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_EliminarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ExisteProveedorEnCompra_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteProveedorEnCompra" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ExisteProveedorEnCompra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteProveedorEnCompraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ExisteProveedorEnCompraIng_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteProveedorEnCompraIng" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ExisteProveedorEnCompraIng_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteProveedorEnCompraIngResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Proveedor_01ListarXId_InputMessage">
     <wsdl:part name="parameters" element="tns:Proveedor_01ListarXId" />
@@ -789,9 +813,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado" message="tns:IServiceDesktop_ClienteListarEncabezado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse" message="tns:IServiceDesktop_ClienteListarEncabezado_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ProveedorGuardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar" message="tns:IServiceDesktop_ProveedorGuardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse" message="tns:IServiceDesktop_ProveedorGuardar_OutputMessage" />
+    <wsdl:operation name="ExisteClienteEnVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteClienteEnVenta" message="tns:IServiceDesktop_ExisteClienteEnVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteClienteEnVentaResponse" message="tns:IServiceDesktop_ExisteClienteEnVenta_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ProveedorListarXId">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorListarXId" message="tns:IServiceDesktop_ProveedorListarXId_InputMessage" />
@@ -804,6 +828,22 @@
     <wsdl:operation name="ProveedorListarEncabezado">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado" message="tns:IServiceDesktop_ProveedorListarEncabezado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezadoResponse" message="tns:IServiceDesktop_ProveedorListarEncabezado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProveedorGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar" message="tns:IServiceDesktop_ProveedorGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse" message="tns:IServiceDesktop_ProveedorGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/EliminarProveedor" message="tns:IServiceDesktop_EliminarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/EliminarProveedorResponse" message="tns:IServiceDesktop_EliminarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteProveedorEnCompra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompra" message="tns:IServiceDesktop_ExisteProveedorEnCompra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraResponse" message="tns:IServiceDesktop_ExisteProveedorEnCompra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteProveedorEnCompraIng">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIng" message="tns:IServiceDesktop_ExisteProveedorEnCompraIng_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIngResponse" message="tns:IServiceDesktop_ExisteProveedorEnCompraIng_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Proveedor_01ListarXId">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Proveedor_01ListarXId" message="tns:IServiceDesktop_Proveedor_01ListarXId_InputMessage" />
@@ -1347,8 +1387,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ProveedorGuardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProveedorGuardar" style="document" />
+    <wsdl:operation name="ExisteClienteEnVenta">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ExisteClienteEnVenta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1376,6 +1416,42 @@
     </wsdl:operation>
     <wsdl:operation name="ProveedorListarEncabezado">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProveedorGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProveedorGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/EliminarProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteProveedorEnCompra">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteProveedorEnCompraIng">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIng" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

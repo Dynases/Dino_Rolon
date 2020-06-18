@@ -17,5 +17,6 @@ namespace REPOSITORY.Interface
         bool Modificar(VCliente Cliente,int idCliente);
         bool Eliminar(int IdCliente);
         DataTable ListarEncabezado();
+        bool ExisteEnVenta(int idCliente);
     }
 }

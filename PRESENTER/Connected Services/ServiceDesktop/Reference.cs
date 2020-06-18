@@ -219,12 +219,11 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
-        PRESENTER.ServiceDesktop.ProveedorGuardarResponse ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteClienteEnVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteClienteEnVentaResponse")]
+        bool ExisteClienteEnVenta(int idCliente);
         
-        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
-        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ProveedorGuardarResponse> ProveedorGuardarAsync(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteClienteEnVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteClienteEnVentaResponse")]
+        System.Threading.Tasks.Task<bool> ExisteClienteEnVentaAsync(int idCliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorListarXId", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorListarXIdResponse")]
         ENTITY.Proveedor.View.VProveedor[] ProveedorListarXId(int id);
@@ -243,6 +242,31 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezadoResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> ProveedorListarEncabezadoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
+        PRESENTER.ServiceDesktop.ProveedorGuardarResponse ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
+        
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ProveedorGuardarResponse> ProveedorGuardarAsync(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/EliminarProveedor", ReplyAction="http://tempuri.org/IServiceDesktop/EliminarProveedorResponse")]
+        bool EliminarProveedor(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/EliminarProveedor", ReplyAction="http://tempuri.org/IServiceDesktop/EliminarProveedorResponse")]
+        System.Threading.Tasks.Task<bool> EliminarProveedorAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraResponse")]
+        bool ExisteProveedorEnCompra(int idProveedor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompra", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraResponse")]
+        System.Threading.Tasks.Task<bool> ExisteProveedorEnCompraAsync(int idProveedor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIng", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIngResponse")]
+        bool ExisteProveedorEnCompraIng(int idProveedor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIng", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteProveedorEnCompraIngResponse")]
+        System.Threading.Tasks.Task<bool> ExisteProveedorEnCompraIngAsync(int idProveedor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Proveedor_01ListarXId", ReplyAction="http://tempuri.org/IServiceDesktop/Proveedor_01ListarXIdResponse")]
         ENTITY.Proveedor.View.VProveedor_01Lista[] Proveedor_01ListarXId(int Id);
@@ -1842,24 +1866,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ClienteListarEncabezadoAsync();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PRESENTER.ServiceDesktop.ProveedorGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request) {
-            return base.Channel.ProveedorGuardar(request);
+        public bool ExisteClienteEnVenta(int idCliente) {
+            return base.Channel.ExisteClienteEnVenta(idCliente);
         }
         
-        public bool ProveedorGuardar(ENTITY.Proveedor.View.VProveedor proveedor, ENTITY.Proveedor.View.VProveedor_01Lista[] detalle, ref int id, string usuario) {
-            PRESENTER.ServiceDesktop.ProveedorGuardarRequest inValue = new PRESENTER.ServiceDesktop.ProveedorGuardarRequest();
-            inValue.proveedor = proveedor;
-            inValue.detalle = detalle;
-            inValue.id = id;
-            inValue.usuario = usuario;
-            PRESENTER.ServiceDesktop.ProveedorGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).ProveedorGuardar(inValue);
-            id = retVal.id;
-            return retVal.ProveedorGuardarResult;
-        }
-        
-        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ProveedorGuardarResponse> ProveedorGuardarAsync(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request) {
-            return base.Channel.ProveedorGuardarAsync(request);
+        public System.Threading.Tasks.Task<bool> ExisteClienteEnVentaAsync(int idCliente) {
+            return base.Channel.ExisteClienteEnVentaAsync(idCliente);
         }
         
         public ENTITY.Proveedor.View.VProveedor[] ProveedorListarXId(int id) {
@@ -1884,6 +1896,50 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> ProveedorListarEncabezadoAsync() {
             return base.Channel.ProveedorListarEncabezadoAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.ProveedorGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request) {
+            return base.Channel.ProveedorGuardar(request);
+        }
+        
+        public bool ProveedorGuardar(ENTITY.Proveedor.View.VProveedor proveedor, ENTITY.Proveedor.View.VProveedor_01Lista[] detalle, ref int id, string usuario) {
+            PRESENTER.ServiceDesktop.ProveedorGuardarRequest inValue = new PRESENTER.ServiceDesktop.ProveedorGuardarRequest();
+            inValue.proveedor = proveedor;
+            inValue.detalle = detalle;
+            inValue.id = id;
+            inValue.usuario = usuario;
+            PRESENTER.ServiceDesktop.ProveedorGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).ProveedorGuardar(inValue);
+            id = retVal.id;
+            return retVal.ProveedorGuardarResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ProveedorGuardarResponse> ProveedorGuardarAsync(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request) {
+            return base.Channel.ProveedorGuardarAsync(request);
+        }
+        
+        public bool EliminarProveedor(int id) {
+            return base.Channel.EliminarProveedor(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarProveedorAsync(int id) {
+            return base.Channel.EliminarProveedorAsync(id);
+        }
+        
+        public bool ExisteProveedorEnCompra(int idProveedor) {
+            return base.Channel.ExisteProveedorEnCompra(idProveedor);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExisteProveedorEnCompraAsync(int idProveedor) {
+            return base.Channel.ExisteProveedorEnCompraAsync(idProveedor);
+        }
+        
+        public bool ExisteProveedorEnCompraIng(int idProveedor) {
+            return base.Channel.ExisteProveedorEnCompraIng(idProveedor);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExisteProveedorEnCompraIngAsync(int idProveedor) {
+            return base.Channel.ExisteProveedorEnCompraIngAsync(idProveedor);
         }
         
         public ENTITY.Proveedor.View.VProveedor_01Lista[] Proveedor_01ListarXId(int Id) {

@@ -1,5 +1,4 @@
-﻿using ENTITY.Cliente.View;
-using ENTITY.com.Compra.View;
+﻿using ENTITY.com.Compra.View;
 using ENTITY.com.Compra_01.View;
 using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
@@ -30,6 +29,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using UTILITY.Enum;
 using ENTITY.com.CompraIngreso_03.View;
+using ENTITY.Cliente.View;
 
 namespace SERVICE
 {
@@ -57,8 +57,8 @@ namespace SERVICE
         #region Rol
 
         [OperationContract]
-        bool RolGuardar(VRol Rol, List<VRol_01> detalle, ref int IdRol, string usuario);        
-       
+        bool RolGuardar(VRol Rol, List<VRol_01> detalle, ref int IdRol, string usuario);
+
         [OperationContract]
         bool RolEliminar(int id, List<VRol_01> detalle);
         [OperationContract]
@@ -119,20 +119,40 @@ namespace SERVICE
 
         [OperationContract]
         DataTable ClienteListarEncabezado();
+        [OperationContract]
+        bool ExisteClienteEnVenta(int idCliente);
         #endregion
         /********** PROVEEDOR **************/
 
         #region Proveedor
-        [OperationContract]
-        bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario);
 
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
         [OperationContract]
         List<VProveedor> ProveedorListarXId(int id);
 
+        /********** VARIOS REGISTROS ***********/
         [OperationContract]
         List<VProveedorLista> ProveedorListar();
         [OperationContract]
         DataTable ProveedorListarEncabezado();
+        /********** REPORTE ***********/
+        #endregion
+
+        #region Transacciones
+        [OperationContract]
+        bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario);
+        [OperationContract]
+        bool EliminarProveedor(int id);
+        #endregion
+
+        #region Verificaciones
+        [OperationContract]
+        bool ExisteProveedorEnCompra(int idProveedor);
+        [OperationContract]
+        bool ExisteProveedorEnCompraIng(int idProveedor);
+        #endregion
+
         #endregion
 
         #region Proveedor_01

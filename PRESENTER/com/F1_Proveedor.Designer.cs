@@ -246,7 +246,6 @@
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.GPanel_Detalle);
-            this.PanelContenidoRegistro.Controls.Add(this.GPanel_InfoAdicional);
             this.PanelContenidoRegistro.Controls.Add(this.GPanel_DatosGenerales);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1063, 647);
@@ -254,7 +253,6 @@
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_DatosGenerales, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_InfoAdicional, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Detalle, 0);
             // 
             // PanelInferior
@@ -281,8 +279,8 @@
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(1063, 680);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
             // TxtNombreUsu
             // 
@@ -293,6 +291,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.GPanel_InfoAdicional);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Telefono2);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Email2);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Contacto2);
@@ -323,10 +322,11 @@
             this.GPanel_DatosGenerales.Controls.Add(this.labelX7);
             this.GPanel_DatosGenerales.Controls.Add(this.LabelX1);
             this.GPanel_DatosGenerales.DisabledBackColor = System.Drawing.Color.Empty;
+            this.GPanel_DatosGenerales.Dock = System.Windows.Forms.DockStyle.Top;
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 111);
+            this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 108);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(718, 320);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(1063, 320);
             // 
             // 
             // 
@@ -471,13 +471,12 @@
             this.GroupBox1.Controls.Add(this.Cb_TipoAlojamiento);
             this.GroupBox1.Controls.Add(this.labelX8);
             this.GroupBox1.Controls.Add(this.labelX10);
-            this.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
             this.GroupBox1.Location = new System.Drawing.Point(0, 195);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(712, 99);
+            this.GroupBox1.Size = new System.Drawing.Size(739, 99);
             this.GroupBox1.TabIndex = 377;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "DETALLE";
@@ -1066,10 +1065,11 @@
             this.GPanel_InfoAdicional.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_InfoAdicional.Controls.Add(this.superTabControl2);
             this.GPanel_InfoAdicional.DisabledBackColor = System.Drawing.Color.Empty;
+            this.GPanel_InfoAdicional.Dock = System.Windows.Forms.DockStyle.Right;
             this.GPanel_InfoAdicional.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_InfoAdicional.Location = new System.Drawing.Point(713, 108);
+            this.GPanel_InfoAdicional.Location = new System.Drawing.Point(745, 0);
             this.GPanel_InfoAdicional.Name = "GPanel_InfoAdicional";
-            this.GPanel_InfoAdicional.Size = new System.Drawing.Size(350, 323);
+            this.GPanel_InfoAdicional.Size = new System.Drawing.Size(312, 294);
             // 
             // 
             // 
@@ -1118,16 +1118,16 @@
             this.superTabControl2.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl2.ControlBox.MenuBox,
             this.superTabControl2.ControlBox.CloseBox});
-            this.superTabControl2.Controls.Add(this.SuperTabControlPanel1);
-            this.superTabControl2.Controls.Add(this.SuperTabControlPanel3);
             this.superTabControl2.Controls.Add(this.SuperTabControlPanel2);
+            this.superTabControl2.Controls.Add(this.SuperTabControlPanel3);
+            this.superTabControl2.Controls.Add(this.SuperTabControlPanel1);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl2.Location = new System.Drawing.Point(0, 0);
             this.superTabControl2.Name = "superTabControl2";
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.SelectedTabIndex = 2;
-            this.superTabControl2.Size = new System.Drawing.Size(344, 297);
+            this.superTabControl2.Size = new System.Drawing.Size(306, 268);
             this.superTabControl2.TabFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superTabControl2.TabIndex = 223;
             this.superTabControl2.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -1143,7 +1143,7 @@
             this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 25);
             this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(344, 272);
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(306, 243);
             this.SuperTabControlPanel1.TabIndex = 1;
             this.SuperTabControlPanel1.TabItem = this.SuperTabItem1;
             // 
@@ -1152,7 +1152,7 @@
             this.grayuda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grayuda.Location = new System.Drawing.Point(0, 0);
             this.grayuda.Name = "grayuda";
-            this.grayuda.Size = new System.Drawing.Size(344, 272);
+            this.grayuda.Size = new System.Drawing.Size(306, 243);
             this.grayuda.TabIndex = 0;
             // 
             // SuperTabItem1
@@ -1167,9 +1167,9 @@
             // 
             this.SuperTabControlPanel3.Controls.Add(this.Panel2);
             this.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SuperTabControlPanel3.Location = new System.Drawing.Point(0, 27);
+            this.SuperTabControlPanel3.Location = new System.Drawing.Point(0, 25);
             this.SuperTabControlPanel3.Name = "SuperTabControlPanel3";
-            this.SuperTabControlPanel3.Size = new System.Drawing.Size(309, 265);
+            this.SuperTabControlPanel3.Size = new System.Drawing.Size(306, 243);
             this.SuperTabControlPanel3.TabIndex = 0;
             this.SuperTabControlPanel3.TabItem = this.SuperTabItem3;
             // 
@@ -1184,16 +1184,16 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(0, 0);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(309, 265);
+            this.Panel2.Size = new System.Drawing.Size(306, 243);
             this.Panel2.TabIndex = 223;
             // 
             // Pc_Img
             // 
             this.Pc_Img.ErrorImage = null;
             this.Pc_Img.Image = global::PRESENTER.Properties.Resources.PANTALLA;
-            this.Pc_Img.Location = new System.Drawing.Point(84, 33);
+            this.Pc_Img.Location = new System.Drawing.Point(82, 33);
             this.Pc_Img.Name = "Pc_Img";
-            this.Pc_Img.Size = new System.Drawing.Size(219, 221);
+            this.Pc_Img.Size = new System.Drawing.Size(208, 194);
             this.Pc_Img.TabIndex = 223;
             this.Pc_Img.TabStop = false;
             // 
@@ -1207,7 +1207,7 @@
             this.BtAdicionar.Location = new System.Drawing.Point(6, 33);
             this.BtAdicionar.Name = "BtAdicionar";
             this.BtAdicionar.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4);
-            this.BtAdicionar.Size = new System.Drawing.Size(75, 61);
+            this.BtAdicionar.Size = new System.Drawing.Size(70, 65);
             this.BtAdicionar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014;
             this.BtAdicionar.SubItemsExpandWidth = 10;
             this.BtAdicionar.TabIndex = 1;
@@ -1245,7 +1245,7 @@
             this.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuperTabControlPanel2.Location = new System.Drawing.Point(0, 25);
             this.SuperTabControlPanel2.Name = "SuperTabControlPanel2";
-            this.SuperTabControlPanel2.Size = new System.Drawing.Size(318, 269);
+            this.SuperTabControlPanel2.Size = new System.Drawing.Size(306, 243);
             this.SuperTabControlPanel2.TabIndex = 2;
             this.SuperTabControlPanel2.TabItem = this.SuperTabItem2;
             // 
@@ -1255,7 +1255,7 @@
             this.BtnMapaMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.BtnMapaMax.Image = global::PRESENTER.Properties.Resources.zoomin;
             this.BtnMapaMax.ImageFixedSize = new System.Drawing.Size(25, 25);
-            this.BtnMapaMax.Location = new System.Drawing.Point(39, 236);
+            this.BtnMapaMax.Location = new System.Drawing.Point(39, 208);
             this.BtnMapaMax.Name = "BtnMapaMax";
             this.BtnMapaMax.Size = new System.Drawing.Size(30, 30);
             this.BtnMapaMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1268,7 +1268,7 @@
             this.btnMapaMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnMapaMin.Image = global::PRESENTER.Properties.Resources.zoomout;
             this.btnMapaMin.ImageFixedSize = new System.Drawing.Size(25, 25);
-            this.btnMapaMin.Location = new System.Drawing.Point(3, 236);
+            this.btnMapaMin.Location = new System.Drawing.Point(3, 208);
             this.btnMapaMin.Name = "btnMapaMin";
             this.btnMapaMin.Size = new System.Drawing.Size(30, 30);
             this.btnMapaMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1297,7 +1297,7 @@
             this.Gmc_Proveedor.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Gmc_Proveedor.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Gmc_Proveedor.ShowTileGridLines = false;
-            this.Gmc_Proveedor.Size = new System.Drawing.Size(318, 269);
+            this.Gmc_Proveedor.Size = new System.Drawing.Size(306, 243);
             this.Gmc_Proveedor.TabIndex = 6;
             this.Gmc_Proveedor.Zoom = 0D;
             this.Gmc_Proveedor.DoubleClick += new System.EventHandler(this.Gmc_Proveedor_DoubleClick);
@@ -1316,11 +1316,11 @@
             this.GPanel_Detalle.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Detalle.Controls.Add(this.Dgv_Detalle);
             this.GPanel_Detalle.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_Detalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 406);
+            this.GPanel_Detalle.Location = new System.Drawing.Point(0, 428);
             this.GPanel_Detalle.Name = "GPanel_Detalle";
-            this.GPanel_Detalle.Size = new System.Drawing.Size(1063, 213);
+            this.GPanel_Detalle.Size = new System.Drawing.Size(1063, 191);
             // 
             // 
             // 
@@ -1359,7 +1359,7 @@
             this.Dgv_Detalle.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(1057, 187);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(1057, 165);
             this.Dgv_Detalle.TabIndex = 258;
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
             this.Dgv_Detalle.SelectionChanged += new System.EventHandler(this.Dgv_Detalle_SelectionChanged);

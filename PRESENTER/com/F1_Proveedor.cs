@@ -24,6 +24,7 @@ using ENTITY.Libreria.View;
 using System.Reflection;
 using System.IO;
 using UTILITY.Enum.EnCarpetas;
+using PRESENTER.frm;
 
 namespace PRESENTER.com
 {
@@ -215,8 +216,8 @@ namespace PRESENTER.com
                 }
                 VLibreriaLista libreria = new VLibreriaLista()
                 {
-                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
-                    IdOrden = Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO1),
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.PROVEEDOR),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.PROVEEDOR_TIPO),
                     IdLibrer = idLibreria + 1,
                     Descrip = Cb_TipoProveedor.Text == "" ? "" : Cb_TipoProveedor.Text,
                     Fecha = DateTime.Now.Date,
@@ -343,6 +344,7 @@ namespace PRESENTER.com
                 btn_TipoAlojamiento.Visible = false;
                 btn_TipoProveedor.Visible = false;
                 MP_AsignarPermisos();
+                BtnImprimir.Visible = false;
             }
             catch (Exception ex)
             {
@@ -517,12 +519,11 @@ namespace PRESENTER.com
         }
         private void MP_MostrarMensajeError(string mensaje)
         {
-            ToastNotification.Show(this,
-                                   mensaje,
-                                   PRESENTER.Properties.Resources.WARNING,
-                                   (int)GLMensajeTamano.Mediano,
-                                   eToastGlowColor.Green,
-                                   eToastPosition.TopCenter);
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
         private void ArmarDetalle()
         {
@@ -895,7 +896,7 @@ namespace PRESENTER.com
                 if (Tb_Fecha.Value > DateTime.Now.Date)
                 {
                     _Error = true;
-                    throw new Exception("La fecha de nacimiento es mayor a la actual");
+                    throw new Exception("Fecha de nacimiento debe ser distinto ala fecha actual");
                 }
                 if (Tb_Aves.Value < 0)
                 {
@@ -1061,14 +1062,10 @@ namespace PRESENTER.com
                     else
                     {
                         mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                        MP_MostrarMensajeError(mensaje);
+                        //ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                     }
-                }
-                else
-                {
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                }
+                }                
                 return resultado;
             }
             catch (Exception ex)
@@ -1077,6 +1074,62 @@ namespace PRESENTER.com
                 return false;
             }
            
+        }
+        public override bool MH_Eliminar()
+        {
+            bool resultadoRegistro = false;
+            try
+            {
+                int idProveedor = Convert.ToInt32(Tb_Cod.Text);
+                List<string> lMensaje = new List<string>();
+                if (new ServiceDesktop.ServiceDesktopClient().ExisteProveedorEnCompra(idProveedor))
+                {
+                    lMensaje.Add("El proveedor esta asociado a una compra.");
+                }
+                if (new ServiceDesktop.ServiceDesktopClient().ExisteProveedorEnCompraIng(idProveedor))
+                {
+                    lMensaje.Add("El proveedor esta asociado a una compra ingreso.");
+                }
+                if (lMensaje.Count > 0)
+                {
+                    var mensaje = "";
+                    foreach (var item in lMensaje)
+                    {
+                        mensaje = mensaje + "- " + item + "\n";
+                    }
+                    MP_MostrarMensajeError(mensaje);
+                    return false;
+                }
+                //Pregunta si eliminara el registro
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool bandera = efecto.Band;
+                if (bandera)
+                {
+                    var resul = new ServiceDesktop.ServiceDesktopClient().ClienteEliminar(idProveedor);
+                    if (resul)
+                    {
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Cod.Text));
+                        MP_Filtrar(1);
+                        resultadoRegistro = true;
+                    }
+                    else
+                    {
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Cod.Text));
+                        resultadoRegistro = false;
+                    }
+                }
+                return resultadoRegistro;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return resultadoRegistro;
+            }
+
         }
         public override void MH_Nuevo()
         {

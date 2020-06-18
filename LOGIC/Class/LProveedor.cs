@@ -14,11 +14,9 @@ namespace LOGIC.Class
     public class LProveedor
     {
         protected IProveedor iProveedor;
-        //protected IProveedor_01 iProveedorDetalle;
         public LProveedor()
         {
-            iProveedor = new RProvedor();
-            //iProveedorDetalle = new RProveedor_01();
+            iProveedor = new RProvedor();            
         }
         #region Transaciones
         public bool Guardar(VProveedor vProveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario)
@@ -28,9 +26,25 @@ namespace LOGIC.Class
                 using (var scope = new TransactionScope())
                 {
                     var result = iProveedor.Guardar(vProveedor, ref id);
-
                     var resultDetalle = new LProveedor_01().Guardar(detalle, id, usuario);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
+        public bool Eliminar(int idProveedor)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    bool result = false;
+                    result = new LProveedor().Eliminar(idProveedor);                                
                     scope.Complete();
                     return result;
                 }
@@ -76,6 +90,30 @@ namespace LOGIC.Class
             }
         }
 
+        #endregion
+        #region Verificaciones
+        public bool ExisteEnCompra(int idProveedor)
+        {
+            try
+            {
+                return iProveedor.ExisteEnCompra(idProveedor);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnCompraIng(int idProveedor)
+        {
+            try
+            {
+                return iProveedor.ExisteEnCompraIng(idProveedor);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

@@ -300,8 +300,20 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool ExisteClienteEnVenta(int id)
+        {
+            try
+            {
+                var listResult = new LCliente().ExisteEnVenta(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
-        
+
         /********** LIBRERIA ****************/
 
         #region Libreria
@@ -335,19 +347,10 @@ namespace SERVICE
         /********** PROVEEDOR **************/
 
         #region Proveedor
-        public bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario)
-        {
-            try
-            {
-                var result = new LProveedor().Guardar(proveedor, detalle, ref id, usuario);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
 
+        #region Consulta
+
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VProveedor> ProveedorListarXId(int id)
         {
             try
@@ -361,6 +364,7 @@ namespace SERVICE
             }
         }
 
+        /********** VARIOS REGISTROS ***********/
         public List<VProveedorLista> ProveedorListar()
         {
             try
@@ -385,6 +389,64 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
+        /********** REPORTE ***********/
+        #endregion
+
+        #region Transacciones
+        public bool ProveedorGuardar(VProveedor proveedor, List<VProveedor_01Lista> detalle, ref int id, string usuario)
+        {
+            try
+            {
+                var result = new LProveedor().Guardar(proveedor, detalle, ref id, usuario);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarProveedor(int id)
+        {
+            try
+            {
+                var listResult = new LProveedor().Eliminar(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Verificaciones
+        public bool ExisteProveedorEnCompra(int idProveedor)
+        {
+            try
+            {
+                var listResult = new LProveedor().ExisteEnCompra(idProveedor);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteProveedorEnCompraIng(int idProveedor)
+{
+            try
+            {
+                var listResult = new LProveedor().ExisteEnCompraIng(idProveedor);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #endregion
         #region Proveedor_01
         public List<VProveedor_01Lista> Proveedor_01ListarXId(int id)
@@ -1541,6 +1603,18 @@ namespace SERVICE
 
 
         #endregion
+        #endregion
+
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+
+        #endregion
+        #region Verificaciones
+
         #endregion
     }
 }
