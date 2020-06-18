@@ -83,7 +83,7 @@ namespace LOGIC.Class
         {
             try
             {
-                bool result = false;
+                bool resultado = false;
                 using (var scope = new TransactionScope())
                 {
                     //Trae el detalle de venta completo
@@ -110,16 +110,13 @@ namespace LOGIC.Class
                         }
 
                         //Elimina el movimiento de inventario y actualiza el stock
-                        if (!new LInventario().EliminarMovimientoInventario(vCompraIng_01.Id, vCompraIng_01.IdProduc, compraIng.IdAlmacen,
-                                                                              UTGlobal.lote, UTGlobal.fechaVencimiento, vCompraIng_01.Cantidad,
-                                                                             (int)ENConcepto.COMPRA_INGRES0, EnAccionEnInventario.Descontar))
-                        {
-                            return false;
-                        }
+                        new LInventario().EliminarMovimientoInventario(vCompraIng_01.Id, vCompraIng_01.IdProduc, compraIng.IdAlmacen,
+                                                                              UTGlobal.lote, UTGlobal.fechaVencimiento, vCompraIng_01.TotalCant,
+                                                                             (int)ENConcepto.COMPRA_INGRES0, EnAccionEnInventario.Descontar);                     
                     }
-                    result = iCompraIngreso.ModificarEstado(IdCompraIng, estado);                    
+                    resultado = iCompraIngreso.ModificarEstado(IdCompraIng, estado);                    
                     scope.Complete();
-                    return result;
+                    return resultado;
                 }
             }
             catch (Exception ex)

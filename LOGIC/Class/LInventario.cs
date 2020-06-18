@@ -55,20 +55,17 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    if (!this.iTi001.NuevoMovimientoInventario(idVentaDetalle,
+                    var resultado = this.iTi001.NuevoMovimientoInventario(idVentaDetalle,
                                                                idProducto,
                                                                idAlmacen,
-                                                               lote,fechaVencimiento,
+                                                               lote, fechaVencimiento,
                                                                cantidad,
                                                                concepto,
                                                                Observacion,
                                                                accion,
-                                                               usuario))
-                    {
-                        return false;
-                    }
+                                                               usuario);
                     scope.Complete();
-                    return true;
+                    return resultado;
                 }
             }
             catch (Exception ex)
@@ -90,19 +87,16 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    if (!this.iTi001.ModificarMovimientoInventario(idVentaDetalle,
+                    var resultado = this.iTi001.ModificarMovimientoInventario(idVentaDetalle,
                                                                    idProducto,
                                                                    idAlmacen,
                                                                    lote, fechaVencimiento,
-                                                                   cantidadAnterior,cantidadNueva,
+                                                                   cantidadAnterior, cantidadNueva,
                                                                    concepto,
                                                                    Observacion,
-                                                                   usuario, loteNuevo, fechaVencimientoNuevo))
-                    {
-                        return false;
-                    }
+                                                                   usuario, loteNuevo, fechaVencimientoNuevo);
                     scope.Complete();
-                    return true;
+                    return resultado;
                 }
             }
             catch (Exception ex)
@@ -123,19 +117,16 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
-                    if (!this.iTi001.EliminarMovimientoInventario(idVentaDetalle,
+                    var resultado = this.iTi001.EliminarMovimientoInventario(idVentaDetalle,
                                                                    idProducto,
                                                                    idAlmacen,
-                                                                   lote, fechaVencimiento,   
+                                                                   lote, fechaVencimiento,
                                                                    cantidad,
                                                                    concepto,
                                                                    accion
-                                                                   ))
-                    {
-                        return false;
-                    }
+                                                                   );
                     scope.Complete();
-                    return true;
+                    return resultado;
                 }
             }
             catch (Exception ex)

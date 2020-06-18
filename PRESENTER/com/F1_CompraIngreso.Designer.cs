@@ -80,6 +80,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.Dgv_Resultado = new Janus.Windows.GridEX.GridEX();
+            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
             this.Tab_Detalle = new DevComponents.DotNetBar.SuperTabItem();
@@ -104,9 +107,6 @@
             this.Tb_TotalFisico = new DevComponents.Editors.DoubleInput();
             this.Tb_TotalEnviado = new DevComponents.Editors.DoubleInput();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.Dgv_Resultado = new Janus.Windows.GridEX.GridEX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -134,6 +134,8 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.superTabControl2.SuspendLayout();
+            this.superTabControlPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Resultado)).BeginInit();
             this.superTabControlPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
             this.superTabControlPanel2.SuspendLayout();
@@ -148,8 +150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).BeginInit();
-            this.superTabControlPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Resultado)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnImprimir
@@ -647,6 +647,7 @@
             this.Tb_Edad.MaxLength = 15;
             this.Tb_Edad.Name = "Tb_Edad";
             this.Tb_Edad.PreventEnterBeep = true;
+            this.Tb_Edad.ReadOnly = true;
             this.Tb_Edad.Size = new System.Drawing.Size(196, 23);
             this.Tb_Edad.TabIndex = 8;
             // 
@@ -1015,8 +1016,8 @@
             this.superTabControl2.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl2.ControlBox.MenuBox,
             this.superTabControl2.ControlBox.CloseBox});
-            this.superTabControl2.Controls.Add(this.superTabControlPanel3);
             this.superTabControl2.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl2.Controls.Add(this.superTabControlPanel3);
             this.superTabControl2.Controls.Add(this.superTabControlPanel2);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl2.Location = new System.Drawing.Point(0, 34);
@@ -1040,6 +1041,31 @@
             this.superTabControl2.TabStripColor = superTabColorTable1;
             this.superTabControl2.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.OfficeMobile2014;
             this.superTabControl2.Text = "superTabControl2";
+            // 
+            // superTabControlPanel3
+            // 
+            this.superTabControlPanel3.Controls.Add(this.Dgv_Resultado);
+            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 34);
+            this.superTabControlPanel3.Name = "superTabControlPanel3";
+            this.superTabControlPanel3.Size = new System.Drawing.Size(785, 355);
+            this.superTabControlPanel3.TabIndex = 0;
+            this.superTabControlPanel3.TabItem = this.superTabItem1;
+            // 
+            // Dgv_Resultado
+            // 
+            this.Dgv_Resultado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Resultado.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Resultado.Name = "Dgv_Resultado";
+            this.Dgv_Resultado.Size = new System.Drawing.Size(785, 355);
+            this.Dgv_Resultado.TabIndex = 1;
+            // 
+            // superTabItem1
+            // 
+            this.superTabItem1.AttachedControl = this.superTabControlPanel3;
+            this.superTabItem1.GlobalItem = false;
+            this.superTabItem1.Name = "superTabItem1";
+            this.superTabItem1.Text = "RESULTADO";
             // 
             // superTabControlPanel1
             // 
@@ -1421,31 +1447,6 @@
             this.labelX12.TabIndex = 220;
             this.labelX12.Text = "TOTAL ENVIADO(h)";
             // 
-            // superTabItem1
-            // 
-            this.superTabItem1.AttachedControl = this.superTabControlPanel3;
-            this.superTabItem1.GlobalItem = false;
-            this.superTabItem1.Name = "superTabItem1";
-            this.superTabItem1.Text = "RESULTADO";
-            // 
-            // superTabControlPanel3
-            // 
-            this.superTabControlPanel3.Controls.Add(this.Dgv_Resultado);
-            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 34);
-            this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(785, 355);
-            this.superTabControlPanel3.TabIndex = 0;
-            this.superTabControlPanel3.TabItem = this.superTabItem1;
-            // 
-            // Dgv_Resultado
-            // 
-            this.Dgv_Resultado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Resultado.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Resultado.Name = "Dgv_Resultado";
-            this.Dgv_Resultado.Size = new System.Drawing.Size(785, 355);
-            this.Dgv_Resultado.TabIndex = 1;
-            // 
             // F1_CompraIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1483,6 +1484,8 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
             this.superTabControl2.ResumeLayout(false);
+            this.superTabControlPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Resultado)).EndInit();
             this.superTabControlPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
             this.superTabControlPanel2.ResumeLayout(false);
@@ -1498,8 +1501,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalFisico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_TotalEnviado)).EndInit();
-            this.superTabControlPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Resultado)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1141,7 +1141,6 @@ namespace PRESENTER.com
                 Cb_Almacen.ReadOnly = false;
                 tb_Proveedor.ReadOnly = false;
                 Tb_Observacion.ReadOnly = false;
-                Tb_Edad.ReadOnly = false;
                 Sw_Tipo.IsReadOnly = false;
                 Tb_Entregado.ReadOnly = false;
                 Tb_FechaEnt.Enabled = true;

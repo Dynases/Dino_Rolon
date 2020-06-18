@@ -73,15 +73,14 @@ namespace LOGIC.Class
                     var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
                     var Observacion = "Compra Ingreso: " + idCompra + " - IdProducto: " + vCompraIngreso_01.IdProduc + " | " + producto.Descripcion;
                     //Modifica el movimiento de inventario y actualiza el stock
-                    if (!new LInventario().ModificarMovimientoInventario(vCompraIngreso_01.Id,
+                    new LInventario().ModificarMovimientoInventario(vCompraIngreso_01.Id,
                                                                         vCompraIngreso_01.IdProduc,
                                                                         idAlmacen,
                                                                          UTGlobal.lote, UTGlobal.fechaVencimiento,
                                                                         compraIngreso_01Antiguo.TotalCant, vCompraIngreso_01.TotalCant,
                                                                         (int)ENConcepto.VENTAS,
                                                                         Observacion, UTGlobal.Usuario,
-                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento))
-                    { return false; }
+                                                                        UTGlobal.lote, UTGlobal.fechaVencimiento);         
 
                     //Modifica el detalle de venta
                     if (!this.iCompraIngreso_01.Modificar(vCompraIngreso_01)) { return false; }

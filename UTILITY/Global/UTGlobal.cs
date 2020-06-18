@@ -28,8 +28,8 @@ namespace UTILITY.Global
         public static int UsuarioId = 0;
         public static string NombreButton = "";
         public static Visualizador visualizador;
-        public static string lote = "20500101";
-        public static DateTime fechaVencimiento = Convert.ToDateTime("2050-01-01");
+        public static string lote = "20170101";
+        public static DateTime fechaVencimiento = Convert.ToDateTime("2017-01-01");
         //**Carpetas
         #region Carpetas
         public static string RutaTemporal = @"C:\Temporal";
@@ -38,6 +38,29 @@ namespace UTILITY.Global
         #region Metodos Globales
 
         public static void MG_ArmarCombo(MultiColumnCombo combo, List<VLibreria> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("idLibreria").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "idLibreria";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarMultiCombo(MultiColumnCombo combo, List<VLibreria> lLibreria)
         {
             try
             {

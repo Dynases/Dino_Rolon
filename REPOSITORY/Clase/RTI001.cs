@@ -31,6 +31,7 @@ namespace REPOSITORY.Clase
                     var ti001 = new TI001
                     {
                         icalm = idAlmacen,
+                        icuven = db.Producto.FirstOrDefault(a => a.Id == idProducto).UniVen,
                         iccprod = idProducto,
                         iccven = cantidad,
                         iclot = lote,
