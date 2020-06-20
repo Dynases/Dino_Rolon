@@ -12,7 +12,7 @@ namespace REPOSITORY.Interface
     {
         bool Guardar(VCompraIngreso_03 Lista, int Id);
         bool Modificar(VCompraIngreso_03 Lista, int Id);
-         List<VCompraIngreso_03> ListarXId(int id);
-         List<VCompraIngreso_03> ListarXId2(int IdGrupo2, int idAlmacen);
+         List<VCompraIngreso_03> TraerDevoluciones(int id);
+         List<VCompraIngreso_03> TraerDevolucionesTipoProducto(int IdGrupo2, int idAlmacen);
     }
 }

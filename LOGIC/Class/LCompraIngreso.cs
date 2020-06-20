@@ -38,38 +38,55 @@ namespace LOGIC.Class
                 {
                     int aux = idCompraIngreso;
                     result = iCompraIngreso.Guardar(vCompraIngreso, ref idCompraIngreso);
-                    if (aux == 0) //Nuevo
+                    if (EsDevolucion) //Sin devoluion
                     {
-                        new LCompraIngreso_01().Nuevo(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen);
-                    }
-                    else
-                    {
-                        foreach (var i in vCompraIngreso_01)
+                        if (aux == 0) //Nuevo
                         {
-                            if (i.Estado == (int)ENEstado.NUEVO)
+                            new LCompraIngreso_01().Nuevo(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                        }
+                        else
+                        {
+                            foreach (var i in vCompraIngreso_01)
                             {
-                                List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
-                                detalleNuevo.Add(i);
-                                new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen);
-                                //if (!new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen))
-                                //{
-                                //    return false;
-                                //}
-                            }
-                            if (i.Estado == (int)ENEstado.MODIFICAR)
-                            {
-                                new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen);
-                                //if (!new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen))
-                                //{
-                                //    return false;
-                                //}
+                                if (i.Estado == (int)ENEstado.NUEVO)
+                                {
+                                    List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
+                                    detalleNuevo.Add(i);
+                                    new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                }
+                                if (i.Estado == (int)ENEstado.MODIFICAR)
+                                {
+                                    new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                }
                             }
                         }
                     }
-                    if (!EsDevolucion)
+                    else//Con devoluciob
                     {
+                        if (aux == 0) //Nuevo
+                        {
+                            new LCompraIngreso_01().NuevoDevolucion(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03);
+                        }
+                        else
+                        {
+
+                            foreach (var i in vCompraIngreso_01)
+                            {
+                                if (i.Estado == (int)ENEstado.NUEVO || vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.NUEVO)
+                                {
+                                    List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
+                                    detalleNuevo.Add(i);
+                                    new LCompraIngreso_01().NuevoDevolucion(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03);
+                                }
+                                if (i.Estado == (int)ENEstado.MODIFICAR || vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.MODIFICAR)
+                                {
+                                    var devolucion = vCompraIngreso_03.Where(a => a.IdProduc == i.IdProduc).FirstOrDefault();
+                                    new LCompraIngreso_01().ModificarDevolucion(i, idCompraIngreso, vCompraIngreso.IdAlmacen, devolucion);
+                                }
+                            }
+                        }
                         new LCompraIngreso_03().Guardar(vCompraIngreso_03, idCompraIngreso);
-                    }
+                    }                  
                     scope.Complete();
                     return true;
                 }
@@ -78,23 +95,31 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }
-        public bool ModificarEstado(int IdCompraIng, int estado, ref List<string> lMensaje)
+        }      
+        public bool ModificarEstado(int IdCompraIng, int estado, ref List<string> lMensaje, bool existeDevolucion)
         {
             try
             {
                 bool resultado = false;
                 using (var scope = new TransactionScope())
                 {
+                    decimal cantidadDevolucion = 0;
                     //Trae el detalle de venta completo
                     var compraIng = this.TraerCompraIngreso(IdCompraIng);
                     var compraIng_01 = this.iCompraIngreso_01.ListarXId(IdCompraIng);
+                    var devolucion = new LCompraIngreso_03().TraerDevoluciones(IdCompraIng).ToList();                   
                     foreach (var vCompraIng_01 in compraIng_01)
                     {
                         if (compraIng_01 == null) { return false; }
 
                         var StockActual = new LInventario().TraerStockActual(vCompraIng_01.IdProduc, compraIng.IdAlmacen, UTGlobal.lote, UTGlobal.fechaVencimiento);
-                        if (StockActual < vCompraIng_01.Cantidad)
+                        var cantidadDetalle = vCompraIng_01.TotalCant;
+                        if (!existeDevolucion)
+                        {
+                            cantidadDevolucion = devolucion.FirstOrDefault(a => a.IdProduc == vCompraIng_01.IdProduc).TotalCant;
+                        }
+                        var totalCantidad = cantidadDetalle - cantidadDevolucion;
+                        if (StockActual < totalCantidad)
                         {
                             var producto = iProducto.ListarXId(vCompraIng_01.IdProduc);
                             lMensaje.Add("No existe stock actual suficiente para el producto: " + producto.Id + " - " + producto.Descripcion);
@@ -111,7 +136,7 @@ namespace LOGIC.Class
 
                         //Elimina el movimiento de inventario y actualiza el stock
                         new LInventario().EliminarMovimientoInventario(vCompraIng_01.Id, vCompraIng_01.IdProduc, compraIng.IdAlmacen,
-                                                                              UTGlobal.lote, UTGlobal.fechaVencimiento, vCompraIng_01.TotalCant,
+                                                                              UTGlobal.lote, UTGlobal.fechaVencimiento, totalCantidad,
                                                                              (int)ENConcepto.COMPRA_INGRES0, EnAccionEnInventario.Descontar);                     
                     }
                     resultado = iCompraIngreso.ModificarEstado(IdCompraIng, estado);                    

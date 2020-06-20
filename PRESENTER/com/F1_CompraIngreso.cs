@@ -283,8 +283,13 @@ namespace PRESENTER.com
                 if (totalCantidadDetalle >= (double)totalCantidadDevolucion)
                 {
                     var lResultado = ((List<VCompraIngreso_01>)Dgv_Resultado.DataSource).ToList();
+                    var totalCantidad = (decimal)(totalCantidadDetalle - Convert.ToDouble(totalCantidadDevolucion));
+
                     lResultado.FirstOrDefault(a => a.IdProduc == idProducto).
-                                                              TotalCant = (decimal)(totalCantidadDetalle - Convert.ToDouble(totalCantidadDevolucion));                  
+                                                              TotalCant = totalCantidad;
+
+                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).
+                                                              Total = totalCantidad * (decimal)precio;
                     MP_ArmarDetalleResultado(lResultado);
                 }
                 else
@@ -318,8 +323,10 @@ namespace PRESENTER.com
                 if ((double)totalCantidadDetalle >= totalCantidadDevolucion)
                 {
                     var lResultado = ((List<VCompraIngreso_01>)Dgv_Resultado.DataSource).ToList();
-                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).TotalCant = 
-                                                                (decimal)(Convert.ToDouble(totalCantidadDetalle) - totalCantidadDevolucion);                  
+                    var cantidadTotal = (decimal)(Convert.ToDouble(totalCantidadDetalle) - totalCantidadDevolucion);
+
+                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).TotalCant = cantidadTotal;
+                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).Total = cantidadTotal * (decimal)precio;
                     MP_ArmarDetalleResultado(lResultado);
                 }
                 else
@@ -836,13 +843,13 @@ namespace PRESENTER.com
                 if (tipo == 1)
                 {
                     //Consulta segun un Id de Ingreso
-                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_03ListarXId(id).ToList();
+                    lresult = new ServiceDesktop.ServiceDesktopClient().TraerDevolucionCompraIngreso_03(id).ToList();
                 }
                 else
                 {
                     int ValorTipo = id;
                     //Consulta segun un Categoria 
-                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_03ListarXId2(ValorTipo, Convert.ToInt32(Cb_Almacen.Value)).ToList();
+                    lresult = new ServiceDesktop.ServiceDesktopClient().TraerDevolucionTipoProductoCompraIngreso_03(ValorTipo, Convert.ToInt32(Cb_Almacen.Value)).ToList();
                 }
 
                 MP_ArmarDevolucion(lresult);
@@ -1769,11 +1776,12 @@ namespace PRESENTER.com
         public bool MP_DeseaImprimir()
         {
             Efecto efecto = new Efecto();
-            efecto.Tipo = 2;
+            efecto.Tipo = 1;
             efecto.Context = GLMensaje.Pregunta_Imprimir.ToUpper() + "LA NOTA DE DEVOLUCIÓN?";
             efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
             efecto.ShowDialog();
-            return efecto.Band;
+            var resultado = efecto.Band;
+            return resultado;
         }
         public override bool MH_Eliminar()
         {
@@ -1795,7 +1803,7 @@ namespace PRESENTER.com
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje= Mensaje.ToArray();                   
-                    resul = new ServiceDesktop.ServiceDesktopClient().ModificarEstadoCompraIngreso(idCompra, (int)ENEstado.ELIMINAR,ref LMensaje);
+                    resul = new ServiceDesktop.ServiceDesktopClient().ModificarEstadoCompraIngreso(idCompra, (int)ENEstado.ELIMINAR,ref LMensaje, Sw_Devolucion.Value);
                     if (resul)
                     {
                         MP_Filtrar(1);

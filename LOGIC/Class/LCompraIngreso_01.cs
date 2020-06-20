@@ -1,4 +1,5 @@
 ﻿using ENTITY.com.CompraIngreso_01;
+using ENTITY.com.CompraIngreso_03.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -60,6 +61,46 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public bool NuevoDevolucion(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen, List<VCompraIngreso_03> dlDevolucion)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    foreach (var vCompraIngreso_01 in lCompra_01)
+                    {
+                        var idCompraDetalle = 0;
+                        //Registra el detalle de venta
+                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle)) { return false; }
+
+                        var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
+                        var cantidadDevolucion = dlDevolucion.FirstOrDefault(a => a.IdProduc == vCompraIngreso_01.IdProduc).TotalCant;
+
+                        var totalCantidad = vCompraIngreso_01.TotalCant - cantidadDevolucion;
+                        //Registra el movimiento de inventario y actualiza el stock
+                        var Observacion = "Compra Ingreso: " + idCompra + " - IdProducto: " + vCompraIngreso_01.IdProduc + " | " + producto.Descripcion;
+                        if (!new LInventario().NuevoMovimientoInventario(idCompraDetalle,
+                                                                       vCompraIngreso_01.IdProduc,
+                                                                       idAlmacen,
+                                                                       UTGlobal.lote, UTGlobal.fechaVencimiento,
+                                                                       totalCantidad,
+                                                                       (int)ENConcepto.COMPRA_INGRES0,
+                                                                       Observacion,
+                                                                       EnAccionEnInventario.Incrementar,
+                                                                       UTGlobal.Usuario))
+                        {
+                            return false;
+                        }
+                    }
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public bool Modificar(VCompraIngreso_01 vCompraIngreso_01, int idCompra, int idAlmacen)
         {
             try
@@ -84,6 +125,48 @@ namespace LOGIC.Class
 
                     //Modifica el detalle de venta
                     if (!this.iCompraIngreso_01.Modificar(vCompraIngreso_01)) { return false; }
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ModificarDevolucion(VCompraIngreso_01 vDetalleNuevo, int idCompra, int idAlmacen, VCompraIngreso_03 devolucion)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    //Trae el detalle de ANTERIOR
+                    var detalleAnterior = this.iCompraIngreso_01.TraerCompraIngreso_01(vDetalleNuevo.Id);
+
+                    var devolucionAnterior = new LCompraIngreso_03().TraerDevoluciones(idCompra).
+                                                                     Where(a => a.IdProduc == detalleAnterior.IdProduc).
+                                                                     FirstOrDefault();
+
+                    var cantidadTotalAnterior = detalleAnterior.TotalCant - devolucionAnterior.TotalCant;
+                    var cantidadTotalNueva = vDetalleNuevo.TotalCant - devolucion.TotalCant;
+
+                    if (detalleAnterior == null) { return false; }
+
+                    var producto = iProducto.ListarXId(vDetalleNuevo.IdProduc);
+                    var Observacion = "Compra Ingreso: " + idCompra + " - IdProducto: " + vDetalleNuevo.IdProduc + " | " + producto.Descripcion;
+
+                    //Modifica el movimiento de inventario y actualiza el stock
+                    new LInventario().ModificarMovimientoInventario(vDetalleNuevo.Id,
+                                                                        vDetalleNuevo.IdProduc,
+                                                                        idAlmacen,
+                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento,
+                                                                        cantidadTotalAnterior, cantidadTotalNueva,
+                                                                        (int)ENConcepto.VENTAS,
+                                                                        Observacion, UTGlobal.Usuario,
+                                                                        UTGlobal.lote, UTGlobal.fechaVencimiento);
+
+                    //Modifica el detalle de venta
+                    if (!this.iCompraIngreso_01.Modificar(vDetalleNuevo)) { return false; }
                     scope.Complete();
                     return true;
                 }

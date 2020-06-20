@@ -1002,11 +1002,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado, ref List<string> lMensaje)
+        public bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado, ref List<string> lMensaje, bool existeDevolucion)
         {
             try
             {
-                var listResult = new LCompraIngreso().ModificarEstado(IdCompraIng, estado, ref lMensaje);
+                var listResult = new LCompraIngreso().ModificarEstado(IdCompraIng, estado, ref lMensaje,existeDevolucion);
                 return listResult;
             }
             catch (Exception ex)
@@ -1068,11 +1068,11 @@ namespace SERVICE
             }
         }
         //Obtiene CompraIngreso0_03 = Devoluciones
-        public List<VCompraIngreso_03> CmmpraIngreso_03ListarXId(int id)
+        public List<VCompraIngreso_03> TraerDevolucionCompraIngreso_03(int id)
         {
             try
             {
-                var listResult = new LCompraIngreso_03().ListarXId(id);
+                var listResult = new LCompraIngreso_03().TraerDevoluciones(id);
                 return listResult;
             }
             catch (Exception ex)
@@ -1081,11 +1081,11 @@ namespace SERVICE
             }
         }
 
-        public List<VCompraIngreso_03> CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen)
+        public List<VCompraIngreso_03> TraerDevolucionTipoProductoCompraIngreso_03(int IdGrupo2, int idAlmacen)
         {
             try
             {
-                var listResult = new LCompraIngreso_03().ListarXId2(IdGrupo2, idAlmacen);
+                var listResult = new LCompraIngreso_03().TraerDevolucionesTipoProducto(IdGrupo2, idAlmacen);
                 return listResult;
             }
             catch (Exception ex)

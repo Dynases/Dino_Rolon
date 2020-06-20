@@ -297,7 +297,7 @@ namespace SERVICE
         [OperationContract]
         bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03);
         [OperationContract]
-        bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado,  ref List<string>lMensaje);
+        bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado,  ref List<string>lMensaje,bool existeDevolucion);
 
         #endregion
         #region Consulta
@@ -341,9 +341,9 @@ namespace SERVICE
         #endregion
         #region COMPRA Ingreso_03      
         [OperationContract]
-        List<VCompraIngreso_03> CmmpraIngreso_03ListarXId(int id);
+        List<VCompraIngreso_03> TraerDevolucionCompraIngreso_03(int id);
         [OperationContract]
-        List<VCompraIngreso_03> CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen);
+        List<VCompraIngreso_03> TraerDevolucionTipoProductoCompraIngreso_03(int IdGrupo2, int idAlmacen);
         #endregion
 
         /********** SELECCIÓN ***************/

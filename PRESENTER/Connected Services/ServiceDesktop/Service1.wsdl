@@ -540,17 +540,17 @@
   <wsdl:message name="IServiceDesktop_CompraIngreso_02_ListarTabla_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngreso_02_ListarTablaResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CmmpraIngreso_03ListarXId_InputMessage">
-    <wsdl:part name="parameters" element="tns:CmmpraIngreso_03ListarXId" />
+  <wsdl:message name="IServiceDesktop_TraerDevolucionCompraIngreso_03_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDevolucionCompraIngreso_03" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CmmpraIngreso_03ListarXId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CmmpraIngreso_03ListarXIdResponse" />
+  <wsdl:message name="IServiceDesktop_TraerDevolucionCompraIngreso_03_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDevolucionCompraIngreso_03Response" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CmmpraIngreso_03ListarXId2_InputMessage">
-    <wsdl:part name="parameters" element="tns:CmmpraIngreso_03ListarXId2" />
+  <wsdl:message name="IServiceDesktop_TraerDevolucionTipoProductoCompraIngreso_03_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDevolucionTipoProductoCompraIngreso_03" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CmmpraIngreso_03ListarXId2_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CmmpraIngreso_03ListarXId2Response" />
+  <wsdl:message name="IServiceDesktop_TraerDevolucionTipoProductoCompraIngreso_03_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDevolucionTipoProductoCompraIngreso_03Response" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Seleccion_Guardar_InputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_Guardar" />
@@ -1057,13 +1057,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTabla" message="tns:IServiceDesktop_CompraIngreso_02_ListarTabla_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTablaResponse" message="tns:IServiceDesktop_CompraIngreso_02_ListarTabla_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CmmpraIngreso_03ListarXId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId" message="tns:IServiceDesktop_CmmpraIngreso_03ListarXId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXIdResponse" message="tns:IServiceDesktop_CmmpraIngreso_03ListarXId_OutputMessage" />
+    <wsdl:operation name="TraerDevolucionCompraIngreso_03">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03" message="tns:IServiceDesktop_TraerDevolucionCompraIngreso_03_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03Response" message="tns:IServiceDesktop_TraerDevolucionCompraIngreso_03_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CmmpraIngreso_03ListarXId2">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2" message="tns:IServiceDesktop_CmmpraIngreso_03ListarXId2_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2Response" message="tns:IServiceDesktop_CmmpraIngreso_03ListarXId2_OutputMessage" />
+    <wsdl:operation name="TraerDevolucionTipoProductoCompraIngreso_03">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03" message="tns:IServiceDesktop_TraerDevolucionTipoProductoCompraIngreso_03_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03Response" message="tns:IServiceDesktop_TraerDevolucionTipoProductoCompraIngreso_03_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Seleccion_Guardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_Guardar" message="tns:IServiceDesktop_Seleccion_Guardar_InputMessage" />
@@ -1936,8 +1936,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CmmpraIngreso_03ListarXId">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId" style="document" />
+    <wsdl:operation name="TraerDevolucionCompraIngreso_03">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1945,8 +1945,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CmmpraIngreso_03ListarXId2">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2" style="document" />
+    <wsdl:operation name="TraerDevolucionTipoProductoCompraIngreso_03">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

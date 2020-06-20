@@ -15,7 +15,7 @@ namespace REPOSITORY.Clase
 {
     public class RCompraIngreso_03:BaseConexion, ICompraIngreso_03
     {
-        #region MyRegion
+        #region Transacciones
         public bool Guardar(VCompraIngreso_03 vCompraIngreso_03, int Id)
         {
             try
@@ -78,25 +78,20 @@ namespace REPOSITORY.Clase
 
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngreso_03> ListarXId(int id)
-        {
+      
 
+       
+        /********** VARIOS REGISTROS ***********/
+        public List<VCompraIngreso_03> TraerDevoluciones(int id)
+        {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.CompraIng_03
-                                      join c in db.Producto on
-                                       new
-                                       {
-                                           idProve = a.IdProduc
-                                       }
-                                       equals
-                                       new
-                                       {
-                                           idProve = c.Id
-                                       }
-                                      where a.IdCompra.Equals(id)
+                                      from b in db.CompraIng
+                                      join c in db.Producto on a.IdProduc equals c.Id 
+                                      where a.IdCompra.Equals(id) && a.IdCompra == b.Id && b.Estado != (int)ENEstado.ELIMINAR
                                       select new VCompraIngreso_03
                                       {
                                           Id = a.Id,
@@ -119,8 +114,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-        public List<VCompraIngreso_03> ListarXId2(int IdGrupo2, int idAlmacen)
+        public List<VCompraIngreso_03> TraerDevolucionesTipoProducto(int IdGrupo2, int idAlmacen)
         {
 
             try
@@ -154,8 +148,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        /********** VARIOS REGISTROS ***********/
-
         #endregion
     }
 }

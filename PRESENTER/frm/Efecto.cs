@@ -54,7 +54,7 @@ namespace PRESENTER.frm
         {
             Bitmap blah = PRESENTER.Properties.Resources.CUESTION;
             Icon ico = Icon.FromHandle(blah.GetHicon());
-            if (MessageBox.Show(Context, Header, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show(Context, Header, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Band = true;
                 this.Close();

@@ -52,22 +52,22 @@ namespace LOGIC.Class
 
         #region Consultas
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngreso_03> ListarXId(int id)
+        public List<VCompraIngreso_03> TraerDevoluciones(int id)
         {
             try
             {
-                return iCompraIngreso_03.ListarXId(id);
+                return iCompraIngreso_03.TraerDevoluciones(id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public List<VCompraIngreso_03> ListarXId2(int IdGrupo2, int idAlmacen)
+        public List<VCompraIngreso_03> TraerDevolucionesTipoProducto(int IdGrupo2, int idAlmacen)
         {
             try
             {
-                return iCompraIngreso_03.ListarXId2(IdGrupo2, idAlmacen);
+                return iCompraIngreso_03.TraerDevolucionesTipoProducto(IdGrupo2, idAlmacen);
             }
             catch (Exception ex)
             {

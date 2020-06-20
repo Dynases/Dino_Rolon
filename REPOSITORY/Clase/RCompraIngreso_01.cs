@@ -123,6 +123,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        
         /********** VARIOS REGISTROS ***********/
         public List<VCompraIngreso_01> ListarXId(int id)
         {

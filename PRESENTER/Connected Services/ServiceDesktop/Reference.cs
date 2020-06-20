@@ -593,17 +593,19 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTabla", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngreso_02_ListarTablaResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> CompraIngreso_02_ListarTablaAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXIdResponse")]
-        ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] CmmpraIngreso_03ListarXId(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03Response")]
+        ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] TraerDevolucionCompraIngreso_03(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXIdResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> CmmpraIngreso_03ListarXIdAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDevolucionCompraIngreso_03Response")]
+        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> TraerDevolucionCompraIngreso_03Async(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2Response")]
-        ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03Res" +
+            "ponse")]
+        ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] TraerDevolucionTipoProductoCompraIngreso_03(int IdGrupo2, int idAlmacen);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2", ReplyAction="http://tempuri.org/IServiceDesktop/CmmpraIngreso_03ListarXId2Response")]
-        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> CmmpraIngreso_03ListarXId2Async(int IdGrupo2, int idAlmacen);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDevolucionTipoProductoCompraIngreso_03Res" +
+            "ponse")]
+        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> TraerDevolucionTipoProductoCompraIngreso_03Async(int IdGrupo2, int idAlmacen);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_GuardarResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ENTITY.com.Seleccion.View.VSeleccionLista))]
@@ -1167,13 +1169,17 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public string[] lMensaje;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public bool existeDevolucion;
+        
         public ModificarEstadoCompraIngresoRequest() {
         }
         
-        public ModificarEstadoCompraIngresoRequest(int IdCompraIng, int estado, string[] lMensaje) {
+        public ModificarEstadoCompraIngresoRequest(int IdCompraIng, int estado, string[] lMensaje, bool existeDevolucion) {
             this.IdCompraIng = IdCompraIng;
             this.estado = estado;
             this.lMensaje = lMensaje;
+            this.existeDevolucion = existeDevolucion;
         }
     }
     
@@ -2312,11 +2318,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ModificarEstadoCompraIngreso(request);
         }
         
-        public bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado, ref string[] lMensaje) {
+        public bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado, ref string[] lMensaje, bool existeDevolucion) {
             PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoRequest inValue = new PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoRequest();
             inValue.IdCompraIng = IdCompraIng;
             inValue.estado = estado;
             inValue.lMensaje = lMensaje;
+            inValue.existeDevolucion = existeDevolucion;
             PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).ModificarEstadoCompraIngreso(inValue);
             lMensaje = retVal.lMensaje;
             return retVal.ModificarEstadoCompraIngresoResult;
@@ -2422,20 +2429,20 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CompraIngreso_02_ListarTablaAsync();
         }
         
-        public ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] CmmpraIngreso_03ListarXId(int id) {
-            return base.Channel.CmmpraIngreso_03ListarXId(id);
+        public ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] TraerDevolucionCompraIngreso_03(int id) {
+            return base.Channel.TraerDevolucionCompraIngreso_03(id);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> CmmpraIngreso_03ListarXIdAsync(int id) {
-            return base.Channel.CmmpraIngreso_03ListarXIdAsync(id);
+        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> TraerDevolucionCompraIngreso_03Async(int id) {
+            return base.Channel.TraerDevolucionCompraIngreso_03Async(id);
         }
         
-        public ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] CmmpraIngreso_03ListarXId2(int IdGrupo2, int idAlmacen) {
-            return base.Channel.CmmpraIngreso_03ListarXId2(IdGrupo2, idAlmacen);
+        public ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[] TraerDevolucionTipoProductoCompraIngreso_03(int IdGrupo2, int idAlmacen) {
+            return base.Channel.TraerDevolucionTipoProductoCompraIngreso_03(IdGrupo2, idAlmacen);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> CmmpraIngreso_03ListarXId2Async(int IdGrupo2, int idAlmacen) {
-            return base.Channel.CmmpraIngreso_03ListarXId2Async(IdGrupo2, idAlmacen);
+        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03[]> TraerDevolucionTipoProductoCompraIngreso_03Async(int IdGrupo2, int idAlmacen) {
+            return base.Channel.TraerDevolucionTipoProductoCompraIngreso_03Async(IdGrupo2, idAlmacen);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
