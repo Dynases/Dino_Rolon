@@ -59,6 +59,7 @@ namespace PRESENTER.com
                 {                    
                     MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value),2);
                     MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
+                    MP_CargarResultado(Convert.ToInt32(Cb_Tipo.Value), 2);
                 }
             }
             catch (Exception ex)
@@ -80,9 +81,11 @@ namespace PRESENTER.com
         private void Sw_Devolucion_ValueChanged(object sender, EventArgs e)
         {
             Tap_Devolucion.Visible = Sw_Devolucion.Value ? false : true;
+            Tab_Resultado.Visible = Sw_Devolucion.Value ? false : true;
             if (Dgv_Devolucion.RowCount == 0)
             {
                 MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
+                MP_CargarResultado(Convert.ToInt32(Cb_Tipo.Value), 2);
             }
         }
         private void Dgv_Detalle_EditingCell(object sender, EditingCellEventArgs e)
@@ -213,13 +216,13 @@ namespace PRESENTER.com
                     }
                     if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                     {
-                        CalcularFilaDevolocion();
+                        CalcularFilaDevolucion();
                     }
                     else
                     {
                         if (estado == (int)ENEstado.GUARDADO)
                         {
-                            CalcularFilaDevolocion();
+                            CalcularFilaDevolucion();
                             Dgv_Devolucion.CurrentRow.Cells[10].Value = (int)ENEstado.MODIFICAR;
                         }
                     }
@@ -262,36 +265,69 @@ namespace PRESENTER.com
             //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades - 1 = Maple
             var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
 
-            Double caja, grupo, maple, cantidad, subTotal, precio, total;
+            Double caja, grupo, maple, cantidad, totalCantidadDetalle, precio, total;
+
             caja = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * valorContenidoDeMaple);
             grupo = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[4].Value) * (10 * valorContenidoDeMaple);
             maple = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[5].Value) * valorContenidoDeMaple;
             cantidad = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[6].Value);
-            subTotal = caja + grupo + maple + cantidad;
-            Dgv_Detalle.CurrentRow.Cells[7].Value = subTotal;
+            totalCantidadDetalle = caja + grupo + maple + cantidad;
+            Dgv_Detalle.CurrentRow.Cells[7].Value = totalCantidadDetalle;
             precio = Convert.ToDouble(Dgv_Detalle.CurrentRow.Cells[8].Value);
-            total = subTotal * precio;
+            total = totalCantidadDetalle * precio;
             Dgv_Detalle.CurrentRow.Cells[9].Value = total;
+
+            if (!Sw_Devolucion.Value)//Con devolucion        
+            {
+                var totalCantidadDevolucion = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).FirstOrDefault(a => a.IdProduc == idProducto).TotalCant;
+                if (totalCantidadDetalle >= (double)totalCantidadDevolucion)
+                {
+                    var lResultado = ((List<VCompraIngreso_01>)Dgv_Resultado.DataSource).ToList();
+                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).
+                                                              TotalCant = (decimal)(totalCantidadDetalle - Convert.ToDouble(totalCantidadDevolucion));                  
+                    MP_ArmarDetalleResultado(lResultado);
+                }
+                else
+                {
+                    throw new Exception("La cantidad de devolución debe ser menor o igual a la cantidad del detalle");
+                }
+            }            
             MP_ObtenerCalculo();
         }
-        private void CalcularFilaDevolocion()
+        private void CalcularFilaDevolucion()
         {
             var idProducto = Convert.ToInt32(Dgv_Devolucion.CurrentRow.Cells[1].Value);
             var esCategoriaSuper = new ServiceDesktop.ServiceDesktopClient().ProductoEsCategoriaSuper(idProducto);
             //Valor conenido de 1 maple,  excepcion unica  Categoria Super = 15 unidades | 1 = Maple
             var valorContenidoDeMaple = esCategoriaSuper ? 15 : 30;
 
-            Double caja, grupo, maple, cantidad, subTotal, precio, total;
+            Double caja, grupo, maple, cantidad, totalCantidadDevolucion, precio, total;
             caja = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[3].Value) * (Tb_CantidadCajas.Value * valorContenidoDeMaple);
             grupo = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[4].Value) * (10 * valorContenidoDeMaple);
             maple = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[5].Value) * valorContenidoDeMaple;
             cantidad = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[6].Value);
-            subTotal = caja + grupo + maple + cantidad;
-            Dgv_Devolucion.CurrentRow.Cells[7].Value = subTotal;
+            totalCantidadDevolucion = caja + grupo + maple + cantidad;
+            Dgv_Devolucion.CurrentRow.Cells[7].Value = totalCantidadDevolucion;
             precio = Convert.ToDouble(Dgv_Devolucion.CurrentRow.Cells[8].Value);
-            total = subTotal * precio;
+            total = totalCantidadDevolucion * precio;
             Dgv_Devolucion.CurrentRow.Cells[9].Value = total;
-            //MP_ObtenerCalculo();
+
+            if (!Sw_Devolucion.Value)//Con devolucion        
+            {
+                var totalCantidadDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).FirstOrDefault(a => a.IdProduc == idProducto).TotalCant;
+                if ((double)totalCantidadDetalle >= totalCantidadDevolucion)
+                {
+                    var lResultado = ((List<VCompraIngreso_01>)Dgv_Resultado.DataSource).ToList();
+                    lResultado.FirstOrDefault(a => a.IdProduc == idProducto).TotalCant = 
+                                                                (decimal)(Convert.ToDouble(totalCantidadDetalle) - totalCantidadDevolucion);                  
+                    MP_ArmarDetalleResultado(lResultado);
+                }
+                else
+                {
+                    throw new Exception("La cantidad de devolución debe ser menor o igual a la cantidad del detalle");
+                }
+            }
+            MP_ObtenerCalculo();
         }
 
         private void Dgv_Detalle_CellValueChanged(object sender, ColumnActionEventArgs e)
@@ -526,6 +562,7 @@ namespace PRESENTER.com
                                     return;
                                 }
                             }
+                            Sw_Devolucion.Value = false;
                             Cb_Tipo.Value = tipoProducto;
                             MP_RearmarDetalleAntiguo(_IdCompraIngresoPrecioAntiguo);
                             Tb_CompraIngresoPrecioAntoguo.Text = Convert.ToDateTime(Row.Cells["FechaEnt"].Value).ToString() + "- Id: " + _IdCompraIngresoPrecioAntiguo;
@@ -816,6 +853,30 @@ namespace PRESENTER.com
             }
 
         }
+        private void MP_CargarResultado(int id, int tipo)
+        {
+            try
+            {
+                List<VCompraIngreso_01> lresult = new List<VCompraIngreso_01>();
+                if (tipo == 1)
+                {
+                    //Consulta segun un Id de Ingreso
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId(id).ToList();
+                }
+                else
+                {
+                    int ValorTipo = id;
+                    //Consulta segun un Categoria 
+                    lresult = new ServiceDesktop.ServiceDesktopClient().CmmpraIngreso_01ListarXId2(ValorTipo, Convert.ToInt32(Cb_Almacen.Value)).ToList();
+                }
+                MP_ArmarDetalleResultado(lresult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+            }
+
+        }
         private void MP_CargarAlmacenes()
         {
             try
@@ -880,7 +941,7 @@ namespace PRESENTER.com
 
                 Dgv_Detalle.RootTable.Columns[2].Key = "Producto";
                 Dgv_Detalle.RootTable.Columns[2].Caption = "PRODUCTO";
-                Dgv_Detalle.RootTable.Columns[2].Width = 105;
+                Dgv_Detalle.RootTable.Columns[2].Width = 110;
                 Dgv_Detalle.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.FontSize = 9;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -965,6 +1026,108 @@ namespace PRESENTER.com
             }         
             
         }
+        private void MP_ArmarDetalleResultado(List<VCompraIngreso_01> lresult)
+        {
+            try
+            {
+                //DataTable result = ListaATabla(lresult);
+                Dgv_Resultado.DataSource = lresult;
+                Dgv_Resultado.RetrieveStructure();
+                Dgv_Resultado.AlternatingColors = true;
+
+                Dgv_Resultado.RootTable.Columns[0].Key = "id";
+                Dgv_Resultado.RootTable.Columns[0].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[1].Key = "IdProduc";
+                Dgv_Resultado.RootTable.Columns[1].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[2].Key = "Producto";
+                Dgv_Resultado.RootTable.Columns[2].Caption = "PRODUCTO";
+                Dgv_Resultado.RootTable.Columns[2].Width = 330;
+                Dgv_Resultado.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[2].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Resultado.RootTable.Columns[2].Visible = true;
+
+                Dgv_Resultado.RootTable.Columns[3].Key = "Caja";
+                Dgv_Resultado.RootTable.Columns[3].Caption = "CAJA";
+                Dgv_Resultado.RootTable.Columns[3].FormatString = "0";
+                Dgv_Resultado.RootTable.Columns[3].Width = 90;
+                Dgv_Resultado.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[3].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[3].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[4].Key = "Grupo";
+                Dgv_Resultado.RootTable.Columns[4].Caption = "GRUPO";
+                Dgv_Resultado.RootTable.Columns[4].FormatString = "0";
+                Dgv_Resultado.RootTable.Columns[4].Width = 90;
+                Dgv_Resultado.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[4].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[4].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[5].Key = "Maple";
+                Dgv_Resultado.RootTable.Columns[5].Caption = "MAPLE";
+                Dgv_Resultado.RootTable.Columns[5].FormatString = "0";
+                Dgv_Resultado.RootTable.Columns[5].Width = 90;
+                Dgv_Resultado.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[5].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[5].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[6].Key = "Cantidad";
+                Dgv_Resultado.RootTable.Columns[6].Caption = "UNIDADES";
+                Dgv_Resultado.RootTable.Columns[6].FormatString = "0";
+                Dgv_Resultado.RootTable.Columns[6].Width = 90;
+                Dgv_Resultado.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[6].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[6].Visible = false;
+
+                Dgv_Resultado.RootTable.Columns[7].Key = "TotalCant";
+                Dgv_Resultado.RootTable.Columns[7].Caption = "TOTAL U.";
+                Dgv_Resultado.RootTable.Columns[7].FormatString = "0";
+                Dgv_Resultado.RootTable.Columns[7].Width = 150;
+                Dgv_Resultado.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[7].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[7].Visible = true;
+
+                Dgv_Resultado.RootTable.Columns[8].Key = "PrecioCost";
+                Dgv_Resultado.RootTable.Columns[8].Caption = "PRECIO";
+                Dgv_Resultado.RootTable.Columns[8].FormatString = "0.0000";
+                Dgv_Resultado.RootTable.Columns[8].Width = 150;
+                Dgv_Resultado.RootTable.Columns[8].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[8].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[8].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[8].Visible = true;
+
+                Dgv_Resultado.RootTable.Columns[9].Key = "Total";
+                Dgv_Resultado.RootTable.Columns[9].Caption = "TOTAL BS";
+                Dgv_Resultado.RootTable.Columns[9].FormatString = "0.00";
+                Dgv_Resultado.RootTable.Columns[9].Width = 150;
+                Dgv_Resultado.RootTable.Columns[9].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Resultado.RootTable.Columns[9].CellStyle.FontSize = 9;
+                Dgv_Resultado.RootTable.Columns[9].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_Resultado.RootTable.Columns[9].Visible = true;
+
+
+                Dgv_Resultado.RootTable.Columns[10].Key = "Estado";
+                Dgv_Resultado.RootTable.Columns[10].Visible = false;
+
+                //Habilitar filtradores              
+                //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
+                Dgv_Resultado.GroupByBoxVisible = false;
+                Dgv_Resultado.VisualStyle = VisualStyle.Office2007;
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
 
         private void MP_ArmarDevolucion(List<VCompraIngreso_03> lresult)
         {
@@ -983,7 +1146,7 @@ namespace PRESENTER.com
 
                 Dgv_Devolucion.RootTable.Columns[2].Key = "Producto";
                 Dgv_Devolucion.RootTable.Columns[2].Caption = "PRODUCTO";
-                Dgv_Devolucion.RootTable.Columns[2].Width = 105;
+                Dgv_Devolucion.RootTable.Columns[2].Width = 110;
                 Dgv_Devolucion.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Devolucion.RootTable.Columns[2].CellStyle.FontSize = 9;
                 Dgv_Devolucion.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -1217,6 +1380,7 @@ namespace PRESENTER.com
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
                 MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
+                MP_CargarResultado(Convert.ToInt32(Cb_Tipo.Value), 2);
                 Tb_TotalVendido.Value = 0;
                 Tb_TotalEnviado.Value = 0;
                 Tb_TotalMaples.Value = 0;
@@ -1272,7 +1436,9 @@ namespace PRESENTER.com
                             Tb_TotalMaples.Value = registro.TotalMaple;
                             MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                             MP_CargarDevolucion(Convert.ToInt32(Tb_Cod.Text), 1);
+                            MP_CargarResultado(Convert.ToInt32(Tb_Cod.Text), 1);
                             Sw_Devolucion.Value = Dgv_Devolucion.RowCount == 0 ? true : false;
+                            MP_ObtenerCalculoResultado();
                             MP_ObtenerCalculo();
                         }
                         LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Convert.ToString( Dgv_GBuscador.RowCount - 1);
@@ -1285,15 +1451,69 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }          
         }
+        private void MP_ObtenerCalculoResultado()
+        {
+            if (!Sw_Devolucion.Value)
+            {
+                var lDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToList();
+                var lDevolucion = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToList();
+                var lResultado = ((List<VCompraIngreso_01>)Dgv_Resultado.DataSource).ToList();
+                foreach (var fila1 in lDetalle)
+                {
+                    if (lDevolucion.Count(a => a.IdProduc == fila1.IdProduc) > 0)
+                    {
+                        var devolucion = lDevolucion.Where(a => a.IdProduc == fila1.IdProduc).FirstOrDefault();
+
+                        if (lResultado.Count(a => a.IdProduc == fila1.IdProduc) > 0)
+                        {
+                            var resultado = lResultado.Where(a => a.IdProduc == fila1.IdProduc).FirstOrDefault();
+
+                            resultado.TotalCant = fila1.TotalCant - devolucion.TotalCant;
+                            resultado.Total = resultado.TotalCant * resultado.PrecioCost;
+
+                            var index = lResultado.IndexOf(lResultado.FirstOrDefault(a => a.IdProduc == devolucion.IdProduc));
+                            lResultado.RemoveAt(index);
+                            lResultado.Insert(index, resultado);                            
+                        }
+                    }
+                }
+                MP_ArmarDetalleResultado(lResultado);
+            }          
+        }
         private void MP_ObtenerCalculo()
         {
             try
             {
                 Dgv_Detalle.UpdateData();
-               
-                Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[7], AggregateFunction.Sum));
-                Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[9], AggregateFunction.Sum));
-                Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
+                double totalUnidadesDevolucion, totalMapleDetalle, sumaCajaDevolucion, sumaGrupoDevolucion, sumaMapleDevolucion, sumaUnidadesDevolucion,
+                       totalCajaDevolucion, totalGrupoDevolucion;
+                double totalMapleDevolucion = 0;
+                //Devolucion
+                if (!Sw_Devolucion.Value)
+                {
+                    Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Resultado.GetTotal(Dgv_Resultado.RootTable.Columns[7], AggregateFunction.Sum));
+                    Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Resultado.GetTotal(Dgv_Resultado.RootTable.Columns[9], AggregateFunction.Sum));
+                    Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
+
+                    //Calculo de maples para devolucion
+                    sumaCajaDevolucion = Convert.ToDouble(Dgv_Devolucion.GetTotal(Dgv_Devolucion.RootTable.Columns[3], AggregateFunction.Sum));
+                    sumaGrupoDevolucion = Convert.ToDouble(Dgv_Devolucion.GetTotal(Dgv_Devolucion.RootTable.Columns[4], AggregateFunction.Sum));
+                    sumaMapleDevolucion = Convert.ToDouble(Dgv_Devolucion.GetTotal(Dgv_Devolucion.RootTable.Columns[5], AggregateFunction.Sum));
+                    sumaUnidadesDevolucion = Convert.ToDouble(Dgv_Devolucion.GetTotal(Dgv_Devolucion.RootTable.Columns[6], AggregateFunction.Sum));
+
+                    totalCajaDevolucion = sumaCajaDevolucion * Tb_CantidadCajas.Value;
+                    totalGrupoDevolucion = sumaGrupoDevolucion * Tb_CantidadGrupos.Value;
+                    totalUnidadesDevolucion = sumaUnidadesDevolucion != 0 ? 
+                                             (sumaUnidadesDevolucion > 30 ? (sumaUnidadesDevolucion / 300) * Tb_CantidadGrupos.Value : 1) :
+                                             0;
+                    totalMapleDevolucion = Convert.ToInt32(totalCajaDevolucion + totalGrupoDevolucion + sumaMapleDevolucion + totalUnidadesDevolucion);
+                }
+                else
+                {
+                    Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[7], AggregateFunction.Sum));
+                    Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[9], AggregateFunction.Sum));
+                    Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
+                }                             
                 //Calculo de MAPLES
                 
                 var sumaCaja = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[3], AggregateFunction.Sum));
@@ -1303,9 +1523,12 @@ namespace PRESENTER.com
 
                 var totalCaja = sumaCaja * Tb_CantidadCajas.Value;
                 var totalGrupo = sumaGrupo * Tb_CantidadGrupos.Value;
-                var totalUnidades = sumaUnidades != 0 ? (sumaUnidades > 30 ? (sumaUnidades / 300) * Tb_CantidadGrupos.Value : 1) : 0;
-
-                Tb_TotalMaples.Value = Convert.ToInt32( totalCaja + totalGrupo + sumaMaple + totalUnidades);
+                var totalUnidades = sumaUnidades != 0 ?
+                                   (sumaUnidades > 30 ? (sumaUnidades / 300) * Tb_CantidadGrupos.Value : 1) :
+                                   0;
+                totalMapleDetalle = Convert.ToInt32(totalCaja + totalGrupo + sumaMaple + totalUnidades);
+                //TotalMaple
+                Tb_TotalMaples.Value = Sw_Devolucion.Value ? totalMapleDetalle : totalMapleDetalle - totalMapleDevolucion;
             }
             catch (Exception ex)
             {
@@ -1668,14 +1891,24 @@ namespace PRESENTER.com
                     _Error = true;
                 }
                 else
-                    Cb_Tipo.BackColor = Color.White;
+                    Cb_Almacen.BackColor = Color.White;
                 if (Cb_Placa.SelectedIndex == -1)
                 {
                     Cb_Placa.BackColor = Color.Red;
                     _Error = true;
                 }
                 else
-                    Cb_Tipo.BackColor = Color.White;
+                    Cb_Almacen.BackColor = Color.White;
+                if (cb_Recibido.SelectedIndex == -1)
+                {
+                    _Error = true;
+                    throw new Exception("Debe seleccionar Entregado Por");
+                }
+                if (Tb_Entregado.Text == string.Empty)
+                {
+                    _Error = true;
+                    throw new Exception("Debe seleccionar un chofer");                   
+                }
                 if (((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).Count() == 0)
                 {
                     _Error = true;

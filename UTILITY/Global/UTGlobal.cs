@@ -65,13 +65,17 @@ namespace UTILITY.Global
             try
             {
                 combo.DropDownList.Columns.Clear();
-                combo.DropDownList.Columns.Add("idLibreria").Width = 50;
+                combo.DropDownList.Columns.Add("Id").Width = 50;
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = false;
 
-                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
-                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns.Add("Placa").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Placa";
                 combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Nombre").Width = 150;
+                combo.DropDownList.Columns[2].Caption = "Nombre";
+                combo.DropDownList.Columns[2].Visible = true;
 
                 combo.ValueMember = "idLibreria";
                 combo.DisplayMember = "Descripcion";
