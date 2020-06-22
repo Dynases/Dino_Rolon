@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
+            Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -55,6 +56,7 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.PanelIzquierda = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cb_NumGranja = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
@@ -71,7 +73,6 @@
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.Tb_FechaRec = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Tb_FechaEnt = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.Tb_NUmGranja = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_IdCompraIngreso = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
@@ -110,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Recep_TCantidad)).BeginInit();
             this.PanelIzquierda.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).BeginInit();
@@ -162,10 +164,6 @@
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1166, 597);
-            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(1106, 0);
@@ -180,7 +178,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1166, 597);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -212,7 +210,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1160, 571);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
@@ -674,6 +672,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.cb_NumGranja);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.tb_FechaSeleccion);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX14);
@@ -690,7 +689,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.labelX5);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaRec);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_FechaEnt);
-            this.GPanel_DatosGenerales.Controls.Add(this.Tb_NUmGranja);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_IdCompraIngreso);
             this.GPanel_DatosGenerales.Controls.Add(this.LabelX3);
             this.GPanel_DatosGenerales.Controls.Add(this.LabelX4);
@@ -732,6 +730,26 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 85;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // cb_NumGranja
+            // 
+            this.cb_NumGranja.BackColor = System.Drawing.Color.White;
+            cb_NumGranja_DesignTimeLayout.LayoutString = resources.GetString("cb_NumGranja_DesignTimeLayout.LayoutString");
+            this.cb_NumGranja.DesignTimeLayout = cb_NumGranja_DesignTimeLayout;
+            this.cb_NumGranja.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cb_NumGranja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_NumGranja.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cb_NumGranja.Location = new System.Drawing.Point(151, 70);
+            this.cb_NumGranja.Name = "cb_NumGranja";
+            this.cb_NumGranja.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cb_NumGranja.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cb_NumGranja.SelectedIndex = -1;
+            this.cb_NumGranja.SelectedItem = null;
+            this.cb_NumGranja.Size = new System.Drawing.Size(155, 22);
+            this.cb_NumGranja.TabIndex = 381;
+            this.cb_NumGranja.Tag = "1";
+            this.cb_NumGranja.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.cb_NumGranja.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_NumGranja_KeyDown);
             // 
             // Cb_Placa
             // 
@@ -1091,23 +1109,6 @@
             this.Tb_FechaEnt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Tb_FechaEnt.TabIndex = 3;
             // 
-            // Tb_NUmGranja
-            // 
-            this.Tb_NUmGranja.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.Tb_NUmGranja.Border.Class = "TextBoxBorder";
-            this.Tb_NUmGranja.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Tb_NUmGranja.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tb_NUmGranja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_NUmGranja.Location = new System.Drawing.Point(153, 72);
-            this.Tb_NUmGranja.MaxLength = 50;
-            this.Tb_NUmGranja.Name = "Tb_NUmGranja";
-            this.Tb_NUmGranja.PreventEnterBeep = true;
-            this.Tb_NUmGranja.Size = new System.Drawing.Size(152, 23);
-            this.Tb_NUmGranja.TabIndex = 2;
-            // 
             // Tb_IdCompraIngreso
             // 
             this.Tb_IdCompraIngreso.BackColor = System.Drawing.SystemColors.Window;
@@ -1123,7 +1124,6 @@
             this.Tb_IdCompraIngreso.PreventEnterBeep = true;
             this.Tb_IdCompraIngreso.Size = new System.Drawing.Size(155, 23);
             this.Tb_IdCompraIngreso.TabIndex = 1;
-            this.Tb_IdCompraIngreso.WatermarkText = "Ingrese Ctrl + Enter";
             this.Tb_IdCompraIngreso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_IdCompraIngreso_KeyDown);
             // 
             // LabelX3
@@ -1236,6 +1236,7 @@
             this.PanelIzquierda.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Almacen)).EndInit();
@@ -1263,7 +1264,6 @@
         internal DevComponents.DotNetBar.LabelX labelX5;
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput Tb_FechaRec;
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput Tb_FechaEnt;
-        private DevComponents.DotNetBar.Controls.TextBoxX Tb_NUmGranja;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_IdCompraIngreso;
         internal DevComponents.DotNetBar.LabelX LabelX3;
         internal DevComponents.DotNetBar.LabelX LabelX4;
@@ -1293,5 +1293,6 @@
         internal DevComponents.Editors.DateTimeAdv.DateTimeInput tb_FechaSeleccion;
         internal DevComponents.DotNetBar.LabelX labelX14;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Placa;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_NumGranja;
     }
 }

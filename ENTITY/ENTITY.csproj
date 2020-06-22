@@ -44,6 +44,7 @@
     <Compile Include="Cliente\View\VClienteLista.cs" />
     <Compile Include="com\CompraIngreso\Report\RepCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngreso.cs" />
+    <Compile Include="com\CompraIngreso\View\VCompraIngresoCombo.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngresoLista.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngresoNota.cs" />
     <Compile Include="com\CompraIngreso_01\VCompraIngreso_01.cs" />

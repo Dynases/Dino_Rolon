@@ -200,6 +200,8 @@ namespace REPOSITORY.Clase
 
         #endregion
         #region CONSULTAS
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
         public List<VSeleccionLista> Listar()
         {
             try
@@ -241,8 +243,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }
-       
+        }       
         #endregion
 
     }

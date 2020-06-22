@@ -110,6 +110,37 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region CONSULTAS
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public List<VSeleccion_01_Lista> TraerSeleccion_01(int idSeleccion)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Seleccion_01
+                                      join b in db.Producto on a.IdProducto equals b.Id
+                                      where a.IdSeleccion == idSeleccion
+                                      select new VSeleccion_01_Lista
+                                      {
+                                          Id = a.Id,
+                                          IdSeleccion = a.IdSeleccion,
+                                          IdProducto = a.IdProducto,
+                                          Estado = a.Estado,
+                                          Producto = b.Descrip,
+                                          Cantidad = a.Cantidad,
+                                          Porcen = a.Porcen,
+                                          Precio = a.Precio,
+                                          Total = a.Total
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
         public List<VSeleccion_01_Lista> Listar()
         {
             try
@@ -117,9 +148,7 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Seleccion_01
-                                      join b in db.Producto on
-                                      new { idProducto = a.IdProducto }
-                                        equals new { idProducto = b.Id }
+                                      join b in db.Producto on a.IdProducto equals b.Id
                                       select new VSeleccion_01_Lista
                                       {
                                           Id = a.Id,

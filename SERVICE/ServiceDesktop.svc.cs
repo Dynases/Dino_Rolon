@@ -1027,6 +1027,7 @@ namespace SERVICE
         }
         #endregion
         #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCompraIngreso> TraerComprasIngreso()
         {
             try
@@ -1039,7 +1040,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        /********** VARIOS REGISTROS ***********/
         public VCompraIngresoLista TraerCompraIngreso(int id)
         {
             try
@@ -1104,7 +1105,20 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        {
 
+            try
+            {
+                var listResult = new LCompraIngreso().TraerCompraIngresoCombo();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTES ***********/
         public List<VCompraIngresoNota> CompraIngreso_NotaXId(int id)
         {
 
@@ -1156,6 +1170,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+      
         public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estado)  
         {
             try
@@ -1271,6 +1286,20 @@ namespace SERVICE
         #endregion
         #endregion
         #region Seleccion_01
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public List<VSeleccion_01_Lista> TraerSeleccion_01(int idSeleccion)
+        {
+            try
+            {
+                var listResult = new LSeleccion_01().TraerSeleccion_01(idSeleccion);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
         public List<VSeleccion_01_Lista> Seleccion_01_Lista()
         {
             try

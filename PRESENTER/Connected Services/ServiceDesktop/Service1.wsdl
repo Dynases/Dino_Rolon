@@ -492,6 +492,12 @@
   <wsdl:message name="IServiceDesktop_TraerComprasIngreso_OutputMessage">
     <wsdl:part name="parameters" element="tns:TraerComprasIngresoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerCompraIngresoCombo_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCompraIngresoCombo" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerCompraIngresoCombo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCompraIngresoComboResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_CompraIngresoReporte_InputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngresoReporte" />
   </wsdl:message>
@@ -581,6 +587,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Seleccion_Lista_OutputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_ListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerSeleccion_01_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSeleccion_01" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerSeleccion_01_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSeleccion_01Response" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_Seleccion_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_01_Lista" />
@@ -1037,6 +1049,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerComprasIngreso" message="tns:IServiceDesktop_TraerComprasIngreso_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerComprasIngresoResponse" message="tns:IServiceDesktop_TraerComprasIngreso_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="TraerCompraIngresoCombo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerCompraIngresoCombo" message="tns:IServiceDesktop_TraerCompraIngresoCombo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerCompraIngresoComboResponse" message="tns:IServiceDesktop_TraerCompraIngresoCombo_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CompraIngresoReporte">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporte" message="tns:IServiceDesktop_CompraIngresoReporte_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporteResponse" message="tns:IServiceDesktop_CompraIngresoReporte_OutputMessage" />
@@ -1096,6 +1112,10 @@
     <wsdl:operation name="Seleccion_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_Lista" message="tns:IServiceDesktop_Seleccion_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_ListaResponse" message="tns:IServiceDesktop_Seleccion_Lista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSeleccion_01">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01" message="tns:IServiceDesktop_TraerSeleccion_01_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01Response" message="tns:IServiceDesktop_TraerSeleccion_01_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Seleccion_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_01_Lista" message="tns:IServiceDesktop_Seleccion_01_Lista_InputMessage" />
@@ -1884,6 +1904,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerCompraIngresoCombo">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerCompraIngresoCombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CompraIngresoReporte">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraIngresoReporte" style="document" />
       <wsdl:input>
@@ -2012,6 +2041,15 @@
     </wsdl:operation>
     <wsdl:operation name="Seleccion_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Seleccion_Lista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSeleccion_01">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerSeleccion_01" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

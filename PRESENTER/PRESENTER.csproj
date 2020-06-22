@@ -689,6 +689,7 @@
     <None Include="Properties\DataSources\ENTITY.Cliente.View.VClienteLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra.View.VCompraLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngreso.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngresoNota.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_01.VCompraIngreso_01.datasource" />

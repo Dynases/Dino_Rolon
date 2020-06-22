@@ -312,6 +312,8 @@ namespace SERVICE
 
                 [OperationContract]
                 List<VCompraIngreso> TraerComprasIngreso();
+        [OperationContract]
+        List<VCompraIngresoCombo> TraerCompraIngresoCombo();
         /********** REPORTES ***********/
                 [OperationContract]
                 DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estados);
@@ -362,9 +364,13 @@ namespace SERVICE
         #region Consulta
         [OperationContract]
                 List<VSeleccionLista> Seleccion_Lista();
-            #endregion
+        #endregion
         #endregion
         #region Seleccion_01
+        /******** VALOR/REGISTRO ÚNICO *********/
+        [OperationContract]
+        List<VSeleccion_01_Lista> TraerSeleccion_01(int idSeleccion);
+        /********** VARIOS REGISTROS ***********/
         [OperationContract]
         List<VSeleccion_01_Lista> Seleccion_01_Lista();
         [OperationContract]

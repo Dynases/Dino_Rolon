@@ -186,6 +186,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        {
+            try
+            {
+                return iCompraIngreso.TraerCompraIngresoCombo();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** REPORTES ***********/
         public List<VCompraIngresoNota> NotaCompraIngreso(int id)
         {

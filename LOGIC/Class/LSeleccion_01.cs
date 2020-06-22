@@ -68,6 +68,19 @@ namespace LOGIC.Class
         }
         #endregion
         #region CONSULTAS
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public List<VSeleccion_01_Lista> TraerSeleccion_01(int idSeleccion)
+        {
+            try
+            {
+                return iSeleccion_01.TraerSeleccion_01(idSeleccion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
         public List<VSeleccion_01_Lista> Listar()
         {
             try

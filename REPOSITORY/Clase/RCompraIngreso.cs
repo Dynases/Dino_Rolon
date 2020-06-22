@@ -246,6 +246,30 @@ namespace REPOSITORY.Clase
             }
         }
 
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = db.CompraIng
+                                    .Where(a=> a.Estado != (int)ENEstado.COMPLETADO &&
+                                               a.Estado != (int)ENEstado.ELIMINAR)
+                      .Select(v => new VCompraIngresoCombo
+                      {
+                          Id = v.Id,
+                          NumGranja = v.NumNota,
+                          Proveedor = v.Proveed.Descrip                                        
+                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /********** REPORTES ***********/
         public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
         {

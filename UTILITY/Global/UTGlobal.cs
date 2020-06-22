@@ -19,6 +19,7 @@ using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.DiSoft.Zona;
 using ENTITY.com.CompraIngreso_02;
 using ENTITY.Proveedor.View;
+using ENTITY.com.CompraIngreso.View;
 
 namespace UTILITY.Global
 {
@@ -113,6 +114,33 @@ namespace UTILITY.Global
                 combo.ValueMember = "IdLibreria";
                 combo.DisplayMember = "Descripcion";
                 combo.DisplayMember = "Libreria";
+                combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarMultiComboCompraIngreso(MultiColumnCombo combo, List<VCompraIngresoCombo> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 80;
+                combo.DropDownList.Columns[0].Caption = "Num. Rec.";
+                combo.DropDownList.Columns[0].Visible = true;
+
+                combo.DropDownList.Columns.Add("NumGranja").Width = 100;
+                combo.DropDownList.Columns[1].Caption = "Num. Granja";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Proveedor").Width = 180;
+                combo.DropDownList.Columns[2].Caption = "Proveedor";
+                combo.DropDownList.Columns[2].Visible = true;                
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "NumGranja";
                 combo.DropDownList.DataSource = lLibreria;
                 combo.DropDownList.Refresh();
             }
@@ -275,6 +303,24 @@ namespace UTILITY.Global
             try
             {
                 if (((List<VLibreria>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarComboCompraIngreso(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VCompraIngresoCombo>)combo.DataSource).Count() > 0)
                 {
                     combo.SelectedIndex = 0;
                 }
