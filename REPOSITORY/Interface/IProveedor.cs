@@ -16,5 +16,6 @@ namespace REPOSITORY.Interface
         DataTable ListarEncabezado();
         bool ExisteEnCompraIng(int idProveedor);
         bool ExisteEnCompra(int idProveedor);
+        List<VProveedorCombo> TraerProveedoresEdadSemana();
     }
 }

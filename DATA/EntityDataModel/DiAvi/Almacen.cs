@@ -23,11 +23,11 @@ namespace DATA.EntityDataModel.DiAvi
             this.Traspaso = new HashSet<Traspaso>();
             this.Traspaso1 = new HashSet<Traspaso>();
             this.Compra = new HashSet<Compra>();
-            this.TI001 = new HashSet<TI001>();
             this.TI002 = new HashSet<TI002>();
             this.Venta = new HashSet<Venta>();
             this.Usuario_01 = new HashSet<Usuario_01>();
             this.CompraIng = new HashSet<CompraIng>();
+            this.TI001 = new HashSet<TI001>();
         }
     
         public int Id { get; set; }
@@ -59,8 +59,6 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TI001> TI001 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TI002> TI002 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Venta { get; set; }
@@ -68,5 +66,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Usuario_01> Usuario_01 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng> CompraIng { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TI001> TI001 { get; set; }
     }
 }

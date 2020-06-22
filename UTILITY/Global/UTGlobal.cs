@@ -17,6 +17,8 @@ using ENTITY.inv.Sucursal.View;
 using ENTITY.inv.TipoAlmacen.view;
 using ENTITY.reg.PrecioCategoria.View;
 using ENTITY.DiSoft.Zona;
+using ENTITY.com.CompraIngreso_02;
+using ENTITY.Proveedor.View;
 
 namespace UTILITY.Global
 {
@@ -60,7 +62,7 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }
-        public static void MG_ArmarMultiCombo(MultiColumnCombo combo, List<VLibreria> lLibreria)
+        public static void MG_ArmarComboProveedores(MultiColumnCombo combo, List<VProveedorCombo> lProveedores)
         {
             try
             {
@@ -69,16 +71,48 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = false;
 
-                combo.DropDownList.Columns.Add("Placa").Width = 150;
-                combo.DropDownList.Columns[1].Caption = "Placa";
+                combo.DropDownList.Columns.Add("Descripcion").Width = 180;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
 
-                combo.DropDownList.Columns.Add("Nombre").Width = 150;
+                combo.DropDownList.Columns.Add("EdadSemana").Width = 80;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = lProveedores;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarMultiComboPlaca(MultiColumnCombo combo, List<VCompraIngreso_02> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Id";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("IdLibreria").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "IdLibreria";
+                combo.DropDownList.Columns[1].Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 180;
                 combo.DropDownList.Columns[2].Caption = "Nombre";
                 combo.DropDownList.Columns[2].Visible = true;
 
-                combo.ValueMember = "idLibreria";
+                combo.DropDownList.Columns.Add("Libreria").Width = 150;
+                combo.DropDownList.Columns[3].Caption = "Placa";
+                combo.DropDownList.Columns[3].Visible = true;
+
+                combo.ValueMember = "IdLibreria";
                 combo.DisplayMember = "Descripcion";
+                combo.DisplayMember = "Libreria";
                 combo.DropDownList.DataSource = lLibreria;
                 combo.DropDownList.Refresh();
             }
@@ -241,6 +275,42 @@ namespace UTILITY.Global
             try
             {
                 if (((List<VLibreria>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarComboPlaca(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VCompraIngreso_02>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarComboProveedor(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VProveedorCombo>)combo.DataSource).Count() > 0)
                 {
                     combo.SelectedIndex = 0;
                 }

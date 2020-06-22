@@ -243,6 +243,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezadoResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> ProveedorListarEncabezadoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemana", ReplyAction="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemanaResponse")]
+        ENTITY.Proveedor.View.VProveedorCombo[] TraerProveedoresEdadSemana();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemana", ReplyAction="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemanaResponse")]
+        System.Threading.Tasks.Task<ENTITY.Proveedor.View.VProveedorCombo[]> TraerProveedoresEdadSemanaAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse")]
         PRESENTER.ServiceDesktop.ProveedorGuardarResponse ProveedorGuardar(PRESENTER.ServiceDesktop.ProveedorGuardarRequest request);
         
@@ -1902,6 +1908,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> ProveedorListarEncabezadoAsync() {
             return base.Channel.ProveedorListarEncabezadoAsync();
+        }
+        
+        public ENTITY.Proveedor.View.VProveedorCombo[] TraerProveedoresEdadSemana() {
+            return base.Channel.TraerProveedoresEdadSemana();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Proveedor.View.VProveedorCombo[]> TraerProveedoresEdadSemanaAsync() {
+            return base.Channel.TraerProveedoresEdadSemanaAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

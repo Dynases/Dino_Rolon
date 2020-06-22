@@ -144,6 +144,7 @@ namespace REPOSITORY.Clase
                                            idProve = c.Id
                                        }
                                       where a.IdCompra.Equals(id)
+                                      orderby c.Grupo2 ascending
                                       select new VCompraIngreso_01
                                       {
                                           Id = a.Id,
@@ -173,11 +174,13 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
+                    var tipos = new int[] { IdGrupo2, 34 };
                     var listResult = (from c in db.Producto
                                       join b in db.Precio on c.Id equals b.IdProduc
                                       join s in db.Sucursal on b.IdSucursal equals s.Id
                                       join a in db.Almacen on s.Id equals a.IdSuc
-                                      where b.IdPrecioCat.Equals(8) && c.Grupo2.Equals(IdGrupo2) && c.Tipo.Equals(2) && a.Id.Equals(idAlmacen)
+                                      where b.IdPrecioCat.Equals(8) && tipos.Contains(c.Grupo2) && c.Tipo.Equals(2) && a.Id.Equals(idAlmacen)
+                                      orderby c.Grupo2 ascending
                                       select new VCompraIngreso_01
                                       {
                                           Id = 0,

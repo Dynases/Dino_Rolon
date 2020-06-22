@@ -136,6 +136,8 @@ namespace SERVICE
         List<VProveedorLista> ProveedorListar();
         [OperationContract]
         DataTable ProveedorListarEncabezado();
+        [OperationContract]
+        List<VProveedorCombo> TraerProveedoresEdadSemana();
         /********** REPORTE ***********/
         #endregion
 

@@ -24,5 +24,7 @@ namespace REPOSITORY.Interface
         bool ExisteEnTransformacion(int IdProducto);
         bool EsCategoriaSuper(int IdProducto);
         List<VProductoListaStock> ListarProductoStock(int IdSucursal, int IdAlmacen,int IdCategoriaPrecio);
+        bool EliminarTI001(int idProducto);
+        bool EliminarPrecio(int idProducto);
     }
 }

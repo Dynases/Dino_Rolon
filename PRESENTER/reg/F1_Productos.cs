@@ -920,23 +920,23 @@ namespace PRESENTER.reg
                 }
                 if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnCompraNormal(IdProducto))
                 {
-                    lMensaje.Add("El proyecto esta asociado a una compra.");
+                    lMensaje.Add("El producto esta asociado a una compra.");
                 }
                 if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnVenta(IdProducto))
                 {
-                    lMensaje.Add("El proyecto esta asociado a una venta.");
+                    lMensaje.Add("El producto esta asociado a una venta.");
                 }
                 if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnMovimiento(IdProducto))
                 {
-                    lMensaje.Add("El proyecto esta asociado a un movimiento.");
+                    lMensaje.Add("El producto esta asociado a un movimiento.");
                 }
                 if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnSeleccion(IdProducto))
                 {
-                    lMensaje.Add("El proyecto esta asociado a una seleccion.");
+                    lMensaje.Add("El producto esta asociado a una seleccion.");
                 }
                 if (new ServiceDesktop.ServiceDesktopClient().ProductoExisteEnTransformacion(IdProducto))
                 {
-                    lMensaje.Add("El proyecto esta asociado a una transformacion.");
+                    lMensaje.Add("El producto esta asociado a una transformacion.");
                 }
                 if (lMensaje.Count > 0)
                 {

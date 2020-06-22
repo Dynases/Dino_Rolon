@@ -50,6 +50,7 @@ namespace REPOSITORY.Clase
                     var listResult = (from a in db.CompraIng_02
                                       join v in db.Libreria on a.IdLibreria equals v.IdLibrer
                                       where v.IdOrden.Equals(orden) && v.IdGrupo.Equals(grupo)
+                                      orderby a.IdLibreria ascending
                                       select new VCompraIngreso_02
                                       {
                                          Id = a.Id,
@@ -77,7 +78,8 @@ namespace REPOSITORY.Clase
 	                                     a.Descripcion
                                     FROM 
 	                                    COM.CompraIng_02 A  JOIN
-	                                    ADM.Libreria B ON B.IdGrupo = 4 AND B.IdOrden = 1 AND B.IdLibrer = A.IdLibreria";
+	                                    ADM.Libreria B ON B.IdGrupo = 4 AND B.IdOrden = 1 AND B.IdLibrer = A.IdLibreria
+                                    Order by a.IdLIbreria";
                 return tabla = BD.EjecutarConsulta(consulta).Tables[0];
             }
             catch (Exception ex)

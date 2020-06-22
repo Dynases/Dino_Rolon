@@ -112,6 +112,30 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VProveedorCombo> TraerProveedoresEdadSemana()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = db.Proveed
+                      .Select(v => new VProveedorCombo
+                      {
+                          Id = v.Id,
+                          Descripcion = v.Descrip,
+                          EdadSemana = v.Proveed_01
+                                        .FirstOrDefault(a => a.Id == (v.Proveed_01
+                                                                    .Where(c => c.IdProveed == v.Id)
+                                                                    .Max(c => c.Id))).EdadSeman,
+                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Transacciones
         public bool Guardar(VProveedor vProveedor, ref int id)

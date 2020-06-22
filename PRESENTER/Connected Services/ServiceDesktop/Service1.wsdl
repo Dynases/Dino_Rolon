@@ -198,6 +198,12 @@
   <wsdl:message name="IServiceDesktop_ProveedorListarEncabezado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ProveedorListarEncabezadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerProveedoresEdadSemana_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerProveedoresEdadSemana" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerProveedoresEdadSemana_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerProveedoresEdadSemanaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_ProveedorGuardar_InputMessage">
     <wsdl:part name="parameters" element="tns:ProveedorGuardar" />
   </wsdl:message>
@@ -829,6 +835,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado" message="tns:IServiceDesktop_ProveedorListarEncabezado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezadoResponse" message="tns:IServiceDesktop_ProveedorListarEncabezado_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="TraerProveedoresEdadSemana">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemana" message="tns:IServiceDesktop_TraerProveedoresEdadSemana_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemanaResponse" message="tns:IServiceDesktop_TraerProveedoresEdadSemana_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ProveedorGuardar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardar" message="tns:IServiceDesktop_ProveedorGuardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ProveedorGuardarResponse" message="tns:IServiceDesktop_ProveedorGuardar_OutputMessage" />
@@ -1416,6 +1426,15 @@
     </wsdl:operation>
     <wsdl:operation name="ProveedorListarEncabezado">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ProveedorListarEncabezado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerProveedoresEdadSemana">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerProveedoresEdadSemana" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -103,8 +103,62 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
+                    this.EliminarTI001(idProducto);
+                    this.EliminarTI001(idProducto);
                     var producto = db.Producto.FirstOrDefault(b => b.Id == idProducto);
                     db.Producto.Remove(producto);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarTI001(int idProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var alamacen = db.Almacen.ToList();
+                    foreach (var fila in alamacen)
+                    {
+                        var productoTI001 = db.TI001.FirstOrDefault(b => b.iccprod == idProducto &&
+                                                                         b.icalm == fila.Id);
+                        if (productoTI001 != null)
+                        {
+                            db.TI001.Remove(productoTI001);
+                        }
+                        
+                    }                 
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarPrecio(int idProducto)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var sucursal = db.Sucursal.ToList();
+                    foreach (var fila in sucursal)
+                    {
+                        var productoPrecio = db.Precio.FirstOrDefault(b => b.IdProduc == idProducto &&
+                                                                           b.IdSucursal == fila.Id);
+                        if (productoPrecio != null)
+                        {
+                            db.Precio.Remove(productoPrecio);
+                        }                     
+                    }
+                    
                     db.SaveChanges();
                     return true;
                 }

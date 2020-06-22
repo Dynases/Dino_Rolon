@@ -15,6 +15,7 @@ using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
 using System.Data.SqlClient;
 using System.Data.Common;
+using UTILITY.Enum.EnEstaticos;
 
 namespace REPOSITORY.Clase
 {
@@ -217,7 +218,7 @@ namespace REPOSITORY.Clase
                                       select new VCompraIngreso
                                       {
                                           Id = a.Id,
-                                          NotaProveedor=a.NumNota,
+                                          NotaProveedor = a.NumNota,
                                           Proveedor = c.Descrip,
                                           FechaEnt = a.FechaEnt,
                                           FechaRec = a.FechaRec,
@@ -227,6 +228,11 @@ namespace REPOSITORY.Clase
                                                            where y.IdCompra == a.Id
                                                            select y.TotalCant).Sum(),
                                           Total = a.Total,
+                                          TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
+                                                                                x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
+                                                                                x.IdLibrer == a.Tipo).Descrip,
+                                          TipoCompra = a.TipoCompra == 1 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
+                                          Devolucion = a.CompraIng_03.Count(s => s.IdCompra == a.Id) == 0 ? "NO" : "SI",
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
                                           Usuario = a.Usuario,

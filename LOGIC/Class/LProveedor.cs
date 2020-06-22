@@ -89,7 +89,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-
+        public List<VProveedorCombo> TraerProveedoresEdadSemana()
+        {
+            try
+            {
+                return iProveedor.TraerProveedoresEdadSemana();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
         public bool ExisteEnCompra(int idProveedor)

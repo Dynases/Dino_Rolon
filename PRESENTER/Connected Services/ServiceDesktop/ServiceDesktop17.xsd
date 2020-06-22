@@ -48,6 +48,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VProveedorLista" nillable="true" type="tns:VProveedorLista" />
+  <xs:complexType name="ArrayOfVProveedorCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VProveedorCombo" nillable="true" type="tns:VProveedorCombo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVProveedorCombo" nillable="true" type="tns:ArrayOfVProveedorCombo" />
+  <xs:complexType name="VProveedorCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EdadSemana" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VProveedorCombo" nillable="true" type="tns:VProveedorCombo" />
   <xs:complexType name="ArrayOfVProveedor_01Lista">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="VProveedor_01Lista" nillable="true" type="tns:VProveedor_01Lista" />

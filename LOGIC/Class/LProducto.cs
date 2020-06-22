@@ -85,6 +85,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+      
         #endregion
 
         #region Consultas

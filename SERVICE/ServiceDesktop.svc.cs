@@ -389,6 +389,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<VProveedorCombo> TraerProveedoresEdadSemana()
+        {
+            try
+            {
+                var listResult = new LProveedor().TraerProveedoresEdadSemana();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         /********** REPORTE ***********/
         #endregion
@@ -495,7 +507,6 @@ namespace SERVICE
 
         public bool ProductoEliminar(int id)
         {
-
             try
             {
                 var result = new LProducto().Eliminar(id);

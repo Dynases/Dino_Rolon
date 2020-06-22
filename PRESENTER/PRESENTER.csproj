@@ -723,6 +723,7 @@
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProductoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProductoListaStock.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedorCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedorLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Proveedor.View.VProveedor_01Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.reg.Precio.View.VPrecioLista.datasource" />

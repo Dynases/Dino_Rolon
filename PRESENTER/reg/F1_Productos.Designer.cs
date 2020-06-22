@@ -90,8 +90,6 @@
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -105,6 +103,8 @@
             this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.GPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).BeginInit();
             this.PanelCuerpo.SuspendLayout();
@@ -131,27 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_UniPeso)).BeginInit();
             this.SuspendLayout();
             // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Size = new System.Drawing.Size(1043, 641);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
@@ -167,10 +146,6 @@
             // btnUltimo
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
-            // 
-            // TxtNombreUsu
-            // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(901, 0);
             // 
             // BubbleBarUsuario
             // 
@@ -198,8 +173,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
             // 
             // btnMin
             // 
@@ -216,7 +190,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1043, 608);
             // 
             // 
             // 
@@ -248,7 +222,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 582);
             // 
             // LblSubtitulo
             // 
@@ -266,7 +240,8 @@
             this.PanelContenidoRegistro.Controls.Add(this.PanelCuerpo);
             this.PanelContenidoRegistro.Controls.Add(this.GPanel_Buscardor);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 608);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1043, 629);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Buscardor, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
@@ -274,8 +249,34 @@
             // 
             // PanelInferior
             // 
-            this.PanelInferior.Location = new System.Drawing.Point(0, 640);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 601);
             this.PanelInferior.Size = new System.Drawing.Size(1043, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Size = new System.Drawing.Size(1043, 662);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Location = new System.Drawing.Point(901, 0);
+            this.TxtNombreUsu.ReadOnly = true;
             // 
             // GPanel_Buscardor
             // 
@@ -286,7 +287,7 @@
             this.GPanel_Buscardor.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Buscardor.Location = new System.Drawing.Point(0, 439);
+            this.GPanel_Buscardor.Location = new System.Drawing.Point(0, 432);
             this.GPanel_Buscardor.Name = "GPanel_Buscardor";
             this.GPanel_Buscardor.Size = new System.Drawing.Size(1043, 169);
             // 
@@ -341,7 +342,7 @@
             this.PanelCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelCuerpo.Location = new System.Drawing.Point(0, 108);
             this.PanelCuerpo.Name = "PanelCuerpo";
-            this.PanelCuerpo.Size = new System.Drawing.Size(1043, 331);
+            this.PanelCuerpo.Size = new System.Drawing.Size(1043, 324);
             this.PanelCuerpo.TabIndex = 284;
             // 
             // STabControl_Imagen
@@ -369,7 +370,7 @@
             this.STabControl_Imagen.ReorderTabsEnabled = true;
             this.STabControl_Imagen.SelectedTabFont = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold);
             this.STabControl_Imagen.SelectedTabIndex = 0;
-            this.STabControl_Imagen.Size = new System.Drawing.Size(335, 331);
+            this.STabControl_Imagen.Size = new System.Drawing.Size(335, 324);
             this.STabControl_Imagen.TabFont = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.STabControl_Imagen.TabIndex = 289;
             this.STabControl_Imagen.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -383,7 +384,7 @@
             this.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuperTabControlPanel1.Location = new System.Drawing.Point(0, 27);
             this.SuperTabControlPanel1.Name = "SuperTabControlPanel1";
-            this.SuperTabControlPanel1.Size = new System.Drawing.Size(335, 304);
+            this.SuperTabControlPanel1.Size = new System.Drawing.Size(335, 297);
             this.SuperTabControlPanel1.TabIndex = 1;
             this.SuperTabControlPanel1.TabItem = this.SuperTabItem_Imagenes;
             // 
@@ -398,7 +399,7 @@
             this.Panel_Imagen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Imagen.Location = new System.Drawing.Point(0, 0);
             this.Panel_Imagen.Name = "Panel_Imagen";
-            this.Panel_Imagen.Size = new System.Drawing.Size(335, 304);
+            this.Panel_Imagen.Size = new System.Drawing.Size(335, 297);
             this.Panel_Imagen.TabIndex = 223;
             // 
             // Pc_ImgProducto
@@ -502,7 +503,7 @@
             this.GPanel_Grupos.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_Grupos.Location = new System.Drawing.Point(387, 0);
             this.GPanel_Grupos.Name = "GPanel_Grupos";
-            this.GPanel_Grupos.Size = new System.Drawing.Size(321, 331);
+            this.GPanel_Grupos.Size = new System.Drawing.Size(321, 324);
             // 
             // 
             // 
@@ -789,7 +790,7 @@
             this.GPanel_DatosGenerales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GPanel_DatosGenerales.Location = new System.Drawing.Point(0, 0);
             this.GPanel_DatosGenerales.Name = "GPanel_DatosGenerales";
-            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(387, 331);
+            this.GPanel_DatosGenerales.Size = new System.Drawing.Size(387, 324);
             // 
             // 
             // 
@@ -846,9 +847,9 @@
             this.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.GroupBox1.Location = new System.Drawing.Point(0, 103);
+            this.GroupBox1.Location = new System.Drawing.Point(0, 101);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(381, 202);
+            this.GroupBox1.Size = new System.Drawing.Size(381, 197);
             this.GroupBox1.TabIndex = 28;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "UNIDADES";
@@ -874,7 +875,7 @@
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel4.Location = new System.Drawing.Point(3, 21);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(375, 178);
+            this.Panel4.Size = new System.Drawing.Size(375, 173);
             this.Panel4.TabIndex = 210;
             // 
             // Tb_Cantidad
@@ -1226,11 +1227,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 668);
+            this.ClientSize = new System.Drawing.Size(1043, 689);
             this.Name = "F1_Productos";
             this.Text = "0/op0/";
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -1246,6 +1245,8 @@
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.GPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscardor)).EndInit();
             this.PanelCuerpo.ResumeLayout(false);

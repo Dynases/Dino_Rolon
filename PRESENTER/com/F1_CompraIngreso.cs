@@ -67,6 +67,67 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void cb_Proveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Tb_FechaEnt.Enabled == true)
+                {
+                    if (e.KeyData == Keys.Enter)
+                    {
+                        if (Cb_Placa.SelectedIndex != -1)
+                        {
+                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerProveedoresEdadSemana().Where(a => a.Id.Equals(Convert.ToInt32(cb_Proveedor.Value))).FirstOrDefault();
+                            if (lista == null)
+                            {
+                                throw new Exception("No se encontro un proveedor");
+                            }
+                            _idProveedor = Convert.ToInt32(cb_Proveedor.Value);
+                            Tb_Edad.Text = lista.EdadSemana;
+                            Cb_Tipo.Focus();
+                        }
+                    }
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().ProveedorListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
+                        new GLCelda() { campo = "Descrip", visible = true, titulo = "DESCRIPCION", tamano = 150 },
+                        new GLCelda() { campo = "Contacto", visible = true, titulo = "CONTACTO", tamano = 100 },
+                        new GLCelda() { campo = "Ciudad", visible = false, titulo = "IDCIUDAD", tamano = 80 },
+                        new GLCelda() { campo = "CiudadNombre", visible = true, titulo = "CIUDAD", tamano = 120 },
+                        new GLCelda() { campo = "Telfon", visible = true, titulo = "TELEFONO", tamano = 100 },
+                        new GLCelda() { campo = "EdadSemana", visible = true, titulo = "EDAD EN SEMANAS", tamano = 100 }
+                    };
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 300;
+                        efecto.Context = "SELECCIONE UN PROVEEDOR";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
+                            cb_Proveedor.Value = _idProveedor;
+                            Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
+                            Cb_Tipo.Focus();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void cb_Recibido_ValueChanged(object sender, EventArgs e)
         {
             MP_SeleccionarButtonCombo(cb_Recibido, btnRecibido);
@@ -378,46 +439,7 @@ namespace PRESENTER.com
                 Dgv_GBuscador.Row = _MPos;
             }
         }
-        private void tb_Proveedor_KeyDown(object sender, KeyEventArgs e)
-        {
-            //yea
-            if (Tb_FechaEnt.IsInputReadOnly == false)
-            {
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                {
-                    var lista = new ServiceDesktop.ServiceDesktopClient().ProveedorListarEncabezado();
-                    List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 80 },
-                        new GLCelda() { campo = "Descrip", visible = true, titulo = "DESCRIPCION", tamano = 150 },
-                        new GLCelda() { campo = "Contacto", visible = true, titulo = "CONTACTO", tamano = 100 },
-                        new GLCelda() { campo = "Ciudad", visible = false, titulo = "IDCIUDAD", tamano = 80 },
-                        new GLCelda() { campo = "CiudadNombre", visible = true, titulo = "CIUDAD", tamano = 120 },
-                        new GLCelda() { campo = "Telfon", visible = true, titulo = "TELEFONO", tamano = 100 },
-                        new GLCelda() { campo = "EdadSemana", visible = true, titulo = "EDAD EN SEMANAS", tamano = 100 }
-                    };
-                    Efecto efecto = new Efecto();
-                    efecto.Tipo = 3;
-                    efecto.Tabla = lista;
-                    efecto.SelectCol = 2;
-                    efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
-                    efecto.Context = "SELECCIONE UN PROVEEDOR";
-                    efecto.ShowDialog();
-                    bool bandera = false;
-                    bandera = efecto.Band;
-                    if (bandera)
-                    {
-                        Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                        _idProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
-                        tb_Proveedor.Text = Row.Cells["Descrip"].Value.ToString();
-                        Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
-                        Cb_Tipo.Focus();
-                    }
-                }
-            }
-        }
+       
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
             MP_ReporteCompraIngreso(Convert.ToInt32(Tb_Cod.Text));
@@ -458,7 +480,7 @@ namespace PRESENTER.com
                         efecto.SelectCol = 2;
                         efecto.listaCelda = listEstCeldas;
                         efecto.Alto = 50;
-                        efecto.Ancho = 350;
+                        efecto.Ancho = 100;
                         efecto.Context = "SELECCIONE UNA PLACA";
                         efecto.ShowDialog();
                         bool bandera = false;
@@ -468,7 +490,7 @@ namespace PRESENTER.com
                             Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
                             Cb_Placa.Value = Convert.ToInt32(Row.Cells["IdLibreria"].Value);
                             Tb_Entregado.Text = Row.Cells["Descripcion"].Value.ToString();
-                            tb_Proveedor.Focus();
+                            cb_Proveedor.Focus();
                         }
                     }
                 }
@@ -641,53 +663,71 @@ namespace PRESENTER.com
                 Dgv_GBuscador.AlternatingColors = true;
 
                 Dgv_GBuscador.RootTable.Columns["id"].Caption = "Nota Recep.";
-                Dgv_GBuscador.RootTable.Columns["id"].Width = 90;
+                Dgv_GBuscador.RootTable.Columns["id"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["id"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["id"].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;               
                 Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["NotaProveedor"].Caption = "Nota Provee.";
-                Dgv_GBuscador.RootTable.Columns["NotaProveedor"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["NotaProveedor"].Width = 70;
                 Dgv_GBuscador.RootTable.Columns["NotaProveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["NotaProveedor"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["NotaProveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["NotaProveedor"].Visible = true;
-                Dgv_GBuscador.RootTable.Columns["NotaProveedor"].Visible = true;
                 
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].Caption = "Proveedor";
-                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 180;
+                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 150;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].Visible = true;              
 
-                Dgv_GBuscador.RootTable.Columns["FechaRec"].Caption = "Fecha Recepcion";
-                Dgv_GBuscador.RootTable.Columns["FechaRec"].Width = 110;
+                Dgv_GBuscador.RootTable.Columns["FechaRec"].Caption = "Fecha Rec.";
+                Dgv_GBuscador.RootTable.Columns["FechaRec"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["FechaRec"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["FechaRec"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["FechaRec"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["FechaRec"].Visible = true;
-
-                Dgv_GBuscador.RootTable.Columns["FechaEnt"].Key = "FechaEnt";
-                Dgv_GBuscador.RootTable.Columns["FechaEnt"].Caption = "Fecha Entrega";
-                Dgv_GBuscador.RootTable.Columns["FechaEnt"].Width = 110;
+                
+                Dgv_GBuscador.RootTable.Columns["FechaEnt"].Caption = "Fecha Ent.";
+                Dgv_GBuscador.RootTable.Columns["FechaEnt"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["FechaEnt"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["FechaEnt"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["FechaEnt"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["FechaEnt"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Entregado"].Caption = "Entregado";
-                Dgv_GBuscador.RootTable.Columns["Entregado"].Width = 170;
+                Dgv_GBuscador.RootTable.Columns["Entregado"].Width = 140;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo";
+
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].Caption = "Tipo Compra";
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Caption = "Devolución";
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Width = 70;                
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].Caption = "Total Maple";
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].FormatString = "0";
-                Dgv_GBuscador.RootTable.Columns["TotalMaple"].Width = 110;
+                Dgv_GBuscador.RootTable.Columns["TotalMaple"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].CellStyle.FontSize = 8;
@@ -696,7 +736,7 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["TotalUnidades"].Caption = "Total Uni.";
                 Dgv_GBuscador.RootTable.Columns["TotalUnidades"].FormatString = "0.00";
-                Dgv_GBuscador.RootTable.Columns["TotalUnidades"].Width = 130;
+                Dgv_GBuscador.RootTable.Columns["TotalUnidades"].Width = 90;
                 Dgv_GBuscador.RootTable.Columns["TotalUnidades"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["TotalUnidades"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TotalUnidades"].CellStyle.FontSize = 8;
@@ -705,13 +745,14 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["Total"].Caption = "Total";
                 Dgv_GBuscador.RootTable.Columns["Total"].FormatString = "0.00";
-                Dgv_GBuscador.RootTable.Columns["Total"].Width = 130;
+                Dgv_GBuscador.RootTable.Columns["Total"].Width = 90;
                 Dgv_GBuscador.RootTable.Columns["Total"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_GBuscador.RootTable.Columns["Total"].Visible = true;
                 
+
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;
                 
                 Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
@@ -948,7 +989,7 @@ namespace PRESENTER.com
 
                 Dgv_Detalle.RootTable.Columns[2].Key = "Producto";
                 Dgv_Detalle.RootTable.Columns[2].Caption = "PRODUCTO";
-                Dgv_Detalle.RootTable.Columns[2].Width = 110;
+                Dgv_Detalle.RootTable.Columns[2].Width = 130;
                 Dgv_Detalle.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.FontSize = 9;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -1050,7 +1091,7 @@ namespace PRESENTER.com
 
                 Dgv_Resultado.RootTable.Columns[2].Key = "Producto";
                 Dgv_Resultado.RootTable.Columns[2].Caption = "PRODUCTO";
-                Dgv_Resultado.RootTable.Columns[2].Width = 330;
+                Dgv_Resultado.RootTable.Columns[2].Width = 350;
                 Dgv_Resultado.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Resultado.RootTable.Columns[2].CellStyle.FontSize = 9;
                 Dgv_Resultado.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -1059,7 +1100,7 @@ namespace PRESENTER.com
                 Dgv_Resultado.RootTable.Columns[3].Key = "Caja";
                 Dgv_Resultado.RootTable.Columns[3].Caption = "CAJA";
                 Dgv_Resultado.RootTable.Columns[3].FormatString = "0";
-                Dgv_Resultado.RootTable.Columns[3].Width = 90;
+                Dgv_Resultado.RootTable.Columns[3].Width = 100;
                 Dgv_Resultado.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Resultado.RootTable.Columns[3].CellStyle.FontSize = 9;
                 Dgv_Resultado.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -1068,7 +1109,7 @@ namespace PRESENTER.com
                 Dgv_Resultado.RootTable.Columns[4].Key = "Grupo";
                 Dgv_Resultado.RootTable.Columns[4].Caption = "GRUPO";
                 Dgv_Resultado.RootTable.Columns[4].FormatString = "0";
-                Dgv_Resultado.RootTable.Columns[4].Width = 90;
+                Dgv_Resultado.RootTable.Columns[4].Width = 100;
                 Dgv_Resultado.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Resultado.RootTable.Columns[4].CellStyle.FontSize = 9;
                 Dgv_Resultado.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -1077,7 +1118,7 @@ namespace PRESENTER.com
                 Dgv_Resultado.RootTable.Columns[5].Key = "Maple";
                 Dgv_Resultado.RootTable.Columns[5].Caption = "MAPLE";
                 Dgv_Resultado.RootTable.Columns[5].FormatString = "0";
-                Dgv_Resultado.RootTable.Columns[5].Width = 90;
+                Dgv_Resultado.RootTable.Columns[5].Width = 100;
                 Dgv_Resultado.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Resultado.RootTable.Columns[5].CellStyle.FontSize = 9;
                 Dgv_Resultado.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -1153,7 +1194,7 @@ namespace PRESENTER.com
 
                 Dgv_Devolucion.RootTable.Columns[2].Key = "Producto";
                 Dgv_Devolucion.RootTable.Columns[2].Caption = "PRODUCTO";
-                Dgv_Devolucion.RootTable.Columns[2].Width = 110;
+                Dgv_Devolucion.RootTable.Columns[2].Width = 130;
                 Dgv_Devolucion.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Devolucion.RootTable.Columns[2].CellStyle.FontSize = 9;
                 Dgv_Devolucion.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -1245,9 +1286,15 @@ namespace PRESENTER.com
                 UTGlobal.MG_ArmarCombo(Cb_Tipo,
                                        new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.PRODUCTO),
                                                                                                      Convert.ToInt32(ENEstaticosOrden.PRODUCTO_GRUPO2)).ToList());
-                UTGlobal.MG_ArmarCombo(Cb_Placa,
-                                      new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
-                                                                                                    Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
+                //UTGlobal.MG_ArmarCombo(Cb_Placa,
+                //                      new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
+                //                                                                                    Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
+                UTGlobal.MG_ArmarMultiComboPlaca(Cb_Placa,
+                                     new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_Listar().ToList());
+
+                UTGlobal.MG_ArmarComboProveedores(cb_Proveedor,
+                                   new ServiceDesktop.ServiceDesktopClient().TraerProveedoresEdadSemana().ToList());
+
 
                 UTGlobal.MG_ArmarCombo(cb_Recibido,
                                      new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
@@ -1309,7 +1356,7 @@ namespace PRESENTER.com
                 Cb_Placa.ReadOnly = false;
                 Cb_Tipo.ReadOnly = false;
                 Cb_Almacen.ReadOnly = false;
-                tb_Proveedor.ReadOnly = false;
+                cb_Proveedor.ReadOnly = false;
                 Tb_Observacion.ReadOnly = false;
                 Sw_Tipo.IsReadOnly = false;
                 Tb_Entregado.ReadOnly = false;
@@ -1337,7 +1384,7 @@ namespace PRESENTER.com
                 Cb_Placa.ReadOnly = true;
                 Cb_Tipo.ReadOnly = true;
                 Cb_Almacen.ReadOnly = true;
-                tb_Proveedor.ReadOnly = true;
+                cb_Proveedor.ReadOnly = true;
                 Tb_Observacion.ReadOnly = true;
                 Tb_Observacion.ReadOnly = true;
                 Tb_Entregado.ReadOnly = true;
@@ -1373,16 +1420,16 @@ namespace PRESENTER.com
                 Tb_Observacion.Clear();
                 Tb_Entregado.Clear();
                 Tb_FechaEnt.Value = DateTime.Now;
-                Tb_FechaRec.Value = DateTime.Now;
-                tb_Proveedor.Clear();            
+                Tb_FechaRec.Value = DateTime.Now;       
                 Tb_Edad.Clear();
                 Tb_CompraIngresoPrecioAntoguo.Clear();
                 Sw_Tipo.Value = true;
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
-                    UTGlobal.MG_SeleccionarCombo(Cb_Placa);
+                    UTGlobal.MG_SeleccionarComboPlaca(Cb_Placa);
                     UTGlobal.MG_SeleccionarCombo(cb_Recibido);
+                    UTGlobal.MG_SeleccionarComboProveedor(cb_Proveedor);
                     // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
@@ -1426,8 +1473,8 @@ namespace PRESENTER.com
                             Tb_FechaEnt.Value = registro.FechaEnt; //registro.FechaEnt;
                             Tb_FechaRec.Value = registro.FechaRec;
                             Cb_Placa.Value = registro.Placa;
-                            tb_Proveedor.Text = registro.Proveedor;
                             _idProveedor = registro.IdProvee;
+                            cb_Proveedor.Value = _idProveedor;
                             Tb_Observacion.Text = registro.Observacion;
                             Cb_Tipo.Value = registro.Tipo;
                             cb_Recibido.Value = registro.Recibido;
@@ -1861,7 +1908,7 @@ namespace PRESENTER.com
         public void MP_LimpiarColor()
         {
             Tb_NUmGranja.BackColor = Color.White;
-            tb_Proveedor.BackColor = Color.White;
+            cb_Proveedor.BackColor = Color.White;
             Cb_Tipo.BackColor = Color.White;
             Cb_Almacen.BackColor = Color.White;
             Cb_Placa.BackColor = Color.White;
@@ -1879,13 +1926,13 @@ namespace PRESENTER.com
                 else
                     Tb_NUmGranja.BackColor = Color.White;
 
-                if (tb_Proveedor.Text == "")
+                if (cb_Proveedor.SelectedIndex == -1)
                 {
-                    tb_Proveedor.BackColor = Color.Red;
+                    cb_Proveedor.BackColor = Color.Red;
                     _Error = true;
                 }
                 else
-                    tb_Proveedor.BackColor = Color.White;
+                    cb_Proveedor.BackColor = Color.White;
                 if (Cb_Tipo.SelectedIndex == -1)
                 {
                     Cb_Tipo.BackColor = Color.Red;
@@ -1935,6 +1982,7 @@ namespace PRESENTER.com
                 return _Error;
             }
         }
+
 
 
 
