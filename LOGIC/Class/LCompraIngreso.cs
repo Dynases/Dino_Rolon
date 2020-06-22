@@ -209,6 +209,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoNota> NotaCompraIngresoResultado(int id)
+        {
+            try
+            {
+                return iCompraIngreso.NotaCompraIngresoResultado(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         //Reporte de inventario de compra ingreso
         public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
         {

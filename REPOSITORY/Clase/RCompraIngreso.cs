@@ -334,7 +334,7 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = a.TotalMaple
+                                          TotalMaple = (int)a.totalMaple
                                       }).ToList();
                     return listResult;
                 }
@@ -368,7 +368,41 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = a.TotalMaple
+                                          TotalMaple = (int)a.totalMaple
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VCompraIngresoNota> NotaCompraIngresoResultado(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_CompraIngresoResultado
+                                      where a.Id.Equals(Id)
+                                      select new VCompraIngresoNota
+                                      {
+                                          Id = a.Id,
+                                          NumNota = a.NumNota,
+                                          FechaRec = a.FechaRec,
+                                          FechaEnt = a.FechaEnt,
+                                          Proveedor = a.Proveedor,
+                                          IdSpyre = a.IdSpyre,
+                                          MarcaTipo = a.MarcaTipo,
+                                          IdProducto = a.IdProduc,
+                                          Producto = a.Producto,
+                                          TotalCant = (decimal)a.TotalCant,
+                                          PrecioCost = a.PrecioCost,
+                                          Total = (decimal)a.Total,
+                                          Entregado = a.Entregado,
+                                          DescripcionRecibido = a.DescripcionRecibido,
+                                          TotalMaple = (int)a.totalMaple
                                       }).ToList();
                     return listResult;
                 }

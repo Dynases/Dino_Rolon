@@ -320,6 +320,8 @@ namespace SERVICE
                 List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
                 [OperationContract]
                 List<VCompraIngresoNota> CompraIngreso_DevolucionNotaXId(int id);
+        [OperationContract]
+        List<VCompraIngresoNota> CompraIngreso_ResultadoNotaXId(int id);
         #endregion
         #region Verficaciones
         [OperationContract]

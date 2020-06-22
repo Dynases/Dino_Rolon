@@ -802,6 +802,7 @@ namespace PRESENTER.com
                         var ObjetoReport = new RCompraIngreso();
                         ObjetoReport.SetDataSource(lista);
                         UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        ObjetoReport.SetParameterValue("Titulo", "RECEPCIÓN SELECCIÓN");
                         UTGlobal.visualizador.ShowDialog();
                         UTGlobal.visualizador.BringToFront();
                     }
@@ -836,6 +837,24 @@ namespace PRESENTER.com
                     {
                         var ObjetoReport = new RCompraIngreso_Devolucion();
                         ObjetoReport.SetDataSource(lista);
+                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        UTGlobal.visualizador.ShowDialog();
+                        UTGlobal.visualizador.BringToFront();
+                    }
+                    else
+                        throw new Exception("No se encontraron registros");
+
+                    if (UTGlobal.visualizador != null)
+                    {
+                        UTGlobal.visualizador.Close();
+                    }
+                    UTGlobal.visualizador = new Visualizador();
+                    var listaResultado = new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ResultadoNotaXId(idCompra);
+                    if (lista != null)
+                    {
+                        var ObjetoReport = new RCompraIngreso();
+                        ObjetoReport.SetDataSource(listaResultado);
+                        ObjetoReport.SetParameterValue("Titulo", "RESULTADO DE RECEPCIÓN");
                         UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
                         UTGlobal.visualizador.ShowDialog();
                         UTGlobal.visualizador.BringToFront();

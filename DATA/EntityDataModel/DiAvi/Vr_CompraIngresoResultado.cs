@@ -12,7 +12,7 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class V_NotaCompraIngreso
+    public partial class Vr_CompraIngresoResultado
     {
         public int Id { get; set; }
         public string NumNota { get; set; }
@@ -25,9 +25,9 @@ namespace DATA.EntityDataModel.DiAvi
         public string DescripcionRecibido { get; set; }
         public int IdProduc { get; set; }
         public string Producto { get; set; }
-        public decimal TotalCant { get; set; }
+        public Nullable<decimal> TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
-        public decimal Total { get; set; }
+        public Nullable<decimal> Total { get; set; }
         public Nullable<decimal> totalMaple { get; set; }
     }
 }

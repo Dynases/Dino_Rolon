@@ -24,6 +24,7 @@ namespace REPOSITORY.Interface
         DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado);
         List<VCompraIngresoNota> NotaCompraIngreso(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int Id);
+        List<VCompraIngresoNota> NotaCompraIngresoResultado(int Id);
 
         //Verificaciones
         bool ExisteEnSeleccion(int IdCompraIngreso);

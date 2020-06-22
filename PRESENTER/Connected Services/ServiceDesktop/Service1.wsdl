@@ -510,6 +510,12 @@
   <wsdl:message name="IServiceDesktop_CompraIngreso_DevolucionNotaXId_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngreso_DevolucionNotaXIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraIngreso_ResultadoNotaXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraIngreso_ResultadoNotaXId" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraIngreso_ResultadoNotaXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraIngreso_ResultadoNotaXIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_CompraIngreso_ExisteEnSeleccion_InputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngreso_ExisteEnSeleccion" />
   </wsdl:message>
@@ -1042,6 +1048,10 @@
     <wsdl:operation name="CompraIngreso_DevolucionNotaXId">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_DevolucionNotaXId" message="tns:IServiceDesktop_CompraIngreso_DevolucionNotaXId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_DevolucionNotaXIdResponse" message="tns:IServiceDesktop_CompraIngreso_DevolucionNotaXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompraIngreso_ResultadoNotaXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ResultadoNotaXId" message="tns:IServiceDesktop_CompraIngreso_ResultadoNotaXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ResultadoNotaXIdResponse" message="tns:IServiceDesktop_CompraIngreso_ResultadoNotaXId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CompraIngreso_ExisteEnSeleccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngreso_ExisteEnSeleccion" message="tns:IServiceDesktop_CompraIngreso_ExisteEnSeleccion_InputMessage" />
@@ -1894,6 +1904,15 @@
     </wsdl:operation>
     <wsdl:operation name="CompraIngreso_DevolucionNotaXId">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraIngreso_DevolucionNotaXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraIngreso_ResultadoNotaXId">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraIngreso_ResultadoNotaXId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

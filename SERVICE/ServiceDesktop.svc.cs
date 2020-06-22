@@ -1131,6 +1131,19 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoNota> CompraIngreso_ResultadoNotaXId(int id)
+        {
+
+            try
+            {
+                var listResult = new LCompraIngreso().NotaCompraIngresoResultado(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public DataTable CompraIngresoBuscar(int estado)
         {
             try
