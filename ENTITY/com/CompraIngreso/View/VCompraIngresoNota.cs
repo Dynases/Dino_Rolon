@@ -8,7 +8,7 @@ namespace ENTITY.com.CompraIngreso.View
 {
   public  class VCompraIngresoNota: VCompraIngresoLista
     {
-        public string IdSkype { get; set; }      
+        public string IdSpyre { get; set; }      
         public string MarcaTipo { get; set; }
         public int IdProducto { get; set; }
         public string Producto { get; set; }
