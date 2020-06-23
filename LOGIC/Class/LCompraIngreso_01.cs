@@ -1,5 +1,6 @@
 ﻿using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.CompraIngreso_03.View;
+using ENTITY.com.Seleccion_01.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -24,7 +25,7 @@ namespace LOGIC.Class
             iCompraIngreso_01 = new RCompraIngreso_01();
         }
         #region Transacciones
-        public bool Nuevo(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen)
+        public bool Nuevo(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen, int totalMaple)
         {
             try
             {
@@ -34,7 +35,7 @@ namespace LOGIC.Class
                     {
                         var idCompraDetalle = 0;                   
                         //Registra el detalle de venta
-                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle)) { return false; }
+                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle, totalMaple)) { return false; }
 
                         var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
                         //Registra el movimiento de inventario y actualiza el stock
@@ -61,7 +62,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool NuevoDevolucion(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen, List<VCompraIngreso_03> dlDevolucion)
+        public bool NuevoDevolucion(List<VCompraIngreso_01> lCompra_01, int idCompra, int idAlmacen, List<VCompraIngreso_03> dlDevolucion,int totalMaple)
         {
             try
             {
@@ -71,7 +72,7 @@ namespace LOGIC.Class
                     {
                         var idCompraDetalle = 0;
                         //Registra el detalle de venta
-                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle)) { return false; }
+                        if (!this.iCompraIngreso_01.Nuevo(vCompraIngreso_01, idCompra, ref idCompraDetalle, totalMaple)) { return false; }
 
                         var producto = iProducto.ListarXId(vCompraIngreso_01.IdProduc);
                         var cantidadDevolucion = dlDevolucion.FirstOrDefault(a => a.IdProduc == vCompraIngreso_01.IdProduc).TotalCant;
@@ -101,7 +102,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01, int idCompra, int idAlmacen)
+        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01, int idCompra, int idAlmacen, int totalMaple)
         {
             try
             {
@@ -124,7 +125,7 @@ namespace LOGIC.Class
                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento);         
 
                     //Modifica el detalle de venta
-                    if (!this.iCompraIngreso_01.Modificar(vCompraIngreso_01)) { return false; }
+                    if (!this.iCompraIngreso_01.Modificar(vCompraIngreso_01, totalMaple)) { return false; }
                     scope.Complete();
                     return true;
                 }
@@ -134,7 +135,7 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool ModificarDevolucion(VCompraIngreso_01 vDetalleNuevo, int idCompra, int idAlmacen, VCompraIngreso_03 devolucion)
+        public bool ModificarDevolucion(VCompraIngreso_01 vDetalleNuevo, int idCompra, int idAlmacen, VCompraIngreso_03 devolucion, int totalMaple)
         {
             try
             {
@@ -166,7 +167,7 @@ namespace LOGIC.Class
                                                                         UTGlobal.lote, UTGlobal.fechaVencimiento);
 
                     //Modifica el detalle de venta
-                    if (!this.iCompraIngreso_01.Modificar(vDetalleNuevo)) { return false; }
+                    if (!this.iCompraIngreso_01.Modificar(vDetalleNuevo, totalMaple)) { return false; }
                     scope.Complete();
                     return true;
                 }
@@ -176,6 +177,8 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        //Compra seleccionada
+       
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
@@ -201,7 +204,7 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }        
         /********** VARIOS REGISTROS ***********/
         #endregion
     }

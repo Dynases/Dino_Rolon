@@ -199,36 +199,62 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public List<VSeleccion_01_Lista> ListarXId_CompraIng(int id,int  tipo)
+        //public List<VSeleccion_01_Lista> ListarXId_CompraIng(int idCompra, int tipo)
+        //{
+        //    try
+        //    {
+        //        using (var db = GetEsquema())
+        //        {
+        //            var lista = db.CompraIng_01
+        //                       .Where(a => a.IdCompra == idCompra)
+        //             .Select(a => new VSeleccion_01_Lista
+        //             {
+        //                 Id = a.Id,
+        //                 IdSeleccion = 0,
+        //                 IdProducto = a.IdProduc,
+        //                 Estado = tipo == 1 ? (int)ENEstado.GUARDADO : 0,
+        //                 Producto = a.Producto.Descrip,
+        //                 Cantidad = tipo == 1 ? 0 : a.TotalCant,
+        //                 Precio = a.PrecioCost,
+        //                 Total = tipo == 1 ? 0 : a.Total,
+        //             }).ToList();
+        //            return lista;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
+        public List<VSeleccion_01_Lista> ListarXId_CompraIng(int idCompra, int tipo)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.CompraIng_01
-                                      join c in db.Producto on
-                                       new
-                                       {
-                                           idProve = a.IdProduc
-                                       }
-                                       equals
-                                       new
-                                       {
-                                           idProve = c.Id
-                                       }
-                                      where a.IdCompra.Equals(id)
-                                      select new VSeleccion_01_Lista
-                                      {
-                                          Id = a.Id,
-                                          IdSeleccion = 0,
-                                          IdProducto = a.IdProduc,
-                                          Estado = tipo == 1 ? (int)ENEstado.GUARDADO : 0,
-                                          Producto = c.Descrip,
-                                          Cantidad = tipo == 1 ? 0 : a.TotalCant,                                         
-                                          Precio = a.PrecioCost,
-                                          Total = tipo == 1 ? 0 : a.Total                                         
-                                      }).ToList();
-                    return listResult;
+                    //c.IdCompra == idCompra &&
+                      var lista = db.CompraIng_01
+                                    .Where(a => a.IdCompra == idCompra)
+                      .Select(a => new VSeleccion_01_Lista
+                      {
+                          Id = a.Id,
+                          IdSeleccion = 0,
+                          IdProducto = a.IdProduc,
+                          Estado = tipo == 1 ? (int)ENEstado.GUARDADO : 0,
+                          Producto = a.Producto.Descrip,
+                          Cantidad = tipo == 1 ? 0 : a.TotalCant -
+                                                     (a.CompraIng.CompraIng_03.Count(x => x.IdCompra == idCompra) > 0 ?
+                                                        a.CompraIng.CompraIng_03.FirstOrDefault
+                                                                                      (c => c.IdCompra == idCompra &&
+                                                                                       c.IdProduc == a.IdProduc).TotalCant : 0),
+                          Precio = a.PrecioCost,
+                          Total = tipo == 1 ? 0 : a.Total -
+                                                     (a.CompraIng.CompraIng_03.Count(x => x.IdCompra == idCompra) > 0 ?
+                                                       a.CompraIng.CompraIng_03.FirstOrDefault
+                                                                                      (c => c.IdCompra == idCompra &&
+                                                                                       c.IdProduc == a.IdProduc).Total : 0),
+                      }).ToList();
+                    return lista;
                 }
             }
             catch (Exception ex)

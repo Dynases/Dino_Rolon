@@ -16,7 +16,7 @@ namespace REPOSITORY.Clase
     public class RCompraIngreso_03:BaseConexion, ICompraIngreso_03
     {
         #region Transacciones
-        public bool Guardar(VCompraIngreso_03 vCompraIngreso_03, int Id)
+        public bool Guardar(VCompraIngreso_03 vCompraIngreso_03, int Id, int totalMaple)
         {
             try
             {
@@ -34,6 +34,7 @@ namespace REPOSITORY.Clase
                     compraIng_03.TotalCant = vCompraIngreso_03.TotalCant;
                     compraIng_03.PrecioCost = vCompraIngreso_03.PrecioCost;
                     compraIng_03.Total = vCompraIngreso_03.Total;
+                    compraIng_03.TotalMaple  = totalMaple;
                     db.CompraIng_03.Add(compraIng_03);
                     db.SaveChanges();
                     return true;
@@ -44,7 +45,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(VCompraIngreso_03 vCompraIngreso_03, int Id)
+        public bool Modificar(VCompraIngreso_03 vCompraIngreso_03, int Id, int totalMaple)
         {
             try
             {
@@ -63,6 +64,7 @@ namespace REPOSITORY.Clase
                     compraIng_03.TotalCant = vCompraIngreso_03.TotalCant;
                     compraIng_03.PrecioCost = vCompraIngreso_03.PrecioCost;
                     compraIng_03.Total = vCompraIngreso_03.Total;
+                    compraIng_03.TotalMaple = totalMaple;
                     db.CompraIng_03.Attach(compraIng_03);
                     db.Entry(compraIng_03).State = EntityState.Modified;
                     db.SaveChanges();                                  
@@ -82,7 +84,7 @@ namespace REPOSITORY.Clase
 
        
         /********** VARIOS REGISTROS ***********/
-        public List<VCompraIngreso_03> TraerDevoluciones(int id)
+        public List<VCompraIngreso_03> TraerDevoluciones(int idCompra)
         {
             try
             {
@@ -91,7 +93,7 @@ namespace REPOSITORY.Clase
                     var listResult = (from a in db.CompraIng_03
                                       from b in db.CompraIng
                                       join c in db.Producto on a.IdProduc equals c.Id 
-                                      where a.IdCompra.Equals(id) && a.IdCompra == b.Id && b.Estado != (int)ENEstado.ELIMINAR
+                                      where a.IdCompra.Equals(idCompra) && a.IdCompra == b.Id && b.Estado != (int)ENEstado.ELIMINAR
                                       orderby c.Grupo2 ascending
                                       select new VCompraIngreso_03
                                       {

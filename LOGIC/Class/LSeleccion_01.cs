@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
+using UTILITY.Global;
 
 namespace LOGIC.Class
 {
@@ -59,6 +62,46 @@ namespace LOGIC.Class
                     var result = iSeleccion_01.GuardarModificar_CompraIngreso(lista, IdCompraIngreso);
                     scope.Complete();
                     return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool NuevoMovimientoSelecciom(List<VSeleccion_01_Lista> lSeleccion_01,int idCompra, int idSeleccion)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var idAlmacen = new LCompraIngreso().TraerCompraIngreso(idCompra).IdAlmacen;
+                    var DetalleCompra = new LCompraIngreso_01().ListarXId(idCompra).ToList();
+                    foreach (var vSeleccion_01 in lSeleccion_01)
+                    {
+                        //Registra el detalle de venta
+                        var idDetalleCompra = DetalleCompra.FirstOrDefault(a => a.IdProduc == vSeleccion_01.IdProducto).Id;
+                        if (idDetalleCompra != 0)
+                        {
+                            var producto = new LProducto().ListarXId(vSeleccion_01.IdProducto);
+                            //Registra el movimiento de inventario y actualiza el stock
+                            var Observacion = "Compra Salida: " + idSeleccion + " - IdProducto: " + vSeleccion_01.IdProducto + " | " + producto.Descripcion;
+                            if (!new LInventario().NuevoMovimientoInventario(idDetalleCompra,
+                                                                           vSeleccion_01.IdProducto,
+                                                                           idAlmacen,
+                                                                           UTGlobal.lote, UTGlobal.fechaVencimiento,
+                                                                           vSeleccion_01.Cantidad,
+                                                                           (int)ENConcepto.COMPRA_SALIDA,
+                                                                           Observacion,
+                                                                           EnAccionEnInventario.Descontar,
+                                                                           UTGlobal.Usuario))
+                            {
+                                return false;
+                            }
+                        }                        
+                    }
+                    scope.Complete();
+                    return true;
                 }
             }
             catch (Exception ex)

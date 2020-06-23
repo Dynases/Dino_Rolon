@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum.EnEstado;
 
 namespace LOGIC.Class
 {
@@ -26,23 +27,27 @@ namespace LOGIC.Class
             iSeleccion = new RSeleccion(iTi001, iTi002, iTi0021);
         }
         #region TRANSACCIONES
-        public bool Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleecion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int Id)
+        public bool Guardar(VSeleccion vSeleccion, List<VSeleccion_01_Lista> detalle_Seleecion, List<VSeleccion_01_Lista> detalle_Ingreso, ref int idSeleccion)
         {
             try
             {
                 bool result = false;          
                 using (var scope = new TransactionScope())
                 {
-                    if (Id == 0) //Nuevo
+                    if (idSeleccion == 0) //Nuevo
                     {
-                        result = iSeleccion.Guardar(vSeleccion, ref Id);
+                        result = iSeleccion.Guardar(vSeleccion, ref idSeleccion);                       
                         var resultIngreso = new LSeleccion_01().GuardarModificar_CompraIngreso(detalle_Ingreso,vSeleccion.IdCompraIng);
-                        var resultDetalle = new LSeleccion_01().Guardar(detalle_Seleecion, Id);
+                        if (!new LSeleccion_01().NuevoMovimientoSelecciom(detalle_Ingreso,vSeleccion.IdCompraIng, idSeleccion))
+                        {
+                            return false;
+                        }
+                        var resultDetalle = new LSeleccion_01().Guardar(detalle_Seleecion, idSeleccion);
                     }
                     else
                     {
-                        result = iSeleccion.Guardar(vSeleccion, ref Id);
-                        var resultDetalle = new LSeleccion_01().GuardarModificar(detalle_Seleecion, Id);
+                        result = iSeleccion.Guardar(vSeleccion, ref idSeleccion);
+                        var resultDetalle = new LSeleccion_01().GuardarModificar(detalle_Seleecion, idSeleccion);
                     }
                     scope.Complete();
                     return result;
@@ -72,12 +77,35 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
-
-        public List<VSeleccionLista> Listar()
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public VSeleccionLista TraerSeleccion(int idSeleccion)
         {
             try
             {
-                return iSeleccion.Listar();
+                return iSeleccion.TraerSeleccion(idSeleccion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<RSeleccionNota> NotaSeleccion( int idSeleccion)
+        {
+            try
+            {
+                return iSeleccion.NotaSeleccion(idSeleccion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        public List<VSeleccionEncabezado> TraerSelecciones()
+        {
+            try
+            {
+                return iSeleccion.TraerSelecciones();
             }
             catch (Exception ex)
             {

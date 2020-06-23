@@ -15,7 +15,7 @@ namespace REPOSITORY.Clase
     public class RCompraIngreso_01 : BaseConexion, ICompraIngreso_01
     {
         #region Transacciones
-        public bool Nuevo(VCompraIngreso_01 vCompraIngreso_01, int IdCommpra, ref int IdDetalle)
+        public bool Nuevo(VCompraIngreso_01 vCompraIngreso_01, int IdCommpra, ref int IdDetalle,int totalMaple)
         {
             try
             {
@@ -38,6 +38,7 @@ namespace REPOSITORY.Clase
                     compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
                     compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
                     compraIng_01.Total = vCompraIngreso_01.Total;
+                    compraIng_01.TotalMaple = totalMaple;
                     db.CompraIng_01.Add(compraIng_01);
                     db.SaveChanges();
                     IdDetalle = compraIng_01.Id;
@@ -49,7 +50,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01)
+        public bool Modificar(VCompraIngreso_01 vCompraIngreso_01, int totalMaple)
         {
             try
             {
@@ -71,6 +72,7 @@ namespace REPOSITORY.Clase
                     compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
                     compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
                     compraIng_01.Total = vCompraIngreso_01.Total;
+                    compraIng_01.TotalMaple = totalMaple;
                     db.SaveChanges();
                     return true;
                 }
@@ -203,6 +205,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        /********** REPORTE ***********/
+        
         #endregion
 
 

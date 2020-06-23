@@ -166,16 +166,16 @@ namespace REPOSITORY.Clase
                                     return false;
                                 }
                                 //ELIMINA EL DETALLE DE MOVIMIENTO
-                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRA_SALIDA);
                                 //ELIMINA EL MOVIMIENTO
-                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRA_SALIDA);
                             }
                             else
                             {
                                 //ELIMINA EL DETALLE DE MOVIMIENTO
-                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                this.tI0021.Eliminar(i.Id, (int)ENConcepto.COMPRA_SALIDA);
                                 //ELIMINA EL MOVIMIENTO
-                                this.tI002.Eliminar(i.Id, (int)ENConcepto.SELECCION_SALIDA);
+                                this.tI002.Eliminar(i.Id, (int)ENConcepto.COMPRA_SALIDA);
                             }
                         }                                                                
                     }
@@ -201,40 +201,117 @@ namespace REPOSITORY.Clase
         #endregion
         #region CONSULTAS
         /******** VALOR/REGISTRO ÚNICO *********/
-        /********** VARIOS REGISTROS ***********/
-        public List<VSeleccionLista> Listar()
+        public VSeleccionLista TraerSeleccion(int idSeleccion)
         {
             try
             {
-                //var idGrupo = (int)ENEstaticosGrupo.COMPRA_INGRESO;
-                //var idOrden = (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA;
+
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.Seleccion
-                                      join b in db.CompraIng on
-                                      new { idCompraIng = a.IdCompraIng }
-                                        equals new { idCompraIng = b.Id }
-                                      join c in db.Proveed on
-                                      new { idProve = b.IdProvee }
-                                            equals new { idProve = c.Id }  
-                                      where a.Estado != (int)ENEstado.ELIMINAR
-                                      select new VSeleccionLista
+                    var lista = db.Seleccion
+                        .Where(b => b.Id == idSeleccion)
+                     .Select(a => new VSeleccionLista
+                     {
+                         Id = a.Id,
+                         IdCompraIng = a.IdCompraIng,
+                         IdAlmacen = a.IdAlmacen,
+                         Granja = a.CompraIng.NumNota,
+                         FechaReg = a.FechaReg,
+                         FechaEntrega = a.CompraIng.FechaEnt,
+                         FechaRecepcion = a.CompraIng.FechaRec,
+                         Proveedor = a.CompraIng.Proveed.Descrip,                        
+                         Placa = a.CompraIng.Placa,
+                         Tipo = a.CompraIng.Tipo,                        
+                         Edad = a.CompraIng.EdadSemana,
+                         Cantidad = a.Cantidad,
+                         Total = a.Total,
+                         Merma = a.Merma,
+                         Fecha = a.Fecha,
+                         Hora = a.Hora,
+                         Usuario = a.Usuario
+                     }).FirstOrDefault();
+                    return lista;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        
+        public List<VSeleccionEncabezado> TraerSelecciones()
+        {
+            try
+            {
+
+                using (var db = GetEsquema())
+                {
+                    var lista = db.Seleccion
+                     .Select(a => new VSeleccionEncabezado
+                     {
+                         Id = a.Id,
+                         IdCompraIng = a.IdCompraIng,
+                         //IdAlmacen = a.IdAlmacen,
+                         Granja = a.CompraIng.NumNota,
+                         FechaReg = a.FechaReg,
+                         //FechaEntrega = a.CompraIng.FechaEnt,
+                         FechaRecepcion = a.CompraIng.FechaRec,
+                         Proveedor = a.CompraIng.Proveed.Descrip,
+                         tipoCompra = a.CompraIng.TipoCompra == 1 ? "CON SELECCION" : "SIN SELECCION",
+                        // Placa = a.CompraIng.Placa,
+                         //Tipo = a.CompraIng.Tipo,
+                         TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
+                                                                                x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
+                                                                                x.IdLibrer == a.CompraIng.Tipo).Descrip,
+                         //Edad = a.CompraIng.EdadSemana,
+                         Cantidad = a.Cantidad,
+                         Total = a.Total,
+                         Merma = a.Merma,
+                         Fecha = a.Fecha,
+                         Hora = a.Hora,
+                         Usuario = a.Usuario
+
+                     }).ToList();
+                    return lista;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<RSeleccionNota> NotaSeleccion(int Id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Vr_SeleccionNota
+                                      where a.Id.Equals(Id)
+                                      select new RSeleccionNota
                                       {
                                           Id = a.Id,
-                                          IdCompraIng = a.IdCompraIng,
-                                          Granja = b.NumNota,
+                                          NumNota = a.NumNota,
                                           FechaReg = a.FechaReg,
-                                          FechaEntrega = b.FechaEnt,
-                                          FechaRecepcion = b.FechaRec,
-                                          Proveedor = c.Descrip,
-                                          Placa = b.Placa,
-                                          Tipo = b.Tipo,
-                                          Edad = b.EdadSemana,
-                                          Fecha = a.Fecha,
-                                          Hora = a.Hora,
-                                          Usuario = a.Usuario,
-                                          IdAlmacen = b.IdAlmacen,
+                                          FechaRec = a.FechaRec,
+                                          Proveedor = a.Proveedor,
+                                          IdSpyre = a.IdSpyre,
+                                          MarcaTipo = a.MarcaTipo,
+                                          Entregado = a.Entregado,
+                                          DescripcionRecibido = a.DescripcionRecibido,
+                                          IdDetalle= a.IdDetalle,
+                                          IdProducto = a.IdProducto,
+                                          Producto = a.Producto,
+                                          Cantidad = a.Cantidad,
+                                          Porcen =Convert.ToDecimal(a.Porcen).ToString() + "%",
+                                          Precio =a.Precio,
+                                          Total = a.Total,
                                           Merma = a.Merma,
+                                          MermaPorcentaje =  Convert.ToDecimal(a.MermaPorcentaje).ToString() +"%"                                       
                                       }).ToList();
                     return listResult;
                 }
@@ -243,7 +320,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }       
+        }
         #endregion
 
     }

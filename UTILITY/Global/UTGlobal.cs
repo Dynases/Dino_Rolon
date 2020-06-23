@@ -137,7 +137,7 @@ namespace UTILITY.Global
 
                 combo.DropDownList.Columns.Add("Proveedor").Width = 180;
                 combo.DropDownList.Columns[2].Caption = "Proveedor";
-                combo.DropDownList.Columns[2].Visible = true;                
+                combo.DropDownList.Columns[2].Visible = true;             
 
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "NumGranja";

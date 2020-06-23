@@ -1,4 +1,5 @@
-﻿using ENTITY.com.CompraIngreso.View;
+﻿using ENTITY.com.CompraIngreso.Filter;
+using ENTITY.com.CompraIngreso.View;
 using ENTITY.inv.TI001.VIew;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,16 @@ namespace REPOSITORY.Interface
         List<VCompraIngresoCombo> TraerCompraIngresoCombo();
 
             //Reportes
-        DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado);
+       
         List<VCompraIngresoNota> NotaCompraIngreso(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoResultado(int Id);
-
+        DataTable ReporteCompraIngreso(FCompraIngreso fcompraIngreso);
+        DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso);
+        DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso);
+        DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso);
         //Verificaciones
         bool ExisteEnSeleccion(int IdCompraIngreso);
+        bool ExisteEnDevolucion(int idCompraIng);
     }
 }

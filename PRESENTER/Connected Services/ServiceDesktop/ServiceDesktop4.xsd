@@ -19,6 +19,7 @@
       <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
       <xs:element minOccurs="0" name="TotalCant" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalMaple" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VCompraIngreso_01" nillable="true" type="tns:VCompraIngreso_01" />

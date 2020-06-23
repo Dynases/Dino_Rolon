@@ -206,6 +206,10 @@
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
+            // PanelContenidoBuscar
+            // 
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1156, 676);
+            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(1096, 0);
@@ -220,7 +224,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1156, 676);
             // 
             // 
             // 
@@ -252,7 +256,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1150, 650);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
@@ -1391,6 +1395,7 @@
             this.Tb_TPrecio.BackgroundStyle.Class = "DateTimeInputBackground";
             this.Tb_TPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_TPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.Tb_TPrecio.DisplayFormat = "0.00000";
             this.Tb_TPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_TPrecio.Increment = 1D;
             this.Tb_TPrecio.Location = new System.Drawing.Point(603, 7);

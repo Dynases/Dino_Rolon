@@ -1,4 +1,5 @@
-﻿using ENTITY.com.CompraIngreso.View;
+﻿using ENTITY.com.CompraIngreso.Filter;
+using ENTITY.com.CompraIngreso.View;
 using ENTITY.com.CompraIngreso_01;
 using ENTITY.com.CompraIngreso_03.View;
 using REPOSITORY.Clase;
@@ -29,7 +30,8 @@ namespace LOGIC.Class
             iProducto = new RProducto();
         }
         #region Transacciones
-        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIngreso, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
+        public bool Guardar(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, 
+                            ref int idCompraIngreso, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03, int totalMapleDetalle, int totalMapleDevolucion)
         {
             try
             {
@@ -42,7 +44,7 @@ namespace LOGIC.Class
                     {
                         if (aux == 0) //Nuevo
                         {
-                            new LCompraIngreso_01().Nuevo(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                            new LCompraIngreso_01().Nuevo(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen, totalMapleDetalle);
                         }
                         else
                         {
@@ -52,11 +54,11 @@ namespace LOGIC.Class
                                 {
                                     List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
                                     detalleNuevo.Add(i);
-                                    new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                    new LCompraIngreso_01().Nuevo(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen, totalMapleDetalle);
                                 }
                                 if (i.Estado == (int)ENEstado.MODIFICAR)
                                 {
-                                    new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen);
+                                    new LCompraIngreso_01().Modificar(i, idCompraIngreso, vCompraIngreso.IdAlmacen, totalMapleDetalle);
                                 }
                             }
                         }
@@ -65,7 +67,7 @@ namespace LOGIC.Class
                     {
                         if (aux == 0) //Nuevo
                         {
-                            new LCompraIngreso_01().NuevoDevolucion(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03);
+                            new LCompraIngreso_01().NuevoDevolucion(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03, totalMapleDetalle);
                         }
                         else
                         {
@@ -76,16 +78,16 @@ namespace LOGIC.Class
                                 {
                                     List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
                                     detalleNuevo.Add(i);
-                                    new LCompraIngreso_01().NuevoDevolucion(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03);
+                                    new LCompraIngreso_01().NuevoDevolucion(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03, totalMapleDetalle);
                                 }
                                 if (i.Estado == (int)ENEstado.MODIFICAR || vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.MODIFICAR)
                                 {
                                     var devolucion = vCompraIngreso_03.Where(a => a.IdProduc == i.IdProduc).FirstOrDefault();
-                                    new LCompraIngreso_01().ModificarDevolucion(i, idCompraIngreso, vCompraIngreso.IdAlmacen, devolucion);
+                                    new LCompraIngreso_01().ModificarDevolucion(i, idCompraIngreso, vCompraIngreso.IdAlmacen, devolucion, totalMapleDetalle);
                                 }
                             }
                         }
-                        new LCompraIngreso_03().Guardar(vCompraIngreso_03, idCompraIngreso);
+                        new LCompraIngreso_03().Guardar(vCompraIngreso_03, idCompraIngreso, totalMapleDevolucion);
                     }                  
                     scope.Complete();
                     return true;
@@ -232,11 +234,44 @@ namespace LOGIC.Class
             }
         }
         //Reporte de inventario de compra ingreso
-        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
+        public DataTable ReporteCompraIngreso(FCompraIngreso fcompraIngreso)
         {
             try
             {
-                return iCompraIngreso.ReporteCompraIngreso(fechaDesde, fechaHasta, estado);
+                return iCompraIngreso.ReporteCompraIngreso(fcompraIngreso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                return iCompraIngreso.ReporteCriterioCompraIngreso(fcompraIngreso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                return iCompraIngreso.ReporteCriterioCompraIngresoDevolucion(fcompraIngreso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                return iCompraIngreso.ReporteCriterioCompraIngresoResultado(fcompraIngreso);
             }
             catch (Exception ex)
             {
@@ -250,6 +285,17 @@ namespace LOGIC.Class
             try
             {
                 return iCompraIngreso.ExisteEnSeleccion(idCompraIng);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ExisteEnDevolucion(int idCompraIng)
+        {
+            try
+            {
+                return iCompraIngreso.ExisteEnDevolucion(idCompraIng);
             }
             catch (Exception ex)
             {

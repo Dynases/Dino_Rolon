@@ -10,9 +10,9 @@ namespace REPOSITORY.Interface
 {
      public interface ICompraIngreso_03
     {
-        bool Guardar(VCompraIngreso_03 Lista, int Id);
-        bool Modificar(VCompraIngreso_03 Lista, int Id);
-         List<VCompraIngreso_03> TraerDevoluciones(int id);
+        bool Guardar(VCompraIngreso_03 Lista, int Id, int totalMaple);
+        bool Modificar(VCompraIngreso_03 Lista, int Id, int totalMaple);
+         List<VCompraIngreso_03> TraerDevoluciones(int idCompra);
          List<VCompraIngreso_03> TraerDevolucionesTipoProducto(int IdGrupo2, int idAlmacen);
     }
 }

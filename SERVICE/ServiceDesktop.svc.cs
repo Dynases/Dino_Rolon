@@ -30,6 +30,8 @@ using LOGIC.Class.DiSoft;
 using ENTITY.Rol.View;
 using ENTITY.Usuario.View;
 using ENTITY.com.CompraIngreso_03.View;
+using ENTITY.com.CompraIngreso.Filter;
+using ENTITY.com.Seleccion.Report;
 
 namespace SERVICE
 {
@@ -1001,11 +1003,13 @@ namespace SERVICE
 
         #region Compra Ingreso
         #region Transacciones
-        public bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03)
+        public bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, 
+                                            ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03,
+                                           int totalMapleDetalle, int totalMapleDevolucion)
         {
             try
             {
-                var result = new LCompraIngreso().Guardar(vCompraIngreso, vCompraIngreso_01, ref idCompraIng, EsDevolucion, vCompraIngreso_03);
+                var result = new LCompraIngreso().Guardar(vCompraIngreso, vCompraIngreso_01, ref idCompraIng, EsDevolucion, vCompraIngreso_03, totalMapleDetalle, totalMapleDevolucion);
                 return result;
             }
             catch (Exception ex)
@@ -1171,11 +1175,47 @@ namespace SERVICE
             }
         }
       
-        public DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estado)  
+        public DataTable CompraIngresoReporte(FCompraIngreso fcompraIngreso)  
         {
             try
             {
-                var listResult = new LCompraIngreso().ReporteCompraIngreso(fechaDesde, fechaHasta, estado);
+                var listResult = new LCompraIngreso().ReporteCompraIngreso(fcompraIngreso);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteCriterioCompraIngreso(fcompraIngreso);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteCriterioCompraIngresoDevolucion(fcompraIngreso);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteCriterioCompraIngresoResultado(fcompraIngreso);
                 return listResult;
             }
             catch (Exception ex)
@@ -1271,11 +1311,13 @@ namespace SERVICE
         }
         #endregion
         #region Consulta
-        public List<VSeleccionLista> Seleccion_Lista()
+        /******** VALOR/REGISTRO ÚNICO *********/
+    
+        public VSeleccionLista TraerSeleccion(int idSeleccion)
         {
             try
             {
-                var listResult = new LSeleccion().Listar();
+                var listResult = new LSeleccion().TraerSeleccion(idSeleccion);
                 return listResult;
             }
             catch (Exception ex)
@@ -1283,6 +1325,33 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<RSeleccionNota> NotaSeleccion(int idSeleccion)
+        { 
+            try
+            {
+                var listResult = new LSeleccion().NotaSeleccion(idSeleccion);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+       
+        /********** VARIOS REGISTROS ***********/
+        public List<VSeleccionEncabezado> TraerSelecciones()
+        {
+            try
+            {
+                var listResult = new LSeleccion().TraerSelecciones();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+       
         #endregion
         #endregion
         #region Seleccion_01

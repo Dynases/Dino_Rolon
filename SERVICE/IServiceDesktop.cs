@@ -30,6 +30,8 @@ using System.ServiceModel;
 using UTILITY.Enum;
 using ENTITY.com.CompraIngreso_03.View;
 using ENTITY.Cliente.View;
+using ENTITY.com.CompraIngreso.Filter;
+using ENTITY.com.Seleccion.Report;
 
 namespace SERVICE
 {
@@ -297,7 +299,9 @@ namespace SERVICE
         #region Transacciones
 
         [OperationContract]
-        bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01, ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03);
+        bool GuardarCompraIngreso(VCompraIngresoLista vCompraIngreso, List<VCompraIngreso_01> vCompraIngreso_01,
+                                            ref int idCompraIng, bool EsDevolucion, List<VCompraIngreso_03> vCompraIngreso_03,
+                                           int totalMapleDetalle, int totalMapleDevolucion);
         [OperationContract]
         bool ModificarEstadoCompraIngreso(int IdCompraIng, int estado,  ref List<string>lMensaje,bool existeDevolucion);
 
@@ -315,13 +319,19 @@ namespace SERVICE
         [OperationContract]
         List<VCompraIngresoCombo> TraerCompraIngresoCombo();
         /********** REPORTES ***********/
-                [OperationContract]
-                DataTable CompraIngresoReporte(DateTime? fechaDesde, DateTime? fechaHasta, int estados);
+        [OperationContract]
+         DataTable CompraIngresoReporte(FCompraIngreso fcompraIngreso);
+        [OperationContract]
+        DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso);
+        [OperationContract]
+        DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso);
+        [OperationContract]
+        DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso);
 
-                [OperationContract]
-                List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
-                [OperationContract]
-                List<VCompraIngresoNota> CompraIngreso_DevolucionNotaXId(int id);
+        [OperationContract]
+        List<VCompraIngresoNota> CompraIngreso_NotaXId(int id);
+        [OperationContract]
+        List<VCompraIngresoNota> CompraIngreso_DevolucionNotaXId(int id);
         [OperationContract]
         List<VCompraIngresoNota> CompraIngreso_ResultadoNotaXId(int id);
         #endregion
@@ -363,7 +373,10 @@ namespace SERVICE
         #endregion
         #region Consulta
         [OperationContract]
-                List<VSeleccionLista> Seleccion_Lista();
+         List<VSeleccionEncabezado> TraerSelecciones();
+        [OperationContract]
+        VSeleccionLista TraerSeleccion(int idSeleccion);
+        List<RSeleccionNota> NotaSeleccion(int idSeleccion);
         #endregion
         #endregion
         #region Seleccion_01

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_02" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="DiAviModel.Proveed" Width="1.5" PointX="9" PointY="3.75" />
@@ -67,20 +67,10 @@
         <AssociationConnector Association="DiAviModel.FK_Usuario_Rol" />
         <AssociationConnector Association="DiAviModel.FK_Usuario_01_Usuario" />
         <AssociationConnector Association="DiAviModel.FK_Usuario_01_Almacen" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="20.25" PointY="5.125" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng_03" Width="1.5" PointX="22.5" PointY="13.75" />
-        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdCompraIng" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="25.5" PointY="14.75" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <EntityTypeShape EntityType="DiAviModel.TI001" Width="1.5" PointX="8.25" PointY="19" />
         <AssociationConnector Association="DiAviModel.FK_TI001_IdAlmacen" />
         <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="0.75" PointY="20.5" />
         <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
-        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Producto_Plantilla01" />
         <AssociationConnector Association="DiAviModel.FK_TI001_IdProducto" />
@@ -88,8 +78,19 @@
         <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" />
         <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="13.375" PointY="4.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoDevolucion" Width="1.5" PointX="16.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoDevolucion" Width="2" PointX="16.375" PointY="3.75" />
         <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoResultado" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="22.5" PointY="13.5" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng_03" Width="1.5" PointX="25.5" PointY="14.5" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
+        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdProducto" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="19.25" PointY="4.875" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="1.5" PointX="21.375" PointY="0.75" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />
+        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdCompraIng" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

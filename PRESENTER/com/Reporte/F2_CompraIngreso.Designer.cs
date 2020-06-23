@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F2_CompraIngreso));
+            Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Dt_FechaHasta = new MetroFramework.Controls.MetroDateTime();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -37,6 +38,9 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Estado = new MetroFramework.Controls.MetroComboBox();
             this.Rpt_Reporte = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.cb_NumGranja = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
@@ -47,6 +51,7 @@
             this.GPanel_Criterio.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMin
@@ -113,6 +118,8 @@
             // 
             // GPanel_Criterio
             // 
+            this.GPanel_Criterio.Controls.Add(this.cb_NumGranja);
+            this.GPanel_Criterio.Controls.Add(this.labelX5);
             this.GPanel_Criterio.Controls.Add(this.Cb_Estado);
             this.GPanel_Criterio.Controls.Add(this.labelX4);
             this.GPanel_Criterio.Controls.Add(this.labelX1);
@@ -182,7 +189,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.Rpt_Reporte);
-            this.panel1.Size = new System.Drawing.Size(595, 380);
+            this.panel1.Size = new System.Drawing.Size(595, 378);
             // 
             // labelX3
             // 
@@ -210,7 +217,7 @@
             this.Dt_FechaHasta.MinimumSize = new System.Drawing.Size(0, 25);
             this.Dt_FechaHasta.Name = "Dt_FechaHasta";
             this.Dt_FechaHasta.ShowCheckBox = true;
-            this.Dt_FechaHasta.Size = new System.Drawing.Size(138, 25);
+            this.Dt_FechaHasta.Size = new System.Drawing.Size(138, 27);
             this.Dt_FechaHasta.Style = MetroFramework.MetroColorStyle.Silver;
             this.Dt_FechaHasta.TabIndex = 371;
             // 
@@ -241,7 +248,7 @@
             this.Dt_FechaDesde.MinimumSize = new System.Drawing.Size(0, 25);
             this.Dt_FechaDesde.Name = "Dt_FechaDesde";
             this.Dt_FechaDesde.ShowCheckBox = true;
-            this.Dt_FechaDesde.Size = new System.Drawing.Size(138, 25);
+            this.Dt_FechaDesde.Size = new System.Drawing.Size(138, 27);
             this.Dt_FechaDesde.Style = MetroFramework.MetroColorStyle.Silver;
             this.Dt_FechaDesde.TabIndex = 369;
             // 
@@ -301,9 +308,52 @@
             this.Rpt_Reporte.Location = new System.Drawing.Point(0, 0);
             this.Rpt_Reporte.Name = "Rpt_Reporte";
             this.Rpt_Reporte.ServerReport.BearerToken = null;
-            this.Rpt_Reporte.Size = new System.Drawing.Size(595, 380);
+            this.Rpt_Reporte.Size = new System.Drawing.Size(595, 378);
             this.Rpt_Reporte.TabIndex = 0;
             this.Rpt_Reporte.Visible = false;
+            // 
+            // entityCommand1
+            // 
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX5.ForeColor = System.Drawing.Color.Black;
+            this.labelX5.Location = new System.Drawing.Point(9, 114);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX5.Size = new System.Drawing.Size(80, 23);
+            this.labelX5.TabIndex = 377;
+            this.labelX5.Text = "Num. Granja:";
+            // 
+            // cb_NumGranja
+            // 
+            this.cb_NumGranja.BackColor = System.Drawing.Color.White;
+            cb_NumGranja_DesignTimeLayout.LayoutString = resources.GetString("cb_NumGranja_DesignTimeLayout.LayoutString");
+            this.cb_NumGranja.DesignTimeLayout = cb_NumGranja_DesignTimeLayout;
+            this.cb_NumGranja.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cb_NumGranja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_NumGranja.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cb_NumGranja.Location = new System.Drawing.Point(95, 115);
+            this.cb_NumGranja.Name = "cb_NumGranja";
+            this.cb_NumGranja.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cb_NumGranja.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cb_NumGranja.SelectedIndex = -1;
+            this.cb_NumGranja.SelectedItem = null;
+            this.cb_NumGranja.Size = new System.Drawing.Size(155, 22);
+            this.cb_NumGranja.TabIndex = 382;
+            this.cb_NumGranja.Tag = "1";
+            this.cb_NumGranja.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // F2_CompraIngreso
             // 
@@ -323,8 +373,10 @@
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.GPanel_Criterio.ResumeLayout(false);
+            this.GPanel_Criterio.PerformLayout();
             this.groupPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,6 +391,9 @@
         private MetroFramework.Controls.MetroComboBox Cb_Estado;
         protected internal DevComponents.DotNetBar.LabelX labelX4;
         private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
+        protected internal DevComponents.DotNetBar.LabelX labelX5;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_NumGranja;
         //private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Report;

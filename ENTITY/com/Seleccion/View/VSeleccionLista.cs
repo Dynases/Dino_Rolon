@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace ENTITY.com.Seleccion.View
         public int Placa { get; set; }
         public string Proveedor { get; set; }
         public int Tipo { get; set; }
+        public string TipoCategoria { get; set; }
         public string Edad { get; set; }
+        public string tipoCompra { get; set; }
     }
 }

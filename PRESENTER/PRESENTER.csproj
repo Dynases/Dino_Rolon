@@ -409,6 +409,14 @@
       <DependentUpon>RCompraIngreso_Devolucion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ReportViewer\CompraIngresoCriterioDatos.cs">
+      <DependentUpon>CompraIngresoCriterioDatos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer\CompraIngresoCriterioDatos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompraIngresoCriterioDatos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer\CompraIngresoDatos.cs">
       <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
     </Compile>
@@ -515,6 +523,7 @@
       <LastGenOutput>RCompraIngreso_Devolucion.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
+    <EmbeddedResource Include="Report\ReportViewer\CompraIngresoCriterio.rdlc" />
     <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionIngreso.cs</LastGenOutput>
@@ -666,6 +675,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop31.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop32.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -698,6 +710,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionEncabezado.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
@@ -776,6 +789,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
+    <None Include="Report\ReportViewer\CompraIngresoCriterioDatos.xsc">
+      <DependentUpon>CompraIngresoCriterioDatos.xsd</DependentUpon>
+    </None>
+    <None Include="Report\ReportViewer\CompraIngresoCriterioDatos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompraIngresoCriterioDatos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\ReportViewer\CompraIngresoCriterioDatos.xss">
+      <DependentUpon>CompraIngresoCriterioDatos.xsd</DependentUpon>
+    </None>
     <None Include="Report\ReportViewer\CompraIngresoDatos.xsc">
       <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
     </None>

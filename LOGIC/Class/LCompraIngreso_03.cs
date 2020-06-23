@@ -21,7 +21,7 @@ namespace LOGIC.Class
             iCompraIngreso_03 = new RCompraIngreso_03();
         }
         #region Transacciones
-        public bool Guardar(List<VCompraIngreso_03> lista, int Id)
+        public bool Guardar(List<VCompraIngreso_03> lista, int Id, int totalMaple)
         {
             try
             {
@@ -31,12 +31,12 @@ namespace LOGIC.Class
                     {
                         if (fila.Estado == (int)ENEstado.NUEVO)
                         {
-                            iCompraIngreso_03.Guardar(fila, Id);
+                            iCompraIngreso_03.Guardar(fila, Id, totalMaple);
                            
                         }
                         if (fila.Estado == (int)ENEstado.MODIFICAR)
                         {
-                            iCompraIngreso_03.Modificar(fila, Id);
+                            iCompraIngreso_03.Modificar(fila, Id, totalMaple);
                         }
                     }
                     scope.Complete();
@@ -52,11 +52,11 @@ namespace LOGIC.Class
 
         #region Consultas
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngreso_03> TraerDevoluciones(int id)
+        public List<VCompraIngreso_03> TraerDevoluciones(int idCompra)
         {
             try
             {
-                return iCompraIngreso_03.TraerDevoluciones(id);
+                return iCompraIngreso_03.TraerDevoluciones(idCompra);
             }
             catch (Exception ex)
             {

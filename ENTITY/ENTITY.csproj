@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Cliente\View\VCliente.cs" />
     <Compile Include="Cliente\View\VClienteLista.cs" />
+    <Compile Include="com\CompraIngreso\Filter\FCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\Report\RepCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\View\VCompraIngresoCombo.cs" />
@@ -53,8 +54,10 @@
     <Compile Include="com\Compra\View\VCompra.cs" />
     <Compile Include="com\Compra\View\VCompraLista.cs" />
     <Compile Include="com\Compra_01\View\VCompra_01.cs" />
+    <Compile Include="com\Seleccion\Report\RSeleccionNota.cs" />
     <Compile Include="com\Seleccion\Report\VSeleccionReport.cs" />
     <Compile Include="com\Seleccion\View\VSeleccion.cs" />
+    <Compile Include="com\Seleccion\View\VSeleccionEncabezado.cs" />
     <Compile Include="com\Seleccion\View\VSeleccionLista.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_Lista.cs" />

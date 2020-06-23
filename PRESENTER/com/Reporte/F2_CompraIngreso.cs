@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using ENTITY.com.CompraIngreso.Filter;
 using Janus.Windows.GridEX;
 using Microsoft.Reporting.WinForms;
 using MODEL;
@@ -33,18 +34,39 @@ namespace PRESENTER.com.Reporte
             MP_Habilitar();
 
         }
+        private void MP_InicioArmarCombo()
+        {
+            try
+            {
+                //Carga las librerias al combobox desde una lista
+                UTGlobal.MG_ArmarMultiComboCompraIngreso(cb_NumGranja,
+                                   new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().ToList());
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
             try
             {
-                int estado = 0;
+                int estado = Cb_Estado.SelectedIndex == 2 ? (int)ENEstado.TODOS :
+                                                                  (Cb_Estado.SelectedIndex == 0 ? (int)ENEstado.GUARDADO : (int)ENEstado.COMPLETADO);
                 DateTime? fechaDesde = null;
                 DateTime? fechaHasta = null;
+                FCompraIngreso fcompraingreso = new FCompraIngreso()
+                {
+                    Id= 0,
+                    IdProveedor=0,
+                    TipoCategoria = 0,
+                    fechaDesde = Dt_FechaDesde.Checked ? Dt_FechaDesde.Value.Date : fechaDesde,
+                    fechaHasta = Dt_FechaHasta.Checked ? Dt_FechaHasta.Value.Date : fechaHasta,
+                    estadoCompra = estado
+                };
                 var compraIngreso = new ServiceDesktop.ServiceDesktopClient()
-                                    .CompraIngresoReporte(fechaDesde = Dt_FechaDesde.Checked ? Dt_FechaDesde.Value.Date : fechaDesde,
-                                                          fechaHasta = Dt_FechaHasta.Checked ? Dt_FechaHasta.Value.Date : fechaHasta,
-                                                          estado = Cb_Estado.SelectedIndex == 2? (int)ENEstado.TODOS :
-                                                                  (Cb_Estado.SelectedIndex == 0? (int)ENEstado.GUARDADO : (int)ENEstado.COMPLETADO));
+                                    .CompraIngresoReporte(fcompraingreso);
                 if (compraIngreso.Rows.Count != 0)
                 {
                     Rpt_Reporte.LocalReport.DataSources.Clear();

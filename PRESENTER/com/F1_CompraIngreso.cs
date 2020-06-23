@@ -42,6 +42,8 @@ namespace PRESENTER.com
         int _MPos = 0;
         bool _Nuevo = false; //Especifica si es un nuevo registro o modificacion
         int _IdCompraIngresoPrecioAntiguo = 0;
+        int totalMapleDetalle = 0;
+        int totalMapleDevolucion = 0;
         #endregion
         #region Eventos      
         private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
@@ -1558,9 +1560,9 @@ namespace PRESENTER.com
             try
             {
                 Dgv_Detalle.UpdateData();
-                double totalUnidadesDevolucion, totalMapleDetalle, sumaCajaDevolucion, sumaGrupoDevolucion, sumaMapleDevolucion, sumaUnidadesDevolucion,
+                double totalUnidadesDevolucion, sumaCajaDevolucion, sumaGrupoDevolucion, sumaMapleDevolucion, sumaUnidadesDevolucion,
                        totalCajaDevolucion, totalGrupoDevolucion;
-                double totalMapleDevolucion = 0;
+                //double totalMapleDevolucion = 0;
                 //Devolucion
                 if (!Sw_Devolucion.Value)
                 {
@@ -1736,7 +1738,7 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
                 return false;
             }
-        }
+        }    
         #endregion
 
         #region Metodo heredados
@@ -1778,7 +1780,7 @@ namespace PRESENTER.com
                 var vCompraIngreso_01 = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
                 var vCompraIngreso_03 = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToArray<VCompraIngreso_03>();
                 resultado = new ServiceDesktop.ServiceDesktopClient().GuardarCompraIngreso(CompraIngreso, vCompraIngreso_01, ref id, 
-                                                                                            Sw_Devolucion.Value, vCompraIngreso_03);
+                                                                                            Sw_Devolucion.Value, vCompraIngreso_03,totalMapleDetalle, totalMapleDevolucion);
                 if (resultado)
                 {
                     if (idAux == 0)//Registar

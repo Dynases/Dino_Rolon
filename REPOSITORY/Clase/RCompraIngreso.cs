@@ -16,6 +16,7 @@ using UTILITY.Enum.ENConcepto;
 using System.Data.SqlClient;
 using System.Data.Common;
 using UTILITY.Enum.EnEstaticos;
+using ENTITY.com.CompraIngreso.Filter;
 
 namespace REPOSITORY.Clase
 {
@@ -224,9 +225,7 @@ namespace REPOSITORY.Clase
                                           FechaRec = a.FechaRec,
                                           Entregado = a.Entregado,
                                           TotalMaple = a.TotalMaple,
-                                          TotalUnidades = (from y in db.CompraIng_01
-                                                           where y.IdCompra == a.Id
-                                                           select y.TotalCant).Sum(),
+                                          TotalUnidades = a.TotalUnidades,
                                           Total = a.Total,
                                           TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
@@ -271,7 +270,7 @@ namespace REPOSITORY.Clase
         }
 
         /********** REPORTES ***********/
-        public DataTable ReporteCompraIngreso(DateTime? fechaDesde, DateTime? fechaHasta, int estado)
+        public DataTable ReporteCompraIngreso(FCompraIngreso fcompraIngreso)
         {
             try
             {
@@ -295,32 +294,46 @@ namespace REPOSITORY.Clase
                                 WHERE
                                 a.Estado <> -1  AND   ");
                 List<SqlParameter> lPars = new List<SqlParameter>();
-                if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 
+                if (fcompraIngreso.Id != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.id IN ({0}) AND   ", fcompraIngreso.Id));
+                }
+                if (fcompraIngreso.IdProveedor != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("c.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
+                }
+                if (fcompraIngreso.TipoCategoria != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("A.Tipo IN ({0}) AND   ", fcompraIngreso.TipoCategoria));
+                }
+                if (fcompraIngreso.fechaDesde.HasValue && fcompraIngreso.fechaHasta.HasValue) //Consulta por rango de fecha 
                 {
                     sb.Append(string.Format("a.FechaRec between {0} and {1} AND   ", "@fechaDesde", "@fechaHasta"));
-                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime,0, fechaDesde.Value));
-                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime,0, fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59) ));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fcompraIngreso.fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fcompraIngreso.fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
                 }
-                else if (fechaDesde.HasValue) //Consulta por fecha especifica
+                else if (fcompraIngreso.fechaDesde.HasValue) //Consulta por fecha especifica
                 {
                     sb.Append(string.Format("a.FechaRec >= {0} AND   ", "@fechaDesde"));
-                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fcompraIngreso.fechaDesde.Value));
                 }
-                else if (fechaHasta.HasValue) //Consulta por fecha especifica
+                else if (fcompraIngreso.fechaHasta.HasValue) //Consulta por fecha especifica
                 {
                     sb.Append(string.Format("a.FechaRec <= {0} AND   ", "@fechaHasta"));
-                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fechaHasta.Value.AddDays(1)));
+                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fcompraIngreso.fechaHasta.Value.AddDays(1)));
                 }
-                if (estado == (int)ENEstado.TODOS)
+                if (fcompraIngreso.estadoCompra == (int)ENEstado.TODOS)
                 {
                     //Consulta para mostrar Con seleccion y Sin seleccion
                     sb.Append(string.Format("a.Estado IN ({0},{1}) AND   ", (int)ENEstado.GUARDADO, (int)ENEstado.COMPLETADO));
                 }
                 else
                 {
-                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", estado));
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", fcompraIngreso.estadoCompra));
                 }
-
                 sb.Length -= 7;
                 sb.Append(@"GROUP BY 
                                 a.Id, a.NumNota, a.FechaRec, b.Descrip, a.IdAlmacen, c.Descrip, a.TotalMaple
@@ -437,6 +450,315 @@ namespace REPOSITORY.Clase
             }
         }
 
+        public DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"SELECT
+                        --ENCABEZADO 
+	                        A.Id,
+	                        A.NumNota,
+	                        A.FechaRec,
+	                        A.FechaEnt,
+	                        H.Descrip as Almacen,
+	                        a.TotalMaple TotalMapleEncabezado,
+	                        a.Total as TotalEncabezado,
+                        --PLACA
+	                        A.Entregado,
+	                        F.Descrip AS Placa,
+                        --Proveedor
+	                        c.id as IdProveedor,
+	                        c.Descrip  as Proveedor,
+                        --Tipo Categoria
+	                        E.Descrip  AS TipoCategoria,
+	                        i.Descrip as RecibidoPor,
+                        --Tipo Compra
+	                        a.TipoCompra,
+	                        (IIF(A.TipoCompra = 1,'CON SELECCION','SIN SELECCION')) AS TipoCompraDescripcion,
+                        --Detalle
+	                        b.Id as IdDetalle,
+	                        d.Descrip as Producto,
+	                        b.Caja,
+	                        b.Grupo,
+	                        b.Maple,
+	                        b.Cantidad,
+	                        b.TotalCant,
+	                        b.PrecioCost,
+	                        b.Total,
+	                        b.TotalMaple as TotalMapleDetalle
+                        FROM
+	                        COM.CompraIng a JOIN
+	                        COM.CompraIng_01 b ON A.Id = B.IdCompra JOIN
+	                        COM.Proveed c ON A.IdProvee = C.Id JOIN
+	                        REG.Producto D ON B.IdProduc = D.Id JOIN
+	                        ADM.Libreria e ON e.IdGrupo = 3 AND E.IdOrden = 2 AND E.IdLibrer= A.Tipo JOIN
+	                        ADM.Libreria F ON F.IdGrupo = 4 AND F.IdOrden = 1 AND F.IdLibrer= A.Placa JOIN
+	                        COM.CompraIng_02 G ON A.Placa = G.IdLibreria JOIN
+	                        INV.Almacen H ON A.IdAlmacen = H.Id JOIN
+	                        ADM.Libreria I ON I.IdGrupo = 4 AND I.IdOrden = 4 AND I.IdLibrer= A.Recibido
+                        WHERE 
+	                        A.TipoCompra = 2 AND A.Estado <> -1  AND   ");
+                List<SqlParameter> lPars = new List<SqlParameter>();
+                if (fcompraIngreso.Id !=  0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.id IN ({0}) AND   ", fcompraIngreso.Id));
+                }
+                if (fcompraIngreso.IdProveedor != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("c.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
+                }
+                if (fcompraIngreso.TipoCategoria != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("A.Tipo IN ({0}) AND   ", fcompraIngreso.TipoCategoria));
+                }
+                if (fcompraIngreso.fechaDesde.HasValue && fcompraIngreso.fechaHasta.HasValue) //Consulta por rango de fecha 
+                {
+                    sb.Append(string.Format("a.FechaRec between {0} and {1} AND   ", "@fechaDesde", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fcompraIngreso.fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fcompraIngreso.fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
+                }
+                else if (fcompraIngreso.fechaDesde.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec >= {0} AND   ", "@fechaDesde"));
+                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fcompraIngreso.fechaDesde.Value));
+                }
+                else if (fcompraIngreso.fechaHasta.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec <= {0} AND   ", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fcompraIngreso.fechaHasta.Value.AddDays(1)));
+                }
+                if (fcompraIngreso.estadoCompra == (int)ENEstado.TODOS)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.Estado IN ({0},{1}) AND   ", (int)ENEstado.GUARDADO, (int)ENEstado.COMPLETADO));
+                }
+                else
+                {
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", fcompraIngreso.estadoCompra));
+                }
+                sb.Length -= 7;
+                sb.Append(@"ORDER BY a.Id ASC");
+                return tabla = BD.EjecutarConsulta(sb.ToString(), lPars.ToArray()).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"SELECT
+                        --ENCABEZADO 
+	                        A.Id,
+	                        A.NumNota,
+	                        A.FechaRec,
+	                        A.FechaEnt,
+	                        H.Descrip as Almacen,
+	                        a.TotalMaple TotalMapleEncabezado,
+	                        a.Total as TotalEncabezado,
+                        --PLACA
+	                        A.Entregado,
+	                        F.Descrip AS Placa,
+                        --Proveedor
+	                        c.id as IdProveedor,
+	                        c.Descrip  as Proveedor,
+                        --Tipo Categoria
+	                        E.Descrip  AS TipoCategoria,
+	                        i.Descrip as RecibidoPor,
+                        --Tipo Compra
+	                        a.TipoCompra,
+	                        (IIF(A.TipoCompra = 1,'CON SELECCION','SIN SELECCION')) AS TipoCompraDescripcion,
+                        --Detalle
+	                        b.Id as IdDetalle,
+	                        d.Descrip as Producto,
+	                        b.Caja,
+	                        b.Grupo,
+	                        b.Maple,
+	                        b.Cantidad,
+	                        b.TotalCant,
+	                        b.PrecioCost,
+	                        b.Total,
+	                        b.TotalMaple as TotalMapleDetalle
+                        FROM
+	                        COM.CompraIng a JOIN
+	                        COM.CompraIng_03 b ON A.Id = B.IdCompra JOIN
+	                        COM.Proveed c ON A.IdProvee = C.Id JOIN
+	                        REG.Producto D ON B.IdProduc = D.Id JOIN
+	                        ADM.Libreria e ON e.IdGrupo = 3 AND E.IdOrden = 2 AND E.IdLibrer= A.Tipo JOIN
+	                        ADM.Libreria F ON F.IdGrupo = 4 AND F.IdOrden = 1 AND F.IdLibrer= A.Placa JOIN
+	                        COM.CompraIng_02 G ON A.Placa = G.IdLibreria JOIN
+	                        INV.Almacen H ON A.IdAlmacen = H.Id JOIN
+	                        ADM.Libreria I ON I.IdGrupo = 4 AND I.IdOrden = 4 AND I.IdLibrer= A.Recibido
+                        WHERE 
+	                        A.TipoCompra = 2 AND A.Estado <> -1  AND   ");
+                List<SqlParameter> lPars = new List<SqlParameter>();
+                if (fcompraIngreso.Id != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.id IN ({0}) AND   ", fcompraIngreso.Id));
+                }
+                if (fcompraIngreso.IdProveedor != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("c.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
+                }
+                if (fcompraIngreso.TipoCategoria != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("A.Tipo IN ({0}) AND   ", fcompraIngreso.TipoCategoria));
+                }
+                if (fcompraIngreso.fechaDesde.HasValue && fcompraIngreso.fechaHasta.HasValue) //Consulta por rango de fecha 
+                {
+                    sb.Append(string.Format("a.FechaRec between {0} and {1} AND   ", "@fechaDesde", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fcompraIngreso.fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fcompraIngreso.fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
+                }
+                else if (fcompraIngreso.fechaDesde.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec >= {0} AND   ", "@fechaDesde"));
+                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fcompraIngreso.fechaDesde.Value));
+                }
+                else if (fcompraIngreso.fechaHasta.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec <= {0} AND   ", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fcompraIngreso.fechaHasta.Value.AddDays(1)));
+                }
+                if (fcompraIngreso.estadoCompra == (int)ENEstado.TODOS)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.Estado IN ({0},{1}) AND   ", (int)ENEstado.GUARDADO, (int)ENEstado.COMPLETADO));
+                }
+                else
+                {
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", fcompraIngreso.estadoCompra));
+                }
+                sb.Length -= 7;
+                sb.Append(@"ORDER BY a.Id ASC");
+                return tabla = BD.EjecutarConsulta(sb.ToString(), lPars.ToArray()).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                DataTable tabla = new DataTable();
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"SELECT
+                            --ENCABEZADO 
+	                            A.Id,
+	                            A.NumNota,
+	                            A.FechaRec,
+	                            A.FechaEnt,
+	                            H.Descrip as Almacen,
+	                            a.TotalMaple TotalMapleEncabezado,
+	                            a.Total as TotalEncabezado,
+                            --PLACA
+	                            A.Entregado,
+	                            F.Descrip AS Placa,
+                            --Proveedor
+	                            c.id as IdProveedor,
+	                            c.Descrip  as Proveedor,
+                            --Tipo Categoria
+	                            E.Descrip  AS TipoCategoria,
+	                            i.Descrip as RecibidoPor,
+                            --Tipo Compra
+	                            a.TipoCompra,
+	                            (IIF(A.TipoCompra = 1,'CON SELECCION','SIN SELECCION')) AS TipoCompraDescripcion,
+                            --Detalle
+	                            b.Id as IdDetalle,
+	                            d.Descrip as Producto,	
+	                            b.TotalCant,
+	                            b.PrecioCost,
+	                            b.Total as totalDetalle,
+	                            b.TotalMaple as TotalMapleDetalle,
+                            --Devolucion
+	                            j.Id as IdDevolucion,
+	                            K.Descrip as ProductoDevolucion,	
+	                            j.TotalCant AS TotalCantDevolucion,
+	                            j.PrecioCost AS PrecioCostDevolucion,
+	                            j.Total AS TotalDevolucion,
+	                            j.TotalMaple as TotalMapleDevolucion,
+                            --Resultado
+	                            (b.TotalCant - j.TotalCant) as TotalCantResultado,
+	                            (b.Total - j.Total) as TotalResultado
+
+                            FROM
+	                            COM.CompraIng a JOIN
+	                            COM.CompraIng_01 b ON A.Id = B.IdCompra JOIN 
+	                            COM.Proveed c ON A.IdProvee = C.Id JOIN
+	                            REG.Producto D ON B.IdProduc = D.Id JOIN
+	                            ADM.Libreria e ON e.IdGrupo = 3 AND E.IdOrden = 2 AND E.IdLibrer= A.Tipo JOIN
+	                            ADM.Libreria F ON F.IdGrupo = 4 AND F.IdOrden = 1 AND F.IdLibrer= A.Placa JOIN
+	                            COM.CompraIng_02 G ON A.Placa = G.IdLibreria JOIN
+	                            INV.Almacen H ON A.IdAlmacen = H.Id JOIN
+	                            ADM.Libreria I ON I.IdGrupo = 4 AND I.IdOrden = 4 AND I.IdLibrer= A.Recibido JOIN
+	                            COM.CompraIng_03 J ON A.Id = J.IdCompra  join
+	                            REG.Producto K ON J.IdProduc = K.ID and j.IdProduc = b.IdProduc 
+                            WHERE 
+	                             A.Estado <> -1   AND   ");
+                List<SqlParameter> lPars = new List<SqlParameter>();
+                if (fcompraIngreso.Id != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.id IN ({0}) AND   ", fcompraIngreso.Id));
+                }
+                if (fcompraIngreso.IdProveedor != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("c.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
+                }
+                if (fcompraIngreso.TipoCategoria != 0)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("A.Tipo IN ({0}) AND   ", fcompraIngreso.TipoCategoria));
+                }
+                if (fcompraIngreso.fechaDesde.HasValue && fcompraIngreso.fechaHasta.HasValue) //Consulta por rango de fecha 
+                {
+                    sb.Append(string.Format("a.FechaRec between {0} and {1} AND   ", "@fechaDesde", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("fechaDesde", SqlDbType.DateTime, 0, fcompraIngreso.fechaDesde.Value));
+                    lPars.Add(BD.CrearParametro("fechaHasta", SqlDbType.DateTime, 0, fcompraIngreso.fechaHasta.Value.AddHours(23).AddMinutes(59).AddSeconds(59)));
+                }
+                else if (fcompraIngreso.fechaDesde.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec >= {0} AND   ", "@fechaDesde"));
+                    lPars.Add(BD.CrearParametro("@fechaDesde", SqlDbType.Date, 0, fcompraIngreso.fechaDesde.Value));
+                }
+                else if (fcompraIngreso.fechaHasta.HasValue) //Consulta por fecha especifica
+                {
+                    sb.Append(string.Format("a.FechaRec <= {0} AND   ", "@fechaHasta"));
+                    lPars.Add(BD.CrearParametro("@fechaHasta", SqlDbType.Date, 0, fcompraIngreso.fechaHasta.Value.AddDays(1)));
+                }
+                if (fcompraIngreso.estadoCompra == (int)ENEstado.TODOS)
+                {
+                    //Consulta para mostrar Con seleccion y Sin seleccion
+                    sb.Append(string.Format("a.Estado IN ({0},{1}) AND   ", (int)ENEstado.GUARDADO, (int)ENEstado.COMPLETADO));
+                }
+                else
+                {
+                    sb.Append(string.Format("a.Estado IN ({0}) AND   ", fcompraIngreso.estadoCompra));
+                }
+                sb.Length -= 7;
+                sb.Append(@"ORDER BY a.Id ASC");
+                return tabla = BD.EjecutarConsulta(sb.ToString(), lPars.ToArray()).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
         public bool ExisteEnSeleccion(int IdCompraIngreso)
@@ -457,7 +779,24 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        
+        public bool ExisteEnDevolucion(int idCompraIng)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var resultado = (from a in db.CompraIng
+                                     join b in db.CompraIng_03 on a.Id equals b.IdCompra
+                                     where a.Id.Equals(idCompraIng) && b.Estado != -1
+                                     select a).Count();
+                    return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
     }

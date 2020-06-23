@@ -18,6 +18,6 @@ namespace UTILITY.Enum.ENConcepto
         SELECCION_INGRESO=8,
         TRANSFORMACION_INGRESO = 9,
         TRANSFORMACION_SALIDA = 10,
-        SELECCION_SALIDA = 11
+        COMPRA_SALIDA = 11
     }
 }
