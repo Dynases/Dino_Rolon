@@ -85,12 +85,12 @@
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
         <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdProducto" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="19.25" PointY="4.875" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="1.5" PointX="21.375" PointY="0.75" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />
         <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="1.5" PointX="21.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

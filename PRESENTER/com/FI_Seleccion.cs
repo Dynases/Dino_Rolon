@@ -947,6 +947,7 @@ namespace PRESENTER.com
                 {
                     if (idAux == 0)//Registar
                     {
+                        MP_ReporteSeleccion(id);
                         cb_NumGranja.Focus();
                         MP_Filtrar(1);
                         MP_CargarEncabezado();
@@ -956,6 +957,7 @@ namespace PRESENTER.com
                     }
                     else//Modificar
                     {
+                        MP_ReporteSeleccion(id);
                         MP_Filtrar(2);
                         MP_InHabilitar();//El formulario
                         _Limpiar = true;
@@ -1096,8 +1098,44 @@ namespace PRESENTER.com
 
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
+            MP_ReporteSeleccion(Convert.ToInt32(Tb_Id.Text));
         }
+        private void MP_ReporteSeleccion(int idSeleccion)
+        {
+            if (cb_NumGranja.ReadOnly == true)
+            {
+                try
+                {
+                    if (idSeleccion == 0)
+                    {
+                        throw new Exception("No existen registros");
+                    }
+                    if (UTGlobal.visualizador != null)
+                    {
+                        UTGlobal.visualizador.Close();
+                    }
+                    UTGlobal.visualizador = new Visualizador();
+                    var lista = new ServiceDesktop.ServiceDesktopClient().NotaSeleccion(idSeleccion).ToList();
+                    if (lista != null)
+                    {
+                        var ObjetoReport = new RSeleccionNota();
+                        ObjetoReport.SetDataSource(lista);
+                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                        ObjetoReport.SetParameterValue("Titulo", "CLASIFICACIÓN INGRESO A ALMACEN");
+                        UTGlobal.visualizador.ShowDialog();
+                        UTGlobal.visualizador.BringToFront();
+                    }
+                    else
+                        throw new Exception("No se encontraron registros");
 
+
+                }
+                catch (Exception ex)
+                {
+                    MP_MostrarMensajeError(ex.Message);
+                }
+            }
+        }
         private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
         {
             if (Dgv_GBuscador.Row > -1)

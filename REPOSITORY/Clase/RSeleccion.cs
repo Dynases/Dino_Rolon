@@ -307,11 +307,11 @@ namespace REPOSITORY.Clase
                                           IdProducto = a.IdProducto,
                                           Producto = a.Producto,
                                           Cantidad = a.Cantidad,
-                                          Porcen =Convert.ToDecimal(a.Porcen).ToString() + "%",
+                                          Porcen =a.Porcen,
                                           Precio =a.Precio,
                                           Total = a.Total,
                                           Merma = a.Merma,
-                                          MermaPorcentaje =  Convert.ToDecimal(a.MermaPorcentaje).ToString() +"%"                                       
+                                          MermaPorcentaje = a.MermaPorcentaje                                      
                                       }).ToList();
                     return listResult;
                 }

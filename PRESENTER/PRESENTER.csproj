@@ -425,6 +425,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompraIngresoDatos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\RSeleccionNota.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RSeleccionNota.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\RTransformacionIngreso.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -524,6 +530,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
     <EmbeddedResource Include="Report\ReportViewer\CompraIngresoCriterio.rdlc" />
+    <EmbeddedResource Include="Report\RSeleccionNota.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RSeleccionNota.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\RTransformacionIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionIngreso.cs</LastGenOutput>
@@ -678,6 +688,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop32.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop33.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -709,6 +722,7 @@
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso_03.View.VCompraIngreso_03.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra_01.View.VCompra_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.RSeleccionNota.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.Report.VSeleccionReport.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionEncabezado.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />

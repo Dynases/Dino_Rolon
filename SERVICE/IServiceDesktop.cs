@@ -376,6 +376,7 @@ namespace SERVICE
          List<VSeleccionEncabezado> TraerSelecciones();
         [OperationContract]
         VSeleccionLista TraerSeleccion(int idSeleccion);
+        [OperationContract]
         List<RSeleccionNota> NotaSeleccion(int idSeleccion);
         #endregion
         #endregion
