@@ -175,7 +175,28 @@ namespace PRESENTER.adm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void btnDesmarcarTodos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ListaDetalle = ((List<VUsuario_01>)Dgv_Detalle.DataSource).ToList();
 
+                foreach (var fila in ListaDetalle)
+                {
+                    fila.Acceso = false;
+
+                    if (fila.Estado == 1)
+                    {
+                        fila.Estado = 2;
+                    }
+                }
+                Dgv_Detalle.DataSource = ListaDetalle;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         #endregion
 
 
@@ -235,6 +256,7 @@ namespace PRESENTER.adm
             swEstado.IsReadOnly = false;
             Dgv_Detalle.Enabled = true;
             btnSeleccionarTodos.Enabled = true;
+            btnDesmarcarTodos.Enabled = true;
 
         }
         private void MP_InHabilitar()
@@ -245,6 +267,7 @@ namespace PRESENTER.adm
             cbRol.ReadOnly = true;
             swEstado.IsReadOnly = true;
             btnSeleccionarTodos.Enabled = false;
+            btnDesmarcarTodos.Enabled = false;
             //Dgv_Detalle.Enabled = false;        
             
             
@@ -639,8 +662,9 @@ namespace PRESENTER.adm
             MP_Filtrar(1);
         }
 
+
         #endregion
 
-       
+        
     }
 }

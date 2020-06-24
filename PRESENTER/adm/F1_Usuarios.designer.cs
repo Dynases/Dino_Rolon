@@ -32,6 +32,7 @@
             Janus.Windows.GridEX.GridEXLayout cbRol_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnSeleccionarTodos = new DevComponents.DotNetBar.ButtonX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.swEstado = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
@@ -44,7 +45,7 @@
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
-            this.btnSeleccionarTodos = new DevComponents.DotNetBar.ButtonX();
+            this.btnDesmarcarTodos = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -229,6 +230,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.btnDesmarcarTodos);
             this.GPanel_DatosGenerales.Controls.Add(this.btnSeleccionarTodos);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX10);
             this.GPanel_DatosGenerales.Controls.Add(this.swEstado);
@@ -276,6 +278,27 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 235;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES";
+            // 
+            // btnSeleccionarTodos
+            // 
+            this.btnSeleccionarTodos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSeleccionarTodos.BackColor = System.Drawing.Color.White;
+            this.btnSeleccionarTodos.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btnSeleccionarTodos.FadeEffect = false;
+            this.btnSeleccionarTodos.FocusCuesEnabled = false;
+            this.btnSeleccionarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarTodos.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
+            this.btnSeleccionarTodos.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.btnSeleccionarTodos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnSeleccionarTodos.Location = new System.Drawing.Point(583, 88);
+            this.btnSeleccionarTodos.Name = "btnSeleccionarTodos";
+            this.btnSeleccionarTodos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnSeleccionarTodos.Size = new System.Drawing.Size(129, 52);
+            this.btnSeleccionarTodos.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnSeleccionarTodos.SymbolSize = 5F;
+            this.btnSeleccionarTodos.TabIndex = 374;
+            this.btnSeleccionarTodos.Text = "Marcar Todos los Almacenes";
+            this.btnSeleccionarTodos.Click += new System.EventHandler(this.btnSeleccionarTodos_Click);
             // 
             // labelX10
             // 
@@ -516,26 +539,26 @@
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
             // 
-            // btnSeleccionarTodos
+            // btnDesmarcarTodos
             // 
-            this.btnSeleccionarTodos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSeleccionarTodos.BackColor = System.Drawing.Color.White;
-            this.btnSeleccionarTodos.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btnSeleccionarTodos.FadeEffect = false;
-            this.btnSeleccionarTodos.FocusCuesEnabled = false;
-            this.btnSeleccionarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionarTodos.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
-            this.btnSeleccionarTodos.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.btnSeleccionarTodos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnSeleccionarTodos.Location = new System.Drawing.Point(655, 88);
-            this.btnSeleccionarTodos.Name = "btnSeleccionarTodos";
-            this.btnSeleccionarTodos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnSeleccionarTodos.Size = new System.Drawing.Size(191, 39);
-            this.btnSeleccionarTodos.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btnSeleccionarTodos.SymbolSize = 5F;
-            this.btnSeleccionarTodos.TabIndex = 374;
-            this.btnSeleccionarTodos.Text = "Seleccionar Todos los Almacenes";
-            this.btnSeleccionarTodos.Click += new System.EventHandler(this.btnSeleccionarTodos_Click);
+            this.btnDesmarcarTodos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDesmarcarTodos.BackColor = System.Drawing.Color.White;
+            this.btnDesmarcarTodos.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btnDesmarcarTodos.FadeEffect = false;
+            this.btnDesmarcarTodos.FocusCuesEnabled = false;
+            this.btnDesmarcarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesmarcarTodos.Image = global::PRESENTER.Properties.Resources.CANCEL;
+            this.btnDesmarcarTodos.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.btnDesmarcarTodos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnDesmarcarTodos.Location = new System.Drawing.Point(784, 88);
+            this.btnDesmarcarTodos.Name = "btnDesmarcarTodos";
+            this.btnDesmarcarTodos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnDesmarcarTodos.Size = new System.Drawing.Size(129, 52);
+            this.btnDesmarcarTodos.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnDesmarcarTodos.SymbolSize = 5F;
+            this.btnDesmarcarTodos.TabIndex = 375;
+            this.btnDesmarcarTodos.Text = "Desmarcar Todos los Almacenes";
+            this.btnDesmarcarTodos.Click += new System.EventHandler(this.btnDesmarcarTodos_Click);
             // 
             // F1_Usuarios
             // 
@@ -588,5 +611,6 @@
         internal DevComponents.DotNetBar.LabelX LabelX19;
         internal DevComponents.DotNetBar.LabelX labelX13;
         internal DevComponents.DotNetBar.ButtonX btnSeleccionarTodos;
+        internal DevComponents.DotNetBar.ButtonX btnDesmarcarTodos;
     }
 }
