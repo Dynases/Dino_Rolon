@@ -69,6 +69,51 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void Dgv_Devolucion_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            if (Tb_NUmGranja.ReadOnly == false)
+            {
+                if (e.Column.Index == Dgv_Devolucion.RootTable.Columns[3].Index ||
+                    e.Column.Index == Dgv_Devolucion.RootTable.Columns[4].Index ||
+                    e.Column.Index == Dgv_Devolucion.RootTable.Columns[5].Index ||
+                    e.Column.Index == Dgv_Devolucion.RootTable.Columns[6].Index ||
+                    e.Column.Index == Dgv_Devolucion.RootTable.Columns[8].Index)
+                {
+                    e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void Dgv_Resultado_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            if (Tb_NUmGranja.ReadOnly == false)
+            {
+                if (e.Column.Index == Dgv_Resultado.RootTable.Columns[3].Index ||
+                    e.Column.Index == Dgv_Resultado.RootTable.Columns[4].Index ||
+                    e.Column.Index == Dgv_Resultado.RootTable.Columns[5].Index ||
+                    e.Column.Index == Dgv_Resultado.RootTable.Columns[6].Index ||
+                    e.Column.Index == Dgv_Resultado.RootTable.Columns[8].Index)
+                {
+                    e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
         private void cb_Proveedor_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -1079,9 +1124,12 @@ namespace PRESENTER.com
                 Dgv_Detalle.RootTable.Columns[9].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_Detalle.RootTable.Columns[9].Visible = true;
 
-
+              
                 Dgv_Detalle.RootTable.Columns[10].Key = "Estado";
                 Dgv_Detalle.RootTable.Columns[10].Visible = false;
+
+                Dgv_Detalle.RootTable.Columns[11].Key = "TotalMaple";
+                Dgv_Detalle.RootTable.Columns[11].Visible = false;
 
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
@@ -1287,6 +1335,9 @@ namespace PRESENTER.com
 
                 Dgv_Devolucion.RootTable.Columns[10].Key = "Estado";
                 Dgv_Devolucion.RootTable.Columns[10].Visible = false;
+
+                Dgv_Devolucion.RootTable.Columns[11].Key = "TotalMaple";
+                Dgv_Devolucion.RootTable.Columns[11].Visible = false;
 
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
@@ -2003,6 +2054,7 @@ namespace PRESENTER.com
                 return _Error;
             }
         }
+
 
 
 
