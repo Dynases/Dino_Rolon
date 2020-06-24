@@ -158,10 +158,6 @@
             // 
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
-            // BtnGrabar
-            // 
-            //this.BtnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
-            // 
             // BtnModificar
             // 
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -1022,9 +1018,9 @@
             this.superTabControl2.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl2.ControlBox.MenuBox,
             this.superTabControl2.ControlBox.CloseBox});
-            this.superTabControl2.Controls.Add(this.superTabControlPanel1);
             this.superTabControl2.Controls.Add(this.superTabControlPanel3);
             this.superTabControl2.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl2.Controls.Add(this.superTabControlPanel1);
             this.superTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl2.Location = new System.Drawing.Point(0, 34);
             this.superTabControl2.Name = "superTabControl2";
@@ -1102,7 +1098,7 @@
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel3.Location = new System.Drawing.Point(0, 34);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(785, 355);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(808, 355);
             this.superTabControlPanel3.TabIndex = 0;
             this.superTabControlPanel3.TabItem = this.Tab_Resultado;
             // 
@@ -1112,8 +1108,9 @@
             this.Dgv_Resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Resultado.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Resultado.Name = "Dgv_Resultado";
-            this.Dgv_Resultado.Size = new System.Drawing.Size(785, 355);
+            this.Dgv_Resultado.Size = new System.Drawing.Size(808, 355);
             this.Dgv_Resultado.TabIndex = 1;
+            this.Dgv_Resultado.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Resultado_EditingCell);
             // 
             // Tab_Resultado
             // 
@@ -1129,7 +1126,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 34);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(785, 355);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(808, 355);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.Tap_Devolucion;
             // 
@@ -1139,9 +1136,10 @@
             this.Dgv_Devolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Devolucion.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Devolucion.Name = "Dgv_Devolucion";
-            this.Dgv_Devolucion.Size = new System.Drawing.Size(785, 355);
+            this.Dgv_Devolucion.Size = new System.Drawing.Size(808, 355);
             this.Dgv_Devolucion.TabIndex = 0;
             this.Dgv_Devolucion.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Devolucion_CellEdited);
+            this.Dgv_Devolucion.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Devolucion_EditingCell);
             // 
             // Tap_Devolucion
             // 

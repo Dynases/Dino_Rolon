@@ -662,7 +662,7 @@ namespace PRESENTER.com
         {
             try
             {
-                Dgv_Seleccion.UpdateData();
+                //Dgv_Seleccion.UpdateData();
                 int estado = Convert.ToInt32(Dgv_Seleccion.CurrentRow.Cells["Estado"].Value);
                 //if (estado == (int)ENEstado.COMPLETADO)
                 //{
