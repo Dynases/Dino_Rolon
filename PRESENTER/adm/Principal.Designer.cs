@@ -39,6 +39,7 @@
             this.Metro_Seleccion = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.Metro_Compra = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.Metro_Reporte_CompraIngreso = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.Metro_Reporte_CompraIngresoCriterio = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.SideNavPanel5 = new DevComponents.DotNetBar.Controls.SideNavPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.MetroTilePanel6 = new DevComponents.DotNetBar.Metro.MetroTilePanel();
@@ -111,7 +112,7 @@
             this.btnCerrarSesion = new DevComponents.DotNetBar.RadialMenuItem();
             this.btnSalir = new DevComponents.DotNetBar.RadialMenuItem();
             this.btnAbout = new DevComponents.DotNetBar.RadialMenuItem();
-            this.Metro_Reporte_CompraIngresoCriterio = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.Metro_Libreria = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.SideNav1.SuspendLayout();
             this.SideNavPanel6.SuspendLayout();
             this.Panel2.SuspendLayout();
@@ -131,10 +132,10 @@
             // SideNav1
             // 
             this.SideNav1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.SideNav1.Controls.Add(this.SideNav_Conf);
             this.SideNav1.Controls.Add(this.SideNavPanel6);
             this.SideNav1.Controls.Add(this.SideNavPanel5);
             this.SideNav1.Controls.Add(this.sideNavPanel7);
-            this.SideNav1.Controls.Add(this.SideNav_Conf);
             this.SideNav1.Controls.Add(this.sideNavPanel8);
             this.SideNav1.Controls.Add(this.SideNavPanel1);
             this.SideNav1.Controls.Add(this.SideNavPanel2);
@@ -166,6 +167,7 @@
             this.SideNavPanel6.Name = "SideNavPanel6";
             this.SideNavPanel6.Size = new System.Drawing.Size(1047, 524);
             this.SideNavPanel6.TabIndex = 109;
+            this.SideNavPanel6.Visible = false;
             // 
             // Panel2
             // 
@@ -314,6 +316,24 @@
             this.Metro_Reporte_CompraIngreso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.Metro_Reporte_CompraIngreso.TitleTextColor = System.Drawing.Color.Red;
             this.Metro_Reporte_CompraIngreso.Click += new System.EventHandler(this.Metro_Reporte_CompraIngreso_Click);
+            // 
+            // Metro_Reporte_CompraIngresoCriterio
+            // 
+            this.Metro_Reporte_CompraIngresoCriterio.Image = global::PRESENTER.Properties.Resources.REPORTE_CHECK;
+            this.Metro_Reporte_CompraIngresoCriterio.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_Reporte_CompraIngresoCriterio.Name = "Metro_Reporte_CompraIngresoCriterio";
+            this.Metro_Reporte_CompraIngresoCriterio.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_Reporte_CompraIngresoCriterio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
+            this.Metro_Reporte_CompraIngresoCriterio.TileSize = new System.Drawing.Size(250, 135);
+            // 
+            // 
+            // 
+            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(165)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_Reporte_CompraIngresoCriterio.TitleText = "COMPRA INGRESO CRITERIO";
+            this.Metro_Reporte_CompraIngresoCriterio.Visible = false;
+            this.Metro_Reporte_CompraIngresoCriterio.Click += new System.EventHandler(this.metroMetro_Reporte_CompraIngresoCriterio_Click);
             // 
             // SideNavPanel5
             // 
@@ -589,7 +609,6 @@
             this.SideNav_Conf.Name = "SideNav_Conf";
             this.SideNav_Conf.Size = new System.Drawing.Size(1047, 524);
             this.SideNav_Conf.TabIndex = 2;
-            this.SideNav_Conf.Visible = false;
             // 
             // MetroTilePanel1
             // 
@@ -611,7 +630,8 @@
             this.Metro_Roles,
             this.Metro_Usuarios,
             this.btConfCliente,
-            this.metroTileItem4});
+            this.metroTileItem4,
+            this.Metro_Libreria});
             this.MetroTilePanel1.ItemSpacing = 10;
             this.MetroTilePanel1.Location = new System.Drawing.Point(0, 0);
             this.MetroTilePanel1.MultiLine = true;
@@ -1180,6 +1200,7 @@
             // 
             // FP_Administracion
             // 
+            this.FP_Administracion.Checked = true;
             this.FP_Administracion.Name = "FP_Administracion";
             this.FP_Administracion.Panel = this.SideNav_Conf;
             this.FP_Administracion.Symbol = "";
@@ -1217,7 +1238,6 @@
             // 
             // FP_COMPRAS
             // 
-            this.FP_COMPRAS.Checked = true;
             this.FP_COMPRAS.Name = "FP_COMPRAS";
             this.FP_COMPRAS.Panel = this.SideNavPanel6;
             this.FP_COMPRAS.Symbol = "";
@@ -1394,23 +1414,27 @@
             this.btnAbout.Symbol = "";
             this.btnAbout.Text = "ABOUT";
             // 
-            // Metro_Reporte_CompraIngresoCriterio
+            // Metro_Libreria
             // 
-            this.Metro_Reporte_CompraIngresoCriterio.Image = global::PRESENTER.Properties.Resources.REPORTE_CHECK;
-            this.Metro_Reporte_CompraIngresoCriterio.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Metro_Reporte_CompraIngresoCriterio.Name = "Metro_Reporte_CompraIngresoCriterio";
-            this.Metro_Reporte_CompraIngresoCriterio.SymbolColor = System.Drawing.Color.Empty;
-            this.Metro_Reporte_CompraIngresoCriterio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
-            this.Metro_Reporte_CompraIngresoCriterio.TileSize = new System.Drawing.Size(250, 135);
+            this.Metro_Libreria.Image = global::PRESENTER.Properties.Resources.hojaruta;
+            this.Metro_Libreria.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Metro_Libreria.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.Metro_Libreria.Name = "Metro_Libreria";
+            this.Metro_Libreria.SymbolColor = System.Drawing.Color.Empty;
+            this.Metro_Libreria.Text = "LIBRERIA";
+            this.Metro_Libreria.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum;
+            this.Metro_Libreria.TileSize = new System.Drawing.Size(250, 135);
             // 
             // 
             // 
-            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(165)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.Metro_Reporte_CompraIngresoCriterio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Metro_Reporte_CompraIngresoCriterio.TitleText = "COMPRA INGRESO CRITERIO";
-            this.Metro_Reporte_CompraIngresoCriterio.Visible = false;
-            this.Metro_Reporte_CompraIngresoCriterio.Click += new System.EventHandler(this.metroMetro_Reporte_CompraIngresoCriterio_Click);
+            this.Metro_Libreria.TileStyle.BackColor = System.Drawing.Color.Red;
+            this.Metro_Libreria.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.Metro_Libreria.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Metro_Libreria.TileStyle.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Metro_Libreria.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far;
+            this.Metro_Libreria.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.Metro_Libreria.TitleTextColor = System.Drawing.Color.Red;
+            this.Metro_Libreria.Click += new System.EventHandler(this.Metro_Libreria_Click);
             // 
             // Principal
             // 
@@ -1527,5 +1551,6 @@
         public DevComponents.DotNetBar.RadialMenuItem btnAbout;
         internal DevComponents.DotNetBar.Metro.MetroTileItem Metro_Reporte_CompraIngreso;
         internal DevComponents.DotNetBar.Metro.MetroTileItem Metro_Reporte_CompraIngresoCriterio;
+        internal DevComponents.DotNetBar.Metro.MetroTileItem Metro_Libreria;
     }
 }

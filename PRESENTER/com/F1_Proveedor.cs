@@ -1109,7 +1109,7 @@ namespace PRESENTER.com
                 bool bandera = efecto.Band;
                 if (bandera)
                 {
-                    var resul = new ServiceDesktop.ServiceDesktopClient().ClienteEliminar(idProveedor);
+                    var resul = new ServiceDesktop.ServiceDesktopClient().EliminarProveedor(idProveedor);
                     if (resul)
                     {
                         MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Tb_Cod.Text));

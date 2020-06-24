@@ -44,7 +44,7 @@ namespace LOGIC.Class
                 using (var scope = new TransactionScope())
                 {
                     bool result = false;
-                    result = new LProveedor().Eliminar(idProveedor);                                
+                    result = iProveedor.Eliminar(idProveedor);                                
                     scope.Complete();
                     return result;
                 }

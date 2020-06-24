@@ -195,7 +195,20 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
+                    var proveedor_01 = db.Proveed_01.Where(b => b.IdProveed == idProveedor).ToList();
                     var proveedor = db.Proveed.Where(b => b.Id == idProveedor).FirstOrDefault();
+                    if (proveedor == null)
+                    {
+                        throw new Exception("No existe el proveedor");
+                    }
+                    if (proveedor_01 != null)
+                    {
+                        foreach (var fila in proveedor_01)
+                        {
+                            db.Proveed_01.Remove(fila);
+                        }
+                    }
+                   
                     db.Proveed.Remove(proveedor);
                     db.SaveChanges();
                     return true;
@@ -226,7 +239,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool ExisteEnCompraNormal(int idProveedor)
+        public bool ExisteEnCompra(int idProveedor)
         {
             try
             {
@@ -244,11 +257,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-        public bool ExisteEnCompra(int idProveedor)
-        {
-            throw new NotImplementedException();
-        }
+      
         #endregion
 
 

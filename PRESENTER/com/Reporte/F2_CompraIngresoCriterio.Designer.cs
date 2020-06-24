@@ -453,6 +453,7 @@
             this.Cb_Devolucion.TabIndex = 402;
             this.Cb_Devolucion.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Cb_Devolucion.UseSelectable = true;
+            this.Cb_Devolucion.Visible = false;
             // 
             // labelX8
             // 
@@ -469,6 +470,7 @@
             this.labelX8.Size = new System.Drawing.Size(110, 23);
             this.labelX8.TabIndex = 401;
             this.labelX8.Text = "Devolución:";
+            this.labelX8.Visible = false;
             // 
             // labelX9
             // 

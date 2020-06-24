@@ -84,6 +84,12 @@ namespace PRESENTER.adm
             rmSesion.IsOpen = true;
             rmSesion.MenuLocation = new Point(this.Width / 2, this.Height / 3);
         }
+        private void Metro_Libreria_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Libreria.Name;
+            F1_Libreria frm = new F1_Libreria();
+            frm.Show();
+        }
         #endregion
         #region Registro
         private void Metro_Clientes_Click(object sender, EventArgs e)
@@ -184,10 +190,11 @@ namespace PRESENTER.adm
             F1_Ventas frm = new F1_Ventas();
             frm.Show();
         }
-        #endregion
 
         #endregion
 
-    
+        #endregion
+
+       
     }
 }

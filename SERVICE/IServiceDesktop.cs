@@ -48,13 +48,25 @@ namespace SERVICE
 
         /********** INICIO ****************/
         #region Libreria
-        [OperationContract]
-        List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden);
-
+        #region Transacciones
         [OperationContract]
         bool LibreriaGuardar(VLibreriaLista vlibreria);
-        #endregion
+        [OperationContract]
+        bool ModificarLibreria(List<VLibreriaLista> vlibreria);
 
+ 
+        #endregion
+        #region Consultas
+        [OperationContract]
+        List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden);
+        [OperationContract]
+        List<VLibreria> TraerProgramas();
+        [OperationContract]
+        List<VLibreria> TraerCategorias(int idPrograma);
+        [OperationContract]
+        List<VLibreriaLista> TraerLibreriasXCategoria(int idGrupo, int idOrden);
+        #endregion
+        #endregion
         /********** ROL ****************/
         #region Rol
 

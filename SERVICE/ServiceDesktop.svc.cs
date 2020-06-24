@@ -319,18 +319,9 @@ namespace SERVICE
         /********** LIBRERIA ****************/
 
         #region Libreria
-        public List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden)
-        {
-            try
-            {
-                var listResult = new LLibreria().Listar(idGrupo, idOrden);
-                return listResult;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        #region Transacciones
         public bool LibreriaGuardar(VLibreriaLista vlibreria)
         {
             try
@@ -343,6 +334,73 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+       
+        public bool ModificarLibreria(List<VLibreriaLista> vlibreria)
+        {
+            try
+            {
+                var result = new LLibreria().Modificar(vlibreria);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consultas
+        public List<VLibreria> LibreriaListarCombo(int idGrupo, int idOrden)
+        {
+            try
+            {
+                var listResult = new LLibreria().Listar(idGrupo, idOrden);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VLibreria> TraerProgramas()
+        {
+            try
+            {
+                var listResult = new LLibreria().TraerProgramas();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VLibreria> TraerCategorias(int idPrograma)
+        {
+            try
+            {
+                var listResult = new LLibreria().TraerCategorias(idPrograma);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VLibreriaLista> TraerLibreriasXCategoria(int idGrupo, int idOrden)
+        {
+            try
+            {
+                var listResult = new LLibreria().TraerLibreriasXCategoria(idGrupo, idOrden);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+
 
         #endregion
 

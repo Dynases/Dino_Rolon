@@ -9,6 +9,11 @@ namespace REPOSITORY.Interface
     public interface ILibreria
     {
         List<VLibreria> Listar(int idGrupo, int idOrden);
-        bool Guardar(VLibreriaLista vLibreria);        
+        bool Guardar(VLibreriaLista vLibreria);
+        bool Modificar(VLibreriaLista vLibreria);
+        bool Eliminar(VLibreriaLista vLibreria);
+        List<VLibreria> TraerProgramas();
+        List<VLibreria> TraerCategorias(int idPrograma);
+        List<VLibreriaLista> TraerLibreriasXCategoria(int idGrupo, int idOrden);
     }
 }

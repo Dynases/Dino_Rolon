@@ -15,5 +15,6 @@ namespace ENTITY.Libreria.View
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
+        public int estado { get; set; }
     }
 }

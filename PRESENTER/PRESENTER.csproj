@@ -271,6 +271,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adm\F1_Libreria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adm\F1_Libreria.Designer.cs">
+      <DependentUpon>F1_Libreria.cs</DependentUpon>
+    </Compile>
     <Compile Include="adm\F1_Roles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -462,6 +468,9 @@
     <Compile Include="ven\F1_Ventas.Designer.cs">
       <DependentUpon>F1_Ventas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="adm\F1_Libreria.resx">
+      <DependentUpon>F1_Libreria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adm\F1_Roles.resx">
       <DependentUpon>F1_Roles.cs</DependentUpon>
     </EmbeddedResource>
@@ -754,6 +763,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreria.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreriaLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla.datasource" />
     <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Producto.View.VProducto.datasource" />

@@ -13,6 +13,7 @@ namespace REPOSITORY.Interface
         List<VProveedorLista> Listar();
         List<VProveedor> ListarXId(int id);        
         bool Guardar(VProveedor Cliente, ref int idCliente);
+        bool Eliminar(int idProveedor);
         DataTable ListarEncabezado();
         bool ExisteEnCompraIng(int idProveedor);
         bool ExisteEnCompra(int idProveedor);

@@ -834,7 +834,7 @@ namespace PRESENTER.com
                 _MPos = Dgv_GBuscador.Row;
                 if (Dgv_GBuscador.RowCount > 0)
                 {
-                    _MPos = Dgv_GBuscador.RowCount - 1;
+                    _MPos = Dgv_GBuscador.RowCount - 2;
                     Dgv_GBuscador.Row = _MPos;
                 }
             }
@@ -1098,12 +1098,15 @@ namespace PRESENTER.com
 
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
-            MP_ReporteSeleccion(Convert.ToInt32(Tb_Id.Text));
+            if (cb_NumGranja.ReadOnly == true)
+            {
+                MP_ReporteSeleccion(Convert.ToInt32(Tb_Id.Text));
+            }
+                
         }
         private void MP_ReporteSeleccion(int idSeleccion)
         {
-            if (cb_NumGranja.ReadOnly == true)
-            {
+            
                 try
                 {
                     if (idSeleccion == 0)
@@ -1134,7 +1137,7 @@ namespace PRESENTER.com
                 {
                     MP_MostrarMensajeError(ex.Message);
                 }
-            }
+            
         }
         private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
         {

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
 
 namespace LOGIC.Class
@@ -20,11 +21,46 @@ namespace LOGIC.Class
             iLibreria = new RLibreria();
         }
         #region Consultas
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
         public List<VLibreria> Listar(int idGrupo, int idOrden)
         {
             try
             {
                 return iLibreria.Listar(idGrupo, idOrden);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VLibreria> TraerProgramas()
+        {
+            try
+            {
+                return iLibreria.TraerProgramas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VLibreria> TraerCategorias(int idPrograma)
+        {
+            try
+            {
+                return iLibreria.TraerCategorias(idPrograma);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VLibreriaLista> TraerLibreriasXCategoria(int idGrupo, int idOrden)
+        {
+            try
+            {
+                return iLibreria.TraerLibreriasXCategoria(idGrupo, idOrden);
             }
             catch (Exception ex)
             {
@@ -61,8 +97,52 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public bool Modificar( List<VLibreriaLista> vlibreria)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    bool resultado = false;
+                    foreach (var fila in vlibreria)
+                    {
+                        if (fila.estado == (int)ENEstado.MODIFICAR)
+                        {
+                            resultado = iLibreria.Modificar(fila);
+                        }
+                        if (fila.estado == (int)ENEstado.ELIMINAR)    
+                        {
+                            resultado = iLibreria.Eliminar(fila);
+                        }
+                    }                              
+                    scope.Complete();
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool Eliminar(VLibreriaLista vlibreria)
+        {
+            try
+            {
+
+                using (var scope = new TransactionScope())
+                {
+                    var result = iLibreria.Eliminar(vlibreria);
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
-       
+
 
     }
 }
