@@ -13,7 +13,9 @@ namespace UTILITY.Enum.EnEstado
         GUARDADO= 1,
         MODIFICAR = 2,
         COMPLETADO= 3,
-        TODOS = 4
+        TODOS = 4,
 
+        CARGARPRIMERFILA =5,
+        NOCARGARPRIMERFILA = 5
     }
 }

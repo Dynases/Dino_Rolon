@@ -355,6 +355,12 @@
     <Compile Include="com\Reporte\F2_CompraIngreso.Designer.cs">
       <DependentUpon>F2_CompraIngreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngresoCriterio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngresoCriterio.Designer.cs">
+      <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceDesktop\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -497,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="com\Reporte\F2_CompraIngreso.resx">
       <DependentUpon>F2_CompraIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com\Reporte\F2_CompraIngresoCriterio.resx">
+      <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\Efecto.resx">
       <DependentUpon>Efecto.cs</DependentUpon>

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F2_CompraIngreso));
             Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cb_Proveedor_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Dt_FechaHasta = new MetroFramework.Controls.MetroDateTime();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -41,6 +43,10 @@
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.cb_NumGranja = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cb_Proveedor = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.Cb_Tipo = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
@@ -52,6 +58,8 @@
             this.groupPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Proveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMin
@@ -118,6 +126,10 @@
             // 
             // GPanel_Criterio
             // 
+            this.GPanel_Criterio.Controls.Add(this.labelX7);
+            this.GPanel_Criterio.Controls.Add(this.Cb_Tipo);
+            this.GPanel_Criterio.Controls.Add(this.labelX6);
+            this.GPanel_Criterio.Controls.Add(this.cb_Proveedor);
             this.GPanel_Criterio.Controls.Add(this.cb_NumGranja);
             this.GPanel_Criterio.Controls.Add(this.labelX5);
             this.GPanel_Criterio.Controls.Add(this.Cb_Estado);
@@ -355,6 +367,76 @@
             this.cb_NumGranja.Tag = "1";
             this.cb_NumGranja.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
+            // cb_Proveedor
+            // 
+            this.cb_Proveedor.BackColor = System.Drawing.Color.White;
+            cb_Proveedor_DesignTimeLayout.LayoutString = resources.GetString("cb_Proveedor_DesignTimeLayout.LayoutString");
+            this.cb_Proveedor.DesignTimeLayout = cb_Proveedor_DesignTimeLayout;
+            this.cb_Proveedor.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cb_Proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Proveedor.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cb_Proveedor.Location = new System.Drawing.Point(95, 143);
+            this.cb_Proveedor.Name = "cb_Proveedor";
+            this.cb_Proveedor.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cb_Proveedor.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cb_Proveedor.SelectedIndex = -1;
+            this.cb_Proveedor.SelectedItem = null;
+            this.cb_Proveedor.Size = new System.Drawing.Size(155, 22);
+            this.cb_Proveedor.TabIndex = 384;
+            this.cb_Proveedor.Tag = "1";
+            this.cb_Proveedor.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX6.ForeColor = System.Drawing.Color.Black;
+            this.labelX6.Location = new System.Drawing.Point(9, 145);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX6.Size = new System.Drawing.Size(80, 23);
+            this.labelX6.TabIndex = 385;
+            this.labelX6.Text = "Proveedor:";
+            // 
+            // Cb_Tipo
+            // 
+            this.Cb_Tipo.BackColor = System.Drawing.Color.White;
+            Cb_Tipo_DesignTimeLayout.LayoutString = resources.GetString("Cb_Tipo_DesignTimeLayout.LayoutString");
+            this.Cb_Tipo.DesignTimeLayout = Cb_Tipo_DesignTimeLayout;
+            this.Cb_Tipo.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_Tipo.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_Tipo.Location = new System.Drawing.Point(95, 171);
+            this.Cb_Tipo.Name = "Cb_Tipo";
+            this.Cb_Tipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_Tipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_Tipo.SelectedIndex = -1;
+            this.Cb_Tipo.SelectedItem = null;
+            this.Cb_Tipo.Size = new System.Drawing.Size(155, 22);
+            this.Cb_Tipo.TabIndex = 386;
+            this.Cb_Tipo.Tag = "1";
+            this.Cb_Tipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX7
+            // 
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX7.ForeColor = System.Drawing.Color.Black;
+            this.labelX7.Location = new System.Drawing.Point(9, 170);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX7.Size = new System.Drawing.Size(80, 23);
+            this.labelX7.TabIndex = 387;
+            this.labelX7.Text = "Tipo:";
+            // 
             // F2_CompraIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +459,8 @@
             this.groupPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Proveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,6 +478,10 @@
         protected internal DevComponents.DotNetBar.LabelX labelX5;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_NumGranja;
+        protected internal DevComponents.DotNetBar.LabelX labelX6;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_Proveedor;
+        protected internal DevComponents.DotNetBar.LabelX labelX7;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Tipo;
         //private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Report;

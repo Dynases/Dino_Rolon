@@ -20,6 +20,7 @@ using ENTITY.DiSoft.Zona;
 using ENTITY.com.CompraIngreso_02;
 using ENTITY.Proveedor.View;
 using ENTITY.com.CompraIngreso.View;
+using UTILITY.Enum.EnEstado;
 
 namespace UTILITY.Global
 {
@@ -63,7 +64,36 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }
-        public static void MG_ArmarComboProveedores(MultiColumnCombo combo, List<VProveedorCombo> lProveedores)
+        public static void MG_ArmarComboConPrimerFila(MultiColumnCombo combo, List<VLibreria> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("idLibreria").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                VLibreria PrimerFile = new VLibreria()
+                {
+                    IdLibreria = 0,
+                    Descripcion = "TODOS"
+                };
+                lLibreria.Insert(0, PrimerFile);
+                combo.ValueMember = "idLibreria";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarComboProveedores(MultiColumnCombo combo, List<VProveedorCombo> lProveedores, ENEstado cargarPrimerFila)
         {
             try
             {
@@ -79,7 +109,16 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns.Add("EdadSemana").Width = 80;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
-
+                if (cargarPrimerFila == ENEstado.CARGARPRIMERFILA)
+                {
+                    VProveedorCombo PrimerFile = new VProveedorCombo()
+                    {
+                        Id = 0,
+                        Descripcion = "TODOS",
+                        EdadSemana = "TODOS",
+                    };
+                    lProveedores.Insert(0, PrimerFile);
+                }              
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lProveedores;
@@ -139,6 +178,40 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[2].Caption = "Proveedor";
                 combo.DropDownList.Columns[2].Visible = true;             
 
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "NumGranja";
+                combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarMultiComboCompraIngreso2(MultiColumnCombo combo, List<VCompraIngresoCombo> lLibreria)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 80;
+                combo.DropDownList.Columns[0].Caption = "Num. Rec.";
+                combo.DropDownList.Columns[0].Visible = true;
+
+                combo.DropDownList.Columns.Add("NumGranja").Width = 100;
+                combo.DropDownList.Columns[1].Caption = "Num. Granja";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Proveedor").Width = 180;
+                combo.DropDownList.Columns[2].Caption = "Proveedor";
+                combo.DropDownList.Columns[2].Visible = true;
+
+                VCompraIngresoCombo PrimerFile = new VCompraIngresoCombo()
+                {
+                    Id = 0,
+                    NumGranja = "TODOS",
+                    Proveedor = "TODOS",
+                };
+                lLibreria.Insert(0, PrimerFile);
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "NumGranja";
                 combo.DropDownList.DataSource = lLibreria;

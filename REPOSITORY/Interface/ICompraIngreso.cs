@@ -21,9 +21,10 @@ namespace REPOSITORY.Interface
         List<VCompraIngreso> TraerComprasIngreso();           
         DataTable BuscarCompraIngreso(int estado);
         List<VCompraIngresoCombo> TraerCompraIngresoCombo();
+        List<VCompraIngresoCombo> TraerCompraIngresoComboCompleto();
 
             //Reportes
-       
+
         List<VCompraIngresoNota> NotaCompraIngreso(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoResultado(int Id);

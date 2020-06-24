@@ -171,6 +171,12 @@ namespace PRESENTER.adm
             F2_CompraIngreso frm = new F2_CompraIngreso();
             frm.Show();
         }
+        private void metroMetro_Reporte_CompraIngresoCriterio_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Reporte_CompraIngresoCriterio.Name;
+            F2_CompraIngresoCriterio frm = new F2_CompraIngresoCriterio();
+            frm.Show();
+        }
         #endregion
         #region Ventas
         private void btnVentas_Click(object sender, EventArgs e)
@@ -179,6 +185,9 @@ namespace PRESENTER.adm
             frm.Show();
         }
         #endregion
+
         #endregion
+
+    
     }
 }

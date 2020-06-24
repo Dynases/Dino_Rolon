@@ -66,6 +66,7 @@ namespace REPOSITORY.Clase
                     CompraIngreso.Usuario = vCompraIngreso.Usuario;
                     CompraIngreso.CompraAntiguaFecha = vCompraIngreso.CompraAntiguaFecha;
                     CompraIngreso.TotalMaple = vCompraIngreso.TotalMaple;
+                    CompraIngreso.Devolucion = vCompraIngreso.Devolucion;
                     db.SaveChanges();
                     id = CompraIngreso.Id;
                     return true;
@@ -131,7 +132,7 @@ namespace REPOSITORY.Clase
                                       {
                                           Id = a.Id,
                                           IdAlmacen = a.IdAlmacen,
-                                          IdProvee = a.IdProvee,                                         
+                                          IdProvee = a.IdProvee,
                                           CantidadSemanas = a.EdadSemana,
                                           Proveedor = c.Descrip,
                                           NumNota = a.NumNota,
@@ -143,14 +144,15 @@ namespace REPOSITORY.Clase
                                           Entregado = a.Entregado,
                                           Recibido = a.Recibido,
                                           Total = a.Total,
-                                          TotalRecibido= a.TotalRecibido,
-                                          TotalVendido =a.TotalVendido,
+                                          TotalRecibido = a.TotalRecibido,
+                                          TotalVendido = a.TotalVendido,
                                           TipoCompra = a.TipoCompra,
-                                         estado= a.Estado,
-                                         CantidadCaja = a.CantidadCaja,
-                                         CantidadGrupo = a.CantidadGrupo,
-                                         CompraAntiguaFecha = a.CompraAntiguaFecha,
-                                         TotalMaple = a.TotalMaple
+                                          estado = a.Estado,
+                                          CantidadCaja = a.CantidadCaja,
+                                          CantidadGrupo = a.CantidadGrupo,
+                                          CompraAntiguaFecha = a.CompraAntiguaFecha,
+                                          TotalMaple = a.TotalMaple,
+                                          Devolucion = a.Devolucion
                                       }).FirstOrDefault();
                     return listResult;
                 }
@@ -231,7 +233,7 @@ namespace REPOSITORY.Clase
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                                                                 x.IdLibrer == a.Tipo).Descrip,
                                           TipoCompra = a.TipoCompra == 1 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
-                                          Devolucion = a.CompraIng_03.Count(s => s.IdCompra == a.Id) == 0 ? "NO" : "SI",
+                                          Devolucion = a.Devolucion == 1 ? "NO" : "SI",
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
                                           Usuario = a.Usuario,
@@ -268,7 +270,29 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        public List<VCompraIngresoCombo> TraerCompraIngresoComboCompleto()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = db.CompraIng
+                                    .Where(a => 
+                                               a.Estado != (int)ENEstado.ELIMINAR)
+                      .Select(v => new VCompraIngresoCombo
+                      {
+                          Id = v.Id,
+                          NumGranja = v.NumNota,
+                          Proveedor = v.Proveed.Descrip
+                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** REPORTES ***********/
         public DataTable ReporteCompraIngreso(FCompraIngreso fcompraIngreso)
         {
@@ -302,7 +326,7 @@ namespace REPOSITORY.Clase
                 if (fcompraIngreso.IdProveedor != 0)
                 {
                     //Consulta para mostrar Con seleccion y Sin seleccion
-                    sb.Append(string.Format("c.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
+                    sb.Append(string.Format("b.id IN ({0}) AND   ", fcompraIngreso.IdProveedor));
                 }
                 if (fcompraIngreso.TipoCategoria != 0)
                 {
@@ -540,6 +564,11 @@ namespace REPOSITORY.Clase
                 else
                 {
                     sb.Append(string.Format("a.Estado IN ({0}) AND   ", fcompraIngreso.estadoCompra));
+                }
+                if (fcompraIngreso.Detalle == 0)
+                {
+                    //Consulta para mostrar 'Con seleccion y Sin seleccion
+                    sb.Append("b.TotalCant > 0 AND   ");
                 }
                 sb.Length -= 7;
                 sb.Append(@"ORDER BY a.Id ASC");

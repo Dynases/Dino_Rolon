@@ -14,5 +14,6 @@ namespace ENTITY.com.CompraIngreso.Filter
         public DateTime? fechaHasta { get; set; }
         public int estadoCompra { get; set; }
         public int TipoCategoria { get; set; }
+        public int Detalle { get; set; }
     }
 }

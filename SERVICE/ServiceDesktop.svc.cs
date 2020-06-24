@@ -1122,6 +1122,19 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public List<VCompraIngresoCombo> TraerCompraIngresoComboCompleto()
+        {
+
+            try
+            {
+                var listResult = new LCompraIngreso().TraerCompraIngresoComboCompleto();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** REPORTES ***********/
         public List<VCompraIngresoNota> CompraIngreso_NotaXId(int id)
         {

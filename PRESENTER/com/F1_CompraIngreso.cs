@@ -1365,7 +1365,7 @@ namespace PRESENTER.com
                                      new ServiceDesktop.ServiceDesktopClient().CompraIngreso_02_Listar().ToList());
 
                 UTGlobal.MG_ArmarComboProveedores(cb_Proveedor,
-                                   new ServiceDesktop.ServiceDesktopClient().TraerProveedoresEdadSemana().ToList());
+                                   new ServiceDesktop.ServiceDesktopClient().TraerProveedoresEdadSemana().ToList(), ENEstado.NOCARGARPRIMERFILA);
 
 
                 UTGlobal.MG_ArmarCombo(cb_Recibido,
@@ -1563,7 +1563,7 @@ namespace PRESENTER.com
                             MP_CargarDetalle(Convert.ToInt32(Tb_Cod.Text), 1);
                             MP_CargarDevolucion(Convert.ToInt32(Tb_Cod.Text), 1);
                             MP_CargarResultado(Convert.ToInt32(Tb_Cod.Text), 1);
-                            Sw_Devolucion.Value = Dgv_Devolucion.RowCount == 0 ? true : false;
+                            Sw_Devolucion.Value = registro.Devolucion == 1 ? true : false;
                             MP_ObtenerCalculoResultado();
                             MP_ObtenerCalculo();
                         }

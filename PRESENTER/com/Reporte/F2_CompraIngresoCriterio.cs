@@ -1,6 +1,5 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.com.CompraIngreso.Filter;
-using Janus.Windows.GridEX;
 using Microsoft.Reporting.WinForms;
 using MODEL;
 using System;
@@ -18,26 +17,25 @@ using UTILITY.Global;
 
 namespace PRESENTER.com.Reporte
 {
-    public partial class F2_CompraIngreso : ModeloF2
+    public partial class F2_CompraIngresoCriterio : ModeloF2
     {
-
-        #region Eventos
-        public F2_CompraIngreso()
+        #region
+        public F2_CompraIngresoCriterio()
         {
             InitializeComponent();
             Rpt_Reporte.LocalReport.EnableExternalImages = true;
             Rpt_Reporte.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             Rpt_Reporte.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
             Rpt_Reporte.ZoomPercent = 100;
-        }
-        private void F2_CompraIngreso_Load(object sender, EventArgs e)
-        {
-            //this.Rpt_Reporte.RefreshReport();
             MP_InicioArmarCombo();
             MP_Habilitar();
-
         }
-       
+
+        private void F2_CompraIngresoCriterio_Load(object sender, EventArgs e)
+        {
+
+            this.Rpt_Reporte.RefreshReport();
+        }
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
             try
@@ -48,29 +46,30 @@ namespace PRESENTER.com.Reporte
                 DateTime? fechaHasta = null;
                 FCompraIngreso fcompraingreso = new FCompraIngreso()
                 {
-                    Id= Convert.ToInt32( cb_NumGranja.Value),
+                    Id = Convert.ToInt32(cb_NumGranja.Value),
                     IdProveedor = Convert.ToInt32(cb_Proveedor.Value),
                     TipoCategoria = Convert.ToInt32(Cb_Tipo.Value),
                     fechaDesde = Dt_FechaDesde.Checked ? Dt_FechaDesde.Value.Date : fechaDesde,
                     fechaHasta = Dt_FechaHasta.Checked ? Dt_FechaHasta.Value.Date : fechaHasta,
-                    estadoCompra = estado
+                    estadoCompra = estado,
+                    Detalle = Cb_Detalle.SelectedIndex
                 };
-                var compraIngreso = new ServiceDesktop.ServiceDesktopClient()
-                                    .CompraIngresoReporte(fcompraingreso);
+                var compraIngreso = new ServiceDesktop.ServiceDesktopClient().ReporteCriterioCompraIngreso(fcompraingreso);
                 if (compraIngreso.Rows.Count != 0)
                 {
                     Rpt_Reporte.LocalReport.DataSources.Clear();
                     Rpt_Reporte.ProcessingMode = ProcessingMode.Local;
-                    Rpt_Reporte.LocalReport.ReportEmbeddedResource = "PRESENTER.Report.ReportViewer.CompraIngreso.rdlc";
-                    
-                    List<ReportParameter> lParametros = new List<ReportParameter>{};                    
+                    Rpt_Reporte.LocalReport.ReportEmbeddedResource = "PRESENTER.Report.ReportViewer.CompraIngresoCriterio.rdlc";
+
+                    List<ReportParameter> lParametros = new List<ReportParameter> { };
                     lParametros.Add(new ReportParameter("fechaDesde", fechaDesde.HasValue ? fechaDesde.Value.ToShortDateString() : "-----"));
                     lParametros.Add(new ReportParameter("fechaHasta", fechaHasta.HasValue ? fechaHasta.Value.ToShortDateString() : "-----"));
-                    lParametros.Add(new ReportParameter("estado", Cb_Estado.Text));
+                    lParametros.Add(new ReportParameter("Estado", Cb_Estado.Text));
                     lParametros.Add(new ReportParameter("NumGranja", cb_NumGranja.Text));
                     lParametros.Add(new ReportParameter("Tipo", Cb_Tipo.Text));
                     lParametros.Add(new ReportParameter("Proveedor", cb_Proveedor.Text));
-                    Rpt_Reporte.LocalReport.DataSources.Add(new ReportDataSource("CompraIngreso", compraIngreso));
+                    lParametros.Add(new ReportParameter("Devolucion", Cb_Devolucion.Text));
+                    Rpt_Reporte.LocalReport.DataSources.Add(new ReportDataSource("CompraIngresoCriterio", compraIngreso));
                     Rpt_Reporte.LocalReport.SetParameters(lParametros);
                     Rpt_Reporte.RefreshReport();
                     Rpt_Reporte.Visible = true;
@@ -84,6 +83,11 @@ namespace PRESENTER.com.Reporte
             {
                 MP_MostrarMensajeError(ex.Message);
             }
+        }
+
+        private void BtnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         #endregion
 
@@ -101,6 +105,8 @@ namespace PRESENTER.com.Reporte
             cb_NumGranja.Value = 0;
             cb_Proveedor.Value = 0;
             Cb_Tipo.Value = 0;
+            Cb_Devolucion.SelectedIndex = 0;
+            Cb_Detalle.SelectedIndex = 0;
         }
         private void MP_InicioArmarCombo()
         {
@@ -125,5 +131,4 @@ namespace PRESENTER.com.Reporte
 
 
     }
-
 }

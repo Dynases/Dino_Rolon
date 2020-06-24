@@ -307,18 +307,27 @@ namespace SERVICE
 
         #endregion
         #region Consulta
-        /******** VALOR/REGISTRO ÚNICO *********/              
-                [OperationContract]
+        /******** VALOR/REGISTRO ÚNICO *********/   
+        
+       [OperationContract]
        VCompraIngresoLista TraerCompraIngreso(int id);
-        /********** VARIOS REGISTROS ***********/               
-                [OperationContract]
-                DataTable CompraIngresoBuscar(int estado);
 
-                [OperationContract]
-                List<VCompraIngreso> TraerComprasIngreso();
+        /********** VARIOS REGISTROS ***********/
+
+        [OperationContract]
+        DataTable CompraIngresoBuscar(int estado);
+
+        [OperationContract]
+        List<VCompraIngreso> TraerComprasIngreso();
+
         [OperationContract]
         List<VCompraIngresoCombo> TraerCompraIngresoCombo();
+
+        [OperationContract]
+        List<VCompraIngresoCombo> TraerCompraIngresoComboCompleto();
+
         /********** REPORTES ***********/
+
         [OperationContract]
          DataTable CompraIngresoReporte(FCompraIngreso fcompraIngreso);
         [OperationContract]
