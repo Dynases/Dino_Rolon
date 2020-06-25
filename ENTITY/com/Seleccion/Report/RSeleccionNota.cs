@@ -19,6 +19,7 @@ namespace ENTITY.com.Seleccion.Report
         public string MarcaTipo { get; set; }
         public string Entregado { get; set; }
         public string DescripcionRecibido { get; set; }
+        public string DescripcionPlaca { get; set; }
         public int IdDetalle { get; set; }
         public int IdProducto { get; set; }
         public string Producto { get; set; }

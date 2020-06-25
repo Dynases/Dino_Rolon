@@ -5,8 +5,8 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Estaticos">
           <Key>
             <PropertyRef Name="Id" />
@@ -293,8 +293,8 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdPlantilla" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.SY000' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SY000">
           <Key>
             <PropertyRef Name="Modo" />
@@ -599,8 +599,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Lote" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.V_NotaCompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_NotaCompraIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -636,8 +636,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene defi
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalMaple" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngreso">
           <Key>
             <PropertyRef Name="NotaRecepcion" />
@@ -662,8 +662,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definid
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="10" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoDevolucion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngresoDevolucion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngresoDevolucion">
           <Key>
             <PropertyRef Name="Id" />
@@ -698,8 +698,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoDevolucion' no tie
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalMaple" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoResultado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngresoResultado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngresoResultado">
           <Key>
             <PropertyRef Name="Id" />
@@ -732,8 +732,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoResultado' no tien
           <Property Name="Total" Type="decimal" Precision="19" Scale="2" />
           <Property Name="TotalMaple" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_SeleccionNota' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_SeleccionNota">
           <Key>
             <PropertyRef Name="Id" />
@@ -744,6 +744,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definid
             <PropertyRef Name="Proveedor" />
             <PropertyRef Name="IdSpyre" />
             <PropertyRef Name="MarcaTipo" />
+            <PropertyRef Name="DescripcionPlaca" />
             <PropertyRef Name="DescripcionRecibido" />
             <PropertyRef Name="IdDetalle" />
             <PropertyRef Name="IdProducto" />
@@ -764,6 +765,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definid
           <Property Name="IdSpyre" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="MarcaTipo" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="Entregado" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescripcionPlaca" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="DescripcionRecibido" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="IdDetalle" Type="int" Nullable="false" />
           <Property Name="IdProducto" Type="int" Nullable="false" />
@@ -775,8 +777,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definid
           <Property Name="Merma" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MermaPorcentaje" Type="decimal" Precision="18" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_TransformacionIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -796,8 +798,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene
           <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalProd" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_TransformacionSalida">
           <Key>
             <PropertyRef Name="Id" />
@@ -1534,6 +1536,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [Vr_SeleccionNota].[IdSpyre] AS [IdSpyre], 
     [Vr_SeleccionNota].[MarcaTipo] AS [MarcaTipo], 
     [Vr_SeleccionNota].[Entregado] AS [Entregado], 
+    [Vr_SeleccionNota].[DescripcionPlaca] AS [DescripcionPlaca], 
     [Vr_SeleccionNota].[DescripcionRecibido] AS [DescripcionRecibido], 
     [Vr_SeleccionNota].[IdDetalle] AS [IdDetalle], 
     [Vr_SeleccionNota].[IdProducto] AS [IdProducto], 
@@ -3318,6 +3321,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <PropertyRef Name="Total" />
             <PropertyRef Name="Merma" />
             <PropertyRef Name="MermaPorcentaje" />
+            <PropertyRef Name="DescripcionPlaca" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="IdCompraIng" Type="Int32" Nullable="false" />
@@ -3338,6 +3342,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Merma" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="MermaPorcentaje" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="DescripcionPlaca" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Seleccion_01_Producto">
           <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
@@ -4167,6 +4172,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySetMapping Name="Vr_SeleccionNota">
             <EntityTypeMapping TypeName="DiAviModel.Vr_SeleccionNota">
               <MappingFragment StoreEntitySet="Vr_SeleccionNota">
+                <ScalarProperty Name="DescripcionPlaca" ColumnName="DescripcionPlaca" />
                 <ScalarProperty Name="MermaPorcentaje" ColumnName="MermaPorcentaje" />
                 <ScalarProperty Name="Merma" ColumnName="Merma" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
