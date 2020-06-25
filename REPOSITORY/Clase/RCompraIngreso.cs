@@ -232,7 +232,7 @@ namespace REPOSITORY.Clase
                                           TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                                                                 x.IdLibrer == a.Tipo).Descrip,
-                                          TipoCompra = a.TipoCompra == 1 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
+                                          TipoCompra = a.Estado == 3 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
                                           Devolucion = a.Devolucion == 1 ? "NO" : "SI",
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
@@ -395,7 +395,8 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = (int)a.totalMaple
+                                          TotalMaple = (int)a.TotalMaple,
+                                          DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;
                 }
@@ -429,7 +430,8 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = (int)a.totalMaple
+                                          TotalMaple = (int)a.TotalMaple,
+                                          DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;
                 }
@@ -463,7 +465,8 @@ namespace REPOSITORY.Clase
                                           Total = (decimal)a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = (int)a.totalMaple
+                                          TotalMaple = (int)a.TotalMaple,
+                                          DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;
                 }

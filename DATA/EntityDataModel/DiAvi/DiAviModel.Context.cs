@@ -31,8 +31,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<CompraIng_02> CompraIng_02 { get; set; }
         public virtual DbSet<Proveed> Proveed { get; set; }
         public virtual DbSet<Proveed_01> Proveed_01 { get; set; }
-        public virtual DbSet<Seleccion> Seleccion { get; set; }
-        public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Plantilla> Plantilla { get; set; }
         public virtual DbSet<Plantilla_01> Plantilla_01 { get; set; }
         public virtual DbSet<TB001> TB001 { get; set; }
@@ -65,13 +63,15 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Usuario_01> Usuario_01 { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
+        public virtual DbSet<CompraIng_03> CompraIng_03 { get; set; }
+        public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
         public virtual DbSet<Vr_CompraIngresoDevolucion> Vr_CompraIngresoDevolucion { get; set; }
         public virtual DbSet<Vr_CompraIngresoResultado> Vr_CompraIngresoResultado { get; set; }
-        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
-        public virtual DbSet<CompraIng_03> CompraIng_03 { get; set; }
+        public virtual DbSet<Seleccion_01> Seleccion_01 { get; set; }
         public virtual DbSet<Vr_SeleccionNota> Vr_SeleccionNota { get; set; }
-        public virtual DbSet<CompraIng> CompraIng { get; set; }
+        public virtual DbSet<Seleccion> Seleccion { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

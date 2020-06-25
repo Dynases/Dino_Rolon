@@ -15,6 +15,7 @@ namespace DATA.EntityDataModel.DiAvi
     public partial class Vr_SeleccionNota
     {
         public int Id { get; set; }
+        public int IdCompraIng { get; set; }
         public string NumNota { get; set; }
         public System.DateTime FechaReg { get; set; }
         public System.DateTime FechaRec { get; set; }
@@ -31,7 +32,6 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal Precio { get; set; }
         public decimal Total { get; set; }
         public decimal Merma { get; set; }
-        //Eliminar el NUll siempre que aparesca
         public decimal MermaPorcentaje { get; set; }
     }
 }

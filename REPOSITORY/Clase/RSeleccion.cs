@@ -60,6 +60,9 @@ namespace REPOSITORY.Clase
                     seleccion.Hora = vSeleccion.Hora;
                     seleccion.Usuario = vSeleccion.Usuario;
                     seleccion.Merma = vSeleccion.Merma;
+                    seleccion.MermaPor = vSeleccion.MermaPorcentaje;
+                    seleccion.ManchadoPor = vSeleccion.ManchadoPorcentaje;
+                    seleccion.PicadoPor = vSeleccion.PicadoPorcentaje;
                     db.SaveChanges();
                     id = seleccion.Id;
                     return true;
@@ -249,26 +252,24 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var lista = db.Seleccion
+                                  .Where(x=> x.Estado != (int)ENEstado.ELIMINAR)                        
                      .Select(a => new VSeleccionEncabezado
                      {
                          Id = a.Id,
-                         IdCompraIng = a.IdCompraIng,
-                         //IdAlmacen = a.IdAlmacen,
+                         IdCompraIng = a.IdCompraIng,                      
                          Granja = a.CompraIng.NumNota,
-                         FechaReg = a.FechaReg,
-                         //FechaEntrega = a.CompraIng.FechaEnt,
+                         FechaReg = a.FechaReg,                     
                          FechaRecepcion = a.CompraIng.FechaRec,
-                         Proveedor = a.CompraIng.Proveed.Descrip,
-                         tipoCompra = a.CompraIng.TipoCompra == 1 ? "CON SELECCION" : "SIN SELECCION",
-                        // Placa = a.CompraIng.Placa,
-                         //Tipo = a.CompraIng.Tipo,
+                         Proveedor = a.CompraIng.Proveed.Descrip,                         
                          TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                                                                 x.IdLibrer == a.CompraIng.Tipo).Descrip,
-                         //Edad = a.CompraIng.EdadSemana,
-                         Cantidad = a.Cantidad,
-                         Total = a.Total,
                          Merma = a.Merma,
+                         TotalRecepcion = a.CompraIng.TotalUnidades,
+                         Cantidad = a.Cantidad,                                    
+                         MermaPorcentaje =a.MermaPor,
+                         ManchadoPorcentaje = a.ManchadoPor,
+                         PicadoPorcentaje = a.PicadoPor,                     
                          Fecha = a.Fecha,
                          Hora = a.Hora,
                          Usuario = a.Usuario
@@ -311,7 +312,7 @@ namespace REPOSITORY.Clase
                                           Precio =a.Precio,
                                           Total = a.Total,
                                           Merma = a.Merma,
-                                          MermaPorcentaje = a.MermaPorcentaje                                      
+                                          MermaPorcentaje = a.MermaPorcentaje                                    
                                       }).ToList();
                     return listResult;
                 }

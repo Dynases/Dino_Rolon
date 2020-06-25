@@ -22,12 +22,13 @@ namespace DATA.EntityDataModel.DiAvi
         public string IdSpyre { get; set; }
         public string MarcaTipo { get; set; }
         public string Entregado { get; set; }
+        public string DescripcionPlaca { get; set; }
         public string DescripcionRecibido { get; set; }
         public int IdProduc { get; set; }
         public string Producto { get; set; }
         public Nullable<decimal> TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
         public Nullable<decimal> Total { get; set; }
-        public Nullable<decimal> totalMaple { get; set; }
+        public Nullable<int> TotalMaple { get; set; }
     }
 }

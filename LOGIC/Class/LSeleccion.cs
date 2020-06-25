@@ -34,8 +34,11 @@ namespace LOGIC.Class
                 bool result = false;          
                 using (var scope = new TransactionScope())
                 {
+                    vSeleccion.ManchadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 388).Porcen;
+                    vSeleccion.PicadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 387).Porcen;
+
                     if (idSeleccion == 0) //Nuevo
-                    {
+                    {                       
                         result = iSeleccion.Guardar(vSeleccion, ref idSeleccion);                       
                         var resultIngreso = new LSeleccion_01().GuardarModificar_CompraIngreso(detalle_Ingreso,vSeleccion.IdCompraIng);
                         if (!new LSeleccion_01().NuevoMovimientoSelecciom(detalle_Ingreso,vSeleccion.IdCompraIng, idSeleccion))

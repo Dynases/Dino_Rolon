@@ -112,14 +112,14 @@ namespace PRESENTER.com
                 Dgv_GBuscador.AlternatingColors = true;
 
                 Dgv_GBuscador.RootTable.Columns["id"].Caption = "Nota Sel.";
-                Dgv_GBuscador.RootTable.Columns["id"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["id"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["id"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["id"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["id"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["id"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["IdCompraIng"].Caption = "Nota Rec.";
-                Dgv_GBuscador.RootTable.Columns["IdCompraIng"].Width = 90;
+                Dgv_GBuscador.RootTable.Columns["IdCompraIng"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["IdCompraIng"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["IdCompraIng"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["IdCompraIng"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -133,7 +133,7 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Granja"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].Caption = "Proveedor";
-                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 180;
+                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 160;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -154,15 +154,8 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["FechaRecepcion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["FechaRecepcion"].Visible = true;
 
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].Caption = "Tipo Compra";
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].Width = 110;
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns["tipoCompra"].Visible = true;
-
-                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo";
-                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Width = 110;
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo ";
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Width = 90;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -170,30 +163,54 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["Merma"].Caption = "Merma";
                 Dgv_GBuscador.RootTable.Columns["Merma"].FormatString = "0.00";
-                Dgv_GBuscador.RootTable.Columns["Merma"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["Merma"].Width = 70;
                 Dgv_GBuscador.RootTable.Columns["Merma"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["Merma"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Merma"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Merma"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_GBuscador.RootTable.Columns["Merma"].Visible = true;
 
-                Dgv_GBuscador.RootTable.Columns["Cantidad"].Caption = "Total Uni.";
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].Caption = "Total Rec.";
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].AggregateFunction = AggregateFunction.Sum;
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_GBuscador.RootTable.Columns["TotalRecepcion"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["Cantidad"].Caption = "Total Sel.";
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].FormatString = "0.00";
-                Dgv_GBuscador.RootTable.Columns["Cantidad"].Width = 100;
+                Dgv_GBuscador.RootTable.Columns["Cantidad"].Width = 80;
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_GBuscador.RootTable.Columns["Cantidad"].Visible = true;
 
-                Dgv_GBuscador.RootTable.Columns["Total"].Caption = "Total";
-                Dgv_GBuscador.RootTable.Columns["Total"].FormatString = "0.00";
-                Dgv_GBuscador.RootTable.Columns["Total"].Width = 100;
-                Dgv_GBuscador.RootTable.Columns["Total"].AggregateFunction = AggregateFunction.Sum;
-                Dgv_GBuscador.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_GBuscador.RootTable.Columns["Total"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].Caption = "Merma%";
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_GBuscador.RootTable.Columns["MermaPorcentaje"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].Caption = "Manchado%";
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].Width = 90;
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Caption = "Picado%";
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Visible = true;                
 
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
@@ -935,7 +952,8 @@ namespace PRESENTER.com
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = UTGlobal.Usuario,
-                    Merma = Convert.ToDecimal(Tb_Merma.Value)
+                    Merma = Convert.ToDecimal(Tb_Merma.Value),
+                    MermaPorcentaje = Convert.ToDecimal(tb_MermaPorc.Value)
                 };
                 int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
                 int idAux = id;

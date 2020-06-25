@@ -20,5 +20,8 @@ namespace ENTITY.com.Seleccion.View
         public string Hora { get; set; }
         public string Usuario { get; set; }
         public decimal Merma { get; set; }
+        public decimal MermaPorcentaje { get; set; }
+        public decimal ManchadoPorcentaje { get; set; }
+        public decimal PicadoPorcentaje { get; set; }
     }
 }

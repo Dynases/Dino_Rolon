@@ -82,6 +82,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:VCompraIngresoLista">
         <xs:sequence>
+          <xs:element minOccurs="0" name="DescripcionPlaca" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="DescripcionRecibido" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
           <xs:element minOccurs="0" name="IdSpyre" nillable="true" type="xs:string" />

@@ -750,15 +750,15 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Entregado"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].Visible = true;
-                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo";
 
+                Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo";
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Width = 100;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Visible = true;
 
-                Dgv_GBuscador.RootTable.Columns["TipoCompra"].Caption = "Tipo Compra";
+                Dgv_GBuscador.RootTable.Columns["TipoCompra"].Caption = "Estado";
                 Dgv_GBuscador.RootTable.Columns["TipoCompra"].Width = 100;
                 Dgv_GBuscador.RootTable.Columns["TipoCompra"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TipoCompra"].CellStyle.FontSize = 8;

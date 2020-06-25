@@ -14,8 +14,8 @@ namespace ENTITY.com.CompraIngreso.View
         public string Producto { get; set; }
         public decimal  TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
-
         public string DescripcionRecibido { get; set; }
+        public string DescripcionPlaca { get; set; }
 
 
     }
