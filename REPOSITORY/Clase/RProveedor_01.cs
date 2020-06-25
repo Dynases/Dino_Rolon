@@ -20,11 +20,12 @@ namespace REPOSITORY.Clase
         {
             try
             {
+                
                 int grupo = Convert.ToInt32(ENEstaticosGrupo.PROVEEDOR);
                 int orden = Convert.ToInt32(ENEstaticosOrden.PROVEEDOR_TIPO_ALOJAMIENTO);
                 int orden2 = Convert.ToInt32(ENEstaticosOrden.PROVEEDOR_LINEA_GENETICA);
                 using (var db = GetEsquema())
-                {
+                {                   
                     var listResult = (from a in db.Proveed_01
                                       join c in db.Libreria on
                                       new { Grupo = grupo, Orden = orden, Libreria = a.TipoAloja }
@@ -39,11 +40,18 @@ namespace REPOSITORY.Clase
                                           IdLinea = a.Linea,
                                           Linea = d.Descrip,
                                           FechaNac = a.FechaNac,
-                                          EdadSeman = a.EdadSeman,
+                                          EdadSeman = "",
                                           Cantidad = a.Cantidad,
                                           IdTipoAloja = a.TipoAloja,
                                           TipoAlojamiento = c.Descrip,
                                       }).ToList();
+
+                    foreach (var fila in listResult)
+                    {
+                        TimeSpan Dias = DateTime.Now.Date - fila.FechaNac;
+                        string edadSemanas = Convert.ToString(Dias.Days / 7);
+                        fila.EdadSeman = edadSemanas;
+                    }
                     return listResult;
                 }
             }

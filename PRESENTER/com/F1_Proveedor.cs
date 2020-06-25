@@ -541,7 +541,7 @@ namespace PRESENTER.com
 
                 Dgv_Detalle.RootTable.Columns[2].Key = "Linea";
                 Dgv_Detalle.RootTable.Columns[2].Caption = "Linea genetica";
-                Dgv_Detalle.RootTable.Columns[2].Width = 300;
+                Dgv_Detalle.RootTable.Columns[2].Width = 290;
                 Dgv_Detalle.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.FontSize = 8;
                 Dgv_Detalle.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -549,7 +549,7 @@ namespace PRESENTER.com
 
                 Dgv_Detalle.RootTable.Columns[3].Key = "Fecha";
                 Dgv_Detalle.RootTable.Columns[3].Caption = "Fecha de Nacimiento";
-                Dgv_Detalle.RootTable.Columns[3].Width = 350;
+                Dgv_Detalle.RootTable.Columns[3].Width = 340;
                 Dgv_Detalle.RootTable.Columns[3].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Detalle.RootTable.Columns[3].CellStyle.FontSize = 8;
                 Dgv_Detalle.RootTable.Columns[3].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -558,7 +558,7 @@ namespace PRESENTER.com
                 Dgv_Detalle.RootTable.Columns[4].Key = "EdadSeman";
                 Dgv_Detalle.RootTable.Columns[4].Caption = "Edad en Semanas";
                 Dgv_Detalle.RootTable.Columns[4].FormatString = "0.00";
-                Dgv_Detalle.RootTable.Columns[4].Width = 150;
+                Dgv_Detalle.RootTable.Columns[4].Width = 120;
                 Dgv_Detalle.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Detalle.RootTable.Columns[4].CellStyle.FontSize = 8;
                 Dgv_Detalle.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;

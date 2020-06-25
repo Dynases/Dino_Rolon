@@ -126,8 +126,14 @@ namespace REPOSITORY.Clase
                           EdadSemana = v.Proveed_01
                                         .FirstOrDefault(a => a.Id == (v.Proveed_01
                                                                     .Where(c => c.IdProveed == v.Id)
-                                                                    .Max(c => c.Id))).EdadSeman,
+                                                                    .Max(c => c.Id))).FechaNac.ToString(),
                       }).ToList();
+                    foreach (var fila in listResult)
+                    {
+                        TimeSpan Dias = DateTime.Now.Date - Convert.ToDateTime(fila.EdadSemana);
+                        string edadSemanas = Convert.ToString(Dias.Days / 7);
+                        fila.EdadSemana = edadSemanas;
+                    }
                     return listResult;
                 }
             }

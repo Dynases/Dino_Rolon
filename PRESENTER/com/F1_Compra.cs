@@ -454,13 +454,14 @@ namespace PRESENTER.com
                     Sw_TipoVenta.Value = Lista.TipoVenta == 1 ? true : false;
                     Sw_Emision.Value = Lista.TipoFactura == 1 ? true : false;
                     Tb_NFactura.Text = Lista.Factura;
-                    Tb_Recibo.Text = Lista.Recibo;
-                    Tb_MDesc.Value = Convert.ToDouble( Lista.Descu);
-                    Tb_Total.Value = Convert.ToDouble( Lista.Total);
+                    Tb_Recibo.Text = Lista.Recibo;              
                     Tb_Observacion.Text = Lista.Observ;
                     Tb_FechaVenc.Value = Lista.FechaVen;
                     MP_CargarDetalle(Convert.ToInt32(Tb_Id.Text));
+                    Tb_MDesc.Value = Convert.ToDouble(Lista.Descu);
+                    Tb_Total.Value = Convert.ToDouble(Lista.Total);
                     MP_ObtenerCalculo();
+
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
                 }
             }
