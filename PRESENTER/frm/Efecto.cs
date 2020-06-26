@@ -77,7 +77,7 @@ namespace PRESENTER.frm
             }
             else
             {
-                Band = true;
+                Band = false;
                 this.Close();
             }
         }

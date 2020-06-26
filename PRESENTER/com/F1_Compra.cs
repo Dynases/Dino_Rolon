@@ -356,7 +356,6 @@ namespace PRESENTER.com
         {
             UTGlobal.MG_ArmarComboSucursal(Cb_Almacen,
                                               new ServiceDesktop.ServiceDesktopClient().SucursalListarCombo().ToList());
-
            
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
