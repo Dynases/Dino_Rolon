@@ -1495,7 +1495,7 @@ namespace PRESENTER.com
                 Tb_FechaRec.Value = DateTime.Now;       
                 Tb_Edad.Clear();
                 Tb_CompraIngresoPrecioAntoguo.Clear();
-                Sw_Tipo.Value = true;
+                Sw_Tipo.Value = false;
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
@@ -1823,7 +1823,8 @@ namespace PRESENTER.com
                     CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
                     CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
                     CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
-                    TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value)
+                    TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value),
+                    Devolucion = Sw_Devolucion.Value == true ? 1 : 2
                 };
                 var auxImprimirDevolucion = Sw_Devolucion.Value ? false :true;
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);

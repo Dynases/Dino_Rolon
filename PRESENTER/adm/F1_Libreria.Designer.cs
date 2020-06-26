@@ -97,10 +97,6 @@
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(984, 455);
-            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(940, 0);
@@ -115,7 +111,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(984, 455);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -147,7 +143,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(978, 429);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             // 
             // LblSubtitulo
             // 

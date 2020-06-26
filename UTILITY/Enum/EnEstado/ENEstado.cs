@@ -16,6 +16,6 @@ namespace UTILITY.Enum.EnEstado
         TODOS = 4,
 
         CARGARPRIMERFILA =5,
-        NOCARGARPRIMERFILA = 5
+        NOCARGARPRIMERFILA = 6
     }
 }
