@@ -146,6 +146,12 @@ namespace PRESENTER.adm
             F1_ReporteKardex frm = new F1_ReporteKardex();
             frm.Show();
         }
+
+        private void btInvAjuste_Click(object sender, EventArgs e)
+        {
+            var frm = new F1_Ajuste();
+            frm.Show();
+        }
         #endregion
         #region Compras
         private void Metro_Proveedor_Click(object sender, EventArgs e)
@@ -191,10 +197,9 @@ namespace PRESENTER.adm
             frm.Show();
         }
 
-        #endregion
 
         #endregion
 
-       
+        #endregion
     }
 }
