@@ -87,6 +87,7 @@
     <Compile Include="Clase\RTraspaso_01.cs" />
     <Compile Include="Clase\RUsuario.cs" />
     <Compile Include="Clase\RUsuario_01.cs" />
+    <Compile Include="Clase\RValidacionPrograma.cs" />
     <Compile Include="Clase\RVenta.cs" />
     <Compile Include="Clase\RVenta_01.cs" />
     <Compile Include="Interface\DiSoft\IClienteD.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Interface\ITraspaso_01.cs" />
     <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Interface\IUsuario_01.cs" />
+    <Compile Include="Interface\IValidacionPrograma.cs" />
     <Compile Include="Interface\IVenta.cs" />
     <Compile Include="Interface\IVenta_01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

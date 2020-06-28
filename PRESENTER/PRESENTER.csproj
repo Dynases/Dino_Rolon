@@ -585,6 +585,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarLibreriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.PlantillaGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

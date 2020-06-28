@@ -335,11 +335,11 @@ namespace SERVICE
             }
         }
        
-        public bool ModificarLibreria(List<VLibreriaLista> vlibreria)
+        public bool ModificarLibreria(List<VLibreriaLista> vlibreria,ref List<string> mensaje)
         {
             try
             {
-                var result = new LLibreria().Modificar(vlibreria);
+                var result = new LLibreria().Modificar(vlibreria, ref mensaje);
                 return result;
             }
             catch (Exception ex)

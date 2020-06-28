@@ -1,4 +1,5 @@
-﻿using ENTITY.Cliente.View;
+﻿using ENTITY.adm.ValidacioinPrograma;
+using ENTITY.Cliente.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
@@ -119,15 +120,23 @@ namespace LOGIC.Class
         {
             try
             {
-                using (var scope = new TransactionScope())
+                FValidacionPrograma validacionPrograma = new FValidacionPrograma();
+                validacionPrograma.tablaOrigen = "REG.CLIENTE";
+                List<string> mensaje = new List<string>();
+                if (new LValidacionPrograma().ValidadrEliminacion(IdCliente, validacionPrograma, ref mensaje, false))
                 {
-                    bool result = false;
-                    result = iCliente.Eliminar(IdCliente);
-                    //ELIMINA EL CLIENTE DE DISOFT
-                    result = iClienteD.Eliminar(IdCliente);
-                    scope.Complete();
-                    return result;
+                    using (var scope = new TransactionScope())
+                    {
+                        bool result = false;
+                        result = iCliente.Eliminar(IdCliente);
+                        //ELIMINA EL CLIENTE DE DISOFT
+                        result = iClienteD.Eliminar(IdCliente);
+                        scope.Complete();
+                        return result;
+                    }
                 }
+                return false;
+                
             }
             catch (Exception ex)
             {

@@ -707,7 +707,7 @@ namespace PRESENTER.reg
                     }
                     else
                     {
-                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, Txb_CliCod.Text));
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Error(_NombreFormulario, Txb_CliCod.Text));
                         resultadoRegistro = false;
                     }
                 }

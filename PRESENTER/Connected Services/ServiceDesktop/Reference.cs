@@ -97,10 +97,11 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<bool> LibreriaGuardarAsync(ENTITY.Libreria.View.VLibreriaLista vlibreria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ModificarLibreria", ReplyAction="http://tempuri.org/IServiceDesktop/ModificarLibreriaResponse")]
-        bool ModificarLibreria(ENTITY.Libreria.View.VLibreriaLista[] vlibreria);
+        PRESENTER.ServiceDesktop.ModificarLibreriaResponse ModificarLibreria(PRESENTER.ServiceDesktop.ModificarLibreriaRequest request);
         
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ModificarLibreria", ReplyAction="http://tempuri.org/IServiceDesktop/ModificarLibreriaResponse")]
-        System.Threading.Tasks.Task<bool> ModificarLibreriaAsync(ENTITY.Libreria.View.VLibreriaLista[] vlibreria);
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ModificarLibreriaResponse> ModificarLibreriaAsync(PRESENTER.ServiceDesktop.ModificarLibreriaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/LibreriaListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/LibreriaListarComboResponse")]
         ENTITY.Libreria.View.VLibreria[] LibreriaListarCombo(int idGrupo, int idOrden);
@@ -875,6 +876,46 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
         System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModificarLibreria", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModificarLibreriaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ENTITY.Libreria.View.VLibreriaLista[] vlibreria;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] mensaje;
+        
+        public ModificarLibreriaRequest() {
+        }
+        
+        public ModificarLibreriaRequest(ENTITY.Libreria.View.VLibreriaLista[] vlibreria, string[] mensaje) {
+            this.vlibreria = vlibreria;
+            this.mensaje = mensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModificarLibreriaResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModificarLibreriaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ModificarLibreriaResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] mensaje;
+        
+        public ModificarLibreriaResponse() {
+        }
+        
+        public ModificarLibreriaResponse(bool ModificarLibreriaResult, string[] mensaje) {
+            this.ModificarLibreriaResult = ModificarLibreriaResult;
+            this.mensaje = mensaje;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1772,12 +1813,22 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.LibreriaGuardarAsync(vlibreria);
         }
         
-        public bool ModificarLibreria(ENTITY.Libreria.View.VLibreriaLista[] vlibreria) {
-            return base.Channel.ModificarLibreria(vlibreria);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.ModificarLibreriaResponse PRESENTER.ServiceDesktop.IServiceDesktop.ModificarLibreria(PRESENTER.ServiceDesktop.ModificarLibreriaRequest request) {
+            return base.Channel.ModificarLibreria(request);
         }
         
-        public System.Threading.Tasks.Task<bool> ModificarLibreriaAsync(ENTITY.Libreria.View.VLibreriaLista[] vlibreria) {
-            return base.Channel.ModificarLibreriaAsync(vlibreria);
+        public bool ModificarLibreria(ENTITY.Libreria.View.VLibreriaLista[] vlibreria, ref string[] mensaje) {
+            PRESENTER.ServiceDesktop.ModificarLibreriaRequest inValue = new PRESENTER.ServiceDesktop.ModificarLibreriaRequest();
+            inValue.vlibreria = vlibreria;
+            inValue.mensaje = mensaje;
+            PRESENTER.ServiceDesktop.ModificarLibreriaResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).ModificarLibreria(inValue);
+            mensaje = retVal.mensaje;
+            return retVal.ModificarLibreriaResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.ModificarLibreriaResponse> ModificarLibreriaAsync(PRESENTER.ServiceDesktop.ModificarLibreriaRequest request) {
+            return base.Channel.ModificarLibreriaAsync(request);
         }
         
         public ENTITY.Libreria.View.VLibreria[] LibreriaListarCombo(int idGrupo, int idOrden) {

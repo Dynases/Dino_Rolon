@@ -129,11 +129,6 @@
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
-            // TxtNombreUsu
-            // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1073, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
-            // 
             // BubbleBarUsuario
             // 
             // 
@@ -162,7 +157,6 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 670);
             // 
             // btnMin
             // 
@@ -182,7 +176,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1215, 670);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -215,7 +209,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 644);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
@@ -223,7 +217,7 @@
             // 
             this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 38);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 22);
             this.LblSubtitulo.Text = "GESTION DE VENTAS";
             // 
             // PanelMenu
@@ -271,6 +265,12 @@
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Location = new System.Drawing.Point(1073, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNombreUsu.ReadOnly = true;
+            // 
             // PanelFondo
             // 
             this.PanelFondo.BackColor = System.Drawing.Color.Transparent;
@@ -279,9 +279,9 @@
             this.PanelFondo.Controls.Add(this.PanelAbajo);
             this.PanelFondo.Controls.Add(this.PanelArriba);
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFondo.Location = new System.Drawing.Point(0, 110);
+            this.PanelFondo.Location = new System.Drawing.Point(0, 94);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1215, 532);
+            this.PanelFondo.Size = new System.Drawing.Size(1215, 548);
             this.PanelFondo.TabIndex = 70;
             // 
             // GPanel_Producto
@@ -349,7 +349,7 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(3, 459);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(3, 467);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
             this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1209, 50);
             this.panelNavegacionPlantilla.TabIndex = 28;
@@ -479,7 +479,7 @@
             // 
             this.PanelAbajo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelAbajo.Controls.Add(this.GPanel_Detalles);
-            this.PanelAbajo.Location = new System.Drawing.Point(3, 223);
+            this.PanelAbajo.Location = new System.Drawing.Point(3, 231);
             this.PanelAbajo.Name = "PanelAbajo";
             this.PanelAbajo.Size = new System.Drawing.Size(1209, 235);
             this.PanelAbajo.TabIndex = 1;
@@ -542,7 +542,7 @@
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelArriba.Controls.Add(this.GPanel_DatosGenerales);
-            this.PanelArriba.Location = new System.Drawing.Point(3, -13);
+            this.PanelArriba.Location = new System.Drawing.Point(3, -5);
             this.PanelArriba.Name = "PanelArriba";
             this.PanelArriba.Size = new System.Drawing.Size(1209, 231);
             this.PanelArriba.TabIndex = 0;

@@ -52,7 +52,7 @@ namespace SERVICE
         [OperationContract]
         bool LibreriaGuardar(VLibreriaLista vlibreria);
         [OperationContract]
-        bool ModificarLibreria(List<VLibreriaLista> vlibreria);
+        bool ModificarLibreria(List<VLibreriaLista> vlibreria, ref List<string> mensaje);
 
  
         #endregion

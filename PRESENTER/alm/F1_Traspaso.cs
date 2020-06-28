@@ -513,7 +513,7 @@ namespace PRESENTER.alm
                 {
                     var detalle = new VPlantilla01
                     {
-                        Cantidad = Convert.ToInt32(i.Cells[3].Value),
+                        Cantidad = Convert.ToInt32(i.Cells[4].Value),
                         IdPlantilla = plantilla.Id,
                         IdProducto = Convert.ToInt32(i.Cells[0].Value),
                         Precio = 0
@@ -769,23 +769,32 @@ namespace PRESENTER.alm
 
         private void btnGuardarPlantilla_Click(object sender, EventArgs e)
         {
-            if (Dgv_DetalleNuevo.RowCount > 0)
+            try
             {
-                if (!string.IsNullOrEmpty(Tb_NombrePlantilla.Text))
+
+                if (Dgv_DetalleNuevo.RowCount > 0)
                 {
-                    this.MP_GuardarDetallePlantilla(this.MP_GuardarPlantilla());
-                    var mensaje = GLMensaje.Modificar_Exito("TRASPASOS", "Plantilla ");
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    if (!string.IsNullOrEmpty(Tb_NombrePlantilla.Text))
+                    {
+                        this.MP_GuardarDetallePlantilla(this.MP_GuardarPlantilla());
+                        var mensaje = GLMensaje.Modificar_Exito("TRASPASOS", "Plantilla ");
+                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }
+                    else
+                    {
+                        this.MP_MostrarMensajeError("Debe ingresar un nombre a la plantilla");
+                        Tb_NombrePlantilla.BackColor = Color.Red;
+                    }
                 }
                 else
                 {
-                    this.MP_MostrarMensajeError("Debe ingresar un nombre a la plantilla");
-                    Tb_NombrePlantilla.BackColor = Color.Red;
+                    this.MP_MostrarMensajeError("Debe ingresar un item para agregar una nueva plantilla");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                this.MP_MostrarMensajeError("Debe ingresar un item para agregar una nueva plantilla");
+
+                MP_MostrarMensajeError(ex.Message);
             }
         }
 

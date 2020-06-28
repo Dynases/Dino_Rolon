@@ -180,6 +180,9 @@
     <Compile Include="EntityDataModel\DiAvi\Usuario_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\ValidacionPrograma.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Venta.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

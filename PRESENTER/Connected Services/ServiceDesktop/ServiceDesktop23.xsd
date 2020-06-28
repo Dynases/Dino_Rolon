@@ -44,7 +44,6 @@
       <xs:element minOccurs="0" name="TipoCategoria" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecepcion" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="tipoCompra" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VSeleccionEncabezado" nillable="true" type="tns:VSeleccionEncabezado" />

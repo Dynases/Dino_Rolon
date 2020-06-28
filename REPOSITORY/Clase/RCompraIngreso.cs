@@ -395,7 +395,7 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = (int)a.TotalMaple,
+                                          TotalMaple = a.TotalMaple,
                                           DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;
@@ -430,7 +430,7 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = (int)a.TotalMaple,
+                                          TotalMaple = a.TotalMaple,
                                           DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;

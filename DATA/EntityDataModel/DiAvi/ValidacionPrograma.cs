@@ -12,19 +12,16 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class Rol_01
+    public partial class ValidacionPrograma
     {
-        public int IdRol_01 { get; set; }
-        public int IdRol { get; set; }
-        public int IdPrograma { get; set; }
-        public Nullable<bool> Show { get; set; }
-        public Nullable<bool> Add { get; set; }
-        public Nullable<bool> Mod { get; set; }
-        public Nullable<bool> Del { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public string Hora { get; set; }
-        public string Usuario { get; set; }
-    
-        public virtual Rol Rol { get; set; }
+        public int Id { get; set; }
+        public int Estado { get; set; }
+        public string TablaOrigen { get; set; }
+        public string CampoOrigen { get; set; }
+        public string TableDestino { get; set; }
+        public string CampoDestino { get; set; }
+        public string Programa { get; set; }
+        public int IdGrupo { get; set; }
+        public int IdOrden { get; set; }
     }
 }

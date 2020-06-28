@@ -1,10 +1,12 @@
-﻿using ENTITY.DiSoft.Libreria;
+﻿using ENTITY.adm.ValidacioinPrograma;
+using ENTITY.DiSoft.Libreria;
 using ENTITY.Libreria.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -97,10 +99,12 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar( List<VLibreriaLista> vlibreria)
+        public bool Modificar( List<VLibreriaLista> vlibreria, ref List<string> mensaje)
         {
             try
             {
+                FValidacionPrograma validacionPrograma = new FValidacionPrograma();
+                validacionPrograma.tablaOrigen = "ADM.Libreria";
                 using (var scope = new TransactionScope())
                 {
                     bool resultado = false;
@@ -110,11 +114,20 @@ namespace LOGIC.Class
                         {
                             resultado = iLibreria.Modificar(fila);
                         }
-                        if (fila.estado == (int)ENEstado.ELIMINAR)    
+                        if (fila.estado == (int)ENEstado.ELIMINAR)
                         {
-                            resultado = iLibreria.Eliminar(fila);
+                            validacionPrograma.IdGrupo = fila.IdGrupo;
+                            validacionPrograma.IdOrden = fila.IdOrden;
+                            if (new LValidacionPrograma().ValidadrEliminacion(fila.IdLibrer, validacionPrograma, ref mensaje, true))
+                            {
+                                resultado = iLibreria.Eliminar(fila);
+                            }
                         }
-                    }                              
+                    }
+                    if (mensaje.Count > 0)
+                    {
+                        return false;
+                    }
                     scope.Complete();
                     return resultado;
                 }

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UTILITY.Global;
 using UTILITY.Enum.EnEstado;
+using GMap.NET.Internals;
 
 namespace PRESENTER.adm
 {
@@ -78,6 +79,7 @@ namespace PRESENTER.adm
                 SuperTabBuscar.Visible = false;
                 BtnImprimir.Visible = false;
                 BtnNuevo.Visible = false;
+                BtnEliminar.Visible = false;
                 MP_InicioArmarCombo();
                 Panel2.Visible = false;
                 MP_AsignarPermisos();                          
@@ -229,20 +231,35 @@ namespace PRESENTER.adm
             bool resultado = false;
             try
             {
-                string mensaje = "";
+                List<string> Mensaje = new List<string>();
+                var LMensaje = Mensaje.ToArray();
                 var detalle = ((List<VLibreriaLista>)Dgv_Detalle.DataSource).ToArray<VLibreriaLista>();               
-                resultado = new ServiceDesktop.ServiceDesktopClient().ModificarLibreria(detalle);
+                resultado = new ServiceDesktop.ServiceDesktopClient().ModificarLibreria(detalle, ref LMensaje);
                 cbCategoria.Focus();
                 actualizarDetalle();
                 //Resultado
                 if (resultado)
                 {
                     ToastNotification.Show(this, "Transacción grabada con éxito ", PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    
                 }
                 else
-                {                  
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, "Transacción no realizada", PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                {
+                    var mensajeLista = LMensaje.ToList();
+                    if (mensajeLista.Count > 0)
+                    {
+                        var mensaje = "";
+                        foreach (var item in mensajeLista)
+                        {
+                            mensaje = mensaje + "- " + item + "\n";
+                        }
+                        MP_MostrarMensajeError(mensaje);
+                        return false;
+                    }
+                    else
+                    {
+                        ToastNotification.Show(this, "Transacción no realizada", PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }                    
                 }
                 return resultado;
             }
