@@ -32,6 +32,7 @@ using ENTITY.Usuario.View;
 using ENTITY.com.CompraIngreso_03.View;
 using ENTITY.com.CompraIngreso.Filter;
 using ENTITY.com.Seleccion.Report;
+using ENTITY.inv.TI001.VIew;
 
 namespace SERVICE
 {
@@ -1820,6 +1821,26 @@ namespace SERVICE
 
         #endregion
         #endregion
+
+        #region Invetario TI001
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        public List<VTI001> TraerInventarioLotes(int IdProducto, int idAlmacen)
+        {
+            try
+            {
+                return new LInventario().TraerInventarioLotes(IdProducto, idAlmacen);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTE ***********/
+        #endregion     
+        #endregion
+
 
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/

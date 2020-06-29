@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
+using ENTITY.inv.TI001.VIew;
 using ENTITY.Plantilla;
 using ENTITY.Producto.View;
 using ENTITY.ven.view;
@@ -39,6 +41,7 @@ namespace PRESENTER.ven
         //public static List<Producto> detalleProductos;
         private static List<VVenta> listaVentas;   
         private static List<VVenta_01> listaDetalleVenta;
+        private static VProductoListaStock vProductos;
         private static int index;
         private static int idCategoriaPrecio;
         private bool _Limpiar = false;
@@ -213,6 +216,45 @@ namespace PRESENTER.ven
             {
                 MP_MostrarMensajeError(ex.Message);
             }
+        }
+        private void MP_ArmarLotes(List<VTI001> listaLotes)
+        {
+            Dgv_Producto.DataSource = listaLotes;
+            Dgv_Producto.RetrieveStructure();
+            Dgv_Producto.AlternatingColors = true;
+
+            Dgv_Producto.RootTable.Columns["IdAlmacen"].Visible = false;
+            Dgv_Producto.RootTable.Columns["IdProducto"].Visible = false;
+            Dgv_Producto.RootTable.Columns["Unidad"].Visible = false;
+
+            Dgv_Producto.RootTable.Columns["Lote"].Caption = "Lote";
+            Dgv_Producto.RootTable.Columns["Lote"].Width = 150;
+            Dgv_Producto.RootTable.Columns["Lote"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_Producto.RootTable.Columns["Lote"].CellStyle.FontSize = 9;
+            Dgv_Producto.RootTable.Columns["Lote"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            Dgv_Producto.RootTable.Columns["Lote"].Visible = true;
+
+            Dgv_Producto.RootTable.Columns["FechaVen"].Caption = "FechaVen";
+            Dgv_Producto.RootTable.Columns["FechaVen"].Width = 150;
+            Dgv_Producto.RootTable.Columns["FechaVen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_Producto.RootTable.Columns["FechaVen"].CellStyle.FontSize = 9;
+            Dgv_Producto.RootTable.Columns["FechaVen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            Dgv_Producto.RootTable.Columns["FechaVen"].Visible = true;
+
+            Dgv_Producto.RootTable.Columns["Cantidad"].Caption = "Stock";
+            Dgv_Producto.RootTable.Columns["Cantidad"].Width = 150;
+            Dgv_Producto.RootTable.Columns["Cantidad"].FormatString = "0.00";
+            Dgv_Producto.RootTable.Columns["Cantidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_Producto.RootTable.Columns["Cantidad"].CellStyle.FontSize = 9;
+            Dgv_Producto.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+            Dgv_Producto.RootTable.Columns["Cantidad"].Visible = true;
+
+            Dgv_Producto.RootTable.Columns["id"].Visible = false;
+
+            Dgv_Producto.GroupByBoxVisible = false;
+            Dgv_Producto.VisualStyle = VisualStyle.Office2007;
+            Dgv_Producto.RootTable.ApplyFilter(new Janus.Windows.GridEX.GridEXFilterCondition(Dgv_Producto.RootTable.Columns["Estado"], Janus.Windows.GridEX.ConditionOperator.NotEqual, -1));
+
         }
         private void MP_ArmarDetalle()
         {
@@ -1061,40 +1103,65 @@ namespace PRESENTER.ven
                     if (e.KeyData == Keys.Enter)
                     {
                         var idDetalle = Convert.ToInt32(Dgv_DetalleVenta.GetValue("id"));
+                        var cantidad = Convert.ToInt32(Dgv_DetalleVenta.GetValue("Cantidad"));
                         if (idDetalle > 0)
                         {
-                            var idProducto = Convert.ToInt32(Dgv_Producto.GetValue("IdProducto"));
-                            var ListaProductos = ((List<VProductoListaStock>)Dgv_Producto.DataSource)
-                                                                           .Where(p => p.IdProducto == idProducto)
-                                                                           .FirstOrDefault();
-
-
-                            listaDetalleVenta = (List<VVenta_01>)Dgv_DetalleVenta.DataSource;
-                            foreach (var vDetalleVenta in listaDetalleVenta)
+                            if (vProductos == null)
                             {
-                                if (ListaProductos.IdProducto == vDetalleVenta.IdProducto)
-                                {
-                                    throw new Exception("El producto ya fue seleccionado");
-                                }
-                                if (vDetalleVenta.Id == idDetalle)
-                                {
-                                    vDetalleVenta.IdProducto = ListaProductos.IdProducto;
-                                    vDetalleVenta.CodigoProducto = ListaProductos.CodigoProducto;
-                                    vDetalleVenta.CodigoBarra = ListaProductos.CodigoBarras;
-                                    vDetalleVenta.Producto = ListaProductos.Producto;
-                                    vDetalleVenta.Unidad = ListaProductos.UnidadVenta;
-                                    vDetalleVenta.Cantidad = 1;
-                                    vDetalleVenta.PrecioVenta = ListaProductos.PrecioVenta;
-                                    vDetalleVenta.PrecioCosto = ListaProductos.PrecioCosto;
-                                    vDetalleVenta.Lote = "20170101";
-                                    vDetalleVenta.FechaVencimiento = Convert.ToDateTime("2017/01/01");
-                                    vDetalleVenta.Stock = vDetalleVenta.Stock;
-                                    break;
-                                }
+
+                                var idProducto = Convert.ToInt32(Dgv_Producto.GetValue("IdProducto"));
+                                vProductos = ((List<VProductoListaStock>)Dgv_Producto.DataSource)
+                                                                               .Where(p => p.IdProducto == idProducto)
+                                                                               .FirstOrDefault();
+
+                                var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(vProductos.IdProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
+                                MP_ArmarLotes(InventarioLotes);
+                                GPanel_Producto.Text = vProductos.Producto;
                             }
-                            MP_ArmarDetalle();
-                            MP_InHabilitarProducto();
+                            else
+                            {
+                                var idLote = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                                var lLotes = ((List<VTI001>)Dgv_Producto.DataSource);
+                                if (lLotes.Count != 0)
+                                {
+                                    if (cantidad <= lLotes.FirstOrDefault( a=> a.id == idLote).Cantidad)
+                                    {
+
+                                    }
+                                    foreach (var vLotes in lLotes)
+                                    {
+                                        
+                                    }
+                                    listaDetalleVenta = (List<VVenta_01>)Dgv_DetalleVenta.DataSource;
+                                    foreach (var vDetalleVenta in listaDetalleVenta)
+                                    {
+                                        if (vProductos.IdProducto == vDetalleVenta.IdProducto)
+                                        {
+                                            throw new Exception("El producto ya fue seleccionado");
+                                        }
+                                        if (vDetalleVenta.Id == idDetalle)
+                                        {
+                                            vDetalleVenta.IdProducto = vProductos.IdProducto;
+                                            vDetalleVenta.CodigoProducto = vProductos.CodigoProducto;
+                                            vDetalleVenta.CodigoBarra = vProductos.CodigoBarras;
+                                            vDetalleVenta.Producto = vProductos.Producto;
+                                            vDetalleVenta.Unidad = vProductos.UnidadVenta;
+                                            vDetalleVenta.Cantidad = 1;
+                                            vDetalleVenta.PrecioVenta = vProductos.PrecioVenta;
+                                            vDetalleVenta.PrecioCosto = vProductos.PrecioCosto;
+                                            vDetalleVenta.Lote = "20170101";
+                                            vDetalleVenta.FechaVencimiento = Convert.ToDateTime("2017/01/01");
+                                            vDetalleVenta.Stock = vDetalleVenta.Stock;
+                                            break;
+                                        }
+                                    }
+                                }
+                               
+                                MP_ArmarDetalle();
+                                MP_InHabilitarProducto();
+                            }
                         }
+
                     }
                     if (e.KeyData == Keys.Escape)
                     {

@@ -712,6 +712,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop33.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop34.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -757,6 +760,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalLista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.TI001.VIew.VTI001.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.TipoAlmacen.view.VTipoAlmacenListar.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.Report.VTransformacionReport.datasource" />

@@ -1,4 +1,5 @@
-﻿using REPOSITORY.Clase;
+﻿using ENTITY.inv.TI001.VIew;
+using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,17 @@ namespace LOGIC.Class
         }
 
         /********** VARIOS REGISTROS ***********/
-
+        public List<VTI001> TraerInventarioLotes(int IdProducto, int idAlmacen)
+        {
+            try
+            {
+                return this.iTi001.TraerInventarioLotes(IdProducto, idAlmacen);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
         #region Transacciones

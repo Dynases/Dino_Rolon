@@ -312,15 +312,16 @@ namespace REPOSITORY.Clase
         }
 
         /********** VARIOS REGISTROS ***********/
-        public List<VTI001> Listar(int IdProducto)
+        public List<VTI001> TraerInventarioLotes(int IdProducto, int idAlmacen)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    var compraIng = db.TI001.Where(c => c.iccprod.Equals(IdProducto)).ToList();
+                  
                     var listResult = (from a in db.TI001
-                                      where a.iccprod.Equals(IdProducto) && a.iccven > 0
+                                      where a.iccprod.Equals(IdProducto)  &&
+                                            a.icalm == idAlmacen && a.iccven > 0
                                       select new VTI001
                                       {
                                           id = a.id,
@@ -338,8 +339,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }
-       
+        }      
         #endregion
 
 

@@ -84,6 +84,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
         System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerInventarioLotes", ReplyAction="http://tempuri.org/IServiceDesktop/TraerInventarioLotesResponse")]
+        ENTITY.inv.TI001.VIew.VTI001[] TraerInventarioLotes(int IdProducto, int idAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerInventarioLotes", ReplyAction="http://tempuri.org/IServiceDesktop/TraerInventarioLotesResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.TI001.VIew.VTI001[]> TraerInventarioLotesAsync(int IdProducto, int idAlmacen);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
         
@@ -1801,6 +1807,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync() {
             return base.Channel.ZonaListarAsync();
+        }
+        
+        public ENTITY.inv.TI001.VIew.VTI001[] TraerInventarioLotes(int IdProducto, int idAlmacen) {
+            return base.Channel.TraerInventarioLotes(IdProducto, idAlmacen);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.TI001.VIew.VTI001[]> TraerInventarioLotesAsync(int IdProducto, int idAlmacen) {
+            return base.Channel.TraerInventarioLotesAsync(IdProducto, idAlmacen);
         }
         
         public string GetData(int value) {

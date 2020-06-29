@@ -7,27 +7,21 @@ namespace REPOSITORY.Interface
 {
     public interface ITI001
     {
-        bool Nuevo(int idAlmacen, int idProducto, decimal cantidad, string lote, DateTime fechaVen);
-        bool ActualizarInventario(int idProducto, int idAlmacen, EnAccionEnInventario accionEnInventario, decimal cantidad, string lote, DateTime fechaVen);
-        bool ActualizarInventarioModificados(int idProducto,
-                                        int idAlmacen,
-                                        decimal cantidadAnterior,
-                                        decimal cantidadNueva,
-                                        string lote,
-                                        DateTime fechaVen);
-        List<VTI001> Listar(int IdProducto);
+        /******** CONSULTA *********/
+        List<VTI001> TraerInventarioLotes(int IdProducto, int idAlmacen);
         decimal TraerStockActual(int IdProducto, int idAlmacen, string lote, DateTime fecha);
-        bool ExisteProducto(int IdProducto, int idAlmacen, string lote, DateTime fecha);
+        /******** TRANSACCIONES *********/
+        bool Nuevo(int idAlmacen, int idProducto, decimal cantidad, string lote, DateTime fechaVen);
         bool NuevoMovimientoInventario(int idDetalle,
-                                 int idProducto,
-                                 int idAlmacen,
-                                 string lote,
-                                 DateTime fechaVen,
-                                 decimal cantidad,
-                                 int concepto,
-                                 string Observacion,
-                                 EnAccionEnInventario accion,
-                                 string usuario);
+                                int idProducto,
+                                int idAlmacen,
+                                string lote,
+                                DateTime fechaVen,
+                                decimal cantidad,
+                                int concepto,
+                                string Observacion,
+                                EnAccionEnInventario accion,
+                                string usuario);
         bool ModificarMovimientoInventario(int idDetalle,
                                int idProducto,
                                int idAlmacen,
@@ -46,5 +40,16 @@ namespace REPOSITORY.Interface
                               decimal cantidad,
                               int concepto,
                               EnAccionEnInventario accion);
+        bool ActualizarInventario(int idProducto, int idAlmacen, EnAccionEnInventario accionEnInventario, decimal cantidad, string lote, DateTime fechaVen);
+        bool ActualizarInventarioModificados(int idProducto,
+                                        int idAlmacen,
+                                        decimal cantidadAnterior,
+                                        decimal cantidadNueva,
+                                        string lote,
+                                        DateTime fechaVen);
+        /******** VERIFICACIONES *********/
+  
+        bool ExisteProducto(int IdProducto, int idAlmacen, string lote, DateTime fecha);
+       
     }
 }

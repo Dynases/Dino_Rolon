@@ -49,7 +49,7 @@ namespace REPOSITORY.Clase
                     CompraIngreso.NumNota = vCompraIngreso.NumNota;
                     CompraIngreso.FechaEnt = vCompraIngreso.FechaEnt;
                     CompraIngreso.FechaRec = vCompraIngreso.FechaRec;          
-                    CompraIngreso.Placa = vCompraIngreso.Placa;
+                    CompraIngreso.Placa = vCompraIngreso.Placa;                   
                     CompraIngreso.EdadSemana = vCompraIngreso.CantidadSemanas;
                     CompraIngreso.Tipo = vCompraIngreso.Tipo;
                     CompraIngreso.Obser = vCompraIngreso.Observacion;
@@ -227,6 +227,9 @@ namespace REPOSITORY.Clase
                                           FechaEnt = a.FechaEnt,
                                           FechaRec = a.FechaRec,
                                           Entregado = a.Entregado,
+                                          PlacaDescripcion= db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.COMPRA_INGRESO &&
+                                                                                x.IdOrden == (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA &&
+                                                                                x.IdLibrer == a.Placa).Descrip,
                                           TotalMaple = a.TotalMaple,
                                           TotalUnidades = a.TotalUnidades,
                                           Total = a.Total,

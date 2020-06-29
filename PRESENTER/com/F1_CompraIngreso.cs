@@ -751,6 +751,13 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Entregado"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_GBuscador.RootTable.Columns["Entregado"].Visible = true;
 
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].Caption = "Placa";
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].Width = 90;
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["PlacaDescripcion"].Visible = true;
+
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Caption = "Tipo";
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].Width = 100;
                 Dgv_GBuscador.RootTable.Columns["TipoCategoria"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -766,7 +773,7 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["TipoCompra"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].Caption = "Devolución";
-                Dgv_GBuscador.RootTable.Columns["Devolucion"].Width = 70;                
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Width = 80;                
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -774,7 +781,7 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].Caption = "Total Maple";
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].FormatString = "0";
-                Dgv_GBuscador.RootTable.Columns["TotalMaple"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["TotalMaple"].Width = 90;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].AggregateFunction = AggregateFunction.Sum;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["TotalMaple"].CellStyle.FontSize = 8;
@@ -797,7 +804,7 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Total"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_GBuscador.RootTable.Columns["Total"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["Total"].Visible = false;
                 
 
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;

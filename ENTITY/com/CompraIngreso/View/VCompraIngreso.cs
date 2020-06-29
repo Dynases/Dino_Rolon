@@ -16,6 +16,7 @@ namespace ENTITY.com.CompraIngreso.View
         public System.DateTime FechaEnt { get; set; }
         public System.DateTime FechaRec { get; set; }
         public string Entregado { get; set; }
+        public string PlacaDescripcion { get; set; }
         public string TipoCategoria { get; set; }
         public string TipoCompra { get; set; }
         public string Devolucion { get; set; }

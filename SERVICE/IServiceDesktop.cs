@@ -32,6 +32,7 @@ using ENTITY.com.CompraIngreso_03.View;
 using ENTITY.Cliente.View;
 using ENTITY.com.CompraIngreso.Filter;
 using ENTITY.com.Seleccion.Report;
+using ENTITY.inv.TI001.VIew;
 
 namespace SERVICE
 {
@@ -513,6 +514,22 @@ namespace SERVICE
         #region Consulta
         [OperationContract]
         List<VZona> ZonaListar();
+        #endregion
+        #endregion
+
+        #region Invetario TI001
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        [OperationContract]
+        List<VTI001> TraerInventarioLotes(int IdProducto, int idAlmacen);
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+
+        #endregion
+        #region Verificaciones
+
         #endregion
         #endregion
     }
