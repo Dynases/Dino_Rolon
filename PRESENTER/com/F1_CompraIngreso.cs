@@ -1647,6 +1647,7 @@ namespace PRESENTER.com
                     Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[7], AggregateFunction.Sum));
                     Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns[9], AggregateFunction.Sum));
                     Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
+                    Tb_TotalEnviado.Value = Tb_TotalFisico.Value;
                 }                             
                 //Calculo de MAPLES
                 
