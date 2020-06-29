@@ -14,9 +14,11 @@ namespace REPOSITORY.Interface
         List<VCliente> ListarCliente(int id);
         List<VClienteLista> ListarClientes();
         bool Guardar(VCliente Cliente, ref int idCliente);
-        bool Modificar(VCliente Cliente,int idCliente);
+        bool Modificar(VCliente Cliente, int idCliente);
         bool Eliminar(int IdCliente);
         DataTable ListarEncabezado();
         bool ExisteEnVenta(int idCliente);
+        List<VClienteCombo> TraerClienteCombo();
+
     }
 }

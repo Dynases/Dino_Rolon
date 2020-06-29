@@ -214,11 +214,15 @@ namespace SERVICE
 
         /********** CLIENTE ***************/
         #region Cliente
-        public List<VCliente> ClienteListar()
+
+
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public List<VCliente> ClienteListar1(int id)
         {
             try
             {
-                var listResult = new LCliente().Listar();
+                var listResult = new LCliente().ListarCliente(id);
                 return listResult;
             }
             catch (Exception ex)
@@ -226,49 +230,12 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
-        public bool ClienteGuardar(VCliente cliente, ref int id)
+        /********** VARIOS REGISTROS ***********/
+        public List<VCliente> ClienteListar()
         {
             try
             {
-                var result = new LCliente().Guardar(cliente, ref id);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }   
-        public bool ClienteModificar(VCliente cliente, int id)
-        {
-            try
-            {
-                var result = new LCliente().Modificar(cliente, id);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool ClienteEliminar(int id)
-        {
-            try
-            {
-                var result = new LCliente().Eliminar(id);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public List<VCliente> ClienteListar1(int id)
-        {
-            try
-            {
-                var listResult = new LCliente().ListarCliente(id);
+                var listResult = new LCliente().Listar();
                 return listResult;
             }
             catch (Exception ex)
@@ -302,6 +269,61 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+     
+        public List<VClienteCombo> TraerClienteCombo()
+        {
+            try
+            {
+                var listResult = new LCliente().TraerClienteCombo();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+        public bool ClienteGuardar(VCliente cliente, ref int id)
+        {
+            try
+            {
+                var result = new LCliente().Guardar(cliente, ref id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ClienteModificar(VCliente cliente, int id)
+        {
+            try
+            {
+                var result = new LCliente().Modificar(cliente, id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ClienteEliminar(int id)
+        {
+            try
+            {
+                var result = new LCliente().Eliminar(id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Verificaciones
         public bool ExisteClienteEnVenta(int id)
         {
             try
@@ -314,6 +336,7 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
         #endregion
 
         /********** LIBRERIA ****************/

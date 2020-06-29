@@ -114,27 +114,35 @@ namespace SERVICE
 
         /********** CLIENTE ***************/
         #region Cliente
-
-        [OperationContract]
-        List<VCliente> ClienteListar();
-
-        [OperationContract]
-        bool ClienteGuardar(VCliente cliente, ref int id);
-        [OperationContract]
-        bool ClienteModificar(VCliente cliente, int id);
-        [OperationContract]
-        bool ClienteEliminar(int id);
-
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
         [OperationContract]
         List<VCliente> ClienteListar1(int id);
-
+        /********** VARIOS REGISTROS ***********/
+        [OperationContract]
+        List<VCliente> ClienteListar();
         [OperationContract]
         List<VClienteLista> ClientesListar();
 
         [OperationContract]
         DataTable ClienteListarEncabezado();
         [OperationContract]
+        List<VClienteCombo> TraerClienteCombo();
+
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+        [OperationContract]
+        bool ClienteGuardar(VCliente cliente, ref int id);
+        [OperationContract]
+        bool ClienteModificar(VCliente cliente, int id);
+        [OperationContract]
+        bool ClienteEliminar(int id);
+        #endregion
+        #region Verificaciones
+        [OperationContract]
         bool ExisteClienteEnVenta(int idCliente);
+        #endregion
         #endregion
         /********** PROVEEDOR **************/
 

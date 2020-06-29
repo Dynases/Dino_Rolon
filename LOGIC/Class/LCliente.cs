@@ -25,24 +25,27 @@ namespace LOGIC.Class
         }
 
         #region Consultas
-        public List<VCliente> Listar()
-        {
-            try
-            {
-                var lista = iCliente.Listar();
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+      
+        /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCliente> ListarCliente(int id)
         {
             try
             {
                 
                 return iCliente.ListarCliente(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        public List<VCliente> Listar()
+        {
+            try
+            {
+                var lista = iCliente.Listar();
+                return lista;
             }
             catch (Exception ex)
             {
@@ -69,6 +72,18 @@ namespace LOGIC.Class
             try
             {
                 return iCliente.ListarEncabezado();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VClienteCombo> TraerClienteCombo()       
+        {
+            try
+            {
+                var lista = iCliente.TraerClienteCombo();    
+                return lista;
             }
             catch (Exception ex)
             {

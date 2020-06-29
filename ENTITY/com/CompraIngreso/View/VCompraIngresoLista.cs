@@ -35,5 +35,7 @@ namespace ENTITY.com.CompraIngreso.View
         public string CompraAntiguaFecha { get; set; }
         public int TotalMaple { get; set; }
         public int Devolucion { get; set; }
+
+        public int TotalUnidades { get; set; }
     }
 }

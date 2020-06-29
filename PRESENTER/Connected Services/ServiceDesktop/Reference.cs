@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
+        ENTITY.DiSoft.Zona.VZona[] ZonaListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
         
@@ -201,11 +207,35 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ValidarUsuario", ReplyAction="http://tempuri.org/IServiceDesktop/ValidarUsuarioResponse")]
         System.Threading.Tasks.Task<ENTITY.Usuario.View.VUsuario[]> ValidarUsuarioAsync(string user, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar1", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListar1Response")]
+        ENTITY.Cliente.View.VCliente[] ClienteListar1(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar1", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListar1Response")]
+        System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListar1Async(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarResponse")]
         ENTITY.Cliente.View.VCliente[] ClienteListar();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarResponse")]
         System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClientesListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClientesListarResponse")]
+        ENTITY.Cliente.View.VClienteLista[] ClientesListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClientesListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClientesListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
+        System.Data.DataTable ClienteListarEncabezado();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerClienteCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TraerClienteComboResponse")]
+        ENTITY.Cliente.View.VClienteCombo[] TraerClienteCombo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerClienteCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TraerClienteComboResponse")]
+        System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteCombo[]> TraerClienteComboAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteGuardarResponse")]
         PRESENTER.ServiceDesktop.ClienteGuardarResponse ClienteGuardar(PRESENTER.ServiceDesktop.ClienteGuardarRequest request);
@@ -225,24 +255,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteEliminar", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteEliminarResponse")]
         System.Threading.Tasks.Task<bool> ClienteEliminarAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar1", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListar1Response")]
-        ENTITY.Cliente.View.VCliente[] ClienteListar1(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListar1", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListar1Response")]
-        System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListar1Async(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClientesListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClientesListarResponse")]
-        ENTITY.Cliente.View.VClienteLista[] ClientesListar();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClientesListar", ReplyAction="http://tempuri.org/IServiceDesktop/ClientesListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
-        System.Data.DataTable ClienteListarEncabezado();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ClienteListarEncabezado", ReplyAction="http://tempuri.org/IServiceDesktop/ClienteListarEncabezadoResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ExisteClienteEnVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ExisteClienteEnVentaResponse")]
         bool ExisteClienteEnVenta(int idCliente);
@@ -870,12 +882,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
-        ENTITY.DiSoft.Zona.VZona[] ZonaListar();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1789,6 +1795,14 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public ENTITY.DiSoft.Zona.VZona[] ZonaListar() {
+            return base.Channel.ZonaListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync() {
+            return base.Channel.ZonaListarAsync();
+        }
+        
         public string GetData(int value) {
             return base.Channel.GetData(value);
         }
@@ -1983,12 +1997,44 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.ValidarUsuarioAsync(user, password);
         }
         
+        public ENTITY.Cliente.View.VCliente[] ClienteListar1(int id) {
+            return base.Channel.ClienteListar1(id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListar1Async(int id) {
+            return base.Channel.ClienteListar1Async(id);
+        }
+        
         public ENTITY.Cliente.View.VCliente[] ClienteListar() {
             return base.Channel.ClienteListar();
         }
         
         public System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListarAsync() {
             return base.Channel.ClienteListarAsync();
+        }
+        
+        public ENTITY.Cliente.View.VClienteLista[] ClientesListar() {
+            return base.Channel.ClientesListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync() {
+            return base.Channel.ClientesListarAsync();
+        }
+        
+        public System.Data.DataTable ClienteListarEncabezado() {
+            return base.Channel.ClienteListarEncabezado();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync() {
+            return base.Channel.ClienteListarEncabezadoAsync();
+        }
+        
+        public ENTITY.Cliente.View.VClienteCombo[] TraerClienteCombo() {
+            return base.Channel.TraerClienteCombo();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteCombo[]> TraerClienteComboAsync() {
+            return base.Channel.TraerClienteComboAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2023,30 +2069,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<bool> ClienteEliminarAsync(int id) {
             return base.Channel.ClienteEliminarAsync(id);
-        }
-        
-        public ENTITY.Cliente.View.VCliente[] ClienteListar1(int id) {
-            return base.Channel.ClienteListar1(id);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.Cliente.View.VCliente[]> ClienteListar1Async(int id) {
-            return base.Channel.ClienteListar1Async(id);
-        }
-        
-        public ENTITY.Cliente.View.VClienteLista[] ClientesListar() {
-            return base.Channel.ClientesListar();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.Cliente.View.VClienteLista[]> ClientesListarAsync() {
-            return base.Channel.ClientesListarAsync();
-        }
-        
-        public System.Data.DataTable ClienteListarEncabezado() {
-            return base.Channel.ClienteListarEncabezado();
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataTable> ClienteListarEncabezadoAsync() {
-            return base.Channel.ClienteListarEncabezadoAsync();
         }
         
         public bool ExisteClienteEnVenta(int idCliente) {
@@ -3024,14 +3046,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
             return base.Channel.TraerVentasAsync();
-        }
-        
-        public ENTITY.DiSoft.Zona.VZona[] ZonaListar() {
-            return base.Channel.ZonaListar();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync() {
-            return base.Channel.ZonaListarAsync();
         }
     }
 }

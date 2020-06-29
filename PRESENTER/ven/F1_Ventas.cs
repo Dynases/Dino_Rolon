@@ -25,11 +25,10 @@ namespace PRESENTER.ven
             InitializeComponent();
             this.MP_CargarBuscador();
             this.MP_InHabilitar();
+            this.MP_ArmarCombo();
             this.MP_CargarAlmacenes();
             this.MP_CargarVentas();
-            this.TxtNombreUsu.Visible = false;
-            this.lblIdCliente.Text = "";
-            this.lblId.Text = "";
+            this.TxtNombreUsu.Visible = false;        
             superTabControl1.SelectedTabIndex = 0;
             listaDetalleVenta = new List<VVenta_01>();
             MP_AsignarPermisos();
@@ -38,16 +37,19 @@ namespace PRESENTER.ven
         #region Variables de Entorno
 
         //public static List<Producto> detalleProductos;
-        private static List<VVenta> listaVentas;
-        private static List<VPlantilla> listaPlantillas;
+        private static List<VVenta> listaVentas;   
         private static List<VVenta_01> listaDetalleVenta;
         private static int index;
-        private static int plantillaIndex;
         private static int idCategoriaPrecio;
+        private bool _Limpiar = false;
         #endregion
 
         #region Metodos Privados
-
+        void MP_ArmarCombo()
+        {
+            UTGlobal.MG_ArmarComboClientes(cb_Cliente,
+                                  new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);
+        }
         private void MP_MostrarMensajeError(string mensaje)
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
@@ -84,11 +86,11 @@ namespace PRESENTER.ven
         private void MP_InHabilitar()
         {
             this.lblId.Visible = false;
-            this.lblIdCliente.Visible = false;
+        
             this.Dt_FechaVenta.Enabled = false;
             this.Tb_Cod.Enabled = false;
             this.Tb_Usuario.ReadOnly = true;
-            this.TbCliente.ReadOnly = true;
+            this.cb_Cliente.ReadOnly = true;
             this.sw_estado.Enabled = false;
             this.Sw_TipoVenta.Enabled = false;
             this.TbEncVenta.ReadOnly = true;
@@ -103,13 +105,14 @@ namespace PRESENTER.ven
             this.TbNumFacturaExterna.ReadOnly = true;
             this.TbEmpresaProveedoraCliente.ReadOnly = true;
             this.Cb_Origen.ReadOnly = true;
+            _Limpiar = false;
         }
 
         private void MP_Habilitar()
         {
             this.lblFechaRegistro.Visible = false;
-            this.Dt_FechaVenta.Enabled = true;           
-            this.TbCliente.ReadOnly = false;
+            this.Dt_FechaVenta.Enabled = true;
+            this.cb_Cliente.ReadOnly = false;
             this.sw_estado.Enabled = true;
             this.Sw_TipoVenta.Enabled = true;
             this.TbEncVenta.ReadOnly = false;
@@ -181,8 +184,7 @@ namespace PRESENTER.ven
             Cb_Origen.SelectedItem = venta.DescripcionAlmacen;
             Dt_FechaVenta.Value = venta.FechaVenta;
             Tb_Usuario.Text = venta.Usuario;
-            TbCliente.Text = venta.DescripcionCliente;
-            lblIdCliente.Text = venta.IdCliente.ToString();
+            cb_Cliente.Value = venta.IdCliente;          
             TbNitCliente.Text = venta.NitCliente;
             Sw_TipoVenta.Value = true;
             sw_estado.Value = true;
@@ -308,9 +310,7 @@ namespace PRESENTER.ven
         {
             this.Tb_Cod.Text = "";
             this.Tb_Usuario.Text = UTGlobal.Usuario;
-            this.Dt_FechaVenta.Value = DateTime.Today;
-            this.TbCliente.Text = "";
-            this.lblIdCliente.Text = "";
+            this.Dt_FechaVenta.Value = DateTime.Today;         
             this.Sw_TipoVenta.Value = true;
             this.sw_estado.Value = true;
             this.TbEncEntrega.Text = "";
@@ -323,6 +323,11 @@ namespace PRESENTER.ven
             this.lblId.Text = "";
             this.TbNitCliente.Text = "";
             this.TbTotal.Text = "";
+            if (_Limpiar == false)            {
+                
+                UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
+                // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
+            }
             index = 0;
             listaDetalleVenta.Clear();
             this.Dgv_DetalleVenta.DataSource = null;
@@ -755,16 +760,13 @@ namespace PRESENTER.ven
         {
             var flag = true;
 
-            if (string.IsNullOrEmpty(this.TbCliente.Text))
+            if (cb_Cliente.SelectedIndex == -1)
             {
-                this.TbCliente.BackColor = Color.Red;
-                return flag;
+                cb_Cliente.BackColor = Color.Red;
+                flag = true;
             }
-            if (string.IsNullOrEmpty(lblIdCliente.Text))
-            {
-                this.MP_MostrarMensajeError("Debe seleccionar un cliente. ingrese al buscador con las teclas: Ctrl + Enter");
-                return flag;
-            }
+            else
+                cb_Cliente.BackColor = Color.White;
             if (this.Dgv_DetalleVenta.RowCount == 0 )
             {
                 this.MP_MostrarMensajeError("Debe seleccionar productos para realizar una venta");
@@ -789,7 +791,7 @@ namespace PRESENTER.ven
                     Estado = (int)ENEstado.GUARDADO,
                     FechaVenta = this.Dt_FechaVenta.Value,
                     IdAlmacen = Convert.ToInt32(this.Cb_Origen.Value),
-                    IdCliente = Convert.ToInt32(this.lblIdCliente.Text),
+                    IdCliente = Convert.ToInt32(this.cb_Cliente.Value),
                     Observaciones = this.Tb_Observaciones.Text,
                     Tipo = 1,
                     Fecha = DateTime.Now.Date,
@@ -809,7 +811,8 @@ namespace PRESENTER.ven
                         {
                            
                             this.MP_Filtrar(1);
-                            this.MP_Reiniciar();                           
+                            this.MP_Reiniciar();
+                            _Limpiar = true;
                             ToastNotification.Show(this, GLMensaje.Nuevo_Exito("VENTAS", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                             return true;
                         }
@@ -817,6 +820,7 @@ namespace PRESENTER.ven
                         {
                             this.MP_Filtrar(2);
                             this.MP_InHabilitar();
+                            _Limpiar = false;
                             MH_Habilitar();//El menu  
                             ToastNotification.Show(this, GLMensaje.Modificar_Exito("VENTAS", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
                             return true;
@@ -899,62 +903,7 @@ namespace PRESENTER.ven
             this.LblTitulo.Text = "VENTAS";
             btnMax.Visible = false;
             superTabControl1.SelectedPanel = PanelContenidoRegistro;
-        }
-
-        private void TbCliente_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (TbCliente.ReadOnly.Equals(false))
-                {
-                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                    {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
-                        List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "COD", tamano = 50 },
-                        new GLCelda() { campo = "IdSpyre", visible = true, titulo = "CÓDIGO SPYRE", tamano = 80 },
-                        new GLCelda() { campo = "Descrip", visible = true, titulo = "Nombre y Apellido", tamano = 150 },
-                        new GLCelda() { campo = "RazonSo", visible = false, titulo = "Razon Social", tamano = 100 },
-                        new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
-                        new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
-                        new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
-                        new GLCelda() { campo = "Factur", visible = true, titulo = "Facturacion", tamano = 100 },
-                        new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
-                    };
-
-                        Efecto efecto = new Efecto();
-                        efecto.Tipo = 3;
-                        efecto.Tabla = lista;
-                        efecto.SelectCol = 2;
-                        efecto.listaCelda = listEstCeldas;
-                        efecto.Alto = 50;
-                        efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN CLIENTE";
-                        efecto.ShowDialog();
-
-                        var bandera = false;
-                        bandera = efecto.Band;
-                        if (bandera)
-                        {
-                            GridEXRow Row = efecto.Row;
-                            lblIdCliente.Text = Row.Cells[0].Value.ToString();
-                            TbCliente.Text = Row.Cells[2].Value.ToString();
-                            TbNitCliente.Text = Row.Cells[4].Value.ToString();
-                            var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                                    Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
-                            TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
-                            idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-
+        }       
         private void Dgv_DetalleVenta_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -1028,12 +977,10 @@ namespace PRESENTER.ven
         }
 
         private void btnLimpiarCliente_Click(object sender, EventArgs e)
-        {
-            this.lblIdCliente.Text = "";
-            this.TbCliente.Text = "";
-            this.TbNitCliente.Text = "";
-            idCategoriaPrecio = 0;
-            ToastNotification.Show(this, "El cliente fue borrado de la venta con exito", PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        {            
+            //this.TbNitCliente.Text = "";
+            //idCategoriaPrecio = 0;
+            //ToastNotification.Show(this, "El cliente fue borrado de la venta con exito", PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
 
         private void Cb_Origen_ValueChanged(object sender, EventArgs e)
@@ -1054,15 +1001,7 @@ namespace PRESENTER.ven
             {
                 this.MP_MostrarMensajeError(ex.Message);
             }
-        }
-
-        private void lblIdCliente_TextChanged(object sender, EventArgs e)
-        {
-            if (this.TbCliente.BackColor.Equals(Color.Red))
-            {
-                this.TbCliente.BackColor = Color.White;
-            }
-        }
+        }     
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
@@ -1214,8 +1153,75 @@ namespace PRESENTER.ven
                 MP_MostrarRegistro(Dgv_GBuscador.Row);
             }
         }
+
         #endregion
 
+        private void cb_Cliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (cb_Cliente.ReadOnly == false)
+                {
+                    if (e.KeyData == Keys.Enter)
+                    {
+                        if (cb_Cliente.SelectedIndex != -1)
+                        {
+                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_Cliente.Value))).FirstOrDefault();
+                            if (lista == null)
+                            {
+                                throw new Exception("No se encontro un cliente");
+                            }                            
+                            TbNitCliente.Text = lista.Nit;
+                            idCategoriaPrecio = lista.IdCategoriaPrecio;
+                            TbEmpresaProveedoraCliente.Text = lista.EmpresaProveedora;
+                        }
+                    }
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "COD", tamano = 50 },
+                        new GLCelda() { campo = "IdSpyre", visible = true, titulo = "CÓDIGO SPYRE", tamano = 80 },
+                        new GLCelda() { campo = "Descrip", visible = true, titulo = "Nombre y Apellido", tamano = 150 },
+                        new GLCelda() { campo = "RazonSo", visible = false, titulo = "Razon Social", tamano = 100 },
+                        new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
+                        new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
+                        new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
+                        new GLCelda() { campo = "Factur", visible = true, titulo = "Facturacion", tamano = 100 },
+                        new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
+                    };
 
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN CLIENTE";
+                        efecto.ShowDialog();
+
+                        var bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            GridEXRow Row = efecto.Row;
+                            cb_Cliente.Value = Row.Cells[0].Value.ToString();                           
+                            TbNitCliente.Text = Row.Cells[4].Value.ToString();
+                            var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                                    Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
+                            TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
+                            idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
     }
 }

@@ -21,6 +21,7 @@ using ENTITY.com.CompraIngreso_02;
 using ENTITY.Proveedor.View;
 using ENTITY.com.CompraIngreso.View;
 using UTILITY.Enum.EnEstado;
+using ENTITY.Cliente.View;
 
 namespace UTILITY.Global
 {
@@ -107,8 +108,8 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[1].Visible = true;
 
                 combo.DropDownList.Columns.Add("EdadSemana").Width = 80;
-                combo.DropDownList.Columns[1].Caption = "Descripcion";
-                combo.DropDownList.Columns[1].Visible = true;
+                combo.DropDownList.Columns[2].Caption = "Edad Semana";
+                combo.DropDownList.Columns[2].Visible = true;
                 if (cargarPrimerFila == ENEstado.CARGARPRIMERFILA)
                 {
                     VProveedorCombo PrimerFile = new VProveedorCombo()
@@ -122,6 +123,52 @@ namespace UTILITY.Global
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lProveedores;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarComboClientes(MultiColumnCombo combo, List<VClienteCombo> lClientes, ENEstado cargarPrimerFila)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = false;
+
+                combo.DropDownList.Columns.Add("Cliente").Width = 180;
+                combo.DropDownList.Columns[1].Caption = "Cliente";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("Nit").Width = 80;
+                combo.DropDownList.Columns[2].Caption = "Nit";
+                combo.DropDownList.Columns[2].Visible = false;
+
+                combo.DropDownList.Columns.Add("EmpresaProveedora").Width = 80;
+                combo.DropDownList.Columns[3].Caption = "EmpresaProveedora";
+                combo.DropDownList.Columns[3].Visible = false;
+
+                combo.DropDownList.Columns.Add("IdCategoriaPrecio").Width = 80;
+                combo.DropDownList.Columns[4].Caption = "IdCategoriaPrecio";
+                combo.DropDownList.Columns[4].Visible = false;
+                if (cargarPrimerFila == ENEstado.CARGARPRIMERFILA)
+                {
+                    VClienteCombo PrimerFile = new VClienteCombo()
+                    {
+                        Id = 0,
+                        Cliente = "TODOS",
+                        Nit = "TODOS",
+                        EmpresaProveedora = "",
+                        IdCategoriaPrecio = 0
+                    };
+                    lClientes.Insert(0, PrimerFile);
+                }
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Cliente";
+                combo.DropDownList.DataSource = lClientes;
                 combo.DropDownList.Refresh();
             }
             catch (Exception)
@@ -430,6 +477,24 @@ namespace UTILITY.Global
             try
             {
                 if (((List<VProveedorCombo>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarComboCliente(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VClienteCombo>)combo.DataSource).Count() > 0)
                 {
                     combo.SelectedIndex = 0;
                 }

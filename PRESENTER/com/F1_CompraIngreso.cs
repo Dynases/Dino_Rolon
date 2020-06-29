@@ -1620,6 +1620,7 @@ namespace PRESENTER.com
                     Tb_TotalFisico.Value = Convert.ToDouble(Dgv_Resultado.GetTotal(Dgv_Resultado.RootTable.Columns[7], AggregateFunction.Sum));
                     Tb_TSaldoTo.Value = Convert.ToDouble(Dgv_Resultado.GetTotal(Dgv_Resultado.RootTable.Columns[9], AggregateFunction.Sum));
                     Tb_TPrecio.Value = Tb_TSaldoTo.Value / Tb_TotalFisico.Value;
+                    Tb_TotalEnviado.Value = Tb_TotalFisico.Value;
 
                     //Calculo de maples para devolucion
                     sumaCajaDevolucion = Convert.ToDouble(Dgv_Devolucion.GetTotal(Dgv_Devolucion.RootTable.Columns[3], AggregateFunction.Sum));
@@ -1824,7 +1825,8 @@ namespace PRESENTER.com
                     CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
                     CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
                     TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value),
-                    Devolucion = Sw_Devolucion.Value == true ? 1 : 2
+                    Devolucion = Sw_Devolucion.Value == true ? 1 : 2,
+                    TotalUnidades = Convert.ToInt32(Tb_TotalFisico.Value),
                 };
                 var auxImprimirDevolucion = Sw_Devolucion.Value ? false :true;
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
@@ -1998,6 +2000,11 @@ namespace PRESENTER.com
                 }
                 else
                     Tb_NUmGranja.BackColor = Color.White;
+                if (Tb_Edad.Text == string.Empty)
+                {
+                    _Error = true;
+                    throw new Exception("Debe seleccionar un proveedor Con la tecla Enter");
+                }
 
                 if (cb_Proveedor.SelectedIndex == -1)
                 {

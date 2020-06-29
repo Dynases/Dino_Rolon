@@ -67,6 +67,7 @@ namespace REPOSITORY.Clase
                     CompraIngreso.CompraAntiguaFecha = vCompraIngreso.CompraAntiguaFecha;
                     CompraIngreso.TotalMaple = vCompraIngreso.TotalMaple;
                     CompraIngreso.Devolucion = vCompraIngreso.Devolucion;
+                    CompraIngreso.TotalUnidades = vCompraIngreso.TotalUnidades;
                     db.SaveChanges();
                     id = CompraIngreso.Id;
                     return true;

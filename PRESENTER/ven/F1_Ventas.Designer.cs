@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Ventas));
             Janus.Windows.GridEX.GridEXLayout Cb_Origen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cb_Cliente_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
@@ -72,8 +73,6 @@
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.Sw_TipoVenta = new DevComponents.DotNetBar.Controls.SwitchButton();
-            this.lblIdCliente = new DevComponents.DotNetBar.LabelX();
-            this.TbCliente = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Cod = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -86,6 +85,7 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
+            this.cb_Cliente = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -111,6 +111,7 @@
             this.PanelArriba.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPrimero
@@ -215,10 +216,11 @@
             // 
             // LblSubtitulo
             // 
-            this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblSubtitulo.Size = new System.Drawing.Size(1215, 22);
-            this.LblSubtitulo.Text = "GESTION DE VENTAS";
+            this.LblSubtitulo.Text = "Registre un nuevo ingreso. Visualice y/o modifique la información de una  venta p" +
+    "reviamente registrada. \r\n";
             // 
             // PanelMenu
             // 
@@ -290,7 +292,7 @@
             this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Producto.Controls.Add(this.Dgv_Producto);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Producto.Location = new System.Drawing.Point(140, 10);
+            this.GPanel_Producto.Location = new System.Drawing.Point(132, 12);
             this.GPanel_Producto.Name = "GPanel_Producto";
             this.GPanel_Producto.Size = new System.Drawing.Size(963, 29);
             // 
@@ -551,6 +553,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.cb_Cliente);
             this.GPanel_DatosGenerales.Controls.Add(this.TbEmpresaProveedoraCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX15);
             this.GPanel_DatosGenerales.Controls.Add(this.TbNumFacturaExterna);
@@ -574,8 +577,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.labelX7);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX5);
             this.GPanel_DatosGenerales.Controls.Add(this.Sw_TipoVenta);
-            this.GPanel_DatosGenerales.Controls.Add(this.lblIdCliente);
-            this.GPanel_DatosGenerales.Controls.Add(this.TbCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX4);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Cod);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX2);
@@ -710,6 +711,7 @@
             this.btnLimpiarCliente.Size = new System.Drawing.Size(30, 26);
             this.btnLimpiarCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLimpiarCliente.TabIndex = 388;
+            this.btnLimpiarCliente.Visible = false;
             this.btnLimpiarCliente.Click += new System.EventHandler(this.btnLimpiarCliente_Click);
             // 
             // TbNitCliente
@@ -979,40 +981,6 @@
             this.Sw_TipoVenta.Value = true;
             this.Sw_TipoVenta.ValueObject = "Y";
             // 
-            // lblIdCliente
-            // 
-            this.lblIdCliente.AutoSize = true;
-            this.lblIdCliente.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.lblIdCliente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblIdCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.lblIdCliente.Location = new System.Drawing.Point(533, 40);
-            this.lblIdCliente.Name = "lblIdCliente";
-            this.lblIdCliente.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblIdCliente.Size = new System.Drawing.Size(76, 18);
-            this.lblIdCliente.TabIndex = 367;
-            this.lblIdCliente.Text = "[lblIdCliente]";
-            this.lblIdCliente.TextChanged += new System.EventHandler(this.lblIdCliente_TextChanged);
-            // 
-            // TbCliente
-            // 
-            // 
-            // 
-            // 
-            this.TbCliente.Border.Class = "TextBoxBorder";
-            this.TbCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbCliente.Location = new System.Drawing.Point(402, 62);
-            this.TbCliente.Multiline = true;
-            this.TbCliente.Name = "TbCliente";
-            this.TbCliente.PreventEnterBeep = true;
-            this.TbCliente.Size = new System.Drawing.Size(215, 26);
-            this.TbCliente.TabIndex = 1;
-            this.TbCliente.WatermarkText = "Ingrese Ctrl + Enter";
-            this.TbCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbCliente_KeyDown);
-            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.Transparent;
@@ -1197,6 +1165,26 @@
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
+            // cb_Cliente
+            // 
+            this.cb_Cliente.BackColor = System.Drawing.Color.White;
+            cb_Cliente_DesignTimeLayout.LayoutString = resources.GetString("cb_Cliente_DesignTimeLayout.LayoutString");
+            this.cb_Cliente.DesignTimeLayout = cb_Cliente_DesignTimeLayout;
+            this.cb_Cliente.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cb_Cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Cliente.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cb_Cliente.Location = new System.Drawing.Point(402, 62);
+            this.cb_Cliente.Name = "cb_Cliente";
+            this.cb_Cliente.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cb_Cliente.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cb_Cliente.SelectedIndex = -1;
+            this.cb_Cliente.SelectedItem = null;
+            this.cb_Cliente.Size = new System.Drawing.Size(215, 22);
+            this.cb_Cliente.TabIndex = 393;
+            this.cb_Cliente.Tag = "1";
+            this.cb_Cliente.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.cb_Cliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_Cliente_KeyDown);
+            // 
             // F1_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,6 +1223,7 @@
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1258,8 +1247,6 @@
         private MetroFramework.Controls.MetroDateTime Dt_FechaVenta;
         private DevComponents.DotNetBar.Controls.TextBoxX Tb_Cod;
         protected internal DevComponents.DotNetBar.LabelX labelX2;
-        internal DevComponents.DotNetBar.LabelX lblIdCliente;
-        private DevComponents.DotNetBar.Controls.TextBoxX TbCliente;
         protected internal DevComponents.DotNetBar.LabelX labelX4;
         protected internal DevComponents.DotNetBar.LabelX labelX5;
         internal DevComponents.DotNetBar.Controls.SwitchButton Sw_TipoVenta;
@@ -1297,5 +1284,6 @@
         protected internal DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.Controls.GroupPanel GPanel_Producto;
         private Janus.Windows.GridEX.GridEX Dgv_Producto;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_Cliente;
     }
 }

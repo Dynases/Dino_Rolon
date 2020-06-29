@@ -43,6 +43,7 @@
     <Compile Include="adm\ValidacioinPrograma\Filter\FValidacionPrograma.cs" />
     <Compile Include="adm\ValidacioinPrograma\VValidacionPrograma.cs" />
     <Compile Include="Cliente\View\VCliente.cs" />
+    <Compile Include="Cliente\View\VClienteCombo.cs" />
     <Compile Include="Cliente\View\VClienteLista.cs" />
     <Compile Include="com\CompraIngreso\Filter\FCompraIngreso.cs" />
     <Compile Include="com\CompraIngreso\Report\RepCompraIngreso.cs" />

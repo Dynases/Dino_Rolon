@@ -147,6 +147,32 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<VClienteCombo> TraerClienteCombo()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = db.Cliente
+                      .Select(v => new VClienteCombo
+                      {
+                          Id = v.Id,
+                          Cliente = v.Descrip,
+                          Nit = v.Nit,
+                          EmpresaProveedora = db.Libreria.FirstOrDefault(a => a.IdGrupo == (int)ENEstaticosGrupo.CLIENTE &&
+                                                                              a.IdOrden == (int)ENEstaticosOrden.FACTURACION_CLIENTE &&
+                                                                              a.IdLibrer == v.Factur).Descrip,
+                          IdCategoriaPrecio = v.IdCategoria                       
+                      }).ToList();                   
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** REPORTE ***********/
         #endregion
         #region Transacciones

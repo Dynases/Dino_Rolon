@@ -146,7 +146,7 @@ namespace REPOSITORY.Clase
                                            idProve = c.Id
                                        }
                                       where a.IdCompra.Equals(id)
-                                      orderby c.Grupo2 ascending
+                                      orderby c.Grupo2 ascending, c.UniVen descending
                                       select new VCompraIngreso_01
                                       {
                                           Id = a.Id,
@@ -171,7 +171,6 @@ namespace REPOSITORY.Clase
         }
         public List<VCompraIngreso_01> ListarXId2(int IdGrupo2, int idAlmacen)
         {
-
             try
             {
                 using (var db = GetEsquema())
@@ -182,7 +181,7 @@ namespace REPOSITORY.Clase
                                       join s in db.Sucursal on b.IdSucursal equals s.Id
                                       join a in db.Almacen on s.Id equals a.IdSuc
                                       where b.IdPrecioCat.Equals(8) && tipos.Contains(c.Grupo2) && c.Tipo.Equals(2) && a.Id.Equals(idAlmacen)
-                                      orderby c.Grupo2 ascending
+                                      orderby c.Grupo2 ascending, c.UniVen descending
                                       select new VCompraIngreso_01
                                       {
                                           Id = 0,

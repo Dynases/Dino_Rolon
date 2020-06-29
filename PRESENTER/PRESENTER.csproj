@@ -732,6 +732,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ENTITY.Cliente.View.VCliente.datasource" />
+    <None Include="Properties\DataSources\ENTITY.Cliente.View.VClienteCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.Cliente.View.VClienteLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Compra.View.VCompraLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.CompraIngreso.View.VCompraIngreso.datasource" />
