@@ -267,18 +267,6 @@
   <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage">
     <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantillaResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaGuardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:VentaGuardar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaGuardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:VentaGuardarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaModificarEstado_InputMessage">
-    <wsdl:part name="parameters" element="tns:VentaModificarEstado" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaModificarEstado_OutputMessage">
-    <wsdl:part name="parameters" element="tns:VentaModificarEstadoResponse" />
-  </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerVenta_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerVenta" />
   </wsdl:message>
@@ -296,6 +284,24 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerVentas_OutputMessage">
     <wsdl:part name="parameters" element="tns:TraerVentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerDetalleVentaVacio_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDetalleVentaVacio" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerDetalleVentaVacio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDetalleVentaVacioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaModificarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaModificarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaModificarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaModificarEstadoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_ZonaListar_InputMessage">
     <wsdl:part name="parameters" element="tns:ZonaListar" />
@@ -972,14 +978,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="VentaGuardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardar" message="tns:IServiceDesktop_VentaGuardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardarResponse" message="tns:IServiceDesktop_VentaGuardar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="VentaModificarEstado">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaModificarEstado" message="tns:IServiceDesktop_VentaModificarEstado_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaModificarEstadoResponse" message="tns:IServiceDesktop_VentaModificarEstado_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="TraerVenta">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVenta" message="tns:IServiceDesktop_TraerVenta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentaResponse" message="tns:IServiceDesktop_TraerVenta_OutputMessage" />
@@ -991,6 +989,18 @@
     <wsdl:operation name="TraerVentas">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentas" message="tns:IServiceDesktop_TraerVentas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentasResponse" message="tns:IServiceDesktop_TraerVentas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDetalleVentaVacio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio" message="tns:IServiceDesktop_TraerDetalleVentaVacio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacioResponse" message="tns:IServiceDesktop_TraerDetalleVentaVacio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardar" message="tns:IServiceDesktop_VentaGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaGuardarResponse" message="tns:IServiceDesktop_VentaGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaModificarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaModificarEstado" message="tns:IServiceDesktop_VentaModificarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaModificarEstadoResponse" message="tns:IServiceDesktop_VentaModificarEstado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ZonaListar">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ZonaListar" message="tns:IServiceDesktop_ZonaListar_InputMessage" />
@@ -1685,24 +1695,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VentaGuardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaGuardar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="VentaModificarEstado">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaModificarEstado" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="TraerVenta">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVenta" style="document" />
       <wsdl:input>
@@ -1723,6 +1715,33 @@
     </wsdl:operation>
     <wsdl:operation name="TraerVentas">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDetalleVentaVacio">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaModificarEstado">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaModificarEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

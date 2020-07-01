@@ -13,6 +13,7 @@
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="Grupo" type="xs:decimal" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCompra" type="xs:int" />
       <xs:element minOccurs="0" name="IdProduc" type="xs:int" />
       <xs:element minOccurs="0" name="Maple" type="xs:decimal" />
       <xs:element minOccurs="0" name="PrecioCost" type="xs:decimal" />

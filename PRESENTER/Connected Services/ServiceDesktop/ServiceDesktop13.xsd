@@ -35,6 +35,7 @@
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
       <xs:element minOccurs="0" name="CodigoBarra" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contenido" type="xs:decimal" />
       <xs:element minOccurs="0" name="Delete" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="FechaVencimiento" type="xs:dateTime" />
@@ -46,6 +47,7 @@
       <xs:element minOccurs="0" name="PrecioVenta" type="xs:decimal" />
       <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Stock" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalContenido" type="xs:decimal" />
       <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
