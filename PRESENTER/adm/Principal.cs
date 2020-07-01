@@ -143,7 +143,8 @@ namespace PRESENTER.adm
 
         private void btnReporteKardex_Click(object sender, EventArgs e)
         {
-            F1_ReporteKardex frm = new F1_ReporteKardex();
+            //F1_ReporteKardex frm = new F1_ReporteKardex();
+            F2_ReporteKardexProducto frm = new F2_ReporteKardexProducto();
             frm.Show();
         }
         #endregion

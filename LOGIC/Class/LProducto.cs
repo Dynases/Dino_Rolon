@@ -143,11 +143,11 @@ namespace LOGIC.Class
             }
         }
         /************** REPORTES ***************/
-        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
+        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen, int codProducto)
         {
             try
             {
-                return this.iTI0021.ListarDetalleKardex(inicio, fin, IdAlmacen);
+                return this.iTI0021.ListarDetalleKardex(inicio, fin, IdAlmacen, codProducto);
             }
             catch (Exception ex)
             {

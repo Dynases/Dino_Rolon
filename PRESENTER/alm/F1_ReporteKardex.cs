@@ -66,7 +66,7 @@ namespace PRESENTER.alm
         {
             Visualizador2.Fin = Dt_FechaInicio.Value;
             Visualizador2.Inicio = Dt_FechaFin.Value;
-            Visualizador2.detalleKardex = new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value)).ToList();
+            Visualizador2.detalleKardex = new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), 0).ToList();
             Visualizador2 frm = new Visualizador2(1);
             frm.ShowDialog();
         }

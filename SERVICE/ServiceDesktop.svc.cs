@@ -659,11 +659,11 @@ namespace SERVICE
             }
         }
         /************** REPORTES ***************/
-        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
+        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen, int codProducto)
         {
             try
             {
-                return new LProducto().ListarDetalleKardex(inicio, fin, IdAlmacen);
+                return new LProducto().ListarDetalleKardex(inicio, fin, IdAlmacen, codProducto);
             }
             catch (Exception ex)
             {

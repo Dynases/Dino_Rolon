@@ -94,7 +94,7 @@ namespace REPOSITORY.Clase
 
         #region Consultas
 
-        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen)
+        public List<VDetalleKardex> ListarDetalleKardex(DateTime inicio, DateTime fin, int IdAlmacen, int codProducto)
         {
             try
             {
@@ -104,8 +104,14 @@ namespace REPOSITORY.Clase
                 {
 
                     var productos = db.Producto.ToList();
-                    var listati002 = db.TI002;
-                    var listati0021 = db.TI0021;
+                    var listati002 = db.TI002.ToList();
+                    var listati0021 = db.TI0021.ToList();
+
+                    if (codProducto != 0)
+                    {
+                        productos= productos.Where(h => h.Id==codProducto).ToList();
+                    }
+
 
                     foreach (var p in productos)
                     {
@@ -114,18 +120,18 @@ namespace REPOSITORY.Clase
                         //PARA SALDO ANTERIOR
                         decimal entradasAnteriores = 0;
                         decimal salidasAnteriores = 0;
-                        var detalleAnterior = listati002.Where(h => h.ibfdoc < inicio && h.ibalm == IdAlmacen).ToList();
+                        var detalleAnterior = listati002.Where(h => h.ibfdoc < inicio.Date && h.ibalm == IdAlmacen).ToList();
                         foreach (var i in detalleAnterior)
-                        {
+                        {                            
                             var detalleAnteriorProducto = listati0021.Where(ti => ti.iccprod == p.Id
-                                                                             && ti.icibid == i.ibid).FirstOrDefault();
+                                                                             && ti.icibid == i.ibid ).FirstOrDefault();
 
                             if (detalleAnteriorProducto != null)
                             {
                                 //INGRESOS
                                 if (i.ibconcep == 1 || i.ibconcep == 3 ||
                                     i.ibconcep == 5 || i.ibconcep == 8 ||
-                                    i.ibconcep == 9)
+                                    i.ibconcep == 9 || i.ibconcep == 7)
                                 {
                                     entradasAnteriores += detalleAnteriorProducto.iccant;
                                 }
@@ -141,8 +147,8 @@ namespace REPOSITORY.Clase
                         //CALCULOS DEL PERIODO Y ALMACEN SELECCIONADOS
                         decimal entradasPeriodo = 0;
                         decimal salidasPeriodo = 0;
-                        var detallePeriodo = listati002.Where(h => h.ibfdoc >= inicio &&
-                                                                   h.ibfdoc <= fin &&
+                        var detallePeriodo = listati002.Where(h => h.ibfdoc >= inicio.Date &&
+                                                                   h.ibfdoc <= fin.Date &&
                                                                    h.ibalm == IdAlmacen).ToList();
                         foreach (var i in detallePeriodo)
                         {
@@ -154,13 +160,13 @@ namespace REPOSITORY.Clase
                                 //INGRESOS
                                 if (i.ibconcep == 1 || i.ibconcep == 3 ||
                                     i.ibconcep == 5 || i.ibconcep == 8 ||
-                                    i.ibconcep == 9)
+                                    i.ibconcep == 9 || i.ibconcep == 7)
                                 {
                                     entradasPeriodo += detalleProducto.iccant;
                                 }
                                 //SALIDAS
                                 else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                    i.ibconcep == 6 || i.ibconcep == 10)
+                                    i.ibconcep == 6 || i.ibconcep == 10 || i.ibconcep == 11)
                                 {
                                     salidasPeriodo += detalleProducto.iccant;
                                 }
@@ -169,11 +175,17 @@ namespace REPOSITORY.Clase
 
                         detalle.Descripcion = p.Descrip;
                         detalle.Entradas = entradasPeriodo;
-                        detalle.Id = p.Id;
-                        detalle.Saldo = entradasPeriodo - salidasPeriodo;
-                        detalle.SaldoAnterior = entradasAnteriores - salidasAnteriores;
+                        detalle.Id = p.Id;                        
+                        detalle.SaldoAnterior = entradasAnteriores - salidasAnteriores;                        
                         detalle.Salidas = salidasPeriodo;
-                        detalle.Unidad = p.UniVen.ToString();
+                        detalle.Saldo = (entradasPeriodo + detalle.SaldoAnterior ) - salidasPeriodo;
+                        //detalle.Unidad = p.UniVen.ToString();
+                        var Uni=db.Libreria.Where(l => l.IdGrupo == 3 &&
+                                                      l.IdOrden == 6 &&
+                                                      l.IdLibrer == p.UniVen)
+                                               .FirstOrDefault();
+                        detalle.Unidad = Uni.Descrip.ToString();
+                       
 
                         result.Add(detalle);
                     }
