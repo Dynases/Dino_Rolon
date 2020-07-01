@@ -74,13 +74,15 @@ namespace LOGIC.Class
                            
                             foreach (var i in vCompraIngreso_01)
                             {
-                                if (i.Estado == (int)ENEstado.NUEVO )
+                                if (i.Estado == (int)ENEstado.NUEVO && vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.NUEVO) 
                                 {
                                     List<VCompraIngreso_01> detalleNuevo = new List<VCompraIngreso_01>();
                                     detalleNuevo.Add(i);
                                     new LCompraIngreso_01().NuevoDevolucion(detalleNuevo, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03, totalMapleDetalle);
                                 }
-                                if (i.Estado == (int)ENEstado.GUARDADO )
+                                if (i.Estado == (int)ENEstado.MODIFICAR || 
+                                    vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.NUEVO ||
+                                    vCompraIngreso_03.FirstOrDefault(a => a.IdProduc == i.IdProduc).Estado == (int)ENEstado.MODIFICAR)
                                 {
                                     var devolucion = vCompraIngreso_03.Where(a => a.IdProduc == i.IdProduc).FirstOrDefault();
                                     new LCompraIngreso_01().ModificarDevolucion(i, idCompraIngreso, vCompraIngreso.IdAlmacen, devolucion, totalMapleDetalle);

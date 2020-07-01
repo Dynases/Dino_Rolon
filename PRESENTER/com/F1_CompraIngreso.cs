@@ -1138,6 +1138,9 @@ namespace PRESENTER.com
                 Dgv_Detalle.RootTable.Columns[11].Key = "TotalMaple";
                 Dgv_Detalle.RootTable.Columns[11].Visible = false;
 
+                Dgv_Detalle.RootTable.Columns[12].Key = "IdCompra";
+                Dgv_Detalle.RootTable.Columns[12].Visible = false;
+
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                 Dgv_Detalle.GroupByBoxVisible = false;
@@ -1345,6 +1348,9 @@ namespace PRESENTER.com
 
                 Dgv_Devolucion.RootTable.Columns[11].Key = "TotalMaple";
                 Dgv_Devolucion.RootTable.Columns[11].Visible = false;
+
+                Dgv_Devolucion.RootTable.Columns[12].Key = "IdCompra";
+                Dgv_Devolucion.RootTable.Columns[12].Visible = false;
 
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;

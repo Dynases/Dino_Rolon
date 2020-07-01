@@ -55,7 +55,10 @@ namespace REPOSITORY.Clase
             try
             {
                 using (var db = GetEsquema())
-                {                  
+                {
+                    var compraDetalle = db.CompraIng_01
+                                  .Where(d => d.IdCompra == vCompraIngreso_01.IdCompra)
+                                  .ToList();
                     var compraIng_01 = db.CompraIng_01
                                   .Where(d => d.Id == vCompraIngreso_01.Id)
                                   .FirstOrDefault();
@@ -72,7 +75,11 @@ namespace REPOSITORY.Clase
                     compraIng_01.TotalCant = vCompraIngreso_01.TotalCant;
                     compraIng_01.PrecioCost = vCompraIngreso_01.PrecioCost;
                     compraIng_01.Total = vCompraIngreso_01.Total;
-                    compraIng_01.TotalMaple = totalMaple;
+                    foreach (var fila in compraDetalle)
+                    {
+                        fila.TotalMaple = totalMaple;
+                    }
+                  
                     db.SaveChanges();
                     return true;
                 }
@@ -115,7 +122,8 @@ namespace REPOSITORY.Clase
                                           TotalCant = a.TotalCant,
                                           PrecioCost = a.PrecioCost,
                                           Total = a.Total,
-                                          Estado = a.Estado
+                                          Estado = a.Estado,
+                                          IdCompra = a.IdCompra
                                       }).FirstOrDefault();
                     return listResult;
                 }
@@ -159,7 +167,8 @@ namespace REPOSITORY.Clase
                                           TotalCant = a.TotalCant,
                                           PrecioCost = a.PrecioCost,
                                           Total = a.Total,
-                                          Estado = a.Estado
+                                          Estado = a.Estado,
+                                          IdCompra = a.IdCompra
                                       }).ToList();
                     return listResult;
                 }
@@ -194,7 +203,8 @@ namespace REPOSITORY.Clase
                                           TotalCant = 0,
                                           PrecioCost = b.Precio1,
                                           Total = 0,
-                                          Estado = 0
+                                          Estado = 0,
+                                          IdCompra = 0
                                       }).ToList();
                     return listResult;
                 }

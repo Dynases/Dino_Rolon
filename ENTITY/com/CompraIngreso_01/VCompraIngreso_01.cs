@@ -18,9 +18,9 @@ namespace ENTITY.com.CompraIngreso_01
         public decimal TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
         public decimal Total { get; set; }
+        public int Estado { get; set; }
         public int TotalMaple { get; set; }
-        public int Estado { get; set; }     
 
-
+        public int IdCompra { get; set; }
     }
 }
