@@ -268,5 +268,8 @@
   <ItemGroup>
     <None Include="Resource\GENERAR.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\COPIAR.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

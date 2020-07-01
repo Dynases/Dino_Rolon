@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Windows.Forms;
 using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
@@ -34,14 +35,13 @@ namespace PRESENTER.ven
             superTabControl1.SelectedTabIndex = 0;
             listaDetalleVenta = new List<VVenta_01>();
             MP_AsignarPermisos();
+            BtnHabilitar.Visible = true;
         }
 
-        #region Variables de Entorno
-
-        //public static List<Producto> detalleProductos;
+        #region Variables de Entorno        
         private static List<VVenta> listaVentas;   
         private static List<VVenta_01> listaDetalleVenta;
-        private static VProductoListaStock vProductos;
+        private static VProductoListaStock vProductos = new VProductoListaStock();
         private static int index;
         private static int idCategoriaPrecio;
         private bool _Limpiar = false;
@@ -108,6 +108,9 @@ namespace PRESENTER.ven
             this.TbNumFacturaExterna.ReadOnly = true;
             this.TbEmpresaProveedoraCliente.ReadOnly = true;
             this.Cb_Origen.ReadOnly = true;
+            this.tbTotalCantidad.ReadOnly = true;
+            this.TbTotal.ReadOnly = true;
+            BtnHabilitar.Enabled = true;
             _Limpiar = false;
         }
 
@@ -130,6 +133,7 @@ namespace PRESENTER.ven
             this.btnNuevoCliente.Visible = true;
             this.TbNumFacturaExterna.ReadOnly = false;
             this.Cb_Origen.ReadOnly = false;
+            BtnHabilitar.Enabled = false;
         }
 
         private void MP_CargarAlmacenes()
@@ -154,6 +158,7 @@ namespace PRESENTER.ven
                 Dgv_DetalleVenta.Select();
                 Dgv_DetalleVenta.Col = 5;
                 Dgv_DetalleVenta.Row = Dgv_DetalleVenta.RowCount - 1;
+                vProductos = new VProductoListaStock();
             }
             catch (Exception ex)
             {
@@ -201,15 +206,22 @@ namespace PRESENTER.ven
             lblHora.Text = venta.Hora;
             lblUsuario.Text = venta.Usuario;
             idCategoriaPrecio = venta.IdCategoriaCliente;
-            this.MP_CargarDetalleRegistro(venta.Id);
+            this.MP_CargarDetalleRegistro(venta.Id,1);
+            this.MP_ObtenerCalculo();
             this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
         }
 
-        private void MP_CargarDetalleRegistro(int id)
+        private void MP_CargarDetalleRegistro(int id, int EsPlantilla)
         {
             try
             {
-                listaDetalleVenta = new ServiceDesktop.ServiceDesktopClient().VentaDetalleListar(id).ToList();
+                if (EsPlantilla == 1)
+                {
+                    listaDetalleVenta = new ServiceDesktop.ServiceDesktopClient().VentaDetalleListar(id).ToList();
+                }
+                else
+                    listaDetalleVenta = new ServiceDesktop.ServiceDesktopClient().TraerDetalleVentaVacio(id).ToList();
+
                 MP_ArmarDetalle();
             }
             catch (Exception ex)
@@ -268,7 +280,7 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["Estado"].Visible = false;
 
             Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].Caption = "CODIGO";
-            Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].Width = 80;
             Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["CodigoProducto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -277,14 +289,14 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["CodigoBarra"].Visible = false;
 
             Dgv_DetalleVenta.RootTable.Columns["Producto"].Caption = "PRODUCTO";
-            Dgv_DetalleVenta.RootTable.Columns["Producto"].Width = 260;
+            Dgv_DetalleVenta.RootTable.Columns["Producto"].Width = 240;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].Caption = "UN.";
-            Dgv_DetalleVenta.RootTable.Columns["Unidad"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["Unidad"].Width = 80;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -298,8 +310,24 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Visible = true;
 
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].Caption = "CONT.";
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].Width = 80;
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].FormatString = "0.00";
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].CellStyle.FontSize = 9;
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+            Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Visible = true;
+
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Caption = "TOTAL UN.";
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].FormatString = "0.00";
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].CellStyle.FontSize = 9;
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Visible = true;
+
             Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].Caption = "PRECIO";
-            Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].Width = 130;
+            Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].Width = 100;
             Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].FormatString = "0.00";
             Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["PrecioVenta"].CellStyle.FontSize = 9;
@@ -317,16 +345,15 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["PrecioCosto"].Visible = false;
             Dgv_DetalleVenta.RootTable.Columns["SubTotalCosto"].Visible = false;
 
-
             Dgv_DetalleVenta.RootTable.Columns["Lote"].Caption = "LOTE";
-            Dgv_DetalleVenta.RootTable.Columns["Lote"].Width = 130;
+            Dgv_DetalleVenta.RootTable.Columns["Lote"].Width = 100;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Caption = "FechaVencimiento";
-            Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Width = 130;
+            Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Width = 100;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -335,7 +362,7 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["Stock"].Visible = false;
 
             Dgv_DetalleVenta.RootTable.Columns["Delete"].Caption = "ELIMINAR";
-            Dgv_DetalleVenta.RootTable.Columns["Delete"].Width = 80;
+            Dgv_DetalleVenta.RootTable.Columns["Delete"].Width = 60;
             Dgv_DetalleVenta.RootTable.Columns["Delete"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Delete"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Delete"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -509,14 +536,71 @@ namespace PRESENTER.ven
         {
             try
             {
-                Double cantidad, precioVenta, subTotal, subTotalCosto, precioCosto;
-                cantidad = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value);
+                Double saldo, precioVenta, precioCosto;
+                int idProducto, stock, contenido; 
+               // string Producto, codPrducto, unidadVenta;
+                saldo = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value);
+                stock = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Stock"].Value);
                 precioVenta = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["PrecioVenta"].Value);
                 precioCosto = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["PrecioCosto"].Value);
-                subTotal = cantidad * precioVenta;
-                subTotalCosto = cantidad * precioCosto;
-                Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = subTotal;
-                Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = subTotalCosto;
+                contenido = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Contenido"].Value);
+                if (saldo > stock)
+                {
+                    //var idDetalle = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Id"].Value);
+                    //idProducto = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["IdProducto"].Value);
+                    //var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(idProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
+                    //MP_ActualizarLote2(ref InventarioLotes, idProducto, idDetalle);
+                    //var sumaStockTotal = InventarioLotes.Sum(a => a.Cantidad);
+                    //if ((decimal)saldo <= sumaStockTotal)
+                    //{
+                    //    Producto = Dgv_DetalleVenta.CurrentRow.Cells["Producto"].Value.ToString();
+                    //    codPrducto = Dgv_DetalleVenta.CurrentRow.Cells["CodigoProducto"].Value.ToString();
+                    //    unidadVenta = Dgv_DetalleVenta.CurrentRow.Cells["Unidad"].Value.ToString();
+                    //    foreach (var fila in InventarioLotes)
+                    //    {
+                    //        if (saldo > 0)
+                    //        {
+                    //            if ((Double)fila.Cantidad >= saldo)
+                    //            {
+                    //                IngresarCantidadLote(idProducto, Producto, codPrducto, unidadVenta, saldo,
+                    //                                     precioVenta, precioCosto, fila.Lote, fila.FechaVen);
+
+                    //                saldo = 0;
+                    //            }
+                    //            else//Si el inventario es menor
+                    //            {
+                    //                IngresarCantidadLote(idProducto, Producto, codPrducto, unidadVenta, (Double)fila.Cantidad,
+                    //                                    precioVenta, precioCosto, fila.Lote, fila.FechaVen);
+                    //                saldo -= (Double)fila.Cantidad;
+                    //            }
+                    //            if (saldo > 0)
+                    //            {
+                    //                MP_AddFila();
+                    //                Dgv_DetalleVenta.Row = Dgv_DetalleVenta.RowCount - 1;
+                    //            }
+                    //        }                                                   
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value = 1;
+                    //    Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = precioVenta;
+                    //    Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = precioCosto;
+                    //    throw new Exception("No existe stock para algun producto");
+                    //}
+
+                    Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value = 1;
+                    Dgv_DetalleVenta.CurrentRow.Cells["Contenido"].Value = contenido;
+                    Dgv_DetalleVenta.CurrentRow.Cells["TotalContenido"].Value = contenido;
+                    Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = precioVenta;
+
+                    Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = precioCosto;
+                    throw new Exception("No existe stock para algun producto");
+                }
+                else
+                {
+                    IngresarCantidad(saldo, precioVenta, precioCosto,contenido);
+                }
                 MP_ObtenerCalculo();
             }
             catch (Exception ex)
@@ -524,11 +608,41 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+
+        private void IngresarCantidad(double cantidad, double precioVenta, double precioCosto, int contenido)
+        {
+            var totalUnidad = cantidad * contenido;
+            var subTotal = cantidad * precioVenta;
+            var subTotalCosto = cantidad * precioCosto;
+            Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = subTotal;
+            Dgv_DetalleVenta.CurrentRow.Cells["TotalContenido"].Value = totalUnidad;
+            Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = subTotalCosto;
+        }
+        private void IngresarCantidadLote(int idProducto,string Producto, string codigoProducto, string unidadVenta,
+                                            double cantidad, double precioVenta, double precioCosto, 
+                                            string Lote, DateTime fechaVecnmiento)
+        {
+            var subTotal = cantidad * precioVenta;
+            var subTotalCosto = cantidad * precioCosto;
+            Dgv_DetalleVenta.CurrentRow.Cells["IdProducto"].Value = idProducto;
+            Dgv_DetalleVenta.CurrentRow.Cells["Producto"].Value = Producto;
+            Dgv_DetalleVenta.CurrentRow.Cells["CodigoProducto"].Value = codigoProducto;
+            Dgv_DetalleVenta.CurrentRow.Cells["Unidad"].Value = unidadVenta;
+            Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value = cantidad;
+            Dgv_DetalleVenta.CurrentRow.Cells["PrecioVenta"].Value = precioVenta;
+            Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = subTotal;
+            Dgv_DetalleVenta.CurrentRow.Cells["PrecioCosto"].Value = precioCosto;
+            Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = subTotalCosto;
+            Dgv_DetalleVenta.CurrentRow.Cells["Lote"].Value = Lote;
+            Dgv_DetalleVenta.CurrentRow.Cells["FechaVencimiento"].Value = fechaVecnmiento;
+            Dgv_DetalleVenta.UpdateData();
+        }
         private void MP_ObtenerCalculo()
         {
             try
             {
                 Dgv_DetalleVenta.UpdateData();
+                tbTotalCantidad.Text = Convert.ToDouble(Dgv_DetalleVenta.GetTotal(Dgv_DetalleVenta.RootTable.Columns["TotalContenido"], AggregateFunction.Sum)).ToString();
                 var total = Convert.ToDouble(Dgv_DetalleVenta.GetTotal(Dgv_DetalleVenta.RootTable.Columns["SubTotal"], AggregateFunction.Sum));
                 TbTotal.Text = total.ToString();
             }
@@ -777,6 +891,68 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private static void MP_IngresarProductoDetalle(int idDetalle, int idLote, List<VTI001> lLotes)
+        {
+            if (lLotes.Count != 0)
+            {
+                foreach (var vDetalleVenta in listaDetalleVenta)
+                {
+                    if (vProductos.IdProducto == vDetalleVenta.IdProducto &&
+                        lLotes.FirstOrDefault(a => a.id == idLote).Lote == vDetalleVenta.Lote &&
+                        lLotes.FirstOrDefault(a => a.id == idLote).FechaVen == vDetalleVenta.FechaVencimiento)
+                    {
+                        throw new Exception("El producto ya existe en el detalle");
+                    }
+                    if (vDetalleVenta.Id == idDetalle)
+                    {
+                        vDetalleVenta.IdProducto = vProductos.IdProducto;
+                        vDetalleVenta.CodigoProducto = vProductos.CodigoProducto;
+                        vDetalleVenta.CodigoBarra = vProductos.CodigoBarras;
+                        vDetalleVenta.Producto = vProductos.Producto;
+                        vDetalleVenta.Unidad = vProductos.UnidadVenta;
+                        vDetalleVenta.Cantidad = 1;
+                        vDetalleVenta.Contenido = Convert.ToDecimal(vProductos.Contenido);
+                        vDetalleVenta.TotalContenido = Convert.ToDecimal(vProductos.Contenido);
+                        vDetalleVenta.PrecioVenta = vProductos.PrecioVenta;
+                        vDetalleVenta.PrecioCosto = vProductos.PrecioCosto;
+                        vDetalleVenta.Lote = lLotes.FirstOrDefault(a => a.id == idLote).Lote;
+                        vDetalleVenta.FechaVencimiento = lLotes.FirstOrDefault(a => a.id == idLote).FechaVen;
+                        //Revisar
+                        vDetalleVenta.Stock = lLotes.FirstOrDefault(a => a.id == idLote).Cantidad;
+                        break;
+                    }
+                }
+                vProductos = new VProductoListaStock();
+            }
+        }
+
+        private void MP_ActualizarLote(ref List<VTI001> Lotes, int idProducto)
+        {
+            foreach (var fila in Lotes)
+            {
+                var sumaCantidad = listaDetalleVenta.Where(a => a.Lote.Equals(fila.Lote) &&
+                                                              a.FechaVencimiento == fila.FechaVen &&
+                                                              a.IdProducto == idProducto &&
+                                                              a.Estado == 0).Sum(a => a.Cantidad);
+                fila.Cantidad = fila.Cantidad - sumaCantidad;
+            }
+        }
+        private void MP_ActualizarLote2(ref List<VTI001> Lotes, int idProducto, int idDetalle)
+        {
+            var idDetalleActual = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Id"].Value);
+
+            foreach (var fila in Lotes)
+            {
+
+                var sumaCantidad = listaDetalleVenta.Where(a => a.Lote.Equals(fila.Lote) &&
+                                                          a.FechaVencimiento == fila.FechaVen &&
+                                                          a.IdProducto == idProducto &&
+                                                          a.Estado == 0 &&
+                                                          a.Id != idDetalle).Sum(a => a.Cantidad);
+                fila.Cantidad = fila.Cantidad - sumaCantidad;
+
+            }
+        }
         #region Metodos Heredados
 
         public override void MH_Nuevo()
@@ -936,6 +1112,7 @@ namespace PRESENTER.ven
                 return false;
             }
         }
+      
         #endregion
 
         #region Eventos
@@ -1102,61 +1279,51 @@ namespace PRESENTER.ven
                 {
                     if (e.KeyData == Keys.Enter)
                     {
+                        int idLote = 0;
                         var idDetalle = Convert.ToInt32(Dgv_DetalleVenta.GetValue("id"));
                         var cantidad = Convert.ToInt32(Dgv_DetalleVenta.GetValue("Cantidad"));
+                        listaDetalleVenta = (List<VVenta_01>)Dgv_DetalleVenta.DataSource;
                         if (idDetalle > 0)
                         {
-                            if (vProductos == null)
+                            if (vProductos.IdProducto == 0)
                             {
 
                                 var idProducto = Convert.ToInt32(Dgv_Producto.GetValue("IdProducto"));
+                                //Obtiene el producto
                                 vProductos = ((List<VProductoListaStock>)Dgv_Producto.DataSource)
                                                                                .Where(p => p.IdProducto == idProducto)
                                                                                .FirstOrDefault();
+                                if (vProductos.Stock <= 0)
+                                {
+                                    var producto = vProductos.Producto;
+                                    vProductos = new VProductoListaStock();
+                                    throw new Exception("El producto " + producto + "no cuenta con STOCK disponible.");                                  
+                                }
 
                                 var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(vProductos.IdProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
+                                //Veridica si se mostrara la seleccion de lotes
+                                if (vProductos.EsLote == 2)
+                                {
+                                    idLote = InventarioLotes.FirstOrDefault().id;
+                                    if (idLote == 0)
+                                    {
+                                        throw new Exception("El producto no tiene un lote relacionado");
+                                    }
+                                    MP_IngresarProductoDetalle(idDetalle, idLote, InventarioLotes);
+                                    MP_ArmarDetalle();
+                                    MP_InHabilitarProducto();
+                                    return;
+                                }
+                                //Actualiza el stock de lotes
+                                MP_ActualizarLote(ref InventarioLotes, idProducto);
                                 MP_ArmarLotes(InventarioLotes);
                                 GPanel_Producto.Text = vProductos.Producto;
                             }
                             else
                             {
-                                var idLote = Convert.ToInt32(Dgv_Producto.GetValue("id"));
+                                idLote = Convert.ToInt32(Dgv_Producto.GetValue("id"));
                                 var lLotes = ((List<VTI001>)Dgv_Producto.DataSource);
-                                if (lLotes.Count != 0)
-                                {
-                                    if (cantidad <= lLotes.FirstOrDefault( a=> a.id == idLote).Cantidad)
-                                    {
-
-                                    }
-                                    foreach (var vLotes in lLotes)
-                                    {
-                                        
-                                    }
-                                    listaDetalleVenta = (List<VVenta_01>)Dgv_DetalleVenta.DataSource;
-                                    foreach (var vDetalleVenta in listaDetalleVenta)
-                                    {
-                                        if (vProductos.IdProducto == vDetalleVenta.IdProducto)
-                                        {
-                                            throw new Exception("El producto ya fue seleccionado");
-                                        }
-                                        if (vDetalleVenta.Id == idDetalle)
-                                        {
-                                            vDetalleVenta.IdProducto = vProductos.IdProducto;
-                                            vDetalleVenta.CodigoProducto = vProductos.CodigoProducto;
-                                            vDetalleVenta.CodigoBarra = vProductos.CodigoBarras;
-                                            vDetalleVenta.Producto = vProductos.Producto;
-                                            vDetalleVenta.Unidad = vProductos.UnidadVenta;
-                                            vDetalleVenta.Cantidad = 1;
-                                            vDetalleVenta.PrecioVenta = vProductos.PrecioVenta;
-                                            vDetalleVenta.PrecioCosto = vProductos.PrecioCosto;
-                                            vDetalleVenta.Lote = "20170101";
-                                            vDetalleVenta.FechaVencimiento = Convert.ToDateTime("2017/01/01");
-                                            vDetalleVenta.Stock = vDetalleVenta.Stock;
-                                            break;
-                                        }
-                                    }
-                                }
-                               
+                                MP_IngresarProductoDetalle(idDetalle, idLote, lLotes);
                                 MP_ArmarDetalle();
                                 MP_InHabilitarProducto();
                             }
@@ -1166,6 +1333,7 @@ namespace PRESENTER.ven
                     if (e.KeyData == Keys.Escape)
                     {
                         MP_InHabilitarProducto();
+
                     }
                 }
             }
@@ -1176,6 +1344,8 @@ namespace PRESENTER.ven
             }
 
         }
+
+ 
         private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
         {
             try
@@ -1220,9 +1390,22 @@ namespace PRESENTER.ven
                 MP_MostrarRegistro(Dgv_GBuscador.Row);
             }
         }
-
-        #endregion
-
+        private void BtnHabilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {            
+                base.MH_Inhanbilitar();
+                this.MP_Habilitar();
+                this.MP_CargarDetalleRegistro(Convert.ToInt32(Tb_Cod.Text),2);
+                this.MP_ObtenerCalculo();
+                this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
+                Tb_Cod.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void cb_Cliente_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -1237,7 +1420,7 @@ namespace PRESENTER.ven
                             if (lista == null)
                             {
                                 throw new Exception("No se encontro un cliente");
-                            }                            
+                            }
                             TbNitCliente.Text = lista.Nit;
                             idCategoriaPrecio = lista.IdCategoriaPrecio;
                             TbEmpresaProveedoraCliente.Text = lista.EmpresaProveedora;
@@ -1274,7 +1457,7 @@ namespace PRESENTER.ven
                         if (bandera)
                         {
                             GridEXRow Row = efecto.Row;
-                            cb_Cliente.Value = Row.Cells[0].Value.ToString();                           
+                            cb_Cliente.Value = Row.Cells[0].Value.ToString();
                             TbNitCliente.Text = Row.Cells[4].Value.ToString();
                             var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
                                                                                                     Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
@@ -1290,5 +1473,10 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        #endregion
+
+
+
+
     }
 }

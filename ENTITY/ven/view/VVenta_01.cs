@@ -20,6 +20,9 @@ namespace ENTITY.ven.view
         public string Unidad { get; set; } 
         public int Cantidad { get; set; } 
 
+        public decimal Contenido { get; set; }
+        public decimal TotalContenido { get; set; }
+
         public decimal PrecioVenta { get; set; } 
 
         public decimal SubTotal 
@@ -37,6 +40,7 @@ namespace ENTITY.ven.view
         public DateTime FechaVencimiento { get; set; }
         public decimal Stock { get; set; }
         public string Delete { get; set; }
+
 
 
     }

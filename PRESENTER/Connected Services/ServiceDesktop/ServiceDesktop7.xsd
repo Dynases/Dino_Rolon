@@ -6,6 +6,7 @@
       <xs:element minOccurs="0" name="CodBar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Count" type="xs:int" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsLote" type="xs:int" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Grupo1" type="xs:int" />
@@ -60,6 +61,8 @@
       <xs:element minOccurs="0" name="CategoriaProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodigoBarras" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contenido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsLote" type="xs:int" />
       <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
       <xs:element minOccurs="0" name="IdCategoriaPrecio" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />

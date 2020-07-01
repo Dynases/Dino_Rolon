@@ -322,6 +322,7 @@ namespace REPOSITORY.Clase
                     var listResult = (from a in db.TI001
                                       where a.iccprod.Equals(IdProducto)  &&
                                             a.icalm == idAlmacen && a.iccven > 0
+                                        orderby a.icfven ascending
                                       select new VTI001
                                       {
                                           id = a.id,

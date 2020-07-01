@@ -55,14 +55,12 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<TI0021> TI0021 { get; set; }
         public virtual DbSet<Traspaso_01> Traspaso_01 { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
-        public virtual DbSet<Venta_01> Venta_01 { get; set; }
         public virtual DbSet<Programa> Programa { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Rol_01> Rol_01 { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario_01> Usuario_01 { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
-        public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<CompraIng_03> CompraIng_03 { get; set; }
         public virtual DbSet<CompraIng> CompraIng { get; set; }
@@ -73,6 +71,8 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Seleccion> Seleccion { get; set; }
         public virtual DbSet<Vr_CompraIngresoDevolucion> Vr_CompraIngresoDevolucion { get; set; }
         public virtual DbSet<ValidacionPrograma> ValidacionPrograma { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Venta_01> Venta_01 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

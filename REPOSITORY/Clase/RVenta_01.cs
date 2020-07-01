@@ -36,7 +36,10 @@ namespace REPOSITORY.Clase
                         Precio = vventa_01.PrecioVenta,
                         PrecioCosto = vventa_01.PrecioCosto,
                         Lote = vventa_01.Lote,
-                        FechaVencimiento = vventa_01.FechaVencimiento
+                        FechaVencimiento = vventa_01.FechaVencimiento,
+                        Contenido = vventa_01.Contenido,
+                        TotalUnidad =vventa_01.TotalContenido,
+                        
                     };
                     db.Venta_01.Add(detalle);
                     db.SaveChanges();
@@ -65,7 +68,9 @@ namespace REPOSITORY.Clase
                     venta_01.Precio = vventa_01.PrecioVenta;
                     venta_01.PrecioCosto = vventa_01.PrecioCosto;
                     venta_01.Lote = vventa_01.Lote;
-                    venta_01.FechaVencimiento = vventa_01.FechaVencimiento;                  
+                    venta_01.FechaVencimiento = vventa_01.FechaVencimiento;
+                    venta_01.Contenido = vventa_01.Contenido;
+                    venta_01.TotalUnidad = vventa_01.TotalContenido;
                     db.SaveChanges();
                     return true;
                 }
@@ -118,11 +123,18 @@ namespace REPOSITORY.Clase
                            Producto = v.Producto.Descrip,
                            Unidad = v.Unidad,
                            Cantidad = v.Cantidad,
+                           Contenido= v.Contenido,
+                           TotalContenido = v.TotalUnidad,
                            PrecioVenta = v.Precio,
                            PrecioCosto = v.PrecioCosto,
                            Lote = v.Lote,
                            FechaVencimiento = v.FechaVencimiento,
-                           Delete = ""
+                           Delete = "",
+                           Stock = db.TI001.FirstOrDefault(a => a.icalm == v.Venta.IdAlmacen &&
+                                                                    a.iccprod == v.IdProducto &&
+                                                                    a.iclot == v.Lote &&
+                                                                    a.icfven == v.FechaVencimiento).iccven + v.Cantidad
+
                        }).FirstOrDefault();
 
                     return listResult;
@@ -156,11 +168,17 @@ namespace REPOSITORY.Clase
                            Producto = v.Producto.Descrip,
                            Unidad = v.Unidad,
                            Cantidad = v.Cantidad,
+                           Contenido = v.Contenido,
+                           TotalContenido = v.TotalUnidad,
                            PrecioVenta = v.Precio,
                            PrecioCosto= v.PrecioCosto,
                            Lote=v.Lote,
                            FechaVencimiento=v.FechaVencimiento,                      
-                           Delete = ""
+                           Delete = "",
+                           Stock = db.TI001.FirstOrDefault(a => a.icalm == v.Venta.IdAlmacen &&
+                                                                    a.iccprod == v.IdProducto &&
+                                                                    a.iclot == v.Lote &&
+                                                                    a.icfven == v.FechaVencimiento).iccven + v.Cantidad
                        }).ToList();
 
                     return listResult;
@@ -171,7 +189,49 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VVenta_01> TraerVentas_01Vacio(int VentaId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.Venta_01
+                       .Where(v => v.Venta.Id == VentaId && v.Venta.Estado != (int)ENEstado.ELIMINAR)
+                       .Select(v => new VVenta_01
+                       {
+                           Id = v.Id,
+                           IdVenta = 0,
+                           IdProducto = v.IdProducto,
+                           Estado = (int)ENEstado.NUEVO,
+                           CodigoProducto = v.Producto.IdProd,
+                           CodigoBarra = v.Producto.CodBar,
+                           Producto = v.Producto.Descrip,
+                           Unidad = v.Unidad,
+                           Cantidad = 0,
+                           Contenido = v.Contenido,
+                           TotalContenido = 0,
+                           PrecioVenta = v.Venta.Cliente.PrecioCat.Precio.FirstOrDefault().Precio1,
+                           //El digito 8 es el id de Precio de costo.
+                           PrecioCosto = db.Precio.FirstOrDefault(x=> x.IdProduc == v.IdProducto &&
+                                                                      x.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                      x.IdPrecioCat == 8).Precio1,
+                           Lote = v.Lote,
+                           FechaVencimiento = v.FechaVencimiento,
+                           Delete = "",
+                           Stock = db.TI001.FirstOrDefault(a => a.icalm == v.Venta.IdAlmacen &&
+                                                                    a.iccprod == v.IdProducto &&
+                                                                    a.iclot == v.Lote &&
+                                                                    a.icfven == v.FechaVencimiento).iccven
+                       }).ToList();
 
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

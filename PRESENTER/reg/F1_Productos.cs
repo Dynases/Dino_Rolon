@@ -45,6 +45,7 @@ namespace PRESENTER.reg
             InitializeComponent();
             MP_Iniciar();
             SuperTabBuscar.Visible = false;
+            BtnHabilitar.Visible = true;
         }
         private void Dgv_Buscardor_EditingCell(object sender, EditingCellEventArgs e)
         {
@@ -416,6 +417,7 @@ namespace PRESENTER.reg
                 btn_UnidadPeso.Visible = false;
                 btn_UnidadVenta.Visible = false;
                 btn_Grupo5.Visible = false;
+                
                 MP_AsignarPermisos();
             }
             catch (Exception ex)
@@ -579,7 +581,8 @@ namespace PRESENTER.reg
                 Cb_Grupo4.Enabled = true;
                 Cb_Grupo5.Enabled = true;
                 BtAdicionar.Enabled = true;
-                sw_TipoPro.IsReadOnly = false;  
+                sw_TipoPro.IsReadOnly = false;
+                Sw_EsLote.IsReadOnly = false;
                 Tb_IdProducto.IsInputReadOnly = false;
                 Tb_Descripcion.ReadOnly = false;
                 Tb_Cantidad.IsInputReadOnly = false;
@@ -614,6 +617,7 @@ namespace PRESENTER.reg
                 Cb_Grupo4.Enabled = false;
                 Cb_Grupo5.Enabled = false;
                 sw_TipoPro.IsReadOnly = true;
+                Sw_EsLote.IsReadOnly = true;
                 Tb_IdProducto.IsInputReadOnly = true;
                 Tb_Descripcion.ReadOnly = true;
                 Tb_Cantidad.IsInputReadOnly = true;
@@ -642,6 +646,8 @@ namespace PRESENTER.reg
                 Tb_Cantidad.Value = 0;
                 Tb_Producto.Clear();
                 _LimpiarColor();
+                Sw_EsLote.Value = true;
+                sw_TipoPro.Value = true;
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_UnidadVenta);
@@ -681,6 +687,7 @@ namespace PRESENTER.reg
                 Tb_Producto.Text = tabla.Producto2;
                 sw_TipoPro.Value = tabla.Tipo == 1 ? true : false;
                 _imagen = tabla.Imagen;
+                Sw_EsLote.Value = tabla.EsLote == 1 ? true : false;
                 Tb_Cantidad.Value = Convert.ToDouble(tabla.Cantidad);
                 //Mostrar Imagenes
                 MP_MostrarImagen(tabla.Imagen);
@@ -845,7 +852,8 @@ namespace PRESENTER.reg
                     Grupo3 = Convert.ToInt32(Cb_Grupo3.Value),
                     Grupo4 = Convert.ToInt32(Cb_Grupo4.Value),
                     Grupo5 = Convert.ToInt32(Cb_Grupo5.Value),
-                    Tipo = sw_TipoPro.Value == true ? 1 : 2 , 
+                    Tipo = sw_TipoPro.Value == true ? 1 : 2 ,
+                    EsLote = Sw_EsLote.Value == true ? 1 : 2,
                     Imagen = _imagen,
                     IdProducto = Tb_IdProducto.Text == string.Empty ? 0 : Convert.ToInt32(Tb_IdProducto.Value),
                     Producto2 = Tb_Producto.Text == string.Empty ? "": Tb_Producto.Text,

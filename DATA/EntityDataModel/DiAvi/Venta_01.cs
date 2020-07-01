@@ -24,8 +24,10 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal PrecioCosto { get; set; }
         public string Lote { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
+        public decimal Contenido { get; set; }
+        public decimal TotalUnidad { get; set; }
     
-        public virtual Venta Venta { get; set; }
         public virtual Producto Producto { get; set; }
+        public virtual Venta Venta { get; set; }
     }
 }

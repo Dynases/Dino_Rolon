@@ -1800,7 +1800,17 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        public List<VVenta_01> TraerDetalleVentaVacio(int VentaId)
+        {
+            try
+            {
+                return new LVenta_01().TraerVentas_01Vacio(VentaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         /********** ZONA ********************/

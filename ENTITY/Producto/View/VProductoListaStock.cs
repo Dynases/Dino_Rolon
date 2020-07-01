@@ -31,6 +31,9 @@ namespace ENTITY.Producto.View
         public decimal? Stock { get; set; }
 
         public string CategoriaPrecio { get; set; }
-       
+        public int EsLote { get; set; }
+        public string Contenido { get; set; }
+
+
     }
 }

@@ -90,6 +90,8 @@
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
+            this.Sw_EsLote = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -171,10 +173,6 @@
             this.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
             this.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
             // 
-            // PanelContenidoBuscar
-            // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1043, 608);
-            // 
             // btnMin
             // 
             this.btnMin.Location = new System.Drawing.Point(983, 0);
@@ -190,7 +188,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1043, 608);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
             // 
             // 
             // 
@@ -222,7 +220,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1037, 582);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
             // 
             // LblSubtitulo
             // 
@@ -483,6 +481,8 @@
             this.GPanel_Grupos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_Grupos.CanvasColor = System.Drawing.SystemColors.Control;
             this.GPanel_Grupos.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_Grupos.Controls.Add(this.Sw_EsLote);
+            this.GPanel_Grupos.Controls.Add(this.labelX4);
             this.GPanel_Grupos.Controls.Add(this.lbgrupo1);
             this.GPanel_Grupos.Controls.Add(this.btn_Grupo3);
             this.GPanel_Grupos.Controls.Add(this.btn_Grupo4);
@@ -1223,6 +1223,41 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Código Interno";
             // 
+            // Sw_EsLote
+            // 
+            // 
+            // 
+            // 
+            this.Sw_EsLote.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Sw_EsLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sw_EsLote.Location = new System.Drawing.Point(130, 227);
+            this.Sw_EsLote.Name = "Sw_EsLote";
+            this.Sw_EsLote.OffBackColor = System.Drawing.Color.LawnGreen;
+            this.Sw_EsLote.OffText = "SIN LOTE";
+            this.Sw_EsLote.OnBackColor = System.Drawing.Color.Gold;
+            this.Sw_EsLote.OnText = "CON LOTE";
+            this.Sw_EsLote.Size = new System.Drawing.Size(143, 22);
+            this.Sw_EsLote.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Sw_EsLote.TabIndex = 332;
+            this.Sw_EsLote.Value = true;
+            this.Sw_EsLote.ValueObject = "Y";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX4.Location = new System.Drawing.Point(3, 226);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX4.Size = new System.Drawing.Size(38, 23);
+            this.labelX4.TabIndex = 333;
+            this.labelX4.Text = "Tipo";
+            // 
             // F1_Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1335,5 +1370,7 @@
         internal DevComponents.Editors.DoubleInput Tb_IdProducto;
         internal DevComponents.DotNetBar.LabelX LblProducto;
         internal DevComponents.DotNetBar.Controls.SwitchButton sw_TipoPro;
+        internal DevComponents.DotNetBar.Controls.SwitchButton Sw_EsLote;
+        internal DevComponents.DotNetBar.LabelX labelX4;
     }
 }

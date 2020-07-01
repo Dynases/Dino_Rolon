@@ -198,6 +198,7 @@ namespace REPOSITORY.Clase
                                           IdProducto = a.IdProducto,
                                           Producto2 = a.DescripProduc,
                                           Cantidad = a.Cantidad,
+                                          EsLote = a.EsLote,
                                           Usuario = a.Usuario,
                                           Hora = a.Hora,
                                           Fecha = a.Fecha
@@ -296,9 +297,9 @@ namespace REPOSITORY.Clase
                                       join s in db.Sucursal on a.IdSuc equals s.Id
                                       //PrecioVenta
                                       join pr in db.Precio on
-                                      new           { idProducto = p.Id, IdAlmacen = s.Id }
+                                      new { idProducto = p.Id, IdAlmacen = s.Id }
                                          equals new { idProducto = pr.IdProduc, IdAlmacen = pr.IdSucursal }
-                                      //join pr in db.Precio on p.Id equals pr.IdProduc
+                                         //join pr in db.Precio on p.Id equals pr.IdProduc
                                       join prc in db.PrecioCat on pr.IdPrecioCat equals prc.Id
                                       join l in db.Libreria on p.UniVen equals l.IdLibrer
                                       join m in db.Libreria on p.Grupo2 equals m.IdLibrer
@@ -309,7 +310,7 @@ namespace REPOSITORY.Clase
                                       new { idProducto = p.Id, IdAlmacen = s.Id }
                                          equals new { idProducto = prcosto.IdProduc, IdAlmacen = prcosto.IdSucursal }
                                       join prcc in db.PrecioCat on prcosto.IdPrecioCat equals prcc.Id
-                                      where s.Id ==  pr.IdSucursal &&
+                                      where s.Id == pr.IdSucursal &&
                                             s.Id == IdSucursal &&
                                             a.Id == IdAlmacen &&
                                             prc.Id == IdCategoriaPrecio &&
@@ -317,7 +318,7 @@ namespace REPOSITORY.Clase
                                             l.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && l.IdOrden == (int)ENEstaticosOrden.PRODUCTO_UN_VENTA &&
                                             m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                             t.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && t.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
-                                            c.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && c.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO4
+                                            c.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && c.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO4 
                                       select new VProductoListaStock
                                       {
                                           IdProducto = p.Id,
@@ -328,15 +329,18 @@ namespace REPOSITORY.Clase
                                           Producto = p.Descrip,
                                           MarcaProducto = m.Descrip,
                                           TipoProducto = t.Descrip,
-                                          CategoriaProducto = t.Descrip,                                         
+                                          CategoriaProducto = t.Descrip,
                                           PrecioVenta = pr.Precio1,
                                           PrecioCosto = prcosto.Precio1,
                                           UnidadVenta = l.Descrip,
-                                          Stock = (from y in db.TI001 
-                                                   where y.icalm == IdAlmacen  && y.iccprod == p.Id                                           
+                                          Stock = (from y in db.TI001
+                                                   where y.icalm == IdAlmacen && y.iccprod == p.Id
                                                    select y.iccven).Sum(),
                                           CategoriaPrecio = prc.Descrip,
-
+                                          EsLote = p.EsLote,
+                                          Contenido =db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
+                                                                                     x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO5 &&
+                                                                                     x.IdLibrer == p.Grupo5).Descrip
                                       }).Distinct().ToList();
                     return listResult;
                 }

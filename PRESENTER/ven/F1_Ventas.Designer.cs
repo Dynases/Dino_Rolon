@@ -35,6 +35,8 @@
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
             this.panelNavegacionPlantilla = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbTotalCantidad = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label1 = new System.Windows.Forms.Label();
             this.TbTotal = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label2 = new System.Windows.Forms.Label();
@@ -86,8 +88,6 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbTotalCantidad = new DevComponents.DotNetBar.Controls.TextBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -160,6 +160,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -179,7 +180,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -212,7 +213,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
@@ -274,6 +275,10 @@
             this.TxtNombreUsu.Location = new System.Drawing.Point(1073, 0);
             this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnHabilitar
+            // 
+            this.BtnHabilitar.Click += new System.EventHandler(this.BtnHabilitar_Click);
             // 
             // PanelFondo
             // 
@@ -359,6 +364,32 @@
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
             this.panelNavegacionPlantilla.Size = new System.Drawing.Size(1209, 79);
             this.panelNavegacionPlantilla.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(904, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 21);
+            this.label3.TabIndex = 364;
+            this.label3.Text = "TOTAL CANT.:";
+            // 
+            // tbTotalCantidad
+            // 
+            // 
+            // 
+            // 
+            this.tbTotalCantidad.Border.Class = "TextBoxBorder";
+            this.tbTotalCantidad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbTotalCantidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tbTotalCantidad.Location = new System.Drawing.Point(1020, 14);
+            this.tbTotalCantidad.Multiline = true;
+            this.tbTotalCantidad.Name = "tbTotalCantidad";
+            this.tbTotalCantidad.PreventEnterBeep = true;
+            this.tbTotalCantidad.Size = new System.Drawing.Size(180, 26);
+            this.tbTotalCantidad.TabIndex = 363;
             // 
             // label1
             // 
@@ -1196,32 +1227,6 @@
             this.lblId.Size = new System.Drawing.Size(37, 18);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(904, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 21);
-            this.label3.TabIndex = 364;
-            this.label3.Text = "TOTAL CANT.:";
-            // 
-            // tbTotalCantidad
-            // 
-            // 
-            // 
-            // 
-            this.tbTotalCantidad.Border.Class = "TextBoxBorder";
-            this.tbTotalCantidad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbTotalCantidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.tbTotalCantidad.Location = new System.Drawing.Point(1020, 14);
-            this.tbTotalCantidad.Multiline = true;
-            this.tbTotalCantidad.Name = "tbTotalCantidad";
-            this.tbTotalCantidad.PreventEnterBeep = true;
-            this.tbTotalCantidad.Size = new System.Drawing.Size(180, 26);
-            this.tbTotalCantidad.TabIndex = 363;
             // 
             // F1_Ventas
             // 

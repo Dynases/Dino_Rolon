@@ -492,21 +492,29 @@ namespace SERVICE
         /********** VENTA ********************/
 
         #region Venta
-
-        [OperationContract]
-        bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje);
-        [OperationContract]
-        bool VentaModificarEstado(int IdVenta, int estado, ref List<string> lMensaje);
-
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
         [OperationContract]
         VVenta TraerVenta(int idVenta);
-
+        /********** VARIOS REGISTROS ***********/
         [OperationContract]
         List<VVenta_01> VentaDetalleListar(int VentaId);
 
         [OperationContract]
-       List<VVenta> TraerVentas();
+        List<VVenta> TraerVentas();
 
+        [OperationContract]
+        List<VVenta_01> TraerDetalleVentaVacio(int VentaId);
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+        [OperationContract]
+        bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje);
+        [OperationContract]
+        bool VentaModificarEstado(int IdVenta, int estado, ref List<string> lMensaje);
+        #endregion
+        #region Verificaciones
+        #endregion
         #endregion
 
         /********** ZONA ********************/

@@ -538,7 +538,7 @@ namespace PRESENTER.com
                         var lista = new ServiceDesktop.ServiceDesktopClient().TraerSeleccion(_idOriginal);
 
                         Tb_Id.Text = lista.Id.ToString();
-                        cb_NumGranja.Value = Convert.ToInt32(lista.Granja);
+                        cb_NumGranja.Value = lista.Id;
                         Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
                         Tb_FechaEnt.Value = lista.FechaEntrega;
                         Tb_FechaRec.Value = lista.FechaRecepcion;
@@ -1075,13 +1075,13 @@ namespace PRESENTER.com
             bool _Error = false;
             try
             {
-                if (cb_NumGranja.SelectedIndex == -1)
-                {
-                    cb_NumGranja.BackColor = Color.Red;
-                    _Error = true;
-                }
-                else
-                    cb_NumGranja.BackColor = Color.White;
+                //if (cb_NumGranja.SelectedIndex == -1)
+                //{
+                //    cb_NumGranja.BackColor = Color.Red;
+                //    _Error = true;
+                //}
+                //else
+                //    cb_NumGranja.BackColor = Color.White;
                 if (tb_Proveedor.Text == "")
                 {
                     tb_Proveedor.BackColor = Color.Red;
@@ -1089,6 +1089,13 @@ namespace PRESENTER.com
                 }
                 else
                     tb_Proveedor.BackColor = Color.White;
+                if (Tb_IdCompraIngreso.Text == "")
+                {
+                    Tb_IdCompraIngreso.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Tb_IdCompraIngreso.BackColor = Color.White;
                 if (Cb_Tipo.SelectedIndex == -1)
                 {
                     Cb_Tipo.BackColor = Color.Red;

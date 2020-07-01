@@ -141,14 +141,19 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
+                    decimal cantidaddevolucionAnterior = 0;
                     //Trae el detalle de ANTERIOR
                     var detalleAnterior = this.iCompraIngreso_01.TraerCompraIngreso_01(vDetalleNuevo.Id);
 
                     var devolucionAnterior = new LCompraIngreso_03().TraerDevoluciones(idCompra).
                                                                      Where(a => a.IdProduc == detalleAnterior.IdProduc).
                                                                      FirstOrDefault();
+                    if (devolucionAnterior != null)
+                    {
+                        cantidaddevolucionAnterior = devolucionAnterior.TotalCant;
+                    }
 
-                    var cantidadTotalAnterior = detalleAnterior.TotalCant - devolucionAnterior.TotalCant;
+                    var cantidadTotalAnterior = detalleAnterior.TotalCant - cantidaddevolucionAnterior;
                     var cantidadTotalNueva = vDetalleNuevo.TotalCant - devolucion.TotalCant;
 
                     if (detalleAnterior == null) { return false; }

@@ -10,5 +10,6 @@ namespace REPOSITORY.Interface
         bool Eliminar(int IdVenta, int IdDetalle);
         VVenta_01 TraerVenta_01(int idVentaDetalle);
         List<VVenta_01> TraerVentas_01(int VentaId);
+        List<VVenta_01> TraerVentas_01Vacio(int VentaId);
     }
 }

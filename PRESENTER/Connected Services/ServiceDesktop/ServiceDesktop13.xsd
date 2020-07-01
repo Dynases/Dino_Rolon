@@ -49,6 +49,7 @@
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="NotaProveedor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlacaDescripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoCategoria" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoCompra" nillable="true" type="xs:string" />

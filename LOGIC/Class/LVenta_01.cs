@@ -36,6 +36,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public List<VVenta_01> TraerVentas_01Vacio(int VentaId)
+        {
+            try
+            {
+                return this.iVenta_01.TraerVentas_01Vacio(VentaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
 

@@ -63,7 +63,24 @@ namespace MODEL
         {
             this.Close();
         }
+        private void ModeloF1_Load(object sender, EventArgs e)
+        {
+            MP_IniciarTodo();
+        }
 
+        private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row > -1)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+            }
+        }
+       
         private void btnMax_Click(object sender, EventArgs e)
         {
 
@@ -91,9 +108,17 @@ namespace MODEL
         }
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            VM_Nuevo = true;
-            MP_Inhabilitar();
-            MH_Nuevo();
+            try
+            {
+                VM_Nuevo = true;
+                MP_Inhabilitar();
+                MH_Nuevo();
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }            
         }
         private void BtnModificar_Click(object sender, EventArgs e)
         {
@@ -190,7 +215,7 @@ namespace MODEL
         }
         public virtual void MH_Inhanbilitar()
         {
-
+            MP_Inhabilitar();
         }
         public virtual void MH_Salir() { }
         public virtual void MH_Limpiar() { }
@@ -198,22 +223,6 @@ namespace MODEL
 
         #endregion
 
-        private void ModeloF1_Load(object sender, EventArgs e)
-        {
-            MP_IniciarTodo();
-        }
-
-        private void Dgv_GBuscador_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
-        {
-            if (Dgv_GBuscador.Row > -1)
-            {
-                superTabControl1.SelectedTabIndex = 0;
-            }
-        }
+       
     }
 }
