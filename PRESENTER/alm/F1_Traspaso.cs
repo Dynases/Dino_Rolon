@@ -164,8 +164,8 @@ namespace PRESENTER.alm
             var traspaso = listaTraspasos[index];
 
             lblId.Text = traspaso.Id.ToString();
-            Cb_Destino.Value = traspaso.Destino;
-            Cb_Origen.Value = traspaso.Origen;
+            Cb_Destino.Value = traspaso.IdDestino;
+            Cb_Origen.Value = traspaso.AlmacenOrigen;
             Tb_UsuarioEnvio.Text = traspaso.Usuario;
             lblFechaEnvio.Text = traspaso.Fecha.ToShortDateString();
             lblFechaRecepcion.Text = traspaso.Fecha.ToShortDateString();
@@ -309,7 +309,7 @@ namespace PRESENTER.alm
                 var detalle = new VTraspaso_01
                 {
                     Cantidad = Convert.ToInt32(i.Cells[4].Value),
-                    Fecha = DateTime.Now,
+                    FechaVencimiento = DateTime.Now,
                     Lote = "",
                     ProductoId = Convert.ToInt32(i.Cells[0].Value),
                     TraspasoId = traspaso.Id,
@@ -560,12 +560,12 @@ namespace PRESENTER.alm
             var Vtraspaso = new VTraspaso
             {
                 Concepto = 11,
-                Destino = Convert.ToInt32(Cb_Destino.Value),
+                IdDestino = Convert.ToInt32(Cb_Destino.Value),
                 Estado = 1,
                 Fecha = DateTime.Now,
                 Hora = DateTime.Now.ToShortTimeString(),
                 Observaciones = Tb_Observaciones.Text,
-                Origen = Convert.ToInt32(Cb_Origen.Value),
+                AlmacenOrigen = Convert.ToInt32(Cb_Origen.Value),
                 Usuario = UTGlobal.Usuario
             };
 

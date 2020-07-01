@@ -325,6 +325,12 @@
     <Compile Include="alm\F1_Traspaso.Designer.cs">
       <DependentUpon>F1_Traspaso.cs</DependentUpon>
     </Compile>
+    <Compile Include="alm\F1_Traspaso1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F1_Traspaso1.Designer.cs">
+      <DependentUpon>F1_Traspaso1.cs</DependentUpon>
+    </Compile>
     <Compile Include="com\F1_Compra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Traspaso.resx">
       <DependentUpon>F1_Traspaso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alm\F1_Traspaso1.resx">
+      <DependentUpon>F1_Traspaso1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="com\F1_Compra.resx">
       <DependentUpon>F1_Compra.cs</DependentUpon>

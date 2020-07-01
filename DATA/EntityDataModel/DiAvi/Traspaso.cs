@@ -21,14 +21,20 @@ namespace DATA.EntityDataModel.DiAvi
         }
     
         public int Id { get; set; }
-        public Nullable<int> AlmacenOrigen { get; set; }
-        public Nullable<int> AlmacenDestino { get; set; }
-        public Nullable<int> Estado { get; set; }
+        public int IdAlmacenOrigen { get; set; }
+        public int IdAlmacenDestino { get; set; }
+        public int Estado { get; set; }
         public string UsuarioEnvio { get; set; }
         public string UsuarioRecepcion { get; set; }
-        public Nullable<System.DateTime> FechaEnvio { get; set; }
-        public Nullable<System.DateTime> FechaRecepcion { get; set; }
+        public System.DateTime FechaEnvio { get; set; }
+        public System.DateTime FechaRecepcion { get; set; }
         public string Observaciones { get; set; }
+        public int EstadoEnvio { get; set; }
+        public decimal TotalUnidad { get; set; }
+        public decimal Total { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+        public string Usuario { get; set; }
     
         public virtual Almacen Almacen { get; set; }
         public virtual Almacen Almacen1 { get; set; }

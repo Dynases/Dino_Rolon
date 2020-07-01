@@ -132,6 +132,10 @@
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Location = new System.Drawing.Point(522, 0);
+            // 
             // BubbleBarUsuario
             // 
             // 
@@ -278,6 +282,7 @@
             // 
             // BtnHabilitar
             // 
+            this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
             this.BtnHabilitar.Click += new System.EventHandler(this.BtnHabilitar_Click);
             // 
             // PanelFondo
@@ -372,9 +377,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(904, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 21);
+            this.label3.Size = new System.Drawing.Size(87, 21);
             this.label3.TabIndex = 364;
-            this.label3.Text = "TOTAL CANT.:";
+            this.label3.Text = "Total Uni.:";
             // 
             // tbTotalCantidad
             // 
@@ -390,6 +395,7 @@
             this.tbTotalCantidad.PreventEnterBeep = true;
             this.tbTotalCantidad.Size = new System.Drawing.Size(180, 26);
             this.tbTotalCantidad.TabIndex = 363;
+            this.tbTotalCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -398,9 +404,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(904, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 21);
+            this.label1.Size = new System.Drawing.Size(52, 21);
             this.label1.TabIndex = 362;
-            this.label1.Text = "TOTAL:";
+            this.label1.Text = "Total:";
             // 
             // TbTotal
             // 
@@ -416,6 +422,7 @@
             this.TbTotal.PreventEnterBeep = true;
             this.TbTotal.Size = new System.Drawing.Size(180, 26);
             this.TbTotal.TabIndex = 361;
+            this.TbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 

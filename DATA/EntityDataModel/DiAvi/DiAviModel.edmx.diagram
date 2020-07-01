@@ -18,7 +18,6 @@
         <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="0.75" PointY="12.625" />
         <EntityTypeShape EntityType="DiAviModel.Transformacion" Width="1.5" PointX="11.75" PointY="1" />
         <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="14" PointY="1" />
-        <EntityTypeShape EntityType="DiAviModel.Traspaso" Width="1.5" PointX="5.25" PointY="20.5" />
         <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="3" PointY="5.375" />
         <EntityTypeShape EntityType="DiAviModel.Precio" Width="1.5" PointX="6" PointY="15.75" />
         <EntityTypeShape EntityType="DiAviModel.PrecioCat" Width="1.5" PointX="0.75" PointY="7" />
@@ -33,8 +32,6 @@
         <AssociationConnector Association="DiAviModel.FK_Plantilla01_Plantilla" />
         <AssociationConnector Association="DiAviModel.FK_Sucursal" />
         <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_AlmacenDestino" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_AlmacenOrigen" />
         <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal" />
         <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
         <AssociationConnector Association="DiAviModel.FK_Cliente_PrecioCat" />
@@ -47,8 +44,6 @@
         <EntityTypeShape EntityType="DiAviModel.TI002" Width="1.5" PointX="5.25" PointY="5.75" />
         <EntityTypeShape EntityType="DiAviModel.TI0021" Width="1.5" PointX="4.5" PointY="25.625" />
         <AssociationConnector Association="DiAviModel.FK_TI002_IdAlmacen" />
-        <EntityTypeShape EntityType="DiAviModel.Traspaso_01" Width="1.5" PointX="7.5" PointY="22.625" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Traspaso" />
         <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="8.25" PointY="10.75" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
@@ -89,9 +84,14 @@
         <AssociationConnector Association="DiAviModel.FK_Producto_Plantilla01" />
         <AssociationConnector Association="DiAviModel.FK_TI001_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_TI0021_IdProducto" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso_01" Width="1.5" PointX="7.5" PointY="23" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso" Width="1.5" PointX="5.25" PointY="33.5" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenDestino" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenOrigen" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Traspaso" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

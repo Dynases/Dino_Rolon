@@ -125,12 +125,12 @@ namespace REPOSITORY.Clase
                        {
                            Cantidad = d.Cantidad,
                            Estado = d.Estado.Value,
-                           Fecha = DateTime.Now,
+                           FechaVencimiento = DateTime.Now,
                            Id = d.Id,
                            Marca = d.Marca,
                            Unidad = d.Unidad,
                            ProductoId = d.ProductId,
-                           ProductoDescripcion = d.Producto.Descrip,
+                           Producto = d.Producto.Descrip,
                            TraspasoId = d.TraspasoId,
                        }).ToList();
 

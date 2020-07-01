@@ -118,6 +118,10 @@
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Location = new System.Drawing.Point(522, 0);
+            // 
             // BubbleBarUsuario
             // 
             // 
@@ -144,7 +148,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1229, 615);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -160,7 +164,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1229, 615);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -192,7 +196,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1223, 589);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
@@ -252,6 +256,10 @@
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(1087, 0);
             this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnHabilitar
+            // 
+            this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
             // 
             // PanelContentSup
             // 

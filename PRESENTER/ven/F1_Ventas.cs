@@ -855,8 +855,6 @@ namespace PRESENTER.ven
                 LblPaginacion.Text = "0/0";
             }
         }
-
-        #endregion
         private void MP_AddFila()
         {
             try
@@ -953,6 +951,8 @@ namespace PRESENTER.ven
 
             }
         }
+        #endregion
+
         #region Metodos Heredados
 
         public override void MH_Nuevo()

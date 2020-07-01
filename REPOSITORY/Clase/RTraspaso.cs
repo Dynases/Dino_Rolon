@@ -22,8 +22,9 @@ namespace REPOSITORY.Clase
             this.traspaso_01 = traspaso_01;
         }
 
-        #region CONSULTAS
-
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
         public List<VTraspaso> ListarTraspasos()
         {
             try
@@ -33,14 +34,23 @@ namespace REPOSITORY.Clase
                     var listResult = db.Traspaso
                         .Select(ti => new VTraspaso
                         {
-                            Destino = ti.AlmacenDestino.Value,
-                            Estado = ti.Estado.Value,
-                            Fecha = ti.FechaEnvio.Value,
-                            Hora = ti.FechaEnvio.Value.ToString(),
                             Id = ti.Id,
+                            IdAlmacenOrigen = ti.IdAlmacenOrigen,
+                            IdAlmacenDestino = ti.IdAlmacenDestino,
+                            AlamacenOrigen = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenOrigen).Descrip,
+                            AlamacenDestino = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenDestino).Descrip,
+                            Estado = ti.Estado,
                             Observaciones = ti.Observaciones,
-                            Origen = ti.AlmacenOrigen.Value,
-                            Usuario = ti.UsuarioEnvio
+                            UsuarioEnvio = ti.UsuarioEnvio,
+                            UsuarioRecepcion = ti.UsuarioRecepcion,
+                            FechaRecepcion = ti.FechaRecepcion,
+                            FechaEnvio = ti.FechaEnvio,
+                            EstadoEnvio = ti.EstadoEnvio,
+                            TotalUnidad = ti.TotalUnidad,
+                            Total = ti.Total,
+                            Fecha = ti.FechaEnvio,
+                            Hora = ti.Hora,
+                            Usuario = ti.Usuario
                         }).ToList();
 
                     return listResult;
@@ -51,8 +61,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-
         public List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId)
         {
             try
@@ -117,35 +125,48 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        /********** REPORTE ***********/
         #endregion
-
-        #region TRANSACCIONES
-
-        public bool Guardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
+        #region Transacciones
+        public bool Guardar(VTraspaso vTraspaso, ref int id)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    var traspaso = new Traspaso
+                    var idAux = id;
+                    Traspaso traspaso;
+                    if (id > 0)
                     {
-                        Estado = vTraspaso.Estado,
-                        AlmacenDestino = vTraspaso.Destino,
-                        AlmacenOrigen = vTraspaso.Origen,
-                        FechaEnvio = vTraspaso.Fecha,
-                        FechaRecepcion = null,
-                        Observaciones = vTraspaso.Observaciones,
-                        UsuarioEnvio = vTraspaso.Usuario,
-                        UsuarioRecepcion = null
-                    };
-
+                        traspaso = db.Traspaso.Where(a => a.Id == idAux).FirstOrDefault();
+                        if (traspaso == null)
+                            throw new Exception("No existe el Traspaso con id " + idAux);
+                    }
+                    else
+                    {
+                        traspaso = new Traspaso();
+                        db.Traspaso.Add(traspaso);
+                    }
+                    traspaso.Estado = vTraspaso.Estado;
+                    traspaso.IdAlmacenOrigen = vTraspaso.IdAlmacenOrigen;
+                    traspaso.IdAlmacenDestino = vTraspaso.IdAlmacenDestino;
+                    traspaso.FechaEnvio = vTraspaso.FechaEnvio;
+                    traspaso.FechaRecepcion = vTraspaso.FechaRecepcion;
+                    traspaso.Observaciones = vTraspaso.Observaciones;
+                    traspaso.UsuarioEnvio = vTraspaso.UsuarioEnvio;
+                    traspaso.UsuarioRecepcion = vTraspaso.UsuarioRecepcion;
+                    traspaso.EstadoEnvio = vTraspaso.EstadoEnvio;
+                    traspaso.TotalUnidad = vTraspaso.TotalUnidad;
+                    traspaso.Total = vTraspaso.Total;
+                    traspaso.Fecha = vTraspaso.Fecha;
+                    traspaso.Hora = vTraspaso.Hora;
+                    traspaso.Usuario = vTraspaso.Usuario;
                     db.Traspaso.Add(traspaso);
                     db.SaveChanges();
                     id = traspaso.Id;
 
-                    traspaso.Almacen = db.Almacen.Find(vTraspaso.Origen);
-                    traspaso.Almacen1 = db.Almacen.Find(vTraspaso.Destino);
+                    traspaso.Almacen = db.Almacen.Find(vTraspaso.AlmacenOrigen);
+                    traspaso.Almacen1 = db.Almacen.Find(vTraspaso.IdDestino);
 
                     //ACTUALIZACION EN TI002: CABECERA
                     if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
@@ -166,7 +187,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
         public bool ConfirmarRecepcion(int TraspasoId, string usuarioRecepcion)
         {
             try
@@ -213,8 +233,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-        #endregion
+        #endregion       
 
     }
 }

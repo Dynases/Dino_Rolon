@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout Cb_Destino_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Traspaso));
+            Janus.Windows.GridEX.GridEXLayout Cb_Destino_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Origen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.PanelAbajo = new System.Windows.Forms.Panel();
@@ -70,9 +70,6 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -84,6 +81,10 @@
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelAbajo.SuspendLayout();
             this.GPanel_Detalles.SuspendLayout();
@@ -101,38 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).BeginInit();
             this.SuspendLayout();
             // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 34);
-            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1250, 659);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
-            // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.superTabControl1.Size = new System.Drawing.Size(1250, 693);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
-            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
@@ -149,10 +118,9 @@
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
-            // TxtNombreUsu
+            // BtnExportar
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(1108, 0);
-            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnExportar.Location = new System.Drawing.Point(522, 0);
             // 
             // BubbleBarUsuario
             // 
@@ -236,7 +204,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1294, 631);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1294, 633);
             // 
             // LblSubtitulo
             // 
@@ -251,6 +219,54 @@
             this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.PanelMenu.Size = new System.Drawing.Size(1250, 72);
             // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(1250, 660);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 632);
+            this.PanelInferior.Size = new System.Drawing.Size(1250, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.superTabControl1.Size = new System.Drawing.Size(1250, 693);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Location = new System.Drawing.Point(1108, 0);
+            this.TxtNombreUsu.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnHabilitar
+            // 
+            this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
+            // 
             // PanelFondo
             // 
             this.PanelFondo.BackColor = System.Drawing.Color.Transparent;
@@ -259,7 +275,7 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(1250, 551);
+            this.PanelFondo.Size = new System.Drawing.Size(1250, 524);
             this.PanelFondo.TabIndex = 69;
             // 
             // PanelAbajo
@@ -270,7 +286,7 @@
             this.PanelAbajo.Controls.Add(this.GPanel_Detalles);
             this.PanelAbajo.Location = new System.Drawing.Point(3, 149);
             this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(1244, 371);
+            this.PanelAbajo.Size = new System.Drawing.Size(1244, 344);
             this.PanelAbajo.TabIndex = 1;
             // 
             // GPanel_Detalles
@@ -289,7 +305,7 @@
             this.GPanel_Detalles.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.GPanel_Detalles.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Detalles.Name = "GPanel_Detalles";
-            this.GPanel_Detalles.Size = new System.Drawing.Size(1244, 371);
+            this.GPanel_Detalles.Size = new System.Drawing.Size(1244, 344);
             // 
             // 
             // 
@@ -334,9 +350,9 @@
             this.panelNavegacionPlantilla.Controls.Add(this.btnPrimerPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.btnUltimaPlantilla);
             this.panelNavegacionPlantilla.Controls.Add(this.lblPlantillaCount);
-            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(719, 297);
+            this.panelNavegacionPlantilla.Location = new System.Drawing.Point(719, 271);
             this.panelNavegacionPlantilla.Name = "panelNavegacionPlantilla";
-            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(513, 43);
+            this.panelNavegacionPlantilla.Size = new System.Drawing.Size(507, 43);
             this.panelNavegacionPlantilla.TabIndex = 27;
             // 
             // lblIdPlantilla
@@ -346,7 +362,7 @@
             this.lblIdPlantilla.ForeColor = System.Drawing.Color.White;
             this.lblIdPlantilla.Location = new System.Drawing.Point(57, 0);
             this.lblIdPlantilla.Name = "lblIdPlantilla";
-            this.lblIdPlantilla.Size = new System.Drawing.Size(48, 11);
+            this.lblIdPlantilla.Size = new System.Drawing.Size(44, 10);
             this.lblIdPlantilla.TabIndex = 362;
             this.lblIdPlantilla.Text = "[IdPlantilla]";
             // 
@@ -369,7 +385,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(51, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 360;
             this.label2.Text = "Plantillas";
             // 
@@ -443,7 +459,7 @@
             this.lblPlantillaCount.ForeColor = System.Drawing.Color.White;
             this.lblPlantillaCount.Location = new System.Drawing.Point(3, 11);
             this.lblPlantillaCount.Name = "lblPlantillaCount";
-            this.lblPlantillaCount.Size = new System.Drawing.Size(42, 20);
+            this.lblPlantillaCount.Size = new System.Drawing.Size(39, 19);
             this.lblPlantillaCount.TabIndex = 0;
             this.lblPlantillaCount.Text = "0 / 0";
             // 
@@ -504,7 +520,7 @@
             this.Dgv_DetalleNuevo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.Dgv_DetalleNuevo.Location = new System.Drawing.Point(0, 0);
             this.Dgv_DetalleNuevo.Name = "Dgv_DetalleNuevo";
-            this.Dgv_DetalleNuevo.Size = new System.Drawing.Size(507, 263);
+            this.Dgv_DetalleNuevo.Size = new System.Drawing.Size(507, 265);
             this.Dgv_DetalleNuevo.TabIndex = 4;
             // 
             // panelIzquierda
@@ -563,7 +579,7 @@
             this.Dgv_ProductosInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_ProductosInventario.Location = new System.Drawing.Point(0, 0);
             this.Dgv_ProductosInventario.Name = "Dgv_ProductosInventario";
-            this.Dgv_ProductosInventario.Size = new System.Drawing.Size(710, 309);
+            this.Dgv_ProductosInventario.Size = new System.Drawing.Size(710, 311);
             this.Dgv_ProductosInventario.TabIndex = 4;
             this.Dgv_ProductosInventario.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_ProductosInventario_EditingCell);
             this.Dgv_ProductosInventario.Click += new System.EventHandler(this.Dgv_ProductosInventario_Click);
@@ -573,7 +589,7 @@
             this.Dgv_DetalleTraspaso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_DetalleTraspaso.Location = new System.Drawing.Point(0, 0);
             this.Dgv_DetalleTraspaso.Name = "Dgv_DetalleTraspaso";
-            this.Dgv_DetalleTraspaso.Size = new System.Drawing.Size(1238, 343);
+            this.Dgv_DetalleTraspaso.Size = new System.Drawing.Size(1238, 318);
             this.Dgv_DetalleTraspaso.TabIndex = 0;
             // 
             // PanelArriba
@@ -664,7 +680,7 @@
             this.lblEstadoTraspasoValue.Location = new System.Drawing.Point(941, 91);
             this.lblEstadoTraspasoValue.Name = "lblEstadoTraspasoValue";
             this.lblEstadoTraspasoValue.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblEstadoTraspasoValue.Size = new System.Drawing.Size(91, 20);
+            this.lblEstadoTraspasoValue.Size = new System.Drawing.Size(82, 18);
             this.lblEstadoTraspasoValue.TabIndex = 364;
             this.lblEstadoTraspasoValue.Text = "[Estado value]";
             // 
@@ -681,7 +697,7 @@
             this.lblEstadoTraspaso.Location = new System.Drawing.Point(1020, 42);
             this.lblEstadoTraspaso.Name = "lblEstadoTraspaso";
             this.lblEstadoTraspaso.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblEstadoTraspaso.Size = new System.Drawing.Size(65, 24);
+            this.lblEstadoTraspaso.Size = new System.Drawing.Size(59, 22);
             this.lblEstadoTraspaso.TabIndex = 363;
             this.lblEstadoTraspaso.Text = "[Estado]";
             // 
@@ -698,7 +714,7 @@
             this.labelX4.Location = new System.Drawing.Point(941, 6);
             this.labelX4.Name = "labelX4";
             this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX4.Size = new System.Drawing.Size(44, 20);
+            this.labelX4.Size = new System.Drawing.Size(40, 18);
             this.labelX4.TabIndex = 361;
             this.labelX4.Text = "Estado";
             // 
@@ -821,7 +837,7 @@
             this.labelX10.Location = new System.Drawing.Point(634, 6);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(93, 20);
+            this.labelX10.Size = new System.Drawing.Size(84, 18);
             this.labelX10.TabIndex = 353;
             this.labelX10.Text = "Observaciones";
             // 
@@ -839,7 +855,7 @@
             this.Cb_Destino.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Destino.SelectedIndex = -1;
             this.Cb_Destino.SelectedItem = null;
-            this.Cb_Destino.Size = new System.Drawing.Size(316, 24);
+            this.Cb_Destino.Size = new System.Drawing.Size(316, 22);
             this.Cb_Destino.TabIndex = 351;
             this.Cb_Destino.Tag = "1";
             this.Cb_Destino.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -874,7 +890,7 @@
             this.Cb_Origen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_Origen.SelectedIndex = -1;
             this.Cb_Origen.SelectedItem = null;
-            this.Cb_Origen.Size = new System.Drawing.Size(299, 24);
+            this.Cb_Origen.Size = new System.Drawing.Size(299, 22);
             this.Cb_Origen.TabIndex = 349;
             this.Cb_Origen.Tag = "1";
             this.Cb_Origen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
@@ -909,7 +925,7 @@
             this.lblId.Location = new System.Drawing.Point(203, 3);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblId.Size = new System.Drawing.Size(40, 20);
+            this.lblId.Size = new System.Drawing.Size(37, 18);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
@@ -922,9 +938,6 @@
             this.Name = "F1_Traspaso";
             this.Text = "F1_Traspaso";
             this.Load += new System.EventHandler(this.F1_Traspaso_Load);
-            this.PanelContenidoRegistro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -937,6 +950,11 @@
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelAbajo.ResumeLayout(false);
             this.GPanel_Detalles.ResumeLayout(false);
