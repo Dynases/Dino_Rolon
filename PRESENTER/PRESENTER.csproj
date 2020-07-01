@@ -325,6 +325,12 @@
     <Compile Include="alm\F1_Traspaso.Designer.cs">
       <DependentUpon>F1_Traspaso.cs</DependentUpon>
     </Compile>
+    <Compile Include="alm\F2_ReporteKardexProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F2_ReporteKardexProducto.Designer.cs">
+      <DependentUpon>F2_ReporteKardexProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="com\F1_Compra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     <EmbeddedResource Include="alm\F1_Traspaso.resx">
       <DependentUpon>F1_Traspaso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="alm\F2_ReporteKardexProducto.resx">
+      <DependentUpon>F2_ReporteKardexProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="com\F1_Compra.resx">
       <DependentUpon>F1_Compra.cs</DependentUpon>
     </EmbeddedResource>
@@ -548,6 +557,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
     <EmbeddedResource Include="Report\ReportViewer\CompraIngresoCriterio.rdlc" />
+    <EmbeddedResource Include="Report\ReportViewer\KardexGeneral.rdlc" />
     <EmbeddedResource Include="Report\RSeleccionNota.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RSeleccionNota.cs</LastGenOutput>
