@@ -1,25 +1,65 @@
 ﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.inv.TI002.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using UTILITY.Enum.ENConcepto;
 
 namespace REPOSITORY.Clase
 {
+  
     public class RTI002 : BaseConexion, ITI002
     {
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public VTI002 TraerMovimiento(int idDetalle, int idConcepto)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.TI002
+                       .Where(v => v.ibiddc == idDetalle && v.ibconcep == idConcepto)
+                       .Select(v => new VTI002
+                       {
+                           IdManual = v.ibid,
+                           fechaDocumento = v.ibfdoc,
+                           IdConecpto = v.ibconcep,
+                           Observacion = v.ibobs,                          
+                           Estado = v.ibest,
+                           IdAlmacenOrigen = v.ibalm,
+                           idAlmacenDestino = v.ibdepdest,
+                           IdDestino = v.ididdestino,
+                           IdDetalle = v.ibiddc
+
+                       }).FirstOrDefault();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /********** VARIOS REGISTROS ***********/
+
+        /********** REPORTE ***********/
+        #endregion
         #region Trasancciones
 
-        public bool Guardar(int idAlmacenSalida,
-                            string almacenSalida,
-                            int idAlmacenDestino,
-                            string almacenDestino,
-                            int idTraspaso,
+        public bool Guardar(int idAlmacenOrigen,                            
+                            int idAlmacenDestino,                           
+                            int idDetalle,
                             string usuario,
-                            string observaciones,
+                            string observacion,
                             int concepto,
-                            ref int idTI2)
+                            ref int idTI2,
+                            int idDestino)
         {
             try
             {
@@ -27,17 +67,17 @@ namespace REPOSITORY.Clase
                 {
                     var ti002 = new TI002
                     {
-                        ibalm = idAlmacenSalida,
-                        ibconcep = concepto,//FROM TCI001 id 6 TRASPASO SALIDA
+                        ibalm = idAlmacenOrigen,
+                        ibconcep = concepto,
                         ibdepdest = idAlmacenDestino,
-                        ibest = 2,//NO SE SABE PORQUE
+                        ibest = 2,
                         ibfact = DateTime.Now,
                         ibfdoc = DateTime.Now,
                         ibhact = DateTime.Now.ToShortTimeString(),
                         ibid = db.TI002.Max(t => t.ibid) + 1,
-                        ididdestino = 0,
-                        ibiddc = idTraspaso, //JOIN IMPLICITO A TABLA TRASPASO
-                        ibobs = observaciones,
+                        ididdestino = idDestino,
+                        ibiddc = idDetalle, 
+                        ibobs = observacion,
                         ibuact = usuario
                     };
 
@@ -54,10 +94,11 @@ namespace REPOSITORY.Clase
         }
         public bool Modificar(int idAlmacenSalida,                          
                            int idAlmacenDestino,                          
-                           int? idDetalle,
+                           int idDetalle,
                            string usuario,
                            string observaciones,
-                           int concepto)
+                           int concepto,
+                           int idDestino)
         {
             try
             {
@@ -71,7 +112,7 @@ namespace REPOSITORY.Clase
                     ti002.ibest = 2;//NO SE SABE PORQUE
                     ti002.ibalm = idAlmacenSalida;                   
                     ti002.ibdepdest = idAlmacenDestino;
-                    ti002.ididdestino = 0;
+                    ti002.ididdestino = idDestino;
                     ti002.ibfact = DateTime.Now;
                     ti002.ibiddc = idDetalle; //JOIN IMPLICITO A TABLA TRASPASO
                     ti002.ibfdoc = DateTime.Now;
@@ -97,6 +138,38 @@ namespace REPOSITORY.Clase
                     var tI002 = db.TI002.FirstOrDefault(b => b.ibiddc == IdDetalle &&
                                                                 b.ibconcep == concepto);
                     db.TI002.Remove(tI002);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ModificarCampoDestinoTraspaso(int idTraspaso)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var IdmovimientoOrigen = db.TI002.FirstOrDefault(b => b.ibiddc == idTraspaso &&
+                                                                b.ibconcep == (int)ENConcepto.TRASPASO_SALIDA).ibid;
+
+                    var IdmovimientoDestino= db.TI002.FirstOrDefault(b => b.ibiddc == idTraspaso &&
+                                                              b.ibconcep == (int)ENConcepto.TRASPASO_INGRESO).ibid;
+                    var movimientos = db.TI002.Where(b => b.ibiddc == idTraspaso).ToList();
+                    foreach (var fila in movimientos)
+                    {
+                        if (fila.ibconcep == (int)ENConcepto.TRASPASO_SALIDA)
+                        {
+                            fila.ididdestino = IdmovimientoDestino;
+                        }
+                        if (fila.ibconcep == (int)ENConcepto.TRASPASO_INGRESO)
+                        {
+                            fila.ididdestino = IdmovimientoOrigen;
+                        }                        
+                    }
                     db.SaveChanges();
                     return true;
                 }

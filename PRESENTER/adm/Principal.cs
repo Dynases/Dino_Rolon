@@ -125,7 +125,8 @@ namespace PRESENTER.adm
 
         private void btInvTraspaso_Click(object sender, EventArgs e)
         {
-            F1_Traspaso frm = new F1_Traspaso();
+            MODEL.ModeloF1._NombreProg = btInvTraspaso.Name;
+            F1_Traspaso1 frm = new F1_Traspaso1();
             frm.Show();
         }
 

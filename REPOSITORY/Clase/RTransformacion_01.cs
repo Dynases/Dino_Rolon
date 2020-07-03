@@ -134,7 +134,7 @@ namespace REPOSITORY.Clase
                                                                     i.Id,
                                                                     usuario,
                                                                     (transformacion.Id + " - " + " I -Transformacion Salida numiprod: " + transformacion_01.IdProducto_Mat + "| " + AlmacenSalida),
-                                                                    (int)ENConcepto.TRANSFORMACION_SALIDA))
+                                                                    (int)ENConcepto.TRANSFORMACION_SALIDA,0))
                                                 {
                                                     return false;
                                                 }
@@ -175,7 +175,7 @@ namespace REPOSITORY.Clase
                                                                 i.Id,
                                                                 usuario,
                                                                 (transformacion.Id + " - " + " I -Transformacion ingreso numiprod: " + transformacion_01.IdProducto + "| " + AlmacenIngreso),
-                                                                (int)ENConcepto.TRANSFORMACION_INGRESO))
+                                                                (int)ENConcepto.TRANSFORMACION_INGRESO,0))
                                                 {
                                                     return false;
                                                 }

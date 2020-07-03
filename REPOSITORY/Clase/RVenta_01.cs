@@ -88,7 +88,7 @@ namespace REPOSITORY.Clase
                 {
                     Venta_01 venta_01 = db.Venta_01.Where(a => a.Id == IdDetalle).FirstOrDefault();
                     if (venta_01 == null)
-                    { throw new Exception("No existe la venta con id " + IdDetalle); }
+                    { throw new Exception("No existe el detalle de venta con id " + IdDetalle); }
                     db.Venta_01.Remove(venta_01);
                     db.SaveChanges();
                     return true;
@@ -210,11 +210,10 @@ namespace REPOSITORY.Clase
                            Cantidad = 0,
                            Contenido = v.Contenido,
                            TotalContenido = 0,
-                           PrecioVenta = v.Venta.Cliente.PrecioCat.Precio.FirstOrDefault().Precio1,
-                           //El digito 8 es el id de Precio de costo.
+                           PrecioVenta = v.Venta.Cliente.PrecioCat.Precio.FirstOrDefault().Precio1,                       
                            PrecioCosto = db.Precio.FirstOrDefault(x=> x.IdProduc == v.IdProducto &&
                                                                       x.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
-                                                                      x.IdPrecioCat == 8).Precio1,
+                                                                      x.IdPrecioCat == (int)ENCategoriaPrecio.COSTO).Precio1,
                            Lote = v.Lote,
                            FechaVencimiento = v.FechaVencimiento,
                            Delete = "",

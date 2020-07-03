@@ -444,7 +444,7 @@
             this.BtnHabilitar.Size = new System.Drawing.Size(78, 72);
             this.BtnHabilitar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BtnHabilitar.TabIndex = 72;
-            this.BtnHabilitar.Text = "HABILITAR";
+            this.BtnHabilitar.Text = "COPIAR";
             this.BtnHabilitar.TextColor = System.Drawing.Color.White;
             this.BtnHabilitar.Visible = false;
             // 

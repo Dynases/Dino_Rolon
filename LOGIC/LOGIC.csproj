@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\LTI002.cs" />
     <Compile Include="Class\DiSoft\LZona.cs" />
     <Compile Include="Class\LAlmacen.cs" />
     <Compile Include="Class\LCliente.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Class\LProveedor_01.cs" />
     <Compile Include="Class\LSeleccion.cs" />
     <Compile Include="Class\LSeleccion_01.cs" />
+    <Compile Include="Class\LTI0021.cs" />
     <Compile Include="Class\LTipoAlmacen.cs" />
     <Compile Include="Class\LTransformacion.cs" />
     <Compile Include="Class\LTransformacion_01.cs" />

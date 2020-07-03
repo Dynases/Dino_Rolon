@@ -13,7 +13,7 @@ namespace REPOSITORY.Clase
     {
         #region Trasancciones
 
-        public bool Guardar(int idTI002,
+        public bool Guardar(int idEncabezado,
                             int idProducto,
                             decimal cantidad,
                             string lote,
@@ -28,7 +28,7 @@ namespace REPOSITORY.Clase
                         iccant = cantidad,
                         iccprod = idProducto,
                         icfvenc = fechaVen,
-                        icibid = idTI002,
+                        icibid = idEncabezado,
                         iclot = lote,
                         icid = db.TI0021.Max(t => t.icid) + 1
                     };
@@ -81,6 +81,57 @@ namespace REPOSITORY.Clase
                                                                                                        c.ibconcep == concepto)
                                                                                                     .ibid);
                     db.TI0021.Remove(tI0021);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool ModificarTraspaso(decimal cantidad,
+                           int idEncabezado,
+                           int idProducto,
+                           string lote,
+                           DateTime fechaVen)
+
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var ti0021 = db.TI0021.FirstOrDefault(b => b.icibid == idEncabezado &&
+                                                               b.iccprod == idProducto &&
+                                                               b.iclot == lote && 
+                                                               b.icfvenc == fechaVen);                   
+                    ti0021.iccant = cantidad;
+                    db.TI0021.Attach(ti0021);
+                    db.Entry(ti0021).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarTraspaso(int idEncabezado,
+                                       int idProducto,
+                                       string lote,
+                                       DateTime fechaVen)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var ti0021 = db.TI0021.FirstOrDefault(b => b.icibid == idEncabezado &&
+                                                                b.iccprod == idProducto &&
+                                                                b.iclot == lote &&
+                                                                b.icfvenc == fechaVen);
+                    db.TI0021.Remove(ti0021);
                     db.SaveChanges();
                     return true;
                 }

@@ -29,8 +29,12 @@ namespace UTILITY.Enum.EnEstaticos
         COMPRA_INGRESO_CANTIDAD_CAJAS = 2,
         COMPRA_INGRESO_CANTIDAD_GRUPOS = 3,
         COMPRA_INGRESO_RECIBIDO = 4,
-
+        //****VENTA
+        VENTA_ENC_PREVENTA = 1,
+        VENTA_ENC_VENTA = 2,
+        VENTA_ENC_TRASPORTE = 3,
+        VENTA_ENC_RECEPCION= 4,
         //****ROL
-        ROL_ORDEN =1
+        ROL_ORDEN = 1
     }
 }

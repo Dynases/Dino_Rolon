@@ -64,10 +64,10 @@
             this.LabelX9 = new DevComponents.DotNetBar.LabelX();
             this.PanelDetalle = new System.Windows.Forms.Panel();
             this.GPanel_Detalle = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel7 = new System.Windows.Forms.Panel();
             this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
-            this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -96,10 +96,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_PDesc)).BeginInit();
             this.PanelDetalle.SuspendLayout();
             this.GPanel_Detalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
             this.GPanel_Producto.SuspendLayout();
             this.Panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPrimero
@@ -213,6 +213,7 @@
             // 
             // PanelContenidoRegistro
             // 
+            this.PanelContenidoRegistro.Controls.Add(this.GPanel_Producto);
             this.PanelContenidoRegistro.Controls.Add(this.PanelDetalle);
             this.PanelContenidoRegistro.Controls.Add(this.PanelTotal);
             this.PanelContenidoRegistro.Controls.Add(this.PanelContentSup);
@@ -224,6 +225,7 @@
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelContentSup, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelTotal, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelDetalle, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Producto, 0);
             // 
             // PanelInferior
             // 
@@ -392,7 +394,7 @@
             this.btn_Agregar.Image = global::PRESENTER.Properties.Resources.GRABACION_EXITOSA;
             this.btn_Agregar.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btn_Agregar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btn_Agregar.Location = new System.Drawing.Point(270, 3);
+            this.btn_Agregar.Location = new System.Drawing.Point(1056, 64);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btn_Agregar.Size = new System.Drawing.Size(130, 39);
@@ -400,6 +402,7 @@
             this.btn_Agregar.SymbolSize = 5F;
             this.btn_Agregar.TabIndex = 373;
             this.btn_Agregar.Text = "Plantilla";
+            this.btn_Agregar.Visible = false;
             // 
             // lbNFactura
             // 
@@ -905,7 +908,6 @@
             this.GPanel_Detalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_Detalle.CanvasColor = System.Drawing.SystemColors.Control;
             this.GPanel_Detalle.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GPanel_Detalle.Controls.Add(this.GPanel_Producto);
             this.GPanel_Detalle.Controls.Add(this.Dgv_Detalle);
             this.GPanel_Detalle.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -944,6 +946,24 @@
             this.GPanel_Detalle.TabIndex = 287;
             this.GPanel_Detalle.Text = "COMPRA DETALLE";
             // 
+            // Dgv_Detalle
+            // 
+            this.Dgv_Detalle.BackColor = System.Drawing.Color.GhostWhite;
+            this.Dgv_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Detalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Detalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Detalle.Name = "Dgv_Detalle";
+            this.Dgv_Detalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Dgv_Detalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Dgv_Detalle.Size = new System.Drawing.Size(1223, 179);
+            this.Dgv_Detalle.TabIndex = 0;
+            this.Dgv_Detalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
+            this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
+            this.Dgv_Detalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Detalle_KeyDown_1);
+            // 
             // GPanel_Producto
             // 
             this.GPanel_Producto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
@@ -952,9 +972,9 @@
             this.GPanel_Producto.Controls.Add(this.Panel7);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Producto.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Producto.Location = new System.Drawing.Point(3, 68);
+            this.GPanel_Producto.Location = new System.Drawing.Point(87, 111);
             this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(707, 136);
+            this.GPanel_Producto.Size = new System.Drawing.Size(707, 36);
             // 
             // 
             // 
@@ -994,7 +1014,7 @@
             this.Panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel7.Location = new System.Drawing.Point(0, 0);
             this.Panel7.Name = "Panel7";
-            this.Panel7.Size = new System.Drawing.Size(701, 113);
+            this.Panel7.Size = new System.Drawing.Size(701, 13);
             this.Panel7.TabIndex = 0;
             // 
             // Dgv_Producto
@@ -1009,29 +1029,11 @@
             this.Dgv_Producto.Name = "Dgv_Producto";
             this.Dgv_Producto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Dgv_Producto.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Producto.Size = new System.Drawing.Size(701, 113);
+            this.Dgv_Producto.Size = new System.Drawing.Size(701, 13);
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell_1);
             this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown_1);
-            // 
-            // Dgv_Detalle
-            // 
-            this.Dgv_Detalle.BackColor = System.Drawing.Color.GhostWhite;
-            this.Dgv_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Detalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Detalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Dgv_Detalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Dgv_Detalle.Size = new System.Drawing.Size(1223, 179);
-            this.Dgv_Detalle.TabIndex = 0;
-            this.Dgv_Detalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
-            this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
-            this.Dgv_Detalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Detalle_KeyDown_1);
             // 
             // F1_Compra
             // 
@@ -1072,10 +1074,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_PDesc)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.GPanel_Detalle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
             this.GPanel_Producto.ResumeLayout(false);
             this.Panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
             this.ResumeLayout(false);
 
         }
