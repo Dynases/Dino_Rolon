@@ -221,30 +221,39 @@ namespace PRESENTER.ven
 
         private void MP_MostrarRegistro(int index)
         {
-            var venta = listaVentas[index];
+            try
+            {
+                var venta = listaVentas[index];
 
-            Tb_Cod.Text = venta.Id.ToString();
-            lblId.Text = venta.Id.ToString();
-            Cb_Origen.SelectedItem = venta.DescripcionAlmacen;
-            Dt_FechaVenta.Value = venta.FechaVenta;
-            Tb_Usuario.Text = venta.Usuario;
-            cb_Cliente.Value = venta.IdCliente;          
-            TbNitCliente.Text = venta.NitCliente; 
-            Sw_TipoVenta.Value = true;
-            sw_estado.Value = true;
-            Cb_EncRecepcion.Value = venta.EncRecepcion;
-            Cb_EncVenta.Value = venta.EncVenta;
-            Cb_EncPreVenta.Value = venta.EncPrVenta;
-            Cb_EncTransporte.Value = venta.EncTransporte;     
-            TbEncEntrega.Text = venta.EncEntrega;           
-            Tb_Observaciones.Text = venta.Observaciones;
-            lblFechaRegistro.Text = venta.Fecha.ToString();
-            lblHora.Text = venta.Hora;
-            lblUsuario.Text = venta.Usuario;
-            idCategoriaPrecio = venta.IdCategoriaCliente;
-            this.MP_CargarDetalleRegistro(venta.Id,1);
-            this.MP_ObtenerCalculo();
-            this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
+                Tb_Cod.Text = venta.Id.ToString();
+                lblId.Text = venta.Id.ToString();
+                Cb_Origen.SelectedItem = venta.DescripcionAlmacen;
+                Dt_FechaVenta.Value = venta.FechaVenta;
+                Tb_Usuario.Text = venta.Usuario;
+                cb_Cliente.Value = venta.IdCliente;
+                TbNitCliente.Text = venta.NitCliente;
+                Sw_TipoVenta.Value = true;
+                sw_estado.Value = true;
+                Cb_EncRecepcion.Value = venta.EncRecepcion;
+                Cb_EncVenta.Value = venta.EncVenta;
+                Cb_EncPreVenta.Value = venta.EncPrVenta;
+                Cb_EncTransporte.Value = venta.EncTransporte;
+                TbEncEntrega.Text = venta.EncEntrega;
+                Tb_Observaciones.Text = venta.Observaciones;
+                lblFechaRegistro.Text = venta.Fecha.ToString();
+                lblHora.Text = venta.Hora;
+                lblUsuario.Text = venta.Usuario;
+                idCategoriaPrecio = venta.IdCategoriaCliente;
+                this.MP_CargarDetalleRegistro(venta.Id, 1);
+                this.MP_ObtenerCalculo();
+                this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+          
         }
 
         private void MP_CargarDetalleRegistro(int id, int EsPlantilla)
@@ -1264,7 +1273,7 @@ namespace PRESENTER.ven
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            index = listaVentas.Count - 2;
+            index = listaVentas.Count - 1;
             this.MP_MostrarRegistro(index);
         }
 

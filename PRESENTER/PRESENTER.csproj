@@ -319,11 +319,11 @@
     <Compile Include="alm\F1_Sucursal.Designer.cs">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="alm\F1_Traspaso.cs">
+    <Compile Include="alm\F1_Traspaso1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="alm\F1_Traspaso.Designer.cs">
-      <DependentUpon>F1_Traspaso.cs</DependentUpon>
+    <Compile Include="alm\F1_Traspaso1.Designer.cs">
+      <DependentUpon>F1_Traspaso1.cs</DependentUpon>
     </Compile>
     <Compile Include="alm\F2_ReporteKardexProducto.cs">
       <SubType>Form</SubType>
@@ -498,8 +498,8 @@
     <EmbeddedResource Include="alm\F1_Sucursal.resx">
       <DependentUpon>F1_Sucursal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="alm\F1_Traspaso.resx">
-      <DependentUpon>F1_Traspaso.cs</DependentUpon>
+    <EmbeddedResource Include="alm\F1_Traspaso1.resx">
+      <DependentUpon>F1_Traspaso1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F2_ReporteKardexProducto.resx">
       <DependentUpon>F2_ReporteKardexProducto.cs</DependentUpon>
@@ -592,6 +592,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarCompraIngresoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarTraspasoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -625,7 +628,7 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TraspasoGuardarResponse.datasource">
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Traspaso1GuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.UsuarioGuardarResponse.datasource">
@@ -777,9 +780,12 @@
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01_Lista.datasource" />
-    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTListaProducto.datasource" />
-    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso.datasource" />
-    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_01.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTListaProducto1.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso1.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_011.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso1.View.VTListaProducto.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso1.View.VTraspaso1.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso1.View.VTraspaso1_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreria.datasource" />
     <None Include="Properties\DataSources\ENTITY.Libreria.View.VLibreriaLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.Plantilla.VPlantilla.datasource" />
