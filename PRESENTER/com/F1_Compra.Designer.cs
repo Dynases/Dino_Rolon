@@ -213,7 +213,6 @@
             // 
             // PanelContenidoRegistro
             // 
-            this.PanelContenidoRegistro.Controls.Add(this.GPanel_Producto);
             this.PanelContenidoRegistro.Controls.Add(this.PanelDetalle);
             this.PanelContenidoRegistro.Controls.Add(this.PanelTotal);
             this.PanelContenidoRegistro.Controls.Add(this.PanelContentSup);
@@ -225,7 +224,6 @@
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelContentSup, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelTotal, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelDetalle, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Producto, 0);
             // 
             // PanelInferior
             // 
@@ -321,6 +319,7 @@
             // 
             this.Panel2.AutoScroll = true;
             this.Panel2.BackColor = System.Drawing.Color.White;
+            this.Panel2.Controls.Add(this.GPanel_Producto);
             this.Panel2.Controls.Add(this.LblRecibo);
             this.Panel2.Controls.Add(this.Tb_Recibo);
             this.Panel2.Controls.Add(this.btn_Agregar);
@@ -972,7 +971,7 @@
             this.GPanel_Producto.Controls.Add(this.Panel7);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Producto.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPanel_Producto.Location = new System.Drawing.Point(87, 111);
+            this.GPanel_Producto.Location = new System.Drawing.Point(234, 3);
             this.GPanel_Producto.Name = "GPanel_Producto";
             this.GPanel_Producto.Size = new System.Drawing.Size(707, 36);
             // 
