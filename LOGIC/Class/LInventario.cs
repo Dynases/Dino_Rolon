@@ -1,4 +1,6 @@
 ﻿using ENTITY.inv.TI001.VIew;
+using ENTITY.inv.TI002.View;
+using ENTITY.inv.TI0021.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -11,8 +13,8 @@ using UTILITY.Enum;
 
 namespace LOGIC.Class
 {
-   public class LInventario
-    {       
+    public class LInventario
+    {
         protected ITI001 iTi001;
         protected ITI002 iTi002;
         protected ITI0021 iTi0021;
@@ -20,7 +22,7 @@ namespace LOGIC.Class
         {
             iTi002 = new RTI002();
             iTi0021 = new RTI0021();
-            iTi001 = new RTI001(iTi002, iTi0021); 
+            iTi001 = new RTI001(iTi002, iTi0021);
         }
         #region Consultas
 
@@ -29,7 +31,7 @@ namespace LOGIC.Class
         {
             try
             {
-                return this.iTi001.TraerStockActual(IdProducto,idAlmacen,lote,fecha);
+                return this.iTi001.TraerStockActual(IdProducto, idAlmacen, lote, fecha);
             }
             catch (Exception ex)
             {
@@ -56,7 +58,7 @@ namespace LOGIC.Class
                                               int idProducto,
                                               int idAlmacen,
                                               string lote, DateTime fechaVencimiento,
-                                              decimal  cantidad,
+                                              decimal cantidad,
                                               int concepto,
                                               string Observacion,
                                               EnAccionEnInventario accion,
@@ -121,7 +123,7 @@ namespace LOGIC.Class
                                               int idAlmacen,
                                               string lote, DateTime fechaVencimiento,
                                               decimal cantidad,
-                                              int concepto,                                           
+                                              int concepto,
                                               EnAccionEnInventario accion)
         {
             try
@@ -136,6 +138,59 @@ namespace LOGIC.Class
                                                                    concepto,
                                                                    accion
                                                                    );
+                    scope.Complete();
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool NuevoTraspasoInventario(VTI0021 detalle, int idAlmacen,
+                               EnAccionEnInventario accion, int idTraspaso)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var resultado = this.iTi001.NuevoTraspasoInventario(detalle,idAlmacen, accion, idTraspaso);
+                    scope.Complete();
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        //Funcionalidad de traspasos, valida existenia, ingresa o modifica el inventario y las tablas de movimientos de detalle.
+        public bool ModificarTraspasoInventario(VTI0021 detalle, int idAlmacen,int idMovimiento)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var resultado = this.iTi001.ModificarTraspasoInventario(detalle, idAlmacen, idMovimiento);
+                    scope.Complete();
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarTraspasoInventario(VTI0021 detalle, int idEncabezadp,
+                               int idAlmacen,
+                               int concepto,
+                               EnAccionEnInventario accion)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var resultado = this.iTi001.EliminarTraspasoInventario(detalle, idEncabezadp, idAlmacen, concepto, accion);
                     scope.Complete();
                     return resultado;
                 }

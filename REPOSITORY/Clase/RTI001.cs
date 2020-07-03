@@ -1,5 +1,6 @@
 ﻿using DATA.EntityDataModel.DiAvi;
 using ENTITY.inv.TI001.VIew;
+using ENTITY.inv.TI0021.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
@@ -138,13 +139,13 @@ namespace REPOSITORY.Clase
                     }
                     int idMovimiento = 0;
                     //NUEVO EL MOVIMIENTO
-                    if (!this.tI002.Guardar(idAlmacen, "",
-                                        0, "",
+                    if (!this.tI002.Guardar(idAlmacen,
+                                        0, 
                                         idDetalle,
                                         usuario,
                                         Observacion,
                                         concepto,
-                                        ref idMovimiento))
+                                        ref idMovimiento,0))
                     {
                         return false;
                     }
@@ -196,7 +197,7 @@ namespace REPOSITORY.Clase
                                             idDetalle,
                                             usuario,
                                             Observacion,
-                                            concepto))
+                                            concepto,0))
                         {
                             return false;
                         }
@@ -214,13 +215,13 @@ namespace REPOSITORY.Clase
                     {
                         int idMovimiento = 0;
                         //NUEVO EL MOVIMIENTO
-                        if (!this.tI002.Guardar(idAlmacen, "",
-                                            0, "",
+                        if (!this.tI002.Guardar(idAlmacen, 
+                                            0, 
                                             idDetalle,
                                             usuario,
                                             Observacion,
                                             concepto,
-                                            ref idMovimiento))
+                                            ref idMovimiento,0))
                         {
                             return false;
                         }
@@ -281,6 +282,128 @@ namespace REPOSITORY.Clase
                             return false;
                         }
                     }                   
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool NuevoTraspasoInventario(VTI0021 detalle,  int idAlmacen,                               
+                               EnAccionEnInventario accion, int idEncabezado)
+        {
+            try
+            {
+                if (detalle.Cantidad > 0)
+                {
+                    if (!this.ExisteProducto(detalle.IdProducto, idAlmacen, detalle.Lote, detalle.FechaVencimiento))
+                    {
+                        if (!this.Nuevo(idAlmacen, detalle.IdProducto, detalle.Cantidad,detalle.Lote, detalle.FechaVencimiento))
+                        {
+                            return false;
+                        }
+                    }
+                    if (!this.ActualizarInventario(detalle.IdProducto,
+                                                     idAlmacen,
+                                                     accion,
+                                                     detalle.Cantidad,
+                                                     detalle.Lote,
+                                                     detalle.FechaVencimiento))
+                    {
+                        return false;
+                    }                    
+                    //NUEVO DETALLE DE MOVIMIENTO
+                    if (!this.tI0021.Guardar(idEncabezado, detalle.IdProducto,
+                                          detalle.Cantidad,
+                                          detalle.Lote, 
+                                          detalle.FechaVencimiento))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool ModificarTraspasoInventario(VTI0021 detalle, int idAlmacen,int idEncabezado)
+        {
+            try
+            {
+                if (detalle.CantidadNueva > 0)
+                {
+                    if (!this.ExisteProducto(detalle.IdProducto, idAlmacen, detalle.Lote, detalle.FechaVencimiento))
+                    {
+                        if (!this.Nuevo(idAlmacen, detalle.IdProducto, detalle.CantidadNueva, detalle.LoteNuevo, detalle.FechaVencimientoNuevo))
+                        {
+                            return false;
+                        }
+                    }
+                    if (!this.ActualizarInventarioModificados(detalle.IdProducto,
+                                                    idAlmacen,
+                                                    detalle.Cantidad,
+                                                    detalle.CantidadNueva,
+                                                    detalle.LoteNuevo,
+                                                    detalle.FechaVencimientoNuevo))
+                    {
+                        return false;
+                    }
+                    //MODIFICA EL DETALLE DE MOVIMIENTO
+                    if (!this.tI0021.ModificarTraspaso(detalle.CantidadNueva,
+                                                      idEncabezado,
+                                                      detalle.IdProducto,
+                                                      detalle.LoteNuevo,
+                                                      detalle.FechaVencimientoNuevo))
+                    {
+                        return false;
+                    }
+
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EliminarTraspasoInventario(VTI0021 detalle,int idEncabezado,                             
+                               int idAlmacen,                             
+                               int concepto,
+                               EnAccionEnInventario accion)
+
+        {
+            try
+            {
+                if (detalle.Cantidad == 0)
+                {
+                    return false;
+                }
+                if (this.ExisteProducto(detalle.IdProducto, idAlmacen, detalle.Lote, detalle.FechaVencimiento))
+                {
+                    if (!this.ActualizarInventario(detalle.IdProducto,
+                                                      idAlmacen,
+                                                      accion,
+                                                      detalle.Cantidad,
+                                                      detalle.Lote,
+                                                      detalle.FechaVencimiento))
+                    {
+                        return false;
+                    }
+                    if (this.tI002.ExisteEnMovimiento(idEncabezado, concepto))
+                    {
+                        //ELIMINA EL DETALLE DE MOVIMIENTO
+                        if (!this.tI0021.EliminarTraspaso(idEncabezado,
+                                                      detalle.IdProducto,
+                                                      detalle.LoteNuevo,
+                                                      detalle.FechaVencimiento))
+                        {
+                            return false;
+                        }                       
+                    }
                 }
                 return true;
             }

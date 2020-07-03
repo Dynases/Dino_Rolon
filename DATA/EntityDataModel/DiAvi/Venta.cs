@@ -27,11 +27,11 @@ namespace DATA.EntityDataModel.DiAvi
         public int Estado { get; set; }
         public int Tipo { get; set; }
         public string Observaciones { get; set; }
-        public string EncPrVenta { get; set; }
-        public string EncVenta { get; set; }
-        public string EncTransporte { get; set; }
+        public int EncPrVenta { get; set; }
+        public int EncVenta { get; set; }
+        public int EncTransporte { get; set; }
         public string EncEntrega { get; set; }
-        public string EncRecepcion { get; set; }
+        public int EncRecepcion { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }

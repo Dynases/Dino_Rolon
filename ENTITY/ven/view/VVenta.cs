@@ -26,16 +26,15 @@ namespace ENTITY.ven.view
 
         public string Observaciones { get; set; }
 
-        public string EncPrVenta { get; set; }
+        public int EncPrVenta { get; set; }
 
-        public string EncVenta { get; set; }
+        public int EncVenta { get; set; }
 
-        public string EncTransporte { get; set; }
+        public int EncTransporte { get; set; }
 
         public string EncEntrega { get; set; }
 
-        public string EncRecepcion { get; set; }
-
+        public int EncRecepcion { get; set; }
         public string NitCliente { get; set; }
 
         public DateTime Fecha { get; set; }

@@ -6,25 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http.Headers;
 using UTILITY.Enum.ENConcepto;
+using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
 
 namespace REPOSITORY.Clase
 {
     public class RTraspaso : BaseConexion, ITraspaso
-    {
-        private readonly ITI002 tI002;
-        private readonly ITraspaso_01 traspaso_01;
-
-        public RTraspaso(ITI002 tI002, ITraspaso_01 traspaso_01)
-        {
-            this.tI002 = tI002;
-            this.traspaso_01 = traspaso_01;
-        }
-
-        #region CONSULTAS
-
-        public List<VTraspaso> ListarTraspasos()
+    { 
+        
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        public List<VTraspaso> TraerTraspasos()
         {
             try
             {
@@ -33,14 +28,24 @@ namespace REPOSITORY.Clase
                     var listResult = db.Traspaso
                         .Select(ti => new VTraspaso
                         {
-                            Destino = ti.AlmacenDestino.Value,
-                            Estado = ti.Estado.Value,
-                            Fecha = ti.FechaEnvio.Value,
-                            Hora = ti.FechaEnvio.Value.ToString(),
                             Id = ti.Id,
+                            IdAlmacenOrigen = ti.IdAlmacenOrigen,
+                            IdAlmacenDestino = ti.IdAlmacenDestino,
+                            AlamacenOrigen = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenOrigen).Descrip,
+                            AlmacenDestino = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenDestino).Descrip,
+                            Estado = ti.Estado,
                             Observaciones = ti.Observaciones,
-                            Origen = ti.AlmacenOrigen.Value,
-                            Usuario = ti.UsuarioEnvio
+                            UsuarioEnvio = ti.UsuarioEnvio,
+                            UsuarioRecepcion = ti.UsuarioRecepcion,
+                            FechaRecepcion = ti.FechaRecepcion,
+                            FechaEnvio = ti.FechaEnvio,
+                            EstadoEnvio = ti.EstadoEnvio,
+                            EstadoEnvioDescripcion = ti.EstadoEnvio == 1? "SIN RECEPCION": "CON RECEPCION",
+                            TotalUnidad = ti.TotalUnidad,
+                            Total = ti.Total,
+                            Fecha = ti.FechaEnvio,
+                            Hora = ti.Hora,
+                            Usuario = ti.Usuario
                         }).ToList();
 
                     return listResult;
@@ -51,8 +56,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-
         public List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId)
         {
             try
@@ -117,47 +120,44 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        /********** REPORTE ***********/
         #endregion
-
-        #region TRANSACCIONES
-
-        public bool Guardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
+        #region Transacciones
+        public bool Guardar(VTraspaso vTraspaso, ref int id)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    var traspaso = new Traspaso
+                    var idAux = id;
+                    Traspaso traspaso;
+                    if (id > 0)
                     {
-                        Estado = vTraspaso.Estado,
-                        AlmacenDestino = vTraspaso.Destino,
-                        AlmacenOrigen = vTraspaso.Origen,
-                        FechaEnvio = vTraspaso.Fecha,
-                        FechaRecepcion = null,
-                        Observaciones = vTraspaso.Observaciones,
-                        UsuarioEnvio = vTraspaso.Usuario,
-                        UsuarioRecepcion = null
-                    };
-
-                    db.Traspaso.Add(traspaso);
-                    db.SaveChanges();
-                    id = traspaso.Id;
-
-                    traspaso.Almacen = db.Almacen.Find(vTraspaso.Origen);
-                    traspaso.Almacen1 = db.Almacen.Find(vTraspaso.Destino);
-
-                    //ACTUALIZACION EN TI002: CABECERA
-                    if (!this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip,
-                                            traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
-                                            id, traspaso.UsuarioEnvio,
-                                            " TRASPASO DE SALIDA DESDE: " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
-                                            (int)ENConcepto.TRASPASO_SALIDA,
-                                            ref idTI2))
-                    {
-                        return false;
+                        traspaso = db.Traspaso.Where(a => a.Id == idAux).FirstOrDefault();
+                        if (traspaso == null)
+                            throw new Exception("No existe el Traspaso con id " + idAux);
                     }
-
+                    else
+                    {
+                        traspaso = new Traspaso();
+                        db.Traspaso.Add(traspaso);
+                    }
+                    traspaso.Estado = vTraspaso.Estado;
+                    traspaso.IdAlmacenOrigen = vTraspaso.IdAlmacenOrigen;
+                    traspaso.IdAlmacenDestino = vTraspaso.IdAlmacenDestino;
+                    traspaso.FechaEnvio = vTraspaso.FechaEnvio;
+                    traspaso.FechaRecepcion = vTraspaso.FechaRecepcion;
+                    traspaso.Observaciones = vTraspaso.Observaciones;
+                    traspaso.UsuarioEnvio = vTraspaso.UsuarioEnvio;
+                    traspaso.UsuarioRecepcion = vTraspaso.UsuarioRecepcion;
+                    traspaso.EstadoEnvio = vTraspaso.EstadoEnvio;
+                    traspaso.TotalUnidad = vTraspaso.TotalUnidad;
+                    traspaso.Total = vTraspaso.Total;
+                    traspaso.Fecha = vTraspaso.Fecha;
+                    traspaso.Hora = vTraspaso.Hora;
+                    traspaso.Usuario = vTraspaso.Usuario;                   
+                    db.SaveChanges();
+                    id = traspaso.Id;                   
                     return true;
                 }
             }
@@ -166,7 +166,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
         public bool ConfirmarRecepcion(int TraspasoId, string usuarioRecepcion)
         {
             try
@@ -179,33 +178,37 @@ namespace REPOSITORY.Clase
                     {
                         return false;
                     }
+                    traspaso.UsuarioRecepcion = usuarioRecepcion;
+                    traspaso.EstadoEnvio = 2;
+                    traspaso.Estado = (int)ENEstado.COMPLETADO;
+                    db.SaveChanges();
+                    return true;
+                    //int idTI2 = 0;
+                    ////REGISTRAMOS LA CABECERA DE LA RECEPCION EN LA TI002
+                    //if (this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip, traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
+                    //    traspaso.Id, usuarioRecepcion,
+                    //    " TRASPASO DE INGRESO DESDE " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
+                    //    (int)ENConcepto.TRASPASO_SALIDA,
+                    //    ref idTI2))
+                    //{
+                    //    //AHORA SE REGISTRA EL DETALLE DE LA RECEPCION EN LA TABLA TI0021 y 
+                    //    //A SU VES EN EL METODO SE ACTUALIZA EL INVENTARIO DE DESTINO EN LA TI001
+                    //    var detalle = db.Traspaso_01.Where(tp => tp.TraspasoId == traspaso.Id).ToList();
+                    //    if (this.traspaso_01.ConfirmarRecepcionDetalle(detalle, idTI2))
+                    //    {
+                    //        //ACTUALIZAMOS EL TRASPASO CAMBIANDO SU ESTADO A RECEPCIONADO = 3
+                    //        traspaso.Estado = 3;
+                    //        db.Traspaso.Attach(traspaso);
+                    //        db.Entry(traspaso).State = EntityState.Modified;
+                    //        db.SaveChanges();
 
-                    int idTI2 = 0;
-                    //REGISTRAMOS LA CABECERA DE LA RECEPCION EN LA TI002
-                    if (this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip, traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
-                        traspaso.Id, usuarioRecepcion,
-                        " TRASPASO DE INGRESO DESDE " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
-                        (int)ENConcepto.TRASPASO_SALIDA,
-                        ref idTI2))
-                    {
-                        //AHORA SE REGISTRA EL DETALLE DE LA RECEPCION EN LA TABLA TI0021 y 
-                        //A SU VES EN EL METODO SE ACTUALIZA EL INVENTARIO DE DESTINO EN LA TI001
-                        var detalle = db.Traspaso_01.Where(tp => tp.TraspasoId == traspaso.Id).ToList();
-                        if (this.traspaso_01.ConfirmarRecepcionDetalle(detalle, idTI2))
-                        {
-                            //ACTUALIZAMOS EL TRASPASO CAMBIANDO SU ESTADO A RECEPCIONADO = 3
-                            traspaso.Estado = 3;
-                            db.Traspaso.Attach(traspaso);
-                            db.Entry(traspaso).State = EntityState.Modified;
-                            db.SaveChanges();
-
-                            return true;
-                        }
-                        else
-                        { return false; }
-                    }
-                    else
-                    { return false; }
+                    //        return true;
+                    //    }
+                    //    else
+                    //    { return false; }
+                    //}
+                    //else
+                    //{ return false; }
                 }
             }
             catch (Exception ex)
@@ -213,8 +216,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
-        #endregion
+        #endregion       
 
     }
 }

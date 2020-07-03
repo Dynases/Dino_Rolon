@@ -1,4 +1,5 @@
 ﻿using ENTITY.inv.TI001.VIew;
+using ENTITY.inv.TI0021.View;
 using System;
 using System.Collections.Generic;
 using UTILITY.Enum;
@@ -22,6 +23,7 @@ namespace REPOSITORY.Interface
                                 string Observacion,
                                 EnAccionEnInventario accion,
                                 string usuario);
+
         bool ModificarMovimientoInventario(int idDetalle,
                                int idProducto,
                                int idAlmacen,
@@ -32,6 +34,7 @@ namespace REPOSITORY.Interface
                                int concepto,
                                string Observacion,
                                string usuario, string loteNuevo, DateTime fechaVenNuevo);
+
         bool EliminarMovimientoInventario(int idDetalle,
                               int idProducto,
                               int idAlmacen,
@@ -47,8 +50,20 @@ namespace REPOSITORY.Interface
                                         decimal cantidadNueva,
                                         string lote,
                                         DateTime fechaVen);
+        
+        /******** TRASPASOS *********/
+        bool NuevoTraspasoInventario(VTI0021 detalle, int idAlmacen,
+                                EnAccionEnInventario accion, int idEncabezado);
+
+        bool ModificarTraspasoInventario(VTI0021 detalle, int idAlmacen, int idEncabezado);
+
+        bool EliminarTraspasoInventario(VTI0021 detalle, int idEncabezado,
+                               int idAlmacen,
+                               int concepto,
+                               EnAccionEnInventario accion);
+
         /******** VERIFICACIONES *********/
-  
+
         bool ExisteProducto(int IdProducto, int idAlmacen, string lote, DateTime fecha);
        
     }

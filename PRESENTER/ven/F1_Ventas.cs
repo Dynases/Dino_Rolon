@@ -1,10 +1,12 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using ENTITY.inv.TI001.VIew;
+using ENTITY.Libreria.View;
 using ENTITY.Plantilla;
 using ENTITY.Producto.View;
 using ENTITY.ven.view;
 using Janus.Windows.GridEX;
+using Janus.Windows.GridEX.EditControls;
 using PRESENTER.frm;
 using PRESENTER.Properties;
 using PRESENTER.reg;
@@ -36,6 +38,10 @@ namespace PRESENTER.ven
             listaDetalleVenta = new List<VVenta_01>();
             MP_AsignarPermisos();
             BtnHabilitar.Visible = true;
+            btnEncPreVenta.Visible = false;
+            btnEncVenta.Visible = false;
+            btnEncTransporte.Visible = false;
+            btnEncRecepcion.Visible = false;
         }
 
         #region Variables de Entorno        
@@ -52,6 +58,36 @@ namespace PRESENTER.ven
         {
             UTGlobal.MG_ArmarComboClientes(cb_Cliente,
                                   new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);
+            UTGlobal.MG_ArmarCombo(Cb_EncPreVenta,
+                                      new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                                    Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_PREVENTA)).ToList());
+            UTGlobal.MG_ArmarCombo(Cb_EncVenta,
+                          new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                        Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_VENTA)).ToList());
+            UTGlobal.MG_ArmarCombo(Cb_EncTransporte,
+                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                       Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE)).ToList());
+            UTGlobal.MG_ArmarCombo(Cb_EncRecepcion,
+                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                       Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION)).ToList());
+        }
+        private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
+        {
+            try
+            {
+                if (combo.SelectedIndex < 0 && combo.Text != string.Empty)
+                {
+                    btn.Visible = true;
+                }
+                else
+                {
+                    btn.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
         }
         private void MP_MostrarMensajeError(string mensaje)
         {
@@ -96,12 +132,12 @@ namespace PRESENTER.ven
             this.cb_Cliente.ReadOnly = true;
             this.sw_estado.Enabled = false;
             this.Sw_TipoVenta.Enabled = false;
-            this.TbEncVenta.ReadOnly = true;
-            this.TbEncEntrega.ReadOnly = true;
-            this.TbEncTransporte.ReadOnly = true;
-            this.TbEncRecepcion.ReadOnly = true;
-            this.Tb_Observaciones.ReadOnly = true;
-            this.TbEncPrVenta.ReadOnly = true;
+            Cb_EncRecepcion.ReadOnly = true;
+            Cb_EncVenta.ReadOnly = true;
+            Cb_EncPreVenta.ReadOnly = true;
+            Cb_EncTransporte.ReadOnly = true;           
+            this.TbEncEntrega.ReadOnly = true;           
+            this.Tb_Observaciones.ReadOnly = true;           
             this.TbNitCliente.ReadOnly = true;
             this.btnLimpiarCliente.Visible = false;
             this.btnNuevoCliente.Visible = false;
@@ -116,17 +152,17 @@ namespace PRESENTER.ven
 
         private void MP_Habilitar()
         {
+            Cb_EncRecepcion.ReadOnly = false;
+            Cb_EncVenta.ReadOnly = false;
+            Cb_EncPreVenta.ReadOnly = false;
+            Cb_EncTransporte.ReadOnly = false;
             this.lblFechaRegistro.Visible = false;
             this.Dt_FechaVenta.Enabled = true;
             this.cb_Cliente.ReadOnly = false;
             this.sw_estado.Enabled = true;
-            this.Sw_TipoVenta.Enabled = true;
-            this.TbEncVenta.ReadOnly = false;
-            this.TbEncEntrega.ReadOnly = false;
-            this.TbEncTransporte.ReadOnly = false;
-            this.TbEncRecepcion.ReadOnly = false;
-            this.Tb_Observaciones.ReadOnly = false;
-            this.TbEncPrVenta.ReadOnly = false;
+            this.Sw_TipoVenta.Enabled = true;           
+            this.TbEncEntrega.ReadOnly = false;           
+            this.Tb_Observaciones.ReadOnly = false;           
             this.Tb_Usuario.Text = UTGlobal.Usuario;
             this.TbNitCliente.ReadOnly = true;
             this.btnLimpiarCliente.Visible = true;
@@ -193,14 +229,14 @@ namespace PRESENTER.ven
             Dt_FechaVenta.Value = venta.FechaVenta;
             Tb_Usuario.Text = venta.Usuario;
             cb_Cliente.Value = venta.IdCliente;          
-            TbNitCliente.Text = venta.NitCliente;
+            TbNitCliente.Text = venta.NitCliente; 
             Sw_TipoVenta.Value = true;
             sw_estado.Value = true;
-            TbEncVenta.Text = venta.EncVenta;
-            TbEncEntrega.Text = venta.EncEntrega;
-            TbEncPrVenta.Text = venta.EncPrVenta;
-            TbEncRecepcion.Text = venta.EncRecepcion;
-            TbEncTransporte.Text = venta.EncTransporte;
+            Cb_EncRecepcion.Value = venta.EncRecepcion;
+            Cb_EncVenta.Value = venta.EncVenta;
+            Cb_EncPreVenta.Value = venta.EncPrVenta;
+            Cb_EncTransporte.Value = venta.EncTransporte;     
+            TbEncEntrega.Text = venta.EncEntrega;           
             Tb_Observaciones.Text = venta.Observaciones;
             lblFechaRegistro.Text = venta.Fecha.ToString();
             lblHora.Text = venta.Hora;
@@ -383,19 +419,21 @@ namespace PRESENTER.ven
             this.Sw_TipoVenta.Value = true;
             this.sw_estado.Value = true;
             this.TbEncEntrega.Text = "";
-            this.TbEncPrVenta.Text = "";
-            this.TbEncRecepcion.Text = "";
-            this.TbEncTransporte.Text = "";
-            this.TbEncVenta.Text = "";
+           
             this.Tb_Observaciones.Text = "";
             this.lblFechaRegistro.Text = "";
             this.lblId.Text = "";
             this.TbNitCliente.Text = "";
             this.TbTotal.Text = "";
-            if (_Limpiar == false)            {
+          
+            if (_Limpiar == false)    
+            {
                 
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
-                // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
+                UTGlobal.MG_SeleccionarCombo(Cb_EncRecepcion);
+                UTGlobal.MG_SeleccionarCombo(Cb_EncVenta);
+                UTGlobal.MG_SeleccionarCombo(Cb_EncPreVenta);
+                UTGlobal.MG_SeleccionarCombo(Cb_EncTransporte);
             }
             index = 0;
             listaDetalleVenta.Clear();
@@ -428,92 +466,69 @@ namespace PRESENTER.ven
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;
 
-                Dgv_GBuscador.RootTable.Columns[0].Caption = "COD";
-                Dgv_GBuscador.RootTable.Columns[0].Width = 60;
-                Dgv_GBuscador.RootTable.Columns[0].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[0].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[0].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[0].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[0].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["Id"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["IdAlmacen"].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[1].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].Caption = "ALMACEN";
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].Width = 350;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["DescripcionAlmacen"].EditType = EditType.NoEdit;
 
-                Dgv_GBuscador.RootTable.Columns[2].Caption = "Almacen";
-                Dgv_GBuscador.RootTable.Columns[2].Width = 120;
-                Dgv_GBuscador.RootTable.Columns[2].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[2].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[2].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[2].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[2].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["IdCliente"].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[3].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].Caption = "CLIENTE";
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].Width = 300;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["DescripcionCliente"].EditType = EditType.NoEdit;
 
-                Dgv_GBuscador.RootTable.Columns[4].Caption = "Cliente";
-                Dgv_GBuscador.RootTable.Columns[4].Width = 180;
-                Dgv_GBuscador.RootTable.Columns[4].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[4].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[4].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[4].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[4].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].Caption = "FECHA";
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].Width = 150;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["FechaVenta"].EditType = EditType.NoEdit;
 
-                Dgv_GBuscador.RootTable.Columns[5].Caption = "Fch Registro";
-                Dgv_GBuscador.RootTable.Columns[5].Width = 100;
-                Dgv_GBuscador.RootTable.Columns[5].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[5].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[5].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[5].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[5].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["Estado"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Tipo"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Observaciones"].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[6].Caption = "Fch. Venta";
-                Dgv_GBuscador.RootTable.Columns[6].Width = 100;
-                Dgv_GBuscador.RootTable.Columns[6].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[6].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[6].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[6].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[6].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].Caption = "Enc Entrega";
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].Width = 240;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["EncEntrega"].EditType = EditType.NoEdit;
 
-                Dgv_GBuscador.RootTable.Columns[7].Caption = "Usuario";
-                Dgv_GBuscador.RootTable.Columns[7].Width = 100;
-                Dgv_GBuscador.RootTable.Columns[7].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[7].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[7].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[7].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[7].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["Estado"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Tipo"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Observaciones"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["EncPrVenta"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["EncVenta"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["EncTransporte"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["EncRecepcion"].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[8].Visible = false;
-                Dgv_GBuscador.RootTable.Columns[9].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[10].Caption = "Observaciones";
-                Dgv_GBuscador.RootTable.Columns[10].Width = 250;
-                Dgv_GBuscador.RootTable.Columns[10].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[10].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[10].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[10].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[10].EditType = EditType.NoEdit;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].Caption = "NIT";
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].Width = 180;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].Visible = true;
+                Dgv_GBuscador.RootTable.Columns["NitCliente"].EditType = EditType.NoEdit;
 
-                Dgv_GBuscador.RootTable.Columns[11].Visible = false;
-                Dgv_GBuscador.RootTable.Columns[12].Visible = false;
-                Dgv_GBuscador.RootTable.Columns[13].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["Usuario"].Visible = false;
 
-                Dgv_GBuscador.RootTable.Columns[14].Caption = "Enc Entrega";
-                Dgv_GBuscador.RootTable.Columns[14].Width = 150;
-                Dgv_GBuscador.RootTable.Columns[14].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[14].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[14].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[14].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[14].EditType = EditType.NoEdit;
-
-                Dgv_GBuscador.RootTable.Columns[15].Visible = false;
-
-                Dgv_GBuscador.RootTable.Columns[16].Caption = "NIT";
-                Dgv_GBuscador.RootTable.Columns[16].Width = 150;
-                Dgv_GBuscador.RootTable.Columns[16].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_GBuscador.RootTable.Columns[16].CellStyle.FontSize = 8;
-                Dgv_GBuscador.RootTable.Columns[16].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_GBuscador.RootTable.Columns[16].Visible = true;
-                Dgv_GBuscador.RootTable.Columns[16].EditType = EditType.NoEdit;
-
-                Dgv_GBuscador.RootTable.Columns[17].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["IdCategoriaCliente"].Visible = false;
 
 
                 //Habilitar filtradores
@@ -855,8 +870,6 @@ namespace PRESENTER.ven
                 LblPaginacion.Text = "0/0";
             }
         }
-
-        #endregion
         private void MP_AddFila()
         {
             try
@@ -953,6 +966,8 @@ namespace PRESENTER.ven
 
             }
         }
+        #endregion
+
         #region Metodos Heredados
 
         public override void MH_Nuevo()
@@ -1001,11 +1016,12 @@ namespace PRESENTER.ven
             {
                 var vVenta = new VVenta
                 {
+
                     EncEntrega = this.TbEncEntrega.Text,
-                    EncPrVenta = this.TbEncPrVenta.Text,
-                    EncRecepcion = this.TbEncRecepcion.Text,
-                    EncTransporte = this.TbEncTransporte.Text,
-                    EncVenta = this.TbEncVenta.Text,
+                    EncPrVenta = Convert.ToInt32(this.Cb_EncPreVenta.Value),
+                    EncRecepcion = Convert.ToInt32(this.Cb_EncRecepcion.Value),
+                    EncTransporte = Convert.ToInt32(this.Cb_EncTransporte.Value),
+                    EncVenta = Convert.ToInt32(this.Cb_EncVenta.Value),
                     Estado = (int)ENEstado.GUARDADO,
                     FechaVenta = this.Dt_FechaVenta.Value,
                     IdAlmacen = Convert.ToInt32(this.Cb_Origen.Value),
@@ -1248,7 +1264,7 @@ namespace PRESENTER.ven
 
         private void btnUltimo_Click(object sender, EventArgs e)
         {
-            index = listaVentas.Count - 1;
+            index = listaVentas.Count - 2;
             this.MP_MostrarRegistro(index);
         }
 
@@ -1312,6 +1328,7 @@ namespace PRESENTER.ven
                                     MP_IngresarProductoDetalle(idDetalle, idLote, InventarioLotes);
                                     MP_ArmarDetalle();
                                     MP_InHabilitarProducto();
+                                    MP_ObtenerCalculo();
                                     return;
                                 }
                                 //Actualiza el stock de lotes
@@ -1328,6 +1345,7 @@ namespace PRESENTER.ven
                                 MP_InHabilitarProducto();
                             }
                         }
+                        MP_ObtenerCalculo();
 
                     }
                     if (e.KeyData == Keys.Escape)
@@ -1345,7 +1363,6 @@ namespace PRESENTER.ven
 
         }
 
- 
         private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
         {
             try
@@ -1473,10 +1490,170 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+
+
+
         #endregion
 
+        private void Cb_EncPreVenta_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(Cb_EncPreVenta, btnEncPreVenta);
+        }
 
+        private void Cb_EncVenta_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(Cb_EncVenta, btnEncVenta);
+        }
 
+        private void Cb_EncTransporte_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(Cb_EncTransporte, btnEncTransporte);
+        }
 
+        private void Cb_EncRecepcion_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(Cb_EncRecepcion, btnEncRecepcion);
+        }
+
+        private void btnEncVenta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_VENTA));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_VENTA),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_EncVenta.Text == "" ? "" : Cb_EncVenta.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_EncVenta,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_VENTA)).ToList());
+                    Cb_EncVenta.SelectedIndex = ((List<VLibreria>)Cb_EncVenta.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void btnEncPreVenta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_PREVENTA));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_PREVENTA),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_EncPreVenta.Text == "" ? "" : Cb_EncPreVenta.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_EncPreVenta,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_PREVENTA)).ToList());
+                    Cb_EncPreVenta.SelectedIndex = ((List<VLibreria>)Cb_EncPreVenta.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void btnEncTransporte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_EncTransporte.Text == "" ? "" : Cb_EncTransporte.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_EncTransporte,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE)).ToList());
+                    Cb_EncTransporte.SelectedIndex = ((List<VLibreria>)Cb_EncTransporte.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void btnEncRecepcion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_EncRecepcion.Text == "" ? "" : Cb_EncRecepcion.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_EncRecepcion,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION)).ToList());
+                    Cb_EncRecepcion.SelectedIndex = ((List<VLibreria>)Cb_EncRecepcion.DataSource).Count() - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+       
     }
 }

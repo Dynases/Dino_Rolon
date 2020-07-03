@@ -543,10 +543,10 @@ namespace PRESENTER.com
             try
             {
                 GPanel_Producto.Visible = false;
-               //GPanel_Producto.Height = 30;
+                GPanel_Producto.Height = 30;
                 Dgv_Detalle.Select();
                 Dgv_Detalle.Col = 5;
-                Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1;               
+                Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1;
             }
             catch (Exception ex)
             {
@@ -574,7 +574,7 @@ namespace PRESENTER.com
             try
             {
                 GPanel_Producto.Visible = true;
-               // GPanel_Producto.Height = 350; 
+                GPanel_Producto.Height = 350; 
                 Dgv_Producto.Focus();
                 Dgv_Producto.MoveTo(Dgv_Producto.FilterRow);
                 Dgv_Producto.Col = 3;

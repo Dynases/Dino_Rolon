@@ -147,7 +147,7 @@ namespace PRESENTER.alm
             index = 0;
             try
             {
-                listaTraspasos = new ServiceDesktop.ServiceDesktopClient().TraspasosListar().ToList();
+                listaTraspasos = new ServiceDesktop.ServiceDesktopClient().TraerTraspasos().ToList();
                 if (listaTraspasos != null && listaTraspasos.Count > 0)
                 {
                     this.MP_MostrarRegistro(index);
@@ -164,8 +164,8 @@ namespace PRESENTER.alm
             var traspaso = listaTraspasos[index];
 
             lblId.Text = traspaso.Id.ToString();
-            Cb_Destino.Value = traspaso.Destino;
-            Cb_Origen.Value = traspaso.Origen;
+            Cb_Destino.Value = traspaso.IdAlmacenDestino;
+            Cb_Origen.Value = traspaso.IdAlmacenOrigen;
             Tb_UsuarioEnvio.Text = traspaso.Usuario;
             lblFechaEnvio.Text = traspaso.Fecha.ToShortDateString();
             lblFechaRecepcion.Text = traspaso.Fecha.ToShortDateString();
@@ -199,7 +199,7 @@ namespace PRESENTER.alm
         {
             try
             {
-                var result = new ServiceDesktop.ServiceDesktopClient().TraspasoDetalleListar(id).ToList();
+                var result = new ServiceDesktop.ServiceDesktopClient().TraerTraspasos_01(id).ToList();
 
                 if (result.Count > 0)
                 {
@@ -309,12 +309,11 @@ namespace PRESENTER.alm
                 var detalle = new VTraspaso_01
                 {
                     Cantidad = Convert.ToInt32(i.Cells[4].Value),
-                    Fecha = DateTime.Now,
+                    FechaVencimiento = DateTime.Now,
                     Lote = "",
-                    ProductoId = Convert.ToInt32(i.Cells[0].Value),
-                    TraspasoId = traspaso.Id,
-                    Estado = 1,
-                    Marca = i.Cells[2].Value.ToString(),
+                    IdProducto = Convert.ToInt32(i.Cells[0].Value),
+                    IdTraspaso = traspaso.Id,
+                    Estado = 1,                    
                     Unidad = i.Cells[3].Value.ToString()
                 };
 
@@ -558,14 +557,13 @@ namespace PRESENTER.alm
         public override bool MH_NuevoRegistro()
         {
             var Vtraspaso = new VTraspaso
-            {
-                Concepto = 11,
-                Destino = Convert.ToInt32(Cb_Destino.Value),
+            {                
+                IdAlmacenDestino = Convert.ToInt32(Cb_Destino.Value),
                 Estado = 1,
                 Fecha = DateTime.Now,
                 Hora = DateTime.Now.ToShortTimeString(),
                 Observaciones = Tb_Observaciones.Text,
-                Origen = Convert.ToInt32(Cb_Origen.Value),
+                IdAlmacenOrigen = Convert.ToInt32(Cb_Origen.Value),
                 Usuario = UTGlobal.Usuario
             };
 
@@ -575,26 +573,27 @@ namespace PRESENTER.alm
             {
                 int id = 0;
                 int idTI2 = 0;
-                if (new ServiceDesktop.ServiceDesktopClient().TraspasoGuardar(Vtraspaso, ref idTI2, ref id))
-                {
-                    Vtraspaso.Id = id;
-                    this.MP_GuardarDetalleTraspaso(Vtraspaso, idTI2);
+                //if (new ServiceDesktop.ServiceDesktopClient().TraspasoGuardar(Vtraspaso, ref idTI2, ref id))
+                //{
+                //    Vtraspaso.Id = id;
+                //    this.MP_GuardarDetalleTraspaso(Vtraspaso, idTI2);
 
-                    this.MP_Reiniciar();
-                    this.MP_CargarAlmacenes();
-                    this.MP_CargarListaTraspasos();
+                //    this.MP_Reiniciar();
+                //    this.MP_CargarAlmacenes();
+                //    this.MP_CargarListaTraspasos();
 
-                    mensaje = GLMensaje.Modificar_Exito("TRASPASOS", Vtraspaso.Id.ToString());
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                //    mensaje = GLMensaje.Modificar_Exito("TRASPASOS", Vtraspaso.Id.ToString());
+                //    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
 
-                    return true;
-                }
-                else
-                {
-                    mensaje = GLMensaje.Registro_Error("TRASPASOS");
-                    this.MP_MostrarMensajeError(mensaje);
-                    return false;
-                }
+                //    return true;
+                //}
+                //else
+                //{
+                //    mensaje = GLMensaje.Registro_Error("TRASPASOS");
+                //    this.MP_MostrarMensajeError(mensaje);
+                //    return false;
+                //}
+                return true;
             }
             catch (Exception ex)
             {

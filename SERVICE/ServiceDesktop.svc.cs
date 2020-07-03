@@ -910,55 +910,20 @@ namespace SERVICE
         /********** TRASPASO ****************/
 
         #region Traspasos
-
-        public bool TraspasoGuardar(VTraspaso vTraspaso, ref int idTI2, ref int id)
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        /********** VARIOS REGISTROS ***********/
+        public List<VTraspaso> TraerTraspasos()
         {
             try
             {
-                return new LTraspaso().Guardar(vTraspaso, ref idTI2, ref id);
+                return new LTraspaso().TraerTraspasos();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
-        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2)
-        {
-            try
-            {
-                return new LTraspaso_01().Guardar(lista, TraspasoId, almacenId, idTI2);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<VTraspaso> TraspasosListar()
-        {
-            try
-            {
-                return new LTraspaso().Listar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<VTraspaso_01> TraspasoDetalleListar(int TraspasoId)
-        {
-            try
-            {
-                return new LTraspaso_01().ListarDetalleTraspaso(TraspasoId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         public List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId)
         {
             try
@@ -982,6 +947,90 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+        public bool GuardarTraspaso(VTraspaso vTraspaso, List<VTraspaso_01> detalle, ref int idTraspaso, ref List<string> lMensaje)
+        {
+            try
+            {
+                return new LTraspaso().Guardar(vTraspaso, detalle, ref idTraspaso, ref lMensaje);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Verificaciones
+
+        #endregion
+
+
+
+
+
+
+
+
+        #endregion
+
+        #region Traspaso_01
+
+        #region Consulta
+        /******** VALOR/REGISTRO ÚNICO *********/
+        public VTraspaso_01 TraerTraspass_01(int idDetalle)
+        {
+            try
+            {
+                return new LTraspaso_01().TraerTraspass_01(idDetalle);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** VARIOS REGISTROS ***********/
+        public List<VTraspaso_01> TraerTraspasos_01(int idTraspaso)
+        {
+            try
+            {
+                return new LTraspaso_01().TraerTraspasos_01(idTraspaso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VTraspaso_01> TraerTraspasos_01Vacio(int idTraspaso)
+        {
+            try
+            {
+                return new LTraspaso_01().TraerTraspasos_01Vacio(idTraspaso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        /********** REPORTE ***********/
+        #endregion
+        #region Transacciones
+        public bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2)
+        {
+            try
+            {
+                return new LTraspaso_01().Nuevo(lista, TraspasoId, almacenId, idTI2);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Verificaciones
+
+        #endregion
 
         #endregion
 
