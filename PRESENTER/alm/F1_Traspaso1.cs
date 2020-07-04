@@ -626,7 +626,6 @@ namespace PRESENTER.alm
                                                         .AlmacenListar()
                                                         .ToList()
                                                         .Find(a => a.Id == Convert.ToInt32(Cb_Origen.Value));
-
                 var lProductosConStock = new ServiceDesktop.ServiceDesktopClient().ListarProductosStock(almacen.SucursalId, almacen.Id,(int)ENCategoriaPrecio.COSTO).ToList();
                 MP_CargarProducto(lProductosConStock);
                 MP_HabilitarProducto();
@@ -754,7 +753,6 @@ namespace PRESENTER.alm
             }
             catch (Exception ex)
             {
-
                 MP_MostrarMensajeError(ex.Message);
             }
         }
