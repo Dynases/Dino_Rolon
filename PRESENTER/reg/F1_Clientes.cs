@@ -814,6 +814,10 @@ namespace PRESENTER.reg
                 }
                 else
                     Cb_CatPrecio.BackColor = Color.White;
+                if (new ServiceDesktop.ServiceDesktopClient().ClienteListar().Where(a => a.Descripcion == Txb_CliDescripcion.Text).Count() > 0)
+                {
+                    throw new Exception("El nombre ya existe");
+                }
                 return _Error;
             }
             catch (Exception ex)

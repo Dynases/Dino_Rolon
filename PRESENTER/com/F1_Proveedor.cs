@@ -1187,30 +1187,43 @@ namespace PRESENTER.com
         }
         public override bool MH_Validar()
         {
-            bool _Error = false;
-            if (Tb_Descripcion.Text == "")
+            try
             {
-                Tb_Descripcion.BackColor = Color.Red;
-                _Error = true;
-            }
-            else
-                Tb_Descripcion.BackColor = Color.White;
+                bool _Error = false;
+                if (Tb_Descripcion.Text == "")
+                {
+                    Tb_Descripcion.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Tb_Descripcion.BackColor = Color.White;
 
-            if (Cb_Ciudad.SelectedIndex == -1)
-            {
-                Cb_Ciudad.BackColor = Color.Red;
-                _Error = true;
+                if (Cb_Ciudad.SelectedIndex == -1)
+                {
+                    Cb_Ciudad.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_Ciudad.BackColor = Color.White;
+                if (Cb_TipoProveedor.SelectedIndex == -1)
+                {
+                    Cb_TipoProveedor.BackColor = Color.Red;
+                    _Error = true;
+                }
+                else
+                    Cb_TipoProveedor.BackColor = Color.White;
+                if (new ServiceDesktop.ServiceDesktopClient().ProveedorListar().Where(a => a.Descripcion == Tb_Descripcion.Text).Count() > 0)
+                {
+                    throw new Exception("El nombre ya existe");
+                }
+                return _Error;
             }
-            else
-                Cb_Ciudad.BackColor = Color.White;
-            if (Cb_TipoProveedor.SelectedIndex == -1)
+            catch (Exception ex)
             {
-                Cb_TipoProveedor.BackColor = Color.Red;
-                _Error = true;
+                MP_MostrarMensajeError(ex.Message);
+                return true;
             }
-            else
-                Cb_TipoProveedor.BackColor = Color.White;
-            return _Error;
+           
         }
         #endregion
 
