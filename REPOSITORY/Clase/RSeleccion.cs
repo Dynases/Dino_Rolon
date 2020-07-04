@@ -251,7 +251,7 @@ namespace REPOSITORY.Clase
 
                 using (var db = GetEsquema())
                 {
-                    var lista = db.Seleccion
+                    var lista = db.Seleccion.OrderBy(x=> x.Id)
                                   .Where(x=> x.Estado != (int)ENEstado.ELIMINAR)                        
                      .Select(a => new VSeleccionEncabezado
                      {
