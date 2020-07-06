@@ -856,8 +856,6 @@
         protected System.Windows.Forms.PictureBox PictureBox1;
         protected DevComponents.DotNetBar.Controls.GroupPanel GMPanel_Buscardor;
         protected Janus.Windows.GridEX.GridEX Dgv_GBuscador;
-        protected System.Windows.Forms.Label LblSubtitulo;
-        protected Bunifu.Framework.UI.BunifuGradientPanel PanelMenu;
         public DevComponents.DotNetBar.SuperTabControlPanel PanelContenidoRegistro;
         public DevComponents.DotNetBar.SuperTabItem SuperTalRegistro;
         public System.Windows.Forms.Panel PanelInferior;
@@ -865,5 +863,7 @@
         public DevComponents.DotNetBar.SuperTabControl superTabControl1;
         public System.Windows.Forms.TextBox TxtNombreUsu;
         protected DevComponents.DotNetBar.ButtonX BtnHabilitar;
+        public System.Windows.Forms.Label LblSubtitulo;
+        public Bunifu.Framework.UI.BunifuGradientPanel PanelMenu;
     }
 }
