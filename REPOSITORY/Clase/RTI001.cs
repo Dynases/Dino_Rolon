@@ -15,6 +15,11 @@ namespace REPOSITORY.Clase
     {
         private readonly ITI002 tI002;
         private readonly ITI0021 tI0021;
+
+        public RTI001()
+        {
+
+        }
         public RTI001(ITI002 tI002, ITI0021 tI0021)
         {
             this.tI002 =  tI002;
@@ -82,6 +87,47 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+
+        public void ActualizarInventario(int idProducto, int idAlmacen, decimal cantidad, string lote, DateTime fechaVen)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var saldo = db.TI001.Where(i => i.icalm == idAlmacen
+                                               && i.iccprod == idProducto
+                                               && i.iclot.Equals(lote)
+                                               && i.icfven == fechaVen)
+                        .FirstOrDefault();
+
+                    if (saldo == null)
+                    {
+                        saldo = new TI001
+                        {
+                            icalm = idAlmacen,
+                            icuven = db.Producto.FirstOrDefault(a => a.Id == idProducto).UniVen,
+                            iccprod = idProducto,
+                            iccven = cantidad,
+                            iclot = lote,
+                            icfven = fechaVen
+                        };
+
+                        db.TI001.Add(saldo);
+                    }
+                    else
+                    {
+                        var stock = saldo.iccven;
+                        saldo.iccven = stock + cantidad;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public bool ActualizarInventarioModificados(int idProducto,
                                         int idAlmacen,                                      
                                         decimal cantidadAnterior,

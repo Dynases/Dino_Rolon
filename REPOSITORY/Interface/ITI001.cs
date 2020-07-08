@@ -9,6 +9,7 @@ namespace REPOSITORY.Interface
     {
         bool Nuevo(int idAlmacen, int idProducto, decimal cantidad, string lote, DateTime fechaVen);
         bool ActualizarInventario(int idProducto, int idAlmacen, EnAccionEnInventario accionEnInventario, decimal cantidad, string lote, DateTime fechaVen);
+        void ActualizarInventario(int idProducto, int idAlmacen, decimal cantidad, string lote, DateTime fechaVen);
         bool ActualizarInventarioModificados(int idProducto,
                                         int idAlmacen,
                                         decimal cantidadAnterior,

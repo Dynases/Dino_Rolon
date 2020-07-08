@@ -213,7 +213,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Enum\EnAccionEnInventario.cs" />
     <Compile Include="Enum\EnCarpetas\EnCarpeta.cs" />
     <Compile Include="Enum\EnCarpetas\ENSubCarpetas.cs" />
@@ -238,6 +237,8 @@
     <Compile Include="Global\GLMensaje.cs" />
     <Compile Include="Global\GLMensajeTamano.cs" />
     <Compile Include="Global\UTGlobal.cs" />
+    <Compile Include="MetodosExtension\FechaExtension.cs" />
+    <Compile Include="MetodosExtension\JanusExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

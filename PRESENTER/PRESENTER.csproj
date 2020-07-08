@@ -636,110 +636,116 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
+    <Fakes Include="Fakes\AxShockwaveFlashObjects.fakes" />
+    <None Include="Connected Services\ServiceDesktop\Service11.wsdl" />
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop34.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop10.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop341.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop11.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3410.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop12.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3411.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop13.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3412.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop14.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3413.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop15.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3414.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop16.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3415.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop17.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3416.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop18.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3417.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop19.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3418.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop2.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3419.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop20.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop342.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop21.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3420.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop22.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3421.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop23.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3422.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop24.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3423.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop25.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3424.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop26.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3425.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop27.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3426.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop28.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3427.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop29.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3428.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3429.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop30.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop343.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop31.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3430.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop32.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3431.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop33.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3432.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3433.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop5.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop3434.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop6.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop344.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop7.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop345.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop8.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop346.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop9.xsd">
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop347.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Fakes Include="Fakes\AxShockwaveFlashObjects.fakes" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop348.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop349.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ENTITY.Cliente.View.VCliente.datasource" />
     <None Include="Properties\DataSources\ENTITY.Cliente.View.VClienteLista.datasource" />
@@ -759,9 +765,13 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjuste.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteDetalle.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VDetalleKardex.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Concepto.VConceptoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Deposito.VDepositoLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Sucursal.View.VSucursalCombo.datasource" />
@@ -834,7 +844,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop.disco" />
     <None Include="Report\ReportViewer\CompraIngresoCriterioDatos.xsc">
       <DependentUpon>CompraIngresoCriterioDatos.xsd</DependentUpon>
     </None>
@@ -865,6 +874,8 @@
     <None Include="Resource\User1.png" />
     <None Include="Resource\Password.png" />
     <None Include="Resource\checked.png" />
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop1.disco" />
+    <None Include="Resources\minus.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

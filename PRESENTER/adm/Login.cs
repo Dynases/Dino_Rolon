@@ -35,7 +35,10 @@ namespace PRESENTER.adm
         public Login()
         {
             InitializeComponent();
-           
+#if (DEBUG)
+            txtUsuario.Text = "dynasys";
+            txtPassword.Text = "123";
+#endif
         }
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,7 +48,6 @@ namespace PRESENTER.adm
                 e.Handled = true;
                 SendKeys.Send("{TAB}");
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -57,7 +59,6 @@ namespace PRESENTER.adm
         {
             try
             {
-
                 string usu = txtUsuario.Text;
                 string pass = txtPassword.Text;
                 

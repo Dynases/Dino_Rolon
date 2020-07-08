@@ -9,6 +9,7 @@
   <xs:complexType name="RSeleccionNota">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DescripcionPlaca" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DescripcionRecibido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entregado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FechaRec" type="xs:dateTime" />

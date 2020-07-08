@@ -56,6 +56,7 @@
     <Compile Include="Clase\DiSoft\RLibreriaD.cs" />
     <Compile Include="Clase\DiSoft\RProductoD.cs" />
     <Compile Include="Clase\DiSoft\RZonaD.cs" />
+    <Compile Include="Clase\RAjuste.cs" />
     <Compile Include="Clase\RAlmacen.cs" />
     <Compile Include="Clase\RCliente.cs" />
     <Compile Include="Clase\RCompra.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Clase\RCompraIngreso_02.cs" />
     <Compile Include="Clase\RCompraIngreso_03.cs" />
     <Compile Include="Clase\RCompra_01.cs" />
+    <Compile Include="Clase\RConcepto.cs" />
     <Compile Include="Clase\RLibreria.cs" />
     <Compile Include="Clase\RPlantilla.cs" />
     <Compile Include="Clase\RPlantilla01.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Interface\DiSoft\ILibreriaD.cs" />
     <Compile Include="Interface\DiSoft\IProductoD.cs" />
     <Compile Include="Interface\DiSoft\IZonaD.cs" />
+    <Compile Include="Interface\IAjuste.cs" />
     <Compile Include="Interface\IAlmacen.cs" />
     <Compile Include="Interface\ICliente.cs" />
     <Compile Include="Interface\ICompra.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Interface\ICompraIngreso_01.cs" />
     <Compile Include="Interface\ICompraIngreso_02.cs" />
     <Compile Include="Interface\ICompraIngreso_03.cs" />
+    <Compile Include="Interface\IConcepto.cs" />
     <Compile Include="Interface\ILibreria.cs" />
     <Compile Include="Interface\IPlantilla.cs" />
     <Compile Include="Interface\IPlantilla_01.cs" />

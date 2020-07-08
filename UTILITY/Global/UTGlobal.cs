@@ -21,6 +21,7 @@ using ENTITY.com.CompraIngreso_02;
 using ENTITY.Proveedor.View;
 using ENTITY.com.CompraIngreso.View;
 using UTILITY.Enum.EnEstado;
+using ENTITY.inv.Concepto;
 
 namespace UTILITY.Global
 {
@@ -227,9 +228,7 @@ namespace UTILITY.Global
             try
             {
                 combo.DropDownList.Columns.Clear();
-                combo.DropDownList.Columns.Add("Id").Width = 50;
-                combo.DropDownList.Columns[0].Caption = "Id";
-                combo.DropDownList.Columns[0].Visible = true;
+                combo.DropDownList.Columns.Add("Id").Visible = false;
 
                 combo.DropDownList.Columns.Add("Cod").Width = 150;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
@@ -237,8 +236,8 @@ namespace UTILITY.Global
 
                 combo.ValueMember = "Id";
                 combo.DisplayMember = "Cod";
-                combo.DropDownList.DataSource = lLibreria;
-                combo.DropDownList.Refresh();
+                combo.DataSource = lLibreria;                
+                combo.Refresh();
             }
             catch (Exception)
             {
@@ -251,11 +250,9 @@ namespace UTILITY.Global
             try
             {
                 combo.DropDownList.Columns.Clear();
-                combo.DropDownList.Columns.Add("idLibreria").Width = 70;
-                combo.DropDownList.Columns[0].Caption = "Cod";
-                combo.DropDownList.Columns[0].Visible = false;
+                combo.DropDownList.Columns.Add("idLibreria").Visible = false;
 
-                combo.DropDownList.Columns.Add("Descripcion").Width = 300;
+                combo.DropDownList.Columns.Add("Descripcion").Width = 600;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
 
@@ -263,6 +260,31 @@ namespace UTILITY.Global
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lAlmacen;
                 combo.DropDownList.Refresh();
+                combo.Value = 1;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public static void MG_ArmarComboConcepto(MultiColumnCombo combo, List<VConceptoCombo> conceptos)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripción";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("TipoMovimiento").Visible = false;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DataSource = conceptos;
+                combo.Refresh();
                 combo.Value = 1;
             }
             catch (Exception)

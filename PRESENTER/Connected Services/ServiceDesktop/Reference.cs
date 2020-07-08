@@ -78,6 +78,54 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        ENTITY.ven.view.VVenta TraerVenta(int idVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        ENTITY.ven.view.VVenta[] TraerVentas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
+        ENTITY.DiSoft.Zona.VZona[] ZonaListar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_GuardarResponse")]
+        int Ajuste_Guardar(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_GuardarResponse")]
+        System.Threading.Tasks.Task<int> Ajuste_GuardarAsync(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_ListaResponse")]
+        ENTITY.inv.Ajuste.View.VAjusteLista[] Ajuste_Lista();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_ListaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteLista[]> Ajuste_ListaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/AjusteDetalle_ListaResponse")]
+        ENTITY.inv.Ajuste.View.VAjusteDetalle[] AjusteDetalle_Lista(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/AjusteDetalle_ListaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteDetalle[]> AjusteDetalle_ListaAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse")]
+        ENTITY.inv.Concepto.VConceptoCombo[] Concepto_ListaComboAjuste();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Concepto.VConceptoCombo[]> Concepto_ListaComboAjusteAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
         
@@ -851,30 +899,6 @@ namespace PRESENTER.ServiceDesktop {
         // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/VentaModificarEstadoResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaModificarEstadoResponse> VentaModificarEstadoAsync(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
-        ENTITY.ven.view.VVenta TraerVenta(int idVenta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
-        ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        ENTITY.ven.view.VVenta[] TraerVentas();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
-        ENTITY.DiSoft.Zona.VZona[] ZonaListar();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ZonaListar", ReplyAction="http://tempuri.org/IServiceDesktop/ZonaListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1746,6 +1770,70 @@ namespace PRESENTER.ServiceDesktop {
         
         public ServiceDesktopClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ENTITY.ven.view.VVenta TraerVenta(int idVenta) {
+            return base.Channel.TraerVenta(idVenta);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta) {
+            return base.Channel.TraerVentaAsync(idVenta);
+        }
+        
+        public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
+            return base.Channel.VentaDetalleListar(VentaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
+            return base.Channel.VentaDetalleListarAsync(VentaId);
+        }
+        
+        public ENTITY.ven.view.VVenta[] TraerVentas() {
+            return base.Channel.TraerVentas();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
+            return base.Channel.TraerVentasAsync();
+        }
+        
+        public ENTITY.DiSoft.Zona.VZona[] ZonaListar() {
+            return base.Channel.ZonaListar();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync() {
+            return base.Channel.ZonaListarAsync();
+        }
+        
+        public int Ajuste_Guardar(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario) {
+            return base.Channel.Ajuste_Guardar(ajuste, detalle, usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> Ajuste_GuardarAsync(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario) {
+            return base.Channel.Ajuste_GuardarAsync(ajuste, detalle, usuario);
+        }
+        
+        public ENTITY.inv.Ajuste.View.VAjusteLista[] Ajuste_Lista() {
+            return base.Channel.Ajuste_Lista();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteLista[]> Ajuste_ListaAsync() {
+            return base.Channel.Ajuste_ListaAsync();
+        }
+        
+        public ENTITY.inv.Ajuste.View.VAjusteDetalle[] AjusteDetalle_Lista(int id) {
+            return base.Channel.AjusteDetalle_Lista(id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteDetalle[]> AjusteDetalle_ListaAsync(int id) {
+            return base.Channel.AjusteDetalle_ListaAsync(id);
+        }
+        
+        public ENTITY.inv.Concepto.VConceptoCombo[] Concepto_ListaComboAjuste() {
+            return base.Channel.Concepto_ListaComboAjuste();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Concepto.VConceptoCombo[]> Concepto_ListaComboAjusteAsync() {
+            return base.Channel.Concepto_ListaComboAjusteAsync();
         }
         
         public string GetData(int value) {
@@ -2949,38 +3037,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.VentaModificarEstadoResponse> VentaModificarEstadoAsync(PRESENTER.ServiceDesktop.VentaModificarEstadoRequest request) {
             return base.Channel.VentaModificarEstadoAsync(request);
-        }
-        
-        public ENTITY.ven.view.VVenta TraerVenta(int idVenta) {
-            return base.Channel.TraerVenta(idVenta);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta) {
-            return base.Channel.TraerVentaAsync(idVenta);
-        }
-        
-        public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
-            return base.Channel.VentaDetalleListar(VentaId);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
-            return base.Channel.VentaDetalleListarAsync(VentaId);
-        }
-        
-        public ENTITY.ven.view.VVenta[] TraerVentas() {
-            return base.Channel.TraerVentas();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
-            return base.Channel.TraerVentasAsync();
-        }
-        
-        public ENTITY.DiSoft.Zona.VZona[] ZonaListar() {
-            return base.Channel.ZonaListar();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.DiSoft.Zona.VZona[]> ZonaListarAsync() {
-            return base.Channel.ZonaListarAsync();
         }
     }
 }

@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Ajuste));
-            Janus.Windows.GridEX.GridEXLayout cbAlmacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cbCategoriaPrecio_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cbConcepto_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cbAlmacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelContentSup = new System.Windows.Forms.Panel();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.cbCategoriaPrecio = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.vAjusteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.cbConcepto = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.cbAlmacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.LabelX7 = new DevComponents.DotNetBar.LabelX();
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
@@ -43,12 +51,9 @@
             this.tbCodigo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.PanelDetalle = new System.Windows.Forms.Panel();
             this.GPanel_Detalle = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.dgjDetalle = new Janus.Windows.GridEX.GridEX();
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dgjProducto = new Janus.Windows.GridEX.GridEX();
-            this.dgjDetalle = new Janus.Windows.GridEX.GridEX();
-            this.cbConcepto = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -67,15 +72,21 @@
             this.PanelContentSup.SuspendLayout();
             this.GroupPanel1.SuspendLayout();
             this.Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCategoriaPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).BeginInit();
             this.PanelDetalle.SuspendLayout();
             this.GPanel_Detalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgjDetalle)).BeginInit();
             this.GPanel_Producto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgjProducto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgjDetalle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).BeginInit();
             this.SuspendLayout();
+            // 
+            // BtnGrabar
+            // 
+            this.BtnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
             // 
             // btnPrimero
             // 
@@ -164,7 +175,6 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
-            this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // LblSubtitulo
@@ -280,6 +290,8 @@
             // 
             this.Panel2.AutoScroll = true;
             this.Panel2.BackColor = System.Drawing.Color.White;
+            this.Panel2.Controls.Add(this.cbCategoriaPrecio);
+            this.Panel2.Controls.Add(this.labelX2);
             this.Panel2.Controls.Add(this.labelX1);
             this.Panel2.Controls.Add(this.cbConcepto);
             this.Panel2.Controls.Add(this.labelX5);
@@ -296,8 +308,93 @@
             this.Panel2.Size = new System.Drawing.Size(1223, 100);
             this.Panel2.TabIndex = 234;
             // 
+            // cbCategoriaPrecio
+            // 
+            this.cbCategoriaPrecio.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "IdCategoriaPrecio", true));
+            cbCategoriaPrecio_DesignTimeLayout.LayoutString = resources.GetString("cbCategoriaPrecio_DesignTimeLayout.LayoutString");
+            this.cbCategoriaPrecio.DesignTimeLayout = cbCategoriaPrecio_DesignTimeLayout;
+            this.cbCategoriaPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategoriaPrecio.Location = new System.Drawing.Point(929, 12);
+            this.cbCategoriaPrecio.Name = "cbCategoriaPrecio";
+            this.cbCategoriaPrecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cbCategoriaPrecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cbCategoriaPrecio.SelectedIndex = -1;
+            this.cbCategoriaPrecio.SelectedItem = null;
+            this.cbCategoriaPrecio.Size = new System.Drawing.Size(150, 22);
+            this.cbCategoriaPrecio.TabIndex = 380;
+            this.cbCategoriaPrecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // vAjusteBindingSource
+            // 
+            this.vAjusteBindingSource.DataSource = typeof(ENTITY.inv.Ajuste.View.VAjuste);
+            // 
+            // labelX2
+            // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX2.Location = new System.Drawing.Point(813, 11);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX2.Size = new System.Drawing.Size(110, 23);
+            this.labelX2.TabIndex = 379;
+            this.labelX2.Text = "Categoria precio:";
+            // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX1.Location = new System.Drawing.Point(11, 11);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX1.Size = new System.Drawing.Size(134, 23);
+            this.labelX1.TabIndex = 378;
+            this.labelX1.Text = "Código:";
+            // 
+            // cbConcepto
+            // 
+            this.cbConcepto.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "IdConcepto", true));
+            cbConcepto_DesignTimeLayout.LayoutString = resources.GetString("cbConcepto_DesignTimeLayout.LayoutString");
+            this.cbConcepto.DesignTimeLayout = cbConcepto_DesignTimeLayout;
+            this.cbConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbConcepto.Location = new System.Drawing.Point(151, 68);
+            this.cbConcepto.Name = "cbConcepto";
+            this.cbConcepto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cbConcepto.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cbConcepto.SelectedIndex = -1;
+            this.cbConcepto.SelectedItem = null;
+            this.cbConcepto.Size = new System.Drawing.Size(150, 22);
+            this.cbConcepto.TabIndex = 377;
+            this.cbConcepto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX5.Location = new System.Drawing.Point(11, 67);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX5.Size = new System.Drawing.Size(134, 23);
+            this.labelX5.TabIndex = 376;
+            this.labelX5.Text = "Concepto:";
+            // 
             // cbAlmacen
             // 
+            this.cbAlmacen.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "IdAlmacen", true));
             cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString");
             this.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout;
             this.cbAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -307,7 +404,7 @@
             this.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.cbAlmacen.SelectedIndex = -1;
             this.cbAlmacen.SelectedItem = null;
-            this.cbAlmacen.Size = new System.Drawing.Size(300, 22);
+            this.cbAlmacen.Size = new System.Drawing.Size(400, 22);
             this.cbAlmacen.TabIndex = 240;
             this.cbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
@@ -352,6 +449,7 @@
             this.dtiFecha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtiFecha.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiFecha.ButtonDropDown.Visible = true;
+            this.dtiFecha.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "Fecha", true));
             this.dtiFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtiFecha.IsPopupCalendarOpen = false;
             this.dtiFecha.Location = new System.Drawing.Point(151, 40);
@@ -397,13 +495,14 @@
             // 
             this.tbObs.Border.Class = "TextBoxBorder";
             this.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbObs.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vAjusteBindingSource, "Obs", true));
             this.tbObs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbObs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
             this.tbObs.Location = new System.Drawing.Point(407, 40);
             this.tbObs.Multiline = true;
             this.tbObs.Name = "tbObs";
             this.tbObs.PreventEnterBeep = true;
-            this.tbObs.Size = new System.Drawing.Size(300, 52);
+            this.tbObs.Size = new System.Drawing.Size(400, 52);
             this.tbObs.TabIndex = 3;
             // 
             // LabelX3
@@ -429,6 +528,7 @@
             // 
             this.tbCodigo.Border.Class = "TextBoxBorder";
             this.tbCodigo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vAjusteBindingSource, "Id", true));
             this.tbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
             this.tbCodigo.Location = new System.Drawing.Point(151, 12);
@@ -492,6 +592,24 @@
             this.GPanel_Detalle.TabIndex = 287;
             this.GPanel_Detalle.Text = "AJUSTE DETALLE";
             // 
+            // dgjDetalle
+            // 
+            this.dgjDetalle.BackColor = System.Drawing.Color.GhostWhite;
+            this.dgjDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgjDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgjDetalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgjDetalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
+            this.dgjDetalle.Location = new System.Drawing.Point(0, 0);
+            this.dgjDetalle.Name = "dgjDetalle";
+            this.dgjDetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.dgjDetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.dgjDetalle.Size = new System.Drawing.Size(1223, 180);
+            this.dgjDetalle.TabIndex = 0;
+            this.dgjDetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.dgjDetalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgjDetalle_CellEdited);
+            this.dgjDetalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.dgjDetalle_EditingCell);
+            this.dgjDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgjDetalle_KeyDown);
+            // 
             // GPanel_Producto
             // 
             this.GPanel_Producto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
@@ -551,73 +669,7 @@
             this.dgjProducto.Size = new System.Drawing.Size(1223, 124);
             this.dgjProducto.TabIndex = 0;
             this.dgjProducto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgjProducto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell_1);
-            this.dgjProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown_1);
-            // 
-            // dgjDetalle
-            // 
-            this.dgjDetalle.BackColor = System.Drawing.Color.GhostWhite;
-            this.dgjDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgjDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgjDetalle.HeaderFormatStyle.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgjDetalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
-            this.dgjDetalle.Location = new System.Drawing.Point(0, 0);
-            this.dgjDetalle.Name = "dgjDetalle";
-            this.dgjDetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.dgjDetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.dgjDetalle.Size = new System.Drawing.Size(1223, 180);
-            this.dgjDetalle.TabIndex = 0;
-            this.dgjDetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgjDetalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
-            this.dgjDetalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
-            this.dgjDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Detalle_KeyDown_1);
-            // 
-            // cbConcepto
-            // 
-            cbConcepto_DesignTimeLayout.LayoutString = resources.GetString("cbConcepto_DesignTimeLayout.LayoutString");
-            this.cbConcepto.DesignTimeLayout = cbConcepto_DesignTimeLayout;
-            this.cbConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbConcepto.Location = new System.Drawing.Point(151, 68);
-            this.cbConcepto.Name = "cbConcepto";
-            this.cbConcepto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.cbConcepto.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.cbConcepto.SelectedIndex = -1;
-            this.cbConcepto.SelectedItem = null;
-            this.cbConcepto.Size = new System.Drawing.Size(150, 22);
-            this.cbConcepto.TabIndex = 377;
-            this.cbConcepto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX5.Location = new System.Drawing.Point(11, 67);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX5.Size = new System.Drawing.Size(134, 23);
-            this.labelX5.TabIndex = 376;
-            this.labelX5.Text = "Almacen:";
-            // 
-            // labelX1
-            // 
-            this.labelX1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX1.Location = new System.Drawing.Point(11, 11);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(134, 23);
-            this.labelX1.TabIndex = 378;
-            this.labelX1.Text = "Código:";
+            this.dgjProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgjProducto_KeyDown);
             // 
             // F1_Ajuste
             // 
@@ -626,7 +678,6 @@
             this.ClientSize = new System.Drawing.Size(1229, 675);
             this.Name = "F1_Ajuste";
             this.Text = "F1_Compra";
-            this.Load += new System.EventHandler(this.F1_Compra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -648,14 +699,16 @@
             this.GroupPanel1.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCategoriaPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.GPanel_Detalle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgjDetalle)).EndInit();
             this.GPanel_Producto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgjProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgjDetalle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -680,5 +733,8 @@
         internal DevComponents.DotNetBar.LabelX labelX1;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cbConcepto;
         internal DevComponents.DotNetBar.LabelX labelX5;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cbCategoriaPrecio;
+        internal DevComponents.DotNetBar.LabelX labelX2;
+        private System.Windows.Forms.BindingSource vAjusteBindingSource;
     }
 }
