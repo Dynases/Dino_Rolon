@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -103,6 +104,7 @@ namespace PRESENTER.alm
             BtnHabilitar.Enabled = true;
             this.Tb_Id.ReadOnly = true;
             _Limpiar = false;
+            //Panel_Productos.Visible = false;
         }
 
         private void MP_Habilitar()
@@ -123,8 +125,8 @@ namespace PRESENTER.alm
         {
             try
             {
-                GPanel_Producto.Visible = false;
-                GPanel_Producto.Height = 30;
+                Panel_Productos.Visible = false;
+                Panel_Productos.Height = 30;                
                 Dgv_Detalle.Select();
                 Dgv_Detalle.Col = 5;
                 Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1;
@@ -639,8 +641,9 @@ namespace PRESENTER.alm
         {
             try
             {
+                Panel_Productos.Visible = true;
+               Panel_Productos.Height = 350;
                 GPanel_Producto.Visible = true;
-                GPanel_Producto.Height = 350;
                 Dgv_Producto.Focus();
                 Dgv_Producto.MoveTo(Dgv_Producto.FilterRow);
                 Dgv_Producto.Col = 5;

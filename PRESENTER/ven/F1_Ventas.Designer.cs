@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Ventas));
-            Janus.Windows.GridEX.GridEXLayout cb_Cliente_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout Cb_Origen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout Cb_EncVenta_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout Cb_EncTransporte_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_EncPreVenta_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_EncRecepcion_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_EncVenta_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_EncTransporte_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cb_Cliente_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout Cb_Origen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
@@ -56,6 +56,14 @@
             this.Dgv_DetalleVenta = new Janus.Windows.GridEX.GridEX();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnEncPreVenta = new DevComponents.DotNetBar.ButtonX();
+            this.btnEncRecepcion = new DevComponents.DotNetBar.ButtonX();
+            this.Cb_EncPreVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.Cb_EncRecepcion = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.btnEncTransporte = new DevComponents.DotNetBar.ButtonX();
+            this.btnEncVenta = new DevComponents.DotNetBar.ButtonX();
+            this.Cb_EncVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.Cb_EncTransporte = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cb_Cliente = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.TbEmpresaProveedoraCliente = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
@@ -88,14 +96,6 @@
             this.Cb_Origen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.Cb_EncVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.Cb_EncTransporte = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.btnEncVenta = new DevComponents.DotNetBar.ButtonX();
-            this.btnEncTransporte = new DevComponents.DotNetBar.ButtonX();
-            this.btnEncPreVenta = new DevComponents.DotNetBar.ButtonX();
-            this.btnEncRecepcion = new DevComponents.DotNetBar.ButtonX();
-            this.Cb_EncPreVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.Cb_EncRecepcion = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -106,11 +106,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
-            this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.PanelMenu.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.GPanel_Producto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).BeginInit();
@@ -120,12 +120,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleVenta)).BeginInit();
             this.PanelArriba.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncPreVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncRecepcion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPrimero
@@ -233,20 +233,6 @@
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
-            // LblSubtitulo
-            // 
-            this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 22);
-            this.LblSubtitulo.Text = "Registre un nuevo ingreso. Visualice y/o modifique la información de una  venta p" +
-    "reviamente registrada. \r\n";
-            // 
-            // PanelMenu
-            // 
-            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelMenu.Size = new System.Drawing.Size(1215, 72);
-            // 
             // PanelContenidoRegistro
             // 
             this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
@@ -296,6 +282,20 @@
             // 
             this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
             this.BtnHabilitar.Click += new System.EventHandler(this.BtnHabilitar_Click);
+            // 
+            // LblSubtitulo
+            // 
+            this.LblSubtitulo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblSubtitulo.Size = new System.Drawing.Size(1215, 22);
+            this.LblSubtitulo.Text = "Registre un nuevo ingreso. Visualice y/o modifique la información de una  venta p" +
+    "reviamente registrada. \r\n";
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelMenu.Size = new System.Drawing.Size(1215, 72);
             // 
             // PanelFondo
             // 
@@ -691,6 +691,141 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 1;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES";
+            // 
+            // btnEncPreVenta
+            // 
+            this.btnEncPreVenta.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEncPreVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEncPreVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnEncPreVenta.Image = global::PRESENTER.Properties.Resources.AGREGAR;
+            this.btnEncPreVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnEncPreVenta.Location = new System.Drawing.Point(1169, 147);
+            this.btnEncPreVenta.Name = "btnEncPreVenta";
+            this.btnEncPreVenta.Size = new System.Drawing.Size(28, 27);
+            this.btnEncPreVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEncPreVenta.TabIndex = 401;
+            this.btnEncPreVenta.Visible = false;
+            this.btnEncPreVenta.Click += new System.EventHandler(this.btnEncPreVenta_Click);
+            // 
+            // btnEncRecepcion
+            // 
+            this.btnEncRecepcion.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEncRecepcion.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnEncRecepcion.Image = ((System.Drawing.Image)(resources.GetObject("btnEncRecepcion.Image")));
+            this.btnEncRecepcion.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnEncRecepcion.Location = new System.Drawing.Point(902, 172);
+            this.btnEncRecepcion.Name = "btnEncRecepcion";
+            this.btnEncRecepcion.Size = new System.Drawing.Size(28, 29);
+            this.btnEncRecepcion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEncRecepcion.TabIndex = 400;
+            this.btnEncRecepcion.Visible = false;
+            this.btnEncRecepcion.Click += new System.EventHandler(this.btnEncRecepcion_Click);
+            // 
+            // Cb_EncPreVenta
+            // 
+            Cb_EncPreVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncPreVenta_DesignTimeLayout.LayoutString");
+            this.Cb_EncPreVenta.DesignTimeLayout = Cb_EncPreVenta_DesignTimeLayout;
+            this.Cb_EncPreVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_EncPreVenta.Location = new System.Drawing.Point(939, 153);
+            this.Cb_EncPreVenta.Name = "Cb_EncPreVenta";
+            this.Cb_EncPreVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_EncPreVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_EncPreVenta.SelectedIndex = -1;
+            this.Cb_EncPreVenta.SelectedItem = null;
+            this.Cb_EncPreVenta.Size = new System.Drawing.Size(224, 22);
+            this.Cb_EncPreVenta.TabIndex = 399;
+            this.Cb_EncPreVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_EncPreVenta.ValueChanged += new System.EventHandler(this.Cb_EncPreVenta_ValueChanged);
+            // 
+            // Cb_EncRecepcion
+            // 
+            this.Cb_EncRecepcion.BackColor = System.Drawing.Color.White;
+            Cb_EncRecepcion_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncRecepcion_DesignTimeLayout.LayoutString");
+            this.Cb_EncRecepcion.DesignTimeLayout = Cb_EncRecepcion_DesignTimeLayout;
+            this.Cb_EncRecepcion.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_EncRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_EncRecepcion.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_EncRecepcion.Location = new System.Drawing.Point(634, 174);
+            this.Cb_EncRecepcion.Name = "Cb_EncRecepcion";
+            this.Cb_EncRecepcion.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_EncRecepcion.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_EncRecepcion.SelectedIndex = -1;
+            this.Cb_EncRecepcion.SelectedItem = null;
+            this.Cb_EncRecepcion.Size = new System.Drawing.Size(260, 22);
+            this.Cb_EncRecepcion.TabIndex = 398;
+            this.Cb_EncRecepcion.Tag = "1";
+            this.Cb_EncRecepcion.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_EncRecepcion.ValueChanged += new System.EventHandler(this.Cb_EncRecepcion_ValueChanged);
+            // 
+            // btnEncTransporte
+            // 
+            this.btnEncTransporte.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEncTransporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEncTransporte.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnEncTransporte.Image = global::PRESENTER.Properties.Resources.AGREGAR;
+            this.btnEncTransporte.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnEncTransporte.Location = new System.Drawing.Point(904, 121);
+            this.btnEncTransporte.Name = "btnEncTransporte";
+            this.btnEncTransporte.Size = new System.Drawing.Size(28, 27);
+            this.btnEncTransporte.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEncTransporte.TabIndex = 397;
+            this.btnEncTransporte.Visible = false;
+            this.btnEncTransporte.Click += new System.EventHandler(this.btnEncTransporte_Click);
+            // 
+            // btnEncVenta
+            // 
+            this.btnEncVenta.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEncVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEncVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnEncVenta.Image = global::PRESENTER.Properties.Resources.AGREGAR;
+            this.btnEncVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
+            this.btnEncVenta.Location = new System.Drawing.Point(904, 26);
+            this.btnEncVenta.Name = "btnEncVenta";
+            this.btnEncVenta.Size = new System.Drawing.Size(28, 27);
+            this.btnEncVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEncVenta.TabIndex = 396;
+            this.btnEncVenta.Visible = false;
+            this.btnEncVenta.Click += new System.EventHandler(this.btnEncVenta_Click);
+            // 
+            // Cb_EncVenta
+            // 
+            this.Cb_EncVenta.BackColor = System.Drawing.Color.White;
+            Cb_EncVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncVenta_DesignTimeLayout.LayoutString");
+            this.Cb_EncVenta.DesignTimeLayout = Cb_EncVenta_DesignTimeLayout;
+            this.Cb_EncVenta.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_EncVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_EncVenta.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_EncVenta.Location = new System.Drawing.Point(634, 26);
+            this.Cb_EncVenta.Name = "Cb_EncVenta";
+            this.Cb_EncVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_EncVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_EncVenta.SelectedIndex = -1;
+            this.Cb_EncVenta.SelectedItem = null;
+            this.Cb_EncVenta.Size = new System.Drawing.Size(260, 22);
+            this.Cb_EncVenta.TabIndex = 395;
+            this.Cb_EncVenta.Tag = "1";
+            this.Cb_EncVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_EncVenta.ValueChanged += new System.EventHandler(this.Cb_EncVenta_ValueChanged);
+            // 
+            // Cb_EncTransporte
+            // 
+            this.Cb_EncTransporte.BackColor = System.Drawing.Color.White;
+            Cb_EncTransporte_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncTransporte_DesignTimeLayout.LayoutString");
+            this.Cb_EncTransporte.DesignTimeLayout = Cb_EncTransporte_DesignTimeLayout;
+            this.Cb_EncTransporte.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_EncTransporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_EncTransporte.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_EncTransporte.Location = new System.Drawing.Point(634, 122);
+            this.Cb_EncTransporte.Name = "Cb_EncTransporte";
+            this.Cb_EncTransporte.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_EncTransporte.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_EncTransporte.SelectedIndex = -1;
+            this.Cb_EncTransporte.SelectedItem = null;
+            this.Cb_EncTransporte.Size = new System.Drawing.Size(260, 22);
+            this.Cb_EncTransporte.TabIndex = 394;
+            this.Cb_EncTransporte.Tag = "1";
+            this.Cb_EncTransporte.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.Cb_EncTransporte.ValueChanged += new System.EventHandler(this.Cb_EncTransporte_ValueChanged);
             // 
             // cb_Cliente
             // 
@@ -1199,141 +1334,6 @@
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
-            // Cb_EncVenta
-            // 
-            this.Cb_EncVenta.BackColor = System.Drawing.Color.White;
-            Cb_EncVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncVenta_DesignTimeLayout.LayoutString");
-            this.Cb_EncVenta.DesignTimeLayout = Cb_EncVenta_DesignTimeLayout;
-            this.Cb_EncVenta.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_EncVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncVenta.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_EncVenta.Location = new System.Drawing.Point(634, 26);
-            this.Cb_EncVenta.Name = "Cb_EncVenta";
-            this.Cb_EncVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_EncVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_EncVenta.SelectedIndex = -1;
-            this.Cb_EncVenta.SelectedItem = null;
-            this.Cb_EncVenta.Size = new System.Drawing.Size(260, 22);
-            this.Cb_EncVenta.TabIndex = 395;
-            this.Cb_EncVenta.Tag = "1";
-            this.Cb_EncVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Cb_EncVenta.ValueChanged += new System.EventHandler(this.Cb_EncVenta_ValueChanged);
-            // 
-            // Cb_EncTransporte
-            // 
-            this.Cb_EncTransporte.BackColor = System.Drawing.Color.White;
-            Cb_EncTransporte_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncTransporte_DesignTimeLayout.LayoutString");
-            this.Cb_EncTransporte.DesignTimeLayout = Cb_EncTransporte_DesignTimeLayout;
-            this.Cb_EncTransporte.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_EncTransporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncTransporte.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_EncTransporte.Location = new System.Drawing.Point(634, 122);
-            this.Cb_EncTransporte.Name = "Cb_EncTransporte";
-            this.Cb_EncTransporte.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_EncTransporte.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_EncTransporte.SelectedIndex = -1;
-            this.Cb_EncTransporte.SelectedItem = null;
-            this.Cb_EncTransporte.Size = new System.Drawing.Size(260, 22);
-            this.Cb_EncTransporte.TabIndex = 394;
-            this.Cb_EncTransporte.Tag = "1";
-            this.Cb_EncTransporte.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Cb_EncTransporte.ValueChanged += new System.EventHandler(this.Cb_EncTransporte_ValueChanged);
-            // 
-            // btnEncVenta
-            // 
-            this.btnEncVenta.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEncVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEncVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnEncVenta.Image = global::PRESENTER.Properties.Resources.AGREGAR;
-            this.btnEncVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncVenta.Location = new System.Drawing.Point(904, 26);
-            this.btnEncVenta.Name = "btnEncVenta";
-            this.btnEncVenta.Size = new System.Drawing.Size(28, 27);
-            this.btnEncVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEncVenta.TabIndex = 396;
-            this.btnEncVenta.Visible = false;
-            this.btnEncVenta.Click += new System.EventHandler(this.btnEncVenta_Click);
-            // 
-            // btnEncTransporte
-            // 
-            this.btnEncTransporte.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEncTransporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEncTransporte.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnEncTransporte.Image = global::PRESENTER.Properties.Resources.AGREGAR;
-            this.btnEncTransporte.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncTransporte.Location = new System.Drawing.Point(904, 121);
-            this.btnEncTransporte.Name = "btnEncTransporte";
-            this.btnEncTransporte.Size = new System.Drawing.Size(28, 27);
-            this.btnEncTransporte.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEncTransporte.TabIndex = 397;
-            this.btnEncTransporte.Visible = false;
-            this.btnEncTransporte.Click += new System.EventHandler(this.btnEncTransporte_Click);
-            // 
-            // btnEncPreVenta
-            // 
-            this.btnEncPreVenta.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEncPreVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEncPreVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnEncPreVenta.Image = global::PRESENTER.Properties.Resources.AGREGAR;
-            this.btnEncPreVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncPreVenta.Location = new System.Drawing.Point(1169, 147);
-            this.btnEncPreVenta.Name = "btnEncPreVenta";
-            this.btnEncPreVenta.Size = new System.Drawing.Size(28, 27);
-            this.btnEncPreVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEncPreVenta.TabIndex = 401;
-            this.btnEncPreVenta.Visible = false;
-            this.btnEncPreVenta.Click += new System.EventHandler(this.btnEncPreVenta_Click);
-            // 
-            // btnEncRecepcion
-            // 
-            this.btnEncRecepcion.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEncRecepcion.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnEncRecepcion.Image = ((System.Drawing.Image)(resources.GetObject("btnEncRecepcion.Image")));
-            this.btnEncRecepcion.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncRecepcion.Location = new System.Drawing.Point(902, 172);
-            this.btnEncRecepcion.Name = "btnEncRecepcion";
-            this.btnEncRecepcion.Size = new System.Drawing.Size(28, 29);
-            this.btnEncRecepcion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEncRecepcion.TabIndex = 400;
-            this.btnEncRecepcion.Visible = false;
-            this.btnEncRecepcion.Click += new System.EventHandler(this.btnEncRecepcion_Click);
-            // 
-            // Cb_EncPreVenta
-            // 
-            Cb_EncPreVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncPreVenta_DesignTimeLayout.LayoutString");
-            this.Cb_EncPreVenta.DesignTimeLayout = Cb_EncPreVenta_DesignTimeLayout;
-            this.Cb_EncPreVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncPreVenta.Location = new System.Drawing.Point(939, 153);
-            this.Cb_EncPreVenta.Name = "Cb_EncPreVenta";
-            this.Cb_EncPreVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_EncPreVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_EncPreVenta.SelectedIndex = -1;
-            this.Cb_EncPreVenta.SelectedItem = null;
-            this.Cb_EncPreVenta.Size = new System.Drawing.Size(224, 22);
-            this.Cb_EncPreVenta.TabIndex = 399;
-            this.Cb_EncPreVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Cb_EncPreVenta.ValueChanged += new System.EventHandler(this.Cb_EncPreVenta_ValueChanged);
-            // 
-            // Cb_EncRecepcion
-            // 
-            this.Cb_EncRecepcion.BackColor = System.Drawing.Color.White;
-            Cb_EncRecepcion_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncRecepcion_DesignTimeLayout.LayoutString");
-            this.Cb_EncRecepcion.DesignTimeLayout = Cb_EncRecepcion_DesignTimeLayout;
-            this.Cb_EncRecepcion.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_EncRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncRecepcion.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_EncRecepcion.Location = new System.Drawing.Point(634, 174);
-            this.Cb_EncRecepcion.Name = "Cb_EncRecepcion";
-            this.Cb_EncRecepcion.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_EncRecepcion.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_EncRecepcion.SelectedIndex = -1;
-            this.Cb_EncRecepcion.SelectedItem = null;
-            this.Cb_EncRecepcion.Size = new System.Drawing.Size(260, 22);
-            this.Cb_EncRecepcion.TabIndex = 398;
-            this.Cb_EncRecepcion.Tag = "1";
-            this.Cb_EncRecepcion.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Cb_EncRecepcion.ValueChanged += new System.EventHandler(this.Cb_EncRecepcion_ValueChanged);
-            // 
             // F1_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1354,12 +1354,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
-            this.PanelMenu.ResumeLayout(false);
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.PanelMenu.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.GPanel_Producto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).EndInit();
@@ -1371,12 +1371,12 @@
             this.PanelArriba.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncPreVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncRecepcion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).EndInit();
             this.ResumeLayout(false);
 
         }

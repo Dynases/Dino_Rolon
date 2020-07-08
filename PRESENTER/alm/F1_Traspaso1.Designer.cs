@@ -33,8 +33,6 @@
             Janus.Windows.GridEX.GridEXLayout Cb_Destino_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Origen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
             this.Cb_CatPrecio = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Tb_UsuarioRecibe = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Tb_UsuarioEnvio = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -54,6 +52,8 @@
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Id = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Dgv_Producto = new Janus.Windows.GridEX.GridEX();
             this.PanelTotal = new System.Windows.Forms.Panel();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.tb_TotalUnidad = new DevComponents.Editors.DoubleInput();
@@ -62,6 +62,8 @@
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.GPanel_Detalles = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Detalle = new Janus.Windows.GridEX.GridEX();
+            this.Panel_Productos = new System.Windows.Forms.Panel();
+            this.Panel_Contenido = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -78,19 +80,21 @@
             this.superTabControl1.SuspendLayout();
             this.PanelMenu.SuspendLayout();
             this.GroupPanel1.SuspendLayout();
-            this.GPanel_Producto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CatPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaDestino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Destino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnvio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).BeginInit();
+            this.GPanel_Producto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).BeginInit();
             this.PanelTotal.SuspendLayout();
             this.Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_TotalUnidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Total)).BeginInit();
             this.GPanel_Detalles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).BeginInit();
+            this.Panel_Productos.SuspendLayout();
+            this.Panel_Contenido.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPrimero
@@ -193,19 +197,13 @@
             // 
             // PanelContenidoRegistro
             // 
-            this.PanelContenidoRegistro.Controls.Add(this.GPanel_Producto);
-            this.PanelContenidoRegistro.Controls.Add(this.GPanel_Detalles);
-            this.PanelContenidoRegistro.Controls.Add(this.PanelTotal);
-            this.PanelContenidoRegistro.Controls.Add(this.GroupPanel1);
+            this.PanelContenidoRegistro.Controls.Add(this.Panel_Contenido);
             this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoRegistro.Size = new System.Drawing.Size(1199, 631);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
             this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GroupPanel1, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelTotal, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Detalles, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.GPanel_Producto, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.Panel_Contenido, 0);
             // 
             // PanelInferior
             // 
@@ -280,7 +278,7 @@
             this.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.GroupPanel1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupPanel1.Location = new System.Drawing.Point(0, 108);
+            this.GroupPanel1.Location = new System.Drawing.Point(0, 0);
             this.GroupPanel1.Name = "GroupPanel1";
             this.GroupPanel1.Size = new System.Drawing.Size(1199, 164);
             // 
@@ -313,57 +311,6 @@
             this.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GroupPanel1.TabIndex = 367;
             this.GroupPanel1.Text = "DATOS GENERALES";
-            // 
-            // GPanel_Producto
-            // 
-            this.GPanel_Producto.CanvasColor = System.Drawing.SystemColors.Control;
-            this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.GPanel_Producto.Controls.Add(this.Dgv_Producto);
-            this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Producto.Location = new System.Drawing.Point(118, 183);
-            this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(963, 37);
-            // 
-            // 
-            // 
-            this.GPanel_Producto.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.GPanel_Producto.Style.BackColorGradientAngle = 90;
-            this.GPanel_Producto.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.GPanel_Producto.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Producto.Style.BorderBottomWidth = 1;
-            this.GPanel_Producto.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.GPanel_Producto.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Producto.Style.BorderLeftWidth = 1;
-            this.GPanel_Producto.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Producto.Style.BorderRightWidth = 1;
-            this.GPanel_Producto.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.GPanel_Producto.Style.BorderTopWidth = 1;
-            this.GPanel_Producto.Style.CornerDiameter = 4;
-            this.GPanel_Producto.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.GPanel_Producto.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.GPanel_Producto.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.GPanel_Producto.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            // 
-            // 
-            // 
-            this.GPanel_Producto.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.GPanel_Producto.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.GPanel_Producto.TabIndex = 391;
-            this.GPanel_Producto.Text = "PRODUCTOS";
-            this.GPanel_Producto.Visible = false;
-            // 
-            // Dgv_Producto
-            // 
-            this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
-            this.Dgv_Producto.Name = "Dgv_Producto";
-            this.Dgv_Producto.Size = new System.Drawing.Size(957, 16);
-            this.Dgv_Producto.TabIndex = 0;
-            this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
-            this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);
             // 
             // Cb_CatPrecio
             // 
@@ -736,13 +683,64 @@
             this.Tb_Id.TabIndex = 373;
             this.Tb_Id.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // GPanel_Producto
+            // 
+            this.GPanel_Producto.CanvasColor = System.Drawing.SystemColors.Control;
+            this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_Producto.Controls.Add(this.Dgv_Producto);
+            this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
+            this.GPanel_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GPanel_Producto.Location = new System.Drawing.Point(0, 0);
+            this.GPanel_Producto.Name = "GPanel_Producto";
+            this.GPanel_Producto.Size = new System.Drawing.Size(963, 37);
+            // 
+            // 
+            // 
+            this.GPanel_Producto.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.GPanel_Producto.Style.BackColorGradientAngle = 90;
+            this.GPanel_Producto.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.GPanel_Producto.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Producto.Style.BorderBottomWidth = 1;
+            this.GPanel_Producto.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.GPanel_Producto.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Producto.Style.BorderLeftWidth = 1;
+            this.GPanel_Producto.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Producto.Style.BorderRightWidth = 1;
+            this.GPanel_Producto.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.GPanel_Producto.Style.BorderTopWidth = 1;
+            this.GPanel_Producto.Style.CornerDiameter = 4;
+            this.GPanel_Producto.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.GPanel_Producto.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.GPanel_Producto.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.GPanel_Producto.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.GPanel_Producto.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.GPanel_Producto.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.GPanel_Producto.TabIndex = 391;
+            this.GPanel_Producto.Text = "PRODUCTOS";
+            // 
+            // Dgv_Producto
+            // 
+            this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
+            this.Dgv_Producto.Name = "Dgv_Producto";
+            this.Dgv_Producto.Size = new System.Drawing.Size(957, 16);
+            this.Dgv_Producto.TabIndex = 0;
+            this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
+            this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);
+            // 
             // PanelTotal
             // 
             this.PanelTotal.AutoScroll = true;
             this.PanelTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(35)))), ((int)(((byte)(65)))));
             this.PanelTotal.Controls.Add(this.Panel4);
             this.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelTotal.Location = new System.Drawing.Point(0, 519);
+            this.PanelTotal.Location = new System.Drawing.Point(0, 411);
             this.PanelTotal.Name = "PanelTotal";
             this.PanelTotal.Size = new System.Drawing.Size(1199, 84);
             this.PanelTotal.TabIndex = 387;
@@ -835,9 +833,9 @@
             this.GPanel_Detalles.DisabledBackColor = System.Drawing.Color.Empty;
             this.GPanel_Detalles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_Detalles.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.GPanel_Detalles.Location = new System.Drawing.Point(0, 272);
+            this.GPanel_Detalles.Location = new System.Drawing.Point(0, 164);
             this.GPanel_Detalles.Name = "GPanel_Detalles";
-            this.GPanel_Detalles.Size = new System.Drawing.Size(1199, 247);
+            this.GPanel_Detalles.Size = new System.Drawing.Size(1199, 331);
             // 
             // 
             // 
@@ -874,11 +872,32 @@
             this.Dgv_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Detalle.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Detalle.Name = "Dgv_Detalle";
-            this.Dgv_Detalle.Size = new System.Drawing.Size(1193, 221);
+            this.Dgv_Detalle.Size = new System.Drawing.Size(1193, 305);
             this.Dgv_Detalle.TabIndex = 9;
             this.Dgv_Detalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.Dgv_Detalle_CellEdited);
             this.Dgv_Detalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Detalle_EditingCell);
             this.Dgv_Detalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Detalle_KeyDown);
+            // 
+            // Panel_Productos
+            // 
+            this.Panel_Productos.Controls.Add(this.GPanel_Producto);
+            this.Panel_Productos.Location = new System.Drawing.Point(128, 23);
+            this.Panel_Productos.Name = "Panel_Productos";
+            this.Panel_Productos.Size = new System.Drawing.Size(963, 37);
+            this.Panel_Productos.TabIndex = 393;
+            this.Panel_Productos.Visible = false;
+            // 
+            // Panel_Contenido
+            // 
+            this.Panel_Contenido.Controls.Add(this.Panel_Productos);
+            this.Panel_Contenido.Controls.Add(this.PanelTotal);
+            this.Panel_Contenido.Controls.Add(this.GPanel_Detalles);
+            this.Panel_Contenido.Controls.Add(this.GroupPanel1);
+            this.Panel_Contenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Contenido.Location = new System.Drawing.Point(0, 108);
+            this.Panel_Contenido.Name = "Panel_Contenido";
+            this.Panel_Contenido.Size = new System.Drawing.Size(1199, 495);
+            this.Panel_Contenido.TabIndex = 393;
             // 
             // F1_Traspaso1
             // 
@@ -906,19 +925,21 @@
             this.PanelMenu.ResumeLayout(false);
             this.GroupPanel1.ResumeLayout(false);
             this.GroupPanel1.PerformLayout();
-            this.GPanel_Producto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_CatPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaDestino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Destino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnvio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Origen)).EndInit();
+            this.GPanel_Producto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Producto)).EndInit();
             this.PanelTotal.ResumeLayout(false);
             this.Panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tb_TotalUnidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Total)).EndInit();
             this.GPanel_Detalles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle)).EndInit();
+            this.Panel_Productos.ResumeLayout(false);
+            this.Panel_Contenido.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -955,5 +976,7 @@
         internal DevComponents.Editors.DoubleInput tb_TotalUnidad;
         internal DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.GroupPanel GroupPanel1;
+        private System.Windows.Forms.Panel Panel_Productos;
+        private System.Windows.Forms.Panel Panel_Contenido;
     }
 }

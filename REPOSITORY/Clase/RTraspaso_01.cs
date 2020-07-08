@@ -98,8 +98,7 @@ namespace REPOSITORY.Clase
         {
             try
             {
-                using (var db = this.GetEsquema())                 
-                   
+                using (var db = this.GetEsquema())                     
                 {
                     var listResult = db.Traspaso_01
                        .Where(d => d.IdTraspaso == idTraspaso && d.Traspaso.Estado != (int)ENEstado.ELIMINAR)
