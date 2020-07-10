@@ -1495,7 +1495,19 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-       
+        /********** REPORTE ***********/
+        public DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            try
+            {
+                var listResult = new LSeleccion().ReporteHistoricoSeleccion(fechaDesde, fechaHasta);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #endregion
         #region Seleccion_01

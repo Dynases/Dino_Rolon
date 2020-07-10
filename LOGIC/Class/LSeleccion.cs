@@ -5,6 +5,7 @@ using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,7 +115,19 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }       
+        }
+        /********** REPORTE ***********/
+        public DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            try
+            {
+                return iSeleccion.ReporteHistoricoSeleccion(fechaDesde, fechaHasta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

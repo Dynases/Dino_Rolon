@@ -85,7 +85,12 @@ namespace REPOSITORY.Clase.DiSoft
             try
             {
                 using (var db = GetEsquema())
-                {                   
+                {
+                    var validarPedido = db.TO001.Where(a => a.oaccli == IdCliente).Count();
+                    if (validarPedido > 0)
+                    {
+                        throw new Exception("El cliente esta relacionado en "+ validarPedido.ToString() +" transacciones de Pedidos");
+                    }
                     var cliente = db.TC004.Where(a => a.ccnumi == IdCliente).FirstOrDefault();
                     var credito = db.TC004B.Where(c => c.ccbnumi == IdCliente).FirstOrDefault();
                     var tC0041 = db.TC0041.Where(c => c.chnumi == IdCliente).FirstOrDefault();

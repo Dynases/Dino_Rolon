@@ -29,6 +29,7 @@
   <xs:complexType name="VSeleccionEncabezado">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Dias" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRecepcion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaReg" type="xs:dateTime" />

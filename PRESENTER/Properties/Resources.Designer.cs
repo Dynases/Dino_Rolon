@@ -143,6 +143,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BOTON {
+            get {
+                object obj = ResourceManager.GetObject("BOTON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BUSCAR_DASHBOARD {
             get {
                 object obj = ResourceManager.GetObject("BUSCAR DASHBOARD", resourceCulture);
@@ -193,6 +203,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap COMPARTIDOS {
+            get {
+                object obj = ResourceManager.GetObject("COMPARTIDOS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap COMPRAS2 {
             get {
                 object obj = ResourceManager.GetObject("COMPRAS2", resourceCulture);
@@ -226,6 +246,16 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap edit2 {
             get {
                 object obj = ResourceManager.GetObject("edit2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EXCEL {
+            get {
+                object obj = ResourceManager.GetObject("EXCEL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

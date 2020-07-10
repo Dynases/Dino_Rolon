@@ -422,6 +422,9 @@ namespace SERVICE
         VSeleccionLista TraerSeleccion(int idSeleccion);
         [OperationContract]
         List<RSeleccionNota> NotaSeleccion(int idSeleccion);
+        /********** REPORTE ***********/
+        [OperationContract]       
+        DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta);
         #endregion
         #endregion
         #region Seleccion_01

@@ -706,16 +706,16 @@ namespace PRESENTER.com
 
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Reporte, ENSubCarpetas.ReportesCompraIngreso);
-            string ubicacion = Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Reporte, ENSubCarpetas.ReportesCompraIngreso);
-            if (MP_ExportarExcel(ubicacion, ENArchivoNombre.CompraIngreso))
-            {
-                MP_MostrarMensajeExito(GLMensaje.ExportacionExitosa);
-            }
-            else
-            {
-                MP_MostrarMensajeError(GLMensaje.ExportacionErronea);
-            }
+            MP_ExportarExcel();
+        }
+       
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            MP_CargarEncabezado();
+        }
+        private void BtnExportar2_Click(object sender, EventArgs e)
+        {
+            MP_ExportarExcel();
         }
         #endregion
 
@@ -734,6 +734,8 @@ namespace PRESENTER.com
                 btnRecibido.Visible = false;
                 BtnExportar.Visible = true;
                 MP_AsignarPermisos();
+                Dt_FechaDesde.Value = DateTime.Now.Date;
+                Dt_FechaHasta.Value = DateTime.Now.Date;
             }
             catch (Exception ex)
             {
@@ -765,7 +767,19 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-        
+        private void MP_ExportarExcel()
+        {
+            UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Reporte, ENSubCarpetas.ReportesCompraIngreso);
+            string ubicacion = Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Reporte, ENSubCarpetas.ReportesCompraIngreso);
+            if (MP_ArmarExcel(ubicacion, ENArchivoNombre.CompraIngreso))
+            {
+                MP_MostrarMensajeExito(GLMensaje.ExportacionExitosa);
+            }
+            else
+            {
+                MP_MostrarMensajeError(GLMensaje.ExportacionErronea);
+            }
+        }
         private void MP_CargarEncabezado()
         {
             try
@@ -780,7 +794,7 @@ namespace PRESENTER.com
                 MessageBox.Show(ex.StackTrace, GLMensaje.Error);
             }
         }
-        private bool MP_ExportarExcel(string ubicacion, string nombreArchivo)
+        private bool MP_ArmarExcel(string ubicacion, string nombreArchivo)
         {
             try
             {
@@ -810,7 +824,15 @@ namespace PRESENTER.com
                     {
                         if (columna.Visible)
                         {
-                            var data = fila.Cells[columna.Key].Value.ToString();
+                            string data;
+                            if (columna.Key.ToString() == "FechaRec" || columna.Key.ToString()=="FechaEnt")
+                            {
+                                data = Convert.ToDateTime(fila.Cells[columna.Key].Value).ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                data = fila.Cells[columna.Key].Value.ToString();
+                            } 
                             data = data.Replace(";", ",");
                             linea = linea + data + ";";
                         }
@@ -823,7 +845,7 @@ namespace PRESENTER.com
                 Efecto efecto = new Efecto();
                 efecto.archivo = archivo;
                 efecto.Tipo = 1;
-                efecto.Context = "Su archivo ha sido Guardado en la ruta: " + archivo + "DESEA ABRIR EL ARCHIVO?";
+                efecto.Context = "Su archivo ha sido Guardado en la ruta: " + archivo + " DESEA ABRIR EL ARCHIVO?";
                 efecto.Header = "PREGUNTA";
                 efecto.ShowDialog();               
                 if (efecto.Band)
@@ -1641,10 +1663,10 @@ namespace PRESENTER.com
                 Tb_Observacion.Clear();
                 Tb_Observacion.Clear();
                 Tb_Entregado.Clear();
-                Tb_FechaEnt.Value = DateTime.Now;
-                Tb_FechaRec.Value = DateTime.Now;
-                Dt_FechaDesde.Value = DateTime.Now;
-                Dt_FechaHasta.Value = DateTime.Now;
+                Tb_FechaEnt.Value = DateTime.Now.Date;
+                Tb_FechaRec.Value = DateTime.Now.Date;
+                Dt_FechaDesde.Value = DateTime.Now.Date;
+                Dt_FechaHasta.Value = DateTime.Now.Date;
                 Tb_Edad.Clear();
                 Tb_CompraIngresoPrecioAntoguo.Clear();
                 Sw_Tipo.Value = false;
@@ -2217,5 +2239,6 @@ namespace PRESENTER.com
         }
         #endregion
 
+       
     }
 }

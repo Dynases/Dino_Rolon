@@ -10,5 +10,6 @@ namespace UTILITY.Enum.EnCarpetas
     {
         public static string CompraIngreso = "HistoricoCompraIngreso";
         public static string Seleccion = "ListaSeleccion";
+        public static string SeleccionHistorio = "HistoricoSeleccion";
     }
 }

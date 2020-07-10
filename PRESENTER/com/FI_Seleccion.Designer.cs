@@ -80,6 +80,8 @@
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.BtnExportar2 = new Janus.Windows.EditControls.UIButton();
+            this.BtnActualizar = new Janus.Windows.EditControls.UIButton();
             this.Dt_FechaHasta = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Dt_FechaDesde = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.BtnBuscar = new Janus.Windows.EditControls.UIButton();
@@ -184,7 +186,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Controls.Add(this.groupPanel2);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1166, 597);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.PanelUsuario, 0);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.GMPanel_Buscardor, 0);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.groupPanel2, 0);
@@ -204,8 +206,8 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, -25);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 541);
+            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 56);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1166, 541);
             // 
             // 
             // 
@@ -237,7 +239,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 515);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1160, 515);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
@@ -277,8 +279,8 @@
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(1166, 630);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
             // 
             // TxtNombreUsu
             // 
@@ -1234,7 +1236,7 @@
             this.groupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupPanel2.Location = new System.Drawing.Point(0, 0);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(958, 60);
+            this.groupPanel2.Size = new System.Drawing.Size(1166, 60);
             // 
             // 
             // 
@@ -1270,6 +1272,8 @@
             // 
             this.panel6.AutoScroll = true;
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.BtnExportar2);
+            this.panel6.Controls.Add(this.BtnActualizar);
             this.panel6.Controls.Add(this.Dt_FechaHasta);
             this.panel6.Controls.Add(this.Dt_FechaDesde);
             this.panel6.Controls.Add(this.BtnBuscar);
@@ -1279,8 +1283,28 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(952, 37);
+            this.panel6.Size = new System.Drawing.Size(1160, 37);
             this.panel6.TabIndex = 234;
+            // 
+            // BtnExportar2
+            // 
+            this.BtnExportar2.Image = global::PRESENTER.Properties.Resources.COMPARTIDOS;
+            this.BtnExportar2.Location = new System.Drawing.Point(998, 8);
+            this.BtnExportar2.Name = "BtnExportar2";
+            this.BtnExportar2.Size = new System.Drawing.Size(145, 23);
+            this.BtnExportar2.TabIndex = 383;
+            this.BtnExportar2.Text = "EXPORTAR";
+            this.BtnExportar2.Click += new System.EventHandler(this.BtnExportar2_Click);
+            // 
+            // BtnActualizar
+            // 
+            this.BtnActualizar.Image = global::PRESENTER.Properties.Resources.BOTON;
+            this.BtnActualizar.Location = new System.Drawing.Point(807, 7);
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.Size = new System.Drawing.Size(141, 23);
+            this.BtnActualizar.TabIndex = 382;
+            this.BtnActualizar.Text = "ACTUALIZAR";
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // Dt_FechaHasta
             // 
@@ -1327,7 +1351,6 @@
             this.Dt_FechaHasta.Size = new System.Drawing.Size(153, 22);
             this.Dt_FechaHasta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Dt_FechaHasta.TabIndex = 381;
-            this.Dt_FechaHasta.Value = new System.DateTime(2020, 7, 8, 0, 0, 0, 0);
             // 
             // Dt_FechaDesde
             // 
@@ -1374,14 +1397,13 @@
             this.Dt_FechaDesde.Size = new System.Drawing.Size(153, 22);
             this.Dt_FechaDesde.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Dt_FechaDesde.TabIndex = 380;
-            this.Dt_FechaDesde.Value = new System.DateTime(2020, 7, 8, 0, 0, 0, 0);
             // 
             // BtnBuscar
             // 
             this.BtnBuscar.Image = global::PRESENTER.Properties.Resources.BUSCAR_DASHBOARD;
-            this.BtnBuscar.Location = new System.Drawing.Point(592, 7);
+            this.BtnBuscar.Location = new System.Drawing.Point(625, 8);
             this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(123, 23);
+            this.BtnBuscar.Size = new System.Drawing.Size(139, 23);
             this.BtnBuscar.TabIndex = 379;
             this.BtnBuscar.Text = "BUSCAR";
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -1549,5 +1571,7 @@
         protected internal DevComponents.DotNetBar.LabelX labelX21;
         protected internal DevComponents.DotNetBar.LabelX labelX22;
         protected internal DevComponents.DotNetBar.LabelX labelX23;
+        private Janus.Windows.EditControls.UIButton BtnExportar2;
+        private Janus.Windows.EditControls.UIButton BtnActualizar;
     }
 }

@@ -185,6 +185,12 @@ namespace PRESENTER.adm
             F2_CompraIngresoCriterio frm = new F2_CompraIngresoCriterio();
             frm.Show();
         }
+        private void Metro_ExportarExcel_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_ExportarExcel.Name;
+            F2_ExportarExcel frm = new F2_ExportarExcel();
+            frm.Show();
+        }
         #endregion
         #region Ventas
         private void btnVentas_Click(object sender, EventArgs e)
@@ -193,10 +199,11 @@ namespace PRESENTER.adm
             frm.Show();
         }
 
-        #endregion
 
         #endregion
 
-       
+        #endregion
+
+     
     }
 }

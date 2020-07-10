@@ -39,6 +39,12 @@
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd34" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceDesktop_TraerVentas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerVentas" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerVentas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerVentasResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerDetalleVentaVacio_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerDetalleVentaVacio" />
   </wsdl:message>
@@ -699,6 +705,12 @@
   <wsdl:message name="IServiceDesktop_NotaSeleccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:NotaSeleccionResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ReporteHistoricoSeleccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteHistoricoSeleccion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ReporteHistoricoSeleccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteHistoricoSeleccionResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerSeleccion_01_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerSeleccion_01" />
   </wsdl:message>
@@ -831,13 +843,11 @@
   <wsdl:message name="IServiceDesktop_VentaDetalleListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:VentaDetalleListarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_TraerVentas_InputMessage">
-    <wsdl:part name="parameters" element="tns:TraerVentas" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_TraerVentas_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TraerVentasResponse" />
-  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
+    <wsdl:operation name="TraerVentas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentas" message="tns:IServiceDesktop_TraerVentas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentasResponse" message="tns:IServiceDesktop_TraerVentas_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerDetalleVentaVacio">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio" message="tns:IServiceDesktop_TraerDetalleVentaVacio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacioResponse" message="tns:IServiceDesktop_TraerDetalleVentaVacio_OutputMessage" />
@@ -1278,6 +1288,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/NotaSeleccion" message="tns:IServiceDesktop_NotaSeleccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse" message="tns:IServiceDesktop_NotaSeleccion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReporteHistoricoSeleccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion" message="tns:IServiceDesktop_ReporteHistoricoSeleccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse" message="tns:IServiceDesktop_ReporteHistoricoSeleccion_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerSeleccion_01">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01" message="tns:IServiceDesktop_TraerSeleccion_01_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01Response" message="tns:IServiceDesktop_TraerSeleccion_01_OutputMessage" />
@@ -1366,13 +1380,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse" message="tns:IServiceDesktop_VentaDetalleListar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="TraerVentas">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentas" message="tns:IServiceDesktop_TraerVentas_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentasResponse" message="tns:IServiceDesktop_TraerVentas_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraerVentas">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerDetalleVentaVacio">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio" style="document" />
       <wsdl:input>
@@ -2363,6 +2382,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReporteHistoricoSeleccion">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerSeleccion_01">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerSeleccion_01" style="document" />
       <wsdl:input>
@@ -2554,15 +2582,6 @@
     </wsdl:operation>
     <wsdl:operation name="VentaDetalleListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleListar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="TraerVentas">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVentas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

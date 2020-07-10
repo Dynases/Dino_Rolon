@@ -252,6 +252,9 @@
     <Compile Include="EntityDataModel\DiSoft\TL001.cs">
       <DependentUpon>DiSoftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TO001.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

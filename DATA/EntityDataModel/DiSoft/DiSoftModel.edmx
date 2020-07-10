@@ -137,6 +137,25 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="lahact" Type="nvarchar" MaxLength="5" />
           <Property Name="lauact" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TO001">
+          <Key>
+            <PropertyRef Name="oanumi" />
+          </Key>
+          <Property Name="oanumi" Type="int" Nullable="false" />
+          <Property Name="oafdoc" Type="date" />
+          <Property Name="oahora" Type="nvarchar" MaxLength="5" />
+          <Property Name="oaccli" Type="int" />
+          <Property Name="oazona" Type="int" />
+          <Property Name="oarepa" Type="int" />
+          <Property Name="oaobs" Type="nvarchar" MaxLength="100" />
+          <Property Name="oaobs2" Type="nvarchar" MaxLength="60" />
+          <Property Name="oaest" Type="int" />
+          <Property Name="oaap" Type="int" />
+          <Property Name="oapg" Type="int" />
+          <Property Name="oafact" Type="date" />
+          <Property Name="oahact" Type="nvarchar" MaxLength="5" />
+          <Property Name="oauact" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityContainer Name="BDDistBHF_RolonModelStoreContainer">
           <EntitySet Name="TC001" EntityType="Self.TC001" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC004" EntityType="Self.TC004" Schema="dbo" store:Type="Tables" />
@@ -144,6 +163,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySet Name="TC004B" EntityType="Self.TC004B" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC0051" EntityType="Self.TC0051" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TL001" EntityType="Self.TL001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TO001" EntityType="Self.TO001" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC0041" EntityType="Self.TC0041" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TC0041].[chnumi] AS [chnumi], 
@@ -176,6 +196,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySet Name="TC0041" EntityType="BDDistBHF_RolonModel.TC0041" />
           <EntitySet Name="TC001" EntityType="BDDistBHF_RolonModel.TC001" />
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
+          <EntitySet Name="TO001" EntityType="BDDistBHF_RolonModel.TO001" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -306,6 +327,25 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="ccfact" Type="DateTime" Precision="0" />
           <Property Name="cchact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ccuact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TO001">
+          <Key>
+            <PropertyRef Name="oanumi" />
+          </Key>
+          <Property Name="oanumi" Type="Int32" Nullable="false" />
+          <Property Name="oafdoc" Type="DateTime" Precision="0" />
+          <Property Name="oahora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="oaccli" Type="Int32" />
+          <Property Name="oazona" Type="Int32" />
+          <Property Name="oarepa" Type="Int32" />
+          <Property Name="oaobs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="oaobs2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="oaest" Type="Int32" />
+          <Property Name="oaap" Type="Int32" />
+          <Property Name="oapg" Type="Int32" />
+          <Property Name="oafact" Type="DateTime" Precision="0" />
+          <Property Name="oahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="oauact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -446,6 +486,26 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="ccdesc" ColumnName="ccdesc" />
                 <ScalarProperty Name="cccod" ColumnName="cccod" />
                 <ScalarProperty Name="ccnumi" ColumnName="ccnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO001">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001">
+              <MappingFragment StoreEntitySet="TO001">
+                <ScalarProperty Name="oauact" ColumnName="oauact" />
+                <ScalarProperty Name="oahact" ColumnName="oahact" />
+                <ScalarProperty Name="oafact" ColumnName="oafact" />
+                <ScalarProperty Name="oapg" ColumnName="oapg" />
+                <ScalarProperty Name="oaap" ColumnName="oaap" />
+                <ScalarProperty Name="oaest" ColumnName="oaest" />
+                <ScalarProperty Name="oaobs2" ColumnName="oaobs2" />
+                <ScalarProperty Name="oaobs" ColumnName="oaobs" />
+                <ScalarProperty Name="oarepa" ColumnName="oarepa" />
+                <ScalarProperty Name="oazona" ColumnName="oazona" />
+                <ScalarProperty Name="oaccli" ColumnName="oaccli" />
+                <ScalarProperty Name="oahora" ColumnName="oahora" />
+                <ScalarProperty Name="oafdoc" ColumnName="oafdoc" />
+                <ScalarProperty Name="oanumi" ColumnName="oanumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        ENTITY.ven.view.VVenta[] TraerVentas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacioResponse")]
         ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId);
         
@@ -759,6 +765,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
+        System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccion_01Response")]
         ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] TraerSeleccion_01(int idSeleccion);
         
@@ -900,12 +912,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        ENTITY.ven.view.VVenta[] TraerVentas();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1821,6 +1827,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public ServiceDesktopClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ENTITY.ven.view.VVenta[] TraerVentas() {
+            return base.Channel.TraerVentas();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
+            return base.Channel.TraerVentasAsync();
         }
         
         public ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId) {
@@ -2866,6 +2880,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.NotaSeleccionAsync(idSeleccion);
         }
         
+        public System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
+            return base.Channel.ReporteHistoricoSeleccion(fechaDesde, fechaHasta);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
+            return base.Channel.ReporteHistoricoSeleccionAsync(fechaDesde, fechaHasta);
+        }
+        
         public ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] TraerSeleccion_01(int idSeleccion) {
             return base.Channel.TraerSeleccion_01(idSeleccion);
         }
@@ -3099,14 +3121,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
             return base.Channel.VentaDetalleListarAsync(VentaId);
-        }
-        
-        public ENTITY.ven.view.VVenta[] TraerVentas() {
-            return base.Channel.TraerVentas();
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
-            return base.Channel.TraerVentasAsync();
         }
     }
 }

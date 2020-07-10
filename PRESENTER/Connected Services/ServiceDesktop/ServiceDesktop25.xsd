@@ -43,6 +43,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Devolucion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entregado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaEnt" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRec" type="xs:dateTime" />

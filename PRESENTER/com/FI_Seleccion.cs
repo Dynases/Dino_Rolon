@@ -62,6 +62,8 @@ namespace PRESENTER.com
                 MP_InHabilitar();
                 MP_AsignarPermisos();
                 BtnExportar.Visible = true;
+                Dt_FechaDesde.Value = DateTime.Now.Date;
+                Dt_FechaHasta.Value = DateTime.Now.Date;
             }
             catch (Exception ex)
             {
@@ -523,9 +525,11 @@ namespace PRESENTER.com
                 Tb_Id.Clear();
                 Tb_IdCompraIngreso.Clear();                
                 Tb_Edad.Clear();
-                Tb_FechaEnt.Value = DateTime.Now;
-                Tb_FechaRec.Value = DateTime.Now;
+                Tb_FechaEnt.Value = DateTime.Now.Date;
+                Tb_FechaRec.Value = DateTime.Now.Date;
                 tb_FechaSeleccion.Value = DateTime.Now;
+                Dt_FechaDesde.Value= DateTime.Now.Date;
+                Dt_FechaHasta.Value = DateTime.Now.Date;
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
@@ -649,6 +653,27 @@ namespace PRESENTER.com
                 MP_MostrarMensajeError(ex.Message);
             }          
         }
+        private void MP_ExportarExcel()
+        {
+            try
+            {
+                UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
+                string ubicacion = Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
+                if (MP_ArmarExcel(ubicacion, ENArchivoNombre.Seleccion))
+                {
+                    MP_MostrarMensajeExito(GLMensaje.ExportacionExitosa);
+                }
+                else
+                {
+                    MP_MostrarMensajeError(GLMensaje.ExportacionErronea);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         void MP_MostrarMensajeError(string mensaje)
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.WARNING, (int)GLMensajeTamano.Mediano, eToastGlowColor.Green, eToastPosition.TopCenter);
@@ -657,7 +682,7 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
-        private bool MP_ExportarExcel(string ubicacion, string nombreArchivo)
+        private bool MP_ArmarExcel(string ubicacion, string nombreArchivo)
         {
             try
             {
@@ -687,7 +712,15 @@ namespace PRESENTER.com
                     {
                         if (columna.Visible)
                         {
-                            var data = fila.Cells[columna.Key].Value.ToString();
+                            string data;
+                            if (columna.Key.ToString() == "FechaReg" || columna.Key.ToString() == "FechaRecepcion")
+                            {
+                                data = Convert.ToDateTime(fila.Cells[columna.Key].Value).ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                data = fila.Cells[columna.Key].Value.ToString();
+                            }
                             data = data.Replace(";", ",");
                             linea = linea + data + ";";
                         }
@@ -1177,17 +1210,25 @@ namespace PRESENTER.com
 
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
-            string ubicacion = Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
-            if (MP_ExportarExcel(ubicacion, ENArchivoNombre.Seleccion))
+            MP_ExportarExcel();
+        }
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            try
             {
-                MP_MostrarMensajeExito(GLMensaje.ExportacionExitosa);
+                MP_CargarEncabezado();
             }
-            else
+            catch (Exception ex)
             {
-                MP_MostrarMensajeError(GLMensaje.ExportacionErronea);
+                MP_MostrarMensajeError(ex.Message);
             }
         }
+
+        private void BtnExportar2_Click(object sender, EventArgs e)
+        {
+            MP_ExportarExcel();
+        }
+       
         #endregion
         #region Metodo heredados
         public override bool MH_NuevoRegistro()
@@ -1224,10 +1265,10 @@ namespace PRESENTER.com
                     {
                         MP_ReporteSeleccion(id);
                         cb_NumGranja.Focus();
-                        MP_Filtrar(1);
-                        MP_CargarEncabezado();
+                        MP_Filtrar(1);                        
                         MP_Limpiar();
                         _Limpiar = true;
+                        MP_InicioArmarCombo();
                         mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
                     }
                     else//Modificar
@@ -1376,8 +1417,9 @@ namespace PRESENTER.com
         }
 
 
+
         #endregion
 
-    
+      
     }
 }

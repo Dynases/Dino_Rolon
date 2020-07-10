@@ -373,6 +373,12 @@
     <Compile Include="com\Reporte\F2_CompraIngresoCriterio.Designer.cs">
       <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
     </Compile>
+    <Compile Include="com\Reporte\F2_ExportarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com\Reporte\F2_ExportarExcel.Designer.cs">
+      <DependentUpon>F2_ExportarExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceDesktop\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -524,6 +530,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="com\Reporte\F2_CompraIngresoCriterio.resx">
       <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com\Reporte\F2_ExportarExcel.resx">
+      <DependentUpon>F2_ExportarExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\Efecto.resx">
       <DependentUpon>Efecto.cs</DependentUpon>
@@ -877,6 +886,9 @@
     <None Include="Resource\Password.png" />
     <None Include="Resource\checked.png" />
     <None Include="Resources\BUSCAR DASHBOARD.png" />
+    <None Include="Resources\EXCEL.png" />
+    <None Include="Resources\BOTON.png" />
+    <None Include="Resources\COMPARTIDOS.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
