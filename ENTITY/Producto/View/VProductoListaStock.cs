@@ -27,6 +27,8 @@ namespace ENTITY.Producto.View
 
         public decimal PrecioVenta  { get; set; }
         public decimal PrecioCosto { get; set; }
+        public decimal PrecioMinVenta { get; set; }
+        public decimal PrecioMaxVenta { get; set; }
 
         public decimal? Stock { get; set; }
 

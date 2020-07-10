@@ -127,6 +127,12 @@ namespace REPOSITORY.Clase
                            TotalContenido = v.TotalUnidad,
                            PrecioVenta = v.Precio,
                            PrecioCosto = v.PrecioCosto,
+                           PrecioMinVenta = db.Precio.FirstOrDefault(a=>a.IdProduc == v.IdProducto &&
+                                                                        a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                        a.IdPrecioCat == (int)ENCategoriaPrecio.B005).Precio1,
+                           PrecioMaxVenta = db.Precio.FirstOrDefault(a => a.IdProduc == v.IdProducto &&
+                                                                       a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                       a.IdPrecioCat == (int)ENCategoriaPrecio.VENTA).Precio1,                           
                            Lote = v.Lote,
                            FechaVencimiento = v.FechaVencimiento,
                            Delete = "",
@@ -172,7 +178,13 @@ namespace REPOSITORY.Clase
                            TotalContenido = v.TotalUnidad,
                            PrecioVenta = v.Precio,
                            PrecioCosto= v.PrecioCosto,
-                           Lote=v.Lote,
+                           PrecioMinVenta = db.Precio.FirstOrDefault(a => a.IdProduc == v.IdProducto &&
+                                                                      a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                      a.IdPrecioCat == (int)ENCategoriaPrecio.B005).Precio1,
+                           PrecioMaxVenta = db.Precio.FirstOrDefault(a => a.IdProduc == v.IdProducto &&
+                                                                       a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                       a.IdPrecioCat == (int)ENCategoriaPrecio.VENTA).Precio1,
+                           Lote =v.Lote,
                            FechaVencimiento=v.FechaVencimiento,                      
                            Delete = "",
                            Stock = db.TI001.FirstOrDefault(a => a.icalm == v.Venta.IdAlmacen &&
@@ -214,6 +226,12 @@ namespace REPOSITORY.Clase
                            PrecioCosto = db.Precio.FirstOrDefault(x=> x.IdProduc == v.IdProducto &&
                                                                       x.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
                                                                       x.IdPrecioCat == (int)ENCategoriaPrecio.COSTO).Precio1,
+                           PrecioMinVenta = db.Precio.FirstOrDefault(a => a.IdProduc == v.IdProducto &&
+                                                                      a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                      a.IdPrecioCat == (int)ENCategoriaPrecio.B005).Precio1,
+                           PrecioMaxVenta = db.Precio.FirstOrDefault(a => a.IdProduc == v.IdProducto &&
+                                                                       a.IdSucursal == v.Venta.Almacen.Sucursal.Id &&
+                                                                       a.IdPrecioCat == (int)ENCategoriaPrecio.VENTA).Precio1,
                            Lote = v.Lote,
                            FechaVencimiento = v.FechaVencimiento,
                            Delete = "",

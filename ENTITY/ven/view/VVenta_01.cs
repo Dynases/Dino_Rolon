@@ -35,7 +35,9 @@ namespace ENTITY.ven.view
         {
             get
             { return this.PrecioCosto * Convert.ToDecimal(this.Cantidad); }
-        }      
+        }
+        public decimal PrecioMinVenta{ get; set; }
+        public decimal PrecioMaxVenta { get; set; }
         public string Lote { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public decimal Stock { get; set; }

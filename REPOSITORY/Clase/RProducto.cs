@@ -12,6 +12,7 @@ using UTILITY.Enum.EnEstaticos;
 using System.Data.Entity;
 using System.Data;
 using ENTITY.inv.Traspaso.View;
+using UTILITY.Enum;
 
 namespace REPOSITORY.Clase
 {
@@ -314,7 +315,7 @@ namespace REPOSITORY.Clase
                                             s.Id == IdSucursal &&
                                             a.Id == IdAlmacen &&
                                             prc.Id == IdCategoriaPrecio &&
-                                            prcc.Id == 8 && //Precio de costo Id Estatico
+                                            prcc.Id == (int)ENCategoriaPrecio.COSTO && //Precio de costo Id Estatico
                                             l.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && l.IdOrden == (int)ENEstaticosOrden.PRODUCTO_UN_VENTA &&
                                             m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                             t.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && t.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
@@ -332,6 +333,12 @@ namespace REPOSITORY.Clase
                                           CategoriaProducto = t.Descrip,
                                           PrecioVenta = pr.Precio1,
                                           PrecioCosto = prcosto.Precio1,
+                                          PrecioMinVenta = db.Precio.FirstOrDefault(pr=>pr.IdProduc == p.Id &&
+                                                                                        pr.IdSucursal == s.Id &&
+                                                                                        pr.IdPrecioCat == (int)ENCategoriaPrecio.B005).Precio1,
+                                          PrecioMaxVenta = db.Precio.FirstOrDefault(pr => pr.IdProduc == p.Id &&
+                                                                                 pr.IdSucursal == s.Id &&
+                                                                                 pr.IdPrecioCat == (int)ENCategoriaPrecio.VENTA).Precio1,
                                           UnidadVenta = l.Descrip,
                                           Stock = (from y in db.TI001
                                                    where y.icalm == IdAlmacen && y.iccprod == p.Id

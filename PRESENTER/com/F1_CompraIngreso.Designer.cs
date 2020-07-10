@@ -35,16 +35,16 @@
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             DevComponents.DotNetBar.Rendering.SuperTabColorTable superTabColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable4 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabControlBoxStateColorTable superTabControlBoxStateColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabControlBoxStateColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabItemColorTable superTabItemColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabItemColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabColorStates superTabColorStates1 = new DevComponents.DotNetBar.Rendering.SuperTabColorStates();
             DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable superTabItemStateColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable superTabItemStateColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabColorStates superTabColorStates2 = new DevComponents.DotNetBar.Rendering.SuperTabColorStates();
             DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable superTabItemStateColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.cb_Proveedor = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -110,14 +110,14 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.GroupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.BtnExportar2 = new Janus.Windows.EditControls.UIButton();
+            this.BtnActualizar = new Janus.Windows.EditControls.UIButton();
             this.Dt_FechaHasta = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Dt_FechaDesde = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.BtnBuscar = new Janus.Windows.EditControls.UIButton();
             this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.labelX22 = new DevComponents.DotNetBar.LabelX();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
-            this.BtnExportar2 = new Janus.Windows.EditControls.UIButton();
-            this.BtnActualizar = new Janus.Windows.EditControls.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -1071,10 +1071,10 @@
             this.Tab_Detalle,
             this.Tap_Devolucion,
             this.Tab_Resultado});
-            superTabLinearGradientColorTable4.AdaptiveGradient = true;
-            superTabLinearGradientColorTable4.Colors = new System.Drawing.Color[] {
+            superTabLinearGradientColorTable3.AdaptiveGradient = true;
+            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
         System.Drawing.Color.White};
-            superTabColorTable1.Background = superTabLinearGradientColorTable4;
+            superTabColorTable1.Background = superTabLinearGradientColorTable3;
             superTabControlBoxStateColorTable1.Background = System.Drawing.Color.White;
             superTabColorTable1.ControlBoxDefault = superTabControlBoxStateColorTable1;
             this.superTabControl2.TabStripColor = superTabColorTable1;
@@ -1115,14 +1115,14 @@
             this.Tab_Detalle.SymbolColor = System.Drawing.Color.Transparent;
             superTabItemStateColorTable1.CloseMarker = System.Drawing.Color.White;
             superTabColorStates1.Disabled = superTabItemStateColorTable1;
-            superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
+            superTabLinearGradientColorTable1.Colors = new System.Drawing.Color[] {
         System.Drawing.Color.White};
-            superTabItemStateColorTable2.Background = superTabLinearGradientColorTable2;
+            superTabItemStateColorTable2.Background = superTabLinearGradientColorTable1;
             superTabColorStates1.Selected = superTabItemStateColorTable2;
             superTabItemColorTable1.Bottom = superTabColorStates1;
-            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
+            superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
         System.Drawing.Color.Yellow};
-            superTabItemStateColorTable3.Background = superTabLinearGradientColorTable3;
+            superTabItemStateColorTable3.Background = superTabLinearGradientColorTable2;
             superTabColorStates2.Disabled = superTabItemStateColorTable3;
             superTabItemColorTable1.Default = superTabColorStates2;
             this.Tab_Detalle.TabColor = superTabItemColorTable1;
@@ -1554,6 +1554,26 @@
             this.panel6.Size = new System.Drawing.Size(1150, 37);
             this.panel6.TabIndex = 234;
             // 
+            // BtnExportar2
+            // 
+            this.BtnExportar2.Image = global::PRESENTER.Properties.Resources.COMPARTIDOS;
+            this.BtnExportar2.Location = new System.Drawing.Point(968, 8);
+            this.BtnExportar2.Name = "BtnExportar2";
+            this.BtnExportar2.Size = new System.Drawing.Size(145, 23);
+            this.BtnExportar2.TabIndex = 385;
+            this.BtnExportar2.Text = "EXPORTAR";
+            this.BtnExportar2.Click += new System.EventHandler(this.BtnExportar2_Click);
+            // 
+            // BtnActualizar
+            // 
+            this.BtnActualizar.Image = global::PRESENTER.Properties.Resources.BOTON;
+            this.BtnActualizar.Location = new System.Drawing.Point(777, 7);
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.Size = new System.Drawing.Size(141, 23);
+            this.BtnActualizar.TabIndex = 384;
+            this.BtnActualizar.Text = "ACTUALIZAR";
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
+            // 
             // Dt_FechaHasta
             // 
             // 
@@ -1703,26 +1723,6 @@
             this.labelX23.Size = new System.Drawing.Size(46, 23);
             this.labelX23.TabIndex = 375;
             this.labelX23.Text = "Desde";
-            // 
-            // BtnExportar2
-            // 
-            this.BtnExportar2.Image = global::PRESENTER.Properties.Resources.COMPARTIDOS;
-            this.BtnExportar2.Location = new System.Drawing.Point(968, 8);
-            this.BtnExportar2.Name = "BtnExportar2";
-            this.BtnExportar2.Size = new System.Drawing.Size(145, 23);
-            this.BtnExportar2.TabIndex = 385;
-            this.BtnExportar2.Text = "EXPORTAR";
-            this.BtnExportar2.Click += new System.EventHandler(this.BtnExportar2_Click);
-            // 
-            // BtnActualizar
-            // 
-            this.BtnActualizar.Image = global::PRESENTER.Properties.Resources.BOTON;
-            this.BtnActualizar.Location = new System.Drawing.Point(777, 7);
-            this.BtnActualizar.Name = "BtnActualizar";
-            this.BtnActualizar.Size = new System.Drawing.Size(141, 23);
-            this.BtnActualizar.TabIndex = 384;
-            this.BtnActualizar.Text = "ACTUALIZAR";
-            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // F1_CompraIngreso
             // 
