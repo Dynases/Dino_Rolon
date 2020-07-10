@@ -876,6 +876,7 @@
     <None Include="Resource\User1.png" />
     <None Include="Resource\Password.png" />
     <None Include="Resource\checked.png" />
+    <None Include="Resources\BUSCAR DASHBOARD.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

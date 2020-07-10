@@ -12,5 +12,7 @@ namespace UTILITY.Enum.EnCarpetas
         public static string ImagenesCliente= "Imagenes ClienteDiAvi";
         public static string ImagenesProveedor = "Imagenes ProveedorDiAvi";
         public static string ReportesDiAvi = "Reportes DiAvi";
+        public static string ReportesCompraIngreso = "Reportes CompraIngreso";
+        public static string ReportesSeleccion = "Reportes Seleccion";
     }
 }

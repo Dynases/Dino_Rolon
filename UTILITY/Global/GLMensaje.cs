@@ -37,6 +37,9 @@ namespace UTILITY.Global
         public static string Pregunta_Eliminar = "¿Esta seguro de eliminar el registro?";
         public static string Mensaje_Principal = "Mensaje Principal";
         public static string Pregunta_Imprimir = "¿Desea imprimir";
+        public static string ErrorNoControlado = "Error no controlado por el usuario";
+        public static string ExportacionExitosa ="EXPORTACIÓN DE LISTA EXITOSA";
+        public static string ExportacionErronea = "FALLO AL EXPORTACIÓN DE LISTA";
 
 
     }

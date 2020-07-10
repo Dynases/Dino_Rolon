@@ -198,6 +198,9 @@
     <Compile Include="EntityDataModel\DiAvi\Vr_CompraIngresoResultado.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Vr_HistoricoSeleccion.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Vr_SeleccionNota.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

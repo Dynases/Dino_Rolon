@@ -21,6 +21,9 @@ using UTILITY.Enum.EnEstado;
 using UTILITY;
 using PRESENTER.Report;
 using System.Data.Entity.ModelConfiguration.Configuration;
+using UTILITY.Enum.EnCarpetas;
+using System.IO;
+using System.Diagnostics;
 
 namespace PRESENTER.com
 {
@@ -58,6 +61,7 @@ namespace PRESENTER.com
                 MP_CargarEncabezado();
                 MP_InHabilitar();
                 MP_AsignarPermisos();
+                BtnExportar.Visible = true;
             }
             catch (Exception ex)
             {
@@ -101,13 +105,11 @@ namespace PRESENTER.com
                 this.MP_MostrarMensajeError(ex.Message);
             }
         }
-        private void MP_CargarEncabezado()
+        private void MP_ArmarEncabezado(List<VSeleccionEncabezado> vSeleccion)        
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones().ToList();          
-
-                Dgv_GBuscador.DataSource = ListaCompleta;
+                Dgv_GBuscador.DataSource = vSeleccion;
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;
 
@@ -133,7 +135,7 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Granja"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].Caption = "Proveedor";
-                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 160;
+                Dgv_GBuscador.RootTable.Columns["Proveedor"].Width = 150;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Proveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
@@ -210,7 +212,16 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Visible = true;                
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["Dias"].Caption = "Dias";
+                Dgv_GBuscador.RootTable.Columns["Dias"].FormatString = "0";
+                Dgv_GBuscador.RootTable.Columns["Dias"].Width = 40;
+                Dgv_GBuscador.RootTable.Columns["Dias"].AggregateFunction = AggregateFunction.Sum;
+                Dgv_GBuscador.RootTable.Columns["Dias"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["Dias"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["Dias"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
+                Dgv_GBuscador.RootTable.Columns["Dias"].Visible = true;
 
                 Dgv_GBuscador.RootTable.Columns["Fecha"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
@@ -232,7 +243,20 @@ namespace PRESENTER.com
                 Dgv_GBuscador.TotalRowFormatStyle.FontBold = TriState.True;
                 Dgv_GBuscador.TotalRowFormatStyle.BackColor = Color.Gold;
                 Dgv_GBuscador.TotalRowPosition = TotalRowPosition.BottomScrollable;
+            }
+            catch (Exception ex)
+            {
 
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void MP_CargarEncabezado()
+        {
+            try
+            {
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones().ToList();
+                MP_ArmarEncabezado(ListaCompleta);
             }
             catch (Exception ex)
             {
@@ -633,6 +657,99 @@ namespace PRESENTER.com
         {
             ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
         }
+        private bool MP_ExportarExcel(string ubicacion, string nombreArchivo)
+        {
+            try
+            {
+                string archivo, linea;
+                linea = "";
+                archivo = nombreArchivo + DateTime.Now.Day + "." +
+                        DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year + "." + DateTime.Now.Date.Hour + "." +
+                        DateTime.Now.Date.Minute + "." + DateTime.Now.Date.Second + ".csv";
+                archivo = Path.Combine(ubicacion, archivo);
+                File.Delete(archivo);
+                Stream stream = File.OpenWrite(archivo);
+                StreamWriter escritor = new StreamWriter(stream, Encoding.UTF8);
+                foreach (GridEXColumn columna in Dgv_GBuscador.RootTable.Columns)
+                {
+                    if (columna.Visible)
+                    {
+                        linea = linea + columna.Caption + ";";
+                    }
+                }
+                linea = linea.Substring(0, linea.Length - 1);
+
+                escritor.WriteLine(linea);
+                linea = "";
+                foreach (GridEXRow fila in Dgv_GBuscador.GetRows())
+                {
+                    foreach (GridEXColumn columna in Dgv_GBuscador.RootTable.Columns)
+                    {
+                        if (columna.Visible)
+                        {
+                            var data = fila.Cells[columna.Key].Value.ToString();
+                            data = data.Replace(";", ",");
+                            linea = linea + data + ";";
+                        }
+                    }
+                    linea = linea.Substring(0, linea.Length - 1);
+                    escritor.WriteLine(linea);
+                    linea = "";
+                }
+                escritor.Close();
+                Efecto efecto = new Efecto();
+                efecto.archivo = archivo;
+                efecto.Tipo = 1;
+                efecto.Context = "Su archivo ha sido Guardado en la ruta: " + archivo + "DESEA ABRIR EL ARCHIVO?";
+                efecto.Header = "PREGUNTA";
+                efecto.ShowDialog();
+                if (efecto.Band)
+                {
+                    Process.Start(archivo);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
+        private void MP_ReporteSeleccion(int idSeleccion)
+        {
+
+            try
+            {
+                if (idSeleccion == 0)
+                {
+                    throw new Exception("No existen registros");
+                }
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().NotaSeleccion(idSeleccion).ToList();
+                if (lista != null)
+                {
+                    var ObjetoReport = new RSeleccionNota();
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    ObjetoReport.SetParameterValue("Titulo", "CLASIFICACIÓN INGRESO A ALMACEN");
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
+                }
+                else
+                    throw new Exception("No se encontraron registros");
+
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
         #endregion
         #region Eventos     
 
@@ -679,12 +796,7 @@ namespace PRESENTER.com
         {
             try
             {
-                //Dgv_Seleccion.UpdateData();
                 int estado = Convert.ToInt32(Dgv_Seleccion.CurrentRow.Cells["Estado"].Value);
-                //if (estado == (int)ENEstado.COMPLETADO)
-                //{
-                //    throw new Exception("PRODUCTO COMPLETADO NO SE PUEDE  MODIFICAR");
-                //}
                 if (estado == (int)ENEstado.NUEVO || estado == (int)ENEstado.MODIFICAR)
                 {
                     MP_CalcularFila();
@@ -931,6 +1043,151 @@ namespace PRESENTER.com
         {
             e.Cancel = true;
         }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (cb_NumGranja.ReadOnly == true)
+            {
+                MP_ReporteSeleccion(Convert.ToInt32(Tb_Id.Text));
+            }
+
+        }
+
+        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row > -1)
+            {
+                superTabControl1.SelectedTabIndex = 0;
+            }
+        }
+
+        private void cb_NumGranja_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (cb_NumGranja.ReadOnly == false)
+                {
+                    if (e.KeyData == Keys.Enter)
+                    {
+                        if (Cb_Placa.SelectedIndex != -1)
+                        {
+                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_NumGranja.Value))).FirstOrDefault();
+                            if (lista == null)
+                            {
+                                throw new Exception("No se encontro una compra");
+                            }
+                            var tCompraIngreso = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
+                            foreach (DataRow rCompra in tCompraIngreso.Rows)
+                            {
+                                if (rCompra.Field<int>("Id") == Convert.ToInt32(cb_NumGranja.Value))
+                                {
+                                    Tb_IdCompraIngreso.Text = rCompra.Field<int>("Id").ToString();
+                                    //Tb_NUmGranja.Text = rCompra.Field<string>("NumNota").ToString();
+                                    //rCompra.Field<DateTime>("TipoCompra")
+                                    cb_NumGranja.Value = rCompra.Field<int>("Id");
+                                    Tb_FechaEnt.Value = rCompra.Field<DateTime>("FechaEnt");
+                                    Tb_FechaRec.Value = rCompra.Field<DateTime>("FechaRec");
+                                    Cb_Tipo.Value = rCompra.Field<int>("Tipo");
+                                    tb_Proveedor.Text = rCompra.Field<string>("Proveedor").ToString();
+                                    Cb_Placa.Value = rCompra.Field<int>("Placa");
+                                    Tb_Edad.Text = rCompra.Field<string>("EdadSemana").ToString();
+                                    Cb_Almacen.Value = rCompra.Field<int>("IdAlmacen");
+                                    _TipoCompra = rCompra.Field<int>("TipoCompra");
+                                    MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                                    MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                                    MP_ObtenerCalculo();
+                                    btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
+                                }
+                            }
+                        }
+                    }
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+                    {
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
+                        List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
+                        new GLCelda() { campo = "NumNota", visible = true, titulo = "N.GRANJA", tamano = 100 },
+                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENT.", tamano = 100 },
+                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA REC.", tamano = 100 },
+                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 130 },
+                        new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
+                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 240 },
+                        new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
+                        new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
+                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
+                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
+                    };
+                        Efecto efecto = new Efecto();
+                        efecto.Tipo = 3;
+                        efecto.Tabla = lista;
+                        efecto.SelectCol = 2;
+                        efecto.listaCelda = listEstCeldas;
+                        efecto.Alto = 50;
+                        efecto.Ancho = 350;
+                        efecto.Context = "SELECCIONE UN INGRESO";
+                        efecto.ShowDialog();
+                        bool bandera = false;
+                        bandera = efecto.Band;
+                        if (bandera)
+                        {
+                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
+                            Tb_IdCompraIngreso.Text = Row.Cells["Id"].Value.ToString();
+                            cb_NumGranja.Value = Row.Cells["Id"].Value.ToString();
+                            Tb_FechaEnt.Value = Convert.ToDateTime(Row.Cells["FechaEnt"].Value);
+                            Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
+                            Cb_Tipo.Value = Row.Cells["Tipo"].Value;
+                            tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
+                            Cb_Placa.Value = Row.Cells["Placa"].Value;
+                            Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
+                            Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
+                            _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
+                            MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                            MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
+                            MP_ObtenerCalculo();
+                            btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones().ToList();
+                if (ListaCompleta != null)
+                {
+                    var query = ListaCompleta.Where(a => a.FechaReg >= Dt_FechaDesde.Value && a.FechaReg <= Dt_FechaHasta.Value).ToList();
+                    MP_ArmarEncabezado(query);
+                }
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void BtnExportar_Click(object sender, EventArgs e)
+        {
+            UTGlobal.MG_CrearCarpetaImagenes(EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
+            string ubicacion = Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Reporte, ENSubCarpetas.ReportesSeleccion);
+            if (MP_ExportarExcel(ubicacion, ENArchivoNombre.Seleccion))
+            {
+                MP_MostrarMensajeExito(GLMensaje.ExportacionExitosa);
+            }
+            else
+            {
+                MP_MostrarMensajeError(GLMensaje.ExportacionErronea);
+            }
+        }
         #endregion
         #region Metodo heredados
         public override bool MH_NuevoRegistro()
@@ -1121,152 +1378,6 @@ namespace PRESENTER.com
 
         #endregion
 
-        private void BtnImprimir_Click(object sender, EventArgs e)
-        {
-            if (cb_NumGranja.ReadOnly == true)
-            {
-                MP_ReporteSeleccion(Convert.ToInt32(Tb_Id.Text));
-            }
-                
-        }
-        private void MP_ReporteSeleccion(int idSeleccion)
-        {
-            
-                try
-                {
-                    if (idSeleccion == 0)
-                    {
-                        throw new Exception("No existen registros");
-                    }
-                    if (UTGlobal.visualizador != null)
-                    {
-                        UTGlobal.visualizador.Close();
-                    }
-                    UTGlobal.visualizador = new Visualizador();
-                    var lista = new ServiceDesktop.ServiceDesktopClient().NotaSeleccion(idSeleccion).ToList();
-                    if (lista != null)
-                    {
-                        var ObjetoReport = new RSeleccionNota();
-                        ObjetoReport.SetDataSource(lista);
-                        UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
-                        ObjetoReport.SetParameterValue("Titulo", "CLASIFICACIÓN INGRESO A ALMACEN");
-                        UTGlobal.visualizador.ShowDialog();
-                        UTGlobal.visualizador.BringToFront();
-                    }
-                    else
-                        throw new Exception("No se encontraron registros");
-
-
-                }
-                catch (Exception ex)
-                {
-                    MP_MostrarMensajeError(ex.Message);
-                }
-            
-        }
-        private void Dgv_GBuscador_DoubleClick(object sender, EventArgs e)
-        {
-            if (Dgv_GBuscador.Row > -1)
-            {
-                superTabControl1.SelectedTabIndex = 0;
-            }
-        }
-
-        private void cb_NumGranja_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (cb_NumGranja.ReadOnly == false)
-                {
-                    if (e.KeyData == Keys.Enter)
-                    {
-                        if (Cb_Placa.SelectedIndex != -1)
-                        {
-                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_NumGranja.Value))).FirstOrDefault();
-                            if (lista == null)
-                            {
-                                throw new Exception("No se encontro una compra");
-                            }
-                            var tCompraIngreso = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
-                            foreach (DataRow rCompra in tCompraIngreso.Rows)
-                            {
-                                if (rCompra.Field<int>("Id") == Convert.ToInt32(cb_NumGranja.Value))
-                                {
-                                    Tb_IdCompraIngreso.Text = rCompra.Field<int>("Id").ToString();
-                                    //Tb_NUmGranja.Text = rCompra.Field<string>("NumNota").ToString();
-                                    //rCompra.Field<DateTime>("TipoCompra")
-                                    cb_NumGranja.Value = rCompra.Field<int>("Id");
-                                    Tb_FechaEnt.Value = rCompra.Field<DateTime>("FechaEnt");
-                                    Tb_FechaRec.Value = rCompra.Field<DateTime>("FechaRec");
-                                    Cb_Tipo.Value = rCompra.Field<int>("Tipo");
-                                    tb_Proveedor.Text = rCompra.Field<string>("Proveedor").ToString();
-                                    Cb_Placa.Value = rCompra.Field<int>("Placa");
-                                    Tb_Edad.Text = rCompra.Field<string>("EdadSemana").ToString();
-                                    Cb_Almacen.Value = rCompra.Field<int>("IdAlmacen");
-                                    _TipoCompra = rCompra.Field<int>("TipoCompra");
-                                    MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                                    MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                                    MP_ObtenerCalculo();
-                                    btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
-                                }
-                            }
-                        }
-                    }
-                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
-                    {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
-                        List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
-                        new GLCelda() { campo = "NumNota", visible = true, titulo = "N.GRANJA", tamano = 100 },
-                        new GLCelda() { campo = "FechaEnt", visible = true, titulo = "FECHA ENT.", tamano = 100 },
-                        new GLCelda() { campo = "FechaRec", visible = true, titulo = "FECHA REC.", tamano = 100 },
-                        new GLCelda() { campo = "Placa", visible = true, titulo = "PLACA", tamano = 130 },
-                        new GLCelda() { campo = "IdProvee", visible = false, titulo = "IdProvee", tamano = 100 },
-                        new GLCelda() { campo = "Proveedor", visible = true, titulo = "PROVEEDOR", tamano = 240 },
-                        new GLCelda() { campo = "Tipo", visible = false, titulo = "Tipo", tamano = 100 },
-                        new GLCelda() { campo = "EdadSemana", visible = false, titulo = "EDAD SEMANA", tamano = 100 },
-                        new GLCelda() { campo = "IdAlmacen", visible = false, titulo = "IdAlmacen", tamano = 100 },
-                        new GLCelda() { campo = "TipoCompra", visible = false, titulo = "TipoCompra", tamano = 100 }
-                    };
-                        Efecto efecto = new Efecto();
-                        efecto.Tipo = 3;
-                        efecto.Tabla = lista;
-                        efecto.SelectCol = 2;
-                        efecto.listaCelda = listEstCeldas;
-                        efecto.Alto = 50;
-                        efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN INGRESO";
-                        efecto.ShowDialog();
-                        bool bandera = false;
-                        bandera = efecto.Band;
-                        if (bandera)
-                        {
-                            Janus.Windows.GridEX.GridEXRow Row = efecto.Row;
-                            Tb_IdCompraIngreso.Text = Row.Cells["Id"].Value.ToString();
-                            cb_NumGranja.Value = Row.Cells["Id"].Value.ToString();
-                            Tb_FechaEnt.Value = Convert.ToDateTime(Row.Cells["FechaEnt"].Value);
-                            Tb_FechaRec.Value = Convert.ToDateTime(Row.Cells["FechaRec"].Value);
-                            Cb_Tipo.Value = Row.Cells["Tipo"].Value;
-                            tb_Proveedor.Text = Row.Cells["Proveedor"].Value.ToString();
-                            Cb_Placa.Value = Row.Cells["Placa"].Value;
-                            Tb_Edad.Text = Row.Cells["EdadSemana"].Value.ToString();
-                            Cb_Almacen.Value = Row.Cells["IdAlmacen"].Value;
-                            _TipoCompra = Convert.ToInt32(Row.Cells["TipoCompra"].Value);
-                            MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                            MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
-                            MP_ObtenerCalculo();
-                            btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
-                        }
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
+    
     }
 }

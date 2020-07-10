@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
             Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
             Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -78,6 +78,14 @@
             this.LabelX4 = new DevComponents.DotNetBar.LabelX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
             this.LabelX1 = new DevComponents.DotNetBar.LabelX();
+            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.Dt_FechaHasta = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.Dt_FechaDesde = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.BtnBuscar = new Janus.Windows.EditControls.UIButton();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.labelX22 = new DevComponents.DotNetBar.LabelX();
+            this.labelX23 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -88,11 +96,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
-            this.PanelMenu.SuspendLayout();
             this.PanelContenidoRegistro.SuspendLayout();
             this.PanelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.PanelMenu.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.PanelDerecho.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -118,6 +126,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).BeginInit();
+            this.groupPanel2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dt_FechaHasta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dt_FechaDesde)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnImprimir
@@ -139,6 +151,11 @@
             // btnUltimo
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Location = new System.Drawing.Point(522, 0);
+            this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
             // 
             // BubbleBarUsuario
             // 
@@ -166,7 +183,11 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1166, 597);
+            this.PanelContenidoBuscar.Controls.Add(this.groupPanel2);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Controls.SetChildIndex(this.PanelUsuario, 0);
+            this.PanelContenidoBuscar.Controls.SetChildIndex(this.GMPanel_Buscardor, 0);
+            this.PanelContenidoBuscar.Controls.SetChildIndex(this.groupPanel2, 0);
             // 
             // btnMin
             // 
@@ -182,7 +203,9 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1166, 597);
+            this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, -25);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 541);
             // 
             // 
             // 
@@ -214,22 +237,11 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1160, 571);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 515);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
             this.Dgv_GBuscador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_GBuscador_KeyDown);
-            // 
-            // LblSubtitulo
-            // 
-            this.LblSubtitulo.Size = new System.Drawing.Size(1166, 36);
-            this.LblSubtitulo.Text = "Registre una nueva Selección. Visualice y/o modifique la información de una selec" +
-    "ción previamente registrado. ";
-            // 
-            // PanelMenu
-            // 
-            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
-            this.PanelMenu.Size = new System.Drawing.Size(1166, 72);
             // 
             // PanelContenidoRegistro
             // 
@@ -265,13 +277,28 @@
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.SelectedTabIndex = 1;
             this.superTabControl1.Size = new System.Drawing.Size(1166, 630);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
             // TxtNombreUsu
             // 
             this.TxtNombreUsu.Location = new System.Drawing.Point(1024, 0);
             this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnHabilitar
+            // 
+            this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
+            // 
+            // LblSubtitulo
+            // 
+            this.LblSubtitulo.Size = new System.Drawing.Size(1166, 36);
+            this.LblSubtitulo.Text = "Registre una nueva Selección. Visualice y/o modifique la información de una selec" +
+    "ción previamente registrado. ";
+            // 
+            // PanelMenu
+            // 
+            this.PanelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenu.BackgroundImage")));
+            this.PanelMenu.Size = new System.Drawing.Size(1166, 72);
             // 
             // PanelFondo
             // 
@@ -468,10 +495,10 @@
             this.tb_MermaPorc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.tb_MermaPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_MermaPorc.Increment = 1D;
-            this.tb_MermaPorc.Location = new System.Drawing.Point(561, 63);
+            this.tb_MermaPorc.Location = new System.Drawing.Point(535, 63);
             this.tb_MermaPorc.MinValue = 0D;
             this.tb_MermaPorc.Name = "tb_MermaPorc";
-            this.tb_MermaPorc.Size = new System.Drawing.Size(65, 22);
+            this.tb_MermaPorc.Size = new System.Drawing.Size(91, 22);
             this.tb_MermaPorc.TabIndex = 347;
             this.tb_MermaPorc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -484,7 +511,7 @@
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX13.ForeColor = System.Drawing.Color.White;
-            this.labelX13.Location = new System.Drawing.Point(494, 63);
+            this.labelX13.Location = new System.Drawing.Point(470, 63);
             this.labelX13.Name = "labelX13";
             this.labelX13.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX13.Size = new System.Drawing.Size(61, 23);
@@ -501,10 +528,10 @@
             this.Tb_Merma.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Merma.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Merma.Increment = 1D;
-            this.Tb_Merma.Location = new System.Drawing.Point(561, 34);
+            this.Tb_Merma.Location = new System.Drawing.Point(535, 34);
             this.Tb_Merma.MinValue = 0D;
             this.Tb_Merma.Name = "Tb_Merma";
-            this.Tb_Merma.Size = new System.Drawing.Size(65, 22);
+            this.Tb_Merma.Size = new System.Drawing.Size(91, 22);
             this.Tb_Merma.TabIndex = 345;
             this.Tb_Merma.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -517,7 +544,7 @@
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX16.ForeColor = System.Drawing.Color.White;
-            this.labelX16.Location = new System.Drawing.Point(494, 34);
+            this.labelX16.Location = new System.Drawing.Point(470, 34);
             this.labelX16.Name = "labelX16";
             this.labelX16.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX16.Size = new System.Drawing.Size(61, 23);
@@ -534,10 +561,10 @@
             this.Tb_Total.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Total.Increment = 1D;
-            this.Tb_Total.Location = new System.Drawing.Point(723, 6);
+            this.Tb_Total.Location = new System.Drawing.Point(726, 6);
             this.Tb_Total.MinValue = 0D;
             this.Tb_Total.Name = "Tb_Total";
-            this.Tb_Total.Size = new System.Drawing.Size(73, 22);
+            this.Tb_Total.Size = new System.Drawing.Size(86, 22);
             this.Tb_Total.TabIndex = 229;
             this.Tb_Total.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -555,7 +582,7 @@
             this.Tb_TPrecio.Location = new System.Drawing.Point(631, 7);
             this.Tb_TPrecio.MinValue = 0D;
             this.Tb_TPrecio.Name = "Tb_TPrecio";
-            this.Tb_TPrecio.Size = new System.Drawing.Size(85, 22);
+            this.Tb_TPrecio.Size = new System.Drawing.Size(90, 22);
             this.Tb_TPrecio.TabIndex = 228;
             this.Tb_TPrecio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -569,10 +596,10 @@
             this.Tb_TCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_TCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_TCantidad.Increment = 1D;
-            this.Tb_TCantidad.Location = new System.Drawing.Point(561, 6);
+            this.Tb_TCantidad.Location = new System.Drawing.Point(535, 6);
             this.Tb_TCantidad.MinValue = 0D;
             this.Tb_TCantidad.Name = "Tb_TCantidad";
-            this.Tb_TCantidad.Size = new System.Drawing.Size(64, 22);
+            this.Tb_TCantidad.Size = new System.Drawing.Size(90, 22);
             this.Tb_TCantidad.TabIndex = 227;
             this.Tb_TCantidad.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -586,7 +613,7 @@
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX8.ForeColor = System.Drawing.Color.White;
-            this.labelX8.Location = new System.Drawing.Point(495, 9);
+            this.labelX8.Location = new System.Drawing.Point(471, 9);
             this.labelX8.Name = "labelX8";
             this.labelX8.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX8.Size = new System.Drawing.Size(46, 16);
@@ -603,10 +630,10 @@
             this.Tb_Recep_Total.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Recep_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Recep_Total.Increment = 1D;
-            this.Tb_Recep_Total.Location = new System.Drawing.Point(302, 9);
+            this.Tb_Recep_Total.Location = new System.Drawing.Point(287, 9);
             this.Tb_Recep_Total.MinValue = 0D;
             this.Tb_Recep_Total.Name = "Tb_Recep_Total";
-            this.Tb_Recep_Total.Size = new System.Drawing.Size(64, 22);
+            this.Tb_Recep_Total.Size = new System.Drawing.Size(79, 22);
             this.Tb_Recep_Total.TabIndex = 225;
             this.Tb_Recep_Total.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -621,10 +648,10 @@
             this.Tb_Recep_TPrecio.DisplayFormat = "0.00000";
             this.Tb_Recep_TPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Recep_TPrecio.Increment = 1D;
-            this.Tb_Recep_TPrecio.Location = new System.Drawing.Point(217, 9);
+            this.Tb_Recep_TPrecio.Location = new System.Drawing.Point(194, 9);
             this.Tb_Recep_TPrecio.MinValue = 0D;
             this.Tb_Recep_TPrecio.Name = "Tb_Recep_TPrecio";
-            this.Tb_Recep_TPrecio.Size = new System.Drawing.Size(79, 22);
+            this.Tb_Recep_TPrecio.Size = new System.Drawing.Size(87, 22);
             this.Tb_Recep_TPrecio.TabIndex = 224;
             this.Tb_Recep_TPrecio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -638,10 +665,10 @@
             this.Tb_Recep_TCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.Tb_Recep_TCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Recep_TCantidad.Increment = 1D;
-            this.Tb_Recep_TCantidad.Location = new System.Drawing.Point(147, 9);
+            this.Tb_Recep_TCantidad.Location = new System.Drawing.Point(100, 9);
             this.Tb_Recep_TCantidad.MinValue = 0D;
             this.Tb_Recep_TCantidad.Name = "Tb_Recep_TCantidad";
-            this.Tb_Recep_TCantidad.Size = new System.Drawing.Size(64, 22);
+            this.Tb_Recep_TCantidad.Size = new System.Drawing.Size(90, 22);
             this.Tb_Recep_TCantidad.TabIndex = 223;
             this.Tb_Recep_TCantidad.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             // 
@@ -1195,6 +1222,218 @@
             this.LabelX1.TabIndex = 225;
             this.LabelX1.Text = "Nro. Nota de Recepción";
             // 
+            // groupPanel2
+            // 
+            this.groupPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
+            this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.panel6);
+            this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupPanel2.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.groupPanel2.Location = new System.Drawing.Point(0, 0);
+            this.groupPanel2.Name = "groupPanel2";
+            this.groupPanel2.Size = new System.Drawing.Size(958, 60);
+            // 
+            // 
+            // 
+            this.groupPanel2.Style.BackColor = System.Drawing.SystemColors.Control;
+            this.groupPanel2.Style.BackColor2 = System.Drawing.Color.White;
+            this.groupPanel2.Style.BackColorGradientAngle = 90;
+            this.groupPanel2.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderBottomWidth = 1;
+            this.groupPanel2.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel2.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderLeftWidth = 1;
+            this.groupPanel2.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderRightWidth = 1;
+            this.groupPanel2.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderTopWidth = 1;
+            this.groupPanel2.Style.CornerDiameter = 4;
+            this.groupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel2.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel2.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel2.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel2.TabIndex = 286;
+            this.groupPanel2.Text = "FILTRO DE BUSQUEDA";
+            // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.Dt_FechaHasta);
+            this.panel6.Controls.Add(this.Dt_FechaDesde);
+            this.panel6.Controls.Add(this.BtnBuscar);
+            this.panel6.Controls.Add(this.labelX21);
+            this.panel6.Controls.Add(this.labelX22);
+            this.panel6.Controls.Add(this.labelX23);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(952, 37);
+            this.panel6.TabIndex = 234;
+            // 
+            // Dt_FechaHasta
+            // 
+            // 
+            // 
+            // 
+            this.Dt_FechaHasta.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.Dt_FechaHasta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaHasta.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.Dt_FechaHasta.ButtonDropDown.Visible = true;
+            this.Dt_FechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dt_FechaHasta.IsPopupCalendarOpen = false;
+            this.Dt_FechaHasta.Location = new System.Drawing.Point(398, 8);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Dt_FechaHasta.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaHasta.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.Dt_FechaHasta.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.Dt_FechaHasta.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaHasta.MonthCalendar.DisplayMonth = new System.DateTime(2017, 2, 1, 0, 0, 0, 0);
+            this.Dt_FechaHasta.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.Dt_FechaHasta.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.Dt_FechaHasta.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.Dt_FechaHasta.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.Dt_FechaHasta.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaHasta.MonthCalendar.TodayButtonVisible = true;
+            this.Dt_FechaHasta.Name = "Dt_FechaHasta";
+            this.Dt_FechaHasta.Size = new System.Drawing.Size(153, 22);
+            this.Dt_FechaHasta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Dt_FechaHasta.TabIndex = 381;
+            this.Dt_FechaHasta.Value = new System.DateTime(2020, 7, 8, 0, 0, 0, 0);
+            // 
+            // Dt_FechaDesde
+            // 
+            // 
+            // 
+            // 
+            this.Dt_FechaDesde.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.Dt_FechaDesde.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaDesde.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.Dt_FechaDesde.ButtonDropDown.Visible = true;
+            this.Dt_FechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dt_FechaDesde.IsPopupCalendarOpen = false;
+            this.Dt_FechaDesde.Location = new System.Drawing.Point(193, 7);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.Dt_FechaDesde.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaDesde.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.Dt_FechaDesde.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.Dt_FechaDesde.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaDesde.MonthCalendar.DisplayMonth = new System.DateTime(2017, 2, 1, 0, 0, 0, 0);
+            this.Dt_FechaDesde.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.Dt_FechaDesde.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.Dt_FechaDesde.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.Dt_FechaDesde.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.Dt_FechaDesde.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Dt_FechaDesde.MonthCalendar.TodayButtonVisible = true;
+            this.Dt_FechaDesde.Name = "Dt_FechaDesde";
+            this.Dt_FechaDesde.Size = new System.Drawing.Size(153, 22);
+            this.Dt_FechaDesde.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Dt_FechaDesde.TabIndex = 380;
+            this.Dt_FechaDesde.Value = new System.DateTime(2020, 7, 8, 0, 0, 0, 0);
+            // 
+            // BtnBuscar
+            // 
+            this.BtnBuscar.Image = global::PRESENTER.Properties.Resources.BUSCAR_DASHBOARD;
+            this.BtnBuscar.Location = new System.Drawing.Point(592, 7);
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(123, 23);
+            this.BtnBuscar.TabIndex = 379;
+            this.BtnBuscar.Text = "BUSCAR";
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+            // 
+            // labelX21
+            // 
+            this.labelX21.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX21.ForeColor = System.Drawing.Color.Black;
+            this.labelX21.Location = new System.Drawing.Point(13, 5);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX21.Size = new System.Drawing.Size(122, 23);
+            this.labelX21.TabIndex = 378;
+            this.labelX21.Text = "Fecha de selección:";
+            // 
+            // labelX22
+            // 
+            this.labelX22.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX22.ForeColor = System.Drawing.Color.Black;
+            this.labelX22.Location = new System.Drawing.Point(352, 5);
+            this.labelX22.Name = "labelX22";
+            this.labelX22.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX22.Size = new System.Drawing.Size(40, 23);
+            this.labelX22.TabIndex = 377;
+            this.labelX22.Text = "Hasta";
+            // 
+            // labelX23
+            // 
+            this.labelX23.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX23.ForeColor = System.Drawing.Color.Black;
+            this.labelX23.Location = new System.Drawing.Point(141, 5);
+            this.labelX23.Name = "labelX23";
+            this.labelX23.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX23.Size = new System.Drawing.Size(46, 23);
+            this.labelX23.TabIndex = 375;
+            this.labelX23.Text = "Desde";
+            // 
             // FI_Seleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1214,12 +1453,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
-            this.PanelMenu.ResumeLayout(false);
             this.PanelContenidoRegistro.ResumeLayout(false);
             this.PanelInferior.ResumeLayout(false);
             this.PanelInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.PanelMenu.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.PanelDerecho.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1247,6 +1486,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaRec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tb_FechaEnt)).EndInit();
+            this.groupPanel2.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Dt_FechaHasta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dt_FechaDesde)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1298,5 +1541,13 @@
         internal DevComponents.DotNetBar.LabelX labelX14;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Placa;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_NumGranja;
+        internal DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
+        internal System.Windows.Forms.Panel panel6;
+        internal DevComponents.Editors.DateTimeAdv.DateTimeInput Dt_FechaHasta;
+        internal DevComponents.Editors.DateTimeAdv.DateTimeInput Dt_FechaDesde;
+        private Janus.Windows.EditControls.UIButton BtnBuscar;
+        protected internal DevComponents.DotNetBar.LabelX labelX21;
+        protected internal DevComponents.DotNetBar.LabelX labelX22;
+        protected internal DevComponents.DotNetBar.LabelX labelX23;
     }
 }

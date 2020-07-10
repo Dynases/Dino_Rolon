@@ -22,6 +22,7 @@ using ENTITY.Proveedor.View;
 using ENTITY.com.CompraIngreso.View;
 using UTILITY.Enum.EnEstado;
 using ENTITY.Cliente.View;
+using System.Linq.Expressions;
 
 namespace UTILITY.Global
 {
@@ -544,6 +545,7 @@ namespace UTILITY.Global
                 throw new Exception();
             }
         }
+
         public static void MG_CrearCarpetaImagenes(string _CarpetaRaiz, string _NombreCarpeta)
         {
             try
@@ -625,10 +627,7 @@ namespace UTILITY.Global
 
                 throw new Exception();
             }
-
-
-        }   
-
+        }       
         #endregion
     }
 }

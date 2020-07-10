@@ -5,8 +5,8 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DiAviModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.ADM.Estaticos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Estaticos">
           <Key>
             <PropertyRef Name="Id" />
@@ -307,8 +307,8 @@ advertencia 6002: La tabla o vista 'DiAvi.ADM.Estaticos' no tiene definida ningu
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdPlantilla" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.SY000' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SY000">
           <Key>
             <PropertyRef Name="Modo" />
@@ -626,8 +626,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Contenido" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalUnidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.V_NotaCompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_NotaCompraIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -663,8 +663,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene defi
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalMaple" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngreso">
           <Key>
             <PropertyRef Name="NotaRecepcion" />
@@ -689,8 +689,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngreso' no tiene definid
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="10" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoDevolucion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngresoDevolucion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngresoDevolucion">
           <Key>
             <PropertyRef Name="Id" />
@@ -725,9 +725,10 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoDevolucion' no tie
           <Property Name="PrecioCost" Type="decimal" Precision="18" Scale="10" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalMaple" Type="int" Nullable="false" />
+          <Property Name="Obser" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoResultado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_CompraIngresoResultado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_CompraIngresoResultado">
           <Key>
             <PropertyRef Name="Id" />
@@ -760,8 +761,270 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_CompraIngresoResultado' no tien
           <Property Name="Total" Type="decimal" Precision="19" Scale="2" />
           <Property Name="TotalMaple" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_HistoricoSeleccion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vr_HistoricoSeleccion">
+          <Key>
+            <PropertyRef Name="IdSpyre" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="ingreso" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="NumNota" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Superc" />
+            <PropertyRef Name="Especialc" />
+            <PropertyRef Name="Primerac" />
+            <PropertyRef Name="Segundac" />
+            <PropertyRef Name="Tercerac" />
+            <PropertyRef Name="Cuartac" />
+            <PropertyRef Name="Quintac" />
+            <PropertyRef Name="Picadoc" />
+            <PropertyRef Name="manchadoc" />
+            <PropertyRef Name="Media_doc2" />
+            <PropertyRef Name="Docena2" />
+            <PropertyRef Name="Band2_12" />
+            <PropertyRef Name="Map2_6" />
+            <PropertyRef Name="Map2_10" />
+            <PropertyRef Name="Map2_12" />
+            <PropertyRef Name="Map2_15" />
+            <PropertyRef Name="Map2_18" />
+            <PropertyRef Name="Map2_20" />
+            <PropertyRef Name="Vit_Super" />
+            <PropertyRef Name="Vit_Especial" />
+            <PropertyRef Name="Vit_Primera" />
+            <PropertyRef Name="Vit_Segunda" />
+            <PropertyRef Name="Vit_Tercera" />
+            <PropertyRef Name="Vit_Cuarta" />
+            <PropertyRef Name="Vit_Quinta" />
+            <PropertyRef Name="Vit_Map2_6" />
+            <PropertyRef Name="Vit_Map2_10" />
+            <PropertyRef Name="Vit_Map2_12" />
+            <PropertyRef Name="Vit_Map2_15" />
+            <PropertyRef Name="Vit_Map2_18" />
+            <PropertyRef Name="Vit_Map2_20" />
+            <PropertyRef Name="Omega_3" />
+            <PropertyRef Name="Omg_Med_Doc2" />
+            <PropertyRef Name="Omg_Docena2" />
+            <PropertyRef Name="Omg_Band2_12" />
+            <PropertyRef Name="Omg_Map2_10" />
+            <PropertyRef Name="Omg_Map2_20" />
+            <PropertyRef Name="Blanco_Super" />
+            <PropertyRef Name="Blanco_Esp" />
+            <PropertyRef Name="Blanco_Primera" />
+            <PropertyRef Name="Blanco_Segunda" />
+            <PropertyRef Name="Blanco_Tercera" />
+            <PropertyRef Name="Blanco_Cuarta" />
+            <PropertyRef Name="Blanco_Quinta" />
+            <PropertyRef Name="Blanco_Band2_12" />
+            <PropertyRef Name="Blanco_Map2_20" />
+            <PropertyRef Name="Codorniz" />
+            <PropertyRef Name="Color_Red50" />
+            <PropertyRef Name="Sedem_Maple1_30" />
+            <PropertyRef Name="Sedem_Map3_18X2" />
+            <PropertyRef Name="Sedem_Vit_Band2_12X2" />
+            <PropertyRef Name="Sedem_Omg_Nut_Map2_10X2" />
+            <PropertyRef Name="Sedem_Maple3_30" />
+            <PropertyRef Name="Sedem_Map2_12X2" />
+            <PropertyRef Name="Vacio1" />
+            <PropertyRef Name="Vacio2" />
+            <PropertyRef Name="Tipo_Rec" />
+            <PropertyRef Name="Fecha_Recepcion" />
+            <PropertyRef Name="Superp" />
+            <PropertyRef Name="Especialp" />
+            <PropertyRef Name="Primerap" />
+            <PropertyRef Name="Segundap" />
+            <PropertyRef Name="Tercerap" />
+            <PropertyRef Name="Cuartap" />
+            <PropertyRef Name="Quintap" />
+            <PropertyRef Name="Picadop" />
+            <PropertyRef Name="manchadop" />
+            <PropertyRef Name="Mermap" />
+            <PropertyRef Name="Media_doc2_P" />
+            <PropertyRef Name="Docena2_P" />
+            <PropertyRef Name="Band2_12_P" />
+            <PropertyRef Name="Map2_6_P" />
+            <PropertyRef Name="Map2_10_P" />
+            <PropertyRef Name="Map2_12_P" />
+            <PropertyRef Name="Map2_15_P" />
+            <PropertyRef Name="Map2_18_P" />
+            <PropertyRef Name="Map2_20_P" />
+            <PropertyRef Name="Vit_SuperP" />
+            <PropertyRef Name="Vit_EspecialP" />
+            <PropertyRef Name="Vit_PrimeraP" />
+            <PropertyRef Name="Vit_SegundaP" />
+            <PropertyRef Name="Vit_TerceraP" />
+            <PropertyRef Name="Vit_CuartaP" />
+            <PropertyRef Name="Vit_QuintaP" />
+            <PropertyRef Name="Vit_Map2_6_P" />
+            <PropertyRef Name="Vit_Map2_10_P" />
+            <PropertyRef Name="Vit_Map2_12_P" />
+            <PropertyRef Name="Vit_Map2_15_P" />
+            <PropertyRef Name="Vit_Map2_18_P" />
+            <PropertyRef Name="Vit_Map2_20_P" />
+            <PropertyRef Name="Vit_Media_Doc2_P" />
+            <PropertyRef Name="vit_Docena2_P" />
+            <PropertyRef Name="vit_Band2_12_P" />
+            <PropertyRef Name="Omega_3_P" />
+            <PropertyRef Name="Omg_Med_Doc2_P" />
+            <PropertyRef Name="Omg_Docena2_P" />
+            <PropertyRef Name="Omg_Band2_12_P" />
+            <PropertyRef Name="Omg_Map2_10_P" />
+            <PropertyRef Name="Omg_Map2_20_P" />
+            <PropertyRef Name="Blanco_Super_P" />
+            <PropertyRef Name="Blanco_Esp_P" />
+            <PropertyRef Name="Blanco_Primera_P" />
+            <PropertyRef Name="Blanco_Segunda_P" />
+            <PropertyRef Name="Blanco_Tercera_P" />
+            <PropertyRef Name="Blanco_Cuarta_P" />
+            <PropertyRef Name="Blanco_Quinta_P" />
+            <PropertyRef Name="Blanco_Band2_12_P" />
+            <PropertyRef Name="Blanco_Map2_20_P" />
+            <PropertyRef Name="Codorniz_P" />
+            <PropertyRef Name="Color_Red50_P" />
+            <PropertyRef Name="Sedem_Maple1_30_P" />
+            <PropertyRef Name="Sedem_Map3_18X2_P" />
+            <PropertyRef Name="Sedem_Vit_Band2_12X2_P" />
+            <PropertyRef Name="Sedem_Omg_Nut_Map2_10X2_P" />
+            <PropertyRef Name="Sedem_Maple3_30_P" />
+            <PropertyRef Name="Sedem_Map2_12X2_P" />
+            <PropertyRef Name="Vacio3" />
+            <PropertyRef Name="Vacio4" />
+            <PropertyRef Name="Precio_Promedio" />
+            <PropertyRef Name="Total_Bs" />
+          </Key>
+          <Property Name="IdSpyre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ingreso" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="NumNota" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Superc" Type="int" Nullable="false" />
+          <Property Name="Especialc" Type="int" Nullable="false" />
+          <Property Name="Primerac" Type="int" Nullable="false" />
+          <Property Name="Segundac" Type="int" Nullable="false" />
+          <Property Name="Tercerac" Type="int" Nullable="false" />
+          <Property Name="Cuartac" Type="int" Nullable="false" />
+          <Property Name="Quintac" Type="int" Nullable="false" />
+          <Property Name="Picadoc" Type="int" Nullable="false" />
+          <Property Name="manchadoc" Type="int" Nullable="false" />
+          <Property Name="Merma" Type="int" />
+          <Property Name="Media_doc2" Type="int" Nullable="false" />
+          <Property Name="Docena2" Type="int" Nullable="false" />
+          <Property Name="Band2_12" Type="int" Nullable="false" />
+          <Property Name="Map2_6" Type="int" Nullable="false" />
+          <Property Name="Map2_10" Type="int" Nullable="false" />
+          <Property Name="Map2_12" Type="int" Nullable="false" />
+          <Property Name="Map2_15" Type="int" Nullable="false" />
+          <Property Name="Map2_18" Type="int" Nullable="false" />
+          <Property Name="Map2_20" Type="int" Nullable="false" />
+          <Property Name="Vit_Super" Type="int" Nullable="false" />
+          <Property Name="Vit_Especial" Type="int" Nullable="false" />
+          <Property Name="Vit_Primera" Type="int" Nullable="false" />
+          <Property Name="Vit_Segunda" Type="int" Nullable="false" />
+          <Property Name="Vit_Tercera" Type="int" Nullable="false" />
+          <Property Name="Vit_Cuarta" Type="int" Nullable="false" />
+          <Property Name="Vit_Quinta" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_6" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_10" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_12" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_15" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_18" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_20" Type="int" Nullable="false" />
+          <Property Name="Omega_3" Type="int" Nullable="false" />
+          <Property Name="Omg_Med_Doc2" Type="int" Nullable="false" />
+          <Property Name="Omg_Docena2" Type="int" Nullable="false" />
+          <Property Name="Omg_Band2_12" Type="int" Nullable="false" />
+          <Property Name="Omg_Map2_10" Type="int" Nullable="false" />
+          <Property Name="Omg_Map2_20" Type="int" Nullable="false" />
+          <Property Name="Blanco_Super" Type="int" Nullable="false" />
+          <Property Name="Blanco_Esp" Type="int" Nullable="false" />
+          <Property Name="Blanco_Primera" Type="int" Nullable="false" />
+          <Property Name="Blanco_Segunda" Type="int" Nullable="false" />
+          <Property Name="Blanco_Tercera" Type="int" Nullable="false" />
+          <Property Name="Blanco_Cuarta" Type="int" Nullable="false" />
+          <Property Name="Blanco_Quinta" Type="int" Nullable="false" />
+          <Property Name="Blanco_Band2_12" Type="int" Nullable="false" />
+          <Property Name="Blanco_Map2_20" Type="int" Nullable="false" />
+          <Property Name="Codorniz" Type="int" Nullable="false" />
+          <Property Name="Color_Red50" Type="int" Nullable="false" />
+          <Property Name="Sedem_Maple1_30" Type="int" Nullable="false" />
+          <Property Name="Sedem_Map3_18X2" Type="int" Nullable="false" />
+          <Property Name="Sedem_Vit_Band2_12X2" Type="int" Nullable="false" />
+          <Property Name="Sedem_Omg_Nut_Map2_10X2" Type="int" Nullable="false" />
+          <Property Name="Sedem_Maple3_30" Type="int" Nullable="false" />
+          <Property Name="Sedem_Map2_12X2" Type="int" Nullable="false" />
+          <Property Name="Vacio1" Type="int" Nullable="false" />
+          <Property Name="Vacio2" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Tipo_Rec" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fecha_Recepcion" Type="date" Nullable="false" />
+          <Property Name="Observacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Superp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Especialp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Primerap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Segundap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Tercerap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cuartap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quintap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Picadop" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="manchadop" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Mermap" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Media_doc2_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Docena2_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Band2_12_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_6_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_10_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_12_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_15_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_18_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Map2_20_P" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Vit_SuperP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_EspecialP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_PrimeraP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_SegundaP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_TerceraP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_CuartaP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_QuintaP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vit_Map2_6_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_10_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_12_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_15_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_18_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Map2_20_P" Type="int" Nullable="false" />
+          <Property Name="Vit_Media_Doc2_P" Type="int" Nullable="false" />
+          <Property Name="vit_Docena2_P" Type="int" Nullable="false" />
+          <Property Name="vit_Band2_12_P" Type="int" Nullable="false" />
+          <Property Name="Omega_3_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Omg_Med_Doc2_P" Type="int" Nullable="false" />
+          <Property Name="Omg_Docena2_P" Type="int" Nullable="false" />
+          <Property Name="Omg_Band2_12_P" Type="int" Nullable="false" />
+          <Property Name="Omg_Map2_10_P" Type="int" Nullable="false" />
+          <Property Name="Omg_Map2_20_P" Type="int" Nullable="false" />
+          <Property Name="Blanco_Super_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Esp_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Primera_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Segunda_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Tercera_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Cuarta_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Quinta_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Blanco_Band2_12_P" Type="int" Nullable="false" />
+          <Property Name="Blanco_Map2_20_P" Type="int" Nullable="false" />
+          <Property Name="Codorniz_P" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Color_Red50_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Maple1_30_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Map3_18X2_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Vit_Band2_12X2_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Omg_Nut_Map2_10X2_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Maple3_30_P" Type="int" Nullable="false" />
+          <Property Name="Sedem_Map2_12X2_P" Type="int" Nullable="false" />
+          <Property Name="Vacio3" Type="int" Nullable="false" />
+          <Property Name="Vacio4" Type="int" Nullable="false" />
+          <Property Name="Precio_Promedio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_Bs" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Peso_Promedio" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_SeleccionNota' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_SeleccionNota">
           <Key>
             <PropertyRef Name="Id" />
@@ -805,8 +1068,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_SeleccionNota' no tiene definid
           <Property Name="Merma" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MermaPorcentaje" Type="decimal" Precision="18" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionIngreso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_TransformacionIngreso">
           <Key>
             <PropertyRef Name="Id" />
@@ -826,8 +1089,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionIngreso' no tiene
           <Property Name="Descrip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalProd" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DiAvi.dbo.Vr_TransformacionSalida' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vr_TransformacionSalida">
           <Key>
             <PropertyRef Name="Id" />
@@ -1531,7 +1794,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [Vr_CompraIngresoDevolucion].[TotalCant] AS [TotalCant], 
     [Vr_CompraIngresoDevolucion].[PrecioCost] AS [PrecioCost], 
     [Vr_CompraIngresoDevolucion].[Total] AS [Total], 
-    [Vr_CompraIngresoDevolucion].[TotalMaple] AS [TotalMaple]
+    [Vr_CompraIngresoDevolucion].[TotalMaple] AS [TotalMaple], 
+    [Vr_CompraIngresoDevolucion].[Obser] AS [Obser]
     FROM [dbo].[Vr_CompraIngresoDevolucion] AS [Vr_CompraIngresoDevolucion]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vr_CompraIngresoResultado" EntityType="Self.Vr_CompraIngresoResultado" store:Type="Views" store:Schema="dbo">
@@ -1553,6 +1817,140 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [Vr_CompraIngresoResultado].[Total] AS [Total], 
     [Vr_CompraIngresoResultado].[TotalMaple] AS [TotalMaple]
     FROM [dbo].[Vr_CompraIngresoResultado] AS [Vr_CompraIngresoResultado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vr_HistoricoSeleccion" EntityType="Self.Vr_HistoricoSeleccion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vr_HistoricoSeleccion].[IdSpyre] AS [IdSpyre], 
+    [Vr_HistoricoSeleccion].[Descrip] AS [Descrip], 
+    [Vr_HistoricoSeleccion].[ingreso] AS [ingreso], 
+    [Vr_HistoricoSeleccion].[fecha] AS [fecha], 
+    [Vr_HistoricoSeleccion].[NumNota] AS [NumNota], 
+    [Vr_HistoricoSeleccion].[Id] AS [Id], 
+    [Vr_HistoricoSeleccion].[Superc] AS [Superc], 
+    [Vr_HistoricoSeleccion].[Especialc] AS [Especialc], 
+    [Vr_HistoricoSeleccion].[Primerac] AS [Primerac], 
+    [Vr_HistoricoSeleccion].[Segundac] AS [Segundac], 
+    [Vr_HistoricoSeleccion].[Tercerac] AS [Tercerac], 
+    [Vr_HistoricoSeleccion].[Cuartac] AS [Cuartac], 
+    [Vr_HistoricoSeleccion].[Quintac] AS [Quintac], 
+    [Vr_HistoricoSeleccion].[Picadoc] AS [Picadoc], 
+    [Vr_HistoricoSeleccion].[manchadoc] AS [manchadoc], 
+    [Vr_HistoricoSeleccion].[Merma] AS [Merma], 
+    [Vr_HistoricoSeleccion].[Media_doc2] AS [Media_doc2], 
+    [Vr_HistoricoSeleccion].[Docena2] AS [Docena2], 
+    [Vr_HistoricoSeleccion].[Band2_12] AS [Band2_12], 
+    [Vr_HistoricoSeleccion].[Map2_6] AS [Map2_6], 
+    [Vr_HistoricoSeleccion].[Map2_10] AS [Map2_10], 
+    [Vr_HistoricoSeleccion].[Map2_12] AS [Map2_12], 
+    [Vr_HistoricoSeleccion].[Map2_15] AS [Map2_15], 
+    [Vr_HistoricoSeleccion].[Map2_18] AS [Map2_18], 
+    [Vr_HistoricoSeleccion].[Map2_20] AS [Map2_20], 
+    [Vr_HistoricoSeleccion].[Vit_Super] AS [Vit_Super], 
+    [Vr_HistoricoSeleccion].[Vit_Especial] AS [Vit_Especial], 
+    [Vr_HistoricoSeleccion].[Vit_Primera] AS [Vit_Primera], 
+    [Vr_HistoricoSeleccion].[Vit_Segunda] AS [Vit_Segunda], 
+    [Vr_HistoricoSeleccion].[Vit_Tercera] AS [Vit_Tercera], 
+    [Vr_HistoricoSeleccion].[Vit_Cuarta] AS [Vit_Cuarta], 
+    [Vr_HistoricoSeleccion].[Vit_Quinta] AS [Vit_Quinta], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_6] AS [Vit_Map2_6], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_10] AS [Vit_Map2_10], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_12] AS [Vit_Map2_12], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_15] AS [Vit_Map2_15], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_18] AS [Vit_Map2_18], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_20] AS [Vit_Map2_20], 
+    [Vr_HistoricoSeleccion].[Omega_3] AS [Omega_3], 
+    [Vr_HistoricoSeleccion].[Omg_Med_Doc2] AS [Omg_Med_Doc2], 
+    [Vr_HistoricoSeleccion].[Omg_Docena2] AS [Omg_Docena2], 
+    [Vr_HistoricoSeleccion].[Omg_Band2_12] AS [Omg_Band2_12], 
+    [Vr_HistoricoSeleccion].[Omg_Map2_10] AS [Omg_Map2_10], 
+    [Vr_HistoricoSeleccion].[Omg_Map2_20] AS [Omg_Map2_20], 
+    [Vr_HistoricoSeleccion].[Blanco_Super] AS [Blanco_Super], 
+    [Vr_HistoricoSeleccion].[Blanco_Esp] AS [Blanco_Esp], 
+    [Vr_HistoricoSeleccion].[Blanco_Primera] AS [Blanco_Primera], 
+    [Vr_HistoricoSeleccion].[Blanco_Segunda] AS [Blanco_Segunda], 
+    [Vr_HistoricoSeleccion].[Blanco_Tercera] AS [Blanco_Tercera], 
+    [Vr_HistoricoSeleccion].[Blanco_Cuarta] AS [Blanco_Cuarta], 
+    [Vr_HistoricoSeleccion].[Blanco_Quinta] AS [Blanco_Quinta], 
+    [Vr_HistoricoSeleccion].[Blanco_Band2_12] AS [Blanco_Band2_12], 
+    [Vr_HistoricoSeleccion].[Blanco_Map2_20] AS [Blanco_Map2_20], 
+    [Vr_HistoricoSeleccion].[Codorniz] AS [Codorniz], 
+    [Vr_HistoricoSeleccion].[Color_Red50] AS [Color_Red50], 
+    [Vr_HistoricoSeleccion].[Sedem_Maple1_30] AS [Sedem_Maple1_30], 
+    [Vr_HistoricoSeleccion].[Sedem_Map3_18X2] AS [Sedem_Map3_18X2], 
+    [Vr_HistoricoSeleccion].[Sedem_Vit_Band2_12X2] AS [Sedem_Vit_Band2_12X2], 
+    [Vr_HistoricoSeleccion].[Sedem_Omg_Nut_Map2_10X2] AS [Sedem_Omg_Nut_Map2_10X2], 
+    [Vr_HistoricoSeleccion].[Sedem_Maple3_30] AS [Sedem_Maple3_30], 
+    [Vr_HistoricoSeleccion].[Sedem_Map2_12X2] AS [Sedem_Map2_12X2], 
+    [Vr_HistoricoSeleccion].[Vacio1] AS [Vacio1], 
+    [Vr_HistoricoSeleccion].[Vacio2] AS [Vacio2], 
+    [Vr_HistoricoSeleccion].[Cantidad] AS [Cantidad], 
+    [Vr_HistoricoSeleccion].[Tipo_Rec] AS [Tipo_Rec], 
+    [Vr_HistoricoSeleccion].[Fecha_Recepcion] AS [Fecha_Recepcion], 
+    [Vr_HistoricoSeleccion].[Observacion] AS [Observacion], 
+    [Vr_HistoricoSeleccion].[Superp] AS [Superp], 
+    [Vr_HistoricoSeleccion].[Especialp] AS [Especialp], 
+    [Vr_HistoricoSeleccion].[Primerap] AS [Primerap], 
+    [Vr_HistoricoSeleccion].[Segundap] AS [Segundap], 
+    [Vr_HistoricoSeleccion].[Tercerap] AS [Tercerap], 
+    [Vr_HistoricoSeleccion].[Cuartap] AS [Cuartap], 
+    [Vr_HistoricoSeleccion].[Quintap] AS [Quintap], 
+    [Vr_HistoricoSeleccion].[Picadop] AS [Picadop], 
+    [Vr_HistoricoSeleccion].[manchadop] AS [manchadop], 
+    [Vr_HistoricoSeleccion].[Mermap] AS [Mermap], 
+    [Vr_HistoricoSeleccion].[Media_doc2_P] AS [Media_doc2_P], 
+    [Vr_HistoricoSeleccion].[Docena2_P] AS [Docena2_P], 
+    [Vr_HistoricoSeleccion].[Band2_12_P] AS [Band2_12_P], 
+    [Vr_HistoricoSeleccion].[Map2_6_P] AS [Map2_6_P], 
+    [Vr_HistoricoSeleccion].[Map2_10_P] AS [Map2_10_P], 
+    [Vr_HistoricoSeleccion].[Map2_12_P] AS [Map2_12_P], 
+    [Vr_HistoricoSeleccion].[Map2_15_P] AS [Map2_15_P], 
+    [Vr_HistoricoSeleccion].[Map2_18_P] AS [Map2_18_P], 
+    [Vr_HistoricoSeleccion].[Map2_20_P] AS [Map2_20_P], 
+    [Vr_HistoricoSeleccion].[Vit_SuperP] AS [Vit_SuperP], 
+    [Vr_HistoricoSeleccion].[Vit_EspecialP] AS [Vit_EspecialP], 
+    [Vr_HistoricoSeleccion].[Vit_PrimeraP] AS [Vit_PrimeraP], 
+    [Vr_HistoricoSeleccion].[Vit_SegundaP] AS [Vit_SegundaP], 
+    [Vr_HistoricoSeleccion].[Vit_TerceraP] AS [Vit_TerceraP], 
+    [Vr_HistoricoSeleccion].[Vit_CuartaP] AS [Vit_CuartaP], 
+    [Vr_HistoricoSeleccion].[Vit_QuintaP] AS [Vit_QuintaP], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_6_P] AS [Vit_Map2_6_P], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_10_P] AS [Vit_Map2_10_P], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_12_P] AS [Vit_Map2_12_P], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_15_P] AS [Vit_Map2_15_P], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_18_P] AS [Vit_Map2_18_P], 
+    [Vr_HistoricoSeleccion].[Vit_Map2_20_P] AS [Vit_Map2_20_P], 
+    [Vr_HistoricoSeleccion].[Vit_Media_Doc2_P] AS [Vit_Media_Doc2_P], 
+    [Vr_HistoricoSeleccion].[vit_Docena2_P] AS [vit_Docena2_P], 
+    [Vr_HistoricoSeleccion].[vit_Band2_12_P] AS [vit_Band2_12_P], 
+    [Vr_HistoricoSeleccion].[Omega_3_P] AS [Omega_3_P], 
+    [Vr_HistoricoSeleccion].[Omg_Med_Doc2_P] AS [Omg_Med_Doc2_P], 
+    [Vr_HistoricoSeleccion].[Omg_Docena2_P] AS [Omg_Docena2_P], 
+    [Vr_HistoricoSeleccion].[Omg_Band2_12_P] AS [Omg_Band2_12_P], 
+    [Vr_HistoricoSeleccion].[Omg_Map2_10_P] AS [Omg_Map2_10_P], 
+    [Vr_HistoricoSeleccion].[Omg_Map2_20_P] AS [Omg_Map2_20_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Super_P] AS [Blanco_Super_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Esp_P] AS [Blanco_Esp_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Primera_P] AS [Blanco_Primera_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Segunda_P] AS [Blanco_Segunda_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Tercera_P] AS [Blanco_Tercera_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Cuarta_P] AS [Blanco_Cuarta_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Quinta_P] AS [Blanco_Quinta_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Band2_12_P] AS [Blanco_Band2_12_P], 
+    [Vr_HistoricoSeleccion].[Blanco_Map2_20_P] AS [Blanco_Map2_20_P], 
+    [Vr_HistoricoSeleccion].[Codorniz_P] AS [Codorniz_P], 
+    [Vr_HistoricoSeleccion].[Color_Red50_P] AS [Color_Red50_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Maple1_30_P] AS [Sedem_Maple1_30_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Map3_18X2_P] AS [Sedem_Map3_18X2_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Vit_Band2_12X2_P] AS [Sedem_Vit_Band2_12X2_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Omg_Nut_Map2_10X2_P] AS [Sedem_Omg_Nut_Map2_10X2_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Maple3_30_P] AS [Sedem_Maple3_30_P], 
+    [Vr_HistoricoSeleccion].[Sedem_Map2_12X2_P] AS [Sedem_Map2_12X2_P], 
+    [Vr_HistoricoSeleccion].[Vacio3] AS [Vacio3], 
+    [Vr_HistoricoSeleccion].[Vacio4] AS [Vacio4], 
+    [Vr_HistoricoSeleccion].[Precio_Promedio] AS [Precio_Promedio], 
+    [Vr_HistoricoSeleccion].[Total_Bs] AS [Total_Bs], 
+    [Vr_HistoricoSeleccion].[Peso_Promedio] AS [Peso_Promedio]
+    FROM [dbo].[Vr_HistoricoSeleccion] AS [Vr_HistoricoSeleccion]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vr_SeleccionNota" EntityType="Self.Vr_SeleccionNota" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1985,7 +2383,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Seleccion" EntitySet="Seleccion" />
           </AssociationSet>
-          <EntitySet Name="Vr_CompraIngresoDevolucion" EntityType="DiAviModel.Vr_CompraIngresoDevolucion" />
           <EntitySet Name="ValidacionPrograma" EntityType="DiAviModel.ValidacionPrograma" />
           <EntitySet Name="Producto" EntityType="DiAviModel.Producto" />
           <EntitySet Name="Venta_01" EntityType="DiAviModel.Venta_01" />
@@ -2057,6 +2454,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
+          <EntitySet Name="Vr_CompraIngresoDevolucion" EntityType="DiAviModel.Vr_CompraIngresoDevolucion" />
+          <EntitySet Name="Vr_HistoricoSeleccion" EntityType="DiAviModel.Vr_HistoricoSeleccion" />
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -3092,41 +3491,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Vr_CompraIngresoDevolucion">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="NumNota" />
-            <PropertyRef Name="FechaRec" />
-            <PropertyRef Name="FechaEnt" />
-            <PropertyRef Name="Proveedor" />
-            <PropertyRef Name="IdSpyre" />
-            <PropertyRef Name="MarcaTipo" />
-            <PropertyRef Name="DescripcionPlaca" />
-            <PropertyRef Name="DescripcionRecibido" />
-            <PropertyRef Name="IdProduc" />
-            <PropertyRef Name="Producto" />
-            <PropertyRef Name="TotalCant" />
-            <PropertyRef Name="PrecioCost" />
-            <PropertyRef Name="Total" />
-            <PropertyRef Name="TotalMaple" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
-          <Property Name="FechaRec" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MarcaTipo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Entregado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DescripcionPlaca" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="DescripcionRecibido" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="IdProduc" Type="Int32" Nullable="false" />
-          <Property Name="Producto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="10" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TotalMaple" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="ValidacionPrograma">
           <Key>
             <PropertyRef Name="Id" />
@@ -3473,6 +3837,302 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vr_CompraIngresoDevolucion">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="NumNota" />
+            <PropertyRef Name="FechaRec" />
+            <PropertyRef Name="FechaEnt" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="IdSpyre" />
+            <PropertyRef Name="MarcaTipo" />
+            <PropertyRef Name="DescripcionPlaca" />
+            <PropertyRef Name="DescripcionRecibido" />
+            <PropertyRef Name="IdProduc" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="TotalCant" />
+            <PropertyRef Name="PrecioCost" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="TotalMaple" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEnt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MarcaTipo" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Entregado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionPlaca" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionRecibido" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IdProduc" Type="Int32" Nullable="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCant" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PrecioCost" Type="Decimal" Nullable="false" Precision="18" Scale="10" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalMaple" Type="Int32" Nullable="false" />
+          <Property Name="Obser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vr_HistoricoSeleccion">
+          <Key>
+            <PropertyRef Name="IdSpyre" />
+            <PropertyRef Name="Descrip" />
+            <PropertyRef Name="ingreso" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="NumNota" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Superc" />
+            <PropertyRef Name="Especialc" />
+            <PropertyRef Name="Primerac" />
+            <PropertyRef Name="Segundac" />
+            <PropertyRef Name="Tercerac" />
+            <PropertyRef Name="Cuartac" />
+            <PropertyRef Name="Quintac" />
+            <PropertyRef Name="Picadoc" />
+            <PropertyRef Name="manchadoc" />
+            <PropertyRef Name="Media_doc2" />
+            <PropertyRef Name="Docena2" />
+            <PropertyRef Name="Band2_12" />
+            <PropertyRef Name="Map2_6" />
+            <PropertyRef Name="Map2_10" />
+            <PropertyRef Name="Map2_12" />
+            <PropertyRef Name="Map2_15" />
+            <PropertyRef Name="Map2_18" />
+            <PropertyRef Name="Map2_20" />
+            <PropertyRef Name="Vit_Super" />
+            <PropertyRef Name="Vit_Especial" />
+            <PropertyRef Name="Vit_Primera" />
+            <PropertyRef Name="Vit_Segunda" />
+            <PropertyRef Name="Vit_Tercera" />
+            <PropertyRef Name="Vit_Cuarta" />
+            <PropertyRef Name="Vit_Quinta" />
+            <PropertyRef Name="Vit_Map2_6" />
+            <PropertyRef Name="Vit_Map2_10" />
+            <PropertyRef Name="Vit_Map2_12" />
+            <PropertyRef Name="Vit_Map2_15" />
+            <PropertyRef Name="Vit_Map2_18" />
+            <PropertyRef Name="Vit_Map2_20" />
+            <PropertyRef Name="Omega_3" />
+            <PropertyRef Name="Omg_Med_Doc2" />
+            <PropertyRef Name="Omg_Docena2" />
+            <PropertyRef Name="Omg_Band2_12" />
+            <PropertyRef Name="Omg_Map2_10" />
+            <PropertyRef Name="Omg_Map2_20" />
+            <PropertyRef Name="Blanco_Super" />
+            <PropertyRef Name="Blanco_Esp" />
+            <PropertyRef Name="Blanco_Primera" />
+            <PropertyRef Name="Blanco_Segunda" />
+            <PropertyRef Name="Blanco_Tercera" />
+            <PropertyRef Name="Blanco_Cuarta" />
+            <PropertyRef Name="Blanco_Quinta" />
+            <PropertyRef Name="Blanco_Band2_12" />
+            <PropertyRef Name="Blanco_Map2_20" />
+            <PropertyRef Name="Codorniz" />
+            <PropertyRef Name="Color_Red50" />
+            <PropertyRef Name="Sedem_Maple1_30" />
+            <PropertyRef Name="Sedem_Map3_18X2" />
+            <PropertyRef Name="Sedem_Vit_Band2_12X2" />
+            <PropertyRef Name="Sedem_Omg_Nut_Map2_10X2" />
+            <PropertyRef Name="Sedem_Maple3_30" />
+            <PropertyRef Name="Sedem_Map2_12X2" />
+            <PropertyRef Name="Vacio1" />
+            <PropertyRef Name="Vacio2" />
+            <PropertyRef Name="Tipo_Rec" />
+            <PropertyRef Name="Fecha_Recepcion" />
+            <PropertyRef Name="Superp" />
+            <PropertyRef Name="Especialp" />
+            <PropertyRef Name="Primerap" />
+            <PropertyRef Name="Segundap" />
+            <PropertyRef Name="Tercerap" />
+            <PropertyRef Name="Cuartap" />
+            <PropertyRef Name="Quintap" />
+            <PropertyRef Name="Picadop" />
+            <PropertyRef Name="manchadop" />
+            <PropertyRef Name="Mermap" />
+            <PropertyRef Name="Media_doc2_P" />
+            <PropertyRef Name="Docena2_P" />
+            <PropertyRef Name="Band2_12_P" />
+            <PropertyRef Name="Map2_6_P" />
+            <PropertyRef Name="Map2_10_P" />
+            <PropertyRef Name="Map2_12_P" />
+            <PropertyRef Name="Map2_15_P" />
+            <PropertyRef Name="Map2_18_P" />
+            <PropertyRef Name="Map2_20_P" />
+            <PropertyRef Name="Vit_SuperP" />
+            <PropertyRef Name="Vit_EspecialP" />
+            <PropertyRef Name="Vit_PrimeraP" />
+            <PropertyRef Name="Vit_SegundaP" />
+            <PropertyRef Name="Vit_TerceraP" />
+            <PropertyRef Name="Vit_CuartaP" />
+            <PropertyRef Name="Vit_QuintaP" />
+            <PropertyRef Name="Vit_Map2_6_P" />
+            <PropertyRef Name="Vit_Map2_10_P" />
+            <PropertyRef Name="Vit_Map2_12_P" />
+            <PropertyRef Name="Vit_Map2_15_P" />
+            <PropertyRef Name="Vit_Map2_18_P" />
+            <PropertyRef Name="Vit_Map2_20_P" />
+            <PropertyRef Name="Vit_Media_Doc2_P" />
+            <PropertyRef Name="vit_Docena2_P" />
+            <PropertyRef Name="vit_Band2_12_P" />
+            <PropertyRef Name="Omega_3_P" />
+            <PropertyRef Name="Omg_Med_Doc2_P" />
+            <PropertyRef Name="Omg_Docena2_P" />
+            <PropertyRef Name="Omg_Band2_12_P" />
+            <PropertyRef Name="Omg_Map2_10_P" />
+            <PropertyRef Name="Omg_Map2_20_P" />
+            <PropertyRef Name="Blanco_Super_P" />
+            <PropertyRef Name="Blanco_Esp_P" />
+            <PropertyRef Name="Blanco_Primera_P" />
+            <PropertyRef Name="Blanco_Segunda_P" />
+            <PropertyRef Name="Blanco_Tercera_P" />
+            <PropertyRef Name="Blanco_Cuarta_P" />
+            <PropertyRef Name="Blanco_Quinta_P" />
+            <PropertyRef Name="Blanco_Band2_12_P" />
+            <PropertyRef Name="Blanco_Map2_20_P" />
+            <PropertyRef Name="Codorniz_P" />
+            <PropertyRef Name="Color_Red50_P" />
+            <PropertyRef Name="Sedem_Maple1_30_P" />
+            <PropertyRef Name="Sedem_Map3_18X2_P" />
+            <PropertyRef Name="Sedem_Vit_Band2_12X2_P" />
+            <PropertyRef Name="Sedem_Omg_Nut_Map2_10X2_P" />
+            <PropertyRef Name="Sedem_Maple3_30_P" />
+            <PropertyRef Name="Sedem_Map2_12X2_P" />
+            <PropertyRef Name="Vacio3" />
+            <PropertyRef Name="Vacio4" />
+            <PropertyRef Name="Precio_Promedio" />
+            <PropertyRef Name="Total_Bs" />
+          </Key>
+          <Property Name="IdSpyre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Descrip" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ingreso" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumNota" Type="String" Nullable="false" MaxLength="26" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Superc" Type="Int32" Nullable="false" />
+          <Property Name="Especialc" Type="Int32" Nullable="false" />
+          <Property Name="Primerac" Type="Int32" Nullable="false" />
+          <Property Name="Segundac" Type="Int32" Nullable="false" />
+          <Property Name="Tercerac" Type="Int32" Nullable="false" />
+          <Property Name="Cuartac" Type="Int32" Nullable="false" />
+          <Property Name="Quintac" Type="Int32" Nullable="false" />
+          <Property Name="Picadoc" Type="Int32" Nullable="false" />
+          <Property Name="manchadoc" Type="Int32" Nullable="false" />
+          <Property Name="Merma" Type="Int32" />
+          <Property Name="Media_doc2" Type="Int32" Nullable="false" />
+          <Property Name="Docena2" Type="Int32" Nullable="false" />
+          <Property Name="Band2_12" Type="Int32" Nullable="false" />
+          <Property Name="Map2_6" Type="Int32" Nullable="false" />
+          <Property Name="Map2_10" Type="Int32" Nullable="false" />
+          <Property Name="Map2_12" Type="Int32" Nullable="false" />
+          <Property Name="Map2_15" Type="Int32" Nullable="false" />
+          <Property Name="Map2_18" Type="Int32" Nullable="false" />
+          <Property Name="Map2_20" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Super" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Especial" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Primera" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Segunda" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Tercera" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Cuarta" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Quinta" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_6" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_10" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_12" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_15" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_18" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_20" Type="Int32" Nullable="false" />
+          <Property Name="Omega_3" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Med_Doc2" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Docena2" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Band2_12" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Map2_10" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Map2_20" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Super" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Esp" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Primera" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Segunda" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Tercera" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Cuarta" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Quinta" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Band2_12" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Map2_20" Type="Int32" Nullable="false" />
+          <Property Name="Codorniz" Type="Int32" Nullable="false" />
+          <Property Name="Color_Red50" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Maple1_30" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Map3_18X2" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Vit_Band2_12X2" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Omg_Nut_Map2_10X2" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Maple3_30" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Map2_12X2" Type="Int32" Nullable="false" />
+          <Property Name="Vacio1" Type="Int32" Nullable="false" />
+          <Property Name="Vacio2" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Tipo_Rec" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_Recepcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Observacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Superp" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Especialp" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Primerap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Segundap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Tercerap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Cuartap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Quintap" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Picadop" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="manchadop" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Mermap" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Media_doc2_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Docena2_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Band2_12_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_6_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_10_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_12_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_15_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_18_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Map2_20_P" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Vit_SuperP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_EspecialP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_PrimeraP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_SegundaP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_TerceraP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_CuartaP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_QuintaP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vit_Map2_6_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_10_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_12_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_15_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_18_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Map2_20_P" Type="Int32" Nullable="false" />
+          <Property Name="Vit_Media_Doc2_P" Type="Int32" Nullable="false" />
+          <Property Name="vit_Docena2_P" Type="Int32" Nullable="false" />
+          <Property Name="vit_Band2_12_P" Type="Int32" Nullable="false" />
+          <Property Name="Omega_3_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Omg_Med_Doc2_P" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Docena2_P" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Band2_12_P" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Map2_10_P" Type="Int32" Nullable="false" />
+          <Property Name="Omg_Map2_20_P" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Super_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Esp_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Primera_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Segunda_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Tercera_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Cuarta_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Quinta_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Blanco_Band2_12_P" Type="Int32" Nullable="false" />
+          <Property Name="Blanco_Map2_20_P" Type="Int32" Nullable="false" />
+          <Property Name="Codorniz_P" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Color_Red50_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Maple1_30_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Map3_18X2_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Vit_Band2_12X2_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Omg_Nut_Map2_10X2_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Maple3_30_P" Type="Int32" Nullable="false" />
+          <Property Name="Sedem_Map2_12X2_P" Type="Int32" Nullable="false" />
+          <Property Name="Vacio3" Type="Int32" Nullable="false" />
+          <Property Name="Vacio4" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Promedio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total_Bs" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Peso_Promedio" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4139,28 +4799,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vr_CompraIngresoDevolucion">
-            <EntityTypeMapping TypeName="DiAviModel.Vr_CompraIngresoDevolucion">
-              <MappingFragment StoreEntitySet="Vr_CompraIngresoDevolucion">
-                <ScalarProperty Name="TotalMaple" ColumnName="TotalMaple" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="PrecioCost" ColumnName="PrecioCost" />
-                <ScalarProperty Name="TotalCant" ColumnName="TotalCant" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="IdProduc" ColumnName="IdProduc" />
-                <ScalarProperty Name="DescripcionRecibido" ColumnName="DescripcionRecibido" />
-                <ScalarProperty Name="DescripcionPlaca" ColumnName="DescripcionPlaca" />
-                <ScalarProperty Name="Entregado" ColumnName="Entregado" />
-                <ScalarProperty Name="MarcaTipo" ColumnName="MarcaTipo" />
-                <ScalarProperty Name="IdSpyre" ColumnName="IdSpyre" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="FechaEnt" ColumnName="FechaEnt" />
-                <ScalarProperty Name="FechaRec" ColumnName="FechaRec" />
-                <ScalarProperty Name="NumNota" ColumnName="NumNota" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ValidacionPrograma">
             <EntityTypeMapping TypeName="DiAviModel.ValidacionPrograma">
               <MappingFragment StoreEntitySet="ValidacionPrograma">
@@ -4299,6 +4937,165 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vr_CompraIngresoDevolucion">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_CompraIngresoDevolucion">
+              <MappingFragment StoreEntitySet="Vr_CompraIngresoDevolucion">
+                <ScalarProperty Name="Obser" ColumnName="Obser" />
+                <ScalarProperty Name="TotalMaple" ColumnName="TotalMaple" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PrecioCost" ColumnName="PrecioCost" />
+                <ScalarProperty Name="TotalCant" ColumnName="TotalCant" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="IdProduc" ColumnName="IdProduc" />
+                <ScalarProperty Name="DescripcionRecibido" ColumnName="DescripcionRecibido" />
+                <ScalarProperty Name="DescripcionPlaca" ColumnName="DescripcionPlaca" />
+                <ScalarProperty Name="Entregado" ColumnName="Entregado" />
+                <ScalarProperty Name="MarcaTipo" ColumnName="MarcaTipo" />
+                <ScalarProperty Name="IdSpyre" ColumnName="IdSpyre" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="FechaEnt" ColumnName="FechaEnt" />
+                <ScalarProperty Name="FechaRec" ColumnName="FechaRec" />
+                <ScalarProperty Name="NumNota" ColumnName="NumNota" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vr_HistoricoSeleccion">
+            <EntityTypeMapping TypeName="DiAviModel.Vr_HistoricoSeleccion">
+              <MappingFragment StoreEntitySet="Vr_HistoricoSeleccion">
+                <ScalarProperty Name="Peso_Promedio" ColumnName="Peso_Promedio" />
+                <ScalarProperty Name="Total_Bs" ColumnName="Total_Bs" />
+                <ScalarProperty Name="Precio_Promedio" ColumnName="Precio_Promedio" />
+                <ScalarProperty Name="Vacio4" ColumnName="Vacio4" />
+                <ScalarProperty Name="Vacio3" ColumnName="Vacio3" />
+                <ScalarProperty Name="Sedem_Map2_12X2_P" ColumnName="Sedem_Map2_12X2_P" />
+                <ScalarProperty Name="Sedem_Maple3_30_P" ColumnName="Sedem_Maple3_30_P" />
+                <ScalarProperty Name="Sedem_Omg_Nut_Map2_10X2_P" ColumnName="Sedem_Omg_Nut_Map2_10X2_P" />
+                <ScalarProperty Name="Sedem_Vit_Band2_12X2_P" ColumnName="Sedem_Vit_Band2_12X2_P" />
+                <ScalarProperty Name="Sedem_Map3_18X2_P" ColumnName="Sedem_Map3_18X2_P" />
+                <ScalarProperty Name="Sedem_Maple1_30_P" ColumnName="Sedem_Maple1_30_P" />
+                <ScalarProperty Name="Color_Red50_P" ColumnName="Color_Red50_P" />
+                <ScalarProperty Name="Codorniz_P" ColumnName="Codorniz_P" />
+                <ScalarProperty Name="Blanco_Map2_20_P" ColumnName="Blanco_Map2_20_P" />
+                <ScalarProperty Name="Blanco_Band2_12_P" ColumnName="Blanco_Band2_12_P" />
+                <ScalarProperty Name="Blanco_Quinta_P" ColumnName="Blanco_Quinta_P" />
+                <ScalarProperty Name="Blanco_Cuarta_P" ColumnName="Blanco_Cuarta_P" />
+                <ScalarProperty Name="Blanco_Tercera_P" ColumnName="Blanco_Tercera_P" />
+                <ScalarProperty Name="Blanco_Segunda_P" ColumnName="Blanco_Segunda_P" />
+                <ScalarProperty Name="Blanco_Primera_P" ColumnName="Blanco_Primera_P" />
+                <ScalarProperty Name="Blanco_Esp_P" ColumnName="Blanco_Esp_P" />
+                <ScalarProperty Name="Blanco_Super_P" ColumnName="Blanco_Super_P" />
+                <ScalarProperty Name="Omg_Map2_20_P" ColumnName="Omg_Map2_20_P" />
+                <ScalarProperty Name="Omg_Map2_10_P" ColumnName="Omg_Map2_10_P" />
+                <ScalarProperty Name="Omg_Band2_12_P" ColumnName="Omg_Band2_12_P" />
+                <ScalarProperty Name="Omg_Docena2_P" ColumnName="Omg_Docena2_P" />
+                <ScalarProperty Name="Omg_Med_Doc2_P" ColumnName="Omg_Med_Doc2_P" />
+                <ScalarProperty Name="Omega_3_P" ColumnName="Omega_3_P" />
+                <ScalarProperty Name="vit_Band2_12_P" ColumnName="vit_Band2_12_P" />
+                <ScalarProperty Name="vit_Docena2_P" ColumnName="vit_Docena2_P" />
+                <ScalarProperty Name="Vit_Media_Doc2_P" ColumnName="Vit_Media_Doc2_P" />
+                <ScalarProperty Name="Vit_Map2_20_P" ColumnName="Vit_Map2_20_P" />
+                <ScalarProperty Name="Vit_Map2_18_P" ColumnName="Vit_Map2_18_P" />
+                <ScalarProperty Name="Vit_Map2_15_P" ColumnName="Vit_Map2_15_P" />
+                <ScalarProperty Name="Vit_Map2_12_P" ColumnName="Vit_Map2_12_P" />
+                <ScalarProperty Name="Vit_Map2_10_P" ColumnName="Vit_Map2_10_P" />
+                <ScalarProperty Name="Vit_Map2_6_P" ColumnName="Vit_Map2_6_P" />
+                <ScalarProperty Name="Vit_QuintaP" ColumnName="Vit_QuintaP" />
+                <ScalarProperty Name="Vit_CuartaP" ColumnName="Vit_CuartaP" />
+                <ScalarProperty Name="Vit_TerceraP" ColumnName="Vit_TerceraP" />
+                <ScalarProperty Name="Vit_SegundaP" ColumnName="Vit_SegundaP" />
+                <ScalarProperty Name="Vit_PrimeraP" ColumnName="Vit_PrimeraP" />
+                <ScalarProperty Name="Vit_EspecialP" ColumnName="Vit_EspecialP" />
+                <ScalarProperty Name="Vit_SuperP" ColumnName="Vit_SuperP" />
+                <ScalarProperty Name="Map2_20_P" ColumnName="Map2_20_P" />
+                <ScalarProperty Name="Map2_18_P" ColumnName="Map2_18_P" />
+                <ScalarProperty Name="Map2_15_P" ColumnName="Map2_15_P" />
+                <ScalarProperty Name="Map2_12_P" ColumnName="Map2_12_P" />
+                <ScalarProperty Name="Map2_10_P" ColumnName="Map2_10_P" />
+                <ScalarProperty Name="Map2_6_P" ColumnName="Map2_6_P" />
+                <ScalarProperty Name="Band2_12_P" ColumnName="Band2_12_P" />
+                <ScalarProperty Name="Docena2_P" ColumnName="Docena2_P" />
+                <ScalarProperty Name="Media_doc2_P" ColumnName="Media_doc2_P" />
+                <ScalarProperty Name="Mermap" ColumnName="Mermap" />
+                <ScalarProperty Name="manchadop" ColumnName="manchadop" />
+                <ScalarProperty Name="Picadop" ColumnName="Picadop" />
+                <ScalarProperty Name="Quintap" ColumnName="Quintap" />
+                <ScalarProperty Name="Cuartap" ColumnName="Cuartap" />
+                <ScalarProperty Name="Tercerap" ColumnName="Tercerap" />
+                <ScalarProperty Name="Segundap" ColumnName="Segundap" />
+                <ScalarProperty Name="Primerap" ColumnName="Primerap" />
+                <ScalarProperty Name="Especialp" ColumnName="Especialp" />
+                <ScalarProperty Name="Superp" ColumnName="Superp" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Fecha_Recepcion" ColumnName="Fecha_Recepcion" />
+                <ScalarProperty Name="Tipo_Rec" ColumnName="Tipo_Rec" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Vacio2" ColumnName="Vacio2" />
+                <ScalarProperty Name="Vacio1" ColumnName="Vacio1" />
+                <ScalarProperty Name="Sedem_Map2_12X2" ColumnName="Sedem_Map2_12X2" />
+                <ScalarProperty Name="Sedem_Maple3_30" ColumnName="Sedem_Maple3_30" />
+                <ScalarProperty Name="Sedem_Omg_Nut_Map2_10X2" ColumnName="Sedem_Omg_Nut_Map2_10X2" />
+                <ScalarProperty Name="Sedem_Vit_Band2_12X2" ColumnName="Sedem_Vit_Band2_12X2" />
+                <ScalarProperty Name="Sedem_Map3_18X2" ColumnName="Sedem_Map3_18X2" />
+                <ScalarProperty Name="Sedem_Maple1_30" ColumnName="Sedem_Maple1_30" />
+                <ScalarProperty Name="Color_Red50" ColumnName="Color_Red50" />
+                <ScalarProperty Name="Codorniz" ColumnName="Codorniz" />
+                <ScalarProperty Name="Blanco_Map2_20" ColumnName="Blanco_Map2_20" />
+                <ScalarProperty Name="Blanco_Band2_12" ColumnName="Blanco_Band2_12" />
+                <ScalarProperty Name="Blanco_Quinta" ColumnName="Blanco_Quinta" />
+                <ScalarProperty Name="Blanco_Cuarta" ColumnName="Blanco_Cuarta" />
+                <ScalarProperty Name="Blanco_Tercera" ColumnName="Blanco_Tercera" />
+                <ScalarProperty Name="Blanco_Segunda" ColumnName="Blanco_Segunda" />
+                <ScalarProperty Name="Blanco_Primera" ColumnName="Blanco_Primera" />
+                <ScalarProperty Name="Blanco_Esp" ColumnName="Blanco_Esp" />
+                <ScalarProperty Name="Blanco_Super" ColumnName="Blanco_Super" />
+                <ScalarProperty Name="Omg_Map2_20" ColumnName="Omg_Map2_20" />
+                <ScalarProperty Name="Omg_Map2_10" ColumnName="Omg_Map2_10" />
+                <ScalarProperty Name="Omg_Band2_12" ColumnName="Omg_Band2_12" />
+                <ScalarProperty Name="Omg_Docena2" ColumnName="Omg_Docena2" />
+                <ScalarProperty Name="Omg_Med_Doc2" ColumnName="Omg_Med_Doc2" />
+                <ScalarProperty Name="Omega_3" ColumnName="Omega_3" />
+                <ScalarProperty Name="Vit_Map2_20" ColumnName="Vit_Map2_20" />
+                <ScalarProperty Name="Vit_Map2_18" ColumnName="Vit_Map2_18" />
+                <ScalarProperty Name="Vit_Map2_15" ColumnName="Vit_Map2_15" />
+                <ScalarProperty Name="Vit_Map2_12" ColumnName="Vit_Map2_12" />
+                <ScalarProperty Name="Vit_Map2_10" ColumnName="Vit_Map2_10" />
+                <ScalarProperty Name="Vit_Map2_6" ColumnName="Vit_Map2_6" />
+                <ScalarProperty Name="Vit_Quinta" ColumnName="Vit_Quinta" />
+                <ScalarProperty Name="Vit_Cuarta" ColumnName="Vit_Cuarta" />
+                <ScalarProperty Name="Vit_Tercera" ColumnName="Vit_Tercera" />
+                <ScalarProperty Name="Vit_Segunda" ColumnName="Vit_Segunda" />
+                <ScalarProperty Name="Vit_Primera" ColumnName="Vit_Primera" />
+                <ScalarProperty Name="Vit_Especial" ColumnName="Vit_Especial" />
+                <ScalarProperty Name="Vit_Super" ColumnName="Vit_Super" />
+                <ScalarProperty Name="Map2_20" ColumnName="Map2_20" />
+                <ScalarProperty Name="Map2_18" ColumnName="Map2_18" />
+                <ScalarProperty Name="Map2_15" ColumnName="Map2_15" />
+                <ScalarProperty Name="Map2_12" ColumnName="Map2_12" />
+                <ScalarProperty Name="Map2_10" ColumnName="Map2_10" />
+                <ScalarProperty Name="Map2_6" ColumnName="Map2_6" />
+                <ScalarProperty Name="Band2_12" ColumnName="Band2_12" />
+                <ScalarProperty Name="Docena2" ColumnName="Docena2" />
+                <ScalarProperty Name="Media_doc2" ColumnName="Media_doc2" />
+                <ScalarProperty Name="Merma" ColumnName="Merma" />
+                <ScalarProperty Name="manchadoc" ColumnName="manchadoc" />
+                <ScalarProperty Name="Picadoc" ColumnName="Picadoc" />
+                <ScalarProperty Name="Quintac" ColumnName="Quintac" />
+                <ScalarProperty Name="Cuartac" ColumnName="Cuartac" />
+                <ScalarProperty Name="Tercerac" ColumnName="Tercerac" />
+                <ScalarProperty Name="Segundac" ColumnName="Segundac" />
+                <ScalarProperty Name="Primerac" ColumnName="Primerac" />
+                <ScalarProperty Name="Especialc" ColumnName="Especialc" />
+                <ScalarProperty Name="Superc" ColumnName="Superc" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumNota" ColumnName="NumNota" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="ingreso" ColumnName="ingreso" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="IdSpyre" ColumnName="IdSpyre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

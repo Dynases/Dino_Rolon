@@ -236,7 +236,8 @@ namespace REPOSITORY.Clase
                                           TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                                                                 x.IdLibrer == a.Tipo).Descrip,
-                                          TipoCompra = a.Estado == 3 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
+                                          TipoCompra = a.TipoCompra == 1? "CON SELECCIÓN" : "SIN SELECCIÓN",
+                                          Estado = a.Estado == 3 ? "SI" : "NO",
                                           Devolucion = a.Devolucion == 1 ? "NO" : "SI",
                                           Fecha = a.Fecha,
                                           Hora = a.Hora,
@@ -366,7 +367,7 @@ namespace REPOSITORY.Clase
                 sb.Append(@"GROUP BY 
                                 a.Id, a.NumNota, a.FechaRec, b.Descrip, a.IdAlmacen, c.Descrip, a.TotalMaple
                             ORDER BY
-                                a.FechaRec ASC");
+                                a.FechaRec DESC");
                 return tabla = BD.EjecutarConsulta(sb.ToString(), lPars.ToArray()).Tables[0];
             }
             catch (Exception ex)

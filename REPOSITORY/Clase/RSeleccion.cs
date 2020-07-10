@@ -13,6 +13,7 @@ using System.Data.Entity;
 using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
 using UTILITY.Enum.EnEstado;
+using System.Data.Entity.SqlServer;
 
 namespace REPOSITORY.Clase
 {
@@ -269,11 +270,11 @@ namespace REPOSITORY.Clase
                          Cantidad = a.Cantidad,                                    
                          MermaPorcentaje =a.MermaPor,
                          ManchadoPorcentaje = a.ManchadoPor,
-                         PicadoPorcentaje = a.PicadoPor,                     
+                         PicadoPorcentaje = a.PicadoPor,  
+                         Dias = SqlFunctions.DateDiff("DAY",a.CompraIng.FechaRec, a.FechaReg),
                          Fecha = a.Fecha,
                          Hora = a.Hora,
                          Usuario = a.Usuario
-
                      }).ToList();
                     return lista;
                 }
