@@ -239,6 +239,8 @@
     <Compile Include="Global\GLMensaje.cs" />
     <Compile Include="Global\GLMensajeTamano.cs" />
     <Compile Include="Global\UTGlobal.cs" />
+    <Compile Include="MetodosExtension\FechaExtension.cs" />
+    <Compile Include="MetodosExtension\JanusExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

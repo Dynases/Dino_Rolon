@@ -78,6 +78,30 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
+        bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
+        System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
+        ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
+        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        ENTITY.ven.view.VVenta TraerVenta(int idVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
         ENTITY.ven.view.VVenta[] TraerVentas();
         
@@ -115,6 +139,30 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerInventarioLotes", ReplyAction="http://tempuri.org/IServiceDesktop/TraerInventarioLotesResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.TI001.VIew.VTI001[]> TraerInventarioLotesAsync(int IdProducto, int idAlmacen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_GuardarResponse")]
+        int Ajuste_Guardar(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Guardar", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_GuardarResponse")]
+        System.Threading.Tasks.Task<int> Ajuste_GuardarAsync(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_ListaResponse")]
+        ENTITY.inv.Ajuste.View.VAjusteLista[] Ajuste_Lista();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Ajuste_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Ajuste_ListaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteLista[]> Ajuste_ListaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/AjusteDetalle_ListaResponse")]
+        ENTITY.inv.Ajuste.View.VAjusteDetalle[] AjusteDetalle_Lista(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/AjusteDetalle_ListaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteDetalle[]> AjusteDetalle_ListaAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse")]
+        ENTITY.inv.Concepto.View.VConceptoCombo[] Concepto_ListaComboAjuste();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Concepto.View.VConceptoCombo[]> Concepto_ListaComboAjusteAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
@@ -888,30 +936,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarResponse")]
         System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync(UTILITY.Enum.ENConceptoPlantilla concepto);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
-        bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse")]
-        System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
-        ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla", ReplyAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse")]
-        System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
-        ENTITY.ven.view.VVenta TraerVenta(int idVenta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVenta", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentaResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
-        ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar", ReplyAction="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1829,6 +1853,38 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
+            return base.Channel.PlantillaDetalleGuardar(lista, PlantillaId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
+            return base.Channel.PlantillaDetalleGuardarAsync(lista, PlantillaId);
+        }
+        
+        public ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId) {
+            return base.Channel.PlantillaListarDetallePlantilla(PlantillaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId) {
+            return base.Channel.PlantillaListarDetallePlantillaAsync(PlantillaId);
+        }
+        
+        public ENTITY.ven.view.VVenta TraerVenta(int idVenta) {
+            return base.Channel.TraerVenta(idVenta);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta) {
+            return base.Channel.TraerVentaAsync(idVenta);
+        }
+        
+        public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
+            return base.Channel.VentaDetalleListar(VentaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
+            return base.Channel.VentaDetalleListarAsync(VentaId);
+        }
+        
         public ENTITY.ven.view.VVenta[] TraerVentas() {
             return base.Channel.TraerVentas();
         }
@@ -1899,6 +1955,38 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.TI001.VIew.VTI001[]> TraerInventarioLotesAsync(int IdProducto, int idAlmacen) {
             return base.Channel.TraerInventarioLotesAsync(IdProducto, idAlmacen);
+        }
+        
+        public int Ajuste_Guardar(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario) {
+            return base.Channel.Ajuste_Guardar(ajuste, detalle, usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> Ajuste_GuardarAsync(ENTITY.inv.Ajuste.View.VAjuste ajuste, ENTITY.inv.Ajuste.View.VAjusteDetalle[] detalle, string usuario) {
+            return base.Channel.Ajuste_GuardarAsync(ajuste, detalle, usuario);
+        }
+        
+        public ENTITY.inv.Ajuste.View.VAjusteLista[] Ajuste_Lista() {
+            return base.Channel.Ajuste_Lista();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteLista[]> Ajuste_ListaAsync() {
+            return base.Channel.Ajuste_ListaAsync();
+        }
+        
+        public ENTITY.inv.Ajuste.View.VAjusteDetalle[] AjusteDetalle_Lista(int id) {
+            return base.Channel.AjusteDetalle_Lista(id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteDetalle[]> AjusteDetalle_ListaAsync(int id) {
+            return base.Channel.AjusteDetalle_ListaAsync(id);
+        }
+        
+        public ENTITY.inv.Concepto.View.VConceptoCombo[] Concepto_ListaComboAjuste() {
+            return base.Channel.Concepto_ListaComboAjuste();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Concepto.View.VConceptoCombo[]> Concepto_ListaComboAjusteAsync() {
+            return base.Channel.Concepto_ListaComboAjusteAsync();
         }
         
         public string GetData(int value) {
@@ -3089,38 +3177,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla[]> PlantillaListarAsync(UTILITY.Enum.ENConceptoPlantilla concepto) {
             return base.Channel.PlantillaListarAsync(concepto);
-        }
-        
-        public bool PlantillaDetalleGuardar(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
-            return base.Channel.PlantillaDetalleGuardar(lista, PlantillaId);
-        }
-        
-        public System.Threading.Tasks.Task<bool> PlantillaDetalleGuardarAsync(ENTITY.Plantilla.VPlantilla01[] lista, int PlantillaId) {
-            return base.Channel.PlantillaDetalleGuardarAsync(lista, PlantillaId);
-        }
-        
-        public ENTITY.Plantilla.VPlantilla01[] PlantillaListarDetallePlantilla(int PlantillaId) {
-            return base.Channel.PlantillaListarDetallePlantilla(PlantillaId);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.Plantilla.VPlantilla01[]> PlantillaListarDetallePlantillaAsync(int PlantillaId) {
-            return base.Channel.PlantillaListarDetallePlantillaAsync(PlantillaId);
-        }
-        
-        public ENTITY.ven.view.VVenta TraerVenta(int idVenta) {
-            return base.Channel.TraerVenta(idVenta);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta> TraerVentaAsync(int idVenta) {
-            return base.Channel.TraerVentaAsync(idVenta);
-        }
-        
-        public ENTITY.ven.view.VVenta_01[] VentaDetalleListar(int VentaId) {
-            return base.Channel.VentaDetalleListar(VentaId);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId) {
-            return base.Channel.VentaDetalleListarAsync(VentaId);
         }
     }
 }

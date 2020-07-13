@@ -23,6 +23,7 @@ using ENTITY.com.CompraIngreso.View;
 using UTILITY.Enum.EnEstado;
 using ENTITY.Cliente.View;
 using System.Linq.Expressions;
+using ENTITY.inv.Concepto.View;
 
 namespace UTILITY.Global
 {
@@ -60,6 +61,30 @@ namespace UTILITY.Global
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lLibreria;
                 combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarComboConcepto(MultiColumnCombo combo, List<VConceptoCombo> conceptos)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Visible = false;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripción";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.DropDownList.Columns.Add("TipoMovimiento").Visible = false;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DataSource = conceptos;
+                combo.Refresh();
+                combo.Value = 1;
             }
             catch (Exception)
             {

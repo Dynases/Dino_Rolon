@@ -4,41 +4,67 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Rol.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Usuario.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_03.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.Filter" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_02" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd27" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.Report" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd29" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd30" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd31" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd32" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd33" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd34" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Ajuste.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Concepto.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/SERVICE" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Rol.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Usuario.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Cliente.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Proveedor.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Producto.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Almacen.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Sucursal.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Traspaso.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.PrecioCategoria.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_01" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_03.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso.Filter" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd27" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_02" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd29" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion_01.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd30" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.Report" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd31" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd32" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd33" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd34" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd35" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd36" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceDesktop_PlantillaDetalleGuardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlantillaDetalleGuardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PlantillaDetalleGuardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlantillaDetalleGuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantilla" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerVenta" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_TraerVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleListar_InputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleListar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_VentaDetalleListar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VentaDetalleListarResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerVentas_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerVentas" />
   </wsdl:message>
@@ -74,6 +100,30 @@
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerInventarioLotes_OutputMessage">
     <wsdl:part name="parameters" element="tns:TraerInventarioLotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Ajuste_Guardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ajuste_Guardar" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Ajuste_Guardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Ajuste_GuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Ajuste_Lista_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ajuste_Lista" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Ajuste_Lista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Ajuste_ListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AjusteDetalle_Lista_InputMessage">
+    <wsdl:part name="parameters" element="tns:AjusteDetalle_Lista" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_AjusteDetalle_Lista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AjusteDetalle_ListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Concepto_ListaComboAjuste_InputMessage">
+    <wsdl:part name="parameters" element="tns:Concepto_ListaComboAjuste" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_Concepto_ListaComboAjuste_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Concepto_ListaComboAjusteResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceDesktop_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
@@ -819,31 +869,23 @@
   <wsdl:message name="IServiceDesktop_PlantillaListar_OutputMessage">
     <wsdl:part name="parameters" element="tns:PlantillaListarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_PlantillaDetalleGuardar_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlantillaDetalleGuardar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_PlantillaDetalleGuardar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PlantillaDetalleGuardarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantilla" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PlantillaListarDetallePlantillaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_TraerVenta_InputMessage">
-    <wsdl:part name="parameters" element="tns:TraerVenta" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_TraerVenta_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TraerVentaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaDetalleListar_InputMessage">
-    <wsdl:part name="parameters" element="tns:VentaDetalleListar" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_VentaDetalleListar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:VentaDetalleListarResponse" />
-  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
+    <wsdl:operation name="PlantillaDetalleGuardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar" message="tns:IServiceDesktop_PlantillaDetalleGuardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse" message="tns:IServiceDesktop_PlantillaDetalleGuardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlantillaListarDetallePlantilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVenta" message="tns:IServiceDesktop_TraerVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentaResponse" message="tns:IServiceDesktop_TraerVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleListar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse" message="tns:IServiceDesktop_VentaDetalleListar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerVentas">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentas" message="tns:IServiceDesktop_TraerVentas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentasResponse" message="tns:IServiceDesktop_TraerVentas_OutputMessage" />
@@ -867,6 +909,22 @@
     <wsdl:operation name="TraerInventarioLotes">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerInventarioLotes" message="tns:IServiceDesktop_TraerInventarioLotes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerInventarioLotesResponse" message="tns:IServiceDesktop_TraerInventarioLotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ajuste_Guardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Ajuste_Guardar" message="tns:IServiceDesktop_Ajuste_Guardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Ajuste_GuardarResponse" message="tns:IServiceDesktop_Ajuste_Guardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ajuste_Lista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Ajuste_Lista" message="tns:IServiceDesktop_Ajuste_Lista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Ajuste_ListaResponse" message="tns:IServiceDesktop_Ajuste_Lista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AjusteDetalle_Lista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista" message="tns:IServiceDesktop_AjusteDetalle_Lista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/AjusteDetalle_ListaResponse" message="tns:IServiceDesktop_AjusteDetalle_Lista_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Concepto_ListaComboAjuste">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste" message="tns:IServiceDesktop_Concepto_ListaComboAjuste_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse" message="tns:IServiceDesktop_Concepto_ListaComboAjuste_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/GetData" message="tns:IServiceDesktop_GetData_InputMessage" />
@@ -1364,25 +1422,45 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListar" message="tns:IServiceDesktop_PlantillaListar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarResponse" message="tns:IServiceDesktop_PlantillaListar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="PlantillaDetalleGuardar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar" message="tns:IServiceDesktop_PlantillaDetalleGuardar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardarResponse" message="tns:IServiceDesktop_PlantillaDetalleGuardar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PlantillaListarDetallePlantilla">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantillaResponse" message="tns:IServiceDesktop_PlantillaListarDetallePlantilla_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="TraerVenta">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVenta" message="tns:IServiceDesktop_TraerVenta_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerVentaResponse" message="tns:IServiceDesktop_TraerVenta_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="VentaDetalleListar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListar" message="tns:IServiceDesktop_VentaDetalleListar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/VentaDetalleListarResponse" message="tns:IServiceDesktop_VentaDetalleListar_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PlantillaDetalleGuardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlantillaListarDetallePlantilla">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerVenta">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VentaDetalleListar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerVentas">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVentas" style="document" />
       <wsdl:input>
@@ -1430,6 +1508,42 @@
     </wsdl:operation>
     <wsdl:operation name="TraerInventarioLotes">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerInventarioLotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ajuste_Guardar">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Ajuste_Guardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ajuste_Lista">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Ajuste_Lista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AjusteDetalle_Lista">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/AjusteDetalle_Lista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Concepto_ListaComboAjuste">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2546,42 +2660,6 @@
     </wsdl:operation>
     <wsdl:operation name="PlantillaListar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaListar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PlantillaDetalleGuardar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaDetalleGuardar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PlantillaListarDetallePlantilla">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/PlantillaListarDetallePlantilla" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="TraerVenta">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerVenta" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="VentaDetalleListar">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/VentaDetalleListar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

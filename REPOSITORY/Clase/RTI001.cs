@@ -21,8 +21,12 @@ namespace REPOSITORY.Clase
             this.tI002 =  tI002;
             this.tI0021 = tI0021;
         }
+        public RTI001()
+        {
+
+        }
         #region Trasancciones
-        
+
         public bool Nuevo(int idAlmacen, int idProducto, decimal cantidad, string lote, DateTime fechaVen)
         {
             try
@@ -76,6 +80,45 @@ namespace REPOSITORY.Clase
                     db.SaveChanges();
 
                     return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void ActualizarInventario(int idProducto, int idAlmacen, decimal cantidad, string lote, DateTime fechaVen)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var saldo = db.TI001.Where(i => i.icalm == idAlmacen
+                                               && i.iccprod == idProducto
+                                               && i.iclot.Equals(lote)
+                                               && i.icfven == fechaVen)
+                        .FirstOrDefault();
+
+                    if (saldo == null)
+                    {
+                        saldo = new TI001
+                        {
+                            icalm = idAlmacen,
+                            icuven = db.Producto.FirstOrDefault(a => a.Id == idProducto).UniVen,
+                            iccprod = idProducto,
+                            iccven = cantidad,
+                            iclot = lote,
+                            icfven = fechaVen
+                        };
+
+                        db.TI001.Add(saldo);
+                    }
+                    else
+                    {
+                        var stock = saldo.iccven;
+                        saldo.iccven = stock + cantidad;
+                    }
+                    db.SaveChanges();
                 }
             }
             catch (Exception ex)
