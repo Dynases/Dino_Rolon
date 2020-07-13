@@ -88,6 +88,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public void Eliminar( int ajusteId)
+        {
+            try
+            {
+                iAjuste.Eliminar(ajusteId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         #endregion
 

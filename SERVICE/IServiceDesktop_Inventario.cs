@@ -16,6 +16,8 @@ namespace SERVICE
         #region Transacciones
         [OperationContract]
         int Ajuste_Guardar(VAjuste ajuste, List<VAjusteDetalle> detalle, string usuario);
+        [OperationContract]
+        void Ajuste_Eliminar(int ajusteId);
         #endregion
         #region Consulta
         [OperationContract]

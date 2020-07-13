@@ -16,7 +16,7 @@ namespace DATA.EntityDataModel.DiAvi
     {
         public int IdTI0021 { get; set; }
         public string Unidad { get; set; }
-        public decimal TotalContanido { get; set; }
+        public decimal Contenido { get; set; }
         public decimal Precio { get; set; }
     
         public virtual TI0021 TI0021 { get; set; }

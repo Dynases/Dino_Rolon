@@ -182,33 +182,7 @@ namespace REPOSITORY.Clase
                     traspaso.EstadoEnvio = 2;
                     traspaso.Estado = (int)ENEstado.COMPLETADO;
                     db.SaveChanges();
-                    return true;
-                    //int idTI2 = 0;
-                    ////REGISTRAMOS LA CABECERA DE LA RECEPCION EN LA TI002
-                    //if (this.tI002.Guardar(traspaso.AlmacenOrigen.Value, traspaso.Almacen.Descrip, traspaso.AlmacenDestino.Value, traspaso.Almacen1.Descrip,
-                    //    traspaso.Id, usuarioRecepcion,
-                    //    " TRASPASO DE INGRESO DESDE " + traspaso.Almacen.Descrip + " - HACIA: " + traspaso.Almacen1.Descrip,
-                    //    (int)ENConcepto.TRASPASO_SALIDA,
-                    //    ref idTI2))
-                    //{
-                    //    //AHORA SE REGISTRA EL DETALLE DE LA RECEPCION EN LA TABLA TI0021 y 
-                    //    //A SU VES EN EL METODO SE ACTUALIZA EL INVENTARIO DE DESTINO EN LA TI001
-                    //    var detalle = db.Traspaso_01.Where(tp => tp.TraspasoId == traspaso.Id).ToList();
-                    //    if (this.traspaso_01.ConfirmarRecepcionDetalle(detalle, idTI2))
-                    //    {
-                    //        //ACTUALIZAMOS EL TRASPASO CAMBIANDO SU ESTADO A RECEPCIONADO = 3
-                    //        traspaso.Estado = 3;
-                    //        db.Traspaso.Attach(traspaso);
-                    //        db.Entry(traspaso).State = EntityState.Modified;
-                    //        db.SaveChanges();
-
-                    //        return true;
-                    //    }
-                    //    else
-                    //    { return false; }
-                    //}
-                    //else
-                    //{ return false; }
+                    return true;                    
                 }
             }
             catch (Exception ex)

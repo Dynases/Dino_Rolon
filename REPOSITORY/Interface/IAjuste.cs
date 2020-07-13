@@ -13,6 +13,7 @@ namespace REPOSITORY.Interface
         List<VAjusteLista> Lista();
         VAjuste ObtenerPorId(int id);
         void Guardar(VAjuste ajuste, ref int id, string usuario);
+        void Eliminar(int IdAjuste);
         #endregion
 
         #region AjusteDetalle

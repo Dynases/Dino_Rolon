@@ -595,67 +595,7 @@
     <EmbeddedResource Include="ven\F1_Ventas.resx">
       <DependentUpon>F1_Ventas.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ClienteGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraModificarEstadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarCompraIngresoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarTraspasoResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarEstadoCompraIngresoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ModificarLibreriaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.PlantillaGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.precioCategoria_GuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ProductoGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ProveedorGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.RolGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_GuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TransformacionGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Traspaso1GuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.UsuarioGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaGuardarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.VentaModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\Service1.wsdl" />
@@ -747,9 +687,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop35.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceDesktop\ServiceDesktop36.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">

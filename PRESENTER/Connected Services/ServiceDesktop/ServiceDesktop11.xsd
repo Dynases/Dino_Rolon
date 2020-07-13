@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVZona">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Concepto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Concepto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVConceptoCombo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VZona" nillable="true" type="tns:VZona" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VConceptoCombo" nillable="true" type="tns:VConceptoCombo" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVZona" nillable="true" type="tns:ArrayOfVZona" />
-  <xs:complexType name="VZona">
+  <xs:element name="ArrayOfVConceptoCombo" nillable="true" type="tns:ArrayOfVConceptoCombo" />
+  <xs:complexType name="VConceptoCombo">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Zona" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoMovimiento" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VZona" nillable="true" type="tns:VZona" />
+  <xs:element name="VConceptoCombo" nillable="true" type="tns:VConceptoCombo" />
 </xs:schema>

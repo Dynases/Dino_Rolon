@@ -4,6 +4,7 @@ using REPOSITORY.Base;
 using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using UTILITY.Enum.ENConcepto;
@@ -48,6 +49,22 @@ namespace REPOSITORY.Clase
                     data.ibuact = usuario;
                     db.SaveChanges();
                     id = data.ibid;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void Eliminar(int IdAjuste)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var ajuste = db.TI002.Where(c => c.ibid.Equals(IdAjuste)).FirstOrDefault();                  
+                    db.TI002.Remove(ajuste);                 
+                    db.SaveChanges();               
                 }
             }
             catch (Exception ex)
@@ -132,6 +149,8 @@ namespace REPOSITORY.Clase
 
                                 data2.Precio = item.Precio;
                                 data2.TI0021 = data;
+                                data2.Unidad = item.Unidad;
+                                data2.Contenido = item.Contenido;
 
                                 data.icid = db.TI0021.Select(a => a.icid).DefaultIfEmpty(0).Max() + 1;
                                 data.icibid = id;
@@ -148,6 +167,9 @@ namespace REPOSITORY.Clase
                                 data2 = data.TI0021A;
 
                                 data2.Precio = item.Precio;
+                                data2.TI0021 = data;
+                                data2.Unidad = item.Unidad;
+                                data2.Contenido = item.Contenido;
 
                                 data.iccprod = item.IdProducto;
                                 data.iccant = item.Cantidad;
@@ -191,10 +213,12 @@ namespace REPOSITORY.Clase
                                           Id = a.icid,
                                           IdAjuste = a.icibid,
                                           IdProducto = b.Id,
+                                          CodProducto = b.IdProd,
                                           NProducto = b.Descrip,
                                           Unidad = c.Descrip,
-                                          CodProducto = b.IdProd,
                                           Cantidad = a.iccant,
+                                          Contenido = a.TI0021A.Contenido,
+                                          TotalContenido = (a.TI0021A.IdTI0021 * a.TI0021A.Contenido),                                          
                                           Precio = a.TI0021A.Precio,
                                           Total = (a.iccant * a.TI0021A.Precio),
                                           Lote = a.iclot,

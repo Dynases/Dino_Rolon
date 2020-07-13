@@ -25,6 +25,17 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public void Ajuste_Eliminar(int ajusteId)
+        {
+            try
+            {
+                new LAjuste().Eliminar(ajusteId);                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Consulta
         public List<VAjusteLista> Ajuste_Lista()

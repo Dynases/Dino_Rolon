@@ -28,7 +28,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string ibuact { get; set; }
         public int id { get; set; }
     
-        public virtual Almacen Almacen { get; set; }
         public virtual TCI001 TCI001 { get; set; }
+        public virtual Almacen Almacen { get; set; }
     }
 }
