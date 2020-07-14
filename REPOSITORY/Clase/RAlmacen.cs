@@ -5,6 +5,7 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UTILITY.Global;
 
 namespace REPOSITORY.Clase
 {
@@ -44,13 +45,16 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VAlmacenCombo> Listar()
+        public List<VAlmacenCombo> Listar(int usuarioId)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
-                    var listResult = (from a in db.Almacen
+                    var listResult = (from b in db.Usuario
+                                      join c in db.Usuario_01 on b.IdUsuario equals c.IdUsuario
+                                      join a  in db.Almacen on c.IdAlmacen equals a.Id 
+                                      where b.IdUsuario == usuarioId && c.Acceso == true
                                       select new VAlmacenCombo
                                       {
                                           IdLibreria = a.Id,

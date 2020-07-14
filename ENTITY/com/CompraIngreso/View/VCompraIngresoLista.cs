@@ -37,5 +37,6 @@ namespace ENTITY.com.CompraIngreso.View
         public int Devolucion { get; set; }
 
         public int TotalUnidades { get; set; }
+        public int UsuarioId { get; set; }
     }
 }

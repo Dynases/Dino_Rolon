@@ -10,7 +10,7 @@ namespace REPOSITORY.Interface
     public interface IAlmacen
     {
         bool Guardar(VAlmacen vAlmacen);
-        List<VAlmacenCombo> Listar();
+        List<VAlmacenCombo> Listar(int usuarioId);
         List<VAlmacenLista> ListarAlmacenes();
     }
 }

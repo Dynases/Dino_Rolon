@@ -169,11 +169,11 @@ namespace LOGIC.Class
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VCompraIngreso> TraerComprasIngreso()
+        public List<VCompraIngreso> TraerComprasIngreso(int usuarioId)
         {
             try
             {
-                return iCompraIngreso.TraerComprasIngreso();
+                return iCompraIngreso.TraerComprasIngreso(usuarioId);
             }
             catch (Exception ex)
             {

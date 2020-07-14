@@ -18,11 +18,11 @@ namespace LOGIC.Class
 
         #region Consulta
 
-        public List<VAlmacenCombo> Listar()
+        public List<VAlmacenCombo> Listar(int usuarioId)
         {
             try
             {
-                return iAlmacen.Listar();
+                return iAlmacen.Listar(usuarioId);
             }
             catch (Exception ex)
             {

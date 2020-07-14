@@ -33,7 +33,7 @@ namespace REPOSITORY.Clase
                     CompraIng CompraIngreso;
                     if (id > 0)
                     {
-                        CompraIngreso = db.CompraIng.Where(a => a.Id == idAux).FirstOrDefault();
+                        CompraIngreso = db.CompraIng.Where(a => a.Id == idAux ).FirstOrDefault();
                         if (CompraIngreso == null)
                             throw new Exception("No existe la compra con id " + idAux);
                     }
@@ -201,24 +201,18 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VCompraIngreso> TraerComprasIngreso()
+        public List<VCompraIngreso> TraerComprasIngreso( int usuarioId)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.CompraIng
-                                      join c in db.Proveed on
-                                       new
-                                       {
-                                           idProve = a.IdProvee
-                                       }
-                                       equals
-                                       new
-                                       {
-                                           idProve = c.Id
-                                       }
-                                      where a.Estado != (int)ENEstado.ELIMINAR
+                                      join c in db.Proveed on a.IdProvee equals c.Id
+                                      join b in db.Almacen on a.IdAlmacen equals b.Id
+                                      join d in db.Usuario_01 on b.Id equals d.IdAlmacen
+                                      where a.Estado != (int)ENEstado.ELIMINAR &&
+                                            d.IdUsuario == usuarioId && d.Acceso == true
                                       select new VCompraIngreso
                                       {
                                           Id = a.Id,
@@ -227,16 +221,16 @@ namespace REPOSITORY.Clase
                                           FechaEnt = a.FechaEnt,
                                           FechaRec = a.FechaRec,
                                           Entregado = a.Entregado,
-                                          PlacaDescripcion= db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.COMPRA_INGRESO &&
-                                                                                x.IdOrden == (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA &&
-                                                                                x.IdLibrer == a.Placa).Descrip,
+                                          PlacaDescripcion = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.COMPRA_INGRESO &&
+                                                                                 x.IdOrden == (int)ENEstaticosOrden.COMPRA_INGRESO_PLACA &&
+                                                                                 x.IdLibrer == a.Placa).Descrip,
                                           TotalMaple = a.TotalMaple,
                                           TotalUnidades = a.TotalUnidades,
                                           Total = a.Total,
                                           TipoCategoria = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                                                                 x.IdLibrer == a.Tipo).Descrip,
-                                          TipoCompra = a.TipoCompra == 1? "CON SELECCIÓN" : "SIN SELECCIÓN",
+                                          TipoCompra = a.TipoCompra == 1 ? "CON SELECCIÓN" : "SIN SELECCIÓN",
                                           Estado = a.Estado == 3 ? "SI" : "NO",
                                           Devolucion = a.Devolucion == 1 ? "NO" : "SI",
                                           Fecha = a.Fecha,

@@ -229,7 +229,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
                 UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen1, almacenes);
                 UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen2, almacenes);
             }

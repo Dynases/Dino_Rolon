@@ -43,7 +43,7 @@ namespace PRESENTER.alm
         {
             try
             {
-                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
                 UTGlobal.MG_ArmarComboAlmacen(Cb_Almacenes, almacenes);
 
             }

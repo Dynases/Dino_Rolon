@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="VLibreriaLista">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVTI001">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdGrupo" type="xs:int" />
-      <xs:element minOccurs="0" name="IdLibrer" type="xs:int" />
-      <xs:element minOccurs="0" name="IdOrden" type="xs:int" />
-      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="estado" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTI001" nillable="true" type="tns:VTI001" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VLibreriaLista" nillable="true" type="tns:VLibreriaLista" />
-  <xs:complexType name="ArrayOfVLibreriaLista">
+  <xs:element name="ArrayOfVTI001" nillable="true" type="tns:ArrayOfVTI001" />
+  <xs:complexType name="VTI001">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VLibreriaLista" nillable="true" type="tns:VLibreriaLista" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FechaVen" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVLibreriaLista" nillable="true" type="tns:ArrayOfVLibreriaLista" />
-  <xs:complexType name="ArrayOfVLibreria">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VLibreria" nillable="true" type="tns:VLibreria" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVLibreria" nillable="true" type="tns:ArrayOfVLibreria" />
-  <xs:complexType name="VLibreria">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdLibreria" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VLibreria" nillable="true" type="tns:VLibreria" />
+  <xs:element name="VTI001" nillable="true" type="tns:VTI001" />
 </xs:schema>

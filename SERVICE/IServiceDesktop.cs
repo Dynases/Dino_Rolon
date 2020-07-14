@@ -235,7 +235,7 @@ namespace SERVICE
         bool AlmacenGuardar(VAlmacen vAlmacen);
 
         [OperationContract]
-        List<VAlmacenCombo> AlmacenListarCombo();
+        List<VAlmacenCombo> AlmacenListarCombo(int usuarioId);
 
         [OperationContract]
         List<VAlmacenLista> AlmacenListar();
@@ -353,7 +353,7 @@ namespace SERVICE
         DataTable CompraIngresoBuscar(int estado);
 
         [OperationContract]
-        List<VCompraIngreso> TraerComprasIngreso();
+        List<VCompraIngreso> TraerComprasIngreso(int usuarioId);
 
         [OperationContract]
         List<VCompraIngresoCombo> TraerCompraIngresoCombo();

@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.reg.Precio.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVPrecioLista">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VTipoAlmacen">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VPrecioLista" nillable="true" type="tns:VPrecioLista" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVPrecioLista" nillable="true" type="tns:ArrayOfVPrecioLista" />
-  <xs:complexType name="VPrecioLista">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="COd" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdPrecioCat" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VPrecioLista" nillable="true" type="tns:VPrecioLista" />
+  <xs:element name="VTipoAlmacen" nillable="true" type="tns:VTipoAlmacen" />
+  <xs:complexType name="ArrayOfVTipoAlmacenCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTipoAlmacenCombo" nillable="true" type="tns:VTipoAlmacenCombo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTipoAlmacenCombo" nillable="true" type="tns:ArrayOfVTipoAlmacenCombo" />
+  <xs:complexType name="VTipoAlmacenCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoAlmacen" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VTipoAlmacenCombo" nillable="true" type="tns:VTipoAlmacenCombo" />
+  <xs:complexType name="ArrayOfVTipoAlmacenListar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTipoAlmacenListar" nillable="true" type="tns:VTipoAlmacenListar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTipoAlmacenListar" nillable="true" type="tns:ArrayOfVTipoAlmacenListar" />
+  <xs:complexType name="VTipoAlmacenListar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VTipoAlmacenListar" nillable="true" type="tns:VTipoAlmacenListar" />
 </xs:schema>

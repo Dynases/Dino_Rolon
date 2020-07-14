@@ -691,7 +691,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var result = new ServiceDesktop.ServiceDesktopClient().TraerComprasIngreso().ToList();
+                var result = new ServiceDesktop.ServiceDesktopClient().TraerComprasIngreso(UTGlobal.UsuarioId).ToList();
                 if (result != null)
                 {
                     var query = result.Where(a => a.FechaRec >= Dt_FechaDesde.Value && a.FechaRec <= Dt_FechaHasta.Value).ToList();
@@ -784,10 +784,8 @@ namespace PRESENTER.com
         {
             try
             {
-                var result = new ServiceDesktop.ServiceDesktopClient().TraerComprasIngreso().ToList();
+                var result = new ServiceDesktop.ServiceDesktopClient().TraerComprasIngreso(UTGlobal.UsuarioId).ToList();
                 MP_ArmarEncabezado(result);
-
-
             }
             catch (Exception ex)
             {
@@ -1161,7 +1159,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo().ToList();
+                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
                 UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
             }
             catch (Exception ex)

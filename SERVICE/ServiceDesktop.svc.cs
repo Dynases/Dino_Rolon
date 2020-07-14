@@ -780,11 +780,11 @@ namespace SERVICE
             }
         }
 
-        public List<VAlmacenCombo> AlmacenListarCombo()
+        public List<VAlmacenCombo> AlmacenListarCombo(int usuarioId)
         {
             try
             {
-                var listResult = new LAlmacen().Listar();
+                var listResult = new LAlmacen().Listar(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1163,11 +1163,11 @@ namespace SERVICE
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraIngreso> TraerComprasIngreso()
+        public VCompraIngresoLista TraerCompraIngreso(int id)
         {
             try
             {
-                var listResult = new LCompraIngreso().TraerComprasIngreso();
+                var listResult = new LCompraIngreso().TraerCompraIngreso(id);
                 return listResult;
             }
             catch (Exception ex)
@@ -1175,12 +1175,13 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+
         /********** VARIOS REGISTROS ***********/
-        public VCompraIngresoLista TraerCompraIngreso(int id)
+        public List<VCompraIngreso> TraerComprasIngreso(int usuarioId)
         {
             try
             {
-                var listResult = new LCompraIngreso().TraerCompraIngreso(id);
+                var listResult = new LCompraIngreso().TraerComprasIngreso(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
