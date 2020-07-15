@@ -535,6 +535,7 @@ namespace PRESENTER.com
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
                     UTGlobal.MG_SeleccionarCombo(Cb_Placa);
                     UTGlobal.MG_SeleccionarComboCompraIngreso(cb_NumGranja);
+                    UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen);
                 }
                 //((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).Clear();
                 Dgv_Detalle.DataSource = null;

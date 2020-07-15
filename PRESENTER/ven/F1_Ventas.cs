@@ -446,6 +446,7 @@ namespace PRESENTER.ven
                 UTGlobal.MG_SeleccionarCombo(Cb_EncVenta);
                 UTGlobal.MG_SeleccionarCombo(Cb_EncPreVenta);
                 UTGlobal.MG_SeleccionarCombo(Cb_EncTransporte);
+                UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Origen);
             }
             index = 0;
             listaDetalleVenta.Clear();

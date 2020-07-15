@@ -1674,7 +1674,7 @@ namespace PRESENTER.com
                     UTGlobal.MG_SeleccionarComboPlaca(Cb_Placa);
                     UTGlobal.MG_SeleccionarCombo(cb_Recibido);
                     UTGlobal.MG_SeleccionarComboProveedor(cb_Proveedor);
-                    // UTGlobal.MG_SeleccionarCombo(Cb_Almacen);
+                    UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen);
                 }
                 MP_CargarDetalle(Convert.ToInt32(Cb_Tipo.Value), 2);
                 MP_CargarDevolucion(Convert.ToInt32(Cb_Tipo.Value), 2);
