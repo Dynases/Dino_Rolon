@@ -2137,7 +2137,7 @@ namespace PRESENTER.com
         {
             MP_Habilitar();
             MP_Limpiar();
-
+            BtnExportar.Enabled = false;
         }
         public override void MH_Modificar()
         {
@@ -2147,6 +2147,7 @@ namespace PRESENTER.com
                 throw new Exception("La compra esta asociado a una Seleccion.");
             }
             MP_Habilitar();
+            BtnExportar.Enabled = false;
         }
         public override void MH_Salir()
         {

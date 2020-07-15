@@ -1354,14 +1354,14 @@ namespace PRESENTER.com
         {
             MP_Habilitar();
             MP_Limpiar();
-
+            BtnExportar.Enabled = false;
         }
         public override void MH_Modificar()
         {
             MP_Habilitar();
             //Tb_IdCompraIngreso.ReadOnly = true;
             cb_NumGranja.ReadOnly = true;
-
+            BtnExportar.Enabled = false;
         }
         public override void MH_Salir()
         {
