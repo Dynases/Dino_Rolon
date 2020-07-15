@@ -180,22 +180,22 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable BuscarCompraIngreso(int estado)
+        public DataTable BuscarCompraIngreso(int estado, int usuarioId)
         {
             try
             {
-                return iCompraIngreso.BuscarCompraIngreso(estado);
+                return iCompraIngreso.BuscarCompraIngreso(estado, usuarioId);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo( int usuarioId)
         {
             try
             {
-                return iCompraIngreso.TraerCompraIngresoCombo();
+                return iCompraIngreso.TraerCompraIngresoCombo(usuarioId);
             }
             catch (Exception ex)
             {

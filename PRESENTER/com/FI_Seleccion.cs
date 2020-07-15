@@ -257,7 +257,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones().ToList();
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones(UTGlobal.UsuarioId).ToList();
                 MP_ArmarEncabezado(ListaCompleta);
             }
             catch (Exception ex)
@@ -441,7 +441,7 @@ namespace PRESENTER.com
                                     new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.COMPRA_INGRESO),
                                                                                                   Convert.ToInt32(ENEstaticosOrden.COMPRA_INGRESO_PLACA)).ToList());
                 UTGlobal.MG_ArmarMultiComboCompraIngreso(cb_NumGranja,
-                                   new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().ToList());
+                                   new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo(UTGlobal.UsuarioId).ToList());
             
             }
             catch (Exception ex)
@@ -566,7 +566,7 @@ namespace PRESENTER.com
                         var lista = new ServiceDesktop.ServiceDesktopClient().TraerSeleccion(_idOriginal);
 
                         Tb_Id.Text = lista.Id.ToString();
-                        cb_NumGranja.Value = lista.Id;
+                        cb_NumGranja.Value = lista.Granja;
                         Tb_IdCompraIngreso.Text = lista.IdCompraIng.ToString();
                         Tb_FechaEnt.Value = lista.FechaEntrega;
                         Tb_FechaRec.Value = lista.FechaRecepcion;
@@ -1104,12 +1104,12 @@ namespace PRESENTER.com
                     {
                         if (Cb_Placa.SelectedIndex != -1)
                         {
-                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_NumGranja.Value))).FirstOrDefault();
+                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo(UTGlobal.UsuarioId).Where(a => a.Id.Equals(Convert.ToInt32(cb_NumGranja.Value))).FirstOrDefault();
                             if (lista == null)
                             {
                                 throw new Exception("No se encontro una compra");
                             }
-                            var tCompraIngreso = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
+                            var tCompraIngreso = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO, UTGlobal.UsuarioId);
                             foreach (DataRow rCompra in tCompraIngreso.Rows)
                             {
                                 if (rCompra.Field<int>("Id") == Convert.ToInt32(cb_NumGranja.Value))
@@ -1136,7 +1136,7 @@ namespace PRESENTER.com
                     }
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO);
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.COMPLETADO, UTGlobal.UsuarioId);
                         List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
                         new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
@@ -1195,7 +1195,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones().ToList();
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().TraerSelecciones(UTGlobal.UsuarioId).ToList();
                 if (ListaCompleta != null)
                 {
                     var query = ListaCompleta.Where(a => a.FechaReg >= Dt_FechaDesde.Value && a.FechaReg <= Dt_FechaHasta.Value).ToList();
@@ -1276,9 +1276,9 @@ namespace PRESENTER.com
                         MP_ReporteSeleccion(id);
                         MP_Filtrar(2);
                         MP_InHabilitar();//El formulario
+                        //MH_Habilitar();//El menu   
                         _Limpiar = true;
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
+                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());                                      
                     }
                 }
                 //Resultado

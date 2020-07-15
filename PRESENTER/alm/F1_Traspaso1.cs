@@ -143,7 +143,7 @@ namespace PRESENTER.alm
         {           
             try
             {
-                LTraspaso = new ServiceDesktop.ServiceDesktopClient().TraerTraspasos().ToList();               
+                LTraspaso = new ServiceDesktop.ServiceDesktopClient().TraerTraspasos(UTGlobal.UsuarioId).ToList();               
                 MP_ArmarEncabezado();
             }
             catch (Exception ex)
@@ -876,8 +876,6 @@ namespace PRESENTER.alm
         {
             try
             {
-
-
                 if (Cb_Origen.Enabled == true)
                 {
                     if (Convert.ToInt32(Cb_Origen.Value) == Convert.ToInt32(Cb_Destino.Value))
@@ -943,8 +941,7 @@ namespace PRESENTER.alm
                     {
                         int idLote = 0;
                         var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
-                        var cantidad = Convert.ToInt32(Dgv_Detalle.GetValue("Cantidad"));
-                        LTraspasoDetalle = (List<VTraspaso_01>)Dgv_Detalle.DataSource;
+                        var cantidad = Convert.ToInt32(Dgv_Detalle.GetValue("Cantidad"));                       
                         if (idDetalle > 0)
                         {
                             if (vProductos.IdProducto == 0)

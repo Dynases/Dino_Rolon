@@ -913,11 +913,11 @@ namespace SERVICE
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         /********** VARIOS REGISTROS ***********/
-        public List<VTraspaso> TraerTraspasos()
+        public List<VTraspaso> TraerTraspasos(int usuarioId)
         {
             try
             {
-                return new LTraspaso().TraerTraspasos();
+                return new LTraspaso().TraerTraspasos(usuarioId);
             }
             catch (Exception ex)
             {
@@ -1241,12 +1241,12 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo(int usuarioId)
         {
 
             try
             {
-                var listResult = new LCompraIngreso().TraerCompraIngresoCombo();
+                var listResult = new LCompraIngreso().TraerCompraIngresoCombo(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1307,11 +1307,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable CompraIngresoBuscar(int estado)
+        public DataTable CompraIngresoBuscar(int estado,int usuarioId)
         {
             try
             {
-                var listResult = new LCompraIngreso().BuscarCompraIngreso(estado);
+                var listResult = new LCompraIngreso().BuscarCompraIngreso(estado, usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1484,11 +1484,11 @@ namespace SERVICE
         }
        
         /********** VARIOS REGISTROS ***********/
-        public List<VSeleccionEncabezado> TraerSelecciones()
+        public List<VSeleccionEncabezado> TraerSelecciones(int usuarioId)
         {
             try
             {
-                var listResult = new LSeleccion().TraerSelecciones();
+                var listResult = new LSeleccion().TraerSelecciones(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1595,11 +1595,11 @@ namespace SERVICE
         }
         #endregion
         #region Consulta
-        public List<VTransformacion> Transformacion_Lista()
+        public List<VTransformacion> Transformacion_Lista(int usuarioId)
         {
             try
             {
-                var listResult = new LTransformacion().Listar();
+                var listResult = new LTransformacion().Listar(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1700,12 +1700,12 @@ namespace SERVICE
         }
         #endregion
         #region Consulta
-        public List<VCompraLista> Compra_Lista()
+        public List<VCompraLista> Compra_Lista(int usuarioId)
         {
 
             try
             {
-                var listResult = new LCompra().Listar();
+                var listResult = new LCompra().Listar(usuarioId);
                 return listResult;
             }
             catch (Exception ex)
@@ -1840,11 +1840,11 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        public List<VVenta> TraerVentas()
+        public List<VVenta> TraerVentas(int usuarioId)
         {
             try
             {
-                return new LVenta().TraerVentas();
+                return new LVenta().TraerVentas(usuarioId);
             }
             catch (Exception ex)
             {

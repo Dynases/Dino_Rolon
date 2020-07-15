@@ -11,7 +11,7 @@ namespace REPOSITORY.Interface
     public interface ITransformacion
     {
         bool Guardar(VTransformacion vTransformacion, ref int id);
-        List<VTransformacion> Listar();
+        List<VTransformacion> Listar(int usuarioId);
         List<VTransformacionReport> ListarSalida(int Id);
         List<VTransformacionReport> ListarIngreso(int Id);
         bool ModificarEstado(int IdTransformacion, int estado, ref List<string> lMensaje);

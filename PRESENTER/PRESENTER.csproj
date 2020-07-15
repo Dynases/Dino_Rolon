@@ -790,6 +790,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion.View.VSeleccionLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjuste.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteDetalle.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />

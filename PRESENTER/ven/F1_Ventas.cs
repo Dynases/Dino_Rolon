@@ -207,7 +207,7 @@ namespace PRESENTER.ven
             index = 0;
             try
             {
-                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas().ToList();
+                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas(UTGlobal.UsuarioId).ToList();
                 if (listaVentas != null && listaVentas.Count > 0)
                 {
                     this.MP_MostrarRegistro(index);
@@ -473,7 +473,7 @@ namespace PRESENTER.ven
         {
             try
             {
-                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas().ToList();
+                listaVentas = new ServiceDesktop.ServiceDesktopClient().TraerVentas(UTGlobal.UsuarioId).ToList();
                 Dgv_GBuscador.DataSource = listaVentas;
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;

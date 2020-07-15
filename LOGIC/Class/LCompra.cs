@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using UTILITY.Enum.EnEstado;
+using UTILITY.Global;
 
 namespace LOGIC.Class
 {
@@ -96,11 +97,12 @@ namespace LOGIC.Class
         #endregion
         #region Consulta
 
-        public List<VCompraLista> Listar()
+        public List<VCompraLista> Listar(int usuarioId)
         {
             try
             {
-                return iCompra.Lista();
+                var x = UTGlobal.UsuarioId;
+                return iCompra.Lista(usuarioId);
             }
             catch (Exception ex)
             {

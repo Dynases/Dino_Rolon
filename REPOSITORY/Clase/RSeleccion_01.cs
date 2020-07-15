@@ -90,15 +90,15 @@ namespace REPOSITORY.Clase
                     compraIng.Estado = (int)ENEstado.COMPLETADO;
                     db.CompraIng.Attach(compraIng);
                     db.Entry(compraIng).State = EntityState.Modified;                 
-                    foreach (var vCompraIng_01 in Lista)
-                    {
-                        var compraIng_01 = db.CompraIng_01
-                                             .Where(d =>d.Id.Equals(vCompraIng_01.Id))
-                                             .FirstOrDefault();
-                        compraIng_01.Estado = (int)ENEstado.COMPLETADO; //Estatico                     
-                        db.CompraIng_01.Attach(compraIng_01);
-                        db.Entry(compraIng_01).State = EntityState.Modified;
-                    }
+                    //foreach (var vCompraIng_01 in Lista)
+                    //{
+                    //    var compraIng_01 = db.CompraIng_01
+                    //                         .Where(d =>d.Id.Equals(vCompraIng_01.Id))
+                    //                         .FirstOrDefault();
+                    //    compraIng_01.Estado = (int)ENEstado.COMPLETADO; //Estatico                     
+                    //    db.CompraIng_01.Attach(compraIng_01);
+                    //    db.Entry(compraIng_01).State = EntityState.Modified;
+                    //}
                     db.SaveChanges();
                     return true;
                 }

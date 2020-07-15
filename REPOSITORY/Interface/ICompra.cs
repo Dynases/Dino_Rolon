@@ -9,7 +9,7 @@ namespace REPOSITORY.Interface
 {
    public interface ICompra
     {
-        List<VCompraLista> Lista();
+        List<VCompraLista> Lista(int usuarioId);
         bool Guardar(VCompra vCompraIngreso, ref int id);
         bool ModificarEstado(int IdCompra, int estado, ref List<string> lMensaje);
     }

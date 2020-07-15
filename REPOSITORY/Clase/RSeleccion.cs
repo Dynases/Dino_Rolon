@@ -247,15 +247,20 @@ namespace REPOSITORY.Clase
         }
         /********** VARIOS REGISTROS ***********/
         
-        public List<VSeleccionEncabezado> TraerSelecciones()
+        public List<VSeleccionEncabezado> TraerSelecciones(int usuarioId)
         {
             try
             {
 
                 using (var db = GetEsquema())
                 {
-                    var lista = db.Seleccion.OrderBy(x=> x.Id)
-                                  .Where(x=> x.Estado != (int)ENEstado.ELIMINAR)                        
+                    var lista = db.Seleccion
+                        .OrderBy(x=> x.Id)
+                        .Where(x=> x.Estado != (int)ENEstado.ELIMINAR &&
+                               (db.Usuario_01
+                               .Where(b => b.IdUsuario == usuarioId &&
+                                           b.Acceso == true)
+                               .Select(d => d.IdAlmacen)).Contains(x.IdAlmacen))
                      .Select(a => new VSeleccionEncabezado
                      {
                          Id = a.Id,
@@ -661,7 +666,7 @@ namespace REPOSITORY.Clase
                                      COM.CompraIng AS Cing ON Sel.IdCompraIng = Cing.Id INNER JOIN
                                      COM.Proveed AS Prov ON Cing.IdProvee = Prov.Id INNER JOIN
                                      ADM.Libreria AS Lib ON Prov.TipoProve = Lib.IdLibrer
-            WHERE        (Lib.IdGrupo = 2) AND (Lib.IdOrden = 2)  AND   ");
+            WHERE        (Lib.IdGrupo = 2) AND (Lib.IdOrden = 2)  AND Sel.Estado <> -1  ");
                 List<SqlParameter> lPars = new List<SqlParameter>();              
                 
                 if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 

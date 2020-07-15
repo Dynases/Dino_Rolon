@@ -109,10 +109,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta_01[]> VentaDetalleListarAsync(int VentaId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        ENTITY.ven.view.VVenta[] TraerVentas();
+        ENTITY.ven.view.VVenta[] TraerVentas(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
-        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync();
+        System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacioResponse")]
         ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId);
@@ -567,10 +567,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTraspaso_01> TraerTraspass_01Async(int idDetalle);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerTraspasos", ReplyAction="http://tempuri.org/IServiceDesktop/TraerTraspasosResponse")]
-        ENTITY.inv.Traspaso.View.VTraspaso[] TraerTraspasos();
+        ENTITY.inv.Traspaso.View.VTraspaso[] TraerTraspasos(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerTraspasos", ReplyAction="http://tempuri.org/IServiceDesktop/TraerTraspasosResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTraspaso[]> TraerTraspasosAsync();
+        System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTraspaso[]> TraerTraspasosAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerTraspasos_01", ReplyAction="http://tempuri.org/IServiceDesktop/TraerTraspasos_01Response")]
         ENTITY.inv.Traspaso.View.VTraspaso_01[] TraerTraspasos_01(int idTraspaso);
@@ -675,10 +675,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoLista> TraerCompraIngresoAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoBuscarResponse")]
-        System.Data.DataTable CompraIngresoBuscar(int estado);
+        System.Data.DataTable CompraIngresoBuscar(int estado, int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoBuscar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoBuscarResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado);
+        System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado, int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerComprasIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/TraerComprasIngresoResponse")]
         ENTITY.com.CompraIngreso.View.VCompraIngreso[] TraerComprasIngreso(int usuarioId);
@@ -687,10 +687,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngreso[]> TraerComprasIngresoAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerCompraIngresoCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TraerCompraIngresoComboResponse")]
-        ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoCombo();
+        ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoCombo(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerCompraIngresoCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TraerCompraIngresoComboResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[]> TraerCompraIngresoComboAsync();
+        System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[]> TraerCompraIngresoComboAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerCompraIngresoComboCompleto", ReplyAction="http://tempuri.org/IServiceDesktop/TraerCompraIngresoComboCompletoResponse")]
         ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoComboCompleto();
@@ -808,10 +808,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse> Seleccion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSelecciones", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionesResponse")]
-        ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones();
+        ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSelecciones", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionesResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync();
+        System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
         ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion);
@@ -874,10 +874,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoResponse> Transformacion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Transformacion_ModificarEstadoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse")]
-        ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista();
+        ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_ListaResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.View.VTransformacion[]> Transformacion_ListaAsync();
+        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.View.VTransformacion[]> Transformacion_ListaAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionIngresoResponse")]
         ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionIngreso(int id);
@@ -919,10 +919,10 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
-        ENTITY.com.Compra.View.VCompraLista[] Compra_Lista();
+        ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync();
+        System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
         bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
@@ -1899,12 +1899,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.VentaDetalleListarAsync(VentaId);
         }
         
-        public ENTITY.ven.view.VVenta[] TraerVentas() {
-            return base.Channel.TraerVentas();
+        public ENTITY.ven.view.VVenta[] TraerVentas(int usuarioId) {
+            return base.Channel.TraerVentas(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync() {
-            return base.Channel.TraerVentasAsync();
+        public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync(int usuarioId) {
+            return base.Channel.TraerVentasAsync(usuarioId);
         }
         
         public ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId) {
@@ -2589,12 +2589,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TraerTraspass_01Async(idDetalle);
         }
         
-        public ENTITY.inv.Traspaso.View.VTraspaso[] TraerTraspasos() {
-            return base.Channel.TraerTraspasos();
+        public ENTITY.inv.Traspaso.View.VTraspaso[] TraerTraspasos(int usuarioId) {
+            return base.Channel.TraerTraspasos(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTraspaso[]> TraerTraspasosAsync() {
-            return base.Channel.TraerTraspasosAsync();
+        public System.Threading.Tasks.Task<ENTITY.inv.Traspaso.View.VTraspaso[]> TraerTraspasosAsync(int usuarioId) {
+            return base.Channel.TraerTraspasosAsync(usuarioId);
         }
         
         public ENTITY.inv.Traspaso.View.VTraspaso_01[] TraerTraspasos_01(int idTraspaso) {
@@ -2775,12 +2775,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TraerCompraIngresoAsync(id);
         }
         
-        public System.Data.DataTable CompraIngresoBuscar(int estado) {
-            return base.Channel.CompraIngresoBuscar(estado);
+        public System.Data.DataTable CompraIngresoBuscar(int estado, int usuarioId) {
+            return base.Channel.CompraIngresoBuscar(estado, usuarioId);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado) {
-            return base.Channel.CompraIngresoBuscarAsync(estado);
+        public System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoBuscarAsync(int estado, int usuarioId) {
+            return base.Channel.CompraIngresoBuscarAsync(estado, usuarioId);
         }
         
         public ENTITY.com.CompraIngreso.View.VCompraIngreso[] TraerComprasIngreso(int usuarioId) {
@@ -2791,12 +2791,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.TraerComprasIngresoAsync(usuarioId);
         }
         
-        public ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoCombo() {
-            return base.Channel.TraerCompraIngresoCombo();
+        public ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoCombo(int usuarioId) {
+            return base.Channel.TraerCompraIngresoCombo(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[]> TraerCompraIngresoComboAsync() {
-            return base.Channel.TraerCompraIngresoComboAsync();
+        public System.Threading.Tasks.Task<ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[]> TraerCompraIngresoComboAsync(int usuarioId) {
+            return base.Channel.TraerCompraIngresoComboAsync(usuarioId);
         }
         
         public ENTITY.com.CompraIngreso.View.VCompraIngresoCombo[] TraerCompraIngresoComboCompleto() {
@@ -2966,12 +2966,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.Seleccion_ModificarEstadoAsync(request);
         }
         
-        public ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones() {
-            return base.Channel.TraerSelecciones();
+        public ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones(int usuarioId) {
+            return base.Channel.TraerSelecciones(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync() {
-            return base.Channel.TraerSeleccionesAsync();
+        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync(int usuarioId) {
+            return base.Channel.TraerSeleccionesAsync(usuarioId);
         }
         
         public ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion) {
@@ -3070,12 +3070,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.Transformacion_ModificarEstadoAsync(request);
         }
         
-        public ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista() {
-            return base.Channel.Transformacion_Lista();
+        public ENTITY.inv.Transformacion.View.VTransformacion[] Transformacion_Lista(int usuarioId) {
+            return base.Channel.Transformacion_Lista(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.View.VTransformacion[]> Transformacion_ListaAsync() {
-            return base.Channel.Transformacion_ListaAsync();
+        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.View.VTransformacion[]> Transformacion_ListaAsync(int usuarioId) {
+            return base.Channel.Transformacion_ListaAsync(usuarioId);
         }
         
         public ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionIngreso(int id) {
@@ -3151,12 +3151,12 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CompraModificarEstadoAsync(request);
         }
         
-        public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista() {
-            return base.Channel.Compra_Lista();
+        public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId) {
+            return base.Channel.Compra_Lista(usuarioId);
         }
         
-        public System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync() {
-            return base.Channel.Compra_ListaAsync();
+        public System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId) {
+            return base.Channel.Compra_ListaAsync(usuarioId);
         }
         
         public bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {

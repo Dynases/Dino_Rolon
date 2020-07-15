@@ -163,11 +163,11 @@ namespace LOGIC.Class
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         /********** VARIOS REGISTROS ***********/
-        public List<VTraspaso> TraerTraspasos()
+        public List<VTraspaso> TraerTraspasos(int usuarioId)
         {
             try
             {
-                return this.iTraspaso.TraerTraspasos();
+                return this.iTraspaso.TraerTraspasos(usuarioId);
             }
             catch (Exception ex)
             {

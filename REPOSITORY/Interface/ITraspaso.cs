@@ -12,6 +12,6 @@ namespace REPOSITORY.Interface
         bool ConfirmarRecepcion(int TraspasoId, string usuarioRecepcion);
         bool Guardar(VTraspaso vTraspaso, ref int id);
         List<VTListaProducto> ListarInventarioXAlmacenId(int Id);
-        List<VTraspaso> TraerTraspasos();
+        List<VTraspaso> TraerTraspasos(int usuarioId);
     }
 }

@@ -199,7 +199,7 @@ namespace REPOSITORY.Clase
         }
         #endregion
         #region CONSULTAS
-        public List<VTransformacion> Listar()
+        public List<VTransformacion> Listar(int usuarioId)
         {
             try
             {
@@ -207,8 +207,12 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = (from a in db.Transformacion
                                       join b in db.Almacen on a.IdAlmacenIngreso equals b.Id
-                                      join c in db.Almacen on a.IdAlmacenSalida equals c.Id
-                                      where a.Estado != (int)ENEstado.ELIMINAR
+                                      join c in db.Almacen on a.IdAlmacenSalida equals c.Id                                      
+                                      join d in db.Usuario_01 on b.Id equals d.IdAlmacen
+                                      join e in db.Usuario_01 on c.Id equals e.IdAlmacen
+                                      where a.Estado != (int)ENEstado.ELIMINAR &&
+                                            d.IdUsuario == usuarioId && d.Acceso == true  &&
+                                            e.IdUsuario == usuarioId && e.Acceso == true
                                       select new VTransformacion
                                       {
                                           Id = a.Id,

@@ -105,11 +105,11 @@ namespace LOGIC.Class
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VSeleccionEncabezado> TraerSelecciones()
+        public List<VSeleccionEncabezado> TraerSelecciones(int usuarioId)
         {
             try
             {
-                return iSeleccion.TraerSelecciones();
+                return iSeleccion.TraerSelecciones(usuarioId);
             }
             catch (Exception ex)
             {

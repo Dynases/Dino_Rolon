@@ -634,7 +634,7 @@ namespace PRESENTER.com
                 {
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.TODOS);
+                        var lista = new ServiceDesktop.ServiceDesktopClient().CompraIngresoBuscar((int)ENEstado.TODOS, UTGlobal.UsuarioId);
                         List<GLCelda> listEstCeldas = new List<GLCelda>
                     {
                         new GLCelda() { campo = "Id", visible = true, titulo = "ID", tamano = 60 },
@@ -2028,8 +2028,9 @@ namespace PRESENTER.com
                         MP_Filtrar(2);
                         MP_InHabilitar();//El formulario
                         _Limpiar = true;
+                       // MH_Habilitar();//El menu  
                         mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                     
+                                       
                     }
                 }
                 //Resultado

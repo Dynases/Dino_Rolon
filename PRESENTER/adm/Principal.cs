@@ -112,6 +112,7 @@ namespace PRESENTER.adm
         #region Inventario
         private void Metro_Transformacion_Click_1(object sender, EventArgs e)
         {
+            MODEL.ModeloF1._NombreProg = Metro_Transformacion.Name;
             F1_Transformacion frm = new F1_Transformacion();
             frm.Show();
         }
@@ -119,6 +120,7 @@ namespace PRESENTER.adm
 
         private void btInvSucursal_Click(object sender, EventArgs e)
         {
+            MODEL.ModeloF1._NombreProg = btInvSucursal.Name;
             F1_Sucursal frm = new F1_Sucursal();
             frm.Show();
         }
@@ -132,20 +134,28 @@ namespace PRESENTER.adm
 
         private void btInvAlmacen_Click(object sender, EventArgs e)
         {
+            MODEL.ModeloF1._NombreProg = btInvAlmacen.Name;
             F1_Almacen frm = new F1_Almacen();
             frm.Show();
         }
 
         private void btn_TipoAlmacen_Click(object sender, EventArgs e)
         {
+            MODEL.ModeloF1._NombreProg = btn_TipoAlmacen.Name;
             F1_TipoAlmacen frm = new F1_TipoAlmacen();
             frm.Show();
         }
 
         private void btnReporteKardex_Click(object sender, EventArgs e)
         {
-            //F1_ReporteKardex frm = new F1_ReporteKardex();
+            MODEL.ModeloF1._NombreProg = btnReporteKardex.Name;
             F2_ReporteKardexProducto frm = new F2_ReporteKardexProducto();
+            frm.Show();
+        }
+        private void Metro_Ajuste_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
+            F1_Ajuste frm = new F1_Ajuste();
             frm.Show();
         }
         #endregion
@@ -200,10 +210,11 @@ namespace PRESENTER.adm
         }
 
 
-        #endregion
 
         #endregion
 
-     
+        #endregion
+
+       
     }
 }

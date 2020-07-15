@@ -120,14 +120,19 @@ namespace REPOSITORY.Clase
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VVenta> TraerVentas()
+        public List<VVenta> TraerVentas(int usuarioId)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    return db.Venta.Where(
-                                    c => c.Estado != (int)ENEstado.ELIMINAR)
+                    return db.Venta
+                            .OrderBy(x => x.Id)
+                            .Where(x => x.Estado != (int)ENEstado.ELIMINAR &&
+                               (db.Usuario_01
+                               .Where(b => b.IdUsuario == usuarioId &&
+                                           b.Acceso == true)
+                               .Select(d => d.IdAlmacen)).Contains(x.IdAlmacen))
                              .Select(v => new VVenta
                              {
                                  DescripcionAlmacen = v.Almacen.Descrip,

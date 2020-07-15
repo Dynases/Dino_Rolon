@@ -114,7 +114,7 @@ namespace PRESENTER.com.Reporte
             {
                 //Carga las librerias al combobox desde una lista
                 UTGlobal.MG_ArmarMultiComboCompraIngreso2(cb_NumGranja,
-                                                 new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo().ToList());
+                                                 new ServiceDesktop.ServiceDesktopClient().TraerCompraIngresoCombo(UTGlobal.UsuarioId).ToList());
                 UTGlobal.MG_ArmarComboProveedores(cb_Proveedor,
                                                 new ServiceDesktop.ServiceDesktopClient().TraerProveedoresEdadSemana().ToList(), ENEstado.CARGARPRIMERFILA);
                 //Carga las librerias al combobox desde una lista

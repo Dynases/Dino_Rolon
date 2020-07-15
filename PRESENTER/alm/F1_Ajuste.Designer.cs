@@ -50,6 +50,7 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.cbConcepto = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.vAjusteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.cbAlmacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.LabelX7 = new DevComponents.DotNetBar.LabelX();
@@ -58,7 +59,6 @@
             this.tbObs = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.tbCodigo = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.vAjusteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -87,10 +87,22 @@
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbCategoriaPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // BtnExportar
             // 
@@ -279,6 +291,7 @@
             this.GPanel_Producto.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_Producto.TabIndex = 392;
             this.GPanel_Producto.Text = "PRODUCTOS";
+            this.GPanel_Producto.Visible = false;
             // 
             // dgjProducto
             // 
@@ -287,6 +300,8 @@
             this.dgjProducto.Name = "dgjProducto";
             this.dgjProducto.Size = new System.Drawing.Size(957, 16);
             this.dgjProducto.TabIndex = 0;
+            this.dgjProducto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
+            this.dgjProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgjProducto_KeyDown_1);
             // 
             // GPanel_Detalle
             // 
@@ -345,6 +360,9 @@
             this.dgjDetalle.Size = new System.Drawing.Size(1193, 254);
             this.dgjDetalle.TabIndex = 0;
             this.dgjDetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            this.dgjDetalle.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgjDetalle_CellEdited_1);
+            this.dgjDetalle.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.dgjDetalle_EditingCell_1);
+            this.dgjDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgjDetalle_KeyDown_1);
             // 
             // PanelTotal
             // 
@@ -553,6 +571,7 @@
             // 
             // cbConcepto
             // 
+            this.cbConcepto.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "IdConcepto", true));
             cbConcepto_DesignTimeLayout.LayoutString = resources.GetString("cbConcepto_DesignTimeLayout.LayoutString");
             this.cbConcepto.DesignTimeLayout = cbConcepto_DesignTimeLayout;
             this.cbConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -565,6 +584,10 @@
             this.cbConcepto.Size = new System.Drawing.Size(150, 22);
             this.cbConcepto.TabIndex = 377;
             this.cbConcepto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // vAjusteBindingSource
+            // 
+            this.vAjusteBindingSource.DataSource = typeof(ENTITY.inv.Ajuste.View.VAjuste);
             // 
             // labelX5
             // 
@@ -584,6 +607,7 @@
             // 
             // cbAlmacen
             // 
+            this.cbAlmacen.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "IdAlmacen", true));
             cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString");
             this.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout;
             this.cbAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -638,6 +662,7 @@
             this.dtiFecha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtiFecha.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiFecha.ButtonDropDown.Visible = true;
+            this.dtiFecha.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteBindingSource, "Fecha", true));
             this.dtiFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtiFecha.IsPopupCalendarOpen = false;
             this.dtiFecha.Location = new System.Drawing.Point(151, 40);
@@ -683,6 +708,7 @@
             // 
             this.tbObs.Border.Class = "TextBoxBorder";
             this.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbObs.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vAjusteBindingSource, "Obs", true));
             this.tbObs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbObs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
             this.tbObs.Location = new System.Drawing.Point(407, 40);
@@ -715,6 +741,7 @@
             // 
             this.tbCodigo.Border.Class = "TextBoxBorder";
             this.tbCodigo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vAjusteBindingSource, "Id", true));
             this.tbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(59)))), ((int)(((byte)(66)))));
             this.tbCodigo.Location = new System.Drawing.Point(151, 12);
@@ -762,9 +789,9 @@
             this.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbCategoriaPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbConcepto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vAjusteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

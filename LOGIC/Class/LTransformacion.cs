@@ -73,11 +73,11 @@ namespace LOGIC.Class
         }
         #endregion
         #region Consulta
-        public List<VTransformacion> Listar()
+        public List<VTransformacion> Listar(int usuarioId)
         {
             try
             {
-                return iTransformacion.Listar();
+                return iTransformacion.Listar(usuarioId);
             }
             catch (Exception ex)
             {

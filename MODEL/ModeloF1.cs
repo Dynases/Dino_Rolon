@@ -149,7 +149,7 @@ namespace MODEL
                 return;
             }
             if (!VM_Nuevo)
-                MH_Inhanbilitar();
+                MP_Habilitar();
 
         }
         private void BtnAtras_Click(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace MODEL
             BtnEliminar.Enabled = false;
             BtnGrabar.Enabled = true;
             BtnImprimir.Enabled = false;
-           // BtnExportar.Enabled = false;
+            // BtnExportar.Enabled = false;
             PanelNavegacion.Enabled = false;
             SuperTabBuscar.Enabled = false;
         }

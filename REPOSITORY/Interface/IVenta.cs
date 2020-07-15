@@ -9,6 +9,6 @@ namespace REPOSITORY.Interface
         bool ModificarEstado(int IdVenta, int estado);
 
         VVenta TraerVenta(int idVenta);
-        List<VVenta> TraerVentas();
+        List<VVenta> TraerVentas(int usuarioId);
     }
 }

@@ -107,7 +107,9 @@
   </xs:element>
   <xs:element name="TraerVentas">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TraerVentasResponse">
@@ -1208,7 +1210,9 @@
   </xs:element>
   <xs:element name="TraerTraspasos">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TraerTraspasosResponse">
@@ -1483,6 +1487,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="estado" type="xs:int" />
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1521,7 +1526,9 @@
   </xs:element>
   <xs:element name="TraerCompraIngresoCombo">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TraerCompraIngresoComboResponse">
@@ -1848,7 +1855,9 @@
   </xs:element>
   <xs:element name="TraerSelecciones">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TraerSeleccionesResponse">
@@ -2006,7 +2015,9 @@
   </xs:element>
   <xs:element name="Transformacion_Lista">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Transformacion_ListaResponse">
@@ -2112,7 +2123,9 @@
   </xs:element>
   <xs:element name="Compra_Lista">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Compra_ListaResponse">

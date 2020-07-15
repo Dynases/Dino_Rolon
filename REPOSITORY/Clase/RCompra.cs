@@ -10,6 +10,8 @@ using DATA.EntityDataModel.DiAvi;
 using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
 using System.Data.Entity;
+using UTILITY.Enum.EnEstado;
+using UTILITY.Global;
 
 namespace REPOSITORY.Clase
 {
@@ -119,16 +121,20 @@ namespace REPOSITORY.Clase
 
         #region CONSULTA
         /******** VALOR/REGISTRO ÚNICO *********/
-        public List<VCompraLista> Lista()
+        public List<VCompraLista> Lista(int usuarioId)
         {
 
             try
             {
+                var x =  UTGlobal.UsuarioId;
                 using (var db = GetEsquema())
                 {
                     var listResult = (from a in db.Compra
                                       join b in db.Proveed on a.IdProvee equals b.Id
-                                      where a.Estado != -1
+                                      join e in db.Almacen on a.IdAlmacen equals e.Id
+                                      join d in db.Usuario_01 on e.Id equals d.IdAlmacen
+                                      where a.Estado != (int)ENEstado.ELIMINAR &&
+                                            d.IdUsuario == usuarioId && d.Acceso == true                                      
                                       select new VCompraLista
                                       {
                                           Id = a.Id,

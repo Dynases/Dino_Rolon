@@ -18,6 +18,7 @@ using UTILITY.Enum.EnEstado;
 using PRESENTER.frm;
 using UTILITY.Enum.EnEstaticos;
 using UTILITY.Enum;
+using ENTITY.inv.Almacen.View;
 
 namespace PRESENTER.com
 {
@@ -30,6 +31,7 @@ namespace PRESENTER.com
         int _MPos = 0;
         int _IdProveedor = 0;
         List<VCompra_01> ListaDetalle = new List<VCompra_01>();
+        List<VAlmacenCombo> _almacens = new List<VAlmacenCombo>();
         #endregion
 
         public F1_Compra()
@@ -95,8 +97,8 @@ namespace PRESENTER.com
         {
             try
             {
-                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
-                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
+                _almacens = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
+                UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, _almacens);
             }
             catch (Exception ex)
             {
@@ -107,7 +109,8 @@ namespace PRESENTER.com
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().ToList();
+                //var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().Where(a => _almacens.Select(x => x.IdLibreria).Contains(a.IdAlmacen)).ToList();
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista(UTGlobal.UsuarioId).ToList();
                 Dgv_GBuscador.DataSource = ListaCompleta;
                 Dgv_GBuscador.RetrieveStructure();
                 Dgv_GBuscador.AlternatingColors = true;
@@ -443,7 +446,7 @@ namespace PRESENTER.com
                 _idOriginal = (int)Dgv_GBuscador.GetValue("id");
                 if (_idOriginal != 0)
                 {
-                    var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().Where(A => A.Id == _idOriginal).ToList();
+                    var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista(UTGlobal.UsuarioId).Where(A => A.Id == _idOriginal).ToList();
                     var Lista = ListaCompleta.First();
                     Tb_Id.Text = Lista.Id.ToString();
                     Cb_Almacen.Value = Lista.IdAlmacen;

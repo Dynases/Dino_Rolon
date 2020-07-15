@@ -19,13 +19,23 @@ namespace REPOSITORY.Clase
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         /********** VARIOS REGISTROS ***********/
-        public List<VTraspaso> TraerTraspasos()
+        public List<VTraspaso> TraerTraspasos(int usuarioId)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
                     var listResult = db.Traspaso
+                        .OrderBy(x => x.Id)
+                        .Where(x => x.Estado != (int)ENEstado.ELIMINAR &&
+                               (db.Usuario_01
+                               .Where(b => b.IdUsuario == usuarioId &&
+                                           b.Acceso == true)
+                               .Select(d => d.IdAlmacen)).Contains(x.IdAlmacenDestino) &&
+                               (db.Usuario_01
+                               .Where(b => b.IdUsuario == usuarioId &&
+                                           b.Acceso == true)
+                               .Select(d => d.IdAlmacen)).Contains(x.IdAlmacenOrigen))
                         .Select(ti => new VTraspaso
                         {
                             Id = ti.Id,

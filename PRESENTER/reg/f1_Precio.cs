@@ -715,6 +715,7 @@ namespace PRESENTER.reg
         {
             MP_Habilitar();
             MP_Limpiar();
+            BtnExportar.Enabled = true;
         }
         public override void MH_Salir()
         {

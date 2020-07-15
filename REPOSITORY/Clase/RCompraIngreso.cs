@@ -165,13 +165,13 @@ namespace REPOSITORY.Clase
         }
 
         /********** VARIOS REGISTROS ***********/
-        public DataTable BuscarCompraIngreso(int estado)
+        public DataTable BuscarCompraIngreso(int estado, int usuarioId)
         {
             try
             {
                 DataTable tabla = new DataTable();
                 StringBuilder sb = new StringBuilder();
-                sb.Append( @"SELECT	
+                sb.Append(string.Format( @"SELECT	
 	                                a.Id,
 	                                a.NumNota,
 	                                a.FechaEnt,
@@ -183,11 +183,14 @@ namespace REPOSITORY.Clase
 	                                a.EdadSemana,
 	                                a.IdAlmacen,
                                     a.TipoCompra
-                                FROM 
+                                  FROM 
 	                                COM.CompraIng a JOIN
-	                                COM.Proveed b ON b.Id = a.IdProvee 
+	                                COM.Proveed b ON b.Id = a.IdProvee JOIN
+									ADM.Usuario_01 d ON d.IdAlmacen = a.IdAlmacen																											
                                 WHERE
-                                    a.Estado <> -1 AND   ");
+                                    a.Estado <> -1 AND 
+									d.Acceso = 1 AND
+									d.IdUsuario = {0} AND   ",usuarioId));
                 if (estado == (int)ENEstado.COMPLETADO)
                 {
                     sb.AppendFormat("a.Estado <> 3 AND   ");
@@ -246,7 +249,7 @@ namespace REPOSITORY.Clase
             }
         }
 
-        public List<VCompraIngresoCombo> TraerCompraIngresoCombo()
+        public List<VCompraIngresoCombo> TraerCompraIngresoCombo(int usuarioId)
         {
             try
             {
@@ -254,7 +257,11 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = db.CompraIng
                                     .Where(a=> a.Estado != (int)ENEstado.COMPLETADO &&
-                                               a.Estado != (int)ENEstado.ELIMINAR)
+                                               a.Estado != (int)ENEstado.ELIMINAR &&
+                                               (db.Usuario_01
+                                               .Where(b => b.IdUsuario == usuarioId &&
+                                                           b.Acceso == true)
+                                               .Select(d => d.IdAlmacen)).Contains(a.IdAlmacen))
                       .Select(v => new VCompraIngresoCombo
                       {
                           Id = v.Id,

@@ -138,11 +138,11 @@ namespace LOGIC.Class
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VVenta> TraerVentas()
+        public List<VVenta> TraerVentas(int usuarioId)
         {
             try
             {
-                return this.iVenta.TraerVentas();
+                return this.iVenta.TraerVentas(usuarioId);
             }
             catch (Exception ex)
             {

@@ -90,7 +90,7 @@ namespace PRESENTER.com
         {
             try
             {
-                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista().ToList();
+                var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista(UTGlobal.UsuarioId).ToList();
                
                     Dgv_GBuscador.DataSource = ListaCompleta;
                     Dgv_GBuscador.RetrieveStructure();
@@ -326,7 +326,7 @@ namespace PRESENTER.com
                 _idOriginal = (int)Dgv_GBuscador.GetValue("id");
                 if (_idOriginal != 0)
                 {
-                    var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista().Where(A => A.Id == _idOriginal).ToList();
+                    var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Transformacion_Lista(UTGlobal.UsuarioId).Where(A => A.Id == _idOriginal).ToList();
                     var Lista = ListaCompleta.First();
                     Tb_Id.Text = Lista.Id.ToString();
                     Cb_Almacen1.Value = Lista.IdAlmacenSalida;

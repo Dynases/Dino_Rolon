@@ -280,7 +280,7 @@ namespace SERVICE
         VTraspaso_01 TraerTraspass_01(int idDetalle);
         /********** VARIOS REGISTROS ***********/
         [OperationContract]
-        List<VTraspaso> TraerTraspasos();
+        List<VTraspaso> TraerTraspasos(int usuarioId);
 
         [OperationContract]
         List<VTraspaso_01> TraerTraspasos_01(int idTraspaso);
@@ -350,13 +350,13 @@ namespace SERVICE
         /********** VARIOS REGISTROS ***********/
 
         [OperationContract]
-        DataTable CompraIngresoBuscar(int estado);
+        DataTable CompraIngresoBuscar(int estado,int usuarioId);
 
         [OperationContract]
         List<VCompraIngreso> TraerComprasIngreso(int usuarioId);
 
         [OperationContract]
-        List<VCompraIngresoCombo> TraerCompraIngresoCombo();
+        List<VCompraIngresoCombo> TraerCompraIngresoCombo(int usuarioId);
 
         [OperationContract]
         List<VCompraIngresoCombo> TraerCompraIngresoComboCompleto();
@@ -417,7 +417,7 @@ namespace SERVICE
         #endregion
         #region Consulta
         [OperationContract]
-         List<VSeleccionEncabezado> TraerSelecciones();
+         List<VSeleccionEncabezado> TraerSelecciones(int usuarioId);
         [OperationContract]
         VSeleccionLista TraerSeleccion(int idSeleccion);
         [OperationContract]
@@ -452,7 +452,7 @@ namespace SERVICE
         #endregion
         #region Consulta
         [OperationContract]
-                List<VTransformacion> Transformacion_Lista();
+                List<VTransformacion> Transformacion_Lista(int usuarioId);
                 [OperationContract]
                 List<VTransformacionReport> TransformacionIngreso(int id);
                 [OperationContract]
@@ -477,7 +477,7 @@ namespace SERVICE
         #endregion
         #region Consulta
         [OperationContract]
-        List<VCompraLista> Compra_Lista();
+        List<VCompraLista> Compra_Lista(int usuarioId);
         #endregion
         #region Verificaciones
         [OperationContract]
@@ -518,7 +518,7 @@ namespace SERVICE
         List<VVenta_01> VentaDetalleListar(int VentaId);
 
         [OperationContract]
-        List<VVenta> TraerVentas();
+        List<VVenta> TraerVentas(int usuarioId);
 
         [OperationContract]
         List<VVenta_01> TraerDetalleVentaVacio(int VentaId);

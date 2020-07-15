@@ -39,6 +39,7 @@ namespace PRESENTER.alm
         public F1_Ajuste()
         {
             InitializeComponent();
+            MP_Iniciar();
         }
         #region Metodos privados
         private void MP_Iniciar()
@@ -172,16 +173,18 @@ namespace PRESENTER.alm
                 dgjDetalle.ColNoVisible(nameof(EntDet.IdProducto));
                 dgjDetalle.ColNoVisible(nameof(EntDet.Estado));
 
-                dgjDetalle.ColAL(nameof(EntDet.CodProducto), "Código", 100);
-                dgjDetalle.ColAL(nameof(EntDet.NProducto), "Producto", 150);
-                dgjDetalle.ColAC(nameof(EntDet.Unidad), "Código", 80);
-                dgjDetalle.ColARNro(nameof(EntDet.Cantidad), "Cantidad", 100, "0.00");
+                dgjDetalle.ColAL(nameof(EntDet.CodProducto), "Código", 80);
+                dgjDetalle.ColAL(nameof(EntDet.NProducto), "Producto", 200);
+                dgjDetalle.ColAC(nameof(EntDet.Unidad), "UN", 70);
+                dgjDetalle.ColARNro(nameof(EntDet.Cantidad), "Cantidad", 110, "0.00");
+                dgjDetalle.ColARNro(nameof(EntDet.Contenido), "Contenido", 110, "0.00");
+                dgjDetalle.ColARNro(nameof(EntDet.TotalContenido), "TotalContenido", 110, "0.00");
                 dgjDetalle.ColARNro(nameof(EntDet.Precio), "P. Unitario", 100, "0.00");
                 dgjDetalle.ColARNro(nameof(EntDet.Total), "Total", 100, "0.00");
-                dgjDetalle.ColAL(nameof(EntDet.Lote), "Lote", 150);
-                dgjDetalle.ColAL(nameof(EntDet.FechaVen), "Fecha ven", 100);
+                dgjDetalle.ColAL(nameof(EntDet.Lote), "Lote", 130);
+                dgjDetalle.ColAL(nameof(EntDet.FechaVen), "Fecha ven", 130);
 
-                dgjDetalle.ColIcon("Eliminar", string.Empty, new Bitmap(Properties.Resources.delete, new Size(15, 15)));
+                dgjDetalle.ColIcon("Eliminar", "Eliminar", new Bitmap(Properties.Resources.delete, new Size(20, 20)));
 
                 dgjDetalle.ConfigFinalDetalle();
 
@@ -550,8 +553,7 @@ namespace PRESENTER.alm
                 MP_MostrarRegistro(Dgv_GBuscador.Row);
             }
         }
-
-        private void dgjDetalle_EditingCell(object sender, EditingCellEventArgs e)
+        private void dgjDetalle_EditingCell_1(object sender, EditingCellEventArgs e)
         {
             try
             {
@@ -576,8 +578,7 @@ namespace PRESENTER.alm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-
-        private void dgjDetalle_CellEdited(object sender, ColumnActionEventArgs e)
+        private void dgjDetalle_CellEdited_1(object sender, ColumnActionEventArgs e)
         {
             try
             {
@@ -587,27 +588,30 @@ namespace PRESENTER.alm
                 {
                     item.Estado = (int)ENEstado.MODIFICAR;
                 }
-
                 MP_CalcularFila();
-
-                MP_VerificarSeleccion("NProducto");
-                MP_VerificarSeleccion("Cantidad");
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-
-        private void dgjDetalle_KeyDown(object sender, KeyEventArgs e)
+        private void dgjDetalle_KeyDown_1(object sender, KeyEventArgs e)
         {
             try
             {
                 if (tbObs.ReadOnly == false)
-                {
-                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter && dgjDetalle.Row >= 0
-                        && dgjDetalle.Col == dgjDetalle.RootTable.Columns["NProducto"].Index)
+                {                   
+                    if (e.KeyData == Keys.Enter)
                     {
+                        MP_VerificarSeleccion("CodProducto");
+                        MP_VerificarSeleccion("NProducto");
+                        MP_VerificarSeleccion("Cantidad");
+                    }
+
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter &&
+                        dgjDetalle.Row >= 0)
+                    {
+
                         int estado = Convert.ToInt32(dgjDetalle.CurrentRow.Cells["Estado"].Value);
                         if (estado == (int)ENEstado.NUEVO)
                         {
@@ -620,22 +624,19 @@ namespace PRESENTER.alm
                                              "-Modifique la cantidad";
                             throw new Exception(mensaje);
                         }
-
                     }
                     if (e.KeyCode == Keys.Escape)
                     {
-                        //Eliminar FIla.
                         MP_EliminarFila();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MP_MostrarMensajeError(ex.Message);
+                this.MP_MostrarMensajeError(ex.Message);
             }
         }
-
-        private void dgjProducto_KeyDown(object sender, KeyEventArgs e)
+        private void dgjProducto_KeyDown_1(object sender, KeyEventArgs e)
         {
             try
             {
@@ -682,7 +683,22 @@ namespace PRESENTER.alm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            try
+            {
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
 
+        private void Dgv_Producto_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
         private void btnPrimero_Click(object sender, EventArgs e)
         {
             try
@@ -898,14 +914,6 @@ namespace PRESENTER.alm
         }
         #endregion
 
-        private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
-        {
-
-        }
-
-        private void Dgv_Producto_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
+     
     }
 }

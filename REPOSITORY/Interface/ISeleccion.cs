@@ -14,7 +14,7 @@ namespace REPOSITORY.Interface
     {       
         bool Guardar(VSeleccion vSeleccion, ref int id);
         bool ModificarEstado(int IdSeleccion, int estado,ref List<string> lMensaje);
-        List<VSeleccionEncabezado> TraerSelecciones();
+        List<VSeleccionEncabezado> TraerSelecciones(int usuarioId);
         VSeleccionLista TraerSeleccion(int idSeleccion);
         List<RSeleccionNota> NotaSeleccion(int Id);
         DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta);
