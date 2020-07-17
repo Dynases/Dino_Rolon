@@ -211,10 +211,14 @@ namespace PRESENTER.adm
 
 
 
-        #endregion
 
         #endregion
 
-       
+        #endregion
+
+        private void SideNav1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

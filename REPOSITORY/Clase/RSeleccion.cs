@@ -666,7 +666,7 @@ namespace REPOSITORY.Clase
                                      COM.CompraIng AS Cing ON Sel.IdCompraIng = Cing.Id INNER JOIN
                                      COM.Proveed AS Prov ON Cing.IdProvee = Prov.Id INNER JOIN
                                      ADM.Libreria AS Lib ON Prov.TipoProve = Lib.IdLibrer
-            WHERE        (Lib.IdGrupo = 2) AND (Lib.IdOrden = 2)  AND Sel.Estado <> -1  ");
+            WHERE        (Lib.IdGrupo = 2) AND (Lib.IdOrden = 2)  AND Sel.Estado <> -1 AND   ");
                 List<SqlParameter> lPars = new List<SqlParameter>();              
                 
                 if (fechaDesde.HasValue && fechaHasta.HasValue) //Consulta por rango de fecha 

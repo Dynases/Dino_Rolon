@@ -84,9 +84,10 @@ namespace PRESENTER.com.Reporte
             {
                 string archivo, linea;
                 linea = "";
-                archivo = nombreArchivo + DateTime.Now.Day + "." +
-                        DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year + "." + DateTime.Now.Date.Hour + "." +
-                        DateTime.Now.Date.Minute + "." + DateTime.Now.Date.Second + ".csv";
+                var fecha = DateTime.Now;
+                archivo = nombreArchivo + fecha.Day + "." +
+                        fecha.Month + "." + fecha.Year + "." + fecha.Hour + "." +
+                        fecha.Minute + "." + fecha.Second + ".csv";
                 archivo = Path.Combine(ubicacion, archivo);
                 File.Delete(archivo);
                 Stream stream = File.OpenWrite(archivo);
