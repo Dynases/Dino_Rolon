@@ -908,6 +908,11 @@
     <None Include="Resources\EXCEL.png" />
     <None Include="Resources\BOTON.png" />
     <None Include="Resources\COMPARTIDOS.png" />
+    <None Include="Resource\PRODUCTOSCaja.png" />
+    <None Include="Resource\VENT_SALDO.png" />
+    <None Include="Resource\ENTRADA_SALIDA_ALM.png" />
+    <None Include="Resource\SALDO_ALMACEN.png" />
+    <None Include="Resource\compra.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

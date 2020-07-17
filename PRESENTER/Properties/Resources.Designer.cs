@@ -213,6 +213,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap compra {
+            get {
+                object obj = ResourceManager.GetObject("compra", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap COMPRAS2 {
             get {
                 object obj = ResourceManager.GetObject("COMPRAS2", resourceCulture);
@@ -246,6 +256,16 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap edit2 {
             get {
                 object obj = ResourceManager.GetObject("edit2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ENTRADA_SALIDA_ALM {
+            get {
+                object obj = ResourceManager.GetObject("ENTRADA_SALIDA_ALM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,6 +463,16 @@ namespace PRESENTER.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PRODUCTOSCaja {
+            get {
+                object obj = ResourceManager.GetObject("PRODUCTOSCaja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PROVEEDOR {
             get {
                 object obj = ResourceManager.GetObject("PROVEEDOR", resourceCulture);
@@ -476,6 +506,16 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap ROLES {
             get {
                 object obj = ResourceManager.GetObject("ROLES", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SALDO_ALMACEN {
+            get {
+                object obj = ResourceManager.GetObject("SALDO_ALMACEN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -586,6 +626,16 @@ namespace PRESENTER.Properties {
         internal static System.Drawing.Bitmap VENDEDOR {
             get {
                 object obj = ResourceManager.GetObject("VENDEDOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VENT_SALDO {
+            get {
+                object obj = ResourceManager.GetObject("VENT_SALDO", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
