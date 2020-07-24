@@ -1,4 +1,5 @@
 ﻿using ENTITY.DiSoft.Libreria;
+using ENTITY.Libreria.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace REPOSITORY.Interface.DiSoft
 {
    public interface ILibreriaD
     {
-        bool Guardar(VLibreriaD vLibreria);
+        bool Guardar(VLibreriaLista vLibreria);
     }
 }

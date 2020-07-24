@@ -59,7 +59,7 @@ namespace REPOSITORY.Clase.DiSoft
                     cliente.ccrecven = 1; //para que es esto
                     cliente.ccsupven = 3;// nose
                     cliente.ccpreven = 2;// nose
-                    cliente.ccemail = "";
+                    cliente.ccemail = vcliente.Email1;
                     cliente.ccref = "";
                     cliente.ccpass = "";
                     cliente.cchact = vcliente.Hora;

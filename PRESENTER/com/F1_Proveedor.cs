@@ -1212,9 +1212,12 @@ namespace PRESENTER.com
                 }
                 else
                     Cb_TipoProveedor.BackColor = Color.White;
-                if (new ServiceDesktop.ServiceDesktopClient().ProveedorListar().Where(a => a.Descripcion == Tb_Descripcion.Text).Count() > 0)
+                if (Tb_Cod.Text == string.Empty)
                 {
-                    throw new Exception("El nombre ya existe");
+                    if (new ServiceDesktop.ServiceDesktopClient().ProveedorListar().Where(a => a.Descripcion == Tb_Descripcion.Text).Count() > 0)
+                    {
+                        throw new Exception("El nombre ya existe");
+                    }
                 }
                 return _Error;
             }

@@ -2,7 +2,9 @@
 using ENTITY.DiSoft.Libreria;
 using ENTITY.Libreria.View;
 using REPOSITORY.Clase;
+using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
+using REPOSITORY.Interface.DiSoft;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +20,11 @@ namespace LOGIC.Class
    public class LLibreria
     {
         protected ILibreria iLibreria;
+        protected ILibreriaD iLibreriaD;
         public LLibreria()
         {
             iLibreria = new RLibreria();
+            iLibreriaD = new RLibreriaD();
         }
         #region Consultas
         /******** VALOR/REGISTRO ÚNICO *********/
@@ -79,12 +83,15 @@ namespace LOGIC.Class
                 using (var scope = new TransactionScope())
                 {
                     var result = iLibreria.Guardar(vlibreria);
+                  
                     if (vlibreria.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO)
                     {
+                        iLibreriaD.Guardar(vlibreria);
                         VLibreriaD vLibreriaDisoft = new VLibreriaD()
                         {
                            cecon = 101,
                            cenum = vlibreria.IdLibrer,
+                           cedesc = vlibreria.Descrip,
                            cefact = vlibreria.Fecha,
                            cehact = vlibreria.Hora,
                            ceuact =  vlibreria.Usuario
