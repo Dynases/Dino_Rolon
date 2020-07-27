@@ -68,6 +68,7 @@ namespace LOGIC.Class
                         if (aux == 0) //Nuevo
                         {
                             new LCompraIngreso_01().NuevoDevolucion(vCompraIngreso_01, idCompraIngreso, vCompraIngreso.IdAlmacen, vCompraIngreso_03, totalMapleDetalle);
+                            new LCompraIngreso_03().Guardar(vCompraIngreso_03, idCompraIngreso, totalMapleDevolucion);
                         }
                         else
                         {

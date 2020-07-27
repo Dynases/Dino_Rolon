@@ -530,6 +530,7 @@ namespace PRESENTER.com
                 tb_FechaSeleccion.Value = DateTime.Now;
                 Dt_FechaDesde.Value= DateTime.Now.Date;
                 Dt_FechaHasta.Value = DateTime.Now.Date;
+                MP_InicioArmarCombo();
                 if (_Limpiar == false)
                 {
                     UTGlobal.MG_SeleccionarCombo(Cb_Tipo);
@@ -638,10 +639,10 @@ namespace PRESENTER.com
             try
             {
                 MP_CargarEncabezado();
-                if (Dgv_GBuscador.RowCount > 0)
+                if (Dgv_GBuscador.RowCount > 1)
                 {
                     //_MPos = 0;
-                    MP_MostrarRegistro(tipo == 1 ? 0 : _MPos);
+                    MP_MostrarRegistro(tipo == 1 ? 0 : Dgv_GBuscador.Row);
                 }
                 else
                 {

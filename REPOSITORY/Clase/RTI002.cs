@@ -74,7 +74,7 @@ namespace REPOSITORY.Clase
                         ibfact = DateTime.Now,
                         ibfdoc = DateTime.Now,
                         ibhact = DateTime.Now.ToShortTimeString(),
-                        ibid = db.TI002.Max(t => t.ibid) + 1,
+                        ibid = db.TI002.Select(a => a.ibid).DefaultIfEmpty(0).Max() + 1,
                         ididdestino = idDestino,
                         ibiddc = idDetalle, 
                         ibobs = observacion,

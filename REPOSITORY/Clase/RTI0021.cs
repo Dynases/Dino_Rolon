@@ -30,7 +30,7 @@ namespace REPOSITORY.Clase
                         icfvenc = fechaVen,
                         icibid = idEncabezado,
                         iclot = lote,
-                        icid = db.TI0021.Max(t => t.icid) + 1
+                        icid = db.TI0021.Select(a => a.icid).DefaultIfEmpty(0).Max() + 1
                     };
 
                     db.TI0021.Add(ti0021);
