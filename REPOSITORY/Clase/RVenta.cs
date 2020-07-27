@@ -47,7 +47,8 @@ namespace REPOSITORY.Clase
                     venta.EncVenta = VVenta.EncVenta;
                     venta.Fecha = VVenta.Fecha;
                     venta.Hora = VVenta.Hora;
-                    venta.Usuario = VVenta.Usuario;                    
+                    venta.Usuario = VVenta.Usuario;
+                    venta.IdPedidoDisoft = 0;
                     db.SaveChanges();
                     id = venta.Id;
                     return true;

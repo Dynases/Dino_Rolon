@@ -69,13 +69,13 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Venta_01> Venta_01 { get; set; }
         public virtual DbSet<Traspaso_01> Traspaso_01 { get; set; }
         public virtual DbSet<Traspaso> Traspaso { get; set; }
-        public virtual DbSet<Venta> Venta { get; set; }
         public virtual DbSet<Vr_CompraIngresoDevolucion> Vr_CompraIngresoDevolucion { get; set; }
         public virtual DbSet<Vr_HistoricoSeleccion> Vr_HistoricoSeleccion { get; set; }
         public virtual DbSet<TCI001> TCI001 { get; set; }
         public virtual DbSet<TI0021> TI0021 { get; set; }
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021A> TI0021A { get; set; }
+        public virtual DbSet<Venta> Venta { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {
