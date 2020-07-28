@@ -315,6 +315,8 @@ namespace PRESENTER.com
                     Dgv_Detalle.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                     Dgv_Detalle.RootTable.Columns["Total"].Visible = true;
 
+                    Dgv_Detalle.RootTable.Columns["PrecioBase"].Visible = false;
+
                     //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_Detalle.GroupByBoxVisible = false;
                     Dgv_Detalle.VisualStyle = VisualStyle.Office2007;
@@ -393,7 +395,7 @@ namespace PRESENTER.com
                     Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.FontSize = 9;
                     Dgv_Seleccion.RootTable.Columns["Total"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                     Dgv_Seleccion.RootTable.Columns["Total"].Visible = true;
-
+                    Dgv_Seleccion.RootTable.Columns["PrecioBase"].Visible = false;
                     //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                     Dgv_Seleccion.GroupByBoxVisible = false;
                     Dgv_Seleccion.VisualStyle = VisualStyle.Office2007;
@@ -1011,10 +1013,11 @@ namespace PRESENTER.com
         {
             try
             {
-                Dgv_Seleccion.UpdateData();
-                Double totalSel, totalCant, precioProrateo, precioAvg;
+               
                 if (_TipoCompra == 1)
-                {                    
+                {
+                    Dgv_Seleccion.UpdateData();
+                    Double totalSel, totalCant, precioProrateo, precioAvg;
                     var detRecion = ((List<VSeleccion_01_Lista>)Dgv_Detalle.DataSource);
                     Dgv_Seleccion.UpdateData();
                     seleccion_01 = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource);
@@ -1024,7 +1027,7 @@ namespace PRESENTER.com
                         {
                             if (filaRep.IdProducto == filaSel.IdProducto)
                             {
-                                filaSel.Total = filaSel.Cantidad * filaRep.Precio;
+                                filaSel.Total = filaSel.Cantidad * filaRep.PrecioBase;
                                 break;
                             }
                         }
@@ -1033,7 +1036,7 @@ namespace PRESENTER.com
                     Dgv_Seleccion.UpdateData();
                     totalSel = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Total"], AggregateFunction.Sum));
                     totalCant = Convert.ToDouble(Dgv_Seleccion.GetTotal(Dgv_Seleccion.RootTable.Columns["Cantidad"], AggregateFunction.Sum));
-                    precioProrateo = (totalSel -Tb_Recep_Total.Value) / totalCant;
+                    precioProrateo = (Tb_Recep_Total.Value - totalSel) / totalCant;
                     precioProrateo = precioProrateo <= 0 ? -1 * precioProrateo : precioProrateo;
                     seleccion_01 = ((List<VSeleccion_01_Lista>)Dgv_Seleccion.DataSource);
                     foreach (var filaRep in detRecion)
@@ -1042,7 +1045,7 @@ namespace PRESENTER.com
                         {
                             if (filaRep.IdProducto == filaSel.IdProducto)
                             {
-                                filaSel.Precio = (filaRep.Precio + Convert.ToDecimal(precioProrateo));
+                                filaSel.Precio = (filaRep.PrecioBase + Convert.ToDecimal(precioProrateo));
                                 filaSel.Total = filaSel.Precio * filaSel.Cantidad;
                                 break;
                             }

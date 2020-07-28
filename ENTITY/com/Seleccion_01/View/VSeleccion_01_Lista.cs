@@ -9,5 +9,6 @@ namespace ENTITY.com.Seleccion_01.View
    public  class VSeleccion_01_Lista:VSeleccion_01
     {
         public string Producto { get; set; }
+        public decimal PrecioBase { get; set; }
     }
 }

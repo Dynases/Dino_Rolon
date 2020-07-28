@@ -25,7 +25,7 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal TotalCant { get; set; }
         public decimal PrecioCost { get; set; }
         public decimal Total { get; set; }
-        public int TotalMaple { get; set; }
+        public Nullable<int> TotalMaple { get; set; }
     
         public virtual CompraIng CompraIng { get; set; }
         public virtual Producto Producto { get; set; }

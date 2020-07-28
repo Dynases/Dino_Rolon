@@ -56,7 +56,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario_01> Usuario_01 { get; set; }
         public virtual DbSet<TI001> TI001 { get; set; }
-        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<CompraIng_03> CompraIng_03 { get; set; }
         public virtual DbSet<CompraIng> CompraIng { get; set; }
         public virtual DbSet<V_NotaCompraIngreso> V_NotaCompraIngreso { get; set; }
@@ -76,6 +75,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<TI002> TI002 { get; set; }
         public virtual DbSet<TI0021A> TI0021A { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

@@ -22,5 +22,7 @@ namespace ENTITY.com.CompraIngreso_01
         public int TotalMaple { get; set; }
 
         public int IdCompra { get; set; }
+        public decimal PrecioBase { get; set; }
+
     }
 }

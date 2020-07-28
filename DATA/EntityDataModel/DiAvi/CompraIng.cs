@@ -17,9 +17,9 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CompraIng()
         {
-            this.CompraIng_01 = new HashSet<CompraIng_01>();
             this.CompraIng_03 = new HashSet<CompraIng_03>();
             this.Seleccion = new HashSet<Seleccion>();
+            this.CompraIng_01 = new HashSet<CompraIng_01>();
         }
     
         public int Id { get; set; }
@@ -50,12 +50,12 @@ namespace DATA.EntityDataModel.DiAvi
         public int Devolucion { get; set; }
     
         public virtual Almacen Almacen { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraIng_01> CompraIng_01 { get; set; }
         public virtual Proveed Proveed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompraIng_03> CompraIng_03 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seleccion> Seleccion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CompraIng_01> CompraIng_01 { get; set; }
     }
 }

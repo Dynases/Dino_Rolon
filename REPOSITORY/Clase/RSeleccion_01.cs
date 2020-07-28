@@ -253,6 +253,7 @@ namespace REPOSITORY.Clase
                                                        a.CompraIng.CompraIng_03.FirstOrDefault
                                                                                       (c => c.IdCompra == idCompra &&
                                                                                        c.IdProduc == a.IdProduc).Total : 0),
+                          PrecioBase = a.PrecioBase
                       }).ToList();
                     return lista;
                 }

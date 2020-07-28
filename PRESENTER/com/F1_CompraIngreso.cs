@@ -1306,6 +1306,10 @@ namespace PRESENTER.com
                 Dgv_Detalle.RootTable.Columns[12].Key = "IdCompra";
                 Dgv_Detalle.RootTable.Columns[12].Visible = false;
 
+                Dgv_Detalle.RootTable.Columns[13].Key = "PrecioBase";
+                Dgv_Detalle.RootTable.Columns[13].FormatString = "0.0000";
+                Dgv_Detalle.RootTable.Columns[13].Visible = true;
+
                 //Habilitar filtradores              
                 //Dgv_Buscardor.FilterRowButtonStyle = FilterRowButtonStyle.ConditionOperatorDropDown;
                 Dgv_Detalle.GroupByBoxVisible = false;
