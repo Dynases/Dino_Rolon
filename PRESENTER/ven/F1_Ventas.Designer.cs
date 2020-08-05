@@ -176,7 +176,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 670);
             // 
             // btnMin
             // 
@@ -196,7 +196,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1215, 670);
             // 
             // 
             // 
@@ -229,7 +229,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 644);
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 

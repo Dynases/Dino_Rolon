@@ -1317,7 +1317,7 @@ namespace PRESENTER.ven
                 {
                     if (e.KeyData == Keys.Enter)
                     {
-                        int idLote = 0;
+                        int idLote = 0; 
                         var idDetalle = Convert.ToInt32(Dgv_DetalleVenta.GetValue("id"));
                         var cantidad = Convert.ToInt32(Dgv_DetalleVenta.GetValue("Cantidad"));
                         listaDetalleVenta = (List<VVenta_01>)Dgv_DetalleVenta.DataSource;

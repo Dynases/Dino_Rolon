@@ -46,15 +46,14 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Guardar(VTipoAlmacen vTipoAlmacen)
+        public void Guardar(VTipoAlmacen vtipoAlmacen, ref int Id)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iTipoAlmacen.Guardar(vTipoAlmacen);
+                    iTipoAlmacen.Guardar(vtipoAlmacen, ref Id);
                     scope.Complete();
-                    return result;
                 }
             }
             catch (Exception ex)

@@ -640,6 +640,9 @@
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.TransformacionGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

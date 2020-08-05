@@ -246,7 +246,7 @@ namespace SERVICE
         #region Tipo de Almacen
 
         [OperationContract]
-        bool TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen);
+        void TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen, ref int Id);
 
         [OperationContract]
         List<VTipoAlmacenCombo> TipoAlmacenListarCombo();

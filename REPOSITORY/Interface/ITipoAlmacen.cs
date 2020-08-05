@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace REPOSITORY.Interface
 {
     public interface ITipoAlmacen
-    {
-        bool Guardar(VTipoAlmacen vtipoAlmacen);
+    {    
+        void Guardar(VTipoAlmacen vtipoAlmacen, ref int Id);
         List<VTipoAlmacenListar> Listar();
         List<VTipoAlmacenCombo> ListarCombo();
     }

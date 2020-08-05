@@ -29,6 +29,7 @@
   <xs:complexType name="VSeleccionEncabezado">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Devolucion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Dias" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRecepcion" type="xs:dateTime" />
@@ -37,12 +38,14 @@
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdCompraIng" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSkype" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ManchadoPorcentaje" type="xs:decimal" />
       <xs:element minOccurs="0" name="Merma" type="xs:decimal" />
       <xs:element minOccurs="0" name="MermaPorcentaje" type="xs:decimal" />
       <xs:element minOccurs="0" name="PicadoPorcentaje" type="xs:decimal" />
       <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoCategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecepcion" type="xs:decimal" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>

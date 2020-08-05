@@ -10,6 +10,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:VSeleccion_01">
         <xs:sequence>
+          <xs:element minOccurs="0" name="PrecioBase" type="xs:decimal" />
           <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>

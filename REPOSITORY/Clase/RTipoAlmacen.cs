@@ -10,23 +10,28 @@ namespace REPOSITORY.Clase
 {
     public class RTipoAlmacen : BaseConexion, ITipoAlmacen
     {
-        public bool Guardar(VTipoAlmacen vtipoAlmacen)
+        public void Guardar(VTipoAlmacen vtipoAlmacen, ref int Id)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    var tipoAlmacen = new TipoAlmacen
+                    var aux = Id;
+                    TipoAlmacen tipoAlmacen;
+                    if (aux == 0)
                     {
-                        Descripcion = vtipoAlmacen.Descripcion,
-                        TipoAlmacen1 = vtipoAlmacen.Nombre
-                    };
-
-                    db.TipoAlmacen.Add(tipoAlmacen);
+                        tipoAlmacen = new TipoAlmacen();
+                        db.TipoAlmacen.Add(tipoAlmacen);
+                    }
+                    else
+                    {
+                        tipoAlmacen = db.TipoAlmacen.Where(a => a.Id == aux).FirstOrDefault();
+                    }
+                    tipoAlmacen.Descripcion = vtipoAlmacen.Descripcion;
+                    tipoAlmacen.TipoAlmacen1 = vtipoAlmacen.Nombre;
+                    Id = tipoAlmacen.Id;
                     db.SaveChanges();
                 }
-
-                return true;
             }
             catch (Exception ex)
             {

@@ -281,7 +281,12 @@ namespace REPOSITORY.Clase
                          Dias = SqlFunctions.DateDiff("DAY",a.CompraIng.FechaRec, a.FechaReg),
                          Fecha = a.Fecha,
                          Hora = a.Hora,
-                         Usuario = a.Usuario
+                         Usuario = a.Usuario,
+                         IdSkype = a.CompraIng.Proveed.IdSpyre,
+                         Devolucion = a.CompraIng.Devolucion == 1 ? "NO" : "SI",
+                         TipoProveedor = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PROVEEDOR &&
+                                                                                x.IdOrden == (int)ENEstaticosOrden.PROVEEDOR_TIPO &&
+                                                                                x.IdLibrer == a.CompraIng.Proveed.TipoProve).Descrip
                      }).ToList();
                     return lista;
                 }
@@ -330,171 +335,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }
-        //public List<Vr_HistoricoSeleccion> ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta)
-        //{
-        //    try
-        //    {
-        //        using (var db = GetEsquema())
-        //        {
-        //            List<Vr_HistoricoSeleccion> lista = new List<Vr_HistoricoSeleccion>();
-        //            if (fechaDesde.HasValue && fechaHasta.HasValue)
-        //            {
-        //                lista = db.Vr_HistoricoSeleccion.Where(b => b.fecha >= fechaDesde &&
-        //                                                        b.fecha <= fechaHasta).ToList();
-        //            }
-        //            else if (fechaDesde.HasValue)
-        //            {
-        //                lista = db.Vr_HistoricoSeleccion.Where(b => b.fecha >= fechaDesde).ToList();
-        //            }
-        //            else if (fechaHasta.HasValue)
-        //            {
-        //                lista = db.Vr_HistoricoSeleccion.Where(b => b.fecha <= fechaHasta).ToList();
-        //            }
-        //            return lista;
-        //            //List<RHistoricoSeleccion> lista = new List<RHistoricoSeleccion>();
-        //            //lista.ForEach(i => lista.Add(i));
-        //            //var listResult = db.Vr_HistoricoSeleccion
-        //            //    .Select(a=> new RHistoricoSeleccion
-        //            //    {
-        //            //        IdSpyre =a.IdSpyre,
-        //            //        Descrip=a.Descrip,
-        //            //        ingreso= a.ingreso,
-        //            //        fecha = a.fecha,
-        //            //        NumNota=a.NumNota,
-        //            //        Id =a.Id,
-        //            //        Superc=a.Superc,
-        //            //        Especialc =a.Especialc,
-        //            //        Primerac =a.Primerac,
-        //            //        Segundac=a.Segundac,
-        //            //        Tercerac =a.Tercerac,
-        //            //        Cuartac=a.Cuartac,
-        //            //        Quintac =a.Quintac,
-        //            //        Picadoc =a.Picadoc,
-        //            //        manchadoc =a.manchadoc,
-        //            //        Merma = a.Merma,
-        //            //        Media_doc2= a.Media_doc2,
-        //            //        Docena2 =a.Docena2,
-        //            //        Band2_12 = a.Band2_12,
-        //            //        Map2_6 =a.Map2_6,
-        //            //        Map2_10 = a.Map2_10,
-        //            //        Map2_12 =a.Map2_12,
-        //            //        Map2_15 =a.Map2_15,
-        //            //        Map2_18 =a.Map2_18,
-        //            //        Map2_20 =a.Map2_20,
-        //            //        Vit_Super =a.Vit_Super,
-        //            //        Vit_Especial = a.Vit_Especial,
-        //            //        Vit_Primera =a.Vit_Primera,
-        //            //        Vit_Segunda =a.Vit_Segunda,
-        //            //        Vit_Tercera =a.Vit_Tercera,
-        //            //        Vit_Cuarta =a.Vit_Cuarta,
-        //            //        Vit_Quinta =a.Vit_Quinta,
-        //            //        Vit_Map2_6 =a.Vit_Map2_6,
-        //            //        Vit_Map2_10 =a.Vit_Map2_10,
-        //            //        Vit_Map2_12 =a.Vit_Map2_12,
-        //            //        Vit_Map2_15 = a.Vit_Map2_15,
-        //            //        Vit_Map2_18 =a.Vit_Map2_18,
-        //            //        Vit_Map2_20 =a.Vit_Map2_20,
-        //            //        Omega_3 =a.Omega_3,
-        //            //        Omg_Med_Doc2 =a.Omg_Med_Doc2,
-        //            //        Omg_Docena2 =a.Omg_Docena2,
-        //            //        Omg_Band2_12 =a.Omg_Band2_12,
-        //            //        Omg_Map2_10 =a.Omg_Map2_10,
-        //            //        Omg_Map2_20 =a.Omg_Map2_20,
-        //            //        Blanco_Super =a.Blanco_Super,
-        //            //        Blanco_Esp =a.Blanco_Esp,
-        //            //        Blanco_Primera =a.Blanco_Primera,
-        //            //        Blanco_Segunda =a.Blanco_Segunda,
-        //            //        Blanco_Tercera =a.Blanco_Tercera,
-        //            //        Blanco_Cuarta =a.Blanco_Cuarta,
-        //            //        Blanco_Quinta =a.Blanco_Quinta,
-        //            //        Blanco_Band2_12 =a.Blanco_Band2_12,
-        //            //        Blanco_Map2_20 =a.Blanco_Map2_20,
-        //            //        Codorniz = a.Codorniz,
-        //            //        Color_Red50 =a.Color_Red50,
-        //            //        Sedem_Maple1_30 =a.Sedem_Maple1_30,
-        //            //        Sedem_Map3_18X2 = a.Sedem_Map3_18X2,
-        //            //        Sedem_Vit_Band2_12X2 = a.Sedem_Vit_Band2_12X2,
-        //            //        Sedem_Omg_Nut_Map2_10X2 = a.Sedem_Omg_Nut_Map2_10X2,
-        //            //        Sedem_Map2_12X2 = a.Sedem_Map2_12X2,
-        //            //        Vacio1 = a.Vacio1,
-        //            //        Vacio2 = a.Vacio2,
-        //            //        Cantidad = a.Cantidad,
-        //            //        Tipo_Rec = a.Tipo_Rec,
-        //            //        Fecha_Recepcion = a.Fecha_Recepcion,
-        //            //        Observacion = a.Observacion,
-        //            //        Superp = a.Superp,
-        //            //        Especialp = a.Especialp,
-        //            //        Primerap = a.Primerap,
-        //            //        Segundap = a.Segundap,
-        //            //        Tercerap = a.Tercerap,
-        //            //        Cuartap = a.Cuartap,
-        //            //        Quintap = a.Quintap,
-        //            //        Picadop = a.Picadop,
-        //            //        manchadop = a.manchadop,
-        //            //        Mermap = a.Mermap,
-        //            //        Media_doc2_P = a.Media_doc2_P,
-        //            //        Docena2_P = a.Docena2_P,
-        //            //        Band2_12_P = a.Band2_12_P,
-        //            //        Map2_6_P = a.Map2_6_P,
-        //            //        Map2_10_P = a.Map2_10_P,
-        //            //        Map2_12_P = a.Map2_12_P,
-        //            //        Map2_15_P = a.Map2_15_P,
-        //            //        Map2_18_P = a.Map2_18_P,
-        //            //        Map2_20_P = a.Map2_20_P,
-        //            //        Vit_SuperP = a.Vit_SuperP,
-        //            //        Vit_EspecialP = a.Vit_EspecialP,
-        //            //        Vit_PrimeraP = a.Vit_PrimeraP,
-        //            //        Vit_SegundaP = a.Vit_SegundaP,
-        //            //        Vit_TerceraP = a.Vit_TerceraP,
-        //            //        Vit_CuartaP = a.Vit_CuartaP,
-        //            //        Vit_QuintaP = a.Vit_QuintaP,
-        //            //        Vit_Map2_6_P = a.Vit_Map2_6_P,
-        //            //        Vit_Map2_10_P = a.Vit_Map2_10_P,
-        //            //        Vit_Map2_12_P = a.Vit_Map2_12_P,
-        //            //        Vit_Map2_15_P = a.Vit_Map2_15_P,
-        //            //        Vit_Map2_18_P = a.Vit_Map2_18_P,
-        //            //        Vit_Map2_20_P = a.Vit_Map2_20_P,
-        //            //        Vit_Media_Doc2_P = a.Vit_Media_Doc2_P,
-        //            //        vit_Docena2_P = a.vit_Docena2_P,
-        //            //        vit_Band2_12_P = a.vit_Band2_12_P,
-        //            //        Omega_3_P = a.Omega_3_P,
-        //            //        Omg_Med_Doc2_P = a.Omg_Med_Doc2_P,
-        //            //        Omg_Docena2_P = a.Omg_Docena2_P,
-        //            //        Omg_Band2_12_P = a.Omg_Band2_12_P,
-        //            //        Omg_Map2_10_P = a.Omg_Map2_10_P,
-        //            //        Omg_Map2_20_P = a.Omg_Map2_20_P,
-        //            //        Blanco_Super_P = a.Blanco_Super_P,
-        //            //        Blanco_Esp_P = a.Blanco_Esp_P,
-        //            //        Blanco_Primera_P = a.Blanco_Primera_P,
-        //            //        Blanco_Segunda_P = a.Blanco_Segunda_P,
-        //            //        Blanco_Tercera_P = a.Blanco_Tercera_P,
-        //            //        Blanco_Cuarta_P = a.Blanco_Cuarta_P,
-        //            //        Blanco_Quinta_P = a.Blanco_Quinta_P,
-        //            //        Blanco_Band2_12_P = a.Blanco_Band2_12_P,
-        //            //        Blanco_Map2_20_P = a.Blanco_Map2_20_P,
-        //            //        Codorniz_P = a.Codorniz_P,
-        //            //        Color_Red50_P = a.Color_Red50_P,
-        //            //        Sedem_Maple1_30_P = a.Sedem_Maple1_30_P,
-        //            //        Sedem_Map3_18X2_P = a.Sedem_Map3_18X2_P,
-        //            //        Sedem_Vit_Band2_12X2_P = a.Sedem_Vit_Band2_12X2_P,
-        //            //        Sedem_Omg_Nut_Map2_10X2_P = a.Sedem_Omg_Nut_Map2_10X2_P,
-        //            //        Sedem_Maple3_30_P = a.Sedem_Maple3_30_P,
-        //            //        Sedem_Map2_12X2_P = a.Sedem_Map2_12X2_P,
-        //            //        Vacio3 = a.Vacio3,
-        //            //        Vacio4 = a.Vacio4,
-        //            //        Precio_Promedio = a.Precio_Promedio,
-        //            //        Total_Bs = a.Total_Bs,
-        //            //        Peso_Promedio = a.Peso_Promedio
-        //            //    }).ToList();
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
+        }       
 
         public DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta)
         {
@@ -551,7 +392,7 @@ namespace REPOSITORY.Clase
                                              WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 404)), 0) AS Vit_Cuarta, ISNULL
                                          ((SELECT        CAST(Cantidad AS int) AS Expr1
                                              FROM            COM.Seleccion_01 AS sel1
-                                             WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 405)), 0) AS Vit_Quinta, 0 AS Vit_Map2_6, 0 AS Vit_Map2_10, 0 AS Vit_Map2_12, 0 AS Vit_Map2_15, 0 AS Vit_Map2_18, 0 AS Vit_Map2_20, ISNULL
+                                             WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 405)), 0) AS Vit_Quinta, 0 AS Vit_Map2_6, 0 AS Vit_Map2_10, 0 AS Vit_Map2_12, 0 AS Vit_Map2_15, 0 AS Vit_Map2_18, 0 AS Vit_Map2_20, 0 AS Vit_Media_Docena, 0 AS Vit_Docena2, 0 AS Vit_Band2_12, ISNULL
                                          ((SELECT        CAST(Cantidad AS int) AS Expr1
                                              FROM            COM.Seleccion_01 AS sel1
                                              WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 415)), 0) AS Omega_3, 0 AS Omg_Med_Doc2, 0 AS Omg_Docena2, 0 AS Omg_Band2_12, 0 AS Omg_Map2_10, 0 AS Omg_Map2_20, ISNULL
@@ -628,7 +469,7 @@ namespace REPOSITORY.Clase
                                              WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 404)), 0) AS Vit_CuartaP, ISNULL
                                          ((SELECT        CAST(Precio AS decimal(18, 2)) AS Expr1
                                              FROM            COM.Seleccion_01 AS sel1
-                                             WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 405)), 0) AS Vit_QuintaP, 0 AS Vit_Map2_6_P, 0 AS Vit_Map2_10_P, 0 AS Vit_Map2_12_P, 0 AS Vit_Map2_15_P, 0 AS Vit_Map2_18_P, 0 AS Vit_Map2_20_P, 
+                                             WHERE        (IdSeleccion = Sel.Id) AND (IdProducto = 405)), 0) AS Vit_QuintaP, 0 AS Vit_Map2_6_P, 0 AS Vit_Map2_10_P, 0 AS Vit_Map2_12_P, 0 AS Vit_Map2_15_P, 0 AS Vit_Map2_18_P, 0 AS Vit_Map2_20_P, 0 AS Vit_Media_Docena_P, 0 AS Vit_Docena2_P, 0 AS Vit_Band2_12_P,
                                      0 AS Vit_Media_Doc2_P, 0 AS vit_Docena2_P, 0 AS vit_Band2_12_P, ISNULL
                                          ((SELECT        CAST(Precio AS decimal(18, 2)) AS Expr1
                                              FROM            COM.Seleccion_01 AS sel1

@@ -40,9 +40,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tb_TipoAlmacen = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.PanelContenidoRegistro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -53,6 +50,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GMPanel_Buscardor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).BeginInit();
+            this.PanelContenidoRegistro.SuspendLayout();
+            this.PanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
+            this.superTabControl1.SuspendLayout();
             this.PanelMenu.SuspendLayout();
             this.PanelFondo.SuspendLayout();
             this.panelAbajo.SuspendLayout();
@@ -61,35 +62,6 @@
             this.PanelArriba.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PanelContenidoRegistro
-            // 
-            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
-            this.PanelContenidoRegistro.Size = new System.Drawing.Size(733, 571);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
-            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
-            // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Size = new System.Drawing.Size(733, 605);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
-            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
             // 
             // btnPrimero
             // 
@@ -107,9 +79,9 @@
             // 
             this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
-            // TxtNombreUsu
+            // BtnExportar
             // 
-            this.TxtNombreUsu.Location = new System.Drawing.Point(591, 0);
+            this.BtnExportar.Location = new System.Drawing.Point(522, 0);
             // 
             // BubbleBarUsuario
             // 
@@ -137,7 +109,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(800, 706);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(733, 572);
             // 
             // btnMin
             // 
@@ -153,7 +125,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(800, 706);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(733, 572);
             // 
             // 
             // 
@@ -185,7 +157,53 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(794, 678);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(727, 546);
+            // 
+            // PanelContenidoRegistro
+            // 
+            this.PanelContenidoRegistro.Controls.Add(this.PanelFondo);
+            this.PanelContenidoRegistro.Location = new System.Drawing.Point(0, 33);
+            this.PanelContenidoRegistro.Size = new System.Drawing.Size(733, 572);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelInferior, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelMenu, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.LblSubtitulo, 0);
+            this.PanelContenidoRegistro.Controls.SetChildIndex(this.PanelFondo, 0);
+            // 
+            // PanelInferior
+            // 
+            this.PanelInferior.Location = new System.Drawing.Point(0, 544);
+            this.PanelInferior.Size = new System.Drawing.Size(733, 28);
+            // 
+            // superTabControl1
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.SelectedTabIndex = 1;
+            this.superTabControl1.Size = new System.Drawing.Size(733, 605);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoRegistro, 0);
+            this.superTabControl1.Controls.SetChildIndex(this.PanelContenidoBuscar, 0);
+            // 
+            // TxtNombreUsu
+            // 
+            this.TxtNombreUsu.Location = new System.Drawing.Point(591, 0);
+            this.TxtNombreUsu.ReadOnly = true;
+            // 
+            // BtnHabilitar
+            // 
+            this.BtnHabilitar.Location = new System.Drawing.Point(444, 0);
             // 
             // LblSubtitulo
             // 
@@ -206,14 +224,14 @@
             this.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFondo.Location = new System.Drawing.Point(0, 108);
             this.PanelFondo.Name = "PanelFondo";
-            this.PanelFondo.Size = new System.Drawing.Size(733, 463);
+            this.PanelFondo.Size = new System.Drawing.Size(733, 436);
             this.PanelFondo.TabIndex = 69;
             // 
             // panelAbajo
             // 
             this.panelAbajo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAbajo.Controls.Add(this.Gpanel_TiposAlmacen);
-            this.panelAbajo.Location = new System.Drawing.Point(3, 188);
+            this.panelAbajo.Location = new System.Drawing.Point(3, 175);
             this.panelAbajo.Name = "panelAbajo";
             this.panelAbajo.Size = new System.Drawing.Size(727, 238);
             this.panelAbajo.TabIndex = 1;
@@ -267,14 +285,16 @@
             this.Dgv_TiposAlmacen.HeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.Dgv_TiposAlmacen.Location = new System.Drawing.Point(0, 0);
             this.Dgv_TiposAlmacen.Name = "Dgv_TiposAlmacen";
-            this.Dgv_TiposAlmacen.Size = new System.Drawing.Size(721, 210);
+            this.Dgv_TiposAlmacen.Size = new System.Drawing.Size(721, 212);
             this.Dgv_TiposAlmacen.TabIndex = 260;
+            this.Dgv_TiposAlmacen.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_TiposAlmacen_EditingCell);
+            this.Dgv_TiposAlmacen.SelectionChanged += new System.EventHandler(this.Dgv_TiposAlmacen_SelectionChanged);
             // 
             // PanelArriba
             // 
             this.PanelArriba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelArriba.Controls.Add(this.GPanel_DatosGenerales);
-            this.PanelArriba.Location = new System.Drawing.Point(3, 3);
+            this.PanelArriba.Location = new System.Drawing.Point(3, -10);
             this.PanelArriba.Name = "PanelArriba";
             this.PanelArriba.Size = new System.Drawing.Size(727, 179);
             this.PanelArriba.TabIndex = 0;
@@ -338,7 +358,7 @@
             this.lblId.Location = new System.Drawing.Point(366, 105);
             this.lblId.Name = "lblId";
             this.lblId.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.lblId.Size = new System.Drawing.Size(40, 20);
+            this.lblId.Size = new System.Drawing.Size(37, 18);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
             // 
@@ -369,7 +389,7 @@
             this.labelX1.Location = new System.Drawing.Point(13, 69);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX1.Size = new System.Drawing.Size(79, 20);
+            this.labelX1.Size = new System.Drawing.Size(72, 18);
             this.labelX1.TabIndex = 343;
             this.labelX1.Text = "Descripción:";
             // 
@@ -400,7 +420,7 @@
             this.labelX10.Location = new System.Drawing.Point(13, 23);
             this.labelX10.Name = "labelX10";
             this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(57, 20);
+            this.labelX10.Size = new System.Drawing.Size(52, 18);
             this.labelX10.TabIndex = 341;
             this.labelX10.Text = "Nombre:";
             // 
@@ -412,9 +432,6 @@
             this.Name = "F1_TipoAlmacen";
             this.Text = "F1_TipoAlmacen";
             this.Load += new System.EventHandler(this.F1_TipoAlmacen_Load);
-            this.PanelContenidoRegistro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
@@ -426,6 +443,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GMPanel_Buscardor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GBuscador)).EndInit();
+            this.PanelContenidoRegistro.ResumeLayout(false);
+            this.PanelInferior.ResumeLayout(false);
+            this.PanelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
+            this.superTabControl1.ResumeLayout(false);
             this.PanelMenu.ResumeLayout(false);
             this.PanelFondo.ResumeLayout(false);
             this.panelAbajo.ResumeLayout(false);

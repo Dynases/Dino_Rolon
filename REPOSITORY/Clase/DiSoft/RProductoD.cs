@@ -16,7 +16,7 @@ namespace REPOSITORY.Clase.DiSoft
         public bool Eliminar(int idProducto)
         {
             try
-            {
+            { 
                 using (var db = GetEsquema())
                 {
                     var producto = db.TC001.Where(a => a.canumi == idProducto).FirstOrDefault();                  

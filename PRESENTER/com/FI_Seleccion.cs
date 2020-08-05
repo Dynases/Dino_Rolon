@@ -229,6 +229,27 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Hora"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["Usuario"].Visible = false;
 
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].Caption = "Cod Provee.";
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["IdSkype"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].Caption = "Tipo Provee.";
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["TipoProveedor"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Caption = "Devolucion";
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["Devolucion"].Visible = true;
+
                 //Habilitar filtradores
                 Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;
                 Dgv_GBuscador.FilterMode = FilterMode.Automatic;

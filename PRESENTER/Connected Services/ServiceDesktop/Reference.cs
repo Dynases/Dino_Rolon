@@ -519,10 +519,11 @@ namespace PRESENTER.ServiceDesktop {
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardarResponse")]
-        bool TipoAlmacenGuardar(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen);
+        PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse TipoAlmacenGuardar(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request);
         
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardarResponse")]
-        System.Threading.Tasks.Task<bool> TipoAlmacenGuardarAsync(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen);
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse> TipoAlmacenGuardarAsync(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenListarComboResponse")]
         ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[] TipoAlmacenListarCombo();
@@ -1301,6 +1302,42 @@ namespace PRESENTER.ServiceDesktop {
         public ProductoGuardarResponse(bool ProductoGuardarResult, int id) {
             this.ProductoGuardarResult = ProductoGuardarResult;
             this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TipoAlmacenGuardar", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TipoAlmacenGuardarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int Id;
+        
+        public TipoAlmacenGuardarRequest() {
+        }
+        
+        public TipoAlmacenGuardarRequest(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen, int Id) {
+            this.vTipoAlmacen = vTipoAlmacen;
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="TipoAlmacenGuardarResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class TipoAlmacenGuardarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int Id;
+        
+        public TipoAlmacenGuardarResponse() {
+        }
+        
+        public TipoAlmacenGuardarResponse(int Id) {
+            this.Id = Id;
         }
     }
     
@@ -2525,12 +2562,21 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.AlmacenListarAsync();
         }
         
-        public bool TipoAlmacenGuardar(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen) {
-            return base.Channel.TipoAlmacenGuardar(vTipoAlmacen);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.TipoAlmacenGuardar(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request) {
+            return base.Channel.TipoAlmacenGuardar(request);
         }
         
-        public System.Threading.Tasks.Task<bool> TipoAlmacenGuardarAsync(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen) {
-            return base.Channel.TipoAlmacenGuardarAsync(vTipoAlmacen);
+        public void TipoAlmacenGuardar(ENTITY.inv.TipoAlmacen.view.VTipoAlmacen vTipoAlmacen, ref int Id) {
+            PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest inValue = new PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest();
+            inValue.vTipoAlmacen = vTipoAlmacen;
+            inValue.Id = Id;
+            PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).TipoAlmacenGuardar(inValue);
+            Id = retVal.Id;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse> TipoAlmacenGuardarAsync(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request) {
+            return base.Channel.TipoAlmacenGuardarAsync(request);
         }
         
         public ENTITY.inv.TipoAlmacen.view.VTipoAlmacenCombo[] TipoAlmacenListarCombo() {

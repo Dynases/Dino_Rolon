@@ -811,12 +811,11 @@ namespace SERVICE
 
         #region TipoAlmacen
 
-        public bool TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen)
+        public void TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen, ref int Id) 
         {
             try
             {
-                var result = new LTipoAlmacen().Guardar(vTipoAlmacen);
-                return result;
+                new LTipoAlmacen().Guardar(vTipoAlmacen, ref Id);
             }
             catch (Exception ex)
             {

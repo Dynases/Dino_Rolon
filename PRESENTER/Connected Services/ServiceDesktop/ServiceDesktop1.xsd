@@ -1108,13 +1108,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/ENTITY.inv.TipoAlmacen.view" minOccurs="0" name="vTipoAlmacen" nillable="true" type="q65:VTipoAlmacen" />
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TipoAlmacenGuardarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TipoAlmacenGuardarResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
