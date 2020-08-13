@@ -227,7 +227,8 @@ namespace PRESENTER.ven
 
                 Tb_Cod.Text = venta.Id.ToString();
                 lblId.Text = venta.Id.ToString();
-                Cb_Origen.SelectedItem = venta.DescripcionAlmacen;
+                Cb_Origen.Value = venta.IdAlmacen;
+                //Cb_Origen.SelectedItem = venta.DescripcionAlmacen;
                 Dt_FechaVenta.Value = venta.FechaVenta;
                 Tb_Usuario.Text = venta.Usuario;
                 cb_Cliente.Value = venta.IdCliente;
