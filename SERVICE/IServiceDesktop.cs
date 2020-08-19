@@ -232,8 +232,9 @@ namespace SERVICE
         #region Almacen
 
         [OperationContract]
-        bool AlmacenGuardar(VAlmacen vAlmacen);
-
+        bool AlmacenGuardar(VAlmacen vAlmacen, ref int Id);
+        [OperationContract]
+        bool EliminarAlmacen(int Id, ref List<string> mensaje);
         [OperationContract]
         List<VAlmacenCombo> AlmacenListarCombo(int usuarioId);
 
@@ -247,7 +248,8 @@ namespace SERVICE
 
         [OperationContract]
         void TipoAlmacenGuardar(VTipoAlmacen vTipoAlmacen, ref int Id);
-
+        [OperationContract]
+        bool EliminarTipoAlmacen(int Id, ref List<string> mensaje);
         [OperationContract]
         List<VTipoAlmacenCombo> TipoAlmacenListarCombo();
 

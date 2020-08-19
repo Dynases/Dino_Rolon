@@ -134,7 +134,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1199, 631);
             // 
             // btnMin
             // 
@@ -150,7 +150,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1199, 631);
             // 
             // 
             // 
@@ -182,7 +182,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1193, 605);
             // 
             // PanelContenidoRegistro
             // 

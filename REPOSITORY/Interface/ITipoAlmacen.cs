@@ -6,6 +6,7 @@ namespace REPOSITORY.Interface
     public interface ITipoAlmacen
     {    
         void Guardar(VTipoAlmacen vtipoAlmacen, ref int Id);
+        void Eliminar(int Id);
         List<VTipoAlmacenListar> Listar();
         List<VTipoAlmacenCombo> ListarCombo();
     }

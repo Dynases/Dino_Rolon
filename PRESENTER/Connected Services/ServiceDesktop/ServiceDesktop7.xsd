@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Rol.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Rol.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="VRol">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.Libreria.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VLibreriaLista">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdRol" type="xs:int" />
-      <xs:element minOccurs="0" name="Rol1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdGrupo" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLibrer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrden" type="xs:int" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VRol" nillable="true" type="tns:VRol" />
-  <xs:complexType name="ArrayOfVRol_01">
+  <xs:element name="VLibreriaLista" nillable="true" type="tns:VLibreriaLista" />
+  <xs:complexType name="ArrayOfVLibreriaLista">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VRol_01" nillable="true" type="tns:VRol_01" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VLibreriaLista" nillable="true" type="tns:VLibreriaLista" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVRol_01" nillable="true" type="tns:ArrayOfVRol_01" />
-  <xs:complexType name="VRol_01">
+  <xs:element name="ArrayOfVLibreriaLista" nillable="true" type="tns:ArrayOfVLibreriaLista" />
+  <xs:complexType name="ArrayOfVLibreria">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Add" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Del" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VLibreria" nillable="true" type="tns:VLibreria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVLibreria" nillable="true" type="tns:ArrayOfVLibreria" />
+  <xs:complexType name="VLibreria">
+    <xs:sequence>
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
-      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdModulo" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdPrograma" type="xs:int" />
-      <xs:element minOccurs="0" name="IdRol" type="xs:int" />
-      <xs:element minOccurs="0" name="IdRol_01" type="xs:int" />
-      <xs:element minOccurs="0" name="Mod" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="NombreProg" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rol" nillable="true" type="tns:VRol" />
-      <xs:element minOccurs="0" name="Show" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdLibreria" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VRol_01" nillable="true" type="tns:VRol_01" />
-  <xs:complexType name="ArrayOfVRol">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VRol" nillable="true" type="tns:VRol" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfVRol" nillable="true" type="tns:ArrayOfVRol" />
+  <xs:element name="VLibreria" nillable="true" type="tns:VLibreria" />
 </xs:schema>

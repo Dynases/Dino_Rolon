@@ -5,37 +5,44 @@ using REPOSITORY.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UTILITY.Global;
 
 namespace REPOSITORY.Clase
 {
     public class RAlmacen : BaseConexion, IAlmacen
     {
-        public bool Guardar(VAlmacen vAlmacen)
+        #region Transacciones
+        public bool Guardar(VAlmacen vAlmacen, ref int Id)
         {
             try
             {
                 using (var db = this.GetEsquema())
                 {
-                    var almacen = new Almacen
+                    var aux = Id;
+                    Almacen almacen;
+                    if (aux == 0)
                     {
-                        Descrip = vAlmacen.Descripcion,
-                        Direcc = vAlmacen.Direccion,
-                        Fecha = DateTime.Now,
-                        Hora = DateTime.Now.ToShortTimeString(),
-                        Latit = vAlmacen.Latitud,
-                        Longi = vAlmacen.Longitud,
-                        Telef = vAlmacen.Telefono,
-                        Usuario = vAlmacen.Usuario,
-                        IdSuc = vAlmacen.IdSucursal,
-                        TipoAlmacen = vAlmacen.TipoAlmacenId,
-                        Imagen = vAlmacen.Imagen,
-                        Encargado = vAlmacen.Encargado
-                    };
-
-                    db.Almacen.Add(almacen);
+                        almacen = new Almacen();
+                        db.Almacen.Add(almacen);
+                    }
+                    else
+                    {
+                        almacen = db.Almacen.Where(a => a.Id == aux).FirstOrDefault();
+                    }
+                    almacen.Descrip = vAlmacen.Descripcion;
+                    almacen.Direcc = vAlmacen.Direccion;
+                    almacen.Fecha = DateTime.Now;
+                    almacen.Hora = DateTime.Now.ToShortTimeString();
+                    almacen.Latit = vAlmacen.Latitud;
+                    almacen.Longi = vAlmacen.Longitud;
+                    almacen.Telef = vAlmacen.Telefono;
+                    almacen.Usuario = vAlmacen.Usuario;
+                    almacen.IdSuc = vAlmacen.IdSucursal;
+                    almacen.TipoAlmacen = vAlmacen.TipoAlmacenId;
+                    almacen.Imagen = vAlmacen.Imagen;
+                    almacen.Encargado = vAlmacen.Encargado;
                     db.SaveChanges();
-
                     return true;
                 }
             }
@@ -44,6 +51,35 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public void Eliminar(int Id)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var aux = Id;
+                    Almacen almacen = db.Almacen.Where(a => a.Id == aux).FirstOrDefault();
+                    if (almacen == null)
+                    {
+                        throw new Exception("No se encontro el almacen");
+                    }
+                    //Eliminar TI001
+                    var inventario = db.TI001.Where(a => a.icalm == aux).ToList();
+                    foreach (var inv in inventario)
+                    {
+                        db.TI001.Remove(inv);
+                    }
+                    db.Almacen.Remove(almacen);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Transacciones
 
         public List<VAlmacenCombo> Listar(int usuarioId)
         {
@@ -53,7 +89,7 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = (from b in db.Usuario
                                       join c in db.Usuario_01 on b.IdUsuario equals c.IdUsuario
-                                      join a  in db.Almacen on c.IdAlmacen equals a.Id 
+                                      join a in db.Almacen on c.IdAlmacen equals a.Id
                                       where b.IdUsuario == usuarioId && c.Acceso == true
                                       select new VAlmacenCombo
                                       {
@@ -96,6 +132,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+
+
 
     }
 }

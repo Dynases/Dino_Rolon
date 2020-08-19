@@ -10,6 +10,7 @@ namespace REPOSITORY.Clase
 {
     public class RTipoAlmacen : BaseConexion, ITipoAlmacen
     {
+        #region Transacciones
         public void Guardar(VTipoAlmacen vtipoAlmacen, ref int Id)
         {
             try
@@ -38,7 +39,29 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
+        public void Eliminar(int Id)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var aux = Id;
+                    TipoAlmacen tipoAlmacen = db.TipoAlmacen.Where(a => a.Id == aux).FirstOrDefault();
+                    if (tipoAlmacen == null)
+                    {
+                        throw new Exception("No se encontro el tipo de almacen");
+                    }
+                    db.TipoAlmacen.Remove(tipoAlmacen);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consultas
         public List<VTipoAlmacenCombo> ListarCombo()
         {
             try
@@ -81,5 +104,12 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+        #region Verificaciones
+
+        #endregion
+
+
+
     }
 }

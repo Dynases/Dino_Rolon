@@ -767,11 +767,11 @@ namespace SERVICE
 
         #region Almacen        
 
-        public bool AlmacenGuardar(VAlmacen vAlmacen)
+        public bool AlmacenGuardar(VAlmacen vAlmacen, ref int Id)
         {
             try
             {
-                var result = new LAlmacen().Guardar(vAlmacen);
+                var result = new LAlmacen().Guardar(vAlmacen, ref Id);
                 return result;
             }
             catch (Exception ex)
@@ -779,7 +779,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool EliminarAlmacen(int Id, ref List<string> mensaje)
+        {
+            try
+            {
+                var result = new LAlmacen().Eliminar(Id, ref mensaje);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VAlmacenCombo> AlmacenListarCombo(int usuarioId)
         {
             try
@@ -822,7 +833,17 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool EliminarTipoAlmacen(int Id, ref List<string> mensaje)
+        {
+            try
+            {
+                return new LTipoAlmacen().Eliminar(Id, ref mensaje);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VTipoAlmacenCombo> TipoAlmacenListarCombo()
         {
             try

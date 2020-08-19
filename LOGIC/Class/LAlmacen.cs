@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Almacen.View;
+﻿using ENTITY.adm.ValidacioinPrograma;
+using ENTITY.inv.Almacen.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -46,13 +47,13 @@ namespace LOGIC.Class
 
         #region Transacciones
 
-        public bool Guardar(VAlmacen vAlmacen)
+        public bool Guardar(VAlmacen vAlmacen, ref int Id)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    var result = iAlmacen.Guardar(vAlmacen);
+                    var result = iAlmacen.Guardar(vAlmacen,ref Id);
                     scope.Complete();
                     return result;
                 }
@@ -63,7 +64,32 @@ namespace LOGIC.Class
             }
 
         }
+        public bool Eliminar(int Id, ref List<string> mensaje)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    FValidacionPrograma validacionPrograma = new FValidacionPrograma();
+                    validacionPrograma.tablaOrigen = "INV.Almacen";
+                    if (new LValidacionPrograma().ValidadrEliminacion(Id, validacionPrograma, ref mensaje, false))
+                    {
+                        iAlmacen.Eliminar(Id);
+                    }
+                    if (mensaje.Count > 0)
+                    {
+                        return false;
+                    }
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
+        }
         #endregion
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.inv.TipoAlmacen.view;
 using Janus.Windows.GridEX;
+using PRESENTER.frm;
 using PRESENTER.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,14 @@ namespace PRESENTER.reg
 
         private static int index;
         public static List<VTipoAlmacenListar> listaTipoAlmacenes;
-
+        private string _NombreFormulario = "TPO DE ALMACEN";
         #endregion
 
         #region Metodos Privados        
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         private void MP_MostrarMensajeError(string mensaje)
         {
             ToastNotification.Show(this, mensaje.ToUpper(),
@@ -78,7 +82,6 @@ namespace PRESENTER.reg
             Tb_TipoAlmacen.ReadOnly = false;
             Dgv_TiposAlmacen.Enabled = false;
         }
-
         private void MP_CargarTiposDeAlmacen()
         {
             try
@@ -228,7 +231,58 @@ namespace PRESENTER.reg
                 return false;
             }
         }
-
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                int IdAlmacen = Convert.ToInt32(lblId.Text);
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                    {
+                        resul = servicio.EliminarTipoAlmacen(IdAlmacen, ref LMensaje);
+                    }
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, lblId.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, lblId.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         #endregion
 
         #region Eventos

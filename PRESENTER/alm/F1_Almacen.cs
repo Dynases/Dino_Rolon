@@ -4,6 +4,8 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using Janus.Windows.GridEX;
+using PRESENTER.frm;
+using PRESENTER.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using UTILITY.Enum.EnEstado;
 using UTILITY.Global;
 
 namespace PRESENTER.alm
@@ -26,6 +29,7 @@ namespace PRESENTER.alm
             this.MP_CargarSucursales();
             this.MP_CargarAlmacenes(); 
             this.MP_AsignarPermisos();
+
         }
 
         //==================================
@@ -36,7 +40,7 @@ namespace PRESENTER.alm
         private Double _longitud = 0;
         private string _imagen = "Default.jpg";
         private bool _modificarImagen = false;
-
+        private string _NombreFormulario = "ALMACEN";
         private static int index;
         private static List<VAlmacenLista> listaAlmacen;
 
@@ -44,7 +48,24 @@ namespace PRESENTER.alm
 
         //==================================
         #region Metodos Privados
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
+        private void MP_Filtrar(int tipo)
+        {
+            MP_CargarAlmacenes();
+            if (Dgv_Almacenes.RowCount > 0)
+            {
+                index = 0;
+                MP_MostrarRegistro(tipo == 1 ? index : Dgv_Almacenes.RowCount - 1);
+            }
+            else
+            {
+                MP_Reiniciar();
+                LblPaginacion.Text = "0/0";
+            }
+        }
         private void MP_IniciarMapa()
         {
             _overlay = new GMapOverlay("points");
@@ -125,8 +146,8 @@ namespace PRESENTER.alm
             this.Cb_Sucursales.Enabled = false;
             this.Cb_TipoAlmacen.Enabled = false;
             this.lblId.Visible = false;
+            this.Dgv_Almacenes.Enabled = true;
         }
-
         private void MP_Habilitar()
         {
             this.Tb_Descrip.ReadOnly = false;
@@ -136,6 +157,7 @@ namespace PRESENTER.alm
             this.Cb_Sucursales.Enabled = true;
             this.Cb_TipoAlmacen.Enabled = true;
             this.BtAdicionar.Enabled = true;
+            this.Dgv_Almacenes.Enabled = false;
         }
 
         private bool MP_AccionResult()
@@ -365,26 +387,27 @@ namespace PRESENTER.alm
                 Encargado = Tb_Encargado.Text,
                 TipoAlmacenId = Convert.ToInt32(Cb_TipoAlmacen.Value)
             };
-
-            var mensaje = "";
-
             try
             {
-                if (new ServiceDesktop.ServiceDesktopClient().AlmacenGuardar(Almacen))
+                var Id = lblId.Text == "" ? 0 : Convert.ToInt32(lblId.Text);
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    servicio.AlmacenGuardar(Almacen, ref Id);
+                }
+                if (Id == 0)
                 {
                     base.MH_Habilitar();
                     this.MP_Reiniciar();
-                    this.MP_MostrarRegistro(0);
-                    mensaje = GLMensaje.Modificar_Exito("AlmacenES", Tb_Descrip.Text);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);                    
-                    return true;
+                    this.MP_MostrarRegistro(0);  
                 }
                 else
                 {
-                    mensaje = GLMensaje.Registro_Error("AlmacenES");
-                    this.MP_MostrarMensajeError(mensaje);
-                    return false;
+                    this.MP_Filtrar(2);
+                    this.MP_InHabilitar();
+                    MH_Habilitar();//El menu  
                 }
+                ToastNotification.Show(this, GLMensaje.Nuevo_Exito("TIPO ALMACEN", Id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                return true;
             }
             catch (Exception ex)
             {
@@ -392,7 +415,7 @@ namespace PRESENTER.alm
                 return false;
             }
         }
-
+     
         public override bool MH_Validar()
         {
             if (string.IsNullOrEmpty(Tb_Descrip.Text))
@@ -411,12 +434,69 @@ namespace PRESENTER.alm
             base.MH_Modificar();
             this.MP_Habilitar();
         }
-
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                int IdAlmacen = Convert.ToInt32(lblId.Text);
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                    {
+                        resul = servicio.EliminarAlmacen(IdAlmacen, ref LMensaje);
+                    }
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, lblId.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, lblId.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         #endregion
 
         //==================================
         #region Eventos
-
+        private void Dgv_Almacenes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Dgv_Almacenes.Row >= 0 && Dgv_Almacenes.RowCount >= 0)
+            {
+                MP_MostrarRegistro(Dgv_Almacenes.Row);
+            }
+        }
         private void F1_Almacen_Load(object sender, EventArgs e)
         {
             this.LblTitulo.Text = "ALMACENES";
@@ -465,7 +545,12 @@ namespace PRESENTER.alm
             index = listaAlmacen.Count - 1;
             this.MP_MostrarRegistro(index);
         }
-
+        private void Dgv_Almacenes_EditingCell(object sender, EditingCellEventArgs e)
+        {
+            e.Cancel = true;
+        }
         #endregion
+
+
     }
 }

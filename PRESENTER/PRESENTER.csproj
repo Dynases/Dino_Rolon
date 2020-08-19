@@ -595,6 +595,9 @@
     <EmbeddedResource Include="ven\F1_Ventas.resx">
       <DependentUpon>F1_Ventas.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.AlmacenGuardarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.ClienteGuardarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -605,6 +608,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.CompraModificarEstadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.EliminarAlmacenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.EliminarTipoAlmacenResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDesktop\PRESENTER.ServiceDesktop.GuardarCompraIngresoResponse.datasource">

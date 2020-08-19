@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.TipoAlmacen.view;
+﻿using ENTITY.adm.ValidacioinPrograma;
+using ENTITY.inv.TipoAlmacen.view;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
 using System;
@@ -61,7 +62,31 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
-
+        public bool Eliminar(int Id, ref List<string> mensaje)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    FValidacionPrograma validacionPrograma = new FValidacionPrograma();
+                    validacionPrograma.tablaOrigen = "INV.TipoAlmacen";
+                    if (new LValidacionPrograma().ValidadrEliminacion(Id, validacionPrograma, ref mensaje, false))
+                    {
+                        iTipoAlmacen.Eliminar(Id);
+                    }
+                    if (mensaje.Count > 0)
+                    {
+                        return false;
+                    }
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
     }
