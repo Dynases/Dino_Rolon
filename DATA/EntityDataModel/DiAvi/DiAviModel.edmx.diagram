@@ -97,6 +97,9 @@
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="22.5" PointY="23.125" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso_02" Width="1.5" PointX="10.5" PointY="12.125" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Almacen" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Traspaso" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

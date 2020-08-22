@@ -527,6 +527,15 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Lote" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="Traspaso_02">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TraspasoId" Type="int" Nullable="false" />
+          <Property Name="AlmacenId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
@@ -1543,6 +1552,30 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Traspaso_02_Almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+          <End Role="Traspaso_02" Type="Self.Traspaso_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_02">
+              <PropertyRef Name="AlmacenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_02_Traspaso">
+          <End Role="Traspaso" Type="Self.Traspaso" Multiplicity="1" />
+          <End Role="Traspaso_02" Type="Self.Traspaso_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Traspaso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_02">
+              <PropertyRef Name="TraspasoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Traspaso_IdAlmacenDestino">
           <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
           <End Role="Traspaso" Type="Self.Traspaso" Multiplicity="*" />
@@ -1760,6 +1793,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="Transformacion_01" EntityType="Self.Transformacion_01" Schema="INV" store:Type="Tables" />
           <EntitySet Name="Traspaso" EntityType="Self.Traspaso" Schema="INV" store:Type="Tables" />
           <EntitySet Name="Traspaso_01" EntityType="Self.Traspaso_01" Schema="INV" store:Type="Tables" />
+          <EntitySet Name="Traspaso_02" EntityType="Self.Traspaso_02" Schema="INV" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="REG" store:Type="Tables" />
           <EntitySet Name="Precio" EntityType="Self.Precio" Schema="REG" store:Type="Tables" />
           <EntitySet Name="PrecioCat" EntityType="Self.PrecioCat" Schema="REG" store:Type="Tables" />
@@ -2187,6 +2221,14 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Traspaso" EntitySet="Traspaso" />
             <End Role="Traspaso_01" EntitySet="Traspaso_01" />
           </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_02_Almacen" Association="Self.FK_Traspaso_02_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_02_Traspaso" Association="Self.FK_Traspaso_02_Traspaso">
+            <End Role="Traspaso" EntitySet="Traspaso" />
+            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
+          </AssociationSet>
           <AssociationSet Name="FK_Traspaso_IdAlmacenDestino" Association="Self.FK_Traspaso_IdAlmacenDestino">
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Traspaso" EntitySet="Traspaso" />
@@ -2525,6 +2567,15 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Producto" EntitySet="Producto" />
             <End Role="CompraIng_01" EntitySet="CompraIng_01" />
           </AssociationSet>
+          <EntitySet Name="Traspaso_02" EntityType="DiAviModel.Traspaso_02" />
+          <AssociationSet Name="FK_Traspaso_02_Almacen" Association="DiAviModel.FK_Traspaso_02_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_02_Traspaso" Association="DiAviModel.FK_Traspaso_02_Traspaso">
+            <End Role="Traspaso" EntitySet="Traspaso" />
+            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -2690,6 +2741,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Traspaso1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Almacen" ToRole="Traspaso" />
           <NavigationProperty Name="TI002" Relationship="DiAviModel.FK_TI002_IdAlmacen" FromRole="Almacen" ToRole="TI002" />
           <NavigationProperty Name="Venta" Relationship="DiAviModel.FK_Venta_Almacen" FromRole="Almacen" ToRole="Venta" />
+          <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Almacen" FromRole="Almacen" ToRole="Traspaso_02" />
           </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -3711,6 +3763,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Traspaso_IdAlmacenDestino" FromRole="Traspaso" ToRole="Almacen" />
           <NavigationProperty Name="Almacen1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Traspaso" ToRole="Almacen" />
           <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Traspaso" FromRole="Traspaso" ToRole="Traspaso_01" />
+          <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Traspaso" FromRole="Traspaso" ToRole="Traspaso_02" />
         </EntityType>
         <Association Name="FK_Traspaso_IdAlmacenDestino">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
@@ -4252,6 +4305,41 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Principal>
             <Dependent Role="CompraIng_01">
               <PropertyRef Name="IdProduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Traspaso_02">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TraspasoId" Type="Int32" Nullable="false" />
+          <Property Name="AlmacenId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Traspaso_02_Almacen" FromRole="Traspaso_02" ToRole="Almacen" />
+          <NavigationProperty Name="Traspaso" Relationship="DiAviModel.FK_Traspaso_02_Traspaso" FromRole="Traspaso_02" ToRole="Traspaso" />
+        </EntityType>
+        <Association Name="FK_Traspaso_02_Almacen">
+          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso_02" Role="Traspaso_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_02">
+              <PropertyRef Name="AlmacenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_02_Traspaso">
+          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso_02" Role="Traspaso_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Traspaso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_02">
+              <PropertyRef Name="TraspasoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5244,6 +5332,16 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdProduc" ColumnName="IdProduc" />
                 <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Traspaso_02">
+            <EntityTypeMapping TypeName="DiAviModel.Traspaso_02">
+              <MappingFragment StoreEntitySet="Traspaso_02">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="AlmacenId" ColumnName="AlmacenId" />
+                <ScalarProperty Name="TraspasoId" ColumnName="TraspasoId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

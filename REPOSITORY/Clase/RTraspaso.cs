@@ -14,8 +14,8 @@ using UTILITY.Enum.EnEstaticos;
 namespace REPOSITORY.Clase
 {
     public class RTraspaso : BaseConexion, ITraspaso
-    { 
-        
+    {
+
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         /********** VARIOS REGISTROS ***********/
@@ -50,7 +50,7 @@ namespace REPOSITORY.Clase
                             FechaRecepcion = ti.FechaRecepcion,
                             FechaEnvio = ti.FechaEnvio,
                             EstadoEnvio = ti.EstadoEnvio,
-                            EstadoEnvioDescripcion = ti.EstadoEnvio == 1? "SIN RECEPCION": "CON RECEPCION",
+                            EstadoEnvioDescripcion = ti.EstadoEnvio == 1 ? "SIN RECEPCION" : "CON RECEPCION",
                             TotalUnidad = ti.TotalUnidad,
                             Total = ti.Total,
                             Fecha = ti.FechaEnvio,
@@ -165,9 +165,9 @@ namespace REPOSITORY.Clase
                     traspaso.Total = vTraspaso.Total;
                     traspaso.Fecha = vTraspaso.Fecha;
                     traspaso.Hora = vTraspaso.Hora;
-                    traspaso.Usuario = vTraspaso.Usuario;                   
+                    traspaso.Usuario = vTraspaso.Usuario;
                     db.SaveChanges();
-                    id = traspaso.Id;                   
+                    id = traspaso.Id;
                     return true;
                 }
             }
@@ -192,7 +192,31 @@ namespace REPOSITORY.Clase
                     traspaso.EstadoEnvio = 2;
                     traspaso.Estado = (int)ENEstado.COMPLETADO;
                     db.SaveChanges();
-                    return true;                    
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void GuardarDetalleDisoft(int idTraspaso)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {                 
+                    Traspaso traspaso = db.Traspaso.Where(a => a.Id == idTraspaso).FirstOrDefault();
+                    if (traspaso == null)
+                    {
+                        throw new Exception("No se encontro el registro");
+                    }
+                    Traspaso_02 detalleDisoft = new Traspaso_02();
+                    detalleDisoft.AlmacenId = traspaso.IdAlmacenDestino;
+                    detalleDisoft.TraspasoId = traspaso.Id;
+                    detalleDisoft.Estado = 0;
+                    db.Traspaso_02.Add(detalleDisoft);
+                    db.SaveChanges();                   
                 }
             }
             catch (Exception ex)

@@ -93,6 +93,8 @@ namespace LOGIC.Class
                                 {
                                     return false;
                                 }
+                                //Registra el detalle de traspaso para ser utilizado en Disoft para controlar las salidas y recargado de producto.
+                                iTraspaso.GuardarDetalleDisoft(idTraspaso);
                             }
                         }
                     }

@@ -18,6 +18,7 @@ namespace DATA.EntityDataModel.DiAvi
         public Traspaso()
         {
             this.Traspaso_01 = new HashSet<Traspaso_01>();
+            this.Traspaso_02 = new HashSet<Traspaso_02>();
         }
     
         public int Id { get; set; }
@@ -40,5 +41,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual Almacen Almacen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Traspaso_01> Traspaso_01 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Traspaso_02> Traspaso_02 { get; set; }
     }
 }

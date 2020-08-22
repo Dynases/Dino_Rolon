@@ -76,6 +76,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<TI0021A> TI0021A { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
         public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
+        public virtual DbSet<Traspaso_02> Traspaso_02 { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {
