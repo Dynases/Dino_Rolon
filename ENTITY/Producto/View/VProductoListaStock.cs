@@ -16,10 +16,8 @@ namespace ENTITY.Producto.View
 
         public string CodigoProducto { get; set; }
 
-        public string CodigoBarras { get; set; }
-
         public string Producto { get; set; }
-        public string MarcaProducto { get; set; }
+        public string Division { get; set; }
 
         public string TipoProducto { get; set; }
         public string CategoriaProducto { get; set; }

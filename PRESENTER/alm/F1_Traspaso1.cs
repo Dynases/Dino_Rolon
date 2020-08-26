@@ -530,15 +530,21 @@ namespace PRESENTER.alm
                 Dgv_Producto.RootTable.Columns["IdProducto"].Visible = false;
                 Dgv_Producto.RootTable.Columns["IdAlmacen"].Visible = false;
                 Dgv_Producto.RootTable.Columns["IdCategoriaPrecio"].Visible = false;
+                Dgv_Producto.RootTable.Columns["PrecioMinVenta"].Visible = false;
+                Dgv_Producto.RootTable.Columns["PrecioMaxVenta"].Visible = false;
+                Dgv_Producto.RootTable.Columns["EsLote"].Visible = false;
+                Dgv_Producto.RootTable.Columns["Contenido"].Visible = false;
+                Dgv_Producto.RootTable.Columns["TipoProducto"].Visible = false;
+                Dgv_Producto.RootTable.Columns["CategoriaProducto"].Visible = false;
+                Dgv_Producto.RootTable.Columns["PrecioVenta"].Visible = false;
+                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Visible = false;
 
-                Dgv_Producto.RootTable.Columns["CodigoProducto"].Caption = "Codigo Producto";
+                Dgv_Producto.RootTable.Columns["CodigoProducto"].Caption = "Codigo";
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Width = 80;
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].CellStyle.FontSize = 8;
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Visible = true;
-
-                Dgv_Producto.RootTable.Columns["CodigoBarras"].Visible = false;
 
                 Dgv_Producto.RootTable.Columns["Producto"].Caption = "Producto";
                 Dgv_Producto.RootTable.Columns["Producto"].Width = 180;
@@ -547,26 +553,12 @@ namespace PRESENTER.alm
                 Dgv_Producto.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
                 Dgv_Producto.RootTable.Columns["Producto"].Visible = true;
 
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].Caption = "Marca";
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].Width = 100;
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].CellStyle.FontSize = 8;
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_Producto.RootTable.Columns["MarcaProducto"].Visible = true;
-
-                Dgv_Producto.RootTable.Columns["TipoProducto"].Caption = "Tipo";
-                Dgv_Producto.RootTable.Columns["TipoProducto"].Width = 100;
-                Dgv_Producto.RootTable.Columns["TipoProducto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Producto.RootTable.Columns["TipoProducto"].CellStyle.FontSize = 8;
-                Dgv_Producto.RootTable.Columns["TipoProducto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_Producto.RootTable.Columns["TipoProducto"].Visible = true;
-
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].Caption = "Categoria";
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].Width = 100;
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].CellStyle.FontSize = 8;
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_Producto.RootTable.Columns["CategoriaProducto"].Visible = true;
+                Dgv_Producto.RootTable.Columns["Division"].Caption = "División";
+                Dgv_Producto.RootTable.Columns["Division"].Width = 100;
+                Dgv_Producto.RootTable.Columns["Division"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_Producto.RootTable.Columns["Division"].CellStyle.FontSize = 8;
+                Dgv_Producto.RootTable.Columns["Division"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+                Dgv_Producto.RootTable.Columns["Division"].Visible = true;
 
                 Dgv_Producto.RootTable.Columns["UnidadVenta"].Caption = "UN.";
                 Dgv_Producto.RootTable.Columns["UnidadVenta"].Width = 60;
@@ -575,21 +567,13 @@ namespace PRESENTER.alm
                 Dgv_Producto.RootTable.Columns["UnidadVenta"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Producto.RootTable.Columns["UnidadVenta"].Visible = true;
 
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].Caption = "Precio";
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].Width = 100;
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].FormatString = "0.00";
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].CellStyle.FontSize = 8;
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Producto.RootTable.Columns["PrecioVenta"].Visible = true;
-
-                Dgv_Producto.RootTable.Columns["PrecioCosto"].Caption = "PrecioCosto";
+                Dgv_Producto.RootTable.Columns["PrecioCosto"].Caption = "P. Costo";
                 Dgv_Producto.RootTable.Columns["PrecioCosto"].Width = 100;
                 Dgv_Producto.RootTable.Columns["PrecioCosto"].FormatString = "0.00";
                 Dgv_Producto.RootTable.Columns["PrecioCosto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_Producto.RootTable.Columns["PrecioCosto"].CellStyle.FontSize = 8;
                 Dgv_Producto.RootTable.Columns["PrecioCosto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
-                Dgv_Producto.RootTable.Columns["PrecioCosto"].Visible = false;
+                Dgv_Producto.RootTable.Columns["PrecioCosto"].Visible = true;
 
                 Dgv_Producto.RootTable.Columns["Stock"].Caption = "Stock";
                 Dgv_Producto.RootTable.Columns["Stock"].Width = 100;
@@ -598,13 +582,6 @@ namespace PRESENTER.alm
                 Dgv_Producto.RootTable.Columns["Stock"].CellStyle.FontSize = 8;
                 Dgv_Producto.RootTable.Columns["Stock"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
                 Dgv_Producto.RootTable.Columns["Stock"].Visible = true;
-
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Caption = "CategoriaPrecio";
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Width = 120;
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].CellStyle.FontSize = 8;
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Visible = true;
 
                 //Habilitar filtradores
                 Dgv_Producto.DefaultFilterRowComparison = FilterConditionOperator.Contains;
@@ -624,13 +601,17 @@ namespace PRESENTER.alm
             {
 
                 GPanel_Producto.Text = "SELECCIONE PRODUCTOS";
-                var almacen = new ServiceDesktop.ServiceDesktopClient()
-                                                        .AlmacenListar()
-                                                        .ToList()
-                                                        .Find(a => a.Id == Convert.ToInt32(Cb_Origen.Value));
-                var lProductosConStock = new ServiceDesktop.ServiceDesktopClient().ListarProductosStock(almacen.SucursalId, almacen.Id,(int)ENCategoriaPrecio.COSTO).ToList();
-                MP_CargarProducto(lProductosConStock);
-                MP_HabilitarProducto();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    var almacen =  servicio.AlmacenListar().ToList() .Find(a => a.Id == Convert.ToInt32(Cb_Origen.Value));
+                    var lProductosConStock = servicio.ListarProductosStock(almacen.SucursalId, almacen.Id, (int)ENCategoriaPrecio.COSTO).ToList();
+                    if (lProductosConStock == null)
+                        lProductosConStock = new List<VProductoListaStock>();
+                    MP_CargarProducto(lProductosConStock);
+                    MP_HabilitarProducto();
+                } 
+
+               
             }
             catch (Exception ex)
             {
@@ -692,7 +673,7 @@ namespace PRESENTER.alm
                         LTraspasoDetalle = ((List<VTraspaso_01>)Dgv_Detalle.DataSource).ToList();
                         var lista = LTraspasoDetalle.Where(t => t.Id == idDetalle).FirstOrDefault();
                         LTraspasoDetalle.Remove(lista);
-                        MP_ArmarDetalle();
+                        MP_ArmarDetalle();  
                     }
                     else
                     {
@@ -937,11 +918,10 @@ namespace PRESENTER.alm
             {
                 if (Cb_Origen.ReadOnly == false)
                 {
-                    if (e.KeyData == Keys.Enter)
+                    if (e.KeyData == Keys.Enter && Dgv_Producto.Row > -1)
                     {
                         int idLote = 0;
-                        var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
-                        var cantidad = Convert.ToInt32(Dgv_Detalle.GetValue("Cantidad"));                       
+                        var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));              
                         if (idDetalle > 0)
                         {
                             if (vProductos.IdProducto == 0)
@@ -959,7 +939,9 @@ namespace PRESENTER.alm
                                     throw new Exception("El producto " + producto + "no cuenta con STOCK disponible.");
                                 }
 
-                                var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(vProductos.IdProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
+                                var InventarioLotes = new ServiceDesktop.ServiceDesktopClient()
+                                                                         .TraerInventarioLotes(vProductos.IdProducto,
+                                                                                                Convert.ToInt32(Cb_Origen.Value)).ToList();
                                 //Veridica si se mostrara la seleccion de lotes
                                 if (vProductos.EsLote == 2)
                                 {

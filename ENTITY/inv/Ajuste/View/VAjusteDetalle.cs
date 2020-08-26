@@ -34,6 +34,7 @@ namespace ENTITY.inv.Ajuste.View
         public decimal Total { get; set; }
         public string Lote { get; set; }
         public DateTime FechaVen { get; set; }
+        public decimal Stock { get; set; }
         public int Estado { get; set; }
     }
 }

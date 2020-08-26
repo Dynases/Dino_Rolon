@@ -317,7 +317,7 @@ namespace REPOSITORY.Clase
                                             prc.Id == IdCategoriaPrecio &&
                                             prcc.Id == (int)ENCategoriaPrecio.COSTO && //Precio de costo Id Estatico
                                             l.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && l.IdOrden == (int)ENEstaticosOrden.PRODUCTO_UN_VENTA &&
-                                            m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
+                                            m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO1 &&
                                             t.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && t.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
                                             c.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && c.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO4 
                                       select new VProductoListaStock
@@ -325,10 +325,9 @@ namespace REPOSITORY.Clase
                                           IdProducto = p.Id,
                                           IdAlmacen = a.Id,
                                           IdCategoriaPrecio = prc.Id,
-                                          CodigoProducto = p.IdProd,
-                                          CodigoBarras = p.CodBar,
+                                          CodigoProducto = p.IdProd,                         
                                           Producto = p.Descrip,
-                                          MarcaProducto = m.Descrip,
+                                          Division = m.Descrip,
                                           TipoProducto = t.Descrip,
                                           CategoriaProducto = t.Descrip,
                                           PrecioVenta = pr.Precio1,
