@@ -38,7 +38,7 @@ namespace LOGIC.Class
                         detalleAnterior = iAjuste.ListaDetalle(ajuste.Id);
                     }
 
-                    int id = 0;
+                    int id = ajuste.Id;
                     //Ajuste
                     iAjuste.Guardar(ajuste, ref id, usuario);
                     iAjuste.GuardarDetalle(detalle, id);

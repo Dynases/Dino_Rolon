@@ -92,6 +92,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
             // btnAnterior
             // 
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
@@ -134,7 +138,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1199, 631);
             // 
             // btnMin
             // 
@@ -150,7 +154,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1199, 631);
             // 
             // 
             // 
@@ -182,7 +186,8 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1193, 605);
+            this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             // 
             // PanelContenidoRegistro
             // 

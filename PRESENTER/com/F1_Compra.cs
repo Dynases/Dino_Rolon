@@ -36,14 +36,9 @@ namespace PRESENTER.com
 
         public F1_Compra()
         {
-            //prueba
             InitializeComponent();
             MP_Iniciar();
             superTabControl1.SelectedTabIndex = 0;
-        }
-
-        private void F1_Compra_Load(object sender, EventArgs e)
-        {
             this.Name = _NombreFormulario;
         }
         #region Metodos privados
@@ -52,11 +47,11 @@ namespace PRESENTER.com
             try
             {
                 LblTitulo.Text = _NombreFormulario;
-                MP_CargarAlmacenes();
-                //btnMax.Visible = false;
+                MP_CargarAlmacenes();              
                 MP_CargarEncabezado();
                 MP_InHabilitar();
                 MP_AsignarPermisos();
+                MP_CambioValorSwitchEmision();
             }
             catch (Exception ex)
             {
@@ -91,7 +86,10 @@ namespace PRESENTER.com
         public void MP_LimpiarColor()
         {
             Tb_Total.BackColor = Color.White;          
-            Cb_Almacen.BackColor = Color.White;          
+            Cb_Almacen.BackColor = Color.White;
+            Tb_Recibo.BackColor = Color.White;
+            Tb_NFactura.BackColor = Color.White;
+            Tb_Proveedor.BackColor = Color.White;
         }
         private void MP_CargarAlmacenes()
         {
@@ -108,8 +106,7 @@ namespace PRESENTER.com
         private void MP_CargarEncabezado()
         {
             try
-            {
-                //var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista().Where(a => _almacens.Select(x => x.IdLibreria).Contains(a.IdAlmacen)).ToList();
+            {               
                 var ListaCompleta = new ServiceDesktop.ServiceDesktopClient().Compra_Lista(UTGlobal.UsuarioId).ToList();
                 Dgv_GBuscador.DataSource = ListaCompleta;
                 Dgv_GBuscador.RetrieveStructure();
@@ -415,8 +412,8 @@ namespace PRESENTER.com
                 Tb_Fecha.Value = DateTime.Today;
                 Tb_FechaVenc.Value = DateTime.Today;
                 Tb_Observacion.Clear();
-                Tb_NFactura.Clear();
-                Sw_Emision.Value = true;
+                Tb_NFactura.Text = "0";
+                Sw_Emision.Text = "0";
                 Sw_TipoVenta.Value = true;               
                 if (_Limpiar == false)
                 {
@@ -426,11 +423,8 @@ namespace PRESENTER.com
                 ListaDetalle.Clear();
                 MP_LimpiarColor();
                 MP_AddFila();
-                Tb_MDesc.Value = 0;
-                Tb_PDesc.Value = 0;
-                Tb_Total.Value = 0;
-                // ((DataTable)Dgv_Detalle.DataSource).Clear();
-                //  Dgv_Detalle.DataSource = null;
+                Tb_MDesc.Value = 0;                
+                Tb_Total.Value = 0;    
             }
             catch (Exception ex)
             {
@@ -463,7 +457,6 @@ namespace PRESENTER.com
                     Tb_MDesc.Value = Convert.ToDouble(Lista.Descu);
                     Tb_Total.Value = Convert.ToDouble(Lista.Total);
                     MP_ObtenerCalculo();
-
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
                 }
             }
@@ -476,7 +469,6 @@ namespace PRESENTER.com
         {
             try
             {
-                Dgv_Detalle.UpdateData();
                 var total= Convert.ToDouble(Dgv_Detalle.GetTotal(Dgv_Detalle.RootTable.Columns["Total"], AggregateFunction.Sum));
                 var totaldesc = total - Tb_MDesc.Value;
                 Tb_Total.Value = totaldesc;
@@ -548,7 +540,7 @@ namespace PRESENTER.com
                 GPanel_Producto.Visible = false;
                 GPanel_Producto.Height = 30;
                 Dgv_Detalle.Select();
-                Dgv_Detalle.Col = 5;
+                Dgv_Detalle.Col = 6;
                 Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1;
             }
             catch (Exception ex)
@@ -577,7 +569,7 @@ namespace PRESENTER.com
             try
             {
                 GPanel_Producto.Visible = true;
-                GPanel_Producto.Height = 350; 
+                GPanel_Producto.Height = 250; 
                 Dgv_Producto.Focus();
                 Dgv_Producto.MoveTo(Dgv_Producto.FilterRow);
                 Dgv_Producto.Col = 3;
@@ -733,6 +725,7 @@ namespace PRESENTER.com
                     porcentaje = (precioCompra + ((precioCompra)) * (utilidad / 100));
                     Dgv_Detalle.CurrentRow.Cells["Porcent"].Value = porcentaje;
                 }
+                Dgv_Detalle.UpdateData();
                 MP_ObtenerCalculo();
             }
             catch (Exception ex)
@@ -747,7 +740,7 @@ namespace PRESENTER.com
                 
                 if (Tb_Observacion.ReadOnly == false)
                 {
-                    if (e.KeyData == Keys.Enter)
+                    if (e.KeyData == Keys.Enter && Dgv_Producto.Row >-1)
                     {
                         var idDetalle = Convert.ToInt32(Dgv_Detalle.GetValue("id"));
                         if (idDetalle > 0)
@@ -787,12 +780,14 @@ namespace PRESENTER.com
                                     fila.Cantidad = 1;
                                     fila.Costo = PrecioCompra;
                                     fila.Porcent = PrecioVenta;
-                                    fila.Utilidad = (((PrecioVenta - PrecioCompra) * 100) / PrecioCompra);
+                                    fila.Utilidad = (((PrecioVenta - PrecioCompra) * 100) == 0? 0 : (((PrecioVenta - PrecioCompra) * 100) / PrecioCompra));
                                     fila.Total = PrecioCompra;
                                 }
                             }
                             MP_ArmarDetalle();
                             MP_InHabilitarProducto();
+                            if (PrecioCompra == 0)
+                                throw new Exception("El precio se encuentra en 0".ToUpper());
                         }
                     }
                     if (e.KeyData == Keys.Escape)
@@ -880,8 +875,8 @@ namespace PRESENTER.com
                     efecto.Tabla = lista;
                     efecto.SelectCol = 2;
                     efecto.listaCelda = listEstCeldas;
-                    efecto.Alto = 50;
-                    efecto.Ancho = 350;
+                    efecto.Alto = 100;
+                    efecto.Ancho = 300;
                     efecto.Context = "SELECCIONE UN PROVEEDOR";
                     efecto.ShowDialog();
                     bool bandera = false;
@@ -893,6 +888,7 @@ namespace PRESENTER.com
                         {
                             _IdProveedor = Convert.ToInt32(Row.Cells["Id"].Value);
                             Tb_Proveedor.Text = Row.Cells["Descrip"].Value.ToString();
+                            Dgv_Detalle.Select();
                         }                      
                     }
                 }
@@ -913,7 +909,12 @@ namespace PRESENTER.com
         }
         private void Sw_Emision_ValueChanged(object sender, EventArgs e)
         {
-            if (Sw_Emision.Value == true)
+            MP_CambioValorSwitchEmision();
+        }
+
+        private void MP_CambioValorSwitchEmision()
+        {
+            if (Sw_Emision.Value)
             {
                 lbNFactura.Visible = true;
                 Tb_NFactura.Visible = true;
@@ -928,6 +929,7 @@ namespace PRESENTER.com
                 Tb_Recibo.Visible = true;
             }
         }
+
         private void Tb_MDesc_ValueChanged(object sender, EventArgs e)
         {
             MP_ObtenerCalculo();
@@ -997,25 +999,6 @@ namespace PRESENTER.com
         }
         #endregion
         #region Metodo heredados
-        private void MP_VerificarExistenciaLote()
-        {
-            int IdCompra = Convert.ToInt32(Tb_Id.Text);
-            var compra_01 = new ServiceDesktop.ServiceDesktopClient().Compra_01_Lista(IdCompra).ToList();
-            var detalle = ((List<VCompra_01>)Dgv_Detalle.DataSource).ToList();
-            foreach (var item in detalle)
-            {
-                if (new ServiceDesktop.ServiceDesktopClient().CompraIngreso_ExisteEnSeleccion(IdCompra))
-                {
-                    throw new Exception("La compra esta asociado a una Seleccion.");
-                }
-                var producto = compra_01.Where(p=> p.IdProducto == item.IdProducto).FirstOrDefault();
-                if (item.Lote == producto.Lote && item.FechaVen == producto.FechaVen)
-                {
-
-                }
-            }
-           
-        }
         public override bool MH_NuevoRegistro()
         {
             bool resultado = false;
@@ -1043,9 +1026,11 @@ namespace PRESENTER.com
                 int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
                 int idAux = id;
                 var detalle = ((List<VCompra_01>)Dgv_Detalle.DataSource).ToArray<VCompra_01>();
-                List<string> Mensaje = new List<string>();
-                var LMensaje = Mensaje.ToArray();
-                resultado = new ServiceDesktop.ServiceDesktopClient().CompraGuardar(CompraIngreso, detalle, ref id, ref LMensaje, TxtNombreUsu.Text);
+                var LMensaje = new List<string>().ToArray();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    resultado = new ServiceDesktop.ServiceDesktopClient().CompraGuardar(CompraIngreso, detalle, ref id, ref LMensaje, TxtNombreUsu.Text);
+                }
                 if (resultado)
                 {
                     if (idAux == 0)//Registar
@@ -1054,26 +1039,23 @@ namespace PRESENTER.com
                         MP_Filtrar(1);
                         MP_Limpiar();
                         _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
                     }
                     else//Modificar
                     {
                         MP_Filtrar(2);
-                        MP_InHabilitar();//El formulario
-                        _Limpiar = true;
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                        MH_Habilitar();//El menu                   
+                        MP_InHabilitar();
+                        MH_Habilitar();                 
                     }
                 }
-                //Resultado
+                mensaje = idAux == 0 ? GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString()) :
+                                       GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                
                 if (resultado)
                 {
-
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    MP_MostrarMensajeExito(mensaje);
                 }
                 else
                 {
-                    //Obtiene los productos sin stock
                     var mensajeLista = LMensaje.ToList();
                     if (mensajeLista.Count > 0)
                     {
@@ -1083,12 +1065,9 @@ namespace PRESENTER.com
                             mensajes = mensajes + "- " + item + "\n";
                         }
                         MP_MostrarMensajeError(mensajes);
-                        return false;
-                    }
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    }             
                 }
-                return resultado;
+                return true;
             }
             catch (Exception ex)
             {
@@ -1149,6 +1128,7 @@ namespace PRESENTER.com
         {
             MP_Habilitar();
             MP_Limpiar();
+            Tb_Proveedor.Focus();
 
         }        
         public override void MH_Modificar()
@@ -1196,6 +1176,28 @@ namespace PRESENTER.com
                 }
                 else
                     Tb_Proveedor.BackColor = Color.White;
+                if (Sw_Emision.Value)
+                {
+                    if (Tb_NFactura.Text != string.Empty)
+                    {
+                        Tb_NFactura.BackColor = Color.Red;
+                        _Error = true;
+                        throw new Exception("Debe Ingresar la factura");
+                    }
+                    else
+                        Tb_NFactura.BackColor = Color.White;
+                }
+                else
+                {
+                    if (Tb_Recibo.Text != string.Empty)
+                    {
+                        Tb_Recibo.BackColor = Color.Red;
+                        _Error = true;
+                        throw new Exception("Debe Ingresar la factura");
+                    }
+                    else
+                        Tb_Recibo.BackColor = Color.White;
+                }
                 return _Error;
             }
             catch (Exception ex)

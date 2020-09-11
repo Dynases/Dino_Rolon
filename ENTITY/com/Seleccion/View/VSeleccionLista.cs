@@ -18,5 +18,7 @@ namespace ENTITY.com.Seleccion.View
         public string TipoCategoria { get; set; }
         public string Edad { get; set; }
         public string tipoCompra { get; set; }
+        public int AlmacenCompraId { get; set; }
+
     }
 }

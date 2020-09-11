@@ -101,6 +101,9 @@ namespace PRESENTER.com
             {
                 var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
                 UTGlobal.MG_ArmarComboAlmacen(Cb_Almacen, almacenes);
+
+                var almaceneCompra = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
+                UTGlobal.MG_ArmarComboAlmacen(cbAlmacenCompra, almaceneCompra);
             }
             catch (Exception ex)
             {
@@ -522,6 +525,7 @@ namespace PRESENTER.com
             Dgv_Detalle.Enabled = true;
             Dgv_Seleccion.Enabled = true;
             Cb_Almacen.ReadOnly = false;
+
         }
         private void MP_InHabilitar()
         {
@@ -540,6 +544,7 @@ namespace PRESENTER.com
             Dgv_Detalle.Enabled = false;
             Dgv_Seleccion.Enabled = false;
             Cb_Almacen.ReadOnly = true;
+            cbAlmacenCompra.ReadOnly = true;
         }
         private void MP_Limpiar()
         {
@@ -560,6 +565,7 @@ namespace PRESENTER.com
                     UTGlobal.MG_SeleccionarCombo(Cb_Placa);
                     UTGlobal.MG_SeleccionarComboCompraIngreso(cb_NumGranja);
                     UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen);
+                    UTGlobal.MG_SeleccionarCombo_Almacen(cbAlmacenCompra);
                 }
                 //((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).Clear();
                 Dgv_Detalle.DataSource = null;

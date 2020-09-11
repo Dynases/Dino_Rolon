@@ -324,9 +324,9 @@ namespace UTILITY.Global
             try
             {
                 combo.DropDownList.Columns.Clear();
-                combo.DropDownList.Columns.Add("idLibreria").Width = 70;
+                combo.DropDownList.Columns.Add("idLibreria").Width = 50;
                 combo.DropDownList.Columns[0].Caption = "Cod";
-                combo.DropDownList.Columns[0].Visible = false;
+                combo.DropDownList.Columns[0].Visible = true;
 
                 combo.DropDownList.Columns.Add("Descripcion").Width = 500;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";

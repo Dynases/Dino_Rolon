@@ -234,7 +234,8 @@ namespace REPOSITORY.Clase
                          Merma = a.Merma,
                          Fecha = a.Fecha,
                          Hora = a.Hora,
-                         Usuario = a.Usuario
+                         Usuario = a.Usuario,
+                         AlmacenCompraId = a.CompraIng.IdAlmacen
                      }).FirstOrDefault();
                     return lista;
                 }

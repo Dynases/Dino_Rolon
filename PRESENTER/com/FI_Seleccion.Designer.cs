@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cbAlmacenCompra_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FI_Seleccion));
+            Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Placa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Almacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -56,6 +57,8 @@
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.PanelIzquierda = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cbAlmacenCompra = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.cb_NumGranja = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Cb_Placa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.tb_FechaSeleccion = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -121,6 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tb_Recep_TCantidad)).BeginInit();
             this.PanelIzquierda.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAlmacenCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).BeginInit();
@@ -186,7 +190,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Controls.Add(this.groupPanel2);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1166, 597);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.PanelUsuario, 0);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.GMPanel_Buscardor, 0);
             this.PanelContenidoBuscar.Controls.SetChildIndex(this.groupPanel2, 0);
@@ -206,8 +210,8 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 56);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1166, 541);
+            this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, -25);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 541);
             // 
             // 
             // 
@@ -239,7 +243,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1160, 515);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 515);
             this.Dgv_GBuscador.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_GBuscador_EditingCell);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
@@ -705,6 +709,8 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.cbAlmacenCompra);
+            this.GPanel_DatosGenerales.Controls.Add(this.labelX15);
             this.GPanel_DatosGenerales.Controls.Add(this.cb_NumGranja);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_Placa);
             this.GPanel_DatosGenerales.Controls.Add(this.tb_FechaSeleccion);
@@ -764,6 +770,41 @@
             this.GPanel_DatosGenerales.TabIndex = 85;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
             // 
+            // cbAlmacenCompra
+            // 
+            this.cbAlmacenCompra.BackColor = System.Drawing.Color.White;
+            cbAlmacenCompra_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacenCompra_DesignTimeLayout.LayoutString");
+            this.cbAlmacenCompra.DesignTimeLayout = cbAlmacenCompra_DesignTimeLayout;
+            this.cbAlmacenCompra.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cbAlmacenCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAlmacenCompra.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cbAlmacenCompra.Location = new System.Drawing.Point(128, 318);
+            this.cbAlmacenCompra.Name = "cbAlmacenCompra";
+            this.cbAlmacenCompra.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cbAlmacenCompra.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cbAlmacenCompra.SelectedIndex = -1;
+            this.cbAlmacenCompra.SelectedItem = null;
+            this.cbAlmacenCompra.Size = new System.Drawing.Size(195, 22);
+            this.cbAlmacenCompra.TabIndex = 382;
+            this.cbAlmacenCompra.Tag = "1";
+            this.cbAlmacenCompra.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
+            // 
+            // labelX15
+            // 
+            this.labelX15.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.labelX15.Location = new System.Drawing.Point(3, 317);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX15.Size = new System.Drawing.Size(125, 23);
+            this.labelX15.TabIndex = 383;
+            this.labelX15.Text = "Almacen de Compra";
+            // 
             // cb_NumGranja
             // 
             this.cb_NumGranja.BackColor = System.Drawing.Color.White;
@@ -772,7 +813,7 @@
             this.cb_NumGranja.DisabledBackColor = System.Drawing.Color.Blue;
             this.cb_NumGranja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_NumGranja.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.cb_NumGranja.Location = new System.Drawing.Point(151, 70);
+            this.cb_NumGranja.Location = new System.Drawing.Point(170, 70);
             this.cb_NumGranja.Name = "cb_NumGranja";
             this.cb_NumGranja.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.cb_NumGranja.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -792,7 +833,7 @@
             this.Cb_Placa.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Placa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Placa.Location = new System.Drawing.Point(109, 185);
+            this.Cb_Placa.Location = new System.Drawing.Point(128, 185);
             this.Cb_Placa.Name = "Cb_Placa";
             this.Cb_Placa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Placa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -814,7 +855,7 @@
             this.tb_FechaSeleccion.ButtonDropDown.Visible = true;
             this.tb_FechaSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_FechaSeleccion.IsPopupCalendarOpen = false;
-            this.tb_FechaSeleccion.Location = new System.Drawing.Point(152, 101);
+            this.tb_FechaSeleccion.Location = new System.Drawing.Point(171, 101);
             // 
             // 
             // 
@@ -873,7 +914,7 @@
             this.Cb_Almacen.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Almacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Almacen.Location = new System.Drawing.Point(110, 314);
+            this.Cb_Almacen.Location = new System.Drawing.Point(130, 351);
             this.Cb_Almacen.Name = "Cb_Almacen";
             this.Cb_Almacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Almacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -893,12 +934,12 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(5, 313);
+            this.labelX11.Location = new System.Drawing.Point(5, 350);
             this.labelX11.Name = "labelX11";
             this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX11.Size = new System.Drawing.Size(71, 23);
+            this.labelX11.Size = new System.Drawing.Size(120, 23);
             this.labelX11.TabIndex = 341;
-            this.labelX11.Text = "Almacen";
+            this.labelX11.Text = "Almacen de Selecc.:";
             // 
             // Tb_Id
             // 
@@ -910,10 +951,10 @@
             this.Tb_Id.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Id.Location = new System.Drawing.Point(152, 14);
+            this.Tb_Id.Location = new System.Drawing.Point(173, 14);
             this.Tb_Id.Name = "Tb_Id";
             this.Tb_Id.PreventEnterBeep = true;
-            this.Tb_Id.Size = new System.Drawing.Size(66, 23);
+            this.Tb_Id.Size = new System.Drawing.Size(153, 23);
             this.Tb_Id.TabIndex = 339;
             // 
             // labelX10
@@ -943,7 +984,7 @@
             this.Tb_Edad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_Edad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_Edad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_Edad.Location = new System.Drawing.Point(109, 284);
+            this.Tb_Edad.Location = new System.Drawing.Point(128, 284);
             this.Tb_Edad.MaxLength = 50;
             this.Tb_Edad.Name = "Tb_Edad";
             this.Tb_Edad.PreventEnterBeep = true;
@@ -974,7 +1015,7 @@
             this.Cb_Tipo.DisabledBackColor = System.Drawing.Color.Blue;
             this.Cb_Tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cb_Tipo.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_Tipo.Location = new System.Drawing.Point(110, 256);
+            this.Cb_Tipo.Location = new System.Drawing.Point(129, 256);
             this.Cb_Tipo.Name = "Cb_Tipo";
             this.Cb_Tipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_Tipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
@@ -1011,7 +1052,7 @@
             this.tb_Proveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tb_Proveedor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Proveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.tb_Proveedor.Location = new System.Drawing.Point(110, 217);
+            this.tb_Proveedor.Location = new System.Drawing.Point(129, 217);
             this.tb_Proveedor.MaxLength = 50;
             this.tb_Proveedor.Name = "tb_Proveedor";
             this.tb_Proveedor.PreventEnterBeep = true;
@@ -1061,7 +1102,7 @@
             this.Tb_FechaRec.ButtonDropDown.Visible = true;
             this.Tb_FechaRec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_FechaRec.IsPopupCalendarOpen = false;
-            this.Tb_FechaRec.Location = new System.Drawing.Point(154, 157);
+            this.Tb_FechaRec.Location = new System.Drawing.Point(173, 157);
             // 
             // 
             // 
@@ -1107,7 +1148,7 @@
             this.Tb_FechaEnt.ButtonDropDown.Visible = true;
             this.Tb_FechaEnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_FechaEnt.IsPopupCalendarOpen = false;
-            this.Tb_FechaEnt.Location = new System.Drawing.Point(153, 128);
+            this.Tb_FechaEnt.Location = new System.Drawing.Point(172, 128);
             // 
             // 
             // 
@@ -1152,7 +1193,7 @@
             this.Tb_IdCompraIngreso.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Tb_IdCompraIngreso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tb_IdCompraIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.Tb_IdCompraIngreso.Location = new System.Drawing.Point(152, 43);
+            this.Tb_IdCompraIngreso.Location = new System.Drawing.Point(171, 43);
             this.Tb_IdCompraIngreso.Name = "Tb_IdCompraIngreso";
             this.Tb_IdCompraIngreso.PreventEnterBeep = true;
             this.Tb_IdCompraIngreso.Size = new System.Drawing.Size(155, 23);
@@ -1236,7 +1277,7 @@
             this.groupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupPanel2.Location = new System.Drawing.Point(0, 0);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1166, 60);
+            this.groupPanel2.Size = new System.Drawing.Size(958, 60);
             // 
             // 
             // 
@@ -1283,7 +1324,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1160, 37);
+            this.panel6.Size = new System.Drawing.Size(952, 37);
             this.panel6.TabIndex = 234;
             // 
             // BtnExportar2
@@ -1501,6 +1542,7 @@
             this.PanelIzquierda.ResumeLayout(false);
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAlmacenCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Placa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_FechaSeleccion)).EndInit();
@@ -1573,5 +1615,7 @@
         protected internal DevComponents.DotNetBar.LabelX labelX23;
         private Janus.Windows.EditControls.UIButton BtnExportar2;
         private Janus.Windows.EditControls.UIButton BtnActualizar;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cbAlmacenCompra;
+        internal DevComponents.DotNetBar.LabelX labelX15;
     }
 }

@@ -35,15 +35,15 @@ namespace REPOSITORY.Clase
                     {
                         data = new TI002();
                         db.TI002.Add(data);
+                        data.ibid = db.TI002.Select(a => a.ibid).DefaultIfEmpty(0).Max() + 1;
+                        data.ibconcep = ajuste.IdConcepto;
+                        data.ibalm = ajuste.IdAlmacen;
+                        data.ibdepdest = 0;
+                        data.ididdestino = 0;
+                        data.ibiddc = 0;
                     }
-                    data.ibid = db.TI002.Select(a => a.ibid).DefaultIfEmpty(0).Max() + 1;
-                    data.ibfdoc = ajuste.Fecha;
-                    data.ibconcep = ajuste.IdConcepto;
+                    data.ibfdoc = ajuste.Fecha;               
                     data.ibobs = ajuste.Obs;
-                    data.ibalm = ajuste.IdAlmacen;
-                    data.ibdepdest = 0;
-                    data.ididdestino = 0;
-                    data.ibiddc = 0;
                     data.ibfact = DateTime.Today;
                     data.ibhact = DateTime.Now.ToString("HH:mm");
                     data.ibuact = usuario;
@@ -161,6 +161,7 @@ namespace REPOSITORY.Clase
 
                                 db.TI0021.Add(data);
                                 db.TI0021A.Add(data2);
+                                db.SaveChanges();
                                 break;
                             case (int)ENEstado.MODIFICAR:
                                 data = db.TI0021.Where(a => a.icid == item.Id).FirstOrDefault();
@@ -175,11 +176,11 @@ namespace REPOSITORY.Clase
                                 data.iccant = item.Cantidad;
                                 data.iclot = item.Lote;
                                 data.icfvenc = item.FechaVen;
+                               
                                 break;
                             case (int)ENEstado.ELIMINAR:
                                 data = db.TI0021.Where(a => a.icid == item.Id).FirstOrDefault();
                                 data2 = data.TI0021A;
-
                                 db.TI0021A.Remove(data2);
                                 db.TI0021.Remove(data);
                                 break;
@@ -207,7 +208,7 @@ namespace REPOSITORY.Clase
                                       join c in db.Libreria on b.UniVen equals c.IdLibrer
                                       where c.IdGrupo.Equals((int)ENEstaticosGrupo.PRODUCTO)
                                       && c.IdOrden.Equals((int)ENEstaticosOrden.PRODUCTO_UN_VENTA)
-                                      && a.iccprod == id
+                                      && a.icibid == id
                                       select (new VAjusteDetalle()
                                       {
                                           Id = a.icid,
@@ -218,11 +219,12 @@ namespace REPOSITORY.Clase
                                           Unidad = c.Descrip,
                                           Cantidad = a.iccant,
                                           Contenido = a.TI0021A.Contenido,
-                                          TotalContenido = (a.TI0021A.IdTI0021 * a.TI0021A.Contenido),                                          
+                                          TotalContenido = (a.iccant * a.TI0021A.Contenido),                                          
                                           Precio = a.TI0021A.Precio,
                                           Total = (a.iccant * a.TI0021A.Precio),
                                           Lote = a.iclot,
-                                          FechaVen = a.icfvenc
+                                          FechaVen = a.icfvenc,
+                                          Estado = 1
                                       })).ToList();
                     return listResult;
                 }

@@ -18,6 +18,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using UTILITY.Enum;
+using UTILITY.Enum.ENConcepto;
 using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
 using UTILITY.Global;
@@ -40,6 +41,7 @@ namespace PRESENTER.alm
         List<VProductoListaStock> _productos = new List<VProductoListaStock>();
         VProductoListaStock _producto = new VProductoListaStock();
         List<VTI001> _lotes = new List<VTI001>();
+
         #endregion
         public F1_Ajuste()
         {
@@ -53,11 +55,11 @@ namespace PRESENTER.alm
             {
                 vAjusteBindingSource.DataSource = _ajuste;
                 LblTitulo.Text = _NombreFormulario;
-                MP_ArmarGrillas();
                 MP_ArmarCombos();
+                MP_ArmarGrillas();
                 MP_InHabilitar();
                 MP_AsignarPermisos();
-                MP_Limpiar(); //go-dev revisar
+                //MP_Limpiar(); //go-dev revisar
             }
             catch (Exception ex)
             {
@@ -358,7 +360,9 @@ namespace PRESENTER.alm
                 _ajuste.IdConcepto = conceptos.First().Id;
                 _ajuste.IdAlmacen = almacenes.First().IdLibreria;
                 _ajuste.Obs = string.Empty;
-                _detalles.Clear();
+                vAjusteBindingSource.ResetCurrentItem();
+                _detalles.RemoveRange(0, _detalles.Count);
+                dgjDetalle.Refetch();
                 MP_LimpiarColor();
             }
             catch (Exception ex)
@@ -373,6 +377,7 @@ namespace PRESENTER.alm
             cbConcepto.BackColor = Color.White;
             cbAlmacen.BackColor = Color.White;
             cbCategoriaPrecio.BackColor = Color.White;
+            tbObs.BackColor = Color.White;
         }
 
         private void MP_MostrarRegistro(int _Pos)
@@ -392,9 +397,9 @@ namespace PRESENTER.alm
                     _ajuste.IdConcepto = conceptos.First(a => a.Descripcion == ajuste.NConcepto).Id;
                     _ajuste.IdAlmacen = almacenes.First(a => a.Descripcion == ajuste.NAlmacen).IdLibreria;
                     _ajuste.Obs = ajuste.Obs;
-
+                    vAjusteBindingSource.ResetCurrentItem();
                     MP_CargarDetalle(ajuste.Id);
-
+                    MP_ObtenerCalculo();
                     LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Dgv_GBuscador.RowCount.ToString();
                 }
             }
@@ -545,10 +550,20 @@ namespace PRESENTER.alm
                     {
                         var lista = _detalles.Where(t => t.IdView == idView).FirstOrDefault();
                         _detalles.Remove(lista);
-                        dgjDetalle.Refetch();
-                      
-
-                        //MP_ArmarDetalle(); //go-dev
+                        //List<EntDet> detalle = new List<EntDet>();
+                        //_detalles.CopyTo(detalle);
+                        //_detalles.Clear();
+                        //_detalles.AddRange(detalle);
+                        //dgjDetalle.Refetch();
+                        //_detalles.RemoveAll(x => x != null);
+                        //_detalles= _detalles.Where(a => a.NProducto != string.Empty).ToList();
+                        //_detalles.FindAll(x => x != null);
+                        //_detalles.Capacity = _detalles.Count();
+                        //dgjDetalle.Dispose();
+                        dgjDetalle.DataSource = null;
+                        MP_ArmarGrillaDetalle();
+                        //dgjDetalle.Refetch();
+                        //MP_ArmarGrillaDetalle(); //go-dev
                     }
                     else
                     {
@@ -604,7 +619,9 @@ namespace PRESENTER.alm
             {
                 if (tbObs.ReadOnly == false)
                 {
-                    if (e.Column.Index == dgjDetalle.RootTable.Columns[nameof(EntDet.Cantidad)].Index)
+                    if (e.Column.Index == dgjDetalle.RootTable.Columns[nameof(EntDet.Cantidad)].Index ||
+                        e.Column.Index == dgjDetalle.RootTable.Columns[nameof(EntDet.Lote)].Index ||
+                        e.Column.Index == dgjDetalle.RootTable.Columns[nameof(EntDet.FechaVen)].Index)
                     {
                         e.Cancel = false;
                     }
@@ -646,7 +663,6 @@ namespace PRESENTER.alm
             {
                 if (tbObs.ReadOnly == false)
                 {                   
-
                     if (e.KeyData == Keys.Enter)
                     {
                         MP_VerificarSeleccion("CodProducto");
@@ -690,52 +706,15 @@ namespace PRESENTER.alm
                 {
                     if (e.KeyData == Keys.Enter && dgjProducto.Row > -1)
                     {
-                        string idView = dgjDetalle.CelValorIdView();
-                        using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                        if (_ajuste.IdConcepto == (int)ENConcepto.SALIDA)
                         {
-                            int idLote = 0;
-                            int idProducto = dgjProducto.CelValor<int>(nameof(VProductoListaStock.IdProducto));
-                            if (_producto.IdProducto == 0)
-                            {
-                                _producto = _productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
-                                if (_producto.Stock <= 0)
-                                {
-                                    _producto = new VProductoListaStock();
-                                    throw new Exception("El producto " + _producto.Producto + "no cuenta con STOCK disponible.");
-                                }
-                                var lotes = servicio.TraerInventarioLotes(_producto.IdProducto,
-                                                                          Convert.ToInt32(cbAlmacen.Value)).ToList();
-                                if (_producto.EsLote == 2)
-                                {
-                                    idLote = lotes.FirstOrDefault().id;
-                                    if (idLote == 0)
-                                    {
-                                        throw new Exception("El producto no tiene lote relacionado");
-                                    }
-                                    MP_IngresarProductoDetalle(idView, idLote, lotes);
-                                    dgjDetalle.Refetch();
-                                    MP_InHabilitarProducto();
-                                    MP_ObtenerCalculo();
-                                    return;
-                                }
-                                MP_ActualizarLote(ref lotes, idProducto);
-                                _lotes.Clear();
-                                _lotes.AddRange(lotes);
-                                MP_ArmarGrillaBusquedaLotes();
-                                GPanel_Producto.Text = _producto.Producto;
-                                
-
-                            }
-                            else
-                            {
-                                idLote = dgjProducto.CelValor<int>(nameof(VTI001.id));
-                                var lLotes = ((List<VTI001>)dgjProducto.DataSource);
-                                MP_IngresarProductoDetalle(idView, idLote, lLotes);
-                                dgjDetalle.Refetch();
-                                MP_InHabilitarProducto();
-                            }
+                            MP_SeleccionProductoPorConceptoSalida();
                         }
-                        MP_ObtenerCalculo();
+                        if (_ajuste.IdConcepto == (int)ENConcepto.INGRESO)
+                        {
+                            MP_SeleccionProductoPorConceptoIngreso();
+                        }
+                        
                     }
                     if (e.KeyData == Keys.Escape)
                     {
@@ -748,13 +727,89 @@ namespace PRESENTER.alm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void MP_SeleccionProductoPorConceptoIngreso()
+        {
+            try
+            {
+                int idProducto = dgjProducto.CelValor<int>(nameof(VProductoListaStock.IdProducto));
+                _producto = _productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                string idView = dgjDetalle.CelValorIdView();
+                MP_IngresarProductoDetalleIngreso(idView);
+                dgjDetalle.Refetch();
+                MP_InHabilitarProducto();
+                MP_ObtenerCalculo();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+        private void MP_SeleccionProductoPorConceptoSalida()
+        {
+            try
+            {
+                string idView = dgjDetalle.CelValorIdView();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    int idLote = 0;
+                    int idProducto = dgjProducto.CelValor<int>(nameof(VProductoListaStock.IdProducto));
+                    if (_producto.IdProducto == 0)
+                    {
+                        _producto = _productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                        if (_producto.Stock <= 0)
+                        {
+                            _producto = new VProductoListaStock();
+                            throw new Exception("El producto " + _producto.Producto + "no cuenta con STOCK disponible.");
+                        }
+                        var lotes = servicio.TraerInventarioLotes(_producto.IdProducto,
+                                                                  Convert.ToInt32(cbAlmacen.Value)).ToList();
+                        if (_producto.EsLote == 2)
+                        {
+                            idLote = lotes.FirstOrDefault().id;
+                            if (idLote == 0)
+                            {
+                                throw new Exception("El producto no tiene lote relacionado");
+                            }
+                            MP_IngresarProductoDetalleSalida(idView, idLote, lotes);
+                            dgjDetalle.Refetch();
+                            MP_InHabilitarProducto();
+                            MP_ObtenerCalculo();
+                            return;
+                        }
+                        MP_ActualizarLote(ref lotes, idProducto);
+                        _lotes.Clear();
+                        _lotes.AddRange(lotes);
+                        MP_ArmarGrillaBusquedaLotes();
+                        GPanel_Producto.Text = _producto.Producto;
+
+
+                    }
+                    else
+                    {
+                        idLote = dgjProducto.CelValor<int>(nameof(VTI001.id));
+                        var lLotes = (List<VTI001>)dgjProducto.DataSource;
+                        MP_IngresarProductoDetalleSalida(idView, idLote, lLotes);
+                        dgjDetalle.Refetch();
+                        MP_InHabilitarProducto();
+                    }
+                }
+                MP_ObtenerCalculo();
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+           
+        }
         private void MP_ObtenerCalculo()
         {
             try
             {
-                dgjDetalle.UpdateData();
-                Tb_Total.Value = Convert.ToDouble(dgjDetalle.GetTotal(dgjDetalle.RootTable.Columns["Total"], AggregateFunction.Sum));
-                tb_TotalUnidad.Value = Convert.ToDouble(dgjDetalle.GetTotal(dgjDetalle.RootTable.Columns["TotalContenido"], AggregateFunction.Sum));
+                //dgjDetalle.UpdateData();
+                Tb_Total.Value = (Double)_detalles.Sum(x => x.Total);
+                tb_TotalUnidad.Value = (Double)_detalles.Sum(x => x.TotalContenido);
+                //Tb_Total.Value = Convert.ToDouble(dgjDetalle.GetTotal(dgjDetalle.RootTable.Columns["Total"], AggregateFunction.Sum));
+                //.Value = Convert.ToDouble(dgjDetalle.GetTotal(dgjDetalle.RootTable.Columns["TotalContenido"], AggregateFunction.Sum));
             }
             catch (Exception ex)
             {
@@ -772,7 +827,7 @@ namespace PRESENTER.alm
                 fila.Cantidad = fila.Cantidad - sumaCantidad;
             }
         }
-        private void MP_IngresarProductoDetalle(string idView, int idLote, List<VTI001> lotes)
+        private void MP_IngresarProductoDetalleSalida(string idView, int idLote, List<VTI001> lotes)
         {
             if (lotes.Count != 0)
             {
@@ -782,6 +837,7 @@ namespace PRESENTER.alm
                        lotes.FirstOrDefault(a => a.id == idLote).Lote == detallle.Lote &&
                        lotes.FirstOrDefault(a => a.id == idLote).FechaVen == detallle.FechaVen)
                     {
+                        _producto = new VProductoListaStock();
                         throw new Exception("El producto ya existe en el detalle");
                     }
                 }
@@ -800,6 +856,33 @@ namespace PRESENTER.alm
                 //Revisar
                 fila.Stock = lotes.FirstOrDefault(a => a.id == idLote).Cantidad;
             }
+            _producto = new VProductoListaStock();
+        }
+        private void MP_IngresarProductoDetalleIngreso(string idView)
+        {
+            foreach (var detallle in _detalles)
+            {
+                if (_producto.IdProducto == detallle.IdProducto)
+                {
+                    _producto = new VProductoListaStock();
+                    throw new Exception("El producto ya existe en el detalle");
+                }
+            }
+            var fila = _detalles.Where(a => a.IdView == idView).First();
+            fila.IdProducto = _producto.IdProducto;
+            fila.CodProducto = _producto.CodigoProducto;
+            fila.NProducto = _producto.Producto;
+            fila.Unidad = _producto.UnidadVenta;
+            fila.Cantidad = 1;
+            fila.Contenido = Convert.ToDecimal(_producto.Contenido);
+            fila.TotalContenido = Convert.ToDecimal(_producto.Contenido);
+            fila.Precio = _producto.PrecioCosto;
+            fila.Total = _producto.PrecioCosto;
+            fila.Lote = UTGlobal.lote;
+            fila.FechaVen = UTGlobal.fechaVencimiento;
+            //Revisar
+            fila.Stock = 0;
+
             _producto = new VProductoListaStock();
         }
         private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)
@@ -822,11 +905,8 @@ namespace PRESENTER.alm
         {
             try
             {
-                if (Dgv_GBuscador.RowCount > 0)
-                {
-                    _MPos = 0;
-                    Dgv_GBuscador.Row = _MPos;
-                }
+                _MPos = 0;
+                this.MP_MostrarRegistro(_MPos);
             }
             catch (Exception ex)
             {
@@ -838,11 +918,10 @@ namespace PRESENTER.alm
         {
             try
             {
-                _MPos = Dgv_GBuscador.Row;
-                if (_MPos > 0 && Dgv_GBuscador.RowCount > 0)
+                if (_MPos > 0)
                 {
-                    _MPos = _MPos - 1;
-                    Dgv_GBuscador.Row = _MPos;
+                    _MPos -= 1;
+                    this.MP_MostrarRegistro(_MPos);
                 }
             }
             catch (Exception ex)
@@ -855,11 +934,10 @@ namespace PRESENTER.alm
         {
             try
             {
-                _MPos = Dgv_GBuscador.Row;
-                if (_MPos < Dgv_GBuscador.RowCount - 1 && _MPos >= 0)
+                if (_MPos < Dgv_GBuscador.RowCount - 1)
                 {
-                    _MPos = Dgv_GBuscador.Row + 1;
-                    Dgv_GBuscador.Row = _MPos;
+                    _MPos += 1;
+                    this.MP_MostrarRegistro(_MPos);
                 }
             }
             catch (Exception ex)
@@ -872,12 +950,8 @@ namespace PRESENTER.alm
         {
             try
             {
-                _MPos = Dgv_GBuscador.Row;
-                if (Dgv_GBuscador.RowCount > 0)
-                {
-                    _MPos = Dgv_GBuscador.RowCount - 1;
-                    Dgv_GBuscador.Row = _MPos;
-                }
+                _MPos = Dgv_GBuscador.RowCount - 1;
+                this.MP_MostrarRegistro(_MPos);
             }
             catch (Exception ex)
             {
@@ -912,7 +986,23 @@ namespace PRESENTER.alm
             {
                 using (var servicio = new ServiceDesktop.ServiceDesktopClient())
                 {
-                    var result = servicio.Ajuste_Guardar(_ajuste, _detalles.Where(a => a.NProducto != string.Empty).ToArray(), TxtNombreUsu.Text);
+                    var idAuxiliar = _ajuste.Id;
+                    var idAjuste = servicio.Ajuste_Guardar(_ajuste, _detalles.Where(a => a.NProducto != string.Empty).ToArray(), TxtNombreUsu.Text);
+                    if (idAuxiliar == 0)
+                    {
+                        MP_Filtrar(1);
+                        MP_Limpiar();
+                    }
+                    else
+                    {
+                        MP_Filtrar(2);
+                        this.MP_InHabilitar();
+                        MH_Habilitar();//El menu 
+                    }
+                    
+                    string mensaje = idAuxiliar == 0 ? GLMensaje.Nuevo_Exito("AJUSTE", idAjuste.ToString()) :
+                                                       GLMensaje.Modificar_Exito("AJUSTE", idAjuste.ToString());
+                    MP_MostrarMensajeExito(mensaje);
                 }
                 return true;
             }
@@ -1011,13 +1101,20 @@ namespace PRESENTER.alm
                 }
                 else
                     cbAlmacen.BackColor = Color.White;
-                if (cbCategoriaPrecio.SelectedIndex == -1)
+                if (tbObs.Text == string.Empty)
                 {
-                    cbCategoriaPrecio.BackColor = Color.Red;
+                    tbObs.BackColor = Color.Red;
                     _Error = true;
                 }
                 else
-                    cbCategoriaPrecio.BackColor = Color.White;
+                    tbObs.BackColor = Color.White;
+                //if (cbCategoriaPrecio.SelectedIndex == -1)
+                //{
+                //    cbCategoriaPrecio.BackColor = Color.Red;
+                //    _Error = true;
+                //}
+                //else
+                //    cbCategoriaPrecio.BackColor = Color.White;
                 if (_detalles.Where(a => a.NProducto != string.Empty).Count() == 0)
                 {
                     _Error = true;
@@ -1031,8 +1128,21 @@ namespace PRESENTER.alm
                 return _Error;
             }
         }
+
         #endregion
 
-     
+        private void Dgv_GBuscador_SelectionChanged_1(object sender, EventArgs e)
+        {
+            if (Dgv_GBuscador.Row >= 0 && Dgv_GBuscador.RowCount >= 0)
+            {
+                MP_MostrarRegistro(Dgv_GBuscador.Row);
+            }
+        }
+
+        private void btnPrimero_Click_1(object sender, EventArgs e)
+        {
+            _MPos = 0;
+            this.MP_MostrarRegistro(_MPos);
+        }
     }
 }
