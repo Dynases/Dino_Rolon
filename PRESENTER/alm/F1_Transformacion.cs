@@ -814,11 +814,11 @@ namespace PRESENTER.com
                 }
                 UTGlobal.visualizador = new Visualizador();
                 var lista = new ServiceDesktop.ServiceDesktopClient().TransformacionIngreso(Id);
-                var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Id);
+                //var lista2 = new ServiceDesktop.ServiceDesktopClient().TransformacionSalida(Id);
                 if (lista != null )
                 {
                     var ObjetoReport = new RTransformacionIngreso();
-                    ObjetoReport.Subreports["RTransformacionSalida.rpt"].SetDataSource(lista2);
+                    //ObjetoReport.Subreports["RTransformacionSalida.rpt"].SetDataSource(lista2);
                     ObjetoReport.SetDataSource(lista);
                     UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
                     UTGlobal.visualizador.ShowDialog();

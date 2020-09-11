@@ -250,7 +250,11 @@ namespace REPOSITORY.Clase
                                           Descrip = a.Descrip,
                                           Observ = a.Observ,
                                           TotalProd = a.TotalProd,
-                                          Fecha = a.Fecha
+                                          Fecha = a.Fecha,
+                                          IdProducto_Mat = a.IdProducto_Mat,
+                                          MateriaPrima = a.MateriaPrima,
+                                          TotalMateriaPrima = a.TotalMateriaPrima,
+                                          Cantidad = a.Cantidad
                                       }).ToList();
                     return listResult;
                 }

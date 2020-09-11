@@ -18,7 +18,8 @@ namespace ENTITY.inv.Transformacion.Report
         public string Descrip { get; set; }
         public decimal TotalProd { get; set; }
         public decimal Total { get; set; }
-
-
+        public string MateriaPrima { get; set; }
+        public decimal TotalMateriaPrima{ get; set; }
+        public decimal Cantidad { get; set; }
     }
 }
