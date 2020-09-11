@@ -40,6 +40,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tb_TipoAlmacen = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.Sw_TraspasoDIrecto = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.LabelX16 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -109,7 +111,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(733, 572);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -125,7 +127,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(733, 572);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -157,7 +159,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(727, 546);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             // 
             // PanelContenidoRegistro
             // 
@@ -303,6 +305,8 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.Sw_TraspasoDIrecto);
+            this.GPanel_DatosGenerales.Controls.Add(this.LabelX16);
             this.GPanel_DatosGenerales.Controls.Add(this.lblId);
             this.GPanel_DatosGenerales.Controls.Add(this.Tb_Descripcion);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX1);
@@ -424,6 +428,40 @@
             this.labelX10.TabIndex = 341;
             this.labelX10.Text = "Nombre:";
             // 
+            // Sw_TraspasoDIrecto
+            // 
+            // 
+            // 
+            // 
+            this.Sw_TraspasoDIrecto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Sw_TraspasoDIrecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sw_TraspasoDIrecto.Location = new System.Drawing.Point(513, 25);
+            this.Sw_TraspasoDIrecto.Name = "Sw_TraspasoDIrecto";
+            this.Sw_TraspasoDIrecto.OffBackColor = System.Drawing.Color.LawnGreen;
+            this.Sw_TraspasoDIrecto.OffText = "NO";
+            this.Sw_TraspasoDIrecto.OnBackColor = System.Drawing.Color.Gold;
+            this.Sw_TraspasoDIrecto.OnText = "Si";
+            this.Sw_TraspasoDIrecto.Size = new System.Drawing.Size(112, 22);
+            this.Sw_TraspasoDIrecto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Sw_TraspasoDIrecto.TabIndex = 371;
+            this.Sw_TraspasoDIrecto.Value = true;
+            this.Sw_TraspasoDIrecto.ValueObject = "Y";
+            // 
+            // LabelX16
+            // 
+            this.LabelX16.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LabelX16.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelX16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.LabelX16.Location = new System.Drawing.Point(377, 25);
+            this.LabelX16.Name = "LabelX16";
+            this.LabelX16.Size = new System.Drawing.Size(130, 23);
+            this.LabelX16.TabIndex = 372;
+            this.LabelX16.Text = "Traspaso directo:";
+            // 
             // F1_TipoAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,5 +511,7 @@
         internal DevComponents.DotNetBar.LabelX lblId;
         private DevComponents.DotNetBar.Controls.GroupPanel Gpanel_TiposAlmacen;
         internal Janus.Windows.GridEX.GridEX Dgv_TiposAlmacen;
+        internal DevComponents.DotNetBar.Controls.SwitchButton Sw_TraspasoDIrecto;
+        internal DevComponents.DotNetBar.LabelX LabelX16;
     }
 }

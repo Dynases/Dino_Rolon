@@ -23,6 +23,7 @@ namespace DATA.EntityDataModel.DiAvi
         public int Id { get; set; }
         public string TipoAlmacen1 { get; set; }
         public string Descripcion { get; set; }
+        public int TraspasoDirecto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacen> Almacen { get; set; }

@@ -548,19 +548,23 @@ namespace PRESENTER.alm
                     string idView = dgjDetalle.CelValorIdView();
                     if (estado == (int)ENEstado.NUEVO)
                     {
-                        var lista = _detalles.Where(t => t.IdView == idView).FirstOrDefault();
-                        _detalles.Remove(lista);
+                        _detalles = _detalles.Where(t => t.IdView != idView).ToList();
+                        //var lista = _detalles.Where(t => t.IdView == idView).FirstOrDefault();
+                        
+                        //etalles.Remove(lista);
+                        //_detalles.
+                        //dgjDetalle.Refresh();
+                        dgjDetalle.Refetch();
                         //List<EntDet> detalle = new List<EntDet>();
                         //_detalles.CopyTo(detalle);
                         //_detalles.Clear();
                         //_detalles.AddRange(detalle);
-                        //dgjDetalle.Refetch();
                         //_detalles.RemoveAll(x => x != null);
                         //_detalles= _detalles.Where(a => a.NProducto != string.Empty).ToList();
                         //_detalles.FindAll(x => x != null);
                         //_detalles.Capacity = _detalles.Count();
                         //dgjDetalle.Dispose();
-                        dgjDetalle.DataSource = null;
+                        //dgjDetalle.DataSource = null;
                         MP_ArmarGrillaDetalle();
                         //dgjDetalle.Refetch();
                         //MP_ArmarGrillaDetalle(); //go-dev

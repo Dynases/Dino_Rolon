@@ -31,25 +31,31 @@ namespace LOGIC.Class
         public bool Guardar(VTraspaso vTraspaso, List<VTraspaso_01> detalle, ref int idTraspaso,ref List<string> lMensaje)
         {
             try
-            {
-                bool result = false;
+            {                
                 using (var scope = new TransactionScope())
                 {
                     VTI002 vMovimiento = new VTI002();
                     int IdMovimiento = 0;
-                    int aux = idTraspaso;
+                    int auxiliarId = idTraspaso;
 
-                    result = iTraspaso.Guardar(vTraspaso, ref idTraspaso);                  
-                  
-                    llenarCampos(ref vMovimiento, vTraspaso,idTraspaso);
+                    iTraspaso.Guardar(vTraspaso, ref idTraspaso);                 
+                    LlenarDatosParaTI002(ref vMovimiento, vTraspaso,idTraspaso);
 
-                   
-                    if (aux == 0)//Nuevo
+                    if (auxiliarId == 0)//Nuevo
                     {
                         //Ingresa el movimiento en la TI002
                         new LTI002().Nuevo(vMovimiento, ref IdMovimiento);
                         //Ingresa el detalle de movimiento y el detall de Traspaso
                         var resultDetalle = new LTraspaso_01().Nuevo(detalle, idTraspaso, vTraspaso.IdAlmacenOrigen, IdMovimiento);
+                        if (iTraspaso.EsTraspasoDirecto(vTraspaso.IdAlmacenDestino))
+                        {
+                            vTraspaso.EstadoEnvio = 2;
+                            vTraspaso.FechaEnvio = vTraspaso.FechaRecepcion;
+                            vTraspaso.UsuarioRecepcion = vTraspaso.UsuarioRecepcion;
+                            iTraspaso.Guardar(vTraspaso, ref idTraspaso);
+                            LlenarDatosParaTI002(ref vMovimiento, vTraspaso, idTraspaso);
+                            IngresoTraspasoDeSalida(vMovimiento, IdMovimiento, idTraspaso, vTraspaso, detalle);
+                        }
                     }
                     else//Modificar
                     {
@@ -79,24 +85,11 @@ namespace LOGIC.Class
                                     return false;
                                 }
                             }                            
-                        }
-                        if (vTraspaso.EstadoEnvio == 2)
-                        {
-                            if (!new LTI002().ExisteEnMovimiento(idTraspaso, (int)ENConcepto.TRASPASO_INGRESO))
-                            {
-                                //Ingresa el movimiento en la TI002
-                                new LTI002().Nuevo(vMovimiento, ref IdMovimiento);
-                                //Modifica, hace el cruce de IdDestino entre los movimientos.
-                                new LTI002().ModificarCampoDestinoTraspaso(idTraspaso);
-
-                                if (!new LTraspaso_01().NuevoMovimiento(detalle, vTraspaso.IdAlmacenDestino, IdMovimiento))
-                                {
-                                    return false;
-                                }
-                                //Registra el detalle de traspaso para ser utilizado en Disoft para controlar las salidas y recargado de producto.
-                                iTraspaso.GuardarDetalleDisoft(idTraspaso);
-                            }
-                        }
+                        }                       
+                    }
+                    if (vTraspaso.EstadoEnvio == 2 && !new LTI002().ExisteEnMovimiento(idTraspaso, (int)ENConcepto.TRASPASO_INGRESO))
+                    {
+                        IngresoTraspasoDeSalida(vMovimiento, IdMovimiento, idTraspaso, vTraspaso, detalle);
                     }
                     scope.Complete();
                     return true;
@@ -106,8 +99,18 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
-        }        
-        private void llenarCampos(ref VTI002 movimiento,VTraspaso vTraspaso, int idTraspaso)
+        }
+        private void IngresoTraspasoDeSalida(VTI002 vMovimiento, int IdMovimiento, int idTraspaso, VTraspaso vTraspaso, List<VTraspaso_01> detalle)
+        {
+            //Ingresa el movimiento en la TI002
+            new LTI002().Nuevo(vMovimiento, ref IdMovimiento);
+            //Modifica, hace el cruce de IdDestino entre los movimientos.
+            new LTI002().ModificarCampoDestinoTraspaso(idTraspaso);
+            new LTraspaso_01().NuevoMovimiento(detalle, vTraspaso.IdAlmacenDestino, IdMovimiento);
+            //Registra el detalle de traspaso para ser utilizado en Disoft para controlar las salidas y recargado de producto.
+            iTraspaso.GuardarDetalleDisoft(idTraspaso);
+        }
+        private void LlenarDatosParaTI002(ref VTI002 movimiento,VTraspaso vTraspaso, int idTraspaso)
         {
             if (vTraspaso.EstadoEnvio == 1)
             {

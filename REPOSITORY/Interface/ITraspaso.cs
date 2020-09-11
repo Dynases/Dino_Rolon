@@ -14,5 +14,6 @@ namespace REPOSITORY.Interface
         List<VTListaProducto> ListarInventarioXAlmacenId(int Id);
         List<VTraspaso> TraerTraspasos(int usuarioId);
         void GuardarDetalleDisoft(int idTraspaso);
+        bool EsTraspasoDirecto(int AlmacenId);
     }
 }

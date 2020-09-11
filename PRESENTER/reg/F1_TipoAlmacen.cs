@@ -74,6 +74,7 @@ namespace PRESENTER.reg
             Tb_TipoAlmacen.ReadOnly = true;
             lblId.Visible = false;
             Dgv_TiposAlmacen.Enabled = true;
+            Sw_TraspasoDIrecto.IsReadOnly = true;
         }
 
         private void MP_Habilitar()
@@ -81,6 +82,7 @@ namespace PRESENTER.reg
             Tb_Descripcion.ReadOnly = false;
             Tb_TipoAlmacen.ReadOnly = false;
             Dgv_TiposAlmacen.Enabled = false;
+            Sw_TraspasoDIrecto.IsReadOnly = false;
         }
         private void MP_CargarTiposDeAlmacen()
         {
@@ -134,6 +136,8 @@ namespace PRESENTER.reg
         {
             this.Tb_Descripcion.Text = "";
             this.Tb_TipoAlmacen.Text = "";
+            this.lblId.Text = "";
+            this.Sw_TraspasoDIrecto.Value = true;
         }
 
         private void MP_MostrarRegistro(int index)
@@ -142,7 +146,7 @@ namespace PRESENTER.reg
             lblId.Text = tipoAlmacen.Id.ToString();
             Tb_Descripcion.Text = tipoAlmacen.Descripcion;
             Tb_TipoAlmacen.Text = tipoAlmacen.Nombre;
-
+            Sw_TraspasoDIrecto.Value = tipoAlmacen.TraspasoDirecto == 1 ? true:false; 
             this.LblPaginacion.Text = (index + 1) + "/" + listaTipoAlmacenes.Count;
         }
         private void MP_Filtrar(int tipo)
@@ -199,21 +203,23 @@ namespace PRESENTER.reg
             var tipoAlmacen = new VTipoAlmacen
             {
                 Descripcion = Tb_Descripcion.Text,
-                Nombre = Tb_TipoAlmacen.Text
+                Nombre = Tb_TipoAlmacen.Text,
+                TraspasoDirecto = Sw_TraspasoDIrecto.Value ? 1 : 2               
             };
-
             try
             {
+
                 var IdTipo = lblId.Text == "" ? 0 : Convert.ToInt32(lblId.Text);
+                var auxilidarId = IdTipo;
                 using (var servicio = new ServiceDesktop.ServiceDesktopClient())
                 {
                     servicio.TipoAlmacenGuardar(tipoAlmacen, ref IdTipo);
                 }
-                if (IdTipo == 0)
+                if (auxilidarId == 0)
                 {
+                    this.MP_Filtrar(1);
                     this.MP_Habilitar();
                     this.MP_Reiniciar();
-                    this.MP_CargarTiposDeAlmacen();
                 }
                 else
                 {
@@ -221,13 +227,15 @@ namespace PRESENTER.reg
                     this.MP_Inhabilitar();
                     MH_Habilitar();//El menu  
                 }
-                ToastNotification.Show(this, GLMensaje.Nuevo_Exito("TIPO ALMACEN", IdTipo.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                string mensaje = auxilidarId == 0 ? GLMensaje.Nuevo_Exito("TIPO ALMACEN", IdTipo.ToString()) :
+                                                    GLMensaje.Modificar_Exito("TIPO ALMACEN", IdTipo.ToString());
+                MP_MostrarMensajeExito(mensaje);
                 return true;
 
             }
             catch (Exception ex)
             {
-                this.MP_MostrarMensajeError("No se puedo guardar el Tipo de Almacen");
+                this.MP_MostrarMensajeError(ex.Message);
                 return false;
             }
         }

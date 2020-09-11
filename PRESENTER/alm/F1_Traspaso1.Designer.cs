@@ -692,7 +692,7 @@
             this.GPanel_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GPanel_Producto.Location = new System.Drawing.Point(0, 0);
             this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(963, 37);
+            this.GPanel_Producto.Size = new System.Drawing.Size(660, 37);
             // 
             // 
             // 
@@ -729,7 +729,7 @@
             this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Producto.Name = "Dgv_Producto";
-            this.Dgv_Producto.Size = new System.Drawing.Size(957, 16);
+            this.Dgv_Producto.Size = new System.Drawing.Size(654, 16);
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
             this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);
@@ -881,9 +881,9 @@
             // Panel_Productos
             // 
             this.Panel_Productos.Controls.Add(this.GPanel_Producto);
-            this.Panel_Productos.Location = new System.Drawing.Point(128, 23);
+            this.Panel_Productos.Location = new System.Drawing.Point(269, 23);
             this.Panel_Productos.Name = "Panel_Productos";
-            this.Panel_Productos.Size = new System.Drawing.Size(963, 37);
+            this.Panel_Productos.Size = new System.Drawing.Size(660, 37);
             this.Panel_Productos.TabIndex = 393;
             this.Panel_Productos.Visible = false;
             // 

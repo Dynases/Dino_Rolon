@@ -37,7 +37,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
-        public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
         public virtual DbSet<Transformacion> Transformacion { get; set; }
         public virtual DbSet<Transformacion_01> Transformacion_01 { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
@@ -77,6 +76,7 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Venta> Venta { get; set; }
         public virtual DbSet<CompraIng_01> CompraIng_01 { get; set; }
         public virtual DbSet<Traspaso_02> Traspaso_02 { get; set; }
+        public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
     
         public virtual ObjectResult<sp_dg_TC0051_Result> sp_dg_TC0051(Nullable<int> tipo, Nullable<int> cncod1, Nullable<int> cncod2, Nullable<int> cnnum, string cndesc1, string cndesc2, string cnuact)
         {

@@ -185,7 +185,7 @@ namespace PRESENTER.alm
         #endregion
 
         #region Eventos
-        private void BtnGenerar_Click(object sender, EventArgs e)
+        private async void BtnGenerar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -200,7 +200,12 @@ namespace PRESENTER.alm
                     codProducto = Convert.ToInt32(tbCodProducto.Text);
                 }
 
-                detalleKardex = new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto).ToList();
+                using (var service = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    detalleKardex = (await service.ListarDetalleKardexAsync(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto)).ToList();
+                }
+
+               // detalleKardex =  new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto).ToList();
                 
                 if (CheckMayorCero.Checked)
                 {

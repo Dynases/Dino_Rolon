@@ -877,31 +877,35 @@ namespace PRESENTER.com
         {
             bool _Error = false;
             try
-            {               
-                if (Cb_LineaGen.SelectedIndex == -1)
+            {
+                if (sw_Tipo.Value)
                 {
-                    Cb_LineaGen.BackColor = Color.Red;
-                    _Error = true;
-                }
-                else
-                    Cb_LineaGen.BackColor = Color.White;
+                    if (Cb_LineaGen.SelectedIndex == -1)
+                    {
+                        Cb_LineaGen.BackColor = Color.Red;
+                        _Error = true;
+                    }
+                    else
+                        Cb_LineaGen.BackColor = Color.White;
 
-                if (Cb_TipoAlojamiento.SelectedIndex == -1)
-                {
-                    Cb_TipoAlojamiento.BackColor = Color.Red;
-                    _Error = true;
-                }
-                else
-                    Cb_TipoAlojamiento.BackColor = Color.White;
-                if (Tb_Fecha.Value > DateTime.Now.Date)
-                {
-                    _Error = true;
-                    throw new Exception("Fecha de nacimiento debe ser distinto ala fecha actual");
-                }
-                if (Tb_Aves.Value < 0)
-                {
-                    _Error = true;
-                    throw new Exception("Cantidad de aves debe ser mayor a 0");
+                    if (Cb_TipoAlojamiento.SelectedIndex == -1)
+                    {
+                        Cb_TipoAlojamiento.BackColor = Color.Red;
+                        _Error = true;
+                    }
+                    else
+                        Cb_TipoAlojamiento.BackColor = Color.White;
+
+                    if (Tb_Fecha.Value > DateTime.Now.Date)
+                    {
+                        _Error = true;
+                        throw new Exception("Fecha de nacimiento debe ser distinto ala fecha actual");
+                    }
+                    if (Tb_Aves.Value < 0)
+                    {
+                        _Error = true;
+                        throw new Exception("Cantidad de aves debe ser mayor a 0");
+                    }
                 }
                 return _Error;
             }
@@ -1027,44 +1031,32 @@ namespace PRESENTER.com
                     int idAux = id;
                     var detalle = ((List<VProveedor_01Lista>)Dgv_Detalle.DataSource).ToArray<VProveedor_01Lista>();
 
-                    resultado = new ServiceDesktop.ServiceDesktopClient().ProveedorGuardar(Proveedor, detalle, ref id, TxtNombreUsu.Text);
-                    if (resultado)
+                    using (var service = new ServiceDesktop.ServiceDesktopClient())
                     {
-                        if (idAux == 0)//Registar
+                        new ServiceDesktop.ServiceDesktopClient().ProveedorGuardar(Proveedor, detalle, ref id, TxtNombreUsu.Text);
+                    }
+                    if (idAux == 0)//Registar
+                    {
+                        Tb_CodSpyre.Focus();
+                        MP_Filtrar(1);
+                        MP_Limpiar();
+                        _Limpiar = true;
+                    }
+                    else//Modificar
+                    {
+                        if (_ModificarImagen)
                         {
-                            Tb_CodSpyre.Focus();
-                            MP_Filtrar(1);
-                            MP_CargarEncabezado();
-                            MP_Limpiar();
-                            _Limpiar = true;
-                            mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+                            UTGlobal.MG_MoverImagenRuta(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor), _imagen, Pc_Img);
+                            _ModificarImagen = false;
                         }
-                        else//Modificar
-                        {
-                            if (_ModificarImagen)
-                            {
-                                UTGlobal.MG_MoverImagenRuta(Path.Combine(ConexionGlobal.gs_CarpetaRaiz, EnCarpeta.Imagen, ENSubCarpetas.ImagenesProveedor), _imagen, Pc_Img);
-                                _ModificarImagen = false;
-                            }
-                            MP_Filtrar(2);
-                            MP_InHabilitar();//El formulario
-                            _Limpiar = true;
-                            _imagen = "Default.jpg";
-                            mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                            MH_Habilitar();//El menu                   
-                        }
+                        MP_Filtrar(2);
+                        MP_InHabilitar();//El formulario
+                        _Limpiar = true;
+                        _imagen = "Default.jpg";            
+                        MH_Habilitar();//El menu                   
                     }
-                    //Resultado
-                    if (resultado)
-                    {
-                        ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                    }
-                    else
-                    {
-                        mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                        MP_MostrarMensajeError(mensaje);
-                        //ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                    }
+                    mensaje = idAux ==0? GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString()): GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                    MP_MostrarMensajeExito(mensaje);
                 }                
                 return resultado;
             }

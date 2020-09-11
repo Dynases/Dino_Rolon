@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="DiAviModel.ZY0021" Width="1.5" PointX="15.75" PointY="13.75" />
         <EntityTypeShape EntityType="DiAviModel.Almacen" Width="1.5" PointX="3" PointY="14.75" />
         <EntityTypeShape EntityType="DiAviModel.Sucursal" Width="1.5" PointX="0.75" PointY="15.75" />
-        <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="0.75" PointY="12.625" />
         <EntityTypeShape EntityType="DiAviModel.Transformacion" Width="1.5" PointX="11.75" PointY="1" />
         <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="14" PointY="1" />
         <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="3" PointY="5.375" />
@@ -31,7 +30,6 @@
         <AssociationConnector Association="DiAviModel.FK_AlmacenDestino_Plantilla" />
         <AssociationConnector Association="DiAviModel.FK_Plantilla01_Plantilla" />
         <AssociationConnector Association="DiAviModel.FK_Sucursal" />
-        <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
         <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal" />
         <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
         <AssociationConnector Association="DiAviModel.FK_Cliente_PrecioCat" />
@@ -100,6 +98,8 @@
         <EntityTypeShape EntityType="DiAviModel.Traspaso_02" Width="1.5" PointX="10.5" PointY="12.125" />
         <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Almacen" />
         <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Traspaso" />
+        <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="15.375" PointY="21.875" />
+        <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

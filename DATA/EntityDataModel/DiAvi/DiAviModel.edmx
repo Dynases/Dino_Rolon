@@ -463,6 +463,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoAlmacen" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="TraspasoDirecto" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Transformacion">
           <Key>
@@ -2356,7 +2357,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="ZY0021" EntityType="DiAviModel.ZY0021" />
           <EntitySet Name="Almacen" EntityType="DiAviModel.Almacen" />
           <EntitySet Name="Sucursal" EntityType="DiAviModel.Sucursal" />
-          <EntitySet Name="TipoAlmacen" EntityType="DiAviModel.TipoAlmacen" />
           <EntitySet Name="Transformacion" EntityType="DiAviModel.Transformacion" />
           <EntitySet Name="Transformacion_01" EntityType="DiAviModel.Transformacion_01" />
           <EntitySet Name="Cliente" EntityType="DiAviModel.Cliente" />
@@ -2385,10 +2385,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </AssociationSet>
           <AssociationSet Name="FK_Sucursal" Association="DiAviModel.FK_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
-            <End Role="Almacen" EntitySet="Almacen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TipoAlmacen" Association="DiAviModel.FK_TipoAlmacen">
-            <End Role="TipoAlmacen" EntitySet="TipoAlmacen" />
             <End Role="Almacen" EntitySet="Almacen" />
           </AssociationSet>
           <AssociationSet Name="FK__Precio_Sucursal" Association="DiAviModel.FK__Precio_Sucursal">
@@ -2576,6 +2572,11 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Traspaso" EntitySet="Traspaso" />
             <End Role="Traspaso_02" EntitySet="Traspaso_02" />
           </AssociationSet>
+          <EntitySet Name="TipoAlmacen" EntityType="DiAviModel.TipoAlmacen" />
+          <AssociationSet Name="FK_TipoAlmacen" Association="DiAviModel.FK_TipoAlmacen">
+            <End Role="TipoAlmacen" EntitySet="TipoAlmacen" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -2731,7 +2732,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Plantilla" Relationship="DiAviModel.FK_Almacen_Plantilla" FromRole="Almacen" ToRole="Plantilla" />
           <NavigationProperty Name="Plantilla1" Relationship="DiAviModel.FK_AlmacenDestino_Plantilla" FromRole="Almacen" ToRole="Plantilla" />
           <NavigationProperty Name="Sucursal" Relationship="DiAviModel.FK_Sucursal" FromRole="Almacen" ToRole="Sucursal" />
-          <NavigationProperty Name="TipoAlmacen1" Relationship="DiAviModel.FK_TipoAlmacen" FromRole="Almacen" ToRole="TipoAlmacen" />
           <NavigationProperty Name="Compra" Relationship="DiAviModel.FK_Compra_IdAlmacen" FromRole="Almacen" ToRole="Compra" />
           <NavigationProperty Name="Usuario_01" Relationship="DiAviModel.FK_Usuario_01_Almacen" FromRole="Almacen" ToRole="Usuario_01" />
           <NavigationProperty Name="TI001" Relationship="DiAviModel.FK_TI001_IdAlmacen" FromRole="Almacen" ToRole="TI001" />
@@ -2742,6 +2742,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="TI002" Relationship="DiAviModel.FK_TI002_IdAlmacen" FromRole="Almacen" ToRole="TI002" />
           <NavigationProperty Name="Venta" Relationship="DiAviModel.FK_Venta_Almacen" FromRole="Almacen" ToRole="Venta" />
           <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Almacen" FromRole="Almacen" ToRole="Traspaso_02" />
+          <NavigationProperty Name="TipoAlmacen1" Relationship="DiAviModel.FK_TipoAlmacen" FromRole="Almacen" ToRole="TipoAlmacen" />
           </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -2760,15 +2761,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Sucursal" FromRole="Sucursal" ToRole="Almacen" />
           <NavigationProperty Name="Precio" Relationship="DiAviModel.FK__Precio_Sucursal" FromRole="Sucursal" ToRole="Precio" />
-        </EntityType>
-        <EntityType Name="TipoAlmacen">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TipoAlmacen1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_TipoAlmacen" FromRole="TipoAlmacen" ToRole="Almacen" />
         </EntityType>
         <EntityType Name="Transformacion">
           <Key>
@@ -3012,18 +3004,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Principal>
             <Dependent Role="Almacen">
               <PropertyRef Name="IdSuc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TipoAlmacen">
-          <End Type="DiAviModel.TipoAlmacen" Role="TipoAlmacen" Multiplicity="0..1" />
-          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoAlmacen">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Almacen">
-              <PropertyRef Name="TipoAlmacen" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4343,6 +4323,28 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TipoAlmacen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoAlmacen1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TraspasoDirecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_TipoAlmacen" FromRole="TipoAlmacen" ToRole="Almacen" />
+        </EntityType>
+        <Association Name="FK_TipoAlmacen">
+          <End Type="DiAviModel.TipoAlmacen" Role="TipoAlmacen" Multiplicity="0..1" />
+          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAlmacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="TipoAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4529,15 +4531,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="Direcc" ColumnName="Direcc" />
                 <ScalarProperty Name="Descrip" ColumnName="Descrip" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoAlmacen">
-            <EntityTypeMapping TypeName="DiAviModel.TipoAlmacen">
-              <MappingFragment StoreEntitySet="TipoAlmacen">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="TipoAlmacen1" ColumnName="TipoAlmacen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5342,6 +5335,16 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="AlmacenId" ColumnName="AlmacenId" />
                 <ScalarProperty Name="TraspasoId" ColumnName="TraspasoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAlmacen">
+            <EntityTypeMapping TypeName="DiAviModel.TipoAlmacen">
+              <MappingFragment StoreEntitySet="TipoAlmacen">
+                <ScalarProperty Name="TraspasoDirecto" ColumnName="TraspasoDirecto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoAlmacen1" ColumnName="TipoAlmacen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

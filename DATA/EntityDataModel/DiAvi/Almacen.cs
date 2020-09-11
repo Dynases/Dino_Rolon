@@ -50,7 +50,6 @@ namespace DATA.EntityDataModel.DiAvi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plantilla> Plantilla1 { get; set; }
         public virtual Sucursal Sucursal { get; set; }
-        public virtual TipoAlmacen TipoAlmacen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -71,5 +70,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Venta> Venta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Traspaso_02> Traspaso_02 { get; set; }
+        public virtual TipoAlmacen TipoAlmacen1 { get; set; }
     }
 }

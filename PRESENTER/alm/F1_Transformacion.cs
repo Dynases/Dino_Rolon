@@ -807,7 +807,6 @@ namespace PRESENTER.com
         {
             try
             {
-              
                 //TRANSAFORMACION INGRESO
                 if (UTGlobal.visualizador != null)
                 {

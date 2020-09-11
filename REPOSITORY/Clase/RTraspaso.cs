@@ -224,7 +224,23 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        #endregion       
-
+        #endregion
+        #region Verificaciones
+        public bool EsTraspasoDirecto(int idAlmacen)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var valorTraspasoDirecto = db.Almacen.Where(x => x.Id == idAlmacen).Select(a => a.TipoAlmacen1.TraspasoDirecto).FirstOrDefault();
+                    return valorTraspasoDirecto == 1 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

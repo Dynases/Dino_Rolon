@@ -26,7 +26,10 @@ namespace LOGIC.Class
                 using (var scope = new TransactionScope())
                 {
                     var result = iProveedor.Guardar(vProveedor, ref id);
-                    var resultDetalle = new LProveedor_01().Guardar(detalle, id, usuario);
+                    if (detalle!=null)
+                    {
+                        var resultDetalle = new LProveedor_01().Guardar(detalle, id, usuario);
+                    }
                     scope.Complete();
                     return result;
                 }

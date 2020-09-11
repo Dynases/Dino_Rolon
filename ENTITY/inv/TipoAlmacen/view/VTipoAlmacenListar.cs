@@ -7,6 +7,7 @@
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+        public int TraspasoDirecto { get; set; }
 
     }
 }

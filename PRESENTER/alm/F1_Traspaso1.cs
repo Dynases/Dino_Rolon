@@ -95,12 +95,12 @@ namespace PRESENTER.alm
             this.Tb_Observacion.ReadOnly = true;
             this.Cb_Destino.ReadOnly = true;
             this.Cb_Origen.ReadOnly = true;
+            this.Sw_Estado.IsReadOnly = true;
             this.tb_TotalUnidad.IsInputReadOnly = true;
             this.Tb_Total.IsInputReadOnly = true;
             this.Tb_FechaEnvio.Enabled = false;
             this.Tb_FechaDestino.Enabled = false;
         
-            this.Sw_Estado.IsReadOnly = true;
             BtnHabilitar.Enabled = true;
             this.Tb_Id.ReadOnly = true;
             _Limpiar = false;
@@ -109,15 +109,11 @@ namespace PRESENTER.alm
 
         private void MP_Habilitar()
         {
-            Tb_FechaDestino.Value = DateTime.Today;
-            Tb_FechaEnvio.Value = DateTime.Today;
-            this.Tb_UsuarioRecibe.ReadOnly = Sw_Estado.Value? true : false;
-            this.Sw_Estado.IsReadOnly = false;
             this.Tb_Observacion.ReadOnly = false;
             this.Cb_Destino.ReadOnly = false;
             this.Cb_Origen.ReadOnly = false;
-            this.Tb_FechaEnvio.Enabled = true;       
-            this.Sw_Estado.IsReadOnly = false;
+            this.Tb_FechaEnvio.Enabled = false;
+            Tb_FechaDestino.Enabled = true;
             BtnHabilitar.Enabled = false;
         }
        
@@ -128,7 +124,7 @@ namespace PRESENTER.alm
                 Panel_Productos.Visible = false;
                 Panel_Productos.Height = 30;                
                 Dgv_Detalle.Select();
-                Dgv_Detalle.Col = 5;
+                Dgv_Detalle.Col = 7;
                 Dgv_Detalle.Row = Dgv_Detalle.RowCount - 1;
                 vProductos = new VProductoListaStock();
             }
@@ -623,7 +619,8 @@ namespace PRESENTER.alm
             try
             {
                 Panel_Productos.Visible = true;
-               Panel_Productos.Height = 350;
+                Panel_Productos.Height = 350;
+                Panel_Productos.Width = 650;
                 GPanel_Producto.Visible = true;
                 Dgv_Producto.Focus();
                 Dgv_Producto.MoveTo(Dgv_Producto.FilterRow);
@@ -948,6 +945,7 @@ namespace PRESENTER.alm
                                     idLote = InventarioLotes.FirstOrDefault().id;
                                     if (idLote == 0)
                                     {
+                                        vProductos = new VProductoListaStock();
                                         throw new Exception("El producto no tiene un lote relacionado");
                                     }
                                     MP_IngresarProductoDetalle(idDetalle, idLote, InventarioLotes);
@@ -1059,24 +1057,27 @@ namespace PRESENTER.alm
         {
             try
             {
-                if (Sw_Estado.Value == false)
+                if (Tb_Observacion.ReadOnly == false)
                 {
-                    if (Tb_Id.Text  != string.Empty)
+                    if (Sw_Estado.Value == false)
                     {
-                        Tb_UsuarioRecibe.Text = UTGlobal.Usuario;
-                        Tb_FechaDestino.Enabled = true;
+                        if (Tb_Id.Text != string.Empty)
+                        {
+                            Tb_UsuarioRecibe.Text = UTGlobal.Usuario;
+                            Tb_FechaDestino.Enabled = true;
+                            Tb_FechaDestino.Value = DateTime.Today;
+                            Tb_FechaEnvio.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        Tb_UsuarioRecibe.Text = "";
+                        Tb_FechaDestino.Enabled = false;
                         Tb_FechaDestino.Value = DateTime.Today;
-                        Tb_FechaEnvio.Enabled = false;
-                    }                   
+                        Tb_FechaEnvio.Enabled = true;
+                    }
                 }
-                else
-                {
-                    Tb_UsuarioRecibe.Text = "";
-                    Tb_FechaDestino.Enabled = false;
-                    Tb_FechaDestino.Value = DateTime.Today;
-                    Tb_FechaEnvio.Enabled = true;
-                }
-            }
+            }                
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
@@ -1090,7 +1091,7 @@ namespace PRESENTER.alm
             base.MH_Nuevo();
             this.MP_Habilitar();
             this.MP_Limpiar();
-            Sw_Estado.IsReadOnly = true;
+            Sw_Estado.IsReadOnly = false;
         }
         public override void MH_Modificar()
         {
@@ -1099,6 +1100,7 @@ namespace PRESENTER.alm
                 throw new Exception("Traspaso con recepcion no se peude modificar");
             }
             MP_Habilitar();
+            Cb_Origen.ReadOnly = true;
         }
         public override void MH_Salir()
         {            

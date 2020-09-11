@@ -30,6 +30,7 @@ namespace REPOSITORY.Clase
                     }
                     tipoAlmacen.Descripcion = vtipoAlmacen.Descripcion;
                     tipoAlmacen.TipoAlmacen1 = vtipoAlmacen.Nombre;
+                    tipoAlmacen.TraspasoDirecto = vtipoAlmacen.TraspasoDirecto;
                     Id = tipoAlmacen.Id;
                     db.SaveChanges();
                 }
@@ -95,7 +96,7 @@ namespace REPOSITORY.Clase
                             Id = tp.Id,
                             Nombre = tp.TipoAlmacen1,
                             Descripcion = tp.Descripcion,
-
+                            TraspasoDirecto = tp.TraspasoDirecto
                         }).ToList();
                 }
             }
