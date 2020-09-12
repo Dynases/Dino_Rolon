@@ -43,7 +43,7 @@ namespace REPOSITORY.Clase
                     venta.EncPrVenta = VVenta.EncPrVenta;
                     venta.EncTransporte = VVenta.EncTransporte;
                     venta.EncEntrega = VVenta.EncEntrega;
-                    venta.EncRecepcion = VVenta.EncRecepcion;
+                    venta.EmpresaFactura = VVenta.FacturaEmpresa;
                     venta.EncVenta = VVenta.EncVenta;
                     venta.Fecha = VVenta.Fecha;
                     venta.Hora = VVenta.Hora;
@@ -97,7 +97,7 @@ namespace REPOSITORY.Clase
                                  DescripcionCliente = v.Cliente.Descrip,
                                  EncEntrega = v.EncEntrega,
                                  EncPrVenta = v.EncPrVenta,
-                                 EncRecepcion = v.EncRecepcion,
+                                 FacturaEmpresa = v.EmpresaFactura,
                                  EncTransporte = v.EncTransporte,
                                  EncVenta = v.EncVenta,
                                  Estado = v.Estado,
@@ -140,7 +140,7 @@ namespace REPOSITORY.Clase
                                  DescripcionCliente = v.Cliente.Descrip,
                                  EncEntrega = v.EncEntrega,
                                  EncPrVenta = v.EncPrVenta,
-                                 EncRecepcion = v.EncRecepcion,
+                                 FacturaEmpresa = v.EmpresaFactura,
                                  EncTransporte = v.EncTransporte,
                                  EncVenta = v.EncVenta,
                                  Estado = v.Estado,

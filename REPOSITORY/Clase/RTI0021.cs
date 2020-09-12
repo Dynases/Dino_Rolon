@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading;
 using UTILITY.Enum.EnEstaticos;
 
 namespace REPOSITORY.Clase
@@ -154,79 +155,78 @@ namespace REPOSITORY.Clase
 
                 using (var db = this.GetEsquema())
                 {
-
-                    IQueryable<Producto> pro = null;
-                    var query = db.Producto.AsQueryable();
+                    //IQueryable<Producto> pro = null;
+                    var productos = db.Producto.Where(x=> db.TI0021.Select(a => a.iccprod).Contains(x.Id)).OrderBy(x=> x.Id).AsQueryable();
                     //var productos = db.Producto.ToList();
                     var listati002 = db.TI002.AsQueryable();
-                    var listati0021 = db.TI0021.AsQueryable();
-                    //if (codProducto != 0)
-                    //{
-                    //    productos= productos.Where(h => h.Id==codProducto).ToList();
-                    //}
-
+                    var listati0021 = db.TI0021.AsQueryable();                   
                     if (codProducto != 0)
                     {
-                        pro = query.Where(h => h.Id == codProducto);
+                        productos = productos.Where(h => h.Id == codProducto);
                     }
-                    foreach (var p in query)
+                    foreach (var p in productos)
                     {
                         var detalle = new VDetalleKardex();
 
                         //PARA SALDO ANTERIOR
                         decimal entradasAnteriores = 0;
-                        decimal salidasAnteriores = 0;
+                        decimal salidasAnteriores = 0;          
                         var detalleAnterior = listati002.Where(h => h.ibfdoc < inicio.Date && h.ibalm == IdAlmacen);
-                        foreach (var i in detalleAnterior)
+                        if (detalleAnterior != null)
                         {
-                            var detalleAnteriorProducto = listati0021.FirstOrDefault(ti => ti.iccprod == p.Id && ti.icibid == i.ibid);
-                            if (detalleAnteriorProducto != null)
+                            var entradaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov.Value == 1)
+                                                                                                               .Select(c => c.cpnumi)
+                                                                                                               .Contains(z.ibconcep));
+                            var salidaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov.Value != 1)
+                                                                                                         .Select(c => c.cpnumi)
+                                                                                                         .Contains(z.ibconcep));
+
+                            if (entradaDetalleAnterior.Any())
                             {
-                                //INGRESOS
-                                if (i.ibconcep == 1 || i.ibconcep == 3 ||
-                                    i.ibconcep == 5 || i.ibconcep == 8 ||
-                                    i.ibconcep == 9 || i.ibconcep == 7)
-                                {
-                                    entradasAnteriores += detalleAnteriorProducto.iccant;
-                                }
-                                //SALIDAS
-                                else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                    i.ibconcep == 6 || i.ibconcep == 10 || i.ibconcep == 11)
-                                {
-                                    salidasAnteriores += detalleAnteriorProducto.iccant;
-                                }
+                                entradasAnteriores = listati0021.Where(x => entradaDetalleAnterior.Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id).Any() ?
+                                                                                       listati0021.Where(x => entradaDetalleAnterior
+                                                                                                   .Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id)
+                                                                                                   .Sum(a => a.iccant) : 0;
+                            }
+                            if (salidaDetalleAnterior.Any())
+                            {
+                                salidasAnteriores = listati0021.Where(x => salidaDetalleAnterior.Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id).Any() ?
+                                                                                       listati0021.Where(x => salidaDetalleAnterior
+                                                                                                   .Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id)
+                                                                                                   .Sum(a => a.iccant) : 0;
                             }
                         }
-
                         //CALCULOS DEL PERIODO Y ALMACEN SELECCIONADOS
                         decimal entradasPeriodo = 0;
-                        decimal salidasPeriodo = 0;
+                        decimal salidasPeriodo = 0;                      
                         var detallePeriodo = listati002.Where(h => h.ibfdoc >= inicio.Date &&
                                                                    h.ibfdoc <= fin.Date &&
                                                                    h.ibalm == IdAlmacen);
-                        foreach (var i in detallePeriodo)
-                        {
-                            var detalleProducto = db.TI0021.FirstOrDefault(ti => ti.iccprod == p.Id
-                                                                             && ti.icibid == i.ibid);
 
-                            if (detalleProducto != null)
+                        if (detallePeriodo !=null)
+                        {
+                            var entradaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov.Value == 1)
+                                                                                                                 .Select(c => c.cpnumi)
+                                                                                                                 .Contains(z.ibconcep));
+                            var salidaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov.Value != 1)
+                                                                                                         .Select(c => c.cpnumi)
+                                                                                                         .Contains(z.ibconcep));
+
+                            if (entradaDetallePeriodo.Any())
                             {
-                                //INGRESOS
-                                if (i.ibconcep == 1 || i.ibconcep == 3 ||
-                                    i.ibconcep == 5 || i.ibconcep == 8 ||
-                                    i.ibconcep == 9 || i.ibconcep == 7)
-                                {
-                                    entradasPeriodo += detalleProducto.iccant;
-                                }
-                                //SALIDAS
-                                else if (i.ibconcep == 2 || i.ibconcep == 4 ||
-                                    i.ibconcep == 6 || i.ibconcep == 10 || i.ibconcep == 11)
-                                {
-                                    salidasPeriodo += detalleProducto.iccant;
-                                }
+                                entradasPeriodo = listati0021.Where(x => entradaDetallePeriodo.Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id).Any() ?
+                                                                                       listati0021.Where(x => entradaDetallePeriodo
+                                                                                                   .Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id)
+                                                                                                   .Sum(a => a.iccant) : 0;
+                            }
+                            if (salidaDetallePeriodo.Any())
+                            {
+                                salidasPeriodo = listati0021.Where(x => salidaDetallePeriodo.Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id).Any() ?
+                                                                                       listati0021.Where(x => salidaDetallePeriodo
+                                                                                                   .Select(z => z.ibid).Contains(x.icibid) && x.iccprod == p.Id)
+                                                                                                   .Sum(a => a.iccant) : 0;
                             }
                         }
-
                         detalle.Descripcion = p.Descrip;
                         detalle.Entradas = entradasPeriodo;
                         detalle.Id = p.Id;
@@ -327,7 +327,6 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-
         #endregion
     }
 }

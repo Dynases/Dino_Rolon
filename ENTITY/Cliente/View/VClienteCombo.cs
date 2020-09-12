@@ -11,7 +11,9 @@ namespace ENTITY.Cliente.View
         public int Id { get; set; }
         public string Cliente { get; set; }
         public string Nit { get; set; }
+        public int FacturaEmpresa { get; set; }
         public string  EmpresaProveedora { get; set; }
         public int IdCategoriaPrecio { get; set; }
+
     }
 }

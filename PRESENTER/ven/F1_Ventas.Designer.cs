@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Ventas));
             Janus.Windows.GridEX.GridEXLayout Cb_EncPreVenta_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout Cb_EncRecepcion_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Ventas));
+            Janus.Windows.GridEX.GridEXLayout cbFacturaEmpresa_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_EncVenta_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_EncTransporte_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cb_Cliente_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -57,15 +57,13 @@
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnEncPreVenta = new DevComponents.DotNetBar.ButtonX();
-            this.btnEncRecepcion = new DevComponents.DotNetBar.ButtonX();
             this.Cb_EncPreVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.Cb_EncRecepcion = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cbFacturaEmpresa = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.btnEncTransporte = new DevComponents.DotNetBar.ButtonX();
             this.btnEncVenta = new DevComponents.DotNetBar.ButtonX();
             this.Cb_EncVenta = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Cb_EncTransporte = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cb_Cliente = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.TbEmpresaProveedoraCliente = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.TbNumFacturaExterna = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
@@ -75,7 +73,6 @@
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.lblFechaRegistro = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.TbEncEntrega = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
@@ -121,7 +118,7 @@
             this.PanelArriba.SuspendLayout();
             this.GPanel_DatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncPreVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncRecepcion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbFacturaEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).BeginInit();
@@ -176,7 +173,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 670);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -196,7 +193,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1215, 670);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -229,7 +226,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 644);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
@@ -616,15 +613,13 @@
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_DatosGenerales.Controls.Add(this.btnEncPreVenta);
-            this.GPanel_DatosGenerales.Controls.Add(this.btnEncRecepcion);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_EncPreVenta);
-            this.GPanel_DatosGenerales.Controls.Add(this.Cb_EncRecepcion);
+            this.GPanel_DatosGenerales.Controls.Add(this.cbFacturaEmpresa);
             this.GPanel_DatosGenerales.Controls.Add(this.btnEncTransporte);
             this.GPanel_DatosGenerales.Controls.Add(this.btnEncVenta);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_EncVenta);
             this.GPanel_DatosGenerales.Controls.Add(this.Cb_EncTransporte);
             this.GPanel_DatosGenerales.Controls.Add(this.cb_Cliente);
-            this.GPanel_DatosGenerales.Controls.Add(this.TbEmpresaProveedoraCliente);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX15);
             this.GPanel_DatosGenerales.Controls.Add(this.TbNumFacturaExterna);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX14);
@@ -634,7 +629,6 @@
             this.GPanel_DatosGenerales.Controls.Add(this.labelX13);
             this.GPanel_DatosGenerales.Controls.Add(this.lblFechaRegistro);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX12);
-            this.GPanel_DatosGenerales.Controls.Add(this.labelX11);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX9);
             this.GPanel_DatosGenerales.Controls.Add(this.TbEncEntrega);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX8);
@@ -699,7 +693,7 @@
             this.btnEncPreVenta.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
             this.btnEncPreVenta.Image = global::PRESENTER.Properties.Resources.AGREGAR;
             this.btnEncPreVenta.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncPreVenta.Location = new System.Drawing.Point(1169, 147);
+            this.btnEncPreVenta.Location = new System.Drawing.Point(905, 174);
             this.btnEncPreVenta.Name = "btnEncPreVenta";
             this.btnEncPreVenta.Size = new System.Drawing.Size(28, 27);
             this.btnEncPreVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -707,55 +701,40 @@
             this.btnEncPreVenta.Visible = false;
             this.btnEncPreVenta.Click += new System.EventHandler(this.btnEncPreVenta_Click);
             // 
-            // btnEncRecepcion
-            // 
-            this.btnEncRecepcion.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEncRecepcion.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.btnEncRecepcion.Image = ((System.Drawing.Image)(resources.GetObject("btnEncRecepcion.Image")));
-            this.btnEncRecepcion.ImageFixedSize = new System.Drawing.Size(28, 28);
-            this.btnEncRecepcion.Location = new System.Drawing.Point(902, 172);
-            this.btnEncRecepcion.Name = "btnEncRecepcion";
-            this.btnEncRecepcion.Size = new System.Drawing.Size(28, 29);
-            this.btnEncRecepcion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEncRecepcion.TabIndex = 400;
-            this.btnEncRecepcion.Visible = false;
-            this.btnEncRecepcion.Click += new System.EventHandler(this.btnEncRecepcion_Click);
-            // 
             // Cb_EncPreVenta
             // 
             Cb_EncPreVenta_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncPreVenta_DesignTimeLayout.LayoutString");
             this.Cb_EncPreVenta.DesignTimeLayout = Cb_EncPreVenta_DesignTimeLayout;
             this.Cb_EncPreVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncPreVenta.Location = new System.Drawing.Point(939, 153);
+            this.Cb_EncPreVenta.Location = new System.Drawing.Point(634, 179);
             this.Cb_EncPreVenta.Name = "Cb_EncPreVenta";
             this.Cb_EncPreVenta.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
             this.Cb_EncPreVenta.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
             this.Cb_EncPreVenta.SelectedIndex = -1;
             this.Cb_EncPreVenta.SelectedItem = null;
-            this.Cb_EncPreVenta.Size = new System.Drawing.Size(224, 22);
+            this.Cb_EncPreVenta.Size = new System.Drawing.Size(260, 22);
             this.Cb_EncPreVenta.TabIndex = 399;
             this.Cb_EncPreVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_EncPreVenta.ValueChanged += new System.EventHandler(this.Cb_EncPreVenta_ValueChanged);
             // 
-            // Cb_EncRecepcion
+            // cbFacturaEmpresa
             // 
-            this.Cb_EncRecepcion.BackColor = System.Drawing.Color.White;
-            Cb_EncRecepcion_DesignTimeLayout.LayoutString = resources.GetString("Cb_EncRecepcion_DesignTimeLayout.LayoutString");
-            this.Cb_EncRecepcion.DesignTimeLayout = Cb_EncRecepcion_DesignTimeLayout;
-            this.Cb_EncRecepcion.DisabledBackColor = System.Drawing.Color.Blue;
-            this.Cb_EncRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cb_EncRecepcion.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
-            this.Cb_EncRecepcion.Location = new System.Drawing.Point(634, 174);
-            this.Cb_EncRecepcion.Name = "Cb_EncRecepcion";
-            this.Cb_EncRecepcion.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.Cb_EncRecepcion.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
-            this.Cb_EncRecepcion.SelectedIndex = -1;
-            this.Cb_EncRecepcion.SelectedItem = null;
-            this.Cb_EncRecepcion.Size = new System.Drawing.Size(260, 22);
-            this.Cb_EncRecepcion.TabIndex = 398;
-            this.Cb_EncRecepcion.Tag = "1";
-            this.Cb_EncRecepcion.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.Cb_EncRecepcion.ValueChanged += new System.EventHandler(this.Cb_EncRecepcion_ValueChanged);
+            this.cbFacturaEmpresa.BackColor = System.Drawing.Color.White;
+            cbFacturaEmpresa_DesignTimeLayout.LayoutString = resources.GetString("cbFacturaEmpresa_DesignTimeLayout.LayoutString");
+            this.cbFacturaEmpresa.DesignTimeLayout = cbFacturaEmpresa_DesignTimeLayout;
+            this.cbFacturaEmpresa.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cbFacturaEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFacturaEmpresa.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cbFacturaEmpresa.Location = new System.Drawing.Point(438, 129);
+            this.cbFacturaEmpresa.Name = "cbFacturaEmpresa";
+            this.cbFacturaEmpresa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cbFacturaEmpresa.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cbFacturaEmpresa.SelectedIndex = -1;
+            this.cbFacturaEmpresa.SelectedItem = null;
+            this.cbFacturaEmpresa.Size = new System.Drawing.Size(178, 22);
+            this.cbFacturaEmpresa.TabIndex = 398;
+            this.cbFacturaEmpresa.Tag = "1";
+            this.cbFacturaEmpresa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // btnEncTransporte
             // 
@@ -846,20 +825,6 @@
             this.cb_Cliente.Tag = "1";
             this.cb_Cliente.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.cb_Cliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_Cliente_KeyDown);
-            // 
-            // TbEmpresaProveedoraCliente
-            // 
-            // 
-            // 
-            // 
-            this.TbEmpresaProveedoraCliente.Border.Class = "TextBoxBorder";
-            this.TbEmpresaProveedoraCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TbEmpresaProveedoraCliente.Location = new System.Drawing.Point(464, 121);
-            this.TbEmpresaProveedoraCliente.Multiline = true;
-            this.TbEmpresaProveedoraCliente.Name = "TbEmpresaProveedoraCliente";
-            this.TbEmpresaProveedoraCliente.PreventEnterBeep = true;
-            this.TbEmpresaProveedoraCliente.Size = new System.Drawing.Size(152, 26);
-            this.TbEmpresaProveedoraCliente.TabIndex = 392;
             // 
             // labelX15
             // 
@@ -991,28 +956,12 @@
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX12.Location = new System.Drawing.Point(939, 124);
+            this.labelX12.Location = new System.Drawing.Point(634, 150);
             this.labelX12.Name = "labelX12";
             this.labelX12.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX12.Size = new System.Drawing.Size(250, 23);
             this.labelX12.TabIndex = 383;
             this.labelX12.Text = "Encargado de PRE-Venta";
-            // 
-            // labelX11
-            // 
-            this.labelX11.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.labelX11.Location = new System.Drawing.Point(634, 150);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX11.Size = new System.Drawing.Size(161, 23);
-            this.labelX11.TabIndex = 381;
-            this.labelX11.Text = "Encargado de Recepcion";
             // 
             // labelX9
             // 
@@ -1372,7 +1321,7 @@
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncPreVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cb_EncRecepcion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbFacturaEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).EndInit();
@@ -1406,7 +1355,6 @@
         protected internal DevComponents.DotNetBar.LabelX labelX7;
         internal DevComponents.DotNetBar.Controls.SwitchButton sw_estado;
         protected internal DevComponents.DotNetBar.LabelX labelX12;
-        protected internal DevComponents.DotNetBar.LabelX labelX11;
         protected internal DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.TextBoxX TbEncEntrega;
         protected internal DevComponents.DotNetBar.LabelX labelX8;
@@ -1429,7 +1377,6 @@
         private DevComponents.DotNetBar.ButtonX btnNuevoCliente;
         private DevComponents.DotNetBar.Controls.TextBoxX TbNumFacturaExterna;
         protected internal DevComponents.DotNetBar.LabelX labelX14;
-        private DevComponents.DotNetBar.Controls.TextBoxX TbEmpresaProveedoraCliente;
         protected internal DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.Controls.GroupPanel GPanel_Producto;
         private Janus.Windows.GridEX.GridEX Dgv_Producto;
@@ -1441,8 +1388,7 @@
         internal DevComponents.DotNetBar.ButtonX btnEncVenta;
         internal DevComponents.DotNetBar.ButtonX btnEncTransporte;
         internal DevComponents.DotNetBar.ButtonX btnEncPreVenta;
-        internal DevComponents.DotNetBar.ButtonX btnEncRecepcion;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_EncPreVenta;
-        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_EncRecepcion;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cbFacturaEmpresa;
     }
 }

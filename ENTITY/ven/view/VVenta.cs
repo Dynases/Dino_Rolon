@@ -34,7 +34,7 @@ namespace ENTITY.ven.view
 
         public string EncEntrega { get; set; }
 
-        public int EncRecepcion { get; set; }
+        public int FacturaEmpresa { get; set; }
         public string NitCliente { get; set; }
 
         public DateTime Fecha { get; set; }

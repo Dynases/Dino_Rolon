@@ -94,6 +94,7 @@ namespace REPOSITORY.Clase
                 {
                     var listResult = (from a in db.Libreria
                                       where a.IdGrupo.Equals(idGrupo) & a.IdOrden.Equals(idOrden)
+                                      orderby a.IdLibrer
                                       select new VLibreria
                                       {
                                           IdLibreria = a.IdLibrer,

@@ -87,10 +87,6 @@
         <AssociationConnector Association="DiAviModel.FK_TI002_IdTCI001" />
         <AssociationConnector Association="DiAviModel.FK_TI002_IdAlmacen" />
         <AssociationConnector Association="DiAviModel.FK_TI0021A_TI0021" />
-        <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="8.25" PointY="10.75" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
         <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="22.5" PointY="23.125" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
         <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
@@ -100,6 +96,10 @@
         <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="15.375" PointY="21.875" />
         <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
         <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="17.375" PointY="21.75" />
+        <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="8.25" PointY="10.875" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

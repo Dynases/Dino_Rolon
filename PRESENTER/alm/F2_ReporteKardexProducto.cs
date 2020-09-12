@@ -199,21 +199,20 @@ namespace PRESENTER.alm
                 {
                     codProducto = Convert.ToInt32(tbCodProducto.Text);
                 }
-
+                BtnAtras.Enabled = false;
+                BtnGenerar.Enabled = false;
                 using (var service = new ServiceDesktop.ServiceDesktopClient())
                 {
                     detalleKardex = (await service.ListarDetalleKardexAsync(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto)).ToList();
                 }
+                // Signature specifies 
+               
+                // detalleKardex =  new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto).ToList();
 
-               // detalleKardex =  new ServiceDesktop.ServiceDesktopClient().ListarDetalleKardex(Dt_FechaInicio.Value, Dt_FechaFin.Value, Convert.ToInt32(Cb_Almacenes.Value), codProducto).ToList();
-                
                 if (CheckMayorCero.Checked)
                 {
                     detalleKardex= detalleKardex.Where(h => h.Saldo > 0).ToList();
                 }
-
-               
-
                 ReportesDataSet.DetalleKardexDataTable detalleKardexRows = new ReportesDataSet.DetalleKardexDataTable();
 
                 foreach (var i in detalleKardex)
@@ -248,14 +247,26 @@ namespace PRESENTER.alm
                 Rpt_Reporte.Visible = true;
 
                 LblPaginacion.Text = detalleKardex.Count.ToString();
-
+                BtnAtras.Enabled = true;
+                BtnGenerar.Enabled = true;
+                this.Focus();
+                if (detalleKardex != null)
+                {
+                    MP_MostrarMensajeExito("El consulta del kardex a finalizado");
+                }
+                else
+                    throw new Exception("No se encontro registro en la consulta específicada");
+              
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-
+        void MP_MostrarMensajeExito(string mensaje)
+        {
+            ToastNotification.Show(this, mensaje.ToUpper(), PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+        }
         private void F2_ReporteKardexProducto_Load(object sender, EventArgs e)
         {
             MP_CargarAlmacenes();

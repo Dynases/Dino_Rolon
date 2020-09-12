@@ -163,7 +163,8 @@ namespace REPOSITORY.Clase
                           EmpresaProveedora = db.Libreria.FirstOrDefault(a => a.IdGrupo == (int)ENEstaticosGrupo.CLIENTE &&
                                                                               a.IdOrden == (int)ENEstaticosOrden.FACTURACION_CLIENTE &&
                                                                               a.IdLibrer == v.Factur).Descrip,
-                          IdCategoriaPrecio = v.IdCategoria                       
+                          IdCategoriaPrecio = v.IdCategoria  ,
+                          FacturaEmpresa = v.Factur
                       }).ToList();                   
                     return listResult;
                 }

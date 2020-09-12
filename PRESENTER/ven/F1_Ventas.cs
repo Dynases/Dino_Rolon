@@ -41,7 +41,6 @@ namespace PRESENTER.ven
             btnEncPreVenta.Visible = false;
             btnEncVenta.Visible = false;
             btnEncTransporte.Visible = false;
-            btnEncRecepcion.Visible = false;
         }
 
         #region Variables de Entorno        
@@ -67,9 +66,10 @@ namespace PRESENTER.ven
             UTGlobal.MG_ArmarCombo(Cb_EncTransporte,
                          new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
                                                                                        Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE)).ToList());
-            UTGlobal.MG_ArmarCombo(Cb_EncRecepcion,
-                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
-                                                                                       Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION)).ToList());
+            UTGlobal.MG_ArmarCombo(cbFacturaEmpresa,
+                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                       Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {
@@ -132,7 +132,7 @@ namespace PRESENTER.ven
             this.cb_Cliente.ReadOnly = true;
             this.sw_estado.Enabled = false;
             this.Sw_TipoVenta.Enabled = false;
-            Cb_EncRecepcion.ReadOnly = true;
+            cbFacturaEmpresa.ReadOnly = true;
             Cb_EncVenta.ReadOnly = true;
             Cb_EncPreVenta.ReadOnly = true;
             Cb_EncTransporte.ReadOnly = true;           
@@ -142,7 +142,6 @@ namespace PRESENTER.ven
             this.btnLimpiarCliente.Visible = false;
             this.btnNuevoCliente.Visible = false;
             this.TbNumFacturaExterna.ReadOnly = true;
-            this.TbEmpresaProveedoraCliente.ReadOnly = true;
             this.Cb_Origen.ReadOnly = true;
             this.tbTotalCantidad.ReadOnly = true;
             this.TbTotal.ReadOnly = true;
@@ -152,7 +151,7 @@ namespace PRESENTER.ven
 
         private void MP_Habilitar()
         {
-            Cb_EncRecepcion.ReadOnly = false;
+            cbFacturaEmpresa.ReadOnly = false;
             Cb_EncVenta.ReadOnly = false;
             Cb_EncPreVenta.ReadOnly = false;
             Cb_EncTransporte.ReadOnly = false;
@@ -235,7 +234,7 @@ namespace PRESENTER.ven
                 TbNitCliente.Text = venta.NitCliente;
                 Sw_TipoVenta.Value = true;
                 sw_estado.Value = true;
-                Cb_EncRecepcion.Value = venta.EncRecepcion;
+                cbFacturaEmpresa.Value = venta.FacturaEmpresa;
                 Cb_EncVenta.Value = venta.EncVenta;
                 Cb_EncPreVenta.Value = venta.EncPrVenta;
                 Cb_EncTransporte.Value = venta.EncTransporte;
@@ -431,19 +430,19 @@ namespace PRESENTER.ven
             this.Dt_FechaVenta.Value = DateTime.Today;         
             this.Sw_TipoVenta.Value = true;
             this.sw_estado.Value = true;
-            this.TbEncEntrega.Text = "";
-           
-            this.Tb_Observaciones.Text = "";
+            this.TbEncEntrega.Clear();
+
+            this.Tb_Observaciones.Clear();
             this.lblFechaRegistro.Text = "";
             this.lblId.Text = "";
-            this.TbNitCliente.Text = "";
-            this.TbTotal.Text = "";
-          
+            this.TbNitCliente.Clear();
+            this.TbTotal.Text = "0";
+            this.TbNumFacturaExterna.Clear();
             if (_Limpiar == false)    
             {
                 
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
-                UTGlobal.MG_SeleccionarCombo(Cb_EncRecepcion);
+                UTGlobal.MG_SeleccionarCombo(cbFacturaEmpresa);
                 UTGlobal.MG_SeleccionarCombo(Cb_EncVenta);
                 UTGlobal.MG_SeleccionarCombo(Cb_EncPreVenta);
                 UTGlobal.MG_SeleccionarCombo(Cb_EncTransporte);
@@ -527,7 +526,7 @@ namespace PRESENTER.ven
                 Dgv_GBuscador.RootTable.Columns["EncPrVenta"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["EncVenta"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["EncTransporte"].Visible = false;
-                Dgv_GBuscador.RootTable.Columns["EncRecepcion"].Visible = false;
+                Dgv_GBuscador.RootTable.Columns["FacturaEmpresa"].Visible = false;
 
 
                 Dgv_GBuscador.RootTable.Columns["NitCliente"].Caption = "NIT";
@@ -566,8 +565,7 @@ namespace PRESENTER.ven
             try
             {
                 Double saldo, precioVenta, precioCosto, precioMinVenta, precioMaxVenta;
-                int idProducto, stock, contenido; 
-               // string Producto, codPrducto, unidadVenta;
+                int stock, contenido; 
                 saldo = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value);
                 stock = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Stock"].Value);
                 precioVenta = Convert.ToDouble(Dgv_DetalleVenta.CurrentRow.Cells["PrecioVenta"].Value);
@@ -582,50 +580,7 @@ namespace PRESENTER.ven
                 else
                 {
                     if (saldo > stock)
-                    {
-                        //var idDetalle = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["Id"].Value);
-                        //idProducto = Convert.ToInt32(Dgv_DetalleVenta.CurrentRow.Cells["IdProducto"].Value);
-                        //var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(idProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
-                        //MP_ActualizarLote2(ref InventarioLotes, idProducto, idDetalle);
-                        //var sumaStockTotal = InventarioLotes.Sum(a => a.Cantidad);
-                        //if ((decimal)saldo <= sumaStockTotal)
-                        //{
-                        //    Producto = Dgv_DetalleVenta.CurrentRow.Cells["Producto"].Value.ToString();
-                        //    codPrducto = Dgv_DetalleVenta.CurrentRow.Cells["CodigoProducto"].Value.ToString();
-                        //    unidadVenta = Dgv_DetalleVenta.CurrentRow.Cells["Unidad"].Value.ToString();
-                        //    foreach (var fila in InventarioLotes)
-                        //    {
-                        //        if (saldo > 0)
-                        //        {
-                        //            if ((Double)fila.Cantidad >= saldo)
-                        //            {
-                        //                IngresarCantidadLote(idProducto, Producto, codPrducto, unidadVenta, saldo,
-                        //                                     precioVenta, precioCosto, fila.Lote, fila.FechaVen);
-
-                        //                saldo = 0;
-                        //            }
-                        //            else//Si el inventario es menor
-                        //            {
-                        //                IngresarCantidadLote(idProducto, Producto, codPrducto, unidadVenta, (Double)fila.Cantidad,
-                        //                                    precioVenta, precioCosto, fila.Lote, fila.FechaVen);
-                        //                saldo -= (Double)fila.Cantidad;
-                        //            }
-                        //            if (saldo > 0)
-                        //            {
-                        //                MP_AddFila();
-                        //                Dgv_DetalleVenta.Row = Dgv_DetalleVenta.RowCount - 1;
-                        //            }
-                        //        }                                                   
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value = 1;
-                        //    Dgv_DetalleVenta.CurrentRow.Cells["SubTotal"].Value = precioVenta;
-                        //    Dgv_DetalleVenta.CurrentRow.Cells["subTotalCosto"].Value = precioCosto;
-                        //    throw new Exception("No existe stock para algun producto");
-                        //}
-
+                    {                       
                         Dgv_DetalleVenta.CurrentRow.Cells["Cantidad"].Value = 1;
                         Dgv_DetalleVenta.CurrentRow.Cells["Contenido"].Value = contenido;
                         Dgv_DetalleVenta.CurrentRow.Cells["TotalContenido"].Value = contenido;
@@ -1023,7 +978,7 @@ namespace PRESENTER.ven
 
                     EncEntrega = this.TbEncEntrega.Text,
                     EncPrVenta = Convert.ToInt32(this.Cb_EncPreVenta.Value),
-                    EncRecepcion = Convert.ToInt32(this.Cb_EncRecepcion.Value),
+                    FacturaEmpresa = Convert.ToInt32(this.cbFacturaEmpresa.Value),
                     EncTransporte = Convert.ToInt32(this.Cb_EncTransporte.Value),
                     EncVenta = Convert.ToInt32(this.Cb_EncVenta.Value),
                     Estado = (int)ENEstado.GUARDADO,
@@ -1444,8 +1399,8 @@ namespace PRESENTER.ven
                                 throw new Exception("No se encontro un cliente");
                             }
                             TbNitCliente.Text = lista.Nit;
-                            idCategoriaPrecio = lista.IdCategoriaPrecio;
-                            TbEmpresaProveedoraCliente.Text = lista.EmpresaProveedora;
+                            idCategoriaPrecio = lista.IdCategoriaPrecio;                            
+                            cbFacturaEmpresa.Value = lista.FacturaEmpresa;
                         }
                     }
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
@@ -1460,7 +1415,7 @@ namespace PRESENTER.ven
                         new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
                         new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
                         new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
-                        new GLCelda() { campo = "Factur", visible = true, titulo = "Facturacion", tamano = 100 },
+                        new GLCelda() { campo = "Factur", visible = false, titulo = "Facturacion", tamano = 100 },
                         new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
                     };
 
@@ -1479,11 +1434,9 @@ namespace PRESENTER.ven
                         if (bandera)
                         {
                             GridEXRow Row = efecto.Row;
-                            cb_Cliente.Value = Row.Cells[0].Value.ToString();
-                            TbNitCliente.Text = Row.Cells[4].Value.ToString();
-                            var libreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                                    Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList();
-                            TbEmpresaProveedoraCliente.Text = libreria.Where(l => l.IdLibreria == Convert.ToInt32(Row.Cells[7].Value)).FirstOrDefault().Descripcion;
+                            cb_Cliente.Value = Convert.ToInt32(Row.Cells[0].Value);
+                            TbNitCliente.Text = Row.Cells["Nit"].Value.ToString();
+                            cbFacturaEmpresa.Value = Convert.ToInt32(Row.Cells["Facturacion"].Value);
                             idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
                         }
                     }
@@ -1514,12 +1467,6 @@ namespace PRESENTER.ven
         {
             MP_SeleccionarButtonCombo(Cb_EncTransporte, btnEncTransporte);
         }
-
-        private void Cb_EncRecepcion_ValueChanged(object sender, EventArgs e)
-        {
-            MP_SeleccionarButtonCombo(Cb_EncRecepcion, btnEncRecepcion);
-        }
-
         private void btnEncVenta_Click(object sender, EventArgs e)
         {
             try
@@ -1641,17 +1588,17 @@ namespace PRESENTER.ven
                     IdGrupo = Convert.ToInt32(ENEstaticosGrupo.VENTA),
                     IdOrden = Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION),
                     IdLibrer = idLibreria + 1,
-                    Descrip = Cb_EncRecepcion.Text == "" ? "" : Cb_EncRecepcion.Text,
+                    Descrip = cbFacturaEmpresa.Text == "" ? "" : cbFacturaEmpresa.Text,
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = UTGlobal.Usuario,
                 };
                 if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
                 {
-                    UTGlobal.MG_ArmarCombo(Cb_EncRecepcion,
+                    UTGlobal.MG_ArmarCombo(cbFacturaEmpresa,
                                   new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
                                                                                                 Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_RECEPCION)).ToList());
-                    Cb_EncRecepcion.SelectedIndex = ((List<VLibreria>)Cb_EncRecepcion.DataSource).Count() - 1;
+                    cbFacturaEmpresa.SelectedIndex = ((List<VLibreria>)cbFacturaEmpresa.DataSource).Count() - 1;
                 }
             }
             catch (Exception ex)
@@ -1659,6 +1606,5 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-       
     }
 }
