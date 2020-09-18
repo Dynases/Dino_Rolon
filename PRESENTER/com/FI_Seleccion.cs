@@ -565,7 +565,7 @@ namespace PRESENTER.com
                     UTGlobal.MG_SeleccionarCombo(Cb_Placa);
                     UTGlobal.MG_SeleccionarComboCompraIngreso(cb_NumGranja);
                     UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Almacen);
-                    UTGlobal.MG_SeleccionarCombo_Almacen(cbAlmacenCompra);
+                    //UTGlobal.MG_SeleccionarCombo_Almacen(cbAlmacenCompra);
                 }
                 //((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).Clear();
                 Dgv_Detalle.DataSource = null;
@@ -894,7 +894,7 @@ namespace PRESENTER.com
                     Dgv_Seleccion.UpdateData();
                     foreach (var fila in seleccion_01)
                     {
-                        fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_TCantidad.Value);
+                        fila.Porcen = (fila.Cantidad * 100) / Convert.ToDecimal(Tb_Recep_TCantidad.Value);
                     }
                     ArmarDetalle(seleccion_01);
                 }
@@ -1156,8 +1156,9 @@ namespace PRESENTER.com
                                     tb_Proveedor.Text = rCompra.Field<string>("Proveedor").ToString();
                                     Cb_Placa.Value = rCompra.Field<int>("Placa");
                                     Tb_Edad.Text = rCompra.Field<string>("EdadSemana").ToString();
-                                    Cb_Almacen.Value = rCompra.Field<int>("IdAlmacen");
+                                    //Cb_Almacen.Value = rCompra.Field<int>("IdAlmacen");
                                     _TipoCompra = rCompra.Field<int>("TipoCompra");
+                                    cbAlmacenCompra.Value = rCompra.Field<int>("IdAlmacen");
                                     MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                                     MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                                     MP_ObtenerCalculo();

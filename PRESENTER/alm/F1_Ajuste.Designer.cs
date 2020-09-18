@@ -138,7 +138,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1199, 631);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -154,7 +154,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1199, 631);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -186,7 +186,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1193, 605);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             // 
             // PanelContenidoRegistro
@@ -263,9 +263,9 @@
             this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Producto.Controls.Add(this.dgjProducto);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Producto.Location = new System.Drawing.Point(111, 3);
+            this.GPanel_Producto.Location = new System.Drawing.Point(274, 3);
             this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(963, 37);
+            this.GPanel_Producto.Size = new System.Drawing.Size(650, 37);
             // 
             // 
             // 
@@ -303,7 +303,7 @@
             this.dgjProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgjProducto.Location = new System.Drawing.Point(0, 0);
             this.dgjProducto.Name = "dgjProducto";
-            this.dgjProducto.Size = new System.Drawing.Size(957, 16);
+            this.dgjProducto.Size = new System.Drawing.Size(644, 16);
             this.dgjProducto.TabIndex = 0;
             this.dgjProducto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
             this.dgjProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgjProducto_KeyDown_1);

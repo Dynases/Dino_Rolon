@@ -214,20 +214,22 @@ namespace PRESENTER.alm
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.IdProducto));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.IdAlmacen));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.IdCategoriaPrecio));
-                dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioCosto));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioVenta));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.CategoriaPrecio));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.TipoProducto));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.CategoriaProducto));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.EsLote));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.Contenido));
+                dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMaxVenta));
+                dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMinVenta));
 
                 dgjProducto.ColAL(nameof(VProductoListaStock.CodigoProducto), "Código", 80);
-                dgjProducto.ColAL(nameof(VProductoListaStock.Producto), "Producto", 120);
-                dgjProducto.ColAL(nameof(VProductoListaStock.Division), "División", 80);
-                dgjProducto.ColAL(nameof(VProductoListaStock.UnidadVenta), "UN.", 80);
-                dgjProducto.ColAL(nameof(VProductoListaStock.PrecioCosto), "P. Costo", 80);
-                dgjProducto.ColAL(nameof(VProductoListaStock.Stock), "Stock", 80);
+                dgjProducto.ColAL(nameof(VProductoListaStock.Producto), "Producto", 180);
+                dgjProducto.ColAL(nameof(VProductoListaStock.Division), "División", 100);
+                dgjProducto.ColAL(nameof(VProductoListaStock.UnidadVenta), "UN.", 60);
+               
+                dgjProducto.ColARNro(nameof(VProductoListaStock.PrecioCosto), "P. Costo",100, "0.00");
+                dgjProducto.ColARNro(nameof(VProductoListaStock.Stock), "Stock", 100, "0.00");
                 dgjProducto.ConfigFinalBasica();
             }
             catch (Exception ex)
@@ -355,14 +357,20 @@ namespace PRESENTER.alm
                 var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
                 var almacenes = (List<VAlmacenCombo>)cbAlmacen.DataSource;
                 var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
+
                 _ajuste.Id = 0;
                 _ajuste.Fecha = DateTime.Today;
                 _ajuste.IdConcepto = conceptos.First().Id;
                 _ajuste.IdAlmacen = almacenes.First().IdLibreria;
                 _ajuste.Obs = string.Empty;
                 vAjusteBindingSource.ResetCurrentItem();
-                _detalles.RemoveRange(0, _detalles.Count);
+
+                _detalles = _detalles.Where(t => t.IdView == "0").ToList();
                 dgjDetalle.Refetch();
+                MP_ArmarGrillaDetalle();
+                //_detalles.RemoveRange(0, _detalles.Count);
+                //dgjDetalle.Refetch();
+
                 MP_LimpiarColor();
             }
             catch (Exception ex)
@@ -409,13 +417,13 @@ namespace PRESENTER.alm
             }
         }
 
-        private void MP_Filtrar(int tipo) //go-dev revisar
+        private void MP_Filtrar(int tipo) 
         {
             MP_CargarListado();
             if (Dgv_GBuscador.RowCount > 0)
             {
-                _MPos = 0;
-                MP_MostrarRegistro(tipo == 1 ? _MPos : Dgv_GBuscador.RowCount - 1);
+                _MPos = tipo == 1 ? 0 : Dgv_GBuscador.Row;
+                MP_MostrarRegistro(_MPos);
             }
             else
             {
@@ -549,25 +557,8 @@ namespace PRESENTER.alm
                     if (estado == (int)ENEstado.NUEVO)
                     {
                         _detalles = _detalles.Where(t => t.IdView != idView).ToList();
-                        //var lista = _detalles.Where(t => t.IdView == idView).FirstOrDefault();
-                        
-                        //etalles.Remove(lista);
-                        //_detalles.
-                        //dgjDetalle.Refresh();
                         dgjDetalle.Refetch();
-                        //List<EntDet> detalle = new List<EntDet>();
-                        //_detalles.CopyTo(detalle);
-                        //_detalles.Clear();
-                        //_detalles.AddRange(detalle);
-                        //_detalles.RemoveAll(x => x != null);
-                        //_detalles= _detalles.Where(a => a.NProducto != string.Empty).ToList();
-                        //_detalles.FindAll(x => x != null);
-                        //_detalles.Capacity = _detalles.Count();
-                        //dgjDetalle.Dispose();
-                        //dgjDetalle.DataSource = null;
                         MP_ArmarGrillaDetalle();
-                        //dgjDetalle.Refetch();
-                        //MP_ArmarGrillaDetalle(); //go-dev
                     }
                     else
                     {
@@ -1083,7 +1074,7 @@ namespace PRESENTER.alm
         public override void MH_Salir()
         {
             MP_InHabilitar();
-            MP_Filtrar(1);
+            MP_Filtrar(2);
         }
 
         public override bool MH_Validar()
