@@ -39,6 +39,8 @@ namespace PRESENTER.reg
             InitializeComponent();
             SuperTabBuscar.Visible = false;
             MP_Iniciar();
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
         private void Dgv_Categoria_EditingCell(object sender, EditingCellEventArgs e)
         {

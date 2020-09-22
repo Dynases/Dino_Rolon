@@ -20,17 +20,7 @@ namespace PRESENTER.alm
 {
     public partial class F1_Almacen : MODEL.ModeloF1
     {
-        public F1_Almacen()
-        {
-            InitializeComponent();
-            this.MP_IniciarMapa();
-            this.MP_InHabilitar();
-            this.MP_CargarTiposAlmacen();
-            this.MP_CargarSucursales();
-            this.MP_CargarAlmacenes(); 
-            this.MP_AsignarPermisos();
 
-        }
 
         //==================================
         #region Variables de entorno
@@ -45,7 +35,18 @@ namespace PRESENTER.alm
         private static List<VAlmacenLista> listaAlmacen;
 
         #endregion
-
+        public F1_Almacen()
+        {
+            InitializeComponent();
+            this.MP_IniciarMapa();
+            this.MP_InHabilitar();
+            this.MP_CargarTiposAlmacen();
+            this.MP_CargarSucursales();
+            this.MP_CargarAlmacenes();
+            this.MP_AsignarPermisos();
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
+        }
         //==================================
         #region Metodos Privados
         void MP_MostrarMensajeExito(string mensaje)

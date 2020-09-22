@@ -39,14 +39,14 @@ namespace PRESENTER.com
             InitializeComponent();
             MP_Iniciar();
             superTabControl1.SelectedTabIndex = 0;
-            this.Name = _NombreFormulario;
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
         #region Metodos privados
         private void MP_Iniciar()
         {
             try
             {
-                LblTitulo.Text = _NombreFormulario;
                 MP_CargarAlmacenes();              
                 MP_CargarEncabezado();
                 MP_InHabilitar();

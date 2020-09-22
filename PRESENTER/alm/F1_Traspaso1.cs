@@ -31,6 +31,7 @@ namespace PRESENTER.alm
             this.MP_CargarAlmacenes();
             this.MP_AsignarPermisos();            
             this.LblTitulo.Text = "TRASPASO";
+            this.Text = "TRASPASO";
             superTabControl1.SelectedPanel = PanelContenidoRegistro;
             BtnHabilitar.Visible = true;
         }

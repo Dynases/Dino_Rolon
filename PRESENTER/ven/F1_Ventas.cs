@@ -25,6 +25,7 @@ namespace PRESENTER.ven
 {
     public partial class F1_Ventas : MODEL.ModeloF1
     {
+        string _NombreFormulario = "VENTAS";
         public F1_Ventas()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace PRESENTER.ven
             btnEncPreVenta.Visible = false;
             btnEncVenta.Visible = false;
             btnEncTransporte.Visible = false;
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
 
         #region Variables de Entorno        

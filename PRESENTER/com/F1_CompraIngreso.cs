@@ -733,6 +733,7 @@ namespace PRESENTER.com
         {
             try
             {
+                this.Text = _NombreFormulario;
                 LblTitulo.Text = _NombreFormulario;
                 MP_InicioArmarCombo();
                 MP_CargarAlmacenes();

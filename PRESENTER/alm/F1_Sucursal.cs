@@ -12,12 +12,15 @@ namespace PRESENTER.alm
 {
     public partial class F1_Sucursal : MODEL.ModeloF1
     {
+        string _NombreFormulario = "SUCURSAL";
         public F1_Sucursal()
         {
             InitializeComponent();
             this.MP_InHabilitar();
             this.MP_CargarListaSucursales();
             MP_AsignarPermisos();
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
 
         #region Variables globales        

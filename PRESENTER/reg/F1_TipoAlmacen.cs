@@ -14,6 +14,7 @@ namespace PRESENTER.reg
 {
     public partial class F1_TipoAlmacen : MODEL.ModeloF1
     {
+ 
         public F1_TipoAlmacen()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace PRESENTER.reg
             MP_AsignarPermisos();
             SuperTabBuscar.Visible = false;
             BtnImprimir.Visible = false;
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
 
         #region Variables de instancia

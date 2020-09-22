@@ -205,6 +205,7 @@ namespace PRESENTER.adm
         {
             try
             {
+                this.Text = _NombreFormulario;
                 LblTitulo.Text = _NombreFormulario;
                 MP_CargarComboRol(cbRol);
                 MP_CargarEncabezado();

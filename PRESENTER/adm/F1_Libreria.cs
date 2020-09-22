@@ -24,6 +24,8 @@ namespace PRESENTER.adm
         {
             InitializeComponent();
             MP_Iniciar();
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
         }
         #region Eventos
     

@@ -333,6 +333,7 @@ namespace PRESENTER.com
         {
             try
             {
+                this.Text = _NombreFormulario;
                 LblTitulo.Text = _NombreFormulario;
                 MP_IniciarMapa();
                 btnMax.Visible = false;

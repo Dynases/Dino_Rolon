@@ -139,6 +139,7 @@ namespace PRESENTER.reg
         private void MP_Iniciar()
         {
             LblTitulo.Text = _NombreFormulario;
+            this.Text = _NombreFormulario;
             //Carga las librerias al combobox desde una lista
             MP_CargarCombo();
             MP_IniciarMapa();

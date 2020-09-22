@@ -39,7 +39,8 @@ namespace PRESENTER.com
 
         private void F1_Transformacion_Load(object sender, EventArgs e)
         {
-            this.Name = _NombreFormulario;
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
             superTabControl1.SelectedTabIndex = 0;
             MP_Iniciar();
         }
@@ -48,8 +49,7 @@ namespace PRESENTER.com
         private void MP_Iniciar()
         {
             try
-            {
-                LblTitulo.Text = _NombreFormulario;
+            {                
                 MP_CargarAlmacenes();
                btnMax.Visible = false;
                 MP_CargarEncabezado();

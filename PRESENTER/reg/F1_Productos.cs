@@ -406,6 +406,7 @@ namespace PRESENTER.reg
         {
             try
             {
+                this.Text = _NombreFormulario;
                 LblTitulo.Text = _NombreFormulario;
                 MP_ArmarComboInicial();
                 MP_CargarEncabezado();

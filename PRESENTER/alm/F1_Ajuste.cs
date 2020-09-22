@@ -54,6 +54,7 @@ namespace PRESENTER.alm
             try
             {
                 vAjusteBindingSource.DataSource = _ajuste;
+                this.Text = _NombreFormulario;
                 LblTitulo.Text = _NombreFormulario;
                 MP_ArmarCombos();
                 MP_ArmarGrillas();

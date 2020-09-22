@@ -189,7 +189,8 @@ namespace PRESENTER.adm
         {
             try
             {
-                LblTitulo.Text = _NombreFormulario;                
+                this.Text = _NombreFormulario;
+                LblTitulo.Text = _NombreFormulario;
                 MP_CargarModulos();
                 MP_CargarEncabezado();
                 MP_InHabilitar();
