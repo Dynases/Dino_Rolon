@@ -29,6 +29,7 @@ namespace REPOSITORY.Interface
         List<VCompraIngresoNota> NotaCompraIngresoDevolucion(int Id);
         List<VCompraIngresoNota> NotaCompraIngresoResultado(int Id);
         DataTable ReporteCompraIngreso(FCompraIngreso fcompraIngreso);
+        DataTable ReporteTotalMaple(FCompraIngreso fcompraIngreso);
         DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso);
         DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso);
         DataTable ReporteCriterioCompraIngresoResultado(FCompraIngreso fcompraIngreso);

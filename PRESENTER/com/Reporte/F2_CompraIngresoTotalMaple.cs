@@ -1,6 +1,5 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.com.CompraIngreso.Filter;
-using Janus.Windows.GridEX;
 using Microsoft.Reporting.WinForms;
 using MODEL;
 using System;
@@ -18,11 +17,9 @@ using UTILITY.Global;
 
 namespace PRESENTER.com.Reporte
 {
-    public partial class F2_CompraIngreso : ModeloF2
+    public partial class F2_CompraIngresoTotalMaple : ModeloF2
     {
-
-        #region Eventos
-        public F2_CompraIngreso()
+        public F2_CompraIngresoTotalMaple()
         {
             InitializeComponent();
             Rpt_Reporte.LocalReport.EnableExternalImages = true;
@@ -30,70 +27,6 @@ namespace PRESENTER.com.Reporte
             Rpt_Reporte.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
             Rpt_Reporte.ZoomPercent = 100;
         }
-        private void F2_CompraIngreso_Load(object sender, EventArgs e)
-        {
-            //this.Rpt_Reporte.RefreshReport();
-            MP_InicioArmarCombo();
-            MP_Habilitar();
-            MP_CargarAlmacenes();
-        }
-       
-        private void BtnGenerar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int estado = Cb_Estado.SelectedIndex == 2 ? (int)ENEstado.TODOS :
-                                                                  (Cb_Estado.SelectedIndex == 0 ? (int)ENEstado.GUARDADO : (int)ENEstado.COMPLETADO);
-                DateTime? fechaDesde = null;
-                DateTime? fechaHasta = null;
-                FCompraIngreso fcompraingreso = new FCompraIngreso()
-                {
-                    Id= Convert.ToInt32( cb_NumGranja.Value),
-                    IdProveedor = Convert.ToInt32(cb_Proveedor.Value),
-                    TipoCategoria = Convert.ToInt32(Cb_Tipo.Value),
-                    fechaDesde = Dt_FechaDesde.Checked ? Dt_FechaDesde.Value.Date : fechaDesde,
-                    fechaHasta = Dt_FechaHasta.Checked ? Dt_FechaHasta.Value.Date : fechaHasta,
-                    IdAlmacen = Convert.ToInt32(cbAlmacen.Value),
-                    estadoCompra = estado
-                };
-                DataTable compraIngreso = new DataTable();
-                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
-                {
-                    compraIngreso = new ServiceDesktop.ServiceDesktopClient()
-                                    .CompraIngresoReporte(fcompraingreso);
-                }
-             
-                if (compraIngreso.Rows.Count != 0)
-                {
-                    Rpt_Reporte.LocalReport.DataSources.Clear();
-                    Rpt_Reporte.ProcessingMode = ProcessingMode.Local;
-                    Rpt_Reporte.LocalReport.ReportEmbeddedResource = "PRESENTER.Report.ReportViewer.CompraIngreso.rdlc";
-                    
-                    List<ReportParameter> lParametros = new List<ReportParameter>{};                    
-                    lParametros.Add(new ReportParameter("fechaDesde", Dt_FechaDesde.Checked ? fcompraingreso.fechaDesde.Value.ToShortDateString() : "-----"));
-                    lParametros.Add(new ReportParameter("fechaHasta", Dt_FechaHasta.Checked ? fcompraingreso.fechaHasta.Value.ToShortDateString() : "-----"));
-                    lParametros.Add(new ReportParameter("estado", Cb_Estado.Text));
-                    lParametros.Add(new ReportParameter("NumGranja", cb_NumGranja.Text));
-                    lParametros.Add(new ReportParameter("Tipo", Cb_Tipo.Text));
-                    lParametros.Add(new ReportParameter("Proveedor", cb_Proveedor.Text));
-                    lParametros.Add(new ReportParameter("Almacen", cbAlmacen.Text));
-                    Rpt_Reporte.LocalReport.DataSources.Add(new ReportDataSource("CompraIngreso", compraIngreso));
-                    Rpt_Reporte.LocalReport.SetParameters(lParametros);
-                    Rpt_Reporte.RefreshReport();
-                    Rpt_Reporte.Visible = true;
-
-                    LblPaginacion.Text = compraIngreso.Rows.Count.ToString();
-                }
-                else
-                    throw new Exception("No se encontraron registros con el filtro especificado.");
-            }
-            catch (Exception ex)
-            {
-                MP_MostrarMensajeError(ex.Message);
-            }
-        }
-        #endregion
-
         #region Metodos Privados
         void MP_MostrarMensajeError(string mensaje)
         {
@@ -103,7 +36,7 @@ namespace PRESENTER.com.Reporte
         {
             try
             {
-                var _almacens = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
+              var  _almacens = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
                 UTGlobal.MG_ArmarComboAlmacen(cbAlmacen, _almacens);
             }
             catch (Exception ex)
@@ -120,6 +53,7 @@ namespace PRESENTER.com.Reporte
             cb_NumGranja.Value = 0;
             cb_Proveedor.Value = 0;
             Cb_Tipo.Value = 0;
+            cbAlmacen.Value = 0;
         }
         private void MP_InicioArmarCombo()
         {
@@ -140,13 +74,70 @@ namespace PRESENTER.com.Reporte
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-
         #endregion
 
+        private void F2_CompraIngresoTotalMaple_Load(object sender, EventArgs e)
+        {
+            MP_InicioArmarCombo();
+            MP_Habilitar();
+            MP_CargarAlmacenes();
+       
+        }
+
+        private void BtnGenerar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int estado = Cb_Estado.SelectedIndex == 2 ? (int)ENEstado.TODOS :
+                                                                  (Cb_Estado.SelectedIndex == 0 ? (int)ENEstado.GUARDADO : (int)ENEstado.COMPLETADO);
+                DateTime? fechaDesde = null;
+                DateTime? fechaHasta = null;
+                FCompraIngreso fcompraingreso = new FCompraIngreso()
+                {
+                    Id = Convert.ToInt32(cb_NumGranja.Value),
+                    IdProveedor = Convert.ToInt32(cb_Proveedor.Value),
+                    TipoCategoria = Convert.ToInt32(Cb_Tipo.Value),
+                    fechaDesde = Dt_FechaDesde.Checked ? Dt_FechaDesde.Value.Date : fechaDesde,
+                    fechaHasta = Dt_FechaHasta.Checked ? Dt_FechaHasta.Value.Date : fechaHasta,
+                    IdAlmacen = Convert.ToInt32(cbAlmacen.Value),
+                    estadoCompra = estado
+                };
+                DataTable compraIngreso = new DataTable();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    compraIngreso = servicio.ReporteTotalMaple(fcompraingreso);
+                }            
+                if (compraIngreso.Rows.Count != 0)
+                {
+                    Rpt_Reporte.LocalReport.DataSources.Clear();
+                    Rpt_Reporte.ProcessingMode = ProcessingMode.Local;
+                    Rpt_Reporte.LocalReport.ReportEmbeddedResource = "PRESENTER.Report.ReportViewer.CompraIngresoTotalMaple.rdlc";
+
+                    List<ReportParameter> lParametros = new List<ReportParameter> { };
+                    lParametros.Add(new ReportParameter("fechaDesde", Dt_FechaDesde.Checked ? fcompraingreso.fechaDesde.Value.ToShortDateString() : "-----"));
+                    lParametros.Add(new ReportParameter("fechaHasta", Dt_FechaHasta.Checked ? fcompraingreso.fechaHasta.Value.ToShortDateString() : "-----"));
+                    lParametros.Add(new ReportParameter("estado", Cb_Estado.Text));
+                    lParametros.Add(new ReportParameter("NumGranja", cb_NumGranja.Text));
+                    lParametros.Add(new ReportParameter("Tipo", Cb_Tipo.Text));
+                    lParametros.Add(new ReportParameter("Proveedor", cb_Proveedor.Text));
+                    lParametros.Add(new ReportParameter("Almacen", cbAlmacen.Text));
+                    Rpt_Reporte.LocalReport.DataSources.Add(new ReportDataSource("CompraIngresoTotalMaple", compraIngreso));
+                    Rpt_Reporte.LocalReport.SetParameters(lParametros);
+                    Rpt_Reporte.RefreshReport();
+                    Rpt_Reporte.Visible = true;
+                    LblPaginacion.Text = compraIngreso.Rows.Count.ToString();
+                }
+                else
+                    throw new Exception("No se encontraron registros con el filtro especificado.");
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
         private void BtnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
-
 }

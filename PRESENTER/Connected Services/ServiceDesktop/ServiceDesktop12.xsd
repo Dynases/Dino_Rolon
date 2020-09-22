@@ -59,14 +59,13 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CategoriaPrecio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CategoriaProducto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CodigoBarras" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Contenido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Division" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EsLote" type="xs:int" />
       <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
       <xs:element minOccurs="0" name="IdCategoriaPrecio" type="xs:int" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="MarcaProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PrecioCosto" type="xs:decimal" />
       <xs:element minOccurs="0" name="PrecioMaxVenta" type="xs:decimal" />
       <xs:element minOccurs="0" name="PrecioMinVenta" type="xs:decimal" />

@@ -15,5 +15,6 @@ namespace ENTITY.com.CompraIngreso.Filter
         public int estadoCompra { get; set; }
         public int TipoCategoria { get; set; }
         public int Detalle { get; set; }
+        public int? IdAlmacen { get; set; }
     }
 }

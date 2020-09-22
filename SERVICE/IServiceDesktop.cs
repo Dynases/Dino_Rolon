@@ -368,6 +368,8 @@ namespace SERVICE
         [OperationContract]
          DataTable CompraIngresoReporte(FCompraIngreso fcompraIngreso);
         [OperationContract]
+        DataTable ReporteTotalMaple(FCompraIngreso fcompraIngreso);
+        [OperationContract]
         DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso);
         [OperationContract]
         DataTable ReporteCriterioCompraIngresoDevolucion(FCompraIngreso fcompraIngreso);

@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
+        bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
+        System.Threading.Tasks.Task<bool> CompraExisteEnLoteEnUsoVenta_01Async(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_01_ListaResponse")]
         ENTITY.com.Compra_01.View.VCompra_01[] Compra_01_Lista(int IdCompra);
         
@@ -733,6 +739,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporte", ReplyAction="http://tempuri.org/IServiceDesktop/CompraIngresoReporteResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> CompraIngresoReporteAsync(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteTotalMaple", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteTotalMapleResponse")]
+        System.Data.DataTable ReporteTotalMaple(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteTotalMaple", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteTotalMapleResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ReporteTotalMapleAsync(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteCriterioCompraIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteCriterioCompraIngresoResponse")]
         System.Data.DataTable ReporteCriterioCompraIngreso(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso);
         
@@ -952,12 +964,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
-        bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
-        System.Threading.Tasks.Task<bool> CompraExisteEnLoteEnUsoVenta_01Async(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2031,6 +2037,14 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {
+            return base.Channel.CompraExisteEnLoteEnUsoVenta_01(IdProducto, lote, fechaVen);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CompraExisteEnLoteEnUsoVenta_01Async(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {
+            return base.Channel.CompraExisteEnLoteEnUsoVenta_01Async(IdProducto, lote, fechaVen);
+        }
+        
         public ENTITY.com.Compra_01.View.VCompra_01[] Compra_01_Lista(int IdCompra) {
             return base.Channel.Compra_01_Lista(IdCompra);
         }
@@ -3068,6 +3082,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.CompraIngresoReporteAsync(fcompraIngreso);
         }
         
+        public System.Data.DataTable ReporteTotalMaple(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso) {
+            return base.Channel.ReporteTotalMaple(fcompraIngreso);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ReporteTotalMapleAsync(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso) {
+            return base.Channel.ReporteTotalMapleAsync(fcompraIngreso);
+        }
+        
         public System.Data.DataTable ReporteCriterioCompraIngreso(ENTITY.com.CompraIngreso.Filter.FCompraIngreso fcompraIngreso) {
             return base.Channel.ReporteCriterioCompraIngreso(fcompraIngreso);
         }
@@ -3410,14 +3432,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId) {
             return base.Channel.Compra_ListaAsync(usuarioId);
-        }
-        
-        public bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {
-            return base.Channel.CompraExisteEnLoteEnUsoVenta_01(IdProducto, lote, fechaVen);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CompraExisteEnLoteEnUsoVenta_01Async(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {
-            return base.Channel.CompraExisteEnLoteEnUsoVenta_01Async(IdProducto, lote, fechaVen);
         }
     }
 }

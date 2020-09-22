@@ -29,6 +29,7 @@
       <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Stock" type="xs:decimal" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
       <xs:element minOccurs="0" name="TotalContenido" type="xs:decimal" />
       <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />

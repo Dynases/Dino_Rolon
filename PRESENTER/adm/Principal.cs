@@ -201,6 +201,12 @@ namespace PRESENTER.adm
             F2_ExportarExcel frm = new F2_ExportarExcel();
             frm.Show();
         }
+        private void Metro_Reporte_TotalMaple_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Reporte_TotalMaple.Name;
+            F2_CompraIngresoTotalMaple frm = new F2_CompraIngresoTotalMaple();
+            frm.Show();
+        }
         #endregion
         #region Ventas
         private void btnVentas_Click(object sender, EventArgs e)
@@ -220,5 +226,7 @@ namespace PRESENTER.adm
         {
 
         }
+
+   
     }
 }

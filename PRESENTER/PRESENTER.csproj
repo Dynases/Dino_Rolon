@@ -379,6 +379,12 @@
     <Compile Include="com\Reporte\F2_CompraIngresoCriterio.Designer.cs">
       <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
     </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngresoTotalMaple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com\Reporte\F2_CompraIngresoTotalMaple.Designer.cs">
+      <DependentUpon>F2_CompraIngresoTotalMaple.cs</DependentUpon>
+    </Compile>
     <Compile Include="com\Reporte\F2_ExportarExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +546,9 @@
     <EmbeddedResource Include="com\Reporte\F2_CompraIngresoCriterio.resx">
       <DependentUpon>F2_CompraIngresoCriterio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="com\Reporte\F2_CompraIngresoTotalMaple.resx">
+      <DependentUpon>F2_CompraIngresoTotalMaple.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="com\Reporte\F2_ExportarExcel.resx">
       <DependentUpon>F2_ExportarExcel.cs</DependentUpon>
     </EmbeddedResource>
@@ -575,6 +584,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer\CompraIngreso.rdlc" />
     <EmbeddedResource Include="Report\ReportViewer\CompraIngresoCriterio.rdlc" />
+    <EmbeddedResource Include="Report\ReportViewer\CompraIngresoTotalMaple.rdlc" />
     <EmbeddedResource Include="Report\ReportViewer\KardexGeneral.rdlc" />
     <EmbeddedResource Include="Report\RSeleccionNota.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

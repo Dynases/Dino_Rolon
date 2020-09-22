@@ -32,6 +32,7 @@
             Janus.Windows.GridEX.GridEXLayout cb_NumGranja_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cb_Proveedor_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout Cb_Tipo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cbAlmacen_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Dt_FechaHasta = new MetroFramework.Controls.MetroDateTime();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -47,6 +48,8 @@
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.Cb_Tipo = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.cbAlmacen = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
@@ -60,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Proveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMin
@@ -124,8 +128,14 @@
             // 
             this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
             // 
+            // BtnAtras
+            // 
+            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
+            // 
             // GPanel_Criterio
             // 
+            this.GPanel_Criterio.Controls.Add(this.labelX8);
+            this.GPanel_Criterio.Controls.Add(this.cbAlmacen);
             this.GPanel_Criterio.Controls.Add(this.labelX7);
             this.GPanel_Criterio.Controls.Add(this.Cb_Tipo);
             this.GPanel_Criterio.Controls.Add(this.labelX6);
@@ -212,7 +222,7 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(62, 46);
+            this.labelX3.Location = new System.Drawing.Point(60, 46);
             this.labelX3.Name = "labelX3";
             this.labelX3.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX3.Size = new System.Drawing.Size(40, 23);
@@ -242,7 +252,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(61, 14);
+            this.labelX2.Location = new System.Drawing.Point(59, 14);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX2.Size = new System.Drawing.Size(46, 23);
@@ -273,7 +283,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(9, 14);
+            this.labelX1.Location = new System.Drawing.Point(7, 14);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX1.Size = new System.Drawing.Size(46, 23);
@@ -289,7 +299,7 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(9, 79);
+            this.labelX4.Location = new System.Drawing.Point(7, 79);
             this.labelX4.Name = "labelX4";
             this.labelX4.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX4.Size = new System.Drawing.Size(46, 23);
@@ -341,7 +351,7 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX5.ForeColor = System.Drawing.Color.Black;
-            this.labelX5.Location = new System.Drawing.Point(9, 114);
+            this.labelX5.Location = new System.Drawing.Point(7, 114);
             this.labelX5.Name = "labelX5";
             this.labelX5.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX5.Size = new System.Drawing.Size(80, 23);
@@ -395,7 +405,7 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX6.ForeColor = System.Drawing.Color.Black;
-            this.labelX6.Location = new System.Drawing.Point(9, 145);
+            this.labelX6.Location = new System.Drawing.Point(7, 145);
             this.labelX6.Name = "labelX6";
             this.labelX6.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX6.Size = new System.Drawing.Size(80, 23);
@@ -430,12 +440,47 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(9, 170);
+            this.labelX7.Location = new System.Drawing.Point(7, 170);
             this.labelX7.Name = "labelX7";
             this.labelX7.SingleLineColor = System.Drawing.SystemColors.Control;
             this.labelX7.Size = new System.Drawing.Size(80, 23);
             this.labelX7.TabIndex = 387;
             this.labelX7.Text = "Tipo:";
+            // 
+            // labelX8
+            // 
+            this.labelX8.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX8.ForeColor = System.Drawing.Color.Black;
+            this.labelX8.Location = new System.Drawing.Point(6, 196);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX8.Size = new System.Drawing.Size(80, 23);
+            this.labelX8.TabIndex = 404;
+            this.labelX8.Text = "Almacen:";
+            // 
+            // cbAlmacen
+            // 
+            this.cbAlmacen.BackColor = System.Drawing.Color.White;
+            cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString");
+            this.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout;
+            this.cbAlmacen.DisabledBackColor = System.Drawing.Color.Blue;
+            this.cbAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAlmacen.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.cbAlmacen.Location = new System.Drawing.Point(4, 225);
+            this.cbAlmacen.Name = "cbAlmacen";
+            this.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.cbAlmacen.SelectedIndex = -1;
+            this.cbAlmacen.SelectedItem = null;
+            this.cbAlmacen.Size = new System.Drawing.Size(255, 22);
+            this.cbAlmacen.TabIndex = 403;
+            this.cbAlmacen.Tag = "1";
+            this.cbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // F2_CompraIngreso
             // 
@@ -461,6 +506,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cb_NumGranja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Proveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cb_Tipo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAlmacen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,6 +528,8 @@
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cb_Proveedor;
         protected internal DevComponents.DotNetBar.LabelX labelX7;
         internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_Tipo;
+        protected internal DevComponents.DotNetBar.LabelX labelX8;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo cbAlmacen;
         //private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Reporte;
         //private Microsoft.Reporting.WinForms.ReportViewer Rpt_Report;

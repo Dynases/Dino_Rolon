@@ -260,6 +260,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable ReporteTotalMaple(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                return iCompraIngreso.ReporteTotalMaple(fcompraIngreso);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso)
         {
             try

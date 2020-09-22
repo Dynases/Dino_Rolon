@@ -7,5 +7,9 @@ namespace PRESENTER.Report.ReportViewer
 
     partial class CompraIngresoDatos
     {
+        partial class CompraIngresoTotalMapleDataTable
+        {
+
+        }
     }
 }

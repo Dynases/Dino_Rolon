@@ -41,6 +41,12 @@
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd36" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01Response" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Compra_01_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Compra_01_Lista" />
   </wsdl:message>
@@ -677,6 +683,12 @@
   <wsdl:message name="IServiceDesktop_CompraIngresoReporte_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompraIngresoReporteResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ReporteTotalMaple_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalMaple" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ReporteTotalMaple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalMapleResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_ReporteCriterioCompraIngreso_InputMessage">
     <wsdl:part name="parameters" element="tns:ReporteCriterioCompraIngreso" />
   </wsdl:message>
@@ -881,13 +893,11 @@
   <wsdl:message name="IServiceDesktop_Compra_Lista_OutputMessage">
     <wsdl:part name="parameters" element="tns:Compra_ListaResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage">
-    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CompraExisteEnLoteEnUsoVenta_01Response" />
-  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
+    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Compra_01_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_01_Lista" message="tns:IServiceDesktop_Compra_01_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_01_ListaResponse" message="tns:IServiceDesktop_Compra_01_Lista_OutputMessage" />
@@ -1312,6 +1322,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporte" message="tns:IServiceDesktop_CompraIngresoReporte_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraIngresoReporteResponse" message="tns:IServiceDesktop_CompraIngresoReporte_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReporteTotalMaple">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteTotalMaple" message="tns:IServiceDesktop_ReporteTotalMaple_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteTotalMapleResponse" message="tns:IServiceDesktop_ReporteTotalMaple_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReporteCriterioCompraIngreso">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteCriterioCompraIngreso" message="tns:IServiceDesktop_ReporteCriterioCompraIngreso_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ReporteCriterioCompraIngresoResponse" message="tns:IServiceDesktop_ReporteCriterioCompraIngreso_OutputMessage" />
@@ -1448,13 +1462,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_Lista" message="tns:IServiceDesktop_Compra_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_ListaResponse" message="tns:IServiceDesktop_Compra_Lista_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response" message="tns:IServiceDesktop_CompraExisteEnLoteEnUsoVenta_01_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Compra_01_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Compra_01_Lista" style="document" />
       <wsdl:input>
@@ -2409,6 +2428,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReporteTotalMaple">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ReporteTotalMaple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReporteCriterioCompraIngreso">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ReporteCriterioCompraIngreso" style="document" />
       <wsdl:input>
@@ -2708,15 +2736,6 @@
     </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Compra_Lista" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CompraExisteEnLoteEnUsoVenta_01">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

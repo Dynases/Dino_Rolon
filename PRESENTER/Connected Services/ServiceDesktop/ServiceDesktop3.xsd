@@ -64,6 +64,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Cliente" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmpresaProveedora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacturaEmpresa" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdCategoriaPrecio" type="xs:int" />
       <xs:element minOccurs="0" name="Nit" nillable="true" type="xs:string" />

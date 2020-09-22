@@ -26,6 +26,8 @@ namespace PRESENTER.Report.ReportViewer {
         
         private CompraIngresoDataTable tableCompraIngreso;
         
+        private CompraIngresoTotalMapleDataTable tableCompraIngresoTotalMaple;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace PRESENTER.Report.ReportViewer {
                 if ((ds.Tables["CompraIngreso"] != null)) {
                     base.Tables.Add(new CompraIngresoDataTable(ds.Tables["CompraIngreso"]));
                 }
+                if ((ds.Tables["CompraIngresoTotalMaple"] != null)) {
+                    base.Tables.Add(new CompraIngresoTotalMapleDataTable(ds.Tables["CompraIngresoTotalMaple"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace PRESENTER.Report.ReportViewer {
         public CompraIngresoDataTable CompraIngreso {
             get {
                 return this.tableCompraIngreso;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CompraIngresoTotalMapleDataTable CompraIngresoTotalMaple {
+            get {
+                return this.tableCompraIngresoTotalMaple;
             }
         }
         
@@ -155,6 +170,9 @@ namespace PRESENTER.Report.ReportViewer {
                 if ((ds.Tables["CompraIngreso"] != null)) {
                     base.Tables.Add(new CompraIngresoDataTable(ds.Tables["CompraIngreso"]));
                 }
+                if ((ds.Tables["CompraIngresoTotalMaple"] != null)) {
+                    base.Tables.Add(new CompraIngresoTotalMapleDataTable(ds.Tables["CompraIngresoTotalMaple"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace PRESENTER.Report.ReportViewer {
                     this.tableCompraIngreso.InitVars();
                 }
             }
+            this.tableCompraIngresoTotalMaple = ((CompraIngresoTotalMapleDataTable)(base.Tables["CompraIngresoTotalMaple"]));
+            if ((initTable == true)) {
+                if ((this.tableCompraIngresoTotalMaple != null)) {
+                    this.tableCompraIngresoTotalMaple.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace PRESENTER.Report.ReportViewer {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCompraIngreso = new CompraIngresoDataTable();
             base.Tables.Add(this.tableCompraIngreso);
+            this.tableCompraIngresoTotalMaple = new CompraIngresoTotalMapleDataTable();
+            base.Tables.Add(this.tableCompraIngresoTotalMaple);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeCompraIngreso() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeCompraIngresoTotalMaple() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace PRESENTER.Report.ReportViewer {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void CompraIngresoRowChangeEventHandler(object sender, CompraIngresoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void CompraIngresoTotalMapleRowChangeEventHandler(object sender, CompraIngresoTotalMapleRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -632,6 +667,407 @@ namespace PRESENTER.Report.ReportViewer {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CompraIngresoTotalMapleDataTable : global::System.Data.TypedTableBase<CompraIngresoTotalMapleRow> {
+            
+            private global::System.Data.DataColumn columnNotaRecepcion;
+            
+            private global::System.Data.DataColumn columnFechaRecepcion;
+            
+            private global::System.Data.DataColumn columnNotaProv;
+            
+            private global::System.Data.DataColumn columnProveedor;
+            
+            private global::System.Data.DataColumn columnTotalUnidades;
+            
+            private global::System.Data.DataColumn columnTotalMaple;
+            
+            private global::System.Data.DataColumn columnIdPlaca;
+            
+            private global::System.Data.DataColumn columnPlaca;
+            
+            private global::System.Data.DataColumn columnTipo;
+            
+            private global::System.Data.DataColumn columnIdAlmacen;
+            
+            private global::System.Data.DataColumn columnAlmacen;
+            
+            private global::System.Data.DataColumn columnEntregado;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleDataTable() {
+                this.TableName = "CompraIngresoTotalMaple";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal CompraIngresoTotalMapleDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected CompraIngresoTotalMapleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NotaRecepcionColumn {
+                get {
+                    return this.columnNotaRecepcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaRecepcionColumn {
+                get {
+                    return this.columnFechaRecepcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NotaProvColumn {
+                get {
+                    return this.columnNotaProv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProveedorColumn {
+                get {
+                    return this.columnProveedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalUnidadesColumn {
+                get {
+                    return this.columnTotalUnidades;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalMapleColumn {
+                get {
+                    return this.columnTotalMaple;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdPlacaColumn {
+                get {
+                    return this.columnIdPlaca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PlacaColumn {
+                get {
+                    return this.columnPlaca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TipoColumn {
+                get {
+                    return this.columnTipo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdAlmacenColumn {
+                get {
+                    return this.columnIdAlmacen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AlmacenColumn {
+                get {
+                    return this.columnAlmacen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EntregadoColumn {
+                get {
+                    return this.columnEntregado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleRow this[int index] {
+                get {
+                    return ((CompraIngresoTotalMapleRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event CompraIngresoTotalMapleRowChangeEventHandler CompraIngresoTotalMapleRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event CompraIngresoTotalMapleRowChangeEventHandler CompraIngresoTotalMapleRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event CompraIngresoTotalMapleRowChangeEventHandler CompraIngresoTotalMapleRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event CompraIngresoTotalMapleRowChangeEventHandler CompraIngresoTotalMapleRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddCompraIngresoTotalMapleRow(CompraIngresoTotalMapleRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleRow AddCompraIngresoTotalMapleRow(string NotaRecepcion, string FechaRecepcion, string NotaProv, string Proveedor, string TotalUnidades, string TotalMaple, string IdPlaca, string Placa, string Tipo, string IdAlmacen, string Almacen, string Entregado) {
+                CompraIngresoTotalMapleRow rowCompraIngresoTotalMapleRow = ((CompraIngresoTotalMapleRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NotaRecepcion,
+                        FechaRecepcion,
+                        NotaProv,
+                        Proveedor,
+                        TotalUnidades,
+                        TotalMaple,
+                        IdPlaca,
+                        Placa,
+                        Tipo,
+                        IdAlmacen,
+                        Almacen,
+                        Entregado};
+                rowCompraIngresoTotalMapleRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCompraIngresoTotalMapleRow);
+                return rowCompraIngresoTotalMapleRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CompraIngresoTotalMapleDataTable cln = ((CompraIngresoTotalMapleDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CompraIngresoTotalMapleDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnNotaRecepcion = base.Columns["NotaRecepcion"];
+                this.columnFechaRecepcion = base.Columns["FechaRecepcion"];
+                this.columnNotaProv = base.Columns["NotaProv"];
+                this.columnProveedor = base.Columns["Proveedor"];
+                this.columnTotalUnidades = base.Columns["TotalUnidades"];
+                this.columnTotalMaple = base.Columns["TotalMaple"];
+                this.columnIdPlaca = base.Columns["IdPlaca"];
+                this.columnPlaca = base.Columns["Placa"];
+                this.columnTipo = base.Columns["Tipo"];
+                this.columnIdAlmacen = base.Columns["IdAlmacen"];
+                this.columnAlmacen = base.Columns["Almacen"];
+                this.columnEntregado = base.Columns["Entregado"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnNotaRecepcion = new global::System.Data.DataColumn("NotaRecepcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotaRecepcion);
+                this.columnFechaRecepcion = new global::System.Data.DataColumn("FechaRecepcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaRecepcion);
+                this.columnNotaProv = new global::System.Data.DataColumn("NotaProv", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotaProv);
+                this.columnProveedor = new global::System.Data.DataColumn("Proveedor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProveedor);
+                this.columnTotalUnidades = new global::System.Data.DataColumn("TotalUnidades", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalUnidades);
+                this.columnTotalMaple = new global::System.Data.DataColumn("TotalMaple", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMaple);
+                this.columnIdPlaca = new global::System.Data.DataColumn("IdPlaca", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPlaca);
+                this.columnPlaca = new global::System.Data.DataColumn("Placa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlaca);
+                this.columnTipo = new global::System.Data.DataColumn("Tipo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipo);
+                this.columnIdAlmacen = new global::System.Data.DataColumn("IdAlmacen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdAlmacen);
+                this.columnAlmacen = new global::System.Data.DataColumn("Almacen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAlmacen);
+                this.columnEntregado = new global::System.Data.DataColumn("Entregado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEntregado);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleRow NewCompraIngresoTotalMapleRow() {
+                return ((CompraIngresoTotalMapleRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CompraIngresoTotalMapleRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CompraIngresoTotalMapleRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CompraIngresoTotalMapleRowChanged != null)) {
+                    this.CompraIngresoTotalMapleRowChanged(this, new CompraIngresoTotalMapleRowChangeEvent(((CompraIngresoTotalMapleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CompraIngresoTotalMapleRowChanging != null)) {
+                    this.CompraIngresoTotalMapleRowChanging(this, new CompraIngresoTotalMapleRowChangeEvent(((CompraIngresoTotalMapleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CompraIngresoTotalMapleRowDeleted != null)) {
+                    this.CompraIngresoTotalMapleRowDeleted(this, new CompraIngresoTotalMapleRowChangeEvent(((CompraIngresoTotalMapleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CompraIngresoTotalMapleRowDeleting != null)) {
+                    this.CompraIngresoTotalMapleRowDeleting(this, new CompraIngresoTotalMapleRowChangeEvent(((CompraIngresoTotalMapleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveCompraIngresoTotalMapleRow(CompraIngresoTotalMapleRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                CompraIngresoDatos ds = new CompraIngresoDatos();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CompraIngresoTotalMapleDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CompraIngresoRow : global::System.Data.DataRow {
@@ -899,6 +1335,367 @@ namespace PRESENTER.Report.ReportViewer {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CompraIngresoTotalMapleRow : global::System.Data.DataRow {
+            
+            private CompraIngresoTotalMapleDataTable tableCompraIngresoTotalMaple;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal CompraIngresoTotalMapleRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCompraIngresoTotalMaple = ((CompraIngresoTotalMapleDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NotaRecepcion {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.NotaRecepcionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NotaRecepcion\' de la tabla \'CompraIngresoTotalMaple\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.NotaRecepcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FechaRecepcion {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.FechaRecepcionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRecepcion\' de la tabla \'CompraIngresoTotalMaple\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.FechaRecepcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NotaProv {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.NotaProvColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NotaProv\' de la tabla \'CompraIngresoTotalMaple\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.NotaProvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Proveedor {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.ProveedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proveedor\' de la tabla \'CompraIngresoTotalMaple\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.ProveedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalUnidades {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.TotalUnidadesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalUnidades\' de la tabla \'CompraIngresoTotalMaple\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.TotalUnidadesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalMaple {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.TotalMapleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalMaple\' de la tabla \'CompraIngresoTotalMaple\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.TotalMapleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string IdPlaca {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.IdPlacaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdPlaca\' de la tabla \'CompraIngresoTotalMaple\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.IdPlacaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Placa {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.PlacaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Placa\' de la tabla \'CompraIngresoTotalMaple\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.PlacaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Tipo {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.TipoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tipo\' de la tabla \'CompraIngresoTotalMaple\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.TipoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string IdAlmacen {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.IdAlmacenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdAlmacen\' de la tabla \'CompraIngresoTotalMaple\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.IdAlmacenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Almacen {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.AlmacenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Almacen\' de la tabla \'CompraIngresoTotalMaple\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.AlmacenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Entregado {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.EntregadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Entregado\' de la tabla \'CompraIngresoTotalMaple\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.EntregadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNotaRecepcionNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.NotaRecepcionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNotaRecepcionNull() {
+                this[this.tableCompraIngresoTotalMaple.NotaRecepcionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaRecepcionNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.FechaRecepcionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaRecepcionNull() {
+                this[this.tableCompraIngresoTotalMaple.FechaRecepcionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNotaProvNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.NotaProvColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNotaProvNull() {
+                this[this.tableCompraIngresoTotalMaple.NotaProvColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProveedorNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.ProveedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProveedorNull() {
+                this[this.tableCompraIngresoTotalMaple.ProveedorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalUnidadesNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.TotalUnidadesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalUnidadesNull() {
+                this[this.tableCompraIngresoTotalMaple.TotalUnidadesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalMapleNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.TotalMapleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalMapleNull() {
+                this[this.tableCompraIngresoTotalMaple.TotalMapleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdPlacaNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.IdPlacaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdPlacaNull() {
+                this[this.tableCompraIngresoTotalMaple.IdPlacaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPlacaNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.PlacaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPlacaNull() {
+                this[this.tableCompraIngresoTotalMaple.PlacaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTipoNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.TipoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTipoNull() {
+                this[this.tableCompraIngresoTotalMaple.TipoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdAlmacenNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.IdAlmacenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdAlmacenNull() {
+                this[this.tableCompraIngresoTotalMaple.IdAlmacenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAlmacenNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.AlmacenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAlmacenNull() {
+                this[this.tableCompraIngresoTotalMaple.AlmacenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEntregadoNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.EntregadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEntregadoNull() {
+                this[this.tableCompraIngresoTotalMaple.EntregadoColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -918,6 +1715,40 @@ namespace PRESENTER.Report.ReportViewer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CompraIngresoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class CompraIngresoTotalMapleRowChangeEvent : global::System.EventArgs {
+            
+            private CompraIngresoTotalMapleRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleRowChangeEvent(CompraIngresoTotalMapleRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CompraIngresoTotalMapleRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -1352,6 +1352,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable ReporteTotalMaple(FCompraIngreso fcompraIngreso)
+        {
+            try
+            {
+                var listResult = new LCompraIngreso().ReporteTotalMaple(fcompraIngreso);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public DataTable ReporteCriterioCompraIngreso(FCompraIngreso fcompraIngreso)
         {
             try

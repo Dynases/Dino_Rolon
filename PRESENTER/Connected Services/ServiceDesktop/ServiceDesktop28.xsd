@@ -4,6 +4,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Detalle" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAlmacen" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdProveedor" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TipoCategoria" type="xs:int" />
       <xs:element minOccurs="0" name="estadoCompra" type="xs:int" />
