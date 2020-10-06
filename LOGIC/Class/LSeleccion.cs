@@ -37,7 +37,8 @@ namespace LOGIC.Class
                 {
                     vSeleccion.ManchadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 388).Porcen / 100;
                     vSeleccion.PicadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 387).Porcen / 100;
-
+                    vSeleccion.ManchadoAbsoluto = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 388).Cantidad;
+                    vSeleccion.PicadoAbsoluto = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 387).Cantidad;
                     if (idSeleccion == 0) //Nuevo
                     {                       
                         result = iSeleccion.Guardar(vSeleccion, ref idSeleccion);                       

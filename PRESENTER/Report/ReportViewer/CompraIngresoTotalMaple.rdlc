@@ -1581,6 +1581,7 @@
                                   <Value>=Fields!FechaNota.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>dd/MM/yyyy</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2079,7 +2080,7 @@
             <DataSetName>CompraIngresoTotalMaple</DataSetName>
             <Top>3.94236cm</Top>
             <Height>2.30271cm</Height>
-            <Width>18.96742cm</Width>
+            <Width>18.96743cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
