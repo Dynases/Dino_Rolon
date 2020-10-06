@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\DiSoft\LPersonal.cs" />
     <Compile Include="Class\LAjuste.cs" />
     <Compile Include="Class\LConcepto.cs" />
     <Compile Include="Class\LTI002.cs" />

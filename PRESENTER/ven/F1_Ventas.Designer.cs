@@ -313,9 +313,9 @@
             this.GPanel_Producto.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.GPanel_Producto.Controls.Add(this.Dgv_Producto);
             this.GPanel_Producto.DisabledBackColor = System.Drawing.Color.Empty;
-            this.GPanel_Producto.Location = new System.Drawing.Point(132, 12);
+            this.GPanel_Producto.Location = new System.Drawing.Point(282, 12);
             this.GPanel_Producto.Name = "GPanel_Producto";
-            this.GPanel_Producto.Size = new System.Drawing.Size(963, 29);
+            this.GPanel_Producto.Size = new System.Drawing.Size(650, 37);
             // 
             // 
             // 
@@ -353,7 +353,7 @@
             this.Dgv_Producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_Producto.Location = new System.Drawing.Point(0, 0);
             this.Dgv_Producto.Name = "Dgv_Producto";
-            this.Dgv_Producto.Size = new System.Drawing.Size(957, 8);
+            this.Dgv_Producto.Size = new System.Drawing.Size(644, 16);
             this.Dgv_Producto.TabIndex = 0;
             this.Dgv_Producto.EditingCell += new Janus.Windows.GridEX.EditingCellEventHandler(this.Dgv_Producto_EditingCell);
             this.Dgv_Producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dgv_Producto_KeyDown);

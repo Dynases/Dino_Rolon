@@ -35,8 +35,8 @@ namespace LOGIC.Class
                 bool result = false;          
                 using (var scope = new TransactionScope())
                 {
-                    vSeleccion.ManchadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 388).Porcen;
-                    vSeleccion.PicadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 387).Porcen;
+                    vSeleccion.ManchadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 388).Porcen / 100;
+                    vSeleccion.PicadoPorcentaje = detalle_Seleecion.FirstOrDefault(a => a.IdProducto == 387).Porcen / 100;
 
                     if (idSeleccion == 0) //Nuevo
                     {                       

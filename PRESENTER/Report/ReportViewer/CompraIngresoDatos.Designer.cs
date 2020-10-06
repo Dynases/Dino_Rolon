@@ -697,6 +697,8 @@ namespace PRESENTER.Report.ReportViewer {
             
             private global::System.Data.DataColumn columnEntregado;
             
+            private global::System.Data.DataColumn columnFechaNota;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CompraIngresoTotalMapleDataTable() {
@@ -828,6 +830,14 @@ namespace PRESENTER.Report.ReportViewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaNotaColumn {
+                get {
+                    return this.columnFechaNota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -863,7 +873,7 @@ namespace PRESENTER.Report.ReportViewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CompraIngresoTotalMapleRow AddCompraIngresoTotalMapleRow(string NotaRecepcion, string FechaRecepcion, string NotaProv, string Proveedor, string TotalUnidades, string TotalMaple, string IdPlaca, string Placa, string Tipo, string IdAlmacen, string Almacen, string Entregado) {
+            public CompraIngresoTotalMapleRow AddCompraIngresoTotalMapleRow(string NotaRecepcion, string FechaRecepcion, string NotaProv, string Proveedor, string TotalUnidades, string TotalMaple, string IdPlaca, string Placa, string Tipo, string IdAlmacen, string Almacen, string Entregado, string FechaNota) {
                 CompraIngresoTotalMapleRow rowCompraIngresoTotalMapleRow = ((CompraIngresoTotalMapleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NotaRecepcion,
@@ -877,7 +887,8 @@ namespace PRESENTER.Report.ReportViewer {
                         Tipo,
                         IdAlmacen,
                         Almacen,
-                        Entregado};
+                        Entregado,
+                        FechaNota};
                 rowCompraIngresoTotalMapleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCompraIngresoTotalMapleRow);
                 return rowCompraIngresoTotalMapleRow;
@@ -912,6 +923,7 @@ namespace PRESENTER.Report.ReportViewer {
                 this.columnIdAlmacen = base.Columns["IdAlmacen"];
                 this.columnAlmacen = base.Columns["Almacen"];
                 this.columnEntregado = base.Columns["Entregado"];
+                this.columnFechaNota = base.Columns["FechaNota"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -941,6 +953,8 @@ namespace PRESENTER.Report.ReportViewer {
                 base.Columns.Add(this.columnAlmacen);
                 this.columnEntregado = new global::System.Data.DataColumn("Entregado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEntregado);
+                this.columnFechaNota = new global::System.Data.DataColumn("FechaNota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaNota);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1552,6 +1566,23 @@ namespace PRESENTER.Report.ReportViewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FechaNota {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompraIngresoTotalMaple.FechaNotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaNota\' de la tabla \'CompraIngresoTotalMaple\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompraIngresoTotalMaple.FechaNotaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNotaRecepcionNull() {
                 return this.IsNull(this.tableCompraIngresoTotalMaple.NotaRecepcionColumn);
             }
@@ -1692,6 +1723,18 @@ namespace PRESENTER.Report.ReportViewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEntregadoNull() {
                 this[this.tableCompraIngresoTotalMaple.EntregadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaNotaNull() {
+                return this.IsNull(this.tableCompraIngresoTotalMaple.FechaNotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaNotaNull() {
+                this[this.tableCompraIngresoTotalMaple.FechaNotaColumn] = global::System.Convert.DBNull;
             }
         }
         

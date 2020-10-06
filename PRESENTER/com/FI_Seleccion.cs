@@ -206,7 +206,7 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].Caption = "Manchado%";
                 Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].Width = 90;
-                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].FormatString = "0.0000000";
                 Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["ManchadoPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -214,7 +214,7 @@ namespace PRESENTER.com
 
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Caption = "Picado%";
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].Width = 80;
-                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].FormatString = "0.0000000";
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["PicadoPorcentaje"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -253,6 +253,22 @@ namespace PRESENTER.com
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.FontSize = 8;
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
                 Dgv_GBuscador.RootTable.Columns["Devolucion"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].Caption = "ManchadoAbsoluto";
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["ManchadoAbsoluto"].Visible = true;
+
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].Caption = "PicadoAbsoluto";
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].Width = 80;
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].FormatString = "0.00";
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].CellStyle.FontSize = 8;
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+                Dgv_GBuscador.RootTable.Columns["PicadoAbsoluto"].Visible = true;
 
                 //Habilitar filtradores
                 Dgv_GBuscador.DefaultFilterRowComparison = FilterConditionOperator.Contains;

@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
+        ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
+        System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01", ReplyAction="http://tempuri.org/IServiceDesktop/CompraExisteEnLoteEnUsoVenta_01Response")]
         bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen);
         
@@ -194,6 +200,12 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/Concepto_ListaComboAjusteResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Concepto.View.VConceptoCombo[]> Concepto_ListaComboAjusteAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PersonalCombo", ReplyAction="http://tempuri.org/IServiceDesktop/PersonalComboResponse")]
+        ENTITY.DiSoft.Personal.VPersonalCombo[] PersonalCombo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PersonalCombo", ReplyAction="http://tempuri.org/IServiceDesktop/PersonalComboResponse")]
+        System.Threading.Tasks.Task<ENTITY.DiSoft.Personal.VPersonalCombo[]> PersonalComboAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
@@ -958,12 +970,6 @@ namespace PRESENTER.ServiceDesktop {
         // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
-        ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2037,6 +2043,14 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId) {
+            return base.Channel.Compra_Lista(usuarioId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId) {
+            return base.Channel.Compra_ListaAsync(usuarioId);
+        }
+        
         public bool CompraExisteEnLoteEnUsoVenta_01(int IdProducto, string lote, System.Nullable<System.DateTime> fechaVen) {
             return base.Channel.CompraExisteEnLoteEnUsoVenta_01(IdProducto, lote, fechaVen);
         }
@@ -2221,6 +2235,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Concepto.View.VConceptoCombo[]> Concepto_ListaComboAjusteAsync() {
             return base.Channel.Concepto_ListaComboAjusteAsync();
+        }
+        
+        public ENTITY.DiSoft.Personal.VPersonalCombo[] PersonalCombo() {
+            return base.Channel.PersonalCombo();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.DiSoft.Personal.VPersonalCombo[]> PersonalComboAsync() {
+            return base.Channel.PersonalComboAsync();
         }
         
         public string GetData(int value) {
@@ -3424,14 +3446,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request) {
             return base.Channel.CompraModificarEstadoAsync(request);
-        }
-        
-        public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId) {
-            return base.Channel.Compra_Lista(usuarioId);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.com.Compra.View.VCompraLista[]> Compra_ListaAsync(int usuarioId) {
-            return base.Channel.Compra_ListaAsync(usuarioId);
         }
     }
 }

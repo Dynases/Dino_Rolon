@@ -73,12 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServiceDesktop_Inventario.cs" />
+    <Compile Include="IServiceDesktop_Personal.cs" />
     <Compile Include="ServiceDesktop.svc.cs">
       <DependentUpon>ServiceDesktop.svc</DependentUpon>
     </Compile>
     <Compile Include="IServiceDesktop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceDesktop_Inventario.cs" />
+    <Compile Include="ServiceDesktop_Personal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,10 +24,11 @@ using UTILITY.Enum.EnEstado;
 using ENTITY.Cliente.View;
 using System.Linq.Expressions;
 using ENTITY.inv.Concepto.View;
+using ENTITY.DiSoft.Personal;
 
 namespace UTILITY.Global
 {
-    public class UTGlobal
+    public static class UTGlobal
     {
         public static string Usuario = "DEFAULT";
         public static int Mayusculas = 0;
@@ -60,6 +61,52 @@ namespace UTILITY.Global
                 combo.ValueMember = "idLibreria";
                 combo.DisplayMember = "Descripcion";
                 combo.DropDownList.DataSource = lLibreria;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarComboPersonal(MultiColumnCombo combo, List<VPersonalCombo> Personal)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = true;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = Personal;
+                combo.DropDownList.Refresh();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_ArmarCombos<T>(MultiColumnCombo combo, T Lista)
+        {
+            try
+            {
+                combo.DropDownList.Columns.Clear();
+                combo.DropDownList.Columns.Add("Id").Width = 50;
+                combo.DropDownList.Columns[0].Caption = "Cod";
+                combo.DropDownList.Columns[0].Visible = true;
+
+                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns[1].Caption = "Descripcion";
+                combo.DropDownList.Columns[1].Visible = true;
+
+                combo.ValueMember = "Id";
+                combo.DisplayMember = "Descripcion";
+                combo.DropDownList.DataSource = Lista;
                 combo.DropDownList.Refresh();
             }
             catch (Exception)
@@ -449,6 +496,24 @@ namespace UTILITY.Global
             try
             {
                 if (((List<VLibreria>)combo.DataSource).Count() > 0)
+                {
+                    combo.SelectedIndex = 0;
+                }
+                else
+                {
+                    combo.SelectedIndex = -1;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static void MG_SeleccionarCombos(MultiColumnCombo combo)
+        {
+            try
+            {
+                if (((List<VPersonalCombo>)combo.DataSource).Count() > 0)
                 {
                     combo.SelectedIndex = 0;
                 }

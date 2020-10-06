@@ -58,21 +58,19 @@ namespace PRESENTER.ven
         #region Metodos Privados
         void MP_ArmarCombo()
         {
-            UTGlobal.MG_ArmarComboClientes(cb_Cliente,
-                                  new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);
-            UTGlobal.MG_ArmarCombo(Cb_EncPreVenta,
-                                      new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
-                                                                                                    Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_PREVENTA)).ToList());
-            UTGlobal.MG_ArmarCombo(Cb_EncVenta,
-                          new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
-                                                                                        Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_VENTA)).ToList());
-            UTGlobal.MG_ArmarCombo(Cb_EncTransporte,
-                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.VENTA),
-                                                                                       Convert.ToInt32(ENEstaticosOrden.VENTA_ENC_TRASPORTE)).ToList());
-            UTGlobal.MG_ArmarCombo(cbFacturaEmpresa,
-                         new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
-                                                                                       Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+            using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+            {
+                UTGlobal.MG_ArmarComboClientes(cb_Cliente,servicio.TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);  
+                
+                UTGlobal.MG_ArmarCombos(Cb_EncPreVenta, servicio.PersonalCombo().ToList());
 
+                UTGlobal.MG_ArmarCombos(Cb_EncVenta, servicio.PersonalCombo().ToList());
+
+                UTGlobal.MG_ArmarCombos(Cb_EncTransporte, servicio.PersonalCombo().ToList());
+
+                UTGlobal.MG_ArmarCombo(cbFacturaEmpresa, servicio.LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
+                                                                                      Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
+            }
         }
         private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
         {
@@ -337,21 +335,21 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["CodigoBarra"].Visible = false;
 
             Dgv_DetalleVenta.RootTable.Columns["Producto"].Caption = "PRODUCTO";
-            Dgv_DetalleVenta.RootTable.Columns["Producto"].Width = 240;
+            Dgv_DetalleVenta.RootTable.Columns["Producto"].Width = 200;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             Dgv_DetalleVenta.RootTable.Columns["Producto"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].Caption = "UN.";
-            Dgv_DetalleVenta.RootTable.Columns["Unidad"].Width = 80;
+            Dgv_DetalleVenta.RootTable.Columns["Unidad"].Width = 70;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
             Dgv_DetalleVenta.RootTable.Columns["Unidad"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Caption = "CANTIDAD";
-            Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Width = 130;
+            Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Width = 110;
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].FormatString = "0.00";
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].CellStyle.FontSize = 9;
@@ -359,7 +357,7 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["Contenido"].Caption = "CONT.";
-            Dgv_DetalleVenta.RootTable.Columns["Contenido"].Width = 80;
+            Dgv_DetalleVenta.RootTable.Columns["Contenido"].Width = 110;
             Dgv_DetalleVenta.RootTable.Columns["Contenido"].FormatString = "0.00";
             Dgv_DetalleVenta.RootTable.Columns["Contenido"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Contenido"].CellStyle.FontSize = 9;
@@ -367,7 +365,7 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["Cantidad"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Caption = "TOTAL UN.";
-            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].Width = 110;
             Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].FormatString = "0.00";
             Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["TotalContenido"].CellStyle.FontSize = 9;
@@ -384,7 +382,7 @@ namespace PRESENTER.ven
 
 
             Dgv_DetalleVenta.RootTable.Columns["SubTotal"].Caption = "TOTAL";
-            Dgv_DetalleVenta.RootTable.Columns["SubTotal"].Width = 130;
+            Dgv_DetalleVenta.RootTable.Columns["SubTotal"].Width = 100;
             Dgv_DetalleVenta.RootTable.Columns["SubTotal"].FormatString = "0.00";
             Dgv_DetalleVenta.RootTable.Columns["SubTotal"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["SubTotal"].CellStyle.FontSize = 9;
@@ -397,14 +395,14 @@ namespace PRESENTER.ven
             Dgv_DetalleVenta.RootTable.Columns["SubTotalCosto"].Visible = false;
 
             Dgv_DetalleVenta.RootTable.Columns["Lote"].Caption = "LOTE";
-            Dgv_DetalleVenta.RootTable.Columns["Lote"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["Lote"].Width = 130;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
             Dgv_DetalleVenta.RootTable.Columns["Lote"].Visible = true;
 
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Caption = "FechaVencimiento";
-            Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Width = 100;
+            Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].Width = 130;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].CellStyle.FontSize = 9;
             Dgv_DetalleVenta.RootTable.Columns["FechaVencimiento"].CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
@@ -446,9 +444,9 @@ namespace PRESENTER.ven
                 
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
                 UTGlobal.MG_SeleccionarCombo(cbFacturaEmpresa);
-                UTGlobal.MG_SeleccionarCombo(Cb_EncVenta);
-                UTGlobal.MG_SeleccionarCombo(Cb_EncPreVenta);
-                UTGlobal.MG_SeleccionarCombo(Cb_EncTransporte);
+                UTGlobal.MG_SeleccionarCombos(Cb_EncVenta);
+                UTGlobal.MG_SeleccionarCombos(Cb_EncPreVenta);
+                UTGlobal.MG_SeleccionarCombos(Cb_EncTransporte);
                 UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Origen);
             }
             index = 0;

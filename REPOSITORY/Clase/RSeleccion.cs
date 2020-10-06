@@ -66,6 +66,8 @@ namespace REPOSITORY.Clase
                     seleccion.MermaPor = vSeleccion.MermaPorcentaje;
                     seleccion.ManchadoPor = vSeleccion.ManchadoPorcentaje;
                     seleccion.PicadoPor = vSeleccion.PicadoPorcentaje;
+                    seleccion.ManchadoAbsoluto = vSeleccion.ManchadoAbsoluto;
+                    seleccion.PicadoAbsoluto = vSeleccion.PicadoAbsoluto;
                     db.SaveChanges();
                     id = seleccion.Id;
                     return true;
@@ -235,8 +237,9 @@ namespace REPOSITORY.Clase
                          Fecha = a.Fecha,
                          Hora = a.Hora,
                          Usuario = a.Usuario,
-                         AlmacenCompraId = a.CompraIng.IdAlmacen
-                     }).FirstOrDefault();
+                         AlmacenCompraId = a.CompraIng.IdAlmacen,
+                    
+                }).FirstOrDefault();
                     return lista;
                 }
 
@@ -287,7 +290,9 @@ namespace REPOSITORY.Clase
                          Devolucion = a.CompraIng.Devolucion == 1 ? "NO" : "SI",
                          TipoProveedor = db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PROVEEDOR &&
                                                                                 x.IdOrden == (int)ENEstaticosOrden.PROVEEDOR_TIPO &&
-                                                                                x.IdLibrer == a.CompraIng.Proveed.TipoProve).Descrip
+                                                                                x.IdLibrer == a.CompraIng.Proveed.TipoProve).Descrip,
+                         ManchadoAbsoluto = a.ManchadoAbsoluto,
+                         PicadoAbsoluto = a.PicadoAbsoluto,
                      }).ToList();
                     return lista;
                 }

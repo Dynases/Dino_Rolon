@@ -29,5 +29,7 @@ namespace ENTITY.com.Seleccion.View
         public string Usuario { get; set; }
         public int Id { get; set; }
         public string TipoCategoria { get; set; }
+        public decimal ManchadoAbsoluto { get; set; }
+        public decimal PicadoAbsoluto { get; set; }
     }
 }

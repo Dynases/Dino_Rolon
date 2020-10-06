@@ -36,6 +36,30 @@
           <Property Name="caconv" Type="decimal" Precision="18" Scale="2" />
           <Property Name="capack" Type="int" />
         </EntityType>
+        <EntityType Name="TC002">
+          <Key>
+            <PropertyRef Name="cbnumi" />
+          </Key>
+          <Property Name="cbnumi" Type="int" Nullable="false" />
+          <Property Name="cbdesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="cbdirec" Type="nvarchar" MaxLength="200" />
+          <Property Name="cbtelef" Type="nvarchar" MaxLength="20" />
+          <Property Name="cbcat" Type="int" />
+          <Property Name="cbsal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cbci" Type="nvarchar" MaxLength="20" />
+          <Property Name="cbobs" Type="nvarchar" MaxLength="300" />
+          <Property Name="cbfnac" Type="date" />
+          <Property Name="cbfing" Type="date" />
+          <Property Name="cbfret" Type="date" />
+          <Property Name="cbfot" Type="nvarchar" MaxLength="100" />
+          <Property Name="cbest" Type="bit" />
+          <Property Name="cbeciv" Type="nvarchar" MaxLength="10" />
+          <Property Name="cbplan" Type="int" />
+          <Property Name="cbreloj" Type="int" />
+          <Property Name="cbfact" Type="date" />
+          <Property Name="cbhact" Type="nvarchar" MaxLength="5" />
+          <Property Name="cbuact" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="TC004">
           <Key>
             <PropertyRef Name="ccnumi" />
@@ -158,6 +182,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
         </EntityType>
         <EntityContainer Name="BDDistBHF_RolonModelStoreContainer">
           <EntitySet Name="TC001" EntityType="Self.TC001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC002" EntityType="Self.TC002" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC004" EntityType="Self.TC004" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC0042" EntityType="Self.TC0042" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC004B" EntityType="Self.TC004B" Schema="dbo" store:Type="Tables" />
@@ -197,6 +222,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySet Name="TC001" EntityType="BDDistBHF_RolonModel.TC001" />
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
           <EntitySet Name="TO001" EntityType="BDDistBHF_RolonModel.TO001" />
+          <EntitySet Name="TC002" EntityType="BDDistBHF_RolonModel.TC002" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -346,6 +372,30 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="oafact" Type="DateTime" Precision="0" />
           <Property Name="oahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="oauact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC002">
+          <Key>
+            <PropertyRef Name="cbnumi" />
+          </Key>
+          <Property Name="cbnumi" Type="Int32" Nullable="false" />
+          <Property Name="cbdesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cbdirec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cbtelef" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cbcat" Type="Int32" />
+          <Property Name="cbsal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cbci" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cbobs" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="cbfnac" Type="DateTime" Precision="0" />
+          <Property Name="cbfing" Type="DateTime" Precision="0" />
+          <Property Name="cbfret" Type="DateTime" Precision="0" />
+          <Property Name="cbfot" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cbest" Type="Boolean" />
+          <Property Name="cbeciv" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cbplan" Type="Int32" />
+          <Property Name="cbreloj" Type="Int32" />
+          <Property Name="cbfact" Type="DateTime" Precision="0" />
+          <Property Name="cbhact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="cbuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -506,6 +556,31 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="oahora" ColumnName="oahora" />
                 <ScalarProperty Name="oafdoc" ColumnName="oafdoc" />
                 <ScalarProperty Name="oanumi" ColumnName="oanumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC002">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC002">
+              <MappingFragment StoreEntitySet="TC002">
+                <ScalarProperty Name="cbuact" ColumnName="cbuact" />
+                <ScalarProperty Name="cbhact" ColumnName="cbhact" />
+                <ScalarProperty Name="cbfact" ColumnName="cbfact" />
+                <ScalarProperty Name="cbreloj" ColumnName="cbreloj" />
+                <ScalarProperty Name="cbplan" ColumnName="cbplan" />
+                <ScalarProperty Name="cbeciv" ColumnName="cbeciv" />
+                <ScalarProperty Name="cbest" ColumnName="cbest" />
+                <ScalarProperty Name="cbfot" ColumnName="cbfot" />
+                <ScalarProperty Name="cbfret" ColumnName="cbfret" />
+                <ScalarProperty Name="cbfing" ColumnName="cbfing" />
+                <ScalarProperty Name="cbfnac" ColumnName="cbfnac" />
+                <ScalarProperty Name="cbobs" ColumnName="cbobs" />
+                <ScalarProperty Name="cbci" ColumnName="cbci" />
+                <ScalarProperty Name="cbsal" ColumnName="cbsal" />
+                <ScalarProperty Name="cbcat" ColumnName="cbcat" />
+                <ScalarProperty Name="cbtelef" ColumnName="cbtelef" />
+                <ScalarProperty Name="cbdirec" ColumnName="cbdirec" />
+                <ScalarProperty Name="cbdesc" ColumnName="cbdesc" />
+                <ScalarProperty Name="cbnumi" ColumnName="cbnumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

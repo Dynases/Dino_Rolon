@@ -23,5 +23,7 @@ namespace ENTITY.com.Seleccion.View
         public decimal MermaPorcentaje { get; set; }
         public decimal ManchadoPorcentaje { get; set; }
         public decimal PicadoPorcentaje { get; set; }
+        public decimal ManchadoAbsoluto{ get; set; }
+        public decimal PicadoAbsoluto { get; set; }
     }
 }

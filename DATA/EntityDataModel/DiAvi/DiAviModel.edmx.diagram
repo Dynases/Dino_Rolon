@@ -58,10 +58,6 @@
         <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoResultado" Width="2.625" PointX="17.25" PointY="3.75" />
         <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="27.75" PointY="21.75" />
         <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="2" PointX="10.375" PointY="19.75" />
-        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="25.5" PointY="19" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_CompraIng" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" />
         <EntityTypeShape EntityType="DiAviModel.ValidacionPrograma" Width="1.5" PointX="19.375" PointY="8.75" />
         <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="0.75" PointY="20.25" />
         <EntityTypeShape EntityType="DiAviModel.Venta_01" Width="1.5" PointX="11" PointY="15.25" />
@@ -100,6 +96,10 @@
         <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
         <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
+        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="25.5" PointY="19.75" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_IdCompraIng" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
