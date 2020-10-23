@@ -65,6 +65,8 @@ namespace REPOSITORY.Clase.DiSoft
                     cliente.cchact = vcliente.Hora;
                     cliente.ccfact = vcliente.Fecha;
                     cliente.ccuact = vcliente.Usuario;
+                    cliente.ccLimite = vcliente.TotalCred;
+                    cliente.ccDias = vcliente.Dias;
                     //Guarda elcredito
                     credito.ccbnumi = cliente.ccnumi;
                     credito.ccbzona = cliente.cczona;
