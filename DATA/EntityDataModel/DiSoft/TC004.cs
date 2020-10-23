@@ -45,7 +45,5 @@ namespace DATA.EntityDataModel.DiSoft
         public Nullable<System.DateTime> ccfact { get; set; }
         public string cchact { get; set; }
         public string ccuact { get; set; }
-        public Nullable<decimal> ccLimite { get; set; }
-        public Nullable<decimal> ccDias { get; set; }
     }
 }

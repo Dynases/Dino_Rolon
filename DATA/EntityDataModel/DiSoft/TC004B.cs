@@ -17,5 +17,7 @@ namespace DATA.EntityDataModel.DiSoft
         public int ccbnumi { get; set; }
         public Nullable<int> ccbzona { get; set; }
         public Nullable<int> ccbtcre { get; set; }
+        public Nullable<decimal> ccLimite { get; set; }
+        public Nullable<decimal> ccDias { get; set; }
     }
 }

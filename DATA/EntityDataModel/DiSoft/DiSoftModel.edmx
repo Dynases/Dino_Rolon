@@ -95,8 +95,6 @@
           <Property Name="ccfact" Type="date" />
           <Property Name="cchact" Type="nvarchar" MaxLength="50" />
           <Property Name="ccuact" Type="nvarchar" MaxLength="50" />
-          <Property Name="ccLimite" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="ccDias" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -137,6 +135,8 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="ccbnumi" Type="int" Nullable="false" />
           <Property Name="ccbzona" Type="int" />
           <Property Name="ccbtcre" Type="int" />
+          <Property Name="ccLimite" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ccDias" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TC0051">
           <Key>
@@ -218,13 +218,13 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
         <EntityContainer Name="BDDistBHF_RolonEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TC0051" EntityType="BDDistBHF_RolonModel.TC0051" />
           <EntitySet Name="TL001" EntityType="BDDistBHF_RolonModel.TL001" />
-          <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
           <EntitySet Name="TC0042" EntityType="BDDistBHF_RolonModel.TC0042" />
           <EntitySet Name="TC0041" EntityType="BDDistBHF_RolonModel.TC0041" />
           <EntitySet Name="TC001" EntityType="BDDistBHF_RolonModel.TC001" />
           <EntitySet Name="TO001" EntityType="BDDistBHF_RolonModel.TO001" />
           <EntitySet Name="TC002" EntityType="BDDistBHF_RolonModel.TC002" />
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
+          <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -250,14 +250,6 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="lafact" Type="DateTime" Precision="0" />
           <Property Name="lahact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="lauact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TC004B">
-          <Key>
-            <PropertyRef Name="ccbnumi" />
-          </Key>
-          <Property Name="ccbnumi" Type="Int32" Nullable="false" />
-          <Property Name="ccbzona" Type="Int32" />
-          <Property Name="ccbtcre" Type="Int32" />
         </EntityType>
         <EntityType Name="TC0042">
           <Key>
@@ -398,6 +390,14 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="ccfact" Type="DateTime" Precision="0" />
           <Property Name="cchact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ccuact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC004B">
+          <Key>
+            <PropertyRef Name="ccbnumi" />
+          </Key>
+          <Property Name="ccbnumi" Type="Int32" Nullable="false" />
+          <Property Name="ccbzona" Type="Int32" />
+          <Property Name="ccbtcre" Type="Int32" />
           <Property Name="ccLimite" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ccDias" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
@@ -431,15 +431,6 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="laprovi" ColumnName="laprovi" />
                 <ScalarProperty Name="lacity" ColumnName="lacity" />
                 <ScalarProperty Name="lanumi" ColumnName="lanumi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TC004B">
-            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC004B">
-              <MappingFragment StoreEntitySet="TC004B">
-                <ScalarProperty Name="ccbtcre" ColumnName="ccbtcre" />
-                <ScalarProperty Name="ccbzona" ColumnName="ccbzona" />
-                <ScalarProperty Name="ccbnumi" ColumnName="ccbnumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -554,8 +545,6 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySetMapping Name="TC004">
             <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC004">
               <MappingFragment StoreEntitySet="TC004">
-                <ScalarProperty Name="ccDias" ColumnName="ccDias" />
-                <ScalarProperty Name="ccLimite" ColumnName="ccLimite" />
                 <ScalarProperty Name="ccuact" ColumnName="ccuact" />
                 <ScalarProperty Name="cchact" ColumnName="cchact" />
                 <ScalarProperty Name="ccfact" ColumnName="ccfact" />
@@ -587,6 +576,17 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="ccdesc" ColumnName="ccdesc" />
                 <ScalarProperty Name="cccod" ColumnName="cccod" />
                 <ScalarProperty Name="ccnumi" ColumnName="ccnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC004B">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TC004B">
+              <MappingFragment StoreEntitySet="TC004B">
+                <ScalarProperty Name="ccDias" ColumnName="ccDias" />
+                <ScalarProperty Name="ccLimite" ColumnName="ccLimite" />
+                <ScalarProperty Name="ccbtcre" ColumnName="ccbtcre" />
+                <ScalarProperty Name="ccbzona" ColumnName="ccbzona" />
+                <ScalarProperty Name="ccbnumi" ColumnName="ccbnumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

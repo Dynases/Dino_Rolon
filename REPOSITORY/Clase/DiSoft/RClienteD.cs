@@ -64,13 +64,13 @@ namespace REPOSITORY.Clase.DiSoft
                     cliente.ccpass = "";
                     cliente.cchact = vcliente.Hora;
                     cliente.ccfact = vcliente.Fecha;
-                    cliente.ccuact = vcliente.Usuario;
-                    cliente.ccLimite = vcliente.TotalCred;
-                    cliente.ccDias = vcliente.Dias;
+                    cliente.ccuact = vcliente.Usuario;        
                     //Guarda elcredito
                     credito.ccbnumi = cliente.ccnumi;
                     credito.ccbzona = cliente.cczona;
                     credito.ccbtcre = vcliente.TipoCliente;
+                    credito.ccLimite = vcliente.TotalCred;
+                    credito.ccDias = vcliente.Dias;
                     idCliente = cliente.ccnumi;
 
                     db.SaveChanges();
