@@ -62,8 +62,15 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
+                    var detalle = db.TI0021.Where(c => c.icibid == IdAjuste).ToList();
+                    foreach (var fila in detalle)
+                    {
+                        var detallePrecio = db.TI0021A.Where(c => c.IdTI0021 == fila.icid).FirstOrDefault();
+                        db.TI0021A.Remove(detallePrecio);
+                        db.TI0021.Remove(fila);                        
+                    }
                     var ajuste = db.TI002.Where(c => c.ibid.Equals(IdAjuste)).FirstOrDefault();                  
-                    db.TI002.Remove(ajuste);                 
+                    db.TI002.Remove(ajuste);        
                     db.SaveChanges();               
                 }
             }

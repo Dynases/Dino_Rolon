@@ -24,18 +24,29 @@ namespace REPOSITORY.Clase.DiSoft
                     TC004B credito;
                     var aux = idCliente;
                     cliente = db.TC004.Where(a => a.ccnumi == aux).FirstOrDefault();
-                    credito = db.TC004B.Where(c => c.ccbnumi == aux).FirstOrDefault();
+                            
                     if (cliente == null)
-                        aux = 0;
-                    if (aux == 0)
                     {
                         cliente = new TC004();
                         db.TC004.Add(cliente);
-                        credito = new TC004B();
-                        db.TC004B.Add(credito);
                         cliente.ccnumi = idCliente;
-                    }                   
-                    cliente.cccod = vcliente.IdSpyre;
+                    }
+                    if (vcliente.TipoCliente == 2)
+                    {
+                        credito = db.TC004B.Where(c => c.ccbnumi == aux).FirstOrDefault();
+                        if (credito == null)
+                        {
+                            credito = new TC004B();
+                            db.TC004B.Add(credito);
+                        }
+                        //Guarda elcredito
+                        credito.ccbnumi = cliente.ccnumi;
+                        credito.ccbzona = cliente.cczona;
+                        credito.ccbtcre = vcliente.TipoCliente;
+                        credito.ccLimite = vcliente.TotalCred;
+                        credito.ccDias = vcliente.Dias;
+                        cliente.cccod = vcliente.IdSpyre;
+                    }
                     cliente.ccdesc = vcliente.Descripcion;
                     cliente.cczona = vcliente.Ciudad; 
                     cliente.ccdct = 1; // PARA QUE SIRVE
@@ -64,13 +75,7 @@ namespace REPOSITORY.Clase.DiSoft
                     cliente.ccpass = "";
                     cliente.cchact = vcliente.Hora;
                     cliente.ccfact = vcliente.Fecha;
-                    cliente.ccuact = vcliente.Usuario;        
-                    //Guarda elcredito
-                    credito.ccbnumi = cliente.ccnumi;
-                    credito.ccbzona = cliente.cczona;
-                    credito.ccbtcre = vcliente.TipoCliente;
-                    credito.ccLimite = vcliente.TotalCred;
-                    credito.ccDias = vcliente.Dias;
+                    cliente.ccuact = vcliente.Usuario;
                     idCliente = cliente.ccnumi;
 
                     db.SaveChanges();

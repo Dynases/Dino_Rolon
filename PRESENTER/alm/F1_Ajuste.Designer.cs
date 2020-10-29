@@ -92,6 +92,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).BeginInit();
             this.SuspendLayout();
             // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);

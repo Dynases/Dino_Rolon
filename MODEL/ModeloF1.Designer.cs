@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModeloF1));
             DevComponents.DotNetBar.Rendering.SuperTabColorTable superTabColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
@@ -39,7 +40,7 @@
             this.LblTitulo = new System.Windows.Forms.Label();
             this.PanelInferior = new System.Windows.Forms.Panel();
             this.BubbleBarUsuario = new DevComponents.DotNetBar.BubbleBar();
-            this.BubbleBarTabUsuario = new DevComponents.DotNetBar.BubbleBarTab();
+            this.BubbleBarTabUsuario = new DevComponents.DotNetBar.BubbleBarTab(this.components);
             this.TxtNombreUsu = new System.Windows.Forms.TextBox();
             this.PanelNavegacion = new System.Windows.Forms.Panel();
             this.btnUltimo = new DevComponents.DotNetBar.ButtonX();
@@ -73,11 +74,11 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.SuperTabBuscar = new DevComponents.DotNetBar.SuperTabItem();
-            this.MFlyoutUsuario = new DevComponents.DotNetBar.Controls.Flyout();
-            this.MEP = new System.Windows.Forms.ErrorProvider();
+            this.MFlyoutUsuario = new DevComponents.DotNetBar.Controls.Flyout(this.components);
+            this.MEP = new System.Windows.Forms.ErrorProvider(this.components);
             this.MHighlighterFocus = new DevComponents.DotNetBar.Validator.Highlighter();
             this.BubbleButton3 = new DevComponents.DotNetBar.BubbleButton();
-            this.BunifuEclipse = new Bunifu.Framework.UI.BunifuElipse();
+            this.BunifuEclipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.PanelSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();

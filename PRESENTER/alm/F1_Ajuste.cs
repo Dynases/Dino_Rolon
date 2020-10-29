@@ -1008,7 +1008,7 @@ namespace PRESENTER.alm
                 return true;
             }
         }
-
+        
         public override bool MH_Eliminar()
         {
             try
@@ -1020,35 +1020,14 @@ namespace PRESENTER.alm
                 efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
                 efecto.ShowDialog();
                 bool resul = false;
+
                 if (efecto.Band)
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje = Mensaje.ToArray();
-                    resul = new ServiceDesktop.ServiceDesktopClient().CompraModificarEstado(IdCompra, (int)ENEstado.ELIMINAR, ref LMensaje);
-                    if (resul)
-                    {
-                        MP_Filtrar(1);
-                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, tbCodigo.Text));
-                    }
-                    else
-                    {
-                        //Obtiene los codigos de productos sin stock
-                        var mensajeLista = LMensaje.ToList();
-                        if (mensajeLista.Count > 0)
-                        {
-                            var mensaje = "";
-                            foreach (var item in mensajeLista)
-                            {
-                                mensaje = mensaje + "- " + item + "\n";
-                            }
-                            MP_MostrarMensajeError(mensaje);
-                            return false;
-                        }
-                        else
-                        {
-                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(_NombreFormulario, tbCodigo.Text));
-                        }
-                    }
+                    new ServiceDesktop.ServiceDesktopClient().Ajuste_Eliminar(IdCompra);
+                    MP_Filtrar(1);
+                    MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, tbCodigo.Text));
                 }
                 return resul;
             }
@@ -1139,6 +1118,11 @@ namespace PRESENTER.alm
         {
             _MPos = 0;
             this.MP_MostrarRegistro(_MPos);
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
