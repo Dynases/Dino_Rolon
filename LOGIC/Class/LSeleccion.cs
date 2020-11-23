@@ -94,6 +94,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public int ObtenerUltimoAlmacen(int Id, int usuarioId)
+        {
+            try
+            {
+                return iSeleccion.ObtenerUltimoAlmacen(Id,usuarioId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<RSeleccionNota> NotaSeleccion( int idSeleccion)
         {
             try

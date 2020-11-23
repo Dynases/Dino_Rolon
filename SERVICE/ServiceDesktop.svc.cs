@@ -1489,7 +1489,18 @@ namespace SERVICE
         #endregion
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-    
+        public int ObtenerUltimoAlmacen(int Id, int usuarioId)
+        {
+            try
+            {
+                var listResult = new LSeleccion().ObtenerUltimoAlmacen(Id, usuarioId);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public VSeleccionLista TraerSeleccion(int idSeleccion)
         {
             try

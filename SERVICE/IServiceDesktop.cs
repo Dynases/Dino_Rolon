@@ -421,6 +421,8 @@ namespace SERVICE
         #endregion
         #region Consulta
         [OperationContract]
+        int ObtenerUltimoAlmacen(int Id, int usuarioId);
+        [OperationContract]
          List<VSeleccionEncabezado> TraerSelecciones(int usuarioId);
         [OperationContract]
         VSeleccionLista TraerSeleccion(int idSeleccion);

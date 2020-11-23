@@ -78,6 +78,13 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse")]
+        PRESENTER.ServiceDesktop.CompraModificarEstadoResponse CompraModificarEstado(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
+        
+        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse")]
+        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Compra_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Compra_ListaResponse")]
         ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId);
         
@@ -860,6 +867,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstadoResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoResponse> Seleccion_ModificarEstadoAsync(PRESENTER.ServiceDesktop.Seleccion_ModificarEstadoRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacen", ReplyAction="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacenResponse")]
+        int ObtenerUltimoAlmacen(int Id, int usuarioId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacen", ReplyAction="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacenResponse")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoAlmacenAsync(int Id, int usuarioId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSelecciones", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionesResponse")]
         ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones(int usuarioId);
         
@@ -963,13 +976,50 @@ namespace PRESENTER.ServiceDesktop {
         // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/CompraGuardarResponse")]
         System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraGuardarResponse> CompraGuardarAsync(PRESENTER.ServiceDesktop.CompraGuardarRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CompraModificarEstado", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CompraModificarEstadoRequest {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse")]
-        PRESENTER.ServiceDesktop.CompraModificarEstadoResponse CompraModificarEstado(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int IdCompra;
         
-        // CODEGEN: Generando contrato de mensaje, ya que la operación tiene múltiples valores de devolución.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado", ReplyAction="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse")]
-        System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int estado;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string[] lMensaje;
+        
+        public CompraModificarEstadoRequest() {
+        }
+        
+        public CompraModificarEstadoRequest(int IdCompra, int estado, string[] lMensaje) {
+            this.IdCompra = IdCompra;
+            this.estado = estado;
+            this.lMensaje = lMensaje;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CompraModificarEstadoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CompraModificarEstadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool CompraModificarEstadoResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] lMensaje;
+        
+        public CompraModificarEstadoResponse() {
+        }
+        
+        public CompraModificarEstadoResponse(bool CompraModificarEstadoResult, string[] lMensaje) {
+            this.CompraModificarEstadoResult = CompraModificarEstadoResult;
+            this.lMensaje = lMensaje;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1972,50 +2022,6 @@ namespace PRESENTER.ServiceDesktop {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CompraModificarEstado", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CompraModificarEstadoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public int IdCompra;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public int estado;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        public string[] lMensaje;
-        
-        public CompraModificarEstadoRequest() {
-        }
-        
-        public CompraModificarEstadoRequest(int IdCompra, int estado, string[] lMensaje) {
-            this.IdCompra = IdCompra;
-            this.estado = estado;
-            this.lMensaje = lMensaje;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CompraModificarEstadoResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class CompraModificarEstadoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public bool CompraModificarEstadoResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public string[] lMensaje;
-        
-        public CompraModificarEstadoResponse() {
-        }
-        
-        public CompraModificarEstadoResponse(bool CompraModificarEstadoResult, string[] lMensaje) {
-            this.CompraModificarEstadoResult = CompraModificarEstadoResult;
-            this.lMensaje = lMensaje;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceDesktopChannel : PRESENTER.ServiceDesktop.IServiceDesktop, System.ServiceModel.IClientChannel {
     }
@@ -2041,6 +2047,25 @@ namespace PRESENTER.ServiceDesktop {
         
         public ServiceDesktopClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PRESENTER.ServiceDesktop.CompraModificarEstadoResponse PRESENTER.ServiceDesktop.IServiceDesktop.CompraModificarEstado(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request) {
+            return base.Channel.CompraModificarEstado(request);
+        }
+        
+        public bool CompraModificarEstado(int IdCompra, int estado, ref string[] lMensaje) {
+            PRESENTER.ServiceDesktop.CompraModificarEstadoRequest inValue = new PRESENTER.ServiceDesktop.CompraModificarEstadoRequest();
+            inValue.IdCompra = IdCompra;
+            inValue.estado = estado;
+            inValue.lMensaje = lMensaje;
+            PRESENTER.ServiceDesktop.CompraModificarEstadoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).CompraModificarEstado(inValue);
+            lMensaje = retVal.lMensaje;
+            return retVal.CompraModificarEstadoResult;
+        }
+        
+        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request) {
+            return base.Channel.CompraModificarEstadoAsync(request);
         }
         
         public ENTITY.com.Compra.View.VCompraLista[] Compra_Lista(int usuarioId) {
@@ -3263,6 +3288,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.Seleccion_ModificarEstadoAsync(request);
         }
         
+        public int ObtenerUltimoAlmacen(int Id, int usuarioId) {
+            return base.Channel.ObtenerUltimoAlmacen(Id, usuarioId);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoAlmacenAsync(int Id, int usuarioId) {
+            return base.Channel.ObtenerUltimoAlmacenAsync(Id, usuarioId);
+        }
+        
         public ENTITY.com.Seleccion.View.VSeleccionEncabezado[] TraerSelecciones(int usuarioId) {
             return base.Channel.TraerSelecciones(usuarioId);
         }
@@ -3427,25 +3460,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraGuardarResponse> CompraGuardarAsync(PRESENTER.ServiceDesktop.CompraGuardarRequest request) {
             return base.Channel.CompraGuardarAsync(request);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PRESENTER.ServiceDesktop.CompraModificarEstadoResponse PRESENTER.ServiceDesktop.IServiceDesktop.CompraModificarEstado(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request) {
-            return base.Channel.CompraModificarEstado(request);
-        }
-        
-        public bool CompraModificarEstado(int IdCompra, int estado, ref string[] lMensaje) {
-            PRESENTER.ServiceDesktop.CompraModificarEstadoRequest inValue = new PRESENTER.ServiceDesktop.CompraModificarEstadoRequest();
-            inValue.IdCompra = IdCompra;
-            inValue.estado = estado;
-            inValue.lMensaje = lMensaje;
-            PRESENTER.ServiceDesktop.CompraModificarEstadoResponse retVal = ((PRESENTER.ServiceDesktop.IServiceDesktop)(this)).CompraModificarEstado(inValue);
-            lMensaje = retVal.lMensaje;
-            return retVal.CompraModificarEstadoResult;
-        }
-        
-        public System.Threading.Tasks.Task<PRESENTER.ServiceDesktop.CompraModificarEstadoResponse> CompraModificarEstadoAsync(PRESENTER.ServiceDesktop.CompraModificarEstadoRequest request) {
-            return base.Channel.CompraModificarEstadoAsync(request);
         }
     }
 }

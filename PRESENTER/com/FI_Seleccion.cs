@@ -625,7 +625,6 @@ namespace PRESENTER.com
                         tb_FechaSeleccion.Value = lista.FechaReg;
                         Cb_Almacen.Value = lista.IdAlmacen;
                         Tb_Merma.Value = (double)lista.Merma;
-
                         _TipoCompra = new ServiceDesktop.ServiceDesktopClient().TraerCompraIngreso(lista.IdCompraIng).TipoCompra;
                         btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
                         MP_CargarDetalle(Convert.ToInt32(Tb_IdCompraIngreso.Text));
@@ -1180,6 +1179,11 @@ namespace PRESENTER.com
                                     MP_CargarDetalle_Nuevo(Convert.ToInt32(Tb_IdCompraIngreso.Text));
                                     MP_ObtenerCalculo();
                                     btn_Seleccionar.Visible = _TipoCompra == 1 ? true : false;
+                                    var idAlmacenSeleccion = new ServiceDesktop.ServiceDesktopClient().ObtenerUltimoAlmacen(rCompra.Field<int>("IdAlmacen"), UTGlobal.UsuarioId);
+                                    if (idAlmacenSeleccion != 0)
+                                    {
+                                        Cb_Almacen.Value = idAlmacenSeleccion;
+                                    }
                                 }
                             }
                         }

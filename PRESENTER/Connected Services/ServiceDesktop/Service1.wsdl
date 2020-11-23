@@ -4,12 +4,12 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
-      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Compra_01.View" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ENTITY.Plantilla" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/UTILITY.Enum" />
+      <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.view" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" />
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Ajuste.View" />
@@ -42,6 +42,12 @@
       <xsd:import schemaLocation="http://localhost/SERVICE/ServiceDesktop.svc?xsd=xsd37" namespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceDesktop_CompraModificarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompraModificarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_CompraModificarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompraModificarEstadoResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_Compra_Lista_InputMessage">
     <wsdl:part name="parameters" element="tns:Compra_Lista" />
   </wsdl:message>
@@ -798,6 +804,12 @@
   <wsdl:message name="IServiceDesktop_Seleccion_ModificarEstado_OutputMessage">
     <wsdl:part name="parameters" element="tns:Seleccion_ModificarEstadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ObtenerUltimoAlmacen_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoAlmacen" />
+  </wsdl:message>
+  <wsdl:message name="IServiceDesktop_ObtenerUltimoAlmacen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoAlmacenResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceDesktop_TraerSelecciones_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerSelecciones" />
   </wsdl:message>
@@ -894,13 +906,11 @@
   <wsdl:message name="IServiceDesktop_CompraGuardar_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompraGuardarResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraModificarEstado_InputMessage">
-    <wsdl:part name="parameters" element="tns:CompraModificarEstado" />
-  </wsdl:message>
-  <wsdl:message name="IServiceDesktop_CompraModificarEstado_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CompraModificarEstadoResponse" />
-  </wsdl:message>
   <wsdl:portType name="IServiceDesktop">
+    <wsdl:operation name="CompraModificarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado" message="tns:IServiceDesktop_CompraModificarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse" message="tns:IServiceDesktop_CompraModificarEstado_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_Lista" message="tns:IServiceDesktop_Compra_Lista_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Compra_ListaResponse" message="tns:IServiceDesktop_Compra_Lista_OutputMessage" />
@@ -1405,6 +1415,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstado" message="tns:IServiceDesktop_Seleccion_ModificarEstado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/Seleccion_ModificarEstadoResponse" message="tns:IServiceDesktop_Seleccion_ModificarEstado_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoAlmacen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacen" message="tns:IServiceDesktop_ObtenerUltimoAlmacen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacenResponse" message="tns:IServiceDesktop_ObtenerUltimoAlmacen_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerSelecciones">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSelecciones" message="tns:IServiceDesktop_TraerSelecciones_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/TraerSeleccionesResponse" message="tns:IServiceDesktop_TraerSelecciones_OutputMessage" />
@@ -1469,13 +1483,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraGuardar" message="tns:IServiceDesktop_CompraGuardar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraGuardarResponse" message="tns:IServiceDesktop_CompraGuardar_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CompraModificarEstado">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstado" message="tns:IServiceDesktop_CompraModificarEstado_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceDesktop/CompraModificarEstadoResponse" message="tns:IServiceDesktop_CompraModificarEstado_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceDesktop" type="tns:IServiceDesktop">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CompraModificarEstado">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraModificarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Compra_Lista">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/Compra_Lista" style="document" />
       <wsdl:input>
@@ -2610,6 +2629,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoAlmacen">
+      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/ObtenerUltimoAlmacen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerSelecciones">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/TraerSelecciones" style="document" />
       <wsdl:input>
@@ -2747,15 +2775,6 @@
     </wsdl:operation>
     <wsdl:operation name="CompraGuardar">
       <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraGuardar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CompraModificarEstado">
-      <soap:operation soapAction="http://tempuri.org/IServiceDesktop/CompraModificarEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

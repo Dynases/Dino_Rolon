@@ -18,5 +18,6 @@ namespace REPOSITORY.Interface
         VSeleccionLista TraerSeleccion(int idSeleccion);
         List<RSeleccionNota> NotaSeleccion(int Id);
         DataTable ReporteHistoricoSeleccion(DateTime? fechaDesde, DateTime? fechaHasta);
+        int ObtenerUltimoAlmacen(int Id, int usuarioId);
     }
 }

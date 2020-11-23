@@ -303,6 +303,31 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public int ObtenerUltimoAlmacen(int IdAlmacenCompra ,int usuarioId)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var lCompraIng = db.CompraIng.Where(x => x.IdAlmacen == IdAlmacenCompra &&
+                                                            db.Seleccion.Select(a => a.IdCompraIng).Contains(x.Id) &&
+                                                                 x.Estado != (int)ENEstado.ELIMINAR).ToList();
+                    //var lista = db.Seleccion.Where(x => lCompraIng.Select(a => a.Id).Contains(x.IdCompraIng)).ToList();
+
+                    int ultimoIdCompra = lCompraIng.Count() == 0 ? 0 : lCompraIng.Max(x => x.Id);
+
+                    int idAlmacenSeleccion = 0;
+                    if (ultimoIdCompra != 0)
+                        idAlmacenSeleccion = db.Seleccion.FirstOrDefault(x => x.IdCompraIng == ultimoIdCompra).IdAlmacen;
+               
+                    return idAlmacenSeleccion;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** REPORTES ***********/
         public List<RSeleccionNota> NotaSeleccion(int Id)
         {
