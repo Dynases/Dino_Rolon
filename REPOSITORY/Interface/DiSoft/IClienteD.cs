@@ -11,5 +11,6 @@ namespace REPOSITORY.Interface.DiSoft
     {
         bool Guardar(VCliente vcliente, ref int idCliente);    
         bool Eliminar(int IdCliente);
+        Decimal? saldoPendienteCredito(int clienteId);
     }
 }

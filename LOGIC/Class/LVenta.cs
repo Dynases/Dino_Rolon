@@ -1,6 +1,8 @@
 ﻿using ENTITY.ven.view;
 using REPOSITORY.Clase;
+using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
+using REPOSITORY.Interface.DiSoft;
 using System;
 using System.Collections.Generic;
 using System.Transactions;
@@ -15,11 +17,13 @@ namespace LOGIC.Class
         protected IVenta iVenta;
         protected IVenta_01 iVenta_01;
         protected IProducto iProducto;
+        protected IClienteD iClienteD;
         public LVenta()
         {
             iVenta = new RVenta();
             iVenta_01 = new RVenta_01();
             iProducto = new RProducto();
+            iClienteD = new RClienteD();
         }
         #region Transacciones
 
@@ -137,6 +141,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public decimal? SaldoPendienteCredito(int clienteId)
+        {
+            try
+            {
+                return this.iClienteD.saldoPendienteCredito(clienteId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** VARIOS REGISTROS ***********/
         public List<VVenta> TraerVentas(int usuarioId)
         {
@@ -150,5 +165,10 @@ namespace LOGIC.Class
             }
         }
         #endregion
+        #region Verfiicacion
+
+      
+        #endregion
+
     }
 }

@@ -19,6 +19,8 @@ namespace REPOSITORY.Interface
         DataTable ListarEncabezado();
         bool ExisteEnVenta(int idCliente);
         List<VClienteCombo> TraerClienteCombo();
+        bool EsClienteCredito(int clienteId);
+        decimal TraerLimiteCredito(int clienteId);
 
     }
 }

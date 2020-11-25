@@ -61,6 +61,31 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public decimal TraerLimiteCredito(int clienteId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    //var limiteCredito = Convert.ToDecimal( 
+                    //                        db.Cliente
+                    //                        .Where(x => x.Id == clienteId && x.TipoCli == 2)
+                    //                        .Select(x=> x.TotalCred));
+                    var limiteCredito = db.Cliente
+                                       .Where(x => x.Id == clienteId && x.TipoCli == 2)
+                                       .Count() == 0? 
+                                        0: 
+                                        db.Cliente
+                                          .Where(x => x.Id == clienteId && x.TipoCli == 2)
+                                          .First().TotalCred;
+                    return limiteCredito;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** VARIOS REGISTROS ***********/
         public List<VCliente> Listar()
         {
@@ -164,7 +189,8 @@ namespace REPOSITORY.Clase
                                                                               a.IdOrden == (int)ENEstaticosOrden.FACTURACION_CLIENTE &&
                                                                               a.IdLibrer == v.Factur).Descrip,
                           IdCategoriaPrecio = v.IdCategoria  ,
-                          FacturaEmpresa = v.Factur
+                          FacturaEmpresa = v.Factur,
+                          tipoCliente = v.TipoCli
                       }).ToList();                   
                     return listResult;
                 }
@@ -292,6 +318,22 @@ namespace REPOSITORY.Clase
                                      where b.IdCliente.Equals(idCliente) && b.Estado != -1
                                      select a).Count();
                     return resultado != 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EsClienteCredito(int clienteId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    return db.Cliente
+                                .Where(x => x.Id == clienteId && x.TipoCli == 2)
+                                .Count() > 0;
                 }
             }
             catch (Exception ex)

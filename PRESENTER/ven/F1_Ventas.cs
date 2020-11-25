@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
+using ENTITY.Cliente.View;
 using ENTITY.inv.TI001.VIew;
 using ENTITY.Libreria.View;
 using ENTITY.Plantilla;
@@ -54,6 +55,91 @@ namespace PRESENTER.ven
         #endregion
 
         #region Metodos Privados
+
+        private void IngresarClienteConControlEnter()
+        {
+            var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
+            List<GLCelda> listEstCeldas = new List<GLCelda>
+                    {
+                        new GLCelda() { campo = "Id", visible = true, titulo = "COD", tamano = 50 },
+                        new GLCelda() { campo = "IdSpyre", visible = true, titulo = "CÓDIGO SPYRE", tamano = 80 },
+                        new GLCelda() { campo = "Descrip", visible = true, titulo = "Nombre y Apellido", tamano = 150 },
+                        new GLCelda() { campo = "RazonSo", visible = false, titulo = "Razon Social", tamano = 100 },
+                        new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
+                        new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
+                        new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
+                        new GLCelda() { campo = "Factur", visible = false, titulo = "Facturacion", tamano = 100 },
+                        new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
+                    };
+
+            Efecto efecto = new Efecto();
+            efecto.Tipo = 3;
+            efecto.Tabla = lista;
+            efecto.SelectCol = 2;
+            efecto.listaCelda = listEstCeldas;
+            efecto.Alto = 50;
+            efecto.Ancho = 350;
+            efecto.Context = "SELECCIONE UN CLIENTE";
+            efecto.ShowDialog();
+
+            var bandera = false;
+            bandera = efecto.Band;
+            if (bandera)
+            {
+                GridEXRow Row = efecto.Row;
+                cb_Cliente.Value = Convert.ToInt32(Row.Cells[0].Value);
+                TbNitCliente.Text = Row.Cells["Nit"].Value.ToString();
+                cbFacturaEmpresa.Value = Convert.ToInt32(Row.Cells["Facturacion"].Value);
+                idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
+                ingresarMontoCreditoCliente(Convert.ToInt32(Row.Cells[0].Value));
+            }
+        }
+
+        private void IngresarClienteConEnter()
+        {
+            var lista = new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_Cliente.Value))).FirstOrDefault();
+            if (lista == null)
+            {
+                throw new Exception("No se encontro un cliente");
+            }
+            TbNitCliente.Text = lista.Nit;
+            idCategoriaPrecio = lista.IdCategoriaPrecio;
+            cbFacturaEmpresa.Value = lista.FacturaEmpresa;
+            ingresarMontoCreditoCliente(lista.Id);
+        }
+
+        private void ingresarMontoCreditoCliente(int clienteId)
+        {
+            using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+            {
+                if (servicio.EsClienteCredito(clienteId))
+                {
+                    tbLimiteCred.Visible = true;
+                    tbMontoDeuda.Visible = true;
+                    tbMontoDisponible.Visible = true;
+                    lblLimiteCred.Visible = true;
+                    lblMontoDisponible.Visible = true;
+                    lblMontoPagado.Visible = true;
+                    Sw_TipoVenta.Value = false;
+                    tbLimiteCred.Text = servicio.TraerLimiteCredito(clienteId).ToString();
+                    tbMontoDeuda.Text = servicio.SaldoPendienteCredito(clienteId).ToString();
+                    tbMontoDisponible.Text = Convert.ToString(Convert.ToDecimal(tbLimiteCred.Text) - Convert.ToDecimal(tbMontoDeuda.Text));
+                    tbMontoCredito.Text = TbTotal.Text;
+                }
+                else
+                {
+                    tbLimiteCred.Visible = false;
+                    tbMontoDeuda.Visible = false;
+                    tbMontoDisponible.Visible = false;
+                    lblLimiteCred.Visible = false;
+                    lblMontoDisponible.Visible = false;
+                    lblMontoPagado.Visible = false;
+                    Sw_TipoVenta.Value = true;
+                }
+            }
+        }
+
+
         void MP_ArmarCombo()
         {
             using (var servicio = new ServiceDesktop.ServiceDesktopClient())
@@ -130,7 +216,7 @@ namespace PRESENTER.ven
             this.Tb_Usuario.ReadOnly = true;
             this.cb_Cliente.ReadOnly = true;
             this.sw_estado.Enabled = false;
-            this.Sw_TipoVenta.Enabled = false;
+            this.Sw_TipoVenta.IsReadOnly = true;
             cbFacturaEmpresa.ReadOnly = true;
             Cb_EncVenta.ReadOnly = true;
             Cb_EncPreVenta.ReadOnly = true;
@@ -145,6 +231,9 @@ namespace PRESENTER.ven
             this.tbTotalCantidad.ReadOnly = true;
             this.TbTotal.ReadOnly = true;
             BtnHabilitar.Enabled = true;
+            tbLimiteCred.ReadOnly = true;
+            tbMontoCredito.ReadOnly = true;
+            tbMontoDisponible.ReadOnly = true;
             _Limpiar = false;
         }
 
@@ -157,8 +246,7 @@ namespace PRESENTER.ven
             this.lblFechaRegistro.Visible = false;
             this.Dt_FechaVenta.Enabled = true;
             this.cb_Cliente.ReadOnly = false;
-            this.sw_estado.Enabled = true;
-            this.Sw_TipoVenta.Enabled = true;           
+            this.sw_estado.Enabled = true;                   
             this.TbEncEntrega.ReadOnly = false;           
             this.Tb_Observaciones.ReadOnly = false;           
             this.Tb_Usuario.Text = UTGlobal.Usuario;
@@ -167,6 +255,9 @@ namespace PRESENTER.ven
             this.btnNuevoCliente.Visible = true;
             this.TbNumFacturaExterna.ReadOnly = false;
             this.Cb_Origen.ReadOnly = false;
+            tbLimiteCred.ReadOnly = false;
+            tbMontoCredito.ReadOnly = false;
+            tbMontoDisponible.ReadOnly = false;
             BtnHabilitar.Enabled = false;
         }
 
@@ -231,7 +322,7 @@ namespace PRESENTER.ven
                 Tb_Usuario.Text = venta.Usuario;
                 cb_Cliente.Value = venta.IdCliente;
                 TbNitCliente.Text = venta.NitCliente;
-                Sw_TipoVenta.Value = true;
+                // Sw_TipoVenta.Value = true;
                 sw_estado.Value = true;
                 cbFacturaEmpresa.Value = venta.FacturaEmpresa;
                 Cb_EncVenta.Value = venta.EncVenta;
@@ -246,10 +337,10 @@ namespace PRESENTER.ven
                 this.MP_CargarDetalleRegistro(venta.Id, 1);
                 this.MP_ObtenerCalculo();
                 this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
+                ingresarMontoCreditoCliente(venta.IdCliente);
             }
             catch (Exception ex)
             {
-
                 MP_MostrarMensajeError(ex.Message);
             }
           
@@ -437,6 +528,10 @@ namespace PRESENTER.ven
             this.TbNitCliente.Clear();
             this.TbTotal.Text = "0";
             this.TbNumFacturaExterna.Clear();
+            tbLimiteCred.Text = "0";
+            tbMontoDeuda.Text = "0";
+            tbMontoDisponible.Text = "0";
+            tbTotalCantidad.Text = "0";
             if (_Limpiar == false)    
             {
                 
@@ -637,6 +732,7 @@ namespace PRESENTER.ven
                 tbTotalCantidad.Text = Convert.ToDouble(Dgv_DetalleVenta.GetTotal(Dgv_DetalleVenta.RootTable.Columns["TotalContenido"], AggregateFunction.Sum)).ToString();
                 var total = Convert.ToDouble(Dgv_DetalleVenta.GetTotal(Dgv_DetalleVenta.RootTable.Columns["SubTotal"], AggregateFunction.Sum));
                 TbTotal.Text = total.ToString();
+                tbMontoCredito.Text = Sw_TipoVenta.Value ? "0" : TbTotal.Text;
             }
             catch (Exception ex)
             {
@@ -962,8 +1058,20 @@ namespace PRESENTER.ven
             {
                 this.MP_MostrarMensajeError("Debe seleccionar productos para realizar una venta");
                 return flag;
+            }           
+            if (!Sw_TipoVenta.Value)
+            {
+                if (tbLimiteCred.Text == string.Empty || tbLimiteCred.Text == "0")
+                {
+                    this.MP_MostrarMensajeError("Debe introducir un limite de crédito para el cliente");
+                    return flag;
+                }
+                if (Convert.ToDecimal(TbTotal.Text) > Convert.ToDecimal(tbMontoDisponible.Text))
+                {
+                    this.MP_MostrarMensajeError("El monto total es mayor al limite de crédito");
+                    return flag;
+                }
             }
-
             flag = false;
             return flag;
         }
@@ -1086,11 +1194,18 @@ namespace PRESENTER.ven
                 return false;
             }
         }
-      
+
         #endregion
 
-        #region Eventos
 
+        #region Eventos
+        private void Sw_TipoVenta_ValueChanged(object sender, EventArgs e)
+        {
+            if (Sw_TipoVenta.Value)
+                tbMontoCredito.Visible = false;
+            else
+                tbMontoCredito.Visible = true;
+        }
         private void F1_Ventas_Load(object sender, EventArgs e)
         {
             this.LblTitulo.Text = "VENTAS";
@@ -1392,65 +1507,24 @@ namespace PRESENTER.ven
                     {
                         if (cb_Cliente.SelectedIndex != -1)
                         {
-                            var lista = new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().Where(a => a.Id.Equals(Convert.ToInt32(cb_Cliente.Value))).FirstOrDefault();
-                            if (lista == null)
-                            {
-                                throw new Exception("No se encontro un cliente");
-                            }
-                            TbNitCliente.Text = lista.Nit;
-                            idCategoriaPrecio = lista.IdCategoriaPrecio;                            
-                            cbFacturaEmpresa.Value = lista.FacturaEmpresa;
+                            IngresarClienteConEnter();
                         }
                     }
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
                     {
-                        var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
-                        List<GLCelda> listEstCeldas = new List<GLCelda>
-                    {
-                        new GLCelda() { campo = "Id", visible = true, titulo = "COD", tamano = 50 },
-                        new GLCelda() { campo = "IdSpyre", visible = true, titulo = "CÓDIGO SPYRE", tamano = 80 },
-                        new GLCelda() { campo = "Descrip", visible = true, titulo = "Nombre y Apellido", tamano = 150 },
-                        new GLCelda() { campo = "RazonSo", visible = false, titulo = "Razon Social", tamano = 100 },
-                        new GLCelda() { campo = "Nit", visible = true, titulo = "NIT", tamano = 100 },
-                        new GLCelda() { campo = "Direcc", visible = true, titulo = "Direccion", tamano = 150 },
-                        new GLCelda() { campo = "b.Descrip", visible = true, titulo = "Ciudad", tamano = 120 },
-                        new GLCelda() { campo = "Factur", visible = false, titulo = "Facturacion", tamano = 100 },
-                        new GLCelda() { campo = "IdCategoria", visible = false, titulo = "IdCategoria", tamano = 100 }
-                    };
-
-                        Efecto efecto = new Efecto();
-                        efecto.Tipo = 3;
-                        efecto.Tabla = lista;
-                        efecto.SelectCol = 2;
-                        efecto.listaCelda = listEstCeldas;
-                        efecto.Alto = 50;
-                        efecto.Ancho = 350;
-                        efecto.Context = "SELECCIONE UN CLIENTE";
-                        efecto.ShowDialog();
-
-                        var bandera = false;
-                        bandera = efecto.Band;
-                        if (bandera)
-                        {
-                            GridEXRow Row = efecto.Row;
-                            cb_Cliente.Value = Convert.ToInt32(Row.Cells[0].Value);
-                            TbNitCliente.Text = Row.Cells["Nit"].Value.ToString();
-                            cbFacturaEmpresa.Value = Convert.ToInt32(Row.Cells["Facturacion"].Value);
-                            idCategoriaPrecio = Convert.ToInt32(Row.Cells["IdCategoria"].Value);
-                        }
+                        IngresarClienteConControlEnter();
                     }
-                }
+                }                
             }
             catch (Exception ex)
             {
-
                 MP_MostrarMensajeError(ex.Message);
             }
         }
 
 
-
         #endregion
 
+   
     }
 }

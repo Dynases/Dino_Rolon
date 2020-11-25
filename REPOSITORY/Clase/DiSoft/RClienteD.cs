@@ -127,9 +127,27 @@ namespace REPOSITORY.Clase.DiSoft
                 throw new Exception(ex.Message);
             }
         }
-      
-        #region Consulta
 
+        #region Consulta
+        public Decimal? saldoPendienteCredito(int clienteId)
+        {
+
+            try
+            {
+                using (var db = GetEsquema())
+                {                  
+                    decimal? saldoPendiente =  db.App_Listado_CobrosPendientes
+                                                .Where(x => x.ClienteId == clienteId)
+                                                .Sum(x => x.pendiente);
+                    saldoPendiente = saldoPendiente == null ? 0 : saldoPendiente;
+                    return saldoPendiente;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

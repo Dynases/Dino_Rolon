@@ -34,5 +34,6 @@ namespace DATA.EntityDataModel.DiSoft
         public virtual DbSet<TC002> TC002 { get; set; }
         public virtual DbSet<TC004> TC004 { get; set; }
         public virtual DbSet<TC004B> TC004B { get; set; }
+        public virtual DbSet<App_Listado_CobrosPendientes> App_Listado_CobrosPendientes { get; set; }
     }
 }

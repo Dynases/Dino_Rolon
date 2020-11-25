@@ -182,6 +182,21 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="oahact" Type="nvarchar" MaxLength="5" />
           <Property Name="oauact" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="App_Listado_CobrosPendientes">
+          <Key>
+            <PropertyRef Name="PedidoId" />
+          </Key>
+          <Property Name="PedidoId" Type="int" Nullable="false" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="cliente" Type="nvarchar" MaxLength="200" />
+          <Property Name="PersonalId" Type="int" />
+          <Property Name="vendedor" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaPedido" Type="date" />
+          <Property Name="totalfactura" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pendiente" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>
         <EntityContainer Name="BDDistBHF_RolonModelStoreContainer">
           <EntitySet Name="TC001" EntityType="Self.TC001" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC002" EntityType="Self.TC002" Schema="dbo" store:Type="Tables" />
@@ -210,6 +225,18 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
     [TC0041].[chuact] AS [chuact]
     FROM [dbo].[TC0041] AS [TC0041]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="App_Listado_CobrosPendientes" EntityType="Self.App_Listado_CobrosPendientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [App_Listado_CobrosPendientes].[PedidoId] AS [PedidoId], 
+    [App_Listado_CobrosPendientes].[ClienteId] AS [ClienteId], 
+    [App_Listado_CobrosPendientes].[cliente] AS [cliente], 
+    [App_Listado_CobrosPendientes].[PersonalId] AS [PersonalId], 
+    [App_Listado_CobrosPendientes].[vendedor] AS [vendedor], 
+    [App_Listado_CobrosPendientes].[FechaPedido] AS [FechaPedido], 
+    [App_Listado_CobrosPendientes].[totalfactura] AS [totalfactura], 
+    [App_Listado_CobrosPendientes].[pendiente] AS [pendiente]
+    FROM [dbo].[App_Listado_CobrosPendientes] AS [App_Listado_CobrosPendientes]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -225,6 +252,7 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <EntitySet Name="TC002" EntityType="BDDistBHF_RolonModel.TC002" />
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
           <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
+          <EntitySet Name="App_Listado_CobrosPendientes" EntityType="BDDistBHF_RolonModel.App_Listado_CobrosPendientes" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -400,6 +428,19 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="ccbtcre" Type="Int32" />
           <Property Name="ccLimite" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ccDias" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="App_Listado_CobrosPendientes">
+          <Key>
+            <PropertyRef Name="PedidoId" />
+          </Key>
+          <Property Name="PedidoId" Type="Int32" Nullable="false" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalId" Type="Int32" />
+          <Property Name="vendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaPedido" Type="DateTime" Precision="0" />
+          <Property Name="totalfactura" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pendiente" Type="Decimal" Precision="38" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -587,6 +628,20 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
                 <ScalarProperty Name="ccbtcre" ColumnName="ccbtcre" />
                 <ScalarProperty Name="ccbzona" ColumnName="ccbzona" />
                 <ScalarProperty Name="ccbnumi" ColumnName="ccbnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="App_Listado_CobrosPendientes">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.App_Listado_CobrosPendientes">
+              <MappingFragment StoreEntitySet="App_Listado_CobrosPendientes">
+                <ScalarProperty Name="pendiente" ColumnName="pendiente" />
+                <ScalarProperty Name="totalfactura" ColumnName="totalfactura" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+                <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

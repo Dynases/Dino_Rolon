@@ -120,6 +120,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+     
         /********** VARIOS REGISTROS ***********/
         public List<VVenta> TraerVentas(int usuarioId)
         {
@@ -163,6 +164,9 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+        #region Verificaciones
+   
         #endregion
     }
 }

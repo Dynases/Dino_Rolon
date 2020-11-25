@@ -215,8 +215,6 @@ namespace SERVICE
 
         /********** CLIENTE ***************/
         #region Cliente
-
-
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         public List<VCliente> ClienteListar1(int id)
@@ -224,6 +222,18 @@ namespace SERVICE
             try
             {
                 var listResult = new LCliente().ListarCliente(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public decimal TraerLimiteCredito(int idCliente)
+        {
+            try
+            {
+                var listResult = new LCliente().TraerLimiteCredito(idCliente);
                 return listResult;
             }
             catch (Exception ex)
@@ -337,6 +347,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public bool EsClienteCredito(int idCliente)
+        {
+            try
+            {
+                var listResult = new LCliente().EsClienteCredito(idCliente);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #endregion
 
@@ -423,9 +445,8 @@ namespace SERVICE
             }
         }
         #endregion
-
-
-
+        #region Verificaciones
+        #endregion
         #endregion
 
         /********** PROVEEDOR **************/
@@ -1846,7 +1867,7 @@ namespace SERVICE
         /********** VENTA ********************/
 
         #region Ventas
-
+        #region Transacciones
         public bool VentaGuardar(VVenta vVenta, List<VVenta_01> detalle, ref int IdVenta, ref List<string> lMensaje)
         {
             try
@@ -1866,6 +1887,19 @@ namespace SERVICE
             {
                 var listResult = new LVenta().ModificarEstado(IdVenta, estado, ref lMensaje);
                 return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consulta
+        public decimal? SaldoPendienteCredito(int clienteId)
+        {
+            try
+            {
+                return new LVenta().SaldoPendienteCredito(clienteId);
             }
             catch (Exception ex)
             {
@@ -1916,6 +1950,9 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
+
+
         #endregion
 
         /********** ZONA ********************/

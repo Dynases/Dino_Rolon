@@ -225,6 +225,9 @@
     <Compile Include="EntityDataModel\DiAvi\ZY0021.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiSoft\App_Listado_CobrosPendientes.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiSoft\DiSoftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

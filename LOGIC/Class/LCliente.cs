@@ -39,6 +39,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public decimal TraerLimiteCredito(int idCliente)
+        {
+            try
+            {
+                return iCliente.TraerLimiteCredito(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** VARIOS REGISTROS ***********/
         public List<VCliente> Listar()
         {
@@ -165,6 +176,17 @@ namespace LOGIC.Class
             try
             {
                 return iCliente.ExisteEnVenta(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public bool EsClienteCredito(int idCliente)
+        {
+            try
+            {
+                return iCliente.EsClienteCredito(idCliente);
             }
             catch (Exception ex)
             {

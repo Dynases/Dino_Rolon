@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfstring">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion_01.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VTransformacion_01">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto_Mat_Prima" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTransformacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Producto_Mat_Prima" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalProd" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:element name="VTransformacion_01" nillable="true" type="tns:VTransformacion_01" />
+  <xs:complexType name="ArrayOfVTransformacion_01">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacion_01" nillable="true" type="tns:VTransformacion_01" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVTransformacion_01" nillable="true" type="tns:ArrayOfVTransformacion_01" />
 </xs:schema>

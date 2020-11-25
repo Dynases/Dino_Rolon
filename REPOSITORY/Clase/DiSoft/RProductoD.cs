@@ -85,7 +85,7 @@ namespace REPOSITORY.Clase.DiSoft
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }        
         #endregion
 
     }

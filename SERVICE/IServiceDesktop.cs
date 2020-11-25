@@ -118,6 +118,8 @@ namespace SERVICE
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         [OperationContract]
+        decimal TraerLimiteCredito(int idCliente);
+        [OperationContract]
         List<VCliente> ClienteListar1(int id);
         /********** VARIOS REGISTROS ***********/
         [OperationContract]
@@ -143,6 +145,8 @@ namespace SERVICE
         #region Verificaciones
         [OperationContract]
         bool ExisteClienteEnVenta(int idCliente);
+        [OperationContract]
+        bool EsClienteCredito(int idCliente);
         #endregion
         #endregion
         /********** PROVEEDOR **************/
@@ -517,6 +521,8 @@ namespace SERVICE
         #region Venta
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
+        [OperationContract]
+        decimal? SaldoPendienteCredito(int clienteId);
         [OperationContract]
         VVenta TraerVenta(int idVenta);
         /********** VARIOS REGISTROS ***********/
