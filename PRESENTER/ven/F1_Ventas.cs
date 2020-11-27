@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using ENTITY.Cliente.View;
+using ENTITY.com.CompraIngreso.View;
 using ENTITY.inv.TI001.VIew;
 using ENTITY.Libreria.View;
 using ENTITY.Plantilla;
@@ -18,6 +19,7 @@ using System.Drawing;
 using System.Linq;
 using System.ServiceModel;
 using System.Windows.Forms;
+using UTILITY.Enum;
 using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
 using UTILITY.Global;
@@ -30,19 +32,7 @@ namespace PRESENTER.ven
         public F1_Ventas()
         {
             InitializeComponent();
-            this.MP_CargarBuscador();
-            this.MP_InHabilitar();
-            this.MP_ArmarCombo();
-            this.MP_CargarAlmacenes();
-            this.MP_CargarVentas();
-            this.TxtNombreUsu.Visible = false;        
-            superTabControl1.SelectedTabIndex = 0;
-            listaDetalleVenta = new List<VVenta_01>();
-            MP_AsignarPermisos();
-            BtnHabilitar.Visible = true;
-          
-            this.Text = _NombreFormulario;
-            LblTitulo.Text = _NombreFormulario;
+            
         }
 
         #region Variables de Entorno        
@@ -52,10 +42,41 @@ namespace PRESENTER.ven
         private static int index;
         private static int idCategoriaPrecio;
         private bool _Limpiar = false;
+        public  int idCompraIngreso;
         #endregion
 
         #region Metodos Privados
-
+        private void inicioDesdeVenta()
+        {           
+ 
+        }
+        private void inicioDesdeCompraIngreso()
+        {
+            if (idCompraIngreso != 0)
+            {
+                MH_Inhanbilitar();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    var lCompaIngreso = servicio.TraerCompraIngreso(idCompraIngreso);
+                    PasarDatosDeObjeto(lCompaIngreso);
+                    MP_MostrarMensajeError("DEBE SELECCIONAR UN CLIENTE");
+                    Dgv_DetalleVenta.Enabled = false;
+                }
+            }
+        }
+        private void PasarDatosDeObjeto(VCompraIngresoLista vCompraIngreso)
+        {           
+            MP_Reiniciar();
+            MP_Habilitar();
+            idCategoriaPrecio = (int)ENCategoriaPrecio.COSTO;
+            var productos = MP_ObtenerProductos(vCompraIngreso.IdAlmacen, idCategoriaPrecio);
+            Cb_Origen.Value = vCompraIngreso.IdAlmacen;
+            Cb_Origen.ReadOnly = true;
+            var productoId = productos.Where(x => x.Producto.Contains("SIN SELECCION")).ToList().First().IdProducto;
+            var idDetalle = listaDetalleVenta.First().Id;
+            Dgv_Producto.DataSource = productos;
+            MP_ValidarLotesInsertarProductosDetalle(productoId, 0, idDetalle, Convert.ToInt32(vCompraIngreso.TotalVendido));
+        }
         private void IngresarClienteConControlEnter()
         {
             var lista = new ServiceDesktop.ServiceDesktopClient().ClienteListarEncabezado();
@@ -138,7 +159,6 @@ namespace PRESENTER.ven
                 }
             }
         }
-
 
         void MP_ArmarCombo()
         {
@@ -334,6 +354,17 @@ namespace PRESENTER.ven
                 lblHora.Text = venta.Hora;
                 lblUsuario.Text = venta.Usuario;
                 idCategoriaPrecio = venta.IdCategoriaCliente;
+                if (venta.IdCompraIngreso != 0)
+                {
+                    LblCompraIngreso.Visible = true;
+                    LblIdCompaIngreso.Visible = true;
+                    LblIdCompaIngreso.Text = venta.IdCompraIngreso.ToString();
+                }
+                else
+                {
+                    LblCompraIngreso.Visible = false;
+                    LblIdCompaIngreso.Visible = false;
+                }
                 this.MP_CargarDetalleRegistro(venta.Id, 1);
                 this.MP_ObtenerCalculo();
                 this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
@@ -528,13 +559,16 @@ namespace PRESENTER.ven
             this.TbNitCliente.Clear();
             this.TbTotal.Text = "0";
             this.TbNumFacturaExterna.Clear();
+            LblCompraIngreso.Visible = false;
+            LblIdCompaIngreso.Visible = false;
+            LblIdCompaIngreso.Text = "0";
             tbLimiteCred.Text = "0";
             tbMontoDeuda.Text = "0";
             tbMontoDisponible.Text = "0";
             tbTotalCantidad.Text = "0";
+            Dgv_DetalleVenta.Enabled = true;
             if (_Limpiar == false)    
-            {
-                
+            {                
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
                 UTGlobal.MG_SeleccionarCombo(cbFacturaEmpresa);
                 UTGlobal.MG_SeleccionarCombos(Cb_EncVenta);
@@ -821,19 +855,29 @@ namespace PRESENTER.ven
             {
 
                 GPanel_Producto.Text = "SELECCIONE PRODUCTOS";
-                var almacen = new ServiceDesktop.ServiceDesktopClient()
-                                                        .AlmacenListar()
-                                                        .ToList()
-                                                        .Find(a => a.Id == Convert.ToInt32(Cb_Origen.Value));
-
-                var lProductosConStock = new ServiceDesktop.ServiceDesktopClient().ListarProductosStock(almacen.SucursalId, almacen.Id, idCategoriaPrecio).ToList();
-                MP_CargarProducto(lProductosConStock);
+                var productos = MP_ObtenerProductos(Convert.ToInt32(Cb_Origen.Value), idCategoriaPrecio);
+                MP_CargarProducto(productos);
                 MP_HabilitarProducto();
             }
             catch (Exception ex)
             {
                 MP_MostrarMensajeError(ex.Message);
             }
+        }
+        private List<VProductoListaStock> MP_ObtenerProductos(int almacenId,int categoriaPrecioId)
+        {
+
+            var almacen = new ServiceDesktop.ServiceDesktopClient()
+                                                       .AlmacenListar()
+                                                       .ToList()
+                                                       .Find(a => a.Id == Convert.ToInt32(almacenId));
+
+            return new ServiceDesktop.ServiceDesktopClient()
+                                      .ListarProductosStock(almacen.SucursalId, 
+                                                            almacen.Id, 
+                                                            categoriaPrecioId)
+                                      .ToList();
+            
         }
         private void MP_HabilitarProducto()
         {
@@ -957,7 +1001,7 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
         }
-        private static void MP_IngresarProductoDetalle(int idDetalle, int idLote, List<VTI001> lLotes)
+        private static void MP_IngresarProductoDetalle(int idDetalle, int idLote, List<VTI001> lLotes, int cantidad)
         {
             if (lLotes.Count != 0)
             {
@@ -975,9 +1019,9 @@ namespace PRESENTER.ven
                         vDetalleVenta.CodigoProducto = vProductos.CodigoProducto;
                         vDetalleVenta.Producto = vProductos.Producto;
                         vDetalleVenta.Unidad = vProductos.UnidadVenta;
-                        vDetalleVenta.Cantidad = 1;
-                        vDetalleVenta.Contenido = Convert.ToDecimal(vProductos.Contenido);
-                        vDetalleVenta.TotalContenido = Convert.ToDecimal(vProductos.Contenido);
+                        vDetalleVenta.Cantidad = cantidad;
+                        vDetalleVenta.Contenido =  Convert.ToDecimal(vProductos.Contenido);
+                        vDetalleVenta.TotalContenido = cantidad * Convert.ToDecimal(vProductos.Contenido);
                         vDetalleVenta.PrecioVenta = vProductos.PrecioVenta;
                         vDetalleVenta.PrecioCosto = vProductos.PrecioCosto;
                         vDetalleVenta.Lote = lLotes.FirstOrDefault(a => a.id == idLote).Lote;
@@ -1096,7 +1140,8 @@ namespace PRESENTER.ven
                     Tipo = 1,
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = lblUsuario.Text
+                    Usuario = lblUsuario.Text,
+                    IdCompraIngreso = idCompraIngreso
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
@@ -1211,6 +1256,19 @@ namespace PRESENTER.ven
             this.LblTitulo.Text = "VENTAS";
             btnMax.Visible = false;
             superTabControl1.SelectedPanel = PanelContenidoRegistro;
+            this.MP_CargarBuscador();
+            this.MP_InHabilitar();
+            this.MP_ArmarCombo();
+            this.MP_CargarAlmacenes();
+            this.MP_CargarVentas();
+            this.TxtNombreUsu.Visible = false;
+            superTabControl1.SelectedTabIndex = 0;
+            listaDetalleVenta = new List<VVenta_01>();
+            MP_AsignarPermisos();
+            BtnHabilitar.Visible = true;
+            this.Text = _NombreFormulario;
+            LblTitulo.Text = _NombreFormulario;
+            inicioDesdeCompraIngreso();
         }       
         private void Dgv_DetalleVenta_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1379,41 +1437,13 @@ namespace PRESENTER.ven
 
                                 var idProducto = Convert.ToInt32(Dgv_Producto.GetValue("IdProducto"));
                                 //Obtiene el producto
-                                vProductos = ((List<VProductoListaStock>)Dgv_Producto.DataSource)
-                                                                               .Where(p => p.IdProducto == idProducto)
-                                                                               .FirstOrDefault();
-                                if (vProductos.Stock <= 0)
-                                {
-                                    var producto = vProductos.Producto;
-                                    vProductos = new VProductoListaStock();
-                                    throw new Exception("El producto " + producto + "no cuenta con STOCK disponible.");                                  
-                                }
-
-                                var InventarioLotes = new ServiceDesktop.ServiceDesktopClient().TraerInventarioLotes(vProductos.IdProducto, Convert.ToInt32(Cb_Origen.Value)).ToList();
-                                //Veridica si se mostrara la seleccion de lotes
-                                if (vProductos.EsLote == 2)
-                                {
-                                    idLote = InventarioLotes.FirstOrDefault().id;
-                                    if (idLote == 0)
-                                    {
-                                        throw new Exception("El producto no tiene un lote relacionado");
-                                    }
-                                    MP_IngresarProductoDetalle(idDetalle, idLote, InventarioLotes);
-                                    MP_ArmarDetalle();
-                                    MP_InHabilitarProducto();
-                                    MP_ObtenerCalculo();
-                                    return;
-                                }
-                                //Actualiza el stock de lotes
-                                MP_ActualizarLote(ref InventarioLotes, idProducto);
-                                MP_ArmarLotes(InventarioLotes);
-                                GPanel_Producto.Text = vProductos.Producto;
+                                MP_ValidarLotesInsertarProductosDetalle(idProducto, idLote, idDetalle,1);
                             }
                             else
                             {
                                 idLote = Convert.ToInt32(Dgv_Producto.GetValue("id"));
                                 var lLotes = ((List<VTI001>)Dgv_Producto.DataSource);
-                                MP_IngresarProductoDetalle(idDetalle, idLote, lLotes);
+                                MP_IngresarProductoDetalle(idDetalle, idLote, lLotes,1);
                                 MP_ArmarDetalle();
                                 MP_InHabilitarProducto();
                             }
@@ -1434,6 +1464,41 @@ namespace PRESENTER.ven
                 MP_MostrarMensajeError(ex.Message);
             }
 
+        }
+        private void MP_ValidarLotesInsertarProductosDetalle(int productoId,int idLote, int idDetalle, int cantidad)
+        {
+            vProductos = ((List<VProductoListaStock>)Dgv_Producto.DataSource)
+                                                                               .Where(p => p.IdProducto == productoId)
+                                                                               .FirstOrDefault();
+            if (vProductos.Stock <= 0)
+            {
+                var producto = vProductos.Producto;
+                vProductos = new VProductoListaStock();
+                throw new Exception("El producto " + producto + "no cuenta con STOCK disponible.");
+            }
+
+            var InventarioLotes = new ServiceDesktop.ServiceDesktopClient()
+                                                    .TraerInventarioLotes(vProductos.IdProducto,
+                                                                          Convert.ToInt32(Cb_Origen.Value))
+                                                    .ToList();
+            //Veridica si se mostrara la seleccion de lotes
+            if (vProductos.EsLote == 2)
+            {
+                idLote = InventarioLotes.FirstOrDefault().id;
+                if (idLote == 0)
+                {
+                    throw new Exception("El producto no tiene un lote relacionado");
+                }
+                MP_IngresarProductoDetalle(idDetalle, idLote, InventarioLotes, cantidad);
+                MP_ArmarDetalle();
+                MP_InHabilitarProducto();
+                MP_ObtenerCalculo();
+                return;
+            }
+            //Actualiza el stock de lotes
+            MP_ActualizarLote(ref InventarioLotes, productoId);
+            MP_ArmarLotes(InventarioLotes);
+            GPanel_Producto.Text = vProductos.Producto;
         }
 
         private void Dgv_Producto_EditingCell(object sender, EditingCellEventArgs e)

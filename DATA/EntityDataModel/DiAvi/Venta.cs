@@ -36,6 +36,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string Hora { get; set; }
         public string Usuario { get; set; }
         public int IdPedidoDisoft { get; set; }
+        public int IdCompraIngreso { get; set; }
     
         public virtual Almacen Almacen { get; set; }
         public virtual Cliente Cliente { get; set; }

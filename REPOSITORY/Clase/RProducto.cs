@@ -298,8 +298,8 @@ namespace REPOSITORY.Clase
                                       join s in db.Sucursal on a.IdSuc equals s.Id
                                       //PrecioVenta
                                       join pr in db.Precio on
-                                      new { idProducto = p.Id, IdAlmacen = s.Id }
-                                         equals new { idProducto = pr.IdProduc, IdAlmacen = pr.IdSucursal }
+                                      new { idProducto = p.Id, IdSucur = s.Id }
+                                         equals new { idProducto = pr.IdProduc, IdSucur = pr.IdSucursal }
                                          //join pr in db.Precio on p.Id equals pr.IdProduc
                                       join prc in db.PrecioCat on pr.IdPrecioCat equals prc.Id
                                       join l in db.Libreria on p.UniVen equals l.IdLibrer
@@ -308,16 +308,15 @@ namespace REPOSITORY.Clase
                                       join c in db.Libreria on p.Grupo4 equals c.IdLibrer
                                       //PrecioCosto
                                       join prcosto in db.Precio on
-                                      new { idProducto = p.Id, IdAlmacen = s.Id }
-                                         equals new { idProducto = prcosto.IdProduc, IdAlmacen = prcosto.IdSucursal }
+                                      new { idProducto = p.Id, IdSucur = s.Id }
+                                         equals new { idProducto = prcosto.IdProduc, IdSucur = prcosto.IdSucursal }
                                       join prcc in db.PrecioCat on prcosto.IdPrecioCat equals prcc.Id
-                                      where s.Id == pr.IdSucursal &&
-                                            s.Id == IdSucursal &&
+                                      where s.Id == IdSucursal &&
                                             a.Id == IdAlmacen &&
                                             prc.Id == IdCategoriaPrecio &&
                                             prcc.Id == (int)ENCategoriaPrecio.COSTO && //Precio de costo Id Estatico
                                             l.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && l.IdOrden == (int)ENEstaticosOrden.PRODUCTO_UN_VENTA &&
-                                            m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO1 &&
+                                            m.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && m.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO2 &&
                                             t.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && t.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO3 &&
                                             c.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO && c.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO4 
                                       select new VProductoListaStock

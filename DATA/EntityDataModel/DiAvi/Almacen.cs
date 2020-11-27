@@ -27,8 +27,8 @@ namespace DATA.EntityDataModel.DiAvi
             this.Traspaso1 = new HashSet<Traspaso>();
             this.TI002 = new HashSet<TI002>();
             this.Traspaso_02 = new HashSet<Traspaso_02>();
-            this.Venta = new HashSet<Venta>();
             this.Seleccion = new HashSet<Seleccion>();
+            this.Venta = new HashSet<Venta>();
         }
     
         public int Id { get; set; }
@@ -68,8 +68,8 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<Traspaso_02> Traspaso_02 { get; set; }
         public virtual TipoAlmacen TipoAlmacen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seleccion> Seleccion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

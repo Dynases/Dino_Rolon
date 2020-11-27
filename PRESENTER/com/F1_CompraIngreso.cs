@@ -8,6 +8,7 @@ using Janus.Windows.GridEX;
 using Janus.Windows.GridEX.EditControls;
 using PRESENTER.frm;
 using PRESENTER.Report;
+using PRESENTER.ven;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -1985,77 +1986,43 @@ namespace PRESENTER.com
             bool resultado = false;
             try
             {
-                string mensaje = "";
-                VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
-                {
-                    IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
-                    IdProvee = _idProveedor,
-                    estado = (int)ENEstado.GUARDADO,
-                    NumNota = Tb_NUmGranja.Text,
-                    FechaEnt = Tb_FechaEnt.Value,
-                    FechaRec = Tb_FechaRec.Value,
-                    Placa = Convert.ToInt32(Cb_Placa.Value),
-                    CantidadSemanas = Tb_Edad.Text,
-                    Tipo = Convert.ToInt32(Cb_Tipo.Value),
-                    Observacion = Tb_Observacion.Text,
-                    Entregado = Tb_Entregado.Text,
-                    Recibido = Convert.ToInt32(cb_Recibido.Value),
-                    TotalRecibido = Convert.ToDecimal(Tb_TotalEnviado.Value),
-                    TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
-                    TipoCompra = Sw_Tipo.Value == true ? 1 : 2,
-                    Total = Convert.ToDecimal(Tb_TSaldoTo.Value),
-                    Fecha = DateTime.Now.Date,
-                    Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario,
-                    CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
-                    CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
-                    CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
-                    TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value),
-                    Devolucion = Sw_Devolucion.Value == true ? 1 : 2,
-                    TotalUnidades = Convert.ToInt32(Tb_TotalFisico.Value),
-                };
+                string mensaje = "";               
                 var auxImprimirDevolucion = Sw_Devolucion.Value ? false : true;
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
-                var vCompraIngreso_01 = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
-                var vCompraIngreso_03 = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToArray<VCompraIngreso_03>();
-                resultado = new ServiceDesktop.ServiceDesktopClient().GuardarCompraIngreso(CompraIngreso, vCompraIngreso_01, ref id,
-                                                                                            Sw_Devolucion.Value, vCompraIngreso_03, totalMapleDetalle, totalMapleDevolucion);
+
+                var lCompraIngreso = MP_CargarObjeto();
+                var lDetalle = ((List<VCompraIngreso_01>)Dgv_Detalle.DataSource).ToArray<VCompraIngreso_01>();
+                var lDetalleDevolucion = ((List<VCompraIngreso_03>)Dgv_Devolucion.DataSource).ToArray<VCompraIngreso_03>();
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    resultado = servicio
+                                .GuardarCompraIngreso(lCompraIngreso, lDetalle, ref id,
+                                                      Sw_Devolucion.Value, lDetalleDevolucion, 
+                                                      totalMapleDetalle, totalMapleDevolucion);                   
+                }
+                MP_GuardarVenta(id);
                 if (resultado)
                 {
-                    if (idAux == 0)//Registar
+                    Imprimir(id, auxImprimirDevolucion);
+                    if (idAux == 0)
                     {
-                        Imprimir(id, auxImprimirDevolucion);
-                        //MP_ReporteCompraIngreso(id);
-                        //MP_ImprimirNotaDevolcion(id, auxImprimirDevolucion);
                         Tb_NUmGranja.Focus();
-                        MP_CargarEncabezado();
                         MP_Filtrar(1);
                         MP_Limpiar();
-                        _Limpiar = true;
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
                     }
-                    else//Modificar
+                    else
                     {
-                        Imprimir(id, auxImprimirDevolucion);
                         MP_Filtrar(2);
-                        MP_InHabilitar();//El formulario
-                        _Limpiar = true;
-                       // MH_Habilitar();//El menu  
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
-                                       
+                        MP_InHabilitar();
                     }
-                }
-                //Resultado
-                if (resultado)
-                {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    _Limpiar = true;
+                    mensaje = idAux == 0 ? GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString()) :
+                                             GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                    MP_MostrarMensajeExito(mensaje);
                 }
                 else
-                {
-                    mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                }
+                    MP_MostrarMensajeError(GLMensaje.Registro_Error("La " + _NombreFormulario + " "));
                 return resultado;
             }
             catch (Exception ex)
@@ -2064,12 +2031,65 @@ namespace PRESENTER.com
                 return resultado;
             }
         }
-        
+        private VCompraIngresoLista MP_CargarObjeto()
+        {
+            VCompraIngresoLista CompraIngreso = new VCompraIngresoLista()
+            {
+                IdAlmacen = Convert.ToInt32(Cb_Almacen.Value),
+                IdProvee = _idProveedor,
+                estado = (int)ENEstado.GUARDADO,
+                NumNota = Tb_NUmGranja.Text,
+                FechaEnt = Tb_FechaEnt.Value,
+                FechaRec = Tb_FechaRec.Value,
+                Placa = Convert.ToInt32(Cb_Placa.Value),
+                CantidadSemanas = Tb_Edad.Text,
+                Tipo = Convert.ToInt32(Cb_Tipo.Value),
+                Observacion = Tb_Observacion.Text,
+                Entregado = Tb_Entregado.Text,
+                Recibido = Convert.ToInt32(cb_Recibido.Value),
+                TotalRecibido = Convert.ToDecimal(Tb_TotalEnviado.Value),
+                TotalVendido = Convert.ToDecimal(Tb_TotalVendido.Value),
+                TipoCompra = Sw_Tipo.Value == true ? 1 : 2,
+                Total = Convert.ToDecimal(Tb_TSaldoTo.Value),
+                Fecha = DateTime.Now.Date,
+                Hora = DateTime.Now.ToString("hh:mm"),
+                Usuario = UTGlobal.Usuario,
+                CantidadCaja = Convert.ToInt32(Tb_CantidadCajas.Value),
+                CantidadGrupo = Convert.ToInt32(Tb_CantidadGrupos.Value),
+                CompraAntiguaFecha = Tb_CompraIngresoPrecioAntoguo.Text,
+                TotalMaple = Convert.ToInt32(Tb_TotalMaples.Value),
+                Devolucion = Sw_Devolucion.Value == true ? 1 : 2,
+                TotalUnidades = Convert.ToInt32(Tb_TotalFisico.Value),
+            };
+            return CompraIngreso;
+        }
+        private void MP_GuardarVenta(int idCompraIngreso)
+        {
+            if (Tb_TotalVendido.Value != 0)
+            {
+                if (MP_DeseaGenerarVenta())
+                {
+                    F1_Ventas venta = new F1_Ventas();
+                    venta.idCompraIngreso = idCompraIngreso;
+                    venta.ShowDialog();
+                }            
+            }
+        }
         public bool MP_DeseaImprimir()
         {
             Efecto efecto = new Efecto();
             efecto.Tipo = 1;
             efecto.Context = GLMensaje.Pregunta_Imprimir.ToUpper() + "LA NOTA DE COMPRA?";
+            efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+            efecto.ShowDialog();
+            var resultado = efecto.Band;
+            return resultado;
+        }
+        public bool MP_DeseaGenerarVenta()
+        {
+            Efecto efecto = new Efecto();
+            efecto.Tipo = 1;
+            efecto.Context = "DESEA GENERAR LA VENTA POR LA DIFERENCIA DE TOTAL VENDIDO?";
             efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
             efecto.ShowDialog();
             var resultado = efecto.Band;

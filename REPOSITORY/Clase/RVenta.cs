@@ -49,6 +49,7 @@ namespace REPOSITORY.Clase
                     venta.Hora = VVenta.Hora;
                     venta.Usuario = VVenta.Usuario;
                     venta.IdPedidoDisoft = 0;
+                    venta.IdCompraIngreso = VVenta.IdCompraIngreso;
                     db.SaveChanges();
                     id = venta.Id;
                     return true;
@@ -111,7 +112,8 @@ namespace REPOSITORY.Clase
                                  Tipo = v.Tipo,
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
-                                 IdCategoriaCliente=  v.Cliente.IdCategoria
+                                 IdCategoriaCliente=  v.Cliente.IdCategoria,
+                                 IdCompraIngreso = v.IdCompraIngreso
                              }).FirstOrDefault();
                 }
             }
@@ -155,7 +157,8 @@ namespace REPOSITORY.Clase
                                  Tipo = v.Tipo,
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
-                                 IdCategoriaCliente = v.Cliente.IdCategoria
+                                 IdCategoriaCliente = v.Cliente.IdCategoria,
+                                  IdCompraIngreso= v.IdCompraIngreso
                              }).ToList();
                 }
             }
