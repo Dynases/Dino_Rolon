@@ -40,6 +40,7 @@ namespace PRESENTER.alm
             this.Text = "TRASPASO";
             superTabControl1.SelectedPanel = PanelContenidoRegistro;
             BtnHabilitar.Visible = true;
+            btnTransportadoPor.Visible = false;
         }
         #region Variables   
         private static List<VTraspaso> LTraspaso;
@@ -1253,31 +1254,10 @@ namespace PRESENTER.alm
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje = Mensaje.ToArray();
-                    resul = new ServiceDesktop.ServiceDesktopClient().VentaModificarEstado(Convert.ToInt32(Tb_Id.Text), (int)ENEstado.ELIMINAR, ref LMensaje);
-                    if (resul)
-                    {
-                        MP_Filtrar(1);
-                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(LblTitulo.Text, Tb_Id.Text));
-                    }
-                    else
-                    {
-                        //Obtiene los codigos de productos sin stock
-                        var mensajeLista = LMensaje.ToList();
-                        if (mensajeLista.Count > 0)
-                        {
-                            var mensaje = "";
-                            foreach (var item in mensajeLista)
-                            {
-                                mensaje = mensaje + "- " + item + "\n";
-                            }
-                            MP_MostrarMensajeError(mensaje);
-                            return false;
-                        }
-                        else
-                        {
-                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(LblTitulo.Text, Tb_Id.Text));
-                        }
-                    }
+                    new ServiceDesktop.ServiceDesktopClient().EliminarTraspaso(Convert.ToInt32(Tb_Id.Text));
+                    MP_Filtrar(1);
+                    MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(LblTitulo.Text, Tb_Id.Text));
+                    resul = true;
                 }
                 return resul;
             }

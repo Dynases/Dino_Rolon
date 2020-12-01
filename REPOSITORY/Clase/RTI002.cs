@@ -10,7 +10,7 @@ using UTILITY.Enum.ENConcepto;
 
 namespace REPOSITORY.Clase
 {
-  
+
     public class RTI002 : BaseConexion, ITI002
     {
         #region Consulta
@@ -28,7 +28,7 @@ namespace REPOSITORY.Clase
                            IdManual = v.ibid,
                            fechaDocumento = v.ibfdoc,
                            IdConecpto = v.ibconcep,
-                           Observacion = v.ibobs,                          
+                           Observacion = v.ibobs,
                            Estado = v.ibest,
                            IdAlmacenOrigen = v.ibalm,
                            idAlmacenDestino = v.ibdepdest,
@@ -52,8 +52,8 @@ namespace REPOSITORY.Clase
         #endregion
         #region Trasancciones
 
-        public bool Guardar(int idAlmacenOrigen,                            
-                            int idAlmacenDestino,                           
+        public bool Guardar(int idAlmacenOrigen,
+                            int idAlmacenDestino,
                             int idDetalle,
                             string usuario,
                             string observacion,
@@ -76,7 +76,7 @@ namespace REPOSITORY.Clase
                         ibhact = DateTime.Now.ToShortTimeString(),
                         ibid = db.TI002.Select(a => a.ibid).DefaultIfEmpty(0).Max() + 1,
                         ididdestino = idDestino,
-                        ibiddc = idDetalle, 
+                        ibiddc = idDetalle,
                         ibobs = observacion,
                         ibuact = usuario
                     };
@@ -92,8 +92,8 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-        public bool Modificar(int idAlmacenSalida,                          
-                           int idAlmacenDestino,                          
+        public bool Modificar(int idAlmacenSalida,
+                           int idAlmacenDestino,
                            int idDetalle,
                            string usuario,
                            string observaciones,
@@ -110,17 +110,17 @@ namespace REPOSITORY.Clase
                     ti002.ibconcep = concepto;
                     ti002.ibobs = observaciones;
                     ti002.ibest = 2;//NO SE SABE PORQUE
-                    ti002.ibalm = idAlmacenSalida;                   
+                    ti002.ibalm = idAlmacenSalida;
                     ti002.ibdepdest = idAlmacenDestino;
                     ti002.ididdestino = idDestino;
                     ti002.ibfact = DateTime.Now;
                     ti002.ibiddc = idDetalle; //JOIN IMPLICITO A TABLA TRASPASO
                     ti002.ibfdoc = DateTime.Now;
-                    ti002.ibhact = DateTime.Now.ToShortTimeString();                  
-                    ti002.ibuact = usuario;                 
+                    ti002.ibhact = DateTime.Now.ToShortTimeString();
+                    ti002.ibuact = usuario;
                     db.TI002.Attach(ti002);
                     db.Entry(ti002).State = EntityState.Modified;
-                    db.SaveChanges();                   
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -140,6 +140,30 @@ namespace REPOSITORY.Clase
                     db.TI002.Remove(tI002);
                     db.SaveChanges();
                     return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EliminarTraspaso(int Id, int conceptoId)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listaTraspaso = db.TI002.Where(b => b.ibiddc == Id && b.ibconcep == conceptoId).ToList();
+                    foreach (var traspaso in listaTraspaso)
+                    {
+                        var listaDetalle = db.TI0021.Where(b => b.icibid == traspaso.ibid);
+                        foreach (var detalle in listaDetalle)
+                        {
+                            db.TI0021.Remove(detalle);
+                        }
+                        db.TI002.Remove(traspaso);
+                    }                   
+                    db.SaveChanges();
                 }
             }
             catch (Exception ex)

@@ -76,6 +76,17 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public void EliminarTraspaso(int traspasoId)
+        {
+            try
+            {
+                new LTraspaso().Eliminar(traspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
 

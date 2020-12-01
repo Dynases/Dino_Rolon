@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
+        ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/Transformacion_01_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/Transformacion_01_ListaResponse")]
         ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion);
         
@@ -294,6 +300,12 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcion", ReplyAction="http://tempuri.org/IServiceDesktop/TraspasoConfirmarRecepcionResponse")]
         System.Threading.Tasks.Task<bool> TraspasoConfirmarRecepcionAsync(int traspasoId, string usuarioRecepcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/EliminarTraspaso", ReplyAction="http://tempuri.org/IServiceDesktop/EliminarTraspasoResponse")]
+        void EliminarTraspaso(int ajusteId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/EliminarTraspaso", ReplyAction="http://tempuri.org/IServiceDesktop/EliminarTraspasoResponse")]
+        System.Threading.Tasks.Task EliminarTraspasoAsync(int ajusteId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/GetData", ReplyAction="http://tempuri.org/IServiceDesktop/GetDataResponse")]
         string GetData(int value);
@@ -994,12 +1006,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionIngreso", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionIngresoResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionIngresoAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
-        ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TransformacionSalida", ReplyAction="http://tempuri.org/IServiceDesktop/TransformacionSalidaResponse")]
-        System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2073,6 +2079,14 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id) {
+            return base.Channel.TransformacionSalida(id);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id) {
+            return base.Channel.TransformacionSalidaAsync(id);
+        }
+        
         public ENTITY.inv.Transformacion_01.View.VTransformacion_01[] Transformacion_01_Lista(int idTransformacion) {
             return base.Channel.Transformacion_01_Lista(idTransformacion);
         }
@@ -2423,6 +2437,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<bool> TraspasoConfirmarRecepcionAsync(int traspasoId, string usuarioRecepcion) {
             return base.Channel.TraspasoConfirmarRecepcionAsync(traspasoId, usuarioRecepcion);
+        }
+        
+        public void EliminarTraspaso(int ajusteId) {
+            base.Channel.EliminarTraspaso(ajusteId);
+        }
+        
+        public System.Threading.Tasks.Task EliminarTraspasoAsync(int ajusteId) {
+            return base.Channel.EliminarTraspasoAsync(ajusteId);
         }
         
         public string GetData(int value) {
@@ -3508,14 +3530,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionIngresoAsync(int id) {
             return base.Channel.TransformacionIngresoAsync(id);
-        }
-        
-        public ENTITY.inv.Transformacion.Report.VTransformacionReport[] TransformacionSalida(int id) {
-            return base.Channel.TransformacionSalida(id);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.inv.Transformacion.Report.VTransformacionReport[]> TransformacionSalidaAsync(int id) {
-            return base.Channel.TransformacionSalidaAsync(id);
         }
     }
 }

@@ -102,6 +102,21 @@ namespace LOGIC.Class.DiSoft
                 throw new Exception(ex.Message);
             }
         }
+        public void EliminarTraspaso(int IdDetalle, int concepto)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    this.iTi002.EliminarTraspaso(IdDetalle, concepto);
+                    scope.Complete();                   
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public bool ModificarCampoDestinoTraspaso(int idTraspaso)
         {
             try

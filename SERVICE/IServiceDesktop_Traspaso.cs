@@ -45,12 +45,14 @@ namespace SERVICE
 
         [OperationContract]
         bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion);
+        [OperationContract]
+        void EliminarTraspaso(int ajusteId);
         #endregion
 
         #region Verificaciones
 
         #endregion
 
- 
+
     }
 }

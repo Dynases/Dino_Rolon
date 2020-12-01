@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.TI001.VIew" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVTI001">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Zona" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVZona">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTI001" nillable="true" type="tns:VTI001" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VZona" nillable="true" type="tns:VZona" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVTI001" nillable="true" type="tns:ArrayOfVTI001" />
-  <xs:complexType name="VTI001">
+  <xs:element name="ArrayOfVZona" nillable="true" type="tns:ArrayOfVZona" />
+  <xs:complexType name="VZona">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
-      <xs:element minOccurs="0" name="FechaVen" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="IdAlmacen" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zona" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VTI001" nillable="true" type="tns:VTI001" />
+  <xs:element name="VZona" nillable="true" type="tns:VZona" />
 </xs:schema>

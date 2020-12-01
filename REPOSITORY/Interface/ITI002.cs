@@ -14,6 +14,7 @@ namespace REPOSITORY.Interface
                            int concepto,int idDestino);
 
         bool Eliminar(int IdDetalle, int concepto);
+        void EliminarTraspaso(int Id, int conceptoId);
         bool ExisteEnMovimiento(int idDetalle, int concepto);
 
         bool ModificarCampoDestinoTraspaso(int idTraspaso);

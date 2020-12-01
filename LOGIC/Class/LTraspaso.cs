@@ -22,6 +22,7 @@ namespace LOGIC.Class
         protected ITraspaso_01 iDetalle;
         protected IConcepto iConcepto;
         protected ITI001 iTI001;
+        protected ITI002 iInventario;
         public LTraspaso()
         {
             iProducto = new RProducto();
@@ -29,6 +30,7 @@ namespace LOGIC.Class
             iTraspaso = new RTraspaso();
             iConcepto = new RConcepto();
             iTI001 = new RTI001();
+            iInventario = new RTI002();
         }
 
         #region Transacciones
@@ -185,21 +187,14 @@ namespace LOGIC.Class
                 var accionIngreso = 0;
                 var accionSalida = 0;
                 var estadoEnvio = traspaso.EstadoEnvio;
-                if (estadoEnvio == (int)ENEstado.SINRECEPCION)
+
+                if (traspaso != null)
                 {
-                    if (traspaso != null)
-                    {
+                    accionSalida = iConcepto.ObternerPorId((int)ENConcepto.TRANSFORMACION_SALIDA).TipoMovimiento;
+                    if (estadoEnvio == (int)ENEstado.CONRECEPCION)
                         accionIngreso = iConcepto.ObternerPorId((int)ENConcepto.TRASPASO_INGRESO).TipoMovimiento;
-                    }
                 }
-                else
-                {
-                    if (traspaso != null)
-                    {
-                        accionIngreso = iConcepto.ObternerPorId((int)ENConcepto.TRASPASO_INGRESO).TipoMovimiento;
-                        accionSalida = iConcepto.ObternerPorId((int)ENConcepto.TRANSFORMACION_SALIDA).TipoMovimiento;
-                    }
-                }               
+                               
                 //Actualizar Stock
                 foreach (var item in detalle)
                 {
@@ -207,23 +202,23 @@ namespace LOGIC.Class
                     itemAnterior = detalle.Where(a => a.Id == item.Id).FirstOrDefault();
                     if (itemAnterior != null)
                     {
-                        if (estadoEnvio == (int)ENEstado.SINRECEPCION)
+                        var cantidad = itemAnterior.Cantidad * accionSalida * -1;
+                        iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenOrigen, cantidad, item.Lote, item.FechaVencimiento);
+                        if (estadoEnvio == (int)ENEstado.CONRECEPCION)
                         {
-                            var cantidad = itemAnterior.Cantidad * accionIngreso * -1;
-                            iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenOrigen, cantidad, item.Lote, item.FechaVencimiento);
-                        }
-                        else
-                        {
-                            var cantidad = itemAnterior.Cantidad * accionIngreso * -1;
-                            iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenOrigen, cantidad, item.Lote, item.FechaVencimiento);
-
-                            cantidad = itemAnterior.Cantidad * accionSalida * -1;
+                            cantidad = itemAnterior.Cantidad * accionIngreso * -1;
                             iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenDestino, cantidad, item.Lote, item.FechaVencimiento);
-                        }                        
+                        }                                             
                     }
                 }
+
+                iInventario.EliminarTraspaso(ajusteId, (int)ENConcepto.TRANSFORMACION_SALIDA);
+                if (estadoEnvio == (int)ENEstado.CONRECEPCION)
+                    iInventario.EliminarTraspaso(ajusteId, (int)ENConcepto.TRASPASO_INGRESO);
+                
                 //Elimina 
                 iTraspaso.ModificarEstado(ajusteId, (int)ENEstado.ELIMINAR);
+
             }
             catch (Exception ex)
             {
