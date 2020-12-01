@@ -89,6 +89,7 @@
     <Compile Include="inv\Transformacion\Report\VTransformacionReport.cs" />
     <Compile Include="inv\Transformacion\View\VTransformacion.cs" />
     <Compile Include="inv\Transformacion_01\View\VTransformacion_01.cs" />
+    <Compile Include="inv\Traspaso\Report\VTraspasoTicket.cs" />
     <Compile Include="inv\Traspaso\View\VTraspaso.cs" />
     <Compile Include="inv\Traspaso\View\VTListaProducto.cs" />
     <Compile Include="inv\Traspaso\View\VTraspaso_01.cs" />

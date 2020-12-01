@@ -479,6 +479,12 @@
       <DependentUpon>RTransformacionSalida.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\RTraspasoTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RTraspasoTicket.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\R_KardexInventarioGeneralResumen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -597,6 +603,10 @@
     <EmbeddedResource Include="Report\RTransformacionSalida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTransformacionSalida.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RTraspasoTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RTraspasoTicket.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\R_KardexInventarioGeneralResumen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -777,6 +787,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop37.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop38.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -834,6 +847,7 @@
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion.View.VTransformacion.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Transformacion_01.View.VTransformacion_01_Lista.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Traspaso.Report.VTraspasoTicket.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTListaProducto1.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso1.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Traspaso.View.VTraspaso_011.datasource" />

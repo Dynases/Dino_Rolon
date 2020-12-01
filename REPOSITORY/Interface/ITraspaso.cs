@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Traspaso.View;
+﻿using ENTITY.inv.Traspaso.Report;
+using ENTITY.inv.Traspaso.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,8 @@ namespace REPOSITORY.Interface
         List<VTraspaso> TraerTraspasos(int usuarioId);
         void GuardarDetalleDisoft(int idTraspaso);
         bool EsTraspasoDirecto(int AlmacenId);
+        List<VTraspasoTicket> ReporteTraspaso(int traspasoId);
+        bool ModificarEstado(int traspasoId, int estado);
+        VTraspaso ObtenerPorId(int traspasoId);
     }
 }

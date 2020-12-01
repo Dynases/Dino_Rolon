@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="IServiceDesktop_Inventario.cs" />
     <Compile Include="IServiceDesktop_Personal.cs" />
+    <Compile Include="IServiceDesktop_Traspaso.cs" />
     <Compile Include="ServiceDesktop.svc.cs">
       <DependentUpon>ServiceDesktop.svc</DependentUpon>
     </Compile>
@@ -81,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceDesktop_Inventario.cs" />
     <Compile Include="ServiceDesktop_Personal.cs" />
+    <Compile Include="ServiceDesktop_Traspaso.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

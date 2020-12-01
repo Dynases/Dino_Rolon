@@ -13,7 +13,8 @@ namespace UTILITY.Enum.EnEstaticos
         PRODUCTO =3,
         COMPRA_INGRESO = 4,
         VENTA =5,
-        ROL=10
+        ROL=10,
+        TRASPASO = 6
 
     }
 }

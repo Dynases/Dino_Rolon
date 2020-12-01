@@ -1,4 +1,5 @@
 ﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.inv.Traspaso.Report;
 using ENTITY.inv.Traspaso.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
@@ -18,7 +19,78 @@ namespace REPOSITORY.Clase
 
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
+        public VTraspaso ObtenerPorId(int traspasoId)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var query = db.Traspaso
+                        .Where(ti => ti.Id == traspasoId)
+                        .Select(ti => new VTraspaso
+                        {
+                            Id = ti.Id,
+                            IdAlmacenOrigen = ti.IdAlmacenOrigen,
+                            IdAlmacenDestino = ti.IdAlmacenDestino,
+                            AlamacenOrigen = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenOrigen).Descrip,
+                            AlmacenDestino = db.Almacen.FirstOrDefault(a => a.Id == ti.IdAlmacenDestino).Descrip,
+                            Estado = ti.Estado,
+                            Observaciones = ti.Observaciones,
+                            UsuarioEnvio = ti.UsuarioEnvio,
+                            UsuarioRecepcion = ti.UsuarioRecepcion,
+                            FechaRecepcion = ti.FechaRecepcion,
+                            FechaEnvio = ti.FechaEnvio,
+                            EstadoEnvio = ti.EstadoEnvio,
+                            EstadoEnvioDescripcion = ti.EstadoEnvio == 1 ? "SIN RECEPCION" : "CON RECEPCION",
+                            TotalUnidad = ti.TotalUnidad,
+                            Total = ti.Total,
+                            Fecha = ti.FechaEnvio,
+                            Hora = ti.Hora,
+                            Usuario = ti.Usuario,
+                            TransportadoPor = ti.TrasportadoPor
+                        }).FirstOrDefault();
+                    return query;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         /********** VARIOS REGISTROS ***********/
+        public List<VTraspasoTicket> ReporteTraspaso(int traspasoId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.Report_Traspaso
+                        .Where(x => x.traspasoId == traspasoId)
+                        .Select(ti => new VTraspasoTicket
+                        {
+                            traspasoId = ti.traspasoId,
+                            Estado = ti.Estado,
+                            FechaEnvio= ti.FechaEnvio,
+                            FechaRecepcion = ti.FechaRecepcion,
+                            almOrigen = ti.almOrigen,
+                            EntregadoPor = ti.EntregadoPor,
+                            almDestino =ti.almDestino,
+                            RecibidoPor = ti.RecibidoPor,
+                            TransportadoPor = ti.TransportadoPor,
+                            Producto = ti.Producto,
+                            Cantidad = ti.Cantidad,
+                            Precio =ti.Precio,
+                            Total= ti.Total
+                        }).ToList();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VTraspaso> TraerTraspasos(int usuarioId)
         {
             try
@@ -55,7 +127,8 @@ namespace REPOSITORY.Clase
                             Total = ti.Total,
                             Fecha = ti.FechaEnvio,
                             Hora = ti.Hora,
-                            Usuario = ti.Usuario
+                            Usuario = ti.Usuario,
+                           TransportadoPor = ti.TrasportadoPor
                         }).ToList();
 
                     return listResult;
@@ -166,8 +239,29 @@ namespace REPOSITORY.Clase
                     traspaso.Fecha = vTraspaso.Fecha;
                     traspaso.Hora = vTraspaso.Hora;
                     traspaso.Usuario = vTraspaso.Usuario;
+                    traspaso.TrasportadoPor = vTraspaso.TransportadoPor;
                     db.SaveChanges();
                     id = traspaso.Id;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        //Elimina el registro
+        public bool ModificarEstado(int traspasoId, int estado)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var traspaso = db.Traspaso.Where(c => c.Id.Equals(traspasoId)).FirstOrDefault();
+                    traspaso.Estado = estado;
+                    db.Traspaso.Attach(traspaso);
+                    db.Entry(traspaso).State = EntityState.Modified;
+                    db.SaveChanges();
                     return true;
                 }
             }

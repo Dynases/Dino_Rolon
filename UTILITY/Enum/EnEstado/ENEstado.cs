@@ -16,6 +16,10 @@ namespace UTILITY.Enum.EnEstado
         TODOS = 4,
 
         CARGARPRIMERFILA =5,
-        NOCARGARPRIMERFILA = 6
+        NOCARGARPRIMERFILA = 6,
+
+        //ESTADO DE ENVIO TRASPASO
+        SINRECEPCION=1,
+        CONRECEPCION =2
     }
 }

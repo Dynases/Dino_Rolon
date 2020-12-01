@@ -92,7 +92,34 @@ namespace LOGIC.Class
         {
             try
             {
-                iAjuste.Eliminar(ajusteId);
+                VAjuste ajuste = null;
+                List<VAjusteDetalle> detalle = null;
+
+                //Ajuste
+                ajuste = iAjuste.ObtenerPorId(ajusteId);
+                detalle = iAjuste.ListaDetalle(ajusteId);
+
+                //Saldo
+                var accion = 0;
+                if (ajuste != null)
+                {
+                    accion = iConcepto.ObternerPorId(ajuste.IdConcepto).TipoMovimiento;
+                }
+
+                //Actualizar Stock
+                foreach (var item in detalle)
+                {
+                    VAjusteDetalle itemAnterior;
+                    itemAnterior = detalle.Where(a => a.Id == item.Id).FirstOrDefault();
+                    if (itemAnterior != null)
+                    {
+                        var cantidad = itemAnterior.Cantidad * accion * -1;
+                        iTI001.ActualizarInventario(item.IdProducto, ajuste.IdAlmacen, cantidad, item.Lote, item.FechaVen);
+                    }
+                }
+
+                //Elimina 
+                iAjuste.Eliminar(ajusteId);                
             }
             catch (Exception ex)
             {

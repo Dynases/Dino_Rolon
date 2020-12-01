@@ -20,7 +20,7 @@ namespace UTILITY.Global
         }
         public static string Registro_Error(string programa)
         {
-            return programa + " No pudo ser grabada"; 
+            return programa + " Ocurrio un error inesperado. No se grabo el registro"; 
         }
         public static string Eliminar_Error_Transaciones_Relacionadas(string programa)
         {

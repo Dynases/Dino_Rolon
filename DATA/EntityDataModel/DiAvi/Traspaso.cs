@@ -36,6 +36,7 @@ namespace DATA.EntityDataModel.DiAvi
         public System.DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
+        public int TrasportadoPor { get; set; }
     
         public virtual Almacen Almacen { get; set; }
         public virtual Almacen Almacen1 { get; set; }

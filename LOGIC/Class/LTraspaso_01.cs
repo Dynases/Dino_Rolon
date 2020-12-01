@@ -29,7 +29,7 @@ namespace LOGIC.Class
         {
             try
             {
-                return this.iTraspaso_01.TraerTraspaso_01(idDetalle);
+                return this.iTraspaso_01.ObtenerDetalleXId(idDetalle);
             }
             catch (Exception ex)
             {
@@ -37,11 +37,11 @@ namespace LOGIC.Class
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VTraspaso_01> TraerTraspasos_01(int idTraspaso)
+        public List<VTraspaso_01> ListaDetalle(int idTraspaso)
         {
             try
             {
-                return this.iTraspaso_01.TraerTraspasos_01(idTraspaso);
+                return this.iTraspaso_01.ListaDetalle(idTraspaso);
             }
             catch (Exception ex)
             {
@@ -139,7 +139,7 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {              
-                    var traspaso_01Antiguo = this.iTraspaso_01.TraerTraspaso_01(vTraspaso_01.Id);
+                    var traspaso_01Antiguo = this.iTraspaso_01.ObtenerDetalleXId(vTraspaso_01.Id);
 
                     var detalleMovimiento = new VTI0021()
                     {
@@ -176,7 +176,7 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {                  
-                    var traspaso_01 = this.iTraspaso_01.TraerTraspaso_01(idDetalle);
+                    var traspaso_01 = this.iTraspaso_01.ObtenerDetalleXId(idDetalle);
                     var detalleMovimiento = new VTI0021()
                     {
                         Cantidad = traspaso_01.Cantidad,                        

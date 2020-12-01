@@ -1,4 +1,5 @@
 ﻿using ENTITY.inv.TI002.View;
+using ENTITY.inv.Traspaso.Report;
 using ENTITY.inv.Traspaso.View;
 using LOGIC.Class.DiSoft;
 using REPOSITORY.Clase;
@@ -18,12 +19,16 @@ namespace LOGIC.Class
     {
         protected ITraspaso iTraspaso;
         protected IProducto iProducto;
-        protected ITraspaso_01 iTraspaso_01;
+        protected ITraspaso_01 iDetalle;
+        protected IConcepto iConcepto;
+        protected ITI001 iTI001;
         public LTraspaso()
         {
             iProducto = new RProducto();
-            iTraspaso_01 = new RTraspaso_01();
+            iDetalle = new RTraspaso_01();
             iTraspaso = new RTraspaso();
+            iConcepto = new RConcepto();
+            iTI001 = new RTI001();
         }
 
         #region Transacciones
@@ -104,12 +109,15 @@ namespace LOGIC.Class
         {
             //Ingresa el movimiento en la TI002
             new LTI002().Nuevo(vMovimiento, ref IdMovimiento);
+
             //Modifica, hace el cruce de IdDestino entre los movimientos.
             new LTI002().ModificarCampoDestinoTraspaso(idTraspaso);
             new LTraspaso_01().NuevoMovimiento(detalle, vTraspaso.IdAlmacenDestino, IdMovimiento);
+
             //Registra el detalle de traspaso para ser utilizado en Disoft para controlar las salidas y recargado de producto.
             iTraspaso.GuardarDetalleDisoft(idTraspaso);
         }
+
         private void LlenarDatosParaTI002(ref VTI002 movimiento,VTraspaso vTraspaso, int idTraspaso)
         {
             if (vTraspaso.EstadoEnvio == 1)
@@ -162,12 +170,82 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public void Eliminar(int ajusteId)
+        {
+            try
+            {
+                VTraspaso traspaso = null;
+                List<VTraspaso_01> detalle = null;
 
+                //Ajuste
+                traspaso = iTraspaso.ObtenerPorId(ajusteId);
+                detalle = iDetalle.ListaDetalle(ajusteId);
+
+                //Saldo
+                var accionIngreso = 0;
+                var accionSalida = 0;
+                var estadoEnvio = traspaso.EstadoEnvio;
+                if (estadoEnvio == (int)ENEstado.SINRECEPCION)
+                {
+                    if (traspaso != null)
+                    {
+                        accionIngreso = iConcepto.ObternerPorId((int)ENConcepto.TRASPASO_INGRESO).TipoMovimiento;
+                    }
+                }
+                else
+                {
+                    if (traspaso != null)
+                    {
+                        accionIngreso = iConcepto.ObternerPorId((int)ENConcepto.TRASPASO_INGRESO).TipoMovimiento;
+                        accionSalida = iConcepto.ObternerPorId((int)ENConcepto.TRANSFORMACION_SALIDA).TipoMovimiento;
+                    }
+                }               
+                //Actualizar Stock
+                foreach (var item in detalle)
+                {
+                    VTraspaso_01 itemAnterior;
+                    itemAnterior = detalle.Where(a => a.Id == item.Id).FirstOrDefault();
+                    if (itemAnterior != null)
+                    {
+                        if (estadoEnvio == (int)ENEstado.SINRECEPCION)
+                        {
+                            var cantidad = itemAnterior.Cantidad * accionIngreso * -1;
+                            iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenOrigen, cantidad, item.Lote, item.FechaVencimiento);
+                        }
+                        else
+                        {
+                            var cantidad = itemAnterior.Cantidad * accionIngreso * -1;
+                            iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenOrigen, cantidad, item.Lote, item.FechaVencimiento);
+
+                            cantidad = itemAnterior.Cantidad * accionSalida * -1;
+                            iTI001.ActualizarInventario(item.IdProducto, traspaso.IdAlmacenDestino, cantidad, item.Lote, item.FechaVencimiento);
+                        }                        
+                    }
+                }
+                //Elimina 
+                iTraspaso.ModificarEstado(ajusteId, (int)ENEstado.ELIMINAR);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
         /********** VARIOS REGISTROS ***********/
+        public List<VTraspasoTicket> ReporteTraspaso(int traspasoId)
+        {
+            try
+            {
+                return this.iTraspaso.ReporteTraspaso(traspasoId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<VTraspaso> TraerTraspasos(int usuarioId)
         {
             try

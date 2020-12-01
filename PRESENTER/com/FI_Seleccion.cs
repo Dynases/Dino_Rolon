@@ -1315,36 +1315,34 @@ namespace PRESENTER.com
                 resultado = new ServiceDesktop.ServiceDesktopClient().Seleccion_Guardar(vSeleccion, detalle_Seleccion, detalle_Ingreso, ref id);
                 if (resultado)
                 {
+                    MP_ReporteSeleccion(id);
                     if (idAux == 0)//Registar
                     {
-                        MP_ReporteSeleccion(id);
                         cb_NumGranja.Focus();
-                        MP_Filtrar(1);                        
+                        MP_Filtrar(1);
                         MP_Limpiar();
                         _Limpiar = true;
                         MP_InicioArmarCombo();
-                        mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString());
+
                     }
                     else//Modificar
                     {
-                        MP_ReporteSeleccion(id);
                         MP_Filtrar(2);
-                        MP_InHabilitar();//El formulario
-                        //MH_Habilitar();//El menu   
+                        MP_InHabilitar();
                         _Limpiar = true;
-                        mensaje = GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());                                      
                     }
-                }
-                //Resultado
-                if (resultado)
-                {
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    mensaje = id == 0 ? mensaje = GLMensaje.Nuevo_Exito(_NombreFormulario, id.ToString()) :
+                                          GLMensaje.Modificar_Exito(_NombreFormulario, id.ToString());
+                    MP_MostrarMensajeExito(mensaje);
+
+
                 }
                 else
                 {
                     mensaje = GLMensaje.Registro_Error(_NombreFormulario);
-                    ToastNotification.Show(this, mensaje, PRESENTER.Properties.Resources.CANCEL, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
+                    MP_MostrarMensajeError(mensaje);
                 }
+              
                 return resultado;
             }
             catch (Exception ex)

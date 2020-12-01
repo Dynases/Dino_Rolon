@@ -10,8 +10,8 @@ namespace REPOSITORY.Interface
         bool Nuevo(VTraspaso_01 vTraspaso_01, int idTraspaso);
         bool Modificar(VTraspaso_01 vTraspaso_01);
         bool Eliminar( int IdDetalle);
-        VTraspaso_01 TraerTraspaso_01(int idDetalle);
-        List<VTraspaso_01> TraerTraspasos_01(int idTraspaso);
+        VTraspaso_01 ObtenerDetalleXId(int idDetalle);
+        List<VTraspaso_01> ListaDetalle(int idTraspaso);
         List<VTraspaso_01> TraerTraspasos_01Vacio(int idTraspaso);
     }
 }

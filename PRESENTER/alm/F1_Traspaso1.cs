@@ -1,10 +1,14 @@
 ﻿using DevComponents.DotNetBar;
 using ENTITY.inv.TI001.VIew;
 using ENTITY.inv.Traspaso.View;
+using ENTITY.Libreria.View;
 using ENTITY.Producto.View;
 using Janus.Windows.GridEX;
+using Janus.Windows.GridEX.EditControls;
 using MODEL;
+using PRESENTER.frm;
 using PRESENTER.Properties;
+using PRESENTER.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +19,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTILITY;
 using UTILITY.Enum;
 using UTILITY.Enum.EnEstado;
+using UTILITY.Enum.EnEstaticos;
 using UTILITY.Global;
 
 namespace PRESENTER.alm
@@ -47,9 +53,15 @@ namespace PRESENTER.alm
         {
             try
             {
-                var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
-                UTGlobal.MG_ArmarComboAlmacen(Cb_Destino, almacenes);
-                UTGlobal.MG_ArmarComboAlmacen(Cb_Origen, almacenes);
+                using (var servicio = new ServiceDesktop.ServiceDesktopClient())
+                {
+                    var libreria = servicio.LibreriaListarCombo((int)ENEstaticosGrupo.TRASPASO, 
+                                                               (int)ENEstaticosOrden.TRASPASO_TRASPASADOPOR).ToList();
+                    var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
+                    UTGlobal.MG_ArmarComboAlmacen(Cb_Destino, almacenes);
+                    UTGlobal.MG_ArmarComboAlmacen(Cb_Origen, almacenes);
+                    UTGlobal.MG_ArmarCombo(Cb_TransportePor, libreria);
+                }               
             }
             catch (Exception ex)
             {
@@ -101,7 +113,7 @@ namespace PRESENTER.alm
             this.Tb_Total.IsInputReadOnly = true;
             this.Tb_FechaEnvio.Enabled = false;
             this.Tb_FechaDestino.Enabled = false;
-        
+            Cb_TransportePor.ReadOnly = true;
             BtnHabilitar.Enabled = true;
             this.Tb_Id.ReadOnly = true;
             _Limpiar = false;
@@ -116,6 +128,8 @@ namespace PRESENTER.alm
             this.Tb_FechaEnvio.Enabled = false;
             Tb_FechaDestino.Enabled = true;
             BtnHabilitar.Enabled = false;
+            Cb_TransportePor.ReadOnly = false;
+            Sw_Estado.IsReadOnly = Sw_Estado.Value ? false : true;
         }
        
         private void MP_InHabilitarProducto()
@@ -165,6 +179,7 @@ namespace PRESENTER.alm
                     Tb_FechaDestino.Value = traspaso.Fecha;
                     Sw_Estado.Value = traspaso.EstadoEnvio == 1 ? true : false;
                     Tb_Observacion.Text = traspaso.Observaciones;
+                    Cb_TransportePor.Value = traspaso.TransportadoPor;
                     this.MP_CargarDetalleRegistro(traspaso.Id, 1);
                     this.MP_ObtenerCalculo();
                     this.LblPaginacion.Text = (index + 1) + "/" + Convert.ToString(Dgv_GBuscador.RowCount - 1) + " Traspaso";
@@ -1092,7 +1107,7 @@ namespace PRESENTER.alm
             base.MH_Nuevo();
             this.MP_Habilitar();
             this.MP_Limpiar();
-            Sw_Estado.IsReadOnly = false;
+            Sw_Estado.IsReadOnly = true;
         }
         public override void MH_Modificar()
         {
@@ -1154,6 +1169,7 @@ namespace PRESENTER.alm
         {
             try
             {
+                string mensaje = "";
                 var VTraspaso = new VTraspaso
                 {
                     Estado = (int)ENEstado.GUARDADO,
@@ -1169,7 +1185,8 @@ namespace PRESENTER.alm
                     Total = Convert.ToDecimal(Tb_Total.Value),                   
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
-                    Usuario = UTGlobal.Usuario
+                    Usuario = UTGlobal.Usuario,
+                    TransportadoPor = Convert.ToInt32(Cb_TransportePor.Value)
                 };
                 int id = Tb_Id.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Id.Text);
                 int idAux = id;
@@ -1180,32 +1197,34 @@ namespace PRESENTER.alm
                 {
                     if (new ServiceDesktop.ServiceDesktopClient().GuardarTraspaso(VTraspaso, detalle, ref id, ref LMensaje))
                     {
+                        MP_Reporte(id);
+                        _Limpiar = true;
                         if (idAux == 0)//Registar
                         {
                             Cb_Origen.Focus();
                             this.MP_Filtrar(1);
                             this.MP_Limpiar();
-                            _Limpiar = true;
-                            ToastNotification.Show(this, GLMensaje.Nuevo_Exito("TRASPASO", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                            return true;
+                           
                         }
                         else
-                        {
+                        {                           
                             this.MP_Filtrar(2);
-                            this.MP_InHabilitar();
-                            _Limpiar = false;
-                            MH_Habilitar();//El menu  
-                            ToastNotification.Show(this, GLMensaje.Modificar_Exito("TRASPASO", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                            return true;
+                            this.MP_InHabilitar();                         
+                            MH_Habilitar();//El menu                           
                         }
-
+                        mensaje = id == 0 ? mensaje = GLMensaje.Nuevo_Exito(LblTitulo.Text, id.ToString()) :
+                                         GLMensaje.Modificar_Exito(LblTitulo.Text, id.ToString());
+                        MP_MostrarMensajeExito(mensaje);
+                        return true;
                     }
                     else
                     {
-                        this.MP_MostrarMensajeError("Ocurrio un error al guardar sus datos");
+                        mensaje = GLMensaje.Registro_Error(LblTitulo.Text);
+                        this.MP_MostrarMensajeError(mensaje);
                         return false;
                     }
                 }
+                
                 catch (Exception ex)
                 {
                     this.MP_MostrarMensajeError(ex.Message);
@@ -1219,56 +1238,156 @@ namespace PRESENTER.alm
                 return false;
             }
         }
-        //public override bool MH_Eliminar()
-        //{
-        //    try
-        //    {
-        //        Efecto efecto = new Efecto();
-        //        efecto.Tipo = 2;
-        //        efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
-        //        efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
-        //        efecto.ShowDialog();
-        //        bool resul = false;
-        //        if (efecto.Band)
-        //        {
-        //            List<string> Mensaje = new List<string>();
-        //            var LMensaje = Mensaje.ToArray();
-        //            resul = new ServiceDesktop.ServiceDesktopClient().VentaModificarEstado(Convert.ToInt32(Tb_Cod.Text), (int)ENEstado.ELIMINAR, ref LMensaje);
-        //            if (resul)
-        //            {
-        //                MP_Filtrar(1);
-        //                MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito("Venta", Tb_Cod.Text));
-        //            }
-        //            else
-        //            {
-        //                //Obtiene los codigos de productos sin stock
-        //                var mensajeLista = LMensaje.ToList();
-        //                if (mensajeLista.Count > 0)
-        //                {
-        //                    var mensaje = "";
-        //                    foreach (var item in mensajeLista)
-        //                    {
-        //                        mensaje = mensaje + "- " + item + "\n";
-        //                    }
-        //                    MP_MostrarMensajeError(mensaje);
-        //                    return false;
-        //                }
-        //                else
-        //                {
-        //                    MP_MostrarMensajeError(GLMensaje.Eliminar_Error("Venta", Tb_Cod.Text));
-        //                }
-        //            }
-        //        }
-        //        return resul;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MP_MostrarMensajeError(ex.Message);
-        //        return false;
-        //    }
-        //}
+
+        public override bool MH_Eliminar()
+        {
+            try
+            {
+                Efecto efecto = new Efecto();
+                efecto.Tipo = 2;
+                efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
+                efecto.Header = GLMensaje.Mensaje_Principal.ToUpper();
+                efecto.ShowDialog();
+                bool resul = false;
+                if (efecto.Band)
+                {
+                    List<string> Mensaje = new List<string>();
+                    var LMensaje = Mensaje.ToArray();
+                    resul = new ServiceDesktop.ServiceDesktopClient().VentaModificarEstado(Convert.ToInt32(Tb_Id.Text), (int)ENEstado.ELIMINAR, ref LMensaje);
+                    if (resul)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(LblTitulo.Text, Tb_Id.Text));
+                    }
+                    else
+                    {
+                        //Obtiene los codigos de productos sin stock
+                        var mensajeLista = LMensaje.ToList();
+                        if (mensajeLista.Count > 0)
+                        {
+                            var mensaje = "";
+                            foreach (var item in mensajeLista)
+                            {
+                                mensaje = mensaje + "- " + item + "\n";
+                            }
+                            MP_MostrarMensajeError(mensaje);
+                            return false;
+                        }
+                        else
+                        {
+                            MP_MostrarMensajeError(GLMensaje.Eliminar_Error(LblTitulo.Text, Tb_Id.Text));
+                        }
+                    }
+                }
+                return resul;
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+                return false;
+            }
+        }
         #endregion
 
+        private void Cb_TransportePor_ValueChanged(object sender, EventArgs e)
+        {
+            MP_SeleccionarButtonCombo(Cb_TransportePor, btnTransportadoPor);
+        }
+        private void MP_SeleccionarButtonCombo(MultiColumnCombo combo, ButtonX btn)
+        {
+            try
+            {
+                if (combo.SelectedIndex < 0 && combo.Text != string.Empty)
+                {
+                    btn.Visible = true;
+                }
+                else
+                {
+                    btn.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, GLMensaje.Error);
+            }
+        }
 
+        private void btnTransportadoPor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idLibreria = 0;
+                var lLibreria = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.TRASPASO),
+                                                                                         Convert.ToInt32(ENEstaticosOrden.TRASPASO_TRASPASADOPOR));
+                if (lLibreria.Count() > 0)
+                {
+                    idLibreria = lLibreria.Select(x => x.IdLibreria).Max();
+                }
+                VLibreriaLista libreria = new VLibreriaLista()
+                {
+                    IdGrupo = Convert.ToInt32(ENEstaticosGrupo.TRASPASO),
+                    IdOrden = Convert.ToInt32(ENEstaticosOrden.TRASPASO_TRASPASADOPOR),
+                    IdLibrer = idLibreria + 1,
+                    Descrip = Cb_TransportePor.Text == "" ? "" : Cb_TransportePor.Text,
+                    Fecha = DateTime.Now.Date,
+                    Hora = DateTime.Now.ToString("hh:mm"),
+                    Usuario = UTGlobal.Usuario,
+                };
+                if (new ServiceDesktop.ServiceDesktopClient().LibreriaGuardar(libreria))
+                {
+                    UTGlobal.MG_ArmarCombo(Cb_TransportePor,
+                                  new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.TRASPASO),
+                                                                                                Convert.ToInt32(ENEstaticosOrden.TRASPASO_TRASPASADOPOR)).ToList());
+                    Cb_TransportePor.SelectedIndex = ((List<VLibreria>)Cb_TransportePor.DataSource).Count() - 1;
+                }               
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (Cb_Origen.ReadOnly == true)
+            {
+                MP_Reporte(Convert.ToInt32(Tb_Id.Text));
+            }
+        }
+        private void MP_Reporte(int idTraspaso)
+        {
+
+            try
+            {
+                if (idTraspaso == 0)
+                {
+                    throw new Exception("No existen registros");
+                }
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().ReporteTraspaso(idTraspaso).ToList();
+                if (lista != null)
+                {
+                    var ObjetoReport = new RTraspasoTicket();
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    ObjetoReport.SetParameterValue("Titulo", "TRASPASO");
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
+                }
+                else
+                    throw new Exception("No se encontraron registros");
+
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
     }
 }

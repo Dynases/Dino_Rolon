@@ -512,6 +512,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TrasportadoPor" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Traspaso_01">
           <Key>
@@ -663,6 +664,38 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
           <Property Name="Contenido" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalUnidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Report_Traspaso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Report_Traspaso">
+          <Key>
+            <PropertyRef Name="traspasoId" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="FechaRecepcion" />
+            <PropertyRef Name="almOrigen" />
+            <PropertyRef Name="almDestino" />
+            <PropertyRef Name="TransportadoPor" />
+            <PropertyRef Name="detalleId" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="traspasoId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+          <Property Name="FechaRecepcion" Type="datetime" Nullable="false" />
+          <Property Name="almOrigen" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="EntregadoPor" Type="nvarchar" MaxLength="200" />
+          <Property Name="almDestino" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RecibidoPor" Type="nvarchar" MaxLength="200" />
+          <Property Name="TransportadoPor" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="detalleId" Type="int" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DiAvi.dbo.V_NotaCompraIngreso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -1840,6 +1873,24 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [SY000].[Mayusculas] AS [Mayusculas]
     FROM [dbo].[SY000] AS [SY000]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Report_Traspaso" EntityType="Self.Report_Traspaso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Report_Traspaso].[traspasoId] AS [traspasoId], 
+    [Report_Traspaso].[Estado] AS [Estado], 
+    [Report_Traspaso].[FechaEnvio] AS [FechaEnvio], 
+    [Report_Traspaso].[FechaRecepcion] AS [FechaRecepcion], 
+    [Report_Traspaso].[almOrigen] AS [almOrigen], 
+    [Report_Traspaso].[EntregadoPor] AS [EntregadoPor], 
+    [Report_Traspaso].[almDestino] AS [almDestino], 
+    [Report_Traspaso].[RecibidoPor] AS [RecibidoPor], 
+    [Report_Traspaso].[TransportadoPor] AS [TransportadoPor], 
+    [Report_Traspaso].[detalleId] AS [detalleId], 
+    [Report_Traspaso].[Producto] AS [Producto], 
+    [Report_Traspaso].[Cantidad] AS [Cantidad], 
+    [Report_Traspaso].[Precio] AS [Precio], 
+    [Report_Traspaso].[Total] AS [Total]
+    FROM [dbo].[Report_Traspaso] AS [Report_Traspaso]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_NotaCompraIngreso" EntityType="Self.V_NotaCompraIngreso" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_NotaCompraIngreso].[Id] AS [Id], 
@@ -2507,19 +2558,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Traspaso_01" EntitySet="Traspaso_01" />
           </AssociationSet>
-          <EntitySet Name="Traspaso" EntityType="DiAviModel.Traspaso" />
-          <AssociationSet Name="FK_Traspaso_IdAlmacenDestino" Association="DiAviModel.FK_Traspaso_IdAlmacenDestino">
-            <End Role="Almacen" EntitySet="Almacen" />
-            <End Role="Traspaso" EntitySet="Traspaso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Traspaso_IdAlmacenOrigen" Association="DiAviModel.FK_Traspaso_IdAlmacenOrigen">
-            <End Role="Almacen" EntitySet="Almacen" />
-            <End Role="Traspaso" EntitySet="Traspaso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Traspaso_01_Traspaso" Association="DiAviModel.FK_Traspaso_01_Traspaso">
-            <End Role="Traspaso" EntitySet="Traspaso" />
-            <End Role="Traspaso_01" EntitySet="Traspaso_01" />
-          </AssociationSet>
           <EntitySet Name="Vr_CompraIngresoDevolucion" EntityType="DiAviModel.Vr_CompraIngresoDevolucion" />
           <EntitySet Name="Vr_HistoricoSeleccion" EntityType="DiAviModel.Vr_HistoricoSeleccion" />
           <EntitySet Name="TCI001" EntityType="DiAviModel.TCI001" />
@@ -2556,10 +2594,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Traspaso_02" EntitySet="Traspaso_02" />
           </AssociationSet>
-          <AssociationSet Name="FK_Traspaso_02_Traspaso" Association="DiAviModel.FK_Traspaso_02_Traspaso">
-            <End Role="Traspaso" EntitySet="Traspaso" />
-            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
-          </AssociationSet>
           <EntitySet Name="TipoAlmacen" EntityType="DiAviModel.TipoAlmacen" />
           <AssociationSet Name="FK_TipoAlmacen" Association="DiAviModel.FK_TipoAlmacen">
             <End Role="TipoAlmacen" EntitySet="TipoAlmacen" />
@@ -2592,6 +2626,24 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
+          <EntitySet Name="Traspaso" EntityType="DiAviModel.Traspaso" />
+          <AssociationSet Name="FK_Traspaso_IdAlmacenDestino" Association="DiAviModel.FK_Traspaso_IdAlmacenDestino">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Traspaso" EntitySet="Traspaso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_IdAlmacenOrigen" Association="DiAviModel.FK_Traspaso_IdAlmacenOrigen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Traspaso" EntitySet="Traspaso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_01_Traspaso" Association="DiAviModel.FK_Traspaso_01_Traspaso">
+            <End Role="Traspaso" EntitySet="Traspaso" />
+            <End Role="Traspaso_01" EntitySet="Traspaso_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Traspaso_02_Traspaso" Association="DiAviModel.FK_Traspaso_02_Traspaso">
+            <End Role="Traspaso" EntitySet="Traspaso" />
+            <End Role="Traspaso_02" EntitySet="Traspaso_02" />
+          </AssociationSet>
+          <EntitySet Name="Report_Traspaso" EntityType="DiAviModel.Report_Traspaso" />
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -2751,13 +2803,13 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Usuario_01" Relationship="DiAviModel.FK_Usuario_01_Almacen" FromRole="Almacen" ToRole="Usuario_01" />
           <NavigationProperty Name="TI001" Relationship="DiAviModel.FK_TI001_IdAlmacen" FromRole="Almacen" ToRole="TI001" />
           <NavigationProperty Name="CompraIng" Relationship="DiAviModel.FK__CompraIng__Almacen" FromRole="Almacen" ToRole="CompraIng" />
-          <NavigationProperty Name="Traspaso" Relationship="DiAviModel.FK_Traspaso_IdAlmacenDestino" FromRole="Almacen" ToRole="Traspaso" />
-          <NavigationProperty Name="Traspaso1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Almacen" ToRole="Traspaso" />
           <NavigationProperty Name="TI002" Relationship="DiAviModel.FK_TI002_IdAlmacen" FromRole="Almacen" ToRole="TI002" />
           <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Almacen" FromRole="Almacen" ToRole="Traspaso_02" />
           <NavigationProperty Name="TipoAlmacen1" Relationship="DiAviModel.FK_TipoAlmacen" FromRole="Almacen" ToRole="TipoAlmacen" />
           <NavigationProperty Name="Seleccion" Relationship="DiAviModel.FK_Seleccion_Almacen" FromRole="Almacen" ToRole="Seleccion" />
           <NavigationProperty Name="Venta" Relationship="DiAviModel.FK_Venta_Almacen" FromRole="Almacen" ToRole="Venta" />
+          <NavigationProperty Name="Traspaso" Relationship="DiAviModel.FK_Traspaso_IdAlmacenDestino" FromRole="Almacen" ToRole="Traspaso" />
+          <NavigationProperty Name="Traspaso1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Almacen" ToRole="Traspaso" />
           </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -3658,66 +3710,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Traspaso">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdAlmacenOrigen" Type="Int32" Nullable="false" />
-          <Property Name="IdAlmacenDestino" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="UsuarioEnvio" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="UsuarioRecepcion" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EstadoEnvio" Type="Int32" Nullable="false" />
-          <Property Name="TotalUnidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Hora" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Traspaso_IdAlmacenDestino" FromRole="Traspaso" ToRole="Almacen" />
-          <NavigationProperty Name="Almacen1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Traspaso" ToRole="Almacen" />
-          <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Traspaso" FromRole="Traspaso" ToRole="Traspaso_01" />
-          <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Traspaso" FromRole="Traspaso" ToRole="Traspaso_02" />
-        </EntityType>
-        <Association Name="FK_Traspaso_IdAlmacenDestino">
-          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
-          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almacen">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Traspaso">
-              <PropertyRef Name="IdAlmacenDestino" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Traspaso_IdAlmacenOrigen">
-          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
-          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almacen">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Traspaso">
-              <PropertyRef Name="IdAlmacenOrigen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Traspaso_01_Traspaso">
-          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="1" />
-          <End Type="DiAviModel.Traspaso_01" Role="Traspaso_01" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Traspaso">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Traspaso_01">
-              <PropertyRef Name="IdTraspaso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Vr_CompraIngresoDevolucion">
           <Key>
             <PropertyRef Name="Id" />
@@ -4188,18 +4180,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Traspaso_02_Traspaso">
-          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="1" />
-          <End Type="DiAviModel.Traspaso_02" Role="Traspaso_02" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Traspaso">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Traspaso_02">
-              <PropertyRef Name="TraspasoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TipoAlmacen">
           <Key>
             <PropertyRef Name="Id" />
@@ -4371,6 +4351,109 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Traspaso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAlmacenOrigen" Type="Int32" Nullable="false" />
+          <Property Name="IdAlmacenDestino" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioEnvio" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioRecepcion" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoEnvio" Type="Int32" Nullable="false" />
+          <Property Name="TotalUnidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="TrasportadoPor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Traspaso_IdAlmacenDestino" FromRole="Traspaso" ToRole="Almacen" />
+          <NavigationProperty Name="Almacen1" Relationship="DiAviModel.FK_Traspaso_IdAlmacenOrigen" FromRole="Traspaso" ToRole="Almacen" />
+          <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Traspaso" FromRole="Traspaso" ToRole="Traspaso_01" />
+          <NavigationProperty Name="Traspaso_02" Relationship="DiAviModel.FK_Traspaso_02_Traspaso" FromRole="Traspaso" ToRole="Traspaso_02" />
+        </EntityType>
+        <Association Name="FK_Traspaso_IdAlmacenDestino">
+          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso">
+              <PropertyRef Name="IdAlmacenDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_IdAlmacenOrigen">
+          <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso">
+              <PropertyRef Name="IdAlmacenOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_01_Traspaso">
+          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso_01" Role="Traspaso_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Traspaso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_01">
+              <PropertyRef Name="IdTraspaso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Traspaso_02_Traspaso">
+          <End Type="DiAviModel.Traspaso" Role="Traspaso" Multiplicity="1" />
+          <End Type="DiAviModel.Traspaso_02" Role="Traspaso_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Traspaso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Traspaso_02">
+              <PropertyRef Name="TraspasoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report_Traspaso">
+          <Key>
+            <PropertyRef Name="traspasoId" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="FechaRecepcion" />
+            <PropertyRef Name="almOrigen" />
+            <PropertyRef Name="almDestino" />
+            <PropertyRef Name="TransportadoPor" />
+            <PropertyRef Name="detalleId" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="traspasoId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="almOrigen" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EntregadoPor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="almDestino" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="RecibidoPor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TransportadoPor" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="detalleId" Type="Int32" Nullable="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5042,27 +5125,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Traspaso">
-            <EntityTypeMapping TypeName="DiAviModel.Traspaso">
-              <MappingFragment StoreEntitySet="Traspaso">
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="TotalUnidad" ColumnName="TotalUnidad" />
-                <ScalarProperty Name="EstadoEnvio" ColumnName="EstadoEnvio" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
-                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
-                <ScalarProperty Name="UsuarioRecepcion" ColumnName="UsuarioRecepcion" />
-                <ScalarProperty Name="UsuarioEnvio" ColumnName="UsuarioEnvio" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdAlmacenDestino" ColumnName="IdAlmacenDestino" />
-                <ScalarProperty Name="IdAlmacenOrigen" ColumnName="IdAlmacenOrigen" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vr_CompraIngresoDevolucion">
             <EntityTypeMapping TypeName="DiAviModel.Vr_CompraIngresoDevolucion">
               <MappingFragment StoreEntitySet="Vr_CompraIngresoDevolucion">
@@ -5379,6 +5441,48 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Traspaso">
+            <EntityTypeMapping TypeName="DiAviModel.Traspaso">
+              <MappingFragment StoreEntitySet="Traspaso">
+                <ScalarProperty Name="TrasportadoPor" ColumnName="TrasportadoPor" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalUnidad" ColumnName="TotalUnidad" />
+                <ScalarProperty Name="EstadoEnvio" ColumnName="EstadoEnvio" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="UsuarioRecepcion" ColumnName="UsuarioRecepcion" />
+                <ScalarProperty Name="UsuarioEnvio" ColumnName="UsuarioEnvio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdAlmacenDestino" ColumnName="IdAlmacenDestino" />
+                <ScalarProperty Name="IdAlmacenOrigen" ColumnName="IdAlmacenOrigen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_Traspaso">
+            <EntityTypeMapping TypeName="DiAviModel.Report_Traspaso">
+              <MappingFragment StoreEntitySet="Report_Traspaso">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="detalleId" ColumnName="detalleId" />
+                <ScalarProperty Name="TransportadoPor" ColumnName="TransportadoPor" />
+                <ScalarProperty Name="RecibidoPor" ColumnName="RecibidoPor" />
+                <ScalarProperty Name="almDestino" ColumnName="almDestino" />
+                <ScalarProperty Name="EntregadoPor" ColumnName="EntregadoPor" />
+                <ScalarProperty Name="almOrigen" ColumnName="almOrigen" />
+                <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="traspasoId" ColumnName="traspasoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

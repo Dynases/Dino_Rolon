@@ -15,7 +15,7 @@ namespace REPOSITORY.Clase
 
         #region Consulta
         /******** VALOR/REGISTRO ÚNICO *********/
-        public VTraspaso_01 TraerTraspaso_01(int idDetalle)
+        public VTraspaso_01 ObtenerDetalleXId(int idDetalle)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace REPOSITORY.Clase
             }
         }
         /********** VARIOS REGISTROS ***********/
-        public List<VTraspaso_01> TraerTraspasos_01(int idTraspaso)
+        public List<VTraspaso_01> ListaDetalle(int idTraspaso)
         {
             try
             {

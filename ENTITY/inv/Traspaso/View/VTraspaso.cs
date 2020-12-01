@@ -22,6 +22,7 @@ namespace ENTITY.inv.Traspaso.View
         public DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Usuario { get; set; }
-    
+        public int TransportadoPor { get; set; }
+
     }
 }

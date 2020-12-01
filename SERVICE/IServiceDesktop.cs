@@ -276,42 +276,6 @@ namespace SERVICE
         [OperationContract]
         bool SucursalGuardar(VSucursal vSucursal);
         #endregion
-        /********** TRASPASO ****************/
-
-        #region Traspaso
-
-        #region Consulta
-        /******** VALOR/REGISTRO ÚNICO *********/
-        [OperationContract]
-        VTraspaso_01 TraerTraspass_01(int idDetalle);
-        /********** VARIOS REGISTROS ***********/
-        [OperationContract]
-        List<VTraspaso> TraerTraspasos(int usuarioId);
-
-        [OperationContract]
-        List<VTraspaso_01> TraerTraspasos_01(int idTraspaso);
-
-        [OperationContract]
-        List<VTListaProducto> ListarInventarioXAlmacenId(int AlmacenId);
-        [OperationContract]
-        List<VTraspaso_01> TraerTraspasos_01Vacio(int idTraspaso);
-        /********** REPORTE ***********/
-        #endregion
-        #region Transacciones
-        [OperationContract]
-        bool GuardarTraspaso(VTraspaso vTraspaso, List<VTraspaso_01> detalle, ref int idTraspaso, ref List<string> lMensaje);
-
-        [OperationContract]
-        bool TraspasoDetalleGuardar(List<VTraspaso_01> lista, int TraspasoId, int almacenId, int idTI2);
-
-        [OperationContract]
-        bool TraspasoConfirmarRecepcion(int traspasoId, string usuarioRecepcion);
-        #endregion
-        #region Verificaciones
-
-        #endregion
-
-        #endregion
         /********** PRECIO ******************/
 
         #region Precio Categoria

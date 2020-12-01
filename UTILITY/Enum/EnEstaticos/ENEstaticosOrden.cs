@@ -35,6 +35,8 @@ namespace UTILITY.Enum.EnEstaticos
         VENTA_ENC_TRASPORTE = 3,
         VENTA_ENC_RECEPCION= 4,
         //****ROL
-        ROL_ORDEN = 1
+        ROL_ORDEN = 1,
+        //****TRASPASO
+        TRASPASO_TRASPASADOPOR = 1
     }
 }

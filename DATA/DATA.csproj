@@ -120,6 +120,9 @@
     <Compile Include="EntityDataModel\DiAvi\Proveed_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiAvi\Report_Traspaso.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Rol.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
