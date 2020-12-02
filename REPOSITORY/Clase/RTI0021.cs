@@ -174,10 +174,10 @@ namespace REPOSITORY.Clase
                         var detalleAnterior = listati002.Where(h => h.ibfdoc < inicio.Date && h.ibalm == IdAlmacen);
                         if (detalleAnterior != null)
                         {
-                            var entradaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov.Value == 1)
+                            var entradaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov == 1)
                                                                                                                .Select(c => c.cpnumi)
                                                                                                                .Contains(z.ibconcep));
-                            var salidaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov.Value != 1)
+                            var salidaDetalleAnterior = detalleAnterior.Where(z => db.TCI001.Where(c => c.cpmov != 1)
                                                                                                          .Select(c => c.cpnumi)
                                                                                                          .Contains(z.ibconcep));
 
@@ -205,10 +205,10 @@ namespace REPOSITORY.Clase
 
                         if (detallePeriodo !=null)
                         {
-                            var entradaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov.Value == 1)
+                            var entradaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov == 1)
                                                                                                                  .Select(c => c.cpnumi)
                                                                                                                  .Contains(z.ibconcep));
-                            var salidaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov.Value != 1)
+                            var salidaDetallePeriodo = detallePeriodo.Where(z => db.TCI001.Where(c => c.cpmov != 1)
                                                                                                          .Select(c => c.cpnumi)
                                                                                                          .Contains(z.ibconcep));
 

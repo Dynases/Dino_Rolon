@@ -22,11 +22,11 @@ namespace DATA.EntityDataModel.DiAvi
     
         public int cpnumi { get; set; }
         public string cpdesc { get; set; }
-        public Nullable<int> cpmov { get; set; }
-        public Nullable<int> cpmovcli { get; set; }
-        public Nullable<int> cptipo { get; set; }
-        public Nullable<int> cpest { get; set; }
-        public Nullable<System.DateTime> cpfact { get; set; }
+        public int cpmov { get; set; }
+        public int cpmovcli { get; set; }
+        public int cptipo { get; set; }
+        public int cpest { get; set; }
+        public System.DateTime cpfact { get; set; }
         public string cphact { get; set; }
         public string cpuact { get; set; }
     

@@ -31,9 +31,17 @@ namespace SERVICE
 
         /********** Concepto ******************/
         #region Concepto
+        #region Transacciones
+        [OperationContract]
+        void Guardar(VConcepto concepto, ref int Id);
+        [OperationContract]
+        bool Eliminar(int Id);
+        #endregion
         #region Consulta
         [OperationContract]
         List<VConceptoCombo> Concepto_ListaComboAjuste();
+        [OperationContract]
+        List<VConcepto> Concepto_Listar();
         #endregion        
         #endregion
     }

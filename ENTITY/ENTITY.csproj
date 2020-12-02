@@ -76,6 +76,7 @@
     <Compile Include="inv\Almacen\View\VAlmacenCombo.cs" />
     <Compile Include="inv\Almacen\View\VAlmacenLista.cs" />
     <Compile Include="inv\Almacen\View\VDetalleKardex.cs" />
+    <Compile Include="inv\Concepto\View\VConcepto.cs" />
     <Compile Include="inv\Concepto\View\VConceptoCombo.cs" />
     <Compile Include="inv\Sucursal\View\VSucursal.cs" />
     <Compile Include="inv\Sucursal\View\VSucursalCombo.cs" />

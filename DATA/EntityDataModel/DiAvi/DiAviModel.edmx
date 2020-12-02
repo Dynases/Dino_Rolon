@@ -352,14 +352,14 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
             <PropertyRef Name="cpnumi" />
           </Key>
           <Property Name="cpnumi" Type="int" Nullable="false" />
-          <Property Name="cpdesc" Type="nvarchar" MaxLength="30" />
-          <Property Name="cpmov" Type="int" />
-          <Property Name="cpmovcli" Type="int" />
-          <Property Name="cptipo" Type="int" />
-          <Property Name="cpest" Type="int" />
-          <Property Name="cpfact" Type="date" />
-          <Property Name="cphact" Type="nvarchar" MaxLength="5" />
-          <Property Name="cpuact" Type="nvarchar" MaxLength="10" />
+          <Property Name="cpdesc" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="cpmov" Type="int" Nullable="false" />
+          <Property Name="cpmovcli" Type="int" Nullable="false" />
+          <Property Name="cptipo" Type="int" Nullable="false" />
+          <Property Name="cpest" Type="int" Nullable="false" />
+          <Property Name="cpfact" Type="date" Nullable="false" />
+          <Property Name="cphact" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="cpuact" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="TI001">
           <Key>
@@ -2560,7 +2560,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </AssociationSet>
           <EntitySet Name="Vr_CompraIngresoDevolucion" EntityType="DiAviModel.Vr_CompraIngresoDevolucion" />
           <EntitySet Name="Vr_HistoricoSeleccion" EntityType="DiAviModel.Vr_HistoricoSeleccion" />
-          <EntitySet Name="TCI001" EntityType="DiAviModel.TCI001" />
           <EntitySet Name="TI0021" EntityType="DiAviModel.TI0021" />
           <AssociationSet Name="FK_TI0021_IdProducto" Association="DiAviModel.FK_TI0021_IdProducto">
             <End Role="Producto" EntitySet="Producto" />
@@ -2568,10 +2567,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           </AssociationSet>
           <EntitySet Name="TI002" EntityType="DiAviModel.TI002" />
           <EntitySet Name="TI0021A" EntityType="DiAviModel.TI0021A" />
-          <AssociationSet Name="FK_TI002_IdTCI001" Association="DiAviModel.FK_TI002_IdTCI001">
-            <End Role="TCI001" EntitySet="TCI001" />
-            <End Role="TI002" EntitySet="TI002" />
-          </AssociationSet>
           <AssociationSet Name="FK_TI002_IdAlmacen" Association="DiAviModel.FK_TI002_IdAlmacen">
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="TI002" EntitySet="TI002" />
@@ -2644,6 +2639,11 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Traspaso_02" EntitySet="Traspaso_02" />
           </AssociationSet>
           <EntitySet Name="Report_Traspaso" EntityType="DiAviModel.Report_Traspaso" />
+          <EntitySet Name="TCI001" EntityType="DiAviModel.TCI001" />
+          <AssociationSet Name="FK_TI002_IdTCI001" Association="DiAviModel.FK_TI002_IdTCI001">
+            <End Role="TCI001" EntitySet="TCI001" />
+            <End Role="TI002" EntitySet="TI002" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_dg_TC0051_Result">
           <Property Type="Int32" Name="cnnum" Nullable="false" />
@@ -4006,21 +4006,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Total_Bs" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Peso_Promedio" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="TCI001">
-          <Key>
-            <PropertyRef Name="cpnumi" />
-          </Key>
-          <Property Name="cpnumi" Type="Int32" Nullable="false" />
-          <Property Name="cpdesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="cpmov" Type="Int32" />
-          <Property Name="cpmovcli" Type="Int32" />
-          <Property Name="cptipo" Type="Int32" />
-          <Property Name="cpest" Type="Int32" />
-          <Property Name="cpfact" Type="DateTime" Precision="0" />
-          <Property Name="cphact" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="cpuact" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TI002" Relationship="DiAviModel.FK_TI002_IdTCI001" FromRole="TCI001" ToRole="TI002" />
-        </EntityType>
         <EntityType Name="TI0021">
           <Key>
             <PropertyRef Name="id" />
@@ -4064,8 +4049,8 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="ibhact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ibuact" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="TCI001" Relationship="DiAviModel.FK_TI002_IdTCI001" FromRole="TI002" ToRole="TCI001" />
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_TI002_IdAlmacen" FromRole="TI002" ToRole="Almacen" />
+          <NavigationProperty Name="TCI001" Relationship="DiAviModel.FK_TI002_IdTCI001" FromRole="TI002" ToRole="TCI001" />
         </EntityType>
         <EntityType Name="TI0021A">
           <Key>
@@ -4077,18 +4062,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="TI0021" Relationship="DiAviModel.FK_TI0021A_TI0021" FromRole="TI0021A" ToRole="TI0021" />
         </EntityType>
-        <Association Name="FK_TI002_IdTCI001">
-          <End Type="DiAviModel.TCI001" Role="TCI001" Multiplicity="1" />
-          <End Type="DiAviModel.TI002" Role="TI002" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TCI001">
-              <PropertyRef Name="cpnumi" />
-            </Principal>
-            <Dependent Role="TI002">
-              <PropertyRef Name="ibconcep" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TI002_IdAlmacen">
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="1" />
           <End Type="DiAviModel.TI002" Role="TI002" Multiplicity="*" />
@@ -4454,6 +4427,33 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="TCI001">
+          <Key>
+            <PropertyRef Name="cpnumi" />
+          </Key>
+          <Property Name="cpnumi" Type="Int32" Nullable="false" />
+          <Property Name="cpdesc" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="cpmov" Type="Int32" Nullable="false" />
+          <Property Name="cpmovcli" Type="Int32" Nullable="false" />
+          <Property Name="cptipo" Type="Int32" Nullable="false" />
+          <Property Name="cpest" Type="Int32" Nullable="false" />
+          <Property Name="cpfact" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cphact" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="cpuact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TI002" Relationship="DiAviModel.FK_TI002_IdTCI001" FromRole="TCI001" ToRole="TI002" />
+        </EntityType>
+        <Association Name="FK_TI002_IdTCI001">
+          <End Type="DiAviModel.TCI001" Role="TCI001" Multiplicity="1" />
+          <End Type="DiAviModel.TI002" Role="TI002" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCI001">
+              <PropertyRef Name="cpnumi" />
+            </Principal>
+            <Dependent Role="TI002">
+              <PropertyRef Name="ibconcep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5284,21 +5284,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TCI001">
-            <EntityTypeMapping TypeName="DiAviModel.TCI001">
-              <MappingFragment StoreEntitySet="TCI001">
-                <ScalarProperty Name="cpuact" ColumnName="cpuact" />
-                <ScalarProperty Name="cphact" ColumnName="cphact" />
-                <ScalarProperty Name="cpfact" ColumnName="cpfact" />
-                <ScalarProperty Name="cpest" ColumnName="cpest" />
-                <ScalarProperty Name="cptipo" ColumnName="cptipo" />
-                <ScalarProperty Name="cpmovcli" ColumnName="cpmovcli" />
-                <ScalarProperty Name="cpmov" ColumnName="cpmov" />
-                <ScalarProperty Name="cpdesc" ColumnName="cpdesc" />
-                <ScalarProperty Name="cpnumi" ColumnName="cpnumi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TI0021">
             <EntityTypeMapping TypeName="DiAviModel.TI0021">
               <MappingFragment StoreEntitySet="TI0021">
@@ -5483,6 +5468,21 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="traspasoId" ColumnName="traspasoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TCI001">
+            <EntityTypeMapping TypeName="DiAviModel.TCI001">
+              <MappingFragment StoreEntitySet="TCI001">
+                <ScalarProperty Name="cpuact" ColumnName="cpuact" />
+                <ScalarProperty Name="cphact" ColumnName="cphact" />
+                <ScalarProperty Name="cpfact" ColumnName="cpfact" />
+                <ScalarProperty Name="cpest" ColumnName="cpest" />
+                <ScalarProperty Name="cptipo" ColumnName="cptipo" />
+                <ScalarProperty Name="cpmovcli" ColumnName="cpmovcli" />
+                <ScalarProperty Name="cpmov" ColumnName="cpmov" />
+                <ScalarProperty Name="cpdesc" ColumnName="cpdesc" />
+                <ScalarProperty Name="cpnumi" ColumnName="cpnumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

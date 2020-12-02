@@ -68,12 +68,48 @@ namespace SERVICE
 
         /********** Concepto ******************/
         #region Concepto
+        #region Transaciones
+        public void Concepto_Guardar(VConcepto concepto,ref int Id)
+        {
+            try
+            {
+                new LConcepto().Guardar(concepto,ref Id);                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void Concepto_Eliminar(int Id)
+        {
+            try
+            {
+                new LConcepto().Eliminar(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
         #region Consulta
         public List<VConceptoCombo> Concepto_ListaComboAjuste()
         {
             try
             {
                 var listResult = new LConcepto().ListaComboAjuste();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VConcepto> Concepto_Lista()
+        {
+            try
+            {
+                var listResult = new LConcepto().ListaConcepto();
                 return listResult;
             }
             catch (Exception ex)
