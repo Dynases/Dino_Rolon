@@ -37,9 +37,9 @@ namespace DATA.EntityDataModel.DiAvi
         public string Hora { get; set; }
         public string Usuario { get; set; }
     
-        public virtual Almacen Almacen { get; set; }
-        public virtual Proveed Proveed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra_01> Compra_01 { get; set; }
+        public virtual Almacen Almacen { get; set; }
+        public virtual Proveed Proveed { get; set; }
     }
 }

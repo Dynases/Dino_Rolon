@@ -135,15 +135,6 @@
     <Compile Include="EntityDataModel\DiAvi\Seleccion_01.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_dg_TC0051_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Mam_SaldosProducto_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\DiAvi\sp_Marco_TI002_Result.cs">
-      <DependentUpon>DiAviModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Sucursal.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>
@@ -277,6 +268,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <EntityDeploy Include="EntityDataModel\DiSoft\DiSoftModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DiSoftModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <EntityDeploy Include="EntityDataModel\DiAvi\DiAviModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DiAviModel.Designer.cs</LastGenOutput>
@@ -284,10 +279,6 @@
     <None Include="EntityDataModel\DiAvi\DiAviModel.edmx.diagram">
       <DependentUpon>DiAviModel.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="EntityDataModel\DiSoft\DiSoftModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DiSoftModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="EntityDataModel\DiSoft\DiSoftModel.edmx.diagram">
       <DependentUpon>DiSoftModel.edmx</DependentUpon>
     </None>

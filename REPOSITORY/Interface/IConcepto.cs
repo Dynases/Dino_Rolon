@@ -17,6 +17,7 @@ namespace REPOSITORY.Interface
         List<VConcepto> ListaConcepto();
         List<VConceptoCombo> ListaComboAjuste();
         VConceptoCombo ObternerPorId(int id);
+        List<VConceptoLista> ObtenerListaConcepto();
         #endregion
     }
 }

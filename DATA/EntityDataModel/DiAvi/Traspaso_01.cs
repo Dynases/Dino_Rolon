@@ -27,7 +27,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string Lote { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
     
-        public virtual Producto Producto { get; set; }
         public virtual Traspaso Traspaso { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

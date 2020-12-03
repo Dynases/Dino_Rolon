@@ -144,6 +144,30 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VConceptoLista> ObtenerListaConcepto()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var query = db.TCI001
+                        .Where(a=> a.cptipo == (int)ENConcepto.CONCEPTO_TIPO_AJUSTE)
+                        .OrderBy(a => a.cpnumi);
+                    return query.Select(a => new VConceptoLista
+                    {
+                        Id = a.cpnumi,
+                        Descripcion = a.cpdesc,
+                        TipoMovimiento = (a.cpmov == 1 ? "INGRESO" : "SALIDA"),                       
+                        AjusteCliente = (a.cpmovcli == 1 ? "SI" : "NO"),
+                        Estado = (a.cpest == 1 ? "HABILITADO" : "DESHABILITADO")                      
+                    }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion    
     }
  }

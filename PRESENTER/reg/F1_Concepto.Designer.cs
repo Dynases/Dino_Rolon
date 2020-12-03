@@ -35,11 +35,11 @@
             this.Dgv_Buscador2 = new Janus.Windows.GridEX.GridEX();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Sw_Estado = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.VConceptosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.Sw_Cliente = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Tb_Observacion = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.VConceptosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Sw_Tipo = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.Tb_Id = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX2 = new DevComponents.DotNetBar.LabelX();
@@ -66,6 +66,22 @@
             this.GPanel_DatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VConceptosBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // BtnExportar
             // 
@@ -97,7 +113,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(849, 489);
             // 
             // btnMin
             // 
@@ -113,7 +129,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(849, 489);
             // 
             // 
             // 
@@ -145,7 +161,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(843, 463);
             // 
             // PanelContenidoRegistro
             // 
@@ -263,6 +279,7 @@
             this.Dgv_Buscador2.Name = "Dgv_Buscador2";
             this.Dgv_Buscador2.Size = new System.Drawing.Size(843, 175);
             this.Dgv_Buscador2.TabIndex = 0;
+            this.Dgv_Buscador2.SelectionChanged += new System.EventHandler(this.Dgv_Buscador2_SelectionChanged);
             // 
             // GPanel_DatosGenerales
             // 
@@ -334,6 +351,10 @@
             this.Sw_Estado.TabIndex = 341;
             this.Sw_Estado.Value = true;
             this.Sw_Estado.ValueObject = "Y";
+            // 
+            // VConceptosBindingSource
+            // 
+            this.VConceptosBindingSource.DataSource = typeof(ENTITY.inv.Concepto.View.VConcepto);
             // 
             // labelX4
             // 
@@ -407,10 +428,6 @@
             this.Tb_Observacion.PreventEnterBeep = true;
             this.Tb_Observacion.Size = new System.Drawing.Size(196, 57);
             this.Tb_Observacion.TabIndex = 337;
-            // 
-            // VConceptosBindingSource
-            // 
-            this.VConceptosBindingSource.DataSource = typeof(ENTITY.inv.Concepto.View.VConcepto);
             // 
             // Sw_Tipo
             // 

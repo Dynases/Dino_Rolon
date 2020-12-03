@@ -69,22 +69,24 @@ namespace SERVICE
         /********** Concepto ******************/
         #region Concepto
         #region Transaciones
-        public void Concepto_Guardar(VConcepto concepto,ref int Id)
+        public int Concepto_Guardar(VConcepto concepto)
         {
             try
             {
-                new LConcepto().Guardar(concepto,ref Id);                
+                var conceptoId = new LConcepto().Guardar(concepto);
+                return conceptoId;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public void Concepto_Eliminar(int Id)
+        public bool Concepto_Eliminar(int Id)
         {
             try
             {
-                new LConcepto().Eliminar(Id);
+                var result = false;
+                return result = new LConcepto().Eliminar(Id);
             }
             catch (Exception ex)
             {
@@ -110,6 +112,18 @@ namespace SERVICE
             try
             {
                 var listResult = new LConcepto().ListaConcepto();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VConceptoLista> ObtenerListaConcepto()
+        {
+            try
+            {
+                var listResult = new LConcepto().ObtenerListaConcepto();
                 return listResult;
             }
             catch (Exception ex)

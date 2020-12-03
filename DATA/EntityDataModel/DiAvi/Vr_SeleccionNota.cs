@@ -23,6 +23,7 @@ namespace DATA.EntityDataModel.DiAvi
         public string IdSpyre { get; set; }
         public string MarcaTipo { get; set; }
         public string Entregado { get; set; }
+        public string DescripcionPlaca { get; set; }
         public string DescripcionRecibido { get; set; }
         public int IdDetalle { get; set; }
         public int IdProducto { get; set; }
@@ -33,6 +34,5 @@ namespace DATA.EntityDataModel.DiAvi
         public decimal Total { get; set; }
         public decimal Merma { get; set; }
         public decimal MermaPorcentaje { get; set; }
-        public string DescripcionPlaca { get; set; }
     }
 }

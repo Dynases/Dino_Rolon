@@ -158,6 +158,12 @@ namespace PRESENTER.adm
             F1_Ajuste frm = new F1_Ajuste();
             frm.Show();
         }
+        private void Metro_Concepto_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
+            F1_Concepto frm = new F1_Concepto();
+            frm.Show();
+        }
         #endregion
         #region Compras
         private void Metro_Proveedor_Click(object sender, EventArgs e)
@@ -227,6 +233,6 @@ namespace PRESENTER.adm
 
         }
 
-   
+      
     }
 }

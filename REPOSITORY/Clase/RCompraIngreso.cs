@@ -524,7 +524,7 @@ namespace REPOSITORY.Clase
                                           Total = a.Total,
                                           Entregado = a.Entregado,
                                           DescripcionRecibido = a.DescripcionRecibido,
-                                          TotalMaple = a.TotalMaple,
+                                          TotalMaple = a.TotalMaple.Value,
                                           DescripcionPlaca = a.DescripcionPlaca
                                       }).ToList();
                     return listResult;

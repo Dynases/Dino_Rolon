@@ -20,14 +20,16 @@ namespace LOGIC.Class
             iConcepto = new RConcepto();
         }
         #region Transaciones
-        public void Guardar(VConcepto concepto, ref int Id )
+        public int Guardar(VConcepto concepto)
         {
             try
             {
                 using (var scope = new TransactionScope())
                 {
-                    iConcepto.Guardar(concepto,ref Id);
+                    int conceptoId = 0;
+                    iConcepto.Guardar(concepto, ref conceptoId);                    
                     scope.Complete();
+                    return conceptoId;
                 }
             }
             catch (Exception ex)
@@ -76,6 +78,17 @@ namespace LOGIC.Class
             try
             {
                 return iConcepto.ListaConcepto();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VConceptoLista> ObtenerListaConcepto()
+        {
+            try
+            {
+                return iConcepto.ObtenerListaConcepto();
             }
             catch (Exception ex)
             {

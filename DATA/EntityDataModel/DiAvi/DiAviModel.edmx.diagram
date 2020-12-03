@@ -4,104 +4,104 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd2b7a81e2bc4cf696db7ceb08421aa9" Name="Diagram1" ZoomLevel="89">
-        <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng_02" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.Proveed" Width="1.5" PointX="9" PointY="3.75" />
-        <EntityTypeShape EntityType="DiAviModel.Proveed_01" Width="1.5" PointX="11.25" PointY="4.875" />
-        <EntityTypeShape EntityType="DiAviModel.Plantilla" Width="1.5" PointX="5.25" PointY="29.625" />
-        <EntityTypeShape EntityType="DiAviModel.Plantilla_01" Width="1.5" PointX="7.5" PointY="29.75" />
-        <EntityTypeShape EntityType="DiAviModel.TB001" Width="1.5" PointX="12.75" PointY="9.75" />
-        <EntityTypeShape EntityType="DiAviModel.ZY0021" Width="1.5" PointX="15.75" PointY="13.75" />
-        <EntityTypeShape EntityType="DiAviModel.Almacen" Width="1.5" PointX="3" PointY="14.75" />
-        <EntityTypeShape EntityType="DiAviModel.Sucursal" Width="1.5" PointX="0.75" PointY="15.75" />
-        <EntityTypeShape EntityType="DiAviModel.Transformacion" Width="1.5" PointX="11.75" PointY="1" />
-        <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="14" PointY="1" />
-        <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="3" PointY="5.375" />
-        <EntityTypeShape EntityType="DiAviModel.Precio" Width="1.5" PointX="6" PointY="15.75" />
-        <EntityTypeShape EntityType="DiAviModel.PrecioCat" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="DiAviModel.Estaticos" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.SY000" Width="1.5" PointX="16.75" PointY="8.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngreso" Width="1.875" PointX="17.75" PointY="13.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="2.125" PointX="17.75" PointY="17.75" />
-        <AssociationConnector Association="DiAviModel.FK_Proveed_01_Proveed" />
-        <AssociationConnector Association="DiAviModel.FK_Almacen_Plantilla" />
-        <AssociationConnector Association="DiAviModel.FK_AlmacenDestino_Plantilla" />
-        <AssociationConnector Association="DiAviModel.FK_Plantilla01_Plantilla" />
-        <AssociationConnector Association="DiAviModel.FK_Sucursal" />
-        <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal" />
-        <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" />
-        <AssociationConnector Association="DiAviModel.FK_Cliente_PrecioCat" />
-        <AssociationConnector Association="DiAviModel.FK__Precio_Cat" />
-        <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="20.25" PointY="12.625" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_IdAlmacen" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_IdProveedor" />
-        <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="22.5" PointY="18.25" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" />
-        <EntityTypeShape EntityType="DiAviModel.Programa" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.Rol" Width="1.5" PointX="0.75" PointY="29.625" />
-        <EntityTypeShape EntityType="DiAviModel.Rol_01" Width="1.5" PointX="3" PointY="33.25" />
-        <EntityTypeShape EntityType="DiAviModel.Usuario" Width="1.5" PointX="3" PointY="29.25" />
-        <EntityTypeShape EntityType="DiAviModel.Usuario_01" Width="1.5" PointX="5.25" PointY="11.375" />
-        <AssociationConnector Association="DiAviModel.FK_Rol_01_Rol" />
-        <AssociationConnector Association="DiAviModel.FK_Usuario_Rol" />
-        <AssociationConnector Association="DiAviModel.FK_Usuario_01_Usuario" />
-        <AssociationConnector Association="DiAviModel.FK_Usuario_01_Almacen" />
-        <EntityTypeShape EntityType="DiAviModel.TI001" Width="1.5" PointX="8.25" PointY="19" />
-        <AssociationConnector Association="DiAviModel.FK_TI001_IdAlmacen" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng_03" Width="1.5" PointX="25.5" PointY="14.5" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="20.25" PointY="18.75" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" />
-        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdCompraIng" />
-        <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="13.375" PointY="4.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoResultado" Width="2.625" PointX="17.25" PointY="3.75" />
-        <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="27.75" PointY="21.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="2" PointX="10.375" PointY="19.75" />
-        <EntityTypeShape EntityType="DiAviModel.ValidacionPrograma" Width="1.5" PointX="19.375" PointY="8.75" />
-        <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="0.75" PointY="20.25" />
-        <EntityTypeShape EntityType="DiAviModel.Venta_01" Width="1.5" PointX="11" PointY="15.25" />
-        <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" />
-        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdProducto" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" />
-        <AssociationConnector Association="DiAviModel.FK_Producto_Plantilla01" />
-        <AssociationConnector Association="DiAviModel.FK_TI001_IdProducto" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" />
-        <EntityTypeShape EntityType="DiAviModel.Traspaso_01" Width="1.5" PointX="7.5" PointY="23" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoDevolucion" Width="1.5" PointX="20.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_HistoricoSeleccion" Width="1.5" PointX="13.375" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiAviModel.TI0021" Width="1.5" PointX="3" PointY="22.5" />
-        <AssociationConnector Association="DiAviModel.FK_TI0021_IdProducto" />
-        <EntityTypeShape EntityType="DiAviModel.TI002" Width="1.5" PointX="25.625" PointY="8.875" />
-        <EntityTypeShape EntityType="DiAviModel.TI0021A" Width="1.5" PointX="5.25" PointY="22.875" />
-        <AssociationConnector Association="DiAviModel.FK_TI002_IdAlmacen" />
-        <AssociationConnector Association="DiAviModel.FK_TI0021A_TI0021" />
-        <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="22.5" PointY="23.125" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" />
-        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" />
-        <EntityTypeShape EntityType="DiAviModel.Traspaso_02" Width="1.5" PointX="10.5" PointY="12.125" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Almacen" />
-        <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="15.375" PointY="21.875" />
-        <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
-        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="17.375" PointY="21.75" />
-        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="25.5" PointY="19.75" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_IdCompraIng" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" />
-        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" />
-        <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="8.25" PointY="10.75" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" />
-        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
-        <EntityTypeShape EntityType="DiAviModel.Traspaso" Width="1.5" PointX="5.25" PointY="5.375" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenDestino" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenOrigen" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Traspaso" />
-        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Traspaso" />
-        <EntityTypeShape EntityType="DiAviModel.Report_Traspaso" Width="1.5" PointX="22.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DiAviModel.TCI001" Width="1.5" PointX="21.375" PointY="7" />
-        <AssociationConnector Association="DiAviModel.FK_TI002_IdTCI001" />
-        </Diagram>
+      <Diagram DiagramId="4cc8c2bc85f24301aa85e5067538b14a" Name="Diagram1">
+        <EntityTypeShape EntityType="DiAviModel.Libreria" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Programa" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Rol" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Rol_01" Width="1.5" PointX="6" PointY="60.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Usuario" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Usuario_01" Width="1.5" PointX="8.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.ValidacionPrograma" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Compra" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Compra_01" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng" Width="1.5" PointX="5.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng_01" Width="1.5" PointX="10.5" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng_02" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.CompraIng_03" Width="1.5" PointX="10.5" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Proveed" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Proveed_01" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Seleccion" Width="1.5" PointX="13.5" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Seleccion_01" Width="1.5" PointX="15.75" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Plantilla" Width="1.5" PointX="5.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Plantilla_01" Width="1.5" PointX="7.5" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TB001" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TCI001" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TI001" Width="1.5" PointX="8.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TI002" Width="1.5" PointX="8.25" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TI0021" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TI0021A" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.ZY0021" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Almacen" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Sucursal" Width="1.5" PointX="0.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="0.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Transformacion" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Transformacion_01" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso" Width="1.5" PointX="5.25" PointY="53.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso_01" Width="1.5" PointX="7.5" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Traspaso_02" Width="1.5" PointX="7.5" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Cliente" Width="1.5" PointX="9" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Precio" Width="1.5" PointX="6" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.PrecioCat" Width="1.5" PointX="6.75" PointY="47.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Producto" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Venta" Width="1.5" PointX="11.25" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Venta_01" Width="1.5" PointX="13.5" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Estaticos" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.SY000" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Report_Traspaso" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.V_NotaCompraIngreso" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngreso" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoDevolucion" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_CompraIngresoResultado" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_HistoricoSeleccion" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_SeleccionNota" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionIngreso" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiAviModel.Vr_TransformacionSalida" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="DiAviModel.FK_Rol_01_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Usuario_01_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Usuario_01_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_01_Compra" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_IdAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_IdProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Compra_01_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdCompraIng" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdCompraIng" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_IdCompraIng" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__CompraIng__IdPro__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_CompraIng_03_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Proveed_01_Proveed" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Seleccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Seleccion_01_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Almacen_Plantilla" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_AlmacenDestino_Plantilla" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Plantilla01_Plantilla" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Producto_Plantilla01" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI002_IdTCI001" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI001_IdAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI001_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI002_IdAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI0021_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TI0021A_TI0021" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenDestino" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_IdAlmacenOrigen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__Precio_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Transformacion_01_Transformacion" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Traspaso" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Traspaso" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Traspaso_01_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Cliente_PrecioCat" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK__Precio_Cat" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

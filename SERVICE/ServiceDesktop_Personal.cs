@@ -1,4 +1,5 @@
 ﻿using ENTITY.DiSoft.Personal;
+using ENTITY.inv.Concepto.View;
 using LOGIC.Class.DiSoft;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Web;
 namespace SERVICE
 {
     public partial class Service1 : IServiceDesktop
-    {
+    {     
         #region Consulta
         public List<VPersonalCombo> PersonalCombo()
         {
