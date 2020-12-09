@@ -77,13 +77,14 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var query = db.TCI001
-                        .Where(a => a.cpnumi == (int)ENConcepto.INGRESO || a.cpnumi == (int)ENConcepto.SALIDA)
+                        .Where(a => a.cptipo == (int)ENConcepto.CONCEPTO_TIPO_AJUSTE)
                         .OrderBy(a => a.cpnumi);
                     return query.Select(a => new VConceptoCombo
                     {
                         Id = a.cpnumi,
                         Descripcion = a.cpdesc,
-                        TipoMovimiento = a.cpmov
+                        TipoMovimiento = a.cpmov,
+                        AjusteCliente = a.cpmovcli
                     }).ToList();
                 }
             }

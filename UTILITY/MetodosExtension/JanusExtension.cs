@@ -9,6 +9,7 @@ namespace UTILITY.MetodosExtencion
 {
   public static class JanusExtension
     {
+        public static Size AutoScrollPosition { get; private set; }
         #region GridEx
         #region Configuración inicial
         public static void ConfigInicialVinculado<T>(this GridEX grid, T list, string nombre)
@@ -28,7 +29,9 @@ namespace UTILITY.MetodosExtencion
         public static void ColAL(this GridEX grid, string key, string nombre, int ancho, int tamFuente = 8)
         {
             grid.RootTable.Columns[key].CellStyle.TextAlignment = TextAlignment.Near;
-            ColPropiedadesComun(grid, key, nombre, ancho, tamFuente);
+            grid.RootTable.Columns[key].WordWrap = true;
+            grid.RootTable.Columns[key].MaxLines = 20;
+           ColPropiedadesComun(grid, key, nombre, ancho, tamFuente);
         }
 
         public static void ColAC(this GridEX grid, string key, string nombre, int ancho, int tamFuente = 8)
@@ -106,6 +109,8 @@ namespace UTILITY.MetodosExtencion
             grid.FilterMode = FilterMode.None;
             grid.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges;
             grid.VisualStyle = VisualStyle.Office2007;
+            grid.ColumnAutoResize = true;
+            grid.AutoScrollMargin = AutoScrollPosition;
         }
         #endregion
 

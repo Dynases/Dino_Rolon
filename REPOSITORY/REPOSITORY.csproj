@@ -58,6 +58,7 @@
     <Compile Include="Clase\DiSoft\RProductoD.cs" />
     <Compile Include="Clase\DiSoft\RZonaD.cs" />
     <Compile Include="Clase\RAjuste.cs" />
+    <Compile Include="Clase\RAjusteFisico.cs" />
     <Compile Include="Clase\RAlmacen.cs" />
     <Compile Include="Clase\RCliente.cs" />
     <Compile Include="Clase\RCompra.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Interface\DiSoft\IProductoD.cs" />
     <Compile Include="Interface\DiSoft\IZonaD.cs" />
     <Compile Include="Interface\IAjuste.cs" />
+    <Compile Include="Interface\IAjusteFisico.cs" />
     <Compile Include="Interface\IAlmacen.cs" />
     <Compile Include="Interface\ICliente.cs" />
     <Compile Include="Interface\ICompra.cs" />

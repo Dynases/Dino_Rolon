@@ -46,10 +46,7 @@ namespace PRESENTER.ven
         #endregion
 
         #region Metodos Privados
-        private void inicioDesdeVenta()
-        {           
  
-        }
         private void inicioDesdeCompraIngreso()
         {
             if (idCompraIngreso != 0)

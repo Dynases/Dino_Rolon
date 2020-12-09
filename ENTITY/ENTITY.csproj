@@ -71,6 +71,8 @@
     <Compile Include="DiSoft\Zona\VZona.cs" />
     <Compile Include="inv\Ajuste\View\VAjuste.cs" />
     <Compile Include="inv\Ajuste\View\VAjusteDetalle.cs" />
+    <Compile Include="inv\Ajuste\View\VAjusteFisico.cs" />
+    <Compile Include="inv\Ajuste\View\VAjusteFisicoProducto.cs" />
     <Compile Include="inv\Ajuste\View\VAjusteLista.cs" />
     <Compile Include="inv\Almacen\View\VAlmacen.cs" />
     <Compile Include="inv\Almacen\View\VAlmacenCombo.cs" />

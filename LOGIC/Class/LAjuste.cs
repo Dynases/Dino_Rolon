@@ -15,13 +15,13 @@ namespace LOGIC.Class
     {
         protected IAjuste iAjuste;
         protected IConcepto iConcepto;
-        protected ITI001 iTI001;
+        protected ITI001 iTI001;     
 
         public LAjuste()
         {
             iAjuste = new RAjuste();
             iConcepto = new RConcepto();
-            iTI001 = new RTI001();
+            iTI001 = new RTI001();      
         }
         #region Transaccion
         public int Guardar(VAjuste ajuste, List<VAjusteDetalle> detalle, string usuario)

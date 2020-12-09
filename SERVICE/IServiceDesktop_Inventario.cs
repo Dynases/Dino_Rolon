@@ -46,5 +46,26 @@ namespace SERVICE
         List<VConceptoLista> ObtenerListaConcepto();
         #endregion
         #endregion
+
+
+        /********** Ajuste fisico ******************/
+        #region Ajuste Fisico
+        #region Transacciones
+        [OperationContract]
+        int AjusteFisico_Guardar(VAjusteFisico ajuste, List<VAjusteFisicoProducto> detalle, string usuario);
+        [OperationContract]
+        void AjusteFisico_Eliminar(int ajusteId);
+        #endregion
+        #region Consulta
+        [OperationContract]
+        List<VAjusteLista> AjusteFisico_Lista();
+
+        [OperationContract]
+        List<VAjusteFisicoProducto> AjusteFisicoDetalle_Lista(int id);
+        #endregion
+        #endregion
+
+
+       
     }
 }

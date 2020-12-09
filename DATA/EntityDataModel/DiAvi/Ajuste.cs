@@ -12,28 +12,29 @@ namespace DATA.EntityDataModel.DiAvi
     using System;
     using System.Collections.Generic;
     
-    public partial class TCI001
+    public partial class Ajuste
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TCI001()
+        public Ajuste()
         {
-            this.Ajuste = new HashSet<Ajuste>();
-            this.TI002 = new HashSet<TI002>();
+            this.AjusteProducto = new HashSet<AjusteProducto>();
         }
     
-        public int cpnumi { get; set; }
-        public string cpdesc { get; set; }
-        public int cpmov { get; set; }
-        public int cpmovcli { get; set; }
-        public int cptipo { get; set; }
-        public int cpest { get; set; }
-        public System.DateTime cpfact { get; set; }
-        public string cphact { get; set; }
-        public string cpuact { get; set; }
+        public int Id { get; set; }
+        public int Estado { get; set; }
+        public int IdAlmacen { get; set; }
+        public int IdConcepto { get; set; }
+        public int IdCliente { get; set; }
+        public System.DateTime FechaReg { get; set; }
+        public string Observacion { get; set; }
+        public int TransportadorPor { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+        public string Usuario { get; set; }
     
+        public virtual TCI001 TCI001 { get; set; }
+        public virtual Almacen Almacen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ajuste> Ajuste { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TI002> TI002 { get; set; }
+        public virtual ICollection<AjusteProducto> AjusteProducto { get; set; }
     }
 }

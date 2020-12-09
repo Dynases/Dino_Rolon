@@ -131,7 +131,63 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
-        #endregion        
+        #endregion
+        #endregion
+
+        /********** Ajuste ******************/
+        #region Ajuste Fisico
+        #region Transacciones
+        public int AjusteFisico_Guardar(VAjusteFisico ajuste, List<VAjusteFisicoProducto> detalle, string usuario)
+        {
+            try
+            {
+                var result = new LAjusteFisico().Guardar(ajuste, detalle, usuario);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void AjusteFisico_Eliminar(int ajusteId)
+        {
+            try
+            {
+                new LAjusteFisico().Eliminar(ajusteId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+        #region Consulta
+        public List<VAjusteLista> AjusteFisico_Lista()
+        {
+            try
+            {
+                var listResult = new LAjusteFisico().Listar();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VAjusteFisicoProducto> AjusteFisicoDetalle_Lista(int id)
+        {
+            try
+            {
+                var listResult = new LAjusteFisico().ListaDetalle(id);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
         #endregion
     }
 }

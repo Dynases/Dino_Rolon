@@ -307,6 +307,12 @@
     <Compile Include="alm\F1_Ajuste.Designer.cs">
       <DependentUpon>F1_Ajuste.cs</DependentUpon>
     </Compile>
+    <Compile Include="alm\F1_AjusteFIsico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alm\F1_AjusteFIsico.Designer.cs">
+      <DependentUpon>F1_AjusteFIsico.cs</DependentUpon>
+    </Compile>
     <Compile Include="alm\F1_Almacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -521,6 +527,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Ajuste.resx">
       <DependentUpon>F1_Ajuste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alm\F1_AjusteFIsico.resx">
+      <DependentUpon>F1_AjusteFIsico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="alm\F1_Almacen.resx">
       <DependentUpon>F1_Almacen.cs</DependentUpon>
@@ -837,6 +846,8 @@
     <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjuste.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteDetalle.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteFisico.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteFisicoProducto.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteLista.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Almacen.View.VAlmacenLista.datasource" />

@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="EntityDataModel\DiAvi\Ajuste.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiAvi\AjusteProducto.cs">
+      <DependentUpon>DiAviModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\DiAvi\Almacen.cs">
       <DependentUpon>DiAviModel.tt</DependentUpon>
     </Compile>

@@ -11,5 +11,6 @@ namespace ENTITY.inv.Concepto.View
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public int TipoMovimiento { get; set; }
+        public int AjusteCliente { get; set; }
     }
 }

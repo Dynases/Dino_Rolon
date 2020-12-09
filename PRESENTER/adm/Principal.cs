@@ -155,7 +155,7 @@ namespace PRESENTER.adm
         private void Metro_Ajuste_Click(object sender, EventArgs e)
         {
             MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
-            F1_Ajuste frm = new F1_Ajuste();
+            F1_AjusteFIsico frm = new F1_AjusteFIsico();
             frm.Show();
         }
         private void Metro_Concepto_Click(object sender, EventArgs e)

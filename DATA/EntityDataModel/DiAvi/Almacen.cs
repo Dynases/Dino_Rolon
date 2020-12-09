@@ -25,6 +25,7 @@ namespace DATA.EntityDataModel.DiAvi
             this.Plantilla1 = new HashSet<Plantilla>();
             this.TI001 = new HashSet<TI001>();
             this.TI002 = new HashSet<TI002>();
+            this.Ajuste = new HashSet<Ajuste>();
             this.Traspaso_02 = new HashSet<Traspaso_02>();
             this.Traspaso = new HashSet<Traspaso>();
             this.Traspaso1 = new HashSet<Traspaso>();
@@ -61,6 +62,8 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual ICollection<TI001> TI001 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TI002> TI002 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ajuste> Ajuste { get; set; }
         public virtual Sucursal Sucursal { get; set; }
         public virtual TipoAlmacen TipoAlmacen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

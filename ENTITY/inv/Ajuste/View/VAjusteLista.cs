@@ -13,5 +13,7 @@ namespace ENTITY.inv.Ajuste.View
         public string NConcepto { get; set; }
         public string Obs { get; set; }
         public string NAlmacen { get; set; }
+        public int IdTransportadoPor { get; set; }
+        public int IdCliente { get; set; }
     }
 }
