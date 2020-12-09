@@ -52,7 +52,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<TI0021A> TI0021A { get; set; }
         public virtual DbSet<ZY0021> ZY0021 { get; set; }
         public virtual DbSet<Ajuste> Ajuste { get; set; }
-        public virtual DbSet<AjusteProducto> AjusteProducto { get; set; }
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<TipoAlmacen> TipoAlmacen { get; set; }
@@ -78,5 +77,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Vr_SeleccionNota> Vr_SeleccionNota { get; set; }
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
+        public virtual DbSet<AjusteProducto> AjusteProducto { get; set; }
     }
 }

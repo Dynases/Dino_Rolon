@@ -120,7 +120,7 @@ namespace REPOSITORY.Clase
                         {
                             Id = a.Id,
                             Fecha = a.Fecha,
-                            IdConcepto = a.IdCliente,
+                            IdConcepto = a.IdConcepto,
                             IdAlmacen = a.IdAlmacen,
                             IdCliente= a.IdCliente,
                             Estado = a.Estado,
@@ -155,7 +155,7 @@ namespace REPOSITORY.Clase
                                 data = new AjusteProducto();                            
                                 data.IdAjuste = id;
                                 data.IdProducto = item.IdProducto;
-                                data.Estado = item.Estado;
+                                data.Estado = (int)ENEstado.GUARDADO;
                                 data.Saldo = item.Saldo;
                                 data.Fisico = item.Fisico;
                                 data.Diferencia = item.Diferencia;

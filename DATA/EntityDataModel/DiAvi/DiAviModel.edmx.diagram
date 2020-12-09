@@ -32,7 +32,6 @@
         <EntityTypeShape EntityType="DiAviModel.TI0021A" Width="1.5" PointX="13.5" PointY="20.25" />
         <EntityTypeShape EntityType="DiAviModel.ZY0021" Width="1.5" PointX="6.75" PointY="7.75" />
         <EntityTypeShape EntityType="DiAviModel.Ajuste" Width="1.5" PointX="8.25" PointY="26.375" />
-        <EntityTypeShape EntityType="DiAviModel.AjusteProducto" Width="1.5" PointX="13.5" PointY="25.5" />
         <EntityTypeShape EntityType="DiAviModel.Almacen" Width="1.5" PointX="6" PointY="29" />
         <EntityTypeShape EntityType="DiAviModel.Sucursal" Width="1.5" PointX="0.75" PointY="30.5" />
         <EntityTypeShape EntityType="DiAviModel.TipoAlmacen" Width="1.5" PointX="3.75" PointY="27.25" />
@@ -89,8 +88,6 @@
         <AssociationConnector Association="DiAviModel.FK_TI0021_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_TI0021A_TI0021" />
         <AssociationConnector Association="DiAviModel.FK_Ajuste_Almacen" />
-        <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdAjuste" />
-        <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_Sucursal" />
         <AssociationConnector Association="DiAviModel.FK_TipoAlmacen" />
         <AssociationConnector Association="DiAviModel.FK_Traspaso_02_Almacen" />
@@ -107,6 +104,9 @@
         <AssociationConnector Association="DiAviModel.FK__Precio_Cat" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdProducto" />
         <AssociationConnector Association="DiAviModel.FK_Venta_01_IdVenta" />
+        <EntityTypeShape EntityType="DiAviModel.AjusteProducto" Width="1.5" PointX="18.25" PointY="22" />
+        <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdAjuste" />
+        <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdProducto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

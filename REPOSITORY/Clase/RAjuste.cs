@@ -40,7 +40,7 @@ namespace REPOSITORY.Clase
                         data.ibalm = ajuste.IdAlmacen;
                         data.ibdepdest = 0;
                         data.ididdestino = 0;
-                        data.ibiddc = 0;
+                        data.ibiddc = ajuste.IdAjusteFisico;
                     }
                     data.ibfdoc = ajuste.Fecha;               
                     data.ibobs = ajuste.Obs;

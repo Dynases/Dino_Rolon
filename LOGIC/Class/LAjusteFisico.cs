@@ -53,21 +53,21 @@ namespace LOGIC.Class
                     int id = ajusteFisico.Id;
                     //AjusteFisico
                     iAjusteFisico.Guardar(ajusteFisico, ref id, usuario);
-                    iAjusteFisico.GuardarDetalle(detalleFisico, id);
-
-                    //Ajuste Inventario TI002
-                    var idInventario = iInventario.TraerMovimiento(id, idCOncepto) == null ? 0 : iInventario.TraerMovimiento(id, idCOncepto).Id;
-
-                    ajusteInventario = LlenarAjuste(ajusteFisico, idInventario, id);
-                    ajusteDetalle = LlenarAjusteDetalle(detalleFisico, idInventario);
-
-                   
-                    iAjuste.Guardar(ajusteInventario, ref idInventario, usuario);
-                    iAjuste.GuardarDetalle(ajusteDetalle, idInventario);
+                    iAjusteFisico.GuardarDetalle(detalleFisico, id);                    
 
                     //Saldo
                     var accionAnterior = 0;
                     var accionActual = iConcepto.ObternerPorId(ajusteFisico.IdConcepto).TipoMovimiento;
+
+                    //Ajuste Inventario TI002
+                    var idInventario = iInventario.TraerMovimiento(id, idCOncepto) == null ? 0 : iInventario.TraerMovimiento(id, idCOncepto).IdManual;
+
+                    ajusteInventario = LlenarAjuste(ajusteFisico, idInventario, id);
+                    ajusteDetalle = LlenarAjusteDetalle(detalleFisico, idInventario, accionActual);
+
+
+                    iAjuste.Guardar(ajusteInventario, ref idInventario, usuario);
+                    iAjuste.GuardarDetalle(ajusteDetalle, idInventario);
                     if (ajusteAnterior != null)
                     {
                         accionAnterior = iConcepto.ObternerPorId(ajusteAnterior.IdConcepto).TipoMovimiento;
@@ -75,7 +75,7 @@ namespace LOGIC.Class
 
                     foreach (var item in detalleFisico)
                     {
-                        var cantidadActual = item.Diferencia * accionActual;
+                        var cantidadActual = accionActual == 1?  item.Diferencia * accionActual: item.Diferencia * accionActual * -1;
                         VAjusteFisicoProducto itemAnterior;
                         switch (item.Estado)
                         {
@@ -86,7 +86,7 @@ namespace LOGIC.Class
                                 itemAnterior = detalleAnterior.Where(a => a.Id == item.Id).FirstOrDefault();
                                 if (itemAnterior != null)
                                 {
-                                    var cantidadAnterior = itemAnterior.Diferencia * accionAnterior * -1;
+                                    var cantidadAnterior = accionAnterior == 1 ?  itemAnterior.Diferencia * accionAnterior * -1 : itemAnterior.Diferencia * accionAnterior;
                                     iTI001.ActualizarInventario(item.IdProducto, ajusteFisico.IdAlmacen, cantidadAnterior, item.Lote, item.FechaVen);
                                 }
                                 iTI001.ActualizarInventario(item.IdProducto, ajusteFisico.IdAlmacen, cantidadActual, item.Lote, item.FechaVen);
@@ -111,16 +111,17 @@ namespace LOGIC.Class
             }
         }
 
-        private  List<VAjusteDetalle> LlenarAjusteDetalle(List<VAjusteFisicoProducto> detalleFisico, int idInventario)
+        private  List<VAjusteDetalle> LlenarAjusteDetalle(List<VAjusteFisicoProducto> detalleFisico, int idInventario, int accionActual)
         {
             List<VAjusteDetalle> lista = new List<VAjusteDetalle>();
             foreach (var item in detalleFisico)
             {
                 VAjusteDetalle itemDetalle = new VAjusteDetalle();
+                itemDetalle.Estado =  idInventario == 0? (int)ENEstado.NUEVO: (int)ENEstado.MODIFICAR;
                 itemDetalle.IdAjuste = idInventario;
                 itemDetalle.Id = 0;
                 itemDetalle.IdProducto = item.IdProducto;
-                itemDetalle.Cantidad = item.Diferencia;
+                itemDetalle.Cantidad = accionActual == 1 ? item.Diferencia : item.Diferencia * -1;
                 itemDetalle.Lote = item.Lote;
                 itemDetalle.FechaVen = item.FechaVen;
                 lista.Add(itemDetalle);
@@ -138,6 +139,7 @@ namespace LOGIC.Class
             ajuste.IdConcepto = ajusteFisico.IdConcepto;
             ajuste.Fecha = ajusteFisico.FechaReg;
             ajuste.Obs = IdAjuste.ToString()+ "- "+ NConcepto;
+            ajuste.IdAjusteFisico = IdAjuste;
             return ajuste;
         }
 

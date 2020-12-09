@@ -13,5 +13,6 @@ namespace ENTITY.inv.Ajuste.View
         public int IdConcepto { get; set; }
         public int IdAlmacen { get; set; }
         public string Obs { get; set; }
+        public int IdAjusteFisico { get; set; }
     }
 }

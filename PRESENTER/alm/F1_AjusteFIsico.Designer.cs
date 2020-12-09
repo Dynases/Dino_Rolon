@@ -773,7 +773,7 @@
             this.dtiFecha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtiFecha.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiFecha.ButtonDropDown.Visible = true;
-            this.dtiFecha.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteFisicoBindingSource, "Fecha", true));
+            this.dtiFecha.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vAjusteFisicoBindingSource, "FechaReg", true));
             this.dtiFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtiFecha.IsPopupCalendarOpen = false;
             this.dtiFecha.Location = new System.Drawing.Point(126, 40);

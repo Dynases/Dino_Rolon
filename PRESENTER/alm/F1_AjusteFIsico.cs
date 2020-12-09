@@ -389,16 +389,15 @@ namespace PRESENTER.alm
                 var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
                 var almacenes = (List<VAlmacenCombo>)cbAlmacen.DataSource;
                 var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
-                var trasportadoPor = (List<VLibreria>)Cb_TransportePor.DataSource;
-                var clientes = (List<VClienteCombo>)cb_Cliente.DataSource;
+                var trasportadoPor = (List<VLibreria>)Cb_TransportePor.DataSource;                
                 _ajuste.Id = 0;
                 _ajuste.FechaReg = DateTime.Today;
                 _ajuste.IdConcepto = conceptos.First().Id;
                 _ajuste.IdAlmacen = almacenes.First().IdLibreria;
                 _ajuste.Observacion = string.Empty;
                 _ajuste.TransportadorPor = trasportadoPor.First().IdLibreria;
-                _ajuste.IdCliente = clientes.First().Id;
-                _ajuste.Estado = (int)ENEstado.NUEVO;
+                _ajuste.IdCliente = 0;
+                _ajuste.Estado = (int)ENEstado.GUARDADO;
                 vAjusteFisicoBindingSource.ResetCurrentItem();
                 MP_LimpiarDetalle();
                 MP_LimpiarColor();
@@ -436,7 +435,7 @@ namespace PRESENTER.alm
                     var almacenes = (List<VAlmacenCombo>)cbAlmacen.DataSource;
                     var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
                     _ajuste.Id = ajuste.Id;
-                    _ajuste.Fecha = ajuste.Fecha;
+                    _ajuste.FechaReg = ajuste.Fecha;
                     _ajuste.IdConcepto = conceptos.First(a => a.Descripcion == ajuste.NConcepto).Id;
                     _ajuste.IdAlmacen = almacenes.First(a => a.Descripcion == ajuste.NAlmacen).IdLibreria;                  
                     _ajuste.Observacion = ajuste.Obs;
@@ -690,9 +689,9 @@ namespace PRESENTER.alm
                             }
                             MP_IngresarProductoDetalleSalida(idView, idLote, lotes);                          
                             //MP_InHabilitarProducto();
-                            MP_ObtenerCalculo();
-                            MP_SeleccionarColumna();
+                            MP_ObtenerCalculo();                           
                             dgjDetalle.Refetch();
+                            MP_SeleccionarColumna();
                             return;
                         }
                         MP_ActualizarLote(ref lotes, idProducto);

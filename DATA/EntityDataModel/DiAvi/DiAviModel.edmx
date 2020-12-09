@@ -347,23 +347,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="bahact" Type="nvarchar" MaxLength="5" />
           <Property Name="bauact" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.TC000' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="TC000">
-          <Property Name="cnumi" Type="int" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.TC0001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="TC0001">
-          <Property Name="ccctc0" Type="int" />
-          <Property Name="cccndesc" Type="nvarchar" MaxLength="50" />
-          <Property Name="cccefac" Type="bit" />
-          <Property Name="ccctfac" Type="int" />
-          <Property Name="ccccite" Type="int" />
-          <Property Name="ccciice" Type="bit" />
-          <Property Name="cccdetp" Type="bit" />
-          <Property Name="ccccbar" Type="bit" />
-        </EntityType>-->
         <EntityType Name="TCI001">
           <Key>
             <PropertyRef Name="cpnumi" />
@@ -429,23 +412,6 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.TC0001' no tiene definida una clav
           <Property Name="Contenido" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY001' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY001">
-          <Property Name="yanumi" Type="int" />
-          <Property Name="yaprog" Type="nvarchar" MaxLength="40" />
-          <Property Name="yatit" Type="nvarchar" MaxLength="40" />
-          <Property Name="yamod" Type="int" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY002' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY002">
-          <Property Name="ybnumi" Type="int" />
-          <Property Name="ybrol" Type="nvarchar" MaxLength="30" />
-          <Property Name="ybfact" Type="date" />
-          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
-          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="ZY0021">
           <Key>
             <PropertyRef Name="ycline" />
@@ -458,23 +424,6 @@ advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY002' no tiene definida una clave
           <Property Name="ycmod" Type="bit" />
           <Property Name="ycdel" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DiAvi.dbo.ZY003' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="ZY003">
-          <Property Name="ydnumi" Type="int" />
-          <Property Name="yduser" Type="nvarchar" MaxLength="10" />
-          <Property Name="ydrol" Type="int" />
-          <Property Name="ydpass" Type="nvarchar" MaxLength="20" />
-          <Property Name="ydest" Type="bit" />
-          <Property Name="ydcant" Type="int" />
-          <Property Name="ydfontsize" Type="int" />
-          <Property Name="ydsuc" Type="int" />
-          <Property Name="ydall" Type="int" />
-          <Property Name="ydfact" Type="date" />
-          <Property Name="ybhact" Type="nvarchar" MaxLength="5" />
-          <Property Name="ybuact" Type="nvarchar" MaxLength="10" />
-          <Property Name="yd_numiVend" Type="int" />
-        </EntityType>-->
         <EntityType Name="Ajuste">
           <Key>
             <PropertyRef Name="Id" />
@@ -2438,7 +2387,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <EntitySet Name="TI0021A" EntityType="DiAviModel.TI0021A" />
           <EntitySet Name="ZY0021" EntityType="DiAviModel.ZY0021" />
           <EntitySet Name="Ajuste" EntityType="DiAviModel.Ajuste" />
-          <EntitySet Name="AjusteProducto" EntityType="DiAviModel.AjusteProducto" />
           <EntitySet Name="Almacen" EntityType="DiAviModel.Almacen" />
           <EntitySet Name="Sucursal" EntityType="DiAviModel.Sucursal" />
           <EntitySet Name="TipoAlmacen" EntityType="DiAviModel.TipoAlmacen" />
@@ -2588,14 +2536,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Almacen" EntitySet="Almacen" />
             <End Role="Ajuste" EntitySet="Ajuste" />
           </AssociationSet>
-          <AssociationSet Name="FK_AjusteProducto_IdAjuste" Association="DiAviModel.FK_AjusteProducto_IdAjuste">
-            <End Role="Ajuste" EntitySet="Ajuste" />
-            <End Role="AjusteProducto" EntitySet="AjusteProducto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AjusteProducto_IdProducto" Association="DiAviModel.FK_AjusteProducto_IdProducto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="AjusteProducto" EntitySet="AjusteProducto" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sucursal" Association="DiAviModel.FK_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Almacen" EntitySet="Almacen" />
@@ -2660,7 +2600,16 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Venta_01" EntitySet="Venta_01" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="AjusteProducto" EntityType="DiAviModel.AjusteProducto" />
+          <AssociationSet Name="FK_AjusteProducto_IdAjuste" Association="DiAviModel.FK_AjusteProducto_IdAjuste">
+            <End Role="Ajuste" EntitySet="Ajuste" />
+            <End Role="AjusteProducto" EntitySet="AjusteProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AjusteProducto_IdProducto" Association="DiAviModel.FK_AjusteProducto_IdProducto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="AjusteProducto" EntitySet="AjusteProducto" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Libreria">
           <Key>
             <PropertyRef Name="Id" />
@@ -3108,24 +3057,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Almacen" Relationship="DiAviModel.FK_Ajuste_Almacen" FromRole="Ajuste" ToRole="Almacen" />
           <NavigationProperty Name="AjusteProducto" Relationship="DiAviModel.FK_AjusteProducto_IdAjuste" FromRole="Ajuste" ToRole="AjusteProducto" />
         </EntityType>
-        <EntityType Name="AjusteProducto">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdAjuste" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Fisico" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Diferencia" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Lote" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FechaVen" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Ajuste" Relationship="DiAviModel.FK_AjusteProducto_IdAjuste" FromRole="AjusteProducto" ToRole="Ajuste" />
-          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_AjusteProducto_IdProducto" FromRole="AjusteProducto" ToRole="Producto" />
-        </EntityType>
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="Id" />
@@ -3368,9 +3299,9 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
           <NavigationProperty Name="Plantilla_01" Relationship="DiAviModel.FK_Producto_Plantilla01" FromRole="Producto" ToRole="Plantilla_01" />
           <NavigationProperty Name="TI001" Relationship="DiAviModel.FK_TI001_IdProducto" FromRole="Producto" ToRole="TI001" />
           <NavigationProperty Name="TI0021" Relationship="DiAviModel.FK_TI0021_IdProducto" FromRole="Producto" ToRole="TI0021" />
-          <NavigationProperty Name="AjusteProducto" Relationship="DiAviModel.FK_AjusteProducto_IdProducto" FromRole="Producto" ToRole="AjusteProducto" />
           <NavigationProperty Name="Traspaso_01" Relationship="DiAviModel.FK_Traspaso_01_Producto" FromRole="Producto" ToRole="Traspaso_01" />
           <NavigationProperty Name="Venta_01" Relationship="DiAviModel.FK_Venta_01_IdProducto" FromRole="Producto" ToRole="Venta_01" />
+          <NavigationProperty Name="AjusteProducto" Relationship="DiAviModel.FK_AjusteProducto_IdProducto" FromRole="Producto" ToRole="AjusteProducto" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -4324,30 +4255,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AjusteProducto_IdAjuste">
-          <End Type="DiAviModel.Ajuste" Role="Ajuste" Multiplicity="1" />
-          <End Type="DiAviModel.AjusteProducto" Role="AjusteProducto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ajuste">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AjusteProducto">
-              <PropertyRef Name="IdAjuste" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AjusteProducto_IdProducto">
-          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DiAviModel.AjusteProducto" Role="AjusteProducto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AjusteProducto">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sucursal">
           <End Type="DiAviModel.Sucursal" Role="Sucursal" Multiplicity="1" />
           <End Type="DiAviModel.Almacen" Role="Almacen" Multiplicity="*" />
@@ -4537,6 +4444,48 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Principal>
             <Dependent Role="Venta_01">
               <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AjusteProducto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAjuste" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Fisico" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Diferencia" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Lote" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaVen" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Ajuste" Relationship="DiAviModel.FK_AjusteProducto_IdAjuste" FromRole="AjusteProducto" ToRole="Ajuste" />
+          <NavigationProperty Name="Producto" Relationship="DiAviModel.FK_AjusteProducto_IdProducto" FromRole="AjusteProducto" ToRole="Producto" />
+        </EntityType>
+        <Association Name="FK_AjusteProducto_IdAjuste">
+          <End Type="DiAviModel.Ajuste" Role="Ajuste" Multiplicity="1" />
+          <End Type="DiAviModel.AjusteProducto" Role="AjusteProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ajuste">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AjusteProducto">
+              <PropertyRef Name="IdAjuste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AjusteProducto_IdProducto">
+          <End Type="DiAviModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DiAviModel.AjusteProducto" Role="AjusteProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AjusteProducto">
+              <PropertyRef Name="IdProducto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4969,23 +4918,6 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="IdConcepto" ColumnName="IdConcepto" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AjusteProducto">
-            <EntityTypeMapping TypeName="DiAviModel.AjusteProducto">
-              <MappingFragment StoreEntitySet="AjusteProducto">
-                <ScalarProperty Name="FechaVen" ColumnName="FechaVen" />
-                <ScalarProperty Name="Lote" ColumnName="Lote" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
-                <ScalarProperty Name="Fisico" ColumnName="Fisico" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdAjuste" ColumnName="IdAjuste" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5570,6 +5502,23 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="Observ" ColumnName="Observ" />
                 <ScalarProperty Name="AlmacenSalida" ColumnName="AlmacenSalida" />
                 <ScalarProperty Name="AlmacenIngreso" ColumnName="AlmacenIngreso" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AjusteProducto">
+            <EntityTypeMapping TypeName="DiAviModel.AjusteProducto">
+              <MappingFragment StoreEntitySet="AjusteProducto">
+                <ScalarProperty Name="FechaVen" ColumnName="FechaVen" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
+                <ScalarProperty Name="Fisico" ColumnName="Fisico" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdAjuste" ColumnName="IdAjuste" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
