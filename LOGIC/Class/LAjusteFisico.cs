@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Ajuste.View;
+﻿using ENTITY.inv.Ajuste.Report;
+using ENTITY.inv.Ajuste.View;
 using ENTITY.inv.Concepto.View;
 using REPOSITORY.Clase;
 using REPOSITORY.Interface;
@@ -202,6 +203,17 @@ namespace LOGIC.Class
             try
             {
                 return iAjusteFisico.ListaDetalle(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VAjusteTicket> ReporteAjuste(int ajusteId)
+        {
+            try
+            {
+                return iAjusteFisico.ReporteAjuste(ajusteId);
             }
             catch (Exception ex)
             {

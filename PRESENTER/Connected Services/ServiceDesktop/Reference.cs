@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
+        System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion_01", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccion_01Response")]
         ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] TraerSeleccion_01(int idSeleccion);
         
@@ -341,6 +347,12 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AjusteFisicoDetalle_Lista", ReplyAction="http://tempuri.org/IServiceDesktop/AjusteFisicoDetalle_ListaResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteFisicoProducto[]> AjusteFisicoDetalle_ListaAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteAjusteResponse")]
+        ENTITY.inv.Ajuste.Report.VAjusteTicket[] ReporteAjuste(int ajusteId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteAjuste", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteAjusteResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Ajuste.Report.VAjusteTicket[]> ReporteAjusteAsync(int ajusteId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/PersonalCombo", ReplyAction="http://tempuri.org/IServiceDesktop/PersonalComboResponse")]
         ENTITY.DiSoft.Personal.VPersonalCombo[] PersonalCombo();
@@ -1048,12 +1060,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
-        System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2127,6 +2133,14 @@ namespace PRESENTER.ServiceDesktop {
                 base(binding, remoteAddress) {
         }
         
+        public System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
+            return base.Channel.ReporteHistoricoSeleccion(fechaDesde, fechaHasta);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
+            return base.Channel.ReporteHistoricoSeleccionAsync(fechaDesde, fechaHasta);
+        }
+        
         public ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista[] TraerSeleccion_01(int idSeleccion) {
             return base.Channel.TraerSeleccion_01(idSeleccion);
         }
@@ -2544,6 +2558,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.View.VAjusteFisicoProducto[]> AjusteFisicoDetalle_ListaAsync(int id) {
             return base.Channel.AjusteFisicoDetalle_ListaAsync(id);
+        }
+        
+        public ENTITY.inv.Ajuste.Report.VAjusteTicket[] ReporteAjuste(int ajusteId) {
+            return base.Channel.ReporteAjuste(ajusteId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Ajuste.Report.VAjusteTicket[]> ReporteAjusteAsync(int ajusteId) {
+            return base.Channel.ReporteAjusteAsync(ajusteId);
         }
         
         public ENTITY.DiSoft.Personal.VPersonalCombo[] PersonalCombo() {
@@ -3634,14 +3656,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion) {
             return base.Channel.NotaSeleccionAsync(idSeleccion);
-        }
-        
-        public System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
-            return base.Channel.ReporteHistoricoSeleccion(fechaDesde, fechaHasta);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataTable> ReporteHistoricoSeleccionAsync(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
-            return base.Channel.ReporteHistoricoSeleccionAsync(fechaDesde, fechaHasta);
         }
     }
 }

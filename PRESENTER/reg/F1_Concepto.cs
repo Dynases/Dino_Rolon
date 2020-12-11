@@ -113,7 +113,8 @@ namespace PRESENTER.reg
                         listado = new List<VConceptoLista>();
                     _listado.Clear();
                     _listado.AddRange(listado);
-                    Dgv_Buscador2.Refetch();
+                    MP_ArmarGrillaListado();
+                    //Dgv_Buscador2.Refetch();
                 }
             }
             catch (Exception ex)
@@ -325,7 +326,7 @@ namespace PRESENTER.reg
         {
             try
             {
-                int IdCompra = _concepto.Id;
+                int idConcepto = _concepto.Id;
                 Efecto efecto = new Efecto();
                 efecto.Tipo = 2;
                 efecto.Context = GLMensaje.Pregunta_Eliminar.ToUpper();
@@ -336,9 +337,14 @@ namespace PRESENTER.reg
                 {
                     List<string> Mensaje = new List<string>();
                     var LMensaje = Mensaje.ToArray();
-                    new ServiceDesktop.ServiceDesktopClient().Ajuste_Eliminar(IdCompra);
-                    MP_Filtrar(1);
-                    MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, _concepto.Id.ToString()));
+                    var resultado = new ServiceDesktop.ServiceDesktopClient().Concepto_Eliminar(idConcepto);
+                    if (resultado)
+                    {
+                        MP_Filtrar(1);
+                        MP_MostrarMensajeExito(GLMensaje.Eliminar_Exito(_NombreFormulario, _concepto.Id.ToString()));
+                    }
+                    else
+                        MP_MostrarMensajeError("NO SE PUEDE ELIMINAR TIENE TRANSACCIONES RELACIONADAS");
                 }
                 return resul;
             }

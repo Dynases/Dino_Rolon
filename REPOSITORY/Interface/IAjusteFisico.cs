@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Ajuste.View;
+﻿using ENTITY.inv.Ajuste.Report;
+using ENTITY.inv.Ajuste.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace REPOSITORY.Interface
         VAjusteFisico ObtenerPorId(int id);
         void Guardar(VAjusteFisico ajuste, ref int id, string usuario);
         void Eliminar(int IdAjuste);
+        List<VAjusteTicket> ReporteAjuste(int ajusteId);
         #endregion
 
         #region AjusteDetalle

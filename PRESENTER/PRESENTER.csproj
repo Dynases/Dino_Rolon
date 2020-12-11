@@ -445,6 +445,12 @@
     <Compile Include="reg\F1_TipoAlmacen.Designer.cs">
       <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\RAjusteTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAjusteTicket.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\RCompraIngreso.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -597,6 +603,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reg\F1_TipoAlmacen.resx">
       <DependentUpon>F1_TipoAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RAjusteTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RAjusteTicket.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RCompraIngreso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -805,6 +815,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop38.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop39.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -844,6 +857,7 @@
     <None Include="Properties\DataSources\ENTITY.com.Seleccion_01.View.VSeleccion_01_Lista.datasource" />
     <None Include="Properties\DataSources\ENTITY.DiSoft.Personal.VPersonalCombo.datasource" />
     <None Include="Properties\DataSources\ENTITY.DiSoft.Zona.VZona.datasource" />
+    <None Include="Properties\DataSources\ENTITY.inv.Ajuste.Report.VAjusteTicket.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjuste.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteDetalle.datasource" />
     <None Include="Properties\DataSources\ENTITY.inv.Ajuste.View.VAjusteFisico.datasource" />

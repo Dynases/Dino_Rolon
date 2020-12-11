@@ -107,6 +107,7 @@
         <EntityTypeShape EntityType="DiAviModel.AjusteProducto" Width="1.5" PointX="18.25" PointY="22" />
         <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdAjuste" />
         <AssociationConnector Association="DiAviModel.FK_AjusteProducto_IdProducto" />
+        <EntityTypeShape EntityType="DiAviModel.Report_AjusteFisico" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

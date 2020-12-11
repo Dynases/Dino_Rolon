@@ -21,9 +21,9 @@ namespace REPOSITORY.Clase
             {
                 using (var db = GetEsquema())
                 {
-                    var idAux = id;
+                    var idAux = concepto.Id;
                     TCI001 data;
-                    if (id > 0)
+                    if (idAux > 0)
                     {
                         data = db.TCI001.Where(a => a.cpnumi == idAux).FirstOrDefault();
                         if (data == null)

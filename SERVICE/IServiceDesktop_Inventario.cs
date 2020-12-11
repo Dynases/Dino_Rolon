@@ -1,4 +1,5 @@
-﻿using ENTITY.inv.Ajuste.View;
+﻿using ENTITY.inv.Ajuste.Report;
+using ENTITY.inv.Ajuste.View;
 using ENTITY.inv.Concepto;
 using ENTITY.inv.Concepto.View;
 using System;
@@ -62,10 +63,12 @@ namespace SERVICE
 
         [OperationContract]
         List<VAjusteFisicoProducto> AjusteFisicoDetalle_Lista(int id);
+        [OperationContract]
+        List<VAjusteTicket> ReporteAjuste(int ajusteId);
         #endregion
         #endregion
 
 
-       
+
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="DiSoft\Libreria\VLibreriaD.cs" />
     <Compile Include="DiSoft\Personal\VPersonalCombo.cs" />
     <Compile Include="DiSoft\Zona\VZona.cs" />
+    <Compile Include="inv\Ajuste\Report\VAjusteTicket.cs" />
     <Compile Include="inv\Ajuste\View\VAjuste.cs" />
     <Compile Include="inv\Ajuste\View\VAjusteDetalle.cs" />
     <Compile Include="inv\Ajuste\View\VAjusteFisico.cs" />

@@ -78,5 +78,6 @@ namespace DATA.EntityDataModel.DiAvi
         public virtual DbSet<Vr_TransformacionIngreso> Vr_TransformacionIngreso { get; set; }
         public virtual DbSet<Vr_TransformacionSalida> Vr_TransformacionSalida { get; set; }
         public virtual DbSet<AjusteProducto> AjusteProducto { get; set; }
+        public virtual DbSet<Report_AjusteFisico> Report_AjusteFisico { get; set; }
     }
 }

@@ -698,6 +698,37 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.SY000' no tiene definida ninguna c
           <Property Name="TotalUnidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DiAvi.dbo.Report_AjusteFisico' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Report_AjusteFisico">
+          <Key>
+            <PropertyRef Name="AjusteId" />
+            <PropertyRef Name="FechaReg" />
+            <PropertyRef Name="alamcen" />
+            <PropertyRef Name="concepto" />
+            <PropertyRef Name="Cliente" />
+            <PropertyRef Name="almDestino" />
+            <PropertyRef Name="TransportadoPor" />
+            <PropertyRef Name="detalleId" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Diferencia" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="AjusteId" Type="int" Nullable="false" />
+          <Property Name="FechaReg" Type="datetime" Nullable="false" />
+          <Property Name="alamcen" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="concepto" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="almDestino" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RecibidoPor" Type="nvarchar" MaxLength="200" />
+          <Property Name="TransportadoPor" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="detalleId" Type="int" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Diferencia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DiAvi.dbo.Report_Traspaso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Report_Traspaso">
           <Key>
@@ -1879,6 +1910,23 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
     [SY000].[Mayusculas] AS [Mayusculas]
     FROM [dbo].[SY000] AS [SY000]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Report_AjusteFisico" EntityType="Self.Report_AjusteFisico" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Report_AjusteFisico].[AjusteId] AS [AjusteId], 
+    [Report_AjusteFisico].[FechaReg] AS [FechaReg], 
+    [Report_AjusteFisico].[alamcen] AS [alamcen], 
+    [Report_AjusteFisico].[concepto] AS [concepto], 
+    [Report_AjusteFisico].[Cliente] AS [Cliente], 
+    [Report_AjusteFisico].[almDestino] AS [almDestino], 
+    [Report_AjusteFisico].[RecibidoPor] AS [RecibidoPor], 
+    [Report_AjusteFisico].[TransportadoPor] AS [TransportadoPor], 
+    [Report_AjusteFisico].[detalleId] AS [detalleId], 
+    [Report_AjusteFisico].[Producto] AS [Producto], 
+    [Report_AjusteFisico].[Diferencia] AS [Diferencia], 
+    [Report_AjusteFisico].[Precio] AS [Precio], 
+    [Report_AjusteFisico].[Total] AS [Total]
+    FROM [dbo].[Report_AjusteFisico] AS [Report_AjusteFisico]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Report_Traspaso" EntityType="Self.Report_Traspaso" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Report_Traspaso].[traspasoId] AS [traspasoId], 
@@ -2609,6 +2657,7 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             <End Role="Producto" EntitySet="Producto" />
             <End Role="AjusteProducto" EntitySet="AjusteProducto" />
           </AssociationSet>
+          <EntitySet Name="Report_AjusteFisico" EntityType="DiAviModel.Report_AjusteFisico" />
           </EntityContainer>
         <EntityType Name="Libreria">
           <Key>
@@ -4489,6 +4538,35 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Report_AjusteFisico">
+          <Key>
+            <PropertyRef Name="AjusteId" />
+            <PropertyRef Name="FechaReg" />
+            <PropertyRef Name="alamcen" />
+            <PropertyRef Name="concepto" />
+            <PropertyRef Name="Cliente" />
+            <PropertyRef Name="almDestino" />
+            <PropertyRef Name="TransportadoPor" />
+            <PropertyRef Name="detalleId" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Diferencia" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="AjusteId" Type="Int32" Nullable="false" />
+          <Property Name="FechaReg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="alamcen" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="concepto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Cliente" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="almDestino" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="RecibidoPor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TransportadoPor" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="detalleId" Type="Int32" Nullable="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diferencia" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5520,6 +5598,25 @@ advertencia 6002: La tabla o vista 'DiAvi.dbo.Vr_TransformacionSalida' no tiene 
                 <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
                 <ScalarProperty Name="IdAjuste" ColumnName="IdAjuste" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_AjusteFisico">
+            <EntityTypeMapping TypeName="DiAviModel.Report_AjusteFisico">
+              <MappingFragment StoreEntitySet="Report_AjusteFisico">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="detalleId" ColumnName="detalleId" />
+                <ScalarProperty Name="TransportadoPor" ColumnName="TransportadoPor" />
+                <ScalarProperty Name="RecibidoPor" ColumnName="RecibidoPor" />
+                <ScalarProperty Name="almDestino" ColumnName="almDestino" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="concepto" ColumnName="concepto" />
+                <ScalarProperty Name="alamcen" ColumnName="alamcen" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+                <ScalarProperty Name="AjusteId" ColumnName="AjusteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

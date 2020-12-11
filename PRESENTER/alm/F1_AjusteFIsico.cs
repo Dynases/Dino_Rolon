@@ -9,6 +9,7 @@ using ENTITY.reg.PrecioCategoria.View;
 using Janus.Windows.GridEX;
 using Janus.Windows.GridEX.EditControls;
 using PRESENTER.frm;
+using PRESENTER.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTILITY;
 using UTILITY.Enum;
 using UTILITY.Enum.ENConcepto;
 using UTILITY.Enum.EnEstado;
@@ -97,7 +99,7 @@ namespace PRESENTER.alm
         {
             MP_CargarConcepto();
             MP_CargarAlmacenes();
-            MP_CargarCategoriaPrecio();
+            //MP_CargarCategoriaPrecio();
             MP_CargarTransportadoPor();
         }
 
@@ -188,9 +190,9 @@ namespace PRESENTER.alm
 
                 Dgv_GBuscador.ColAL(nameof(EntList.Id), "Código", 100);
                 Dgv_GBuscador.ColAL(nameof(EntList.Fecha), "Fecha", 100);
-                Dgv_GBuscador.ColAL(nameof(EntList.NConcepto), "Concepto", 150);
-                Dgv_GBuscador.ColAL(nameof(EntList.Obs), "Observación", 600);
-                Dgv_GBuscador.ColAL(nameof(EntList.NAlmacen), "Alamacen", 200);
+                Dgv_GBuscador.ColAL(nameof(EntList.NConcepto), "Concepto", 300);
+                Dgv_GBuscador.ColAL(nameof(EntList.Obs), "Observación", 150);
+                Dgv_GBuscador.ColAL(nameof(EntList.NAlmacen), "Alamacen", 500);
 
                 Dgv_GBuscador.ConfigFinalBasica();
             }
@@ -301,12 +303,14 @@ namespace PRESENTER.alm
             {
                 using (var servicio = new ServiceDesktop.ServiceDesktopClient())
                 {
-                    var listado = servicio.Ajuste_Lista().ToList();
+                    var listado = servicio.AjusteFisico_Lista().ToList();
                     if (listado == null)
                         listado = new List<EntList>();
                     _listado.Clear();
                     _listado.AddRange(listado);
-                    Dgv_GBuscador.Refetch();
+                    MP_ArmarGrillaListado();
+                    //Dgv_GBuscador.Refetch();
+                    //Dgv_GBuscador.Refresh();
                 }
             }
             catch (Exception ex)
@@ -364,7 +368,7 @@ namespace PRESENTER.alm
             cbConcepto.ReadOnly = false;
             cbAlmacen.ReadOnly = false;
             tbObs.ReadOnly = false;
-            cbCategoriaPrecio.ReadOnly = false;
+            //cbCategoriaPrecio.ReadOnly = false;
             dgjDetalle.Enabled = true;
             Cb_TransportePor.ReadOnly = false;
         }
@@ -377,7 +381,7 @@ namespace PRESENTER.alm
             cbConcepto.ReadOnly = true;
             cbAlmacen.ReadOnly = true;
             tbObs.ReadOnly = true;
-            cbCategoriaPrecio.ReadOnly = true;
+            //cbCategoriaPrecio.ReadOnly = true;
             dgjDetalle.Enabled = true;
             Cb_TransportePor.ReadOnly = true;
         }
@@ -388,7 +392,7 @@ namespace PRESENTER.alm
             {
                 var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
                 var almacenes = (List<VAlmacenCombo>)cbAlmacen.DataSource;
-                var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
+                //var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
                 var trasportadoPor = (List<VLibreria>)Cb_TransportePor.DataSource;                
                 _ajuste.Id = 0;
                 _ajuste.FechaReg = DateTime.Today;
@@ -418,7 +422,7 @@ namespace PRESENTER.alm
         {
             cbConcepto.BackColor = Color.White;
             cbAlmacen.BackColor = Color.White;
-            cbCategoriaPrecio.BackColor = Color.White;
+            //cbCategoriaPrecio.BackColor = Color.White;
             tbObs.BackColor = Color.White;
         }
 
@@ -433,7 +437,7 @@ namespace PRESENTER.alm
 
                     var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
                     var almacenes = (List<VAlmacenCombo>)cbAlmacen.DataSource;
-                    var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
+                    //var categoriaPrecio = (List<VPrecioCategoria>)cbCategoriaPrecio.DataSource;
                     _ajuste.Id = ajuste.Id;
                     _ajuste.FechaReg = ajuste.Fecha;
                     _ajuste.IdConcepto = conceptos.First(a => a.Descripcion == ajuste.NConcepto).Id;
@@ -519,7 +523,7 @@ namespace PRESENTER.alm
                 GPanel_Producto.Visible = false;
                 GPanel_Producto.Height = 30;
                 dgjDetalle.Select();
-                MP_SeleccionarColumna();
+                //MP_SeleccionarColumna();
                 _producto = new VProductoListaStock();
             }
             catch (Exception ex)
@@ -562,7 +566,41 @@ namespace PRESENTER.alm
                 MP_MostrarMensajeError(ex.Message);
             }
         }
+        private void MP_Reporte(int idAjuste)
+        {
 
+            try
+            {
+                if (idAjuste == 0)
+                {
+                    throw new Exception("No existen registros");
+                }
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().ReporteAjuste(idAjuste).ToList();
+                if (lista != null)
+                {
+                    var ObjetoReport = new RAjusteTicket();
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    ObjetoReport.SetParameterValue("Titulo", "AJUSTE");
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
+                }
+                else
+                    throw new Exception("No se encontraron registros");
+
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
         private void MP_VerificarSeleccion(string columna)
         {
             try
@@ -837,10 +875,11 @@ namespace PRESENTER.alm
                 {
                     var idAuxiliar = _ajuste.Id;
                     var idAjuste = servicio.AjusteFisico_Guardar(_ajuste, _detalles.Where(a => a.NProducto != string.Empty).ToArray(), TxtNombreUsu.Text);
+                    MP_Reporte(idAjuste);
                     if (idAuxiliar == 0)
                     {
                         MP_Filtrar(1);
-                        MP_Limpiar();
+                        MP_Limpiar();                       
                     }
                     else
                     {
@@ -848,7 +887,7 @@ namespace PRESENTER.alm
                         this.MP_InHabilitar();
                         MH_Habilitar();//El menu 
                     }
-
+                    MP_InHabilitarProducto();
                     string mensaje = idAuxiliar == 0 ? GLMensaje.Nuevo_Exito("AJUSTE", idAjuste.ToString()) :
                                                        GLMensaje.Modificar_Exito("AJUSTE", idAjuste.ToString());
                     MP_MostrarMensajeExito(mensaje);
@@ -1060,6 +1099,7 @@ namespace PRESENTER.alm
                     item.Estado = (int)ENEstado.MODIFICAR;
                 }
                 MP_CalcularFila();
+                MP_ObtenerCalculo();
             }
             catch (Exception ex)
             {
@@ -1241,6 +1281,15 @@ namespace PRESENTER.alm
                 //MP_AddFila();
                 //MP_InHabilitarProducto();
             }               
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (tbObs.ReadOnly == true)
+            {
+                MP_Reporte(_ajuste.Id);
+            }
+            
         }
     }
 

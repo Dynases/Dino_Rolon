@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Personal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.DiSoft.Personal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVPersonalCombo">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Concepto.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Concepto.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VConcepto">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VPersonalCombo" nillable="true" type="tns:VPersonalCombo" />
+      <xs:element minOccurs="0" name="AjusteCliente" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoConcepto" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoMovimiento" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoMovimientoValor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVPersonalCombo" nillable="true" type="tns:ArrayOfVPersonalCombo" />
-  <xs:complexType name="VPersonalCombo">
+  <xs:element name="VConcepto" nillable="true" type="tns:VConcepto" />
+  <xs:complexType name="ArrayOfVConceptoCombo">
     <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VConceptoCombo" nillable="true" type="tns:VConceptoCombo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVConceptoCombo" nillable="true" type="tns:ArrayOfVConceptoCombo" />
+  <xs:complexType name="VConceptoCombo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AjusteCliente" type="xs:int" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoMovimiento" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VPersonalCombo" nillable="true" type="tns:VPersonalCombo" />
+  <xs:element name="VConceptoCombo" nillable="true" type="tns:VConceptoCombo" />
+  <xs:complexType name="ArrayOfVConcepto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VConcepto" nillable="true" type="tns:VConcepto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVConcepto" nillable="true" type="tns:ArrayOfVConcepto" />
+  <xs:complexType name="ArrayOfVConceptoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VConceptoLista" nillable="true" type="tns:VConceptoLista" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVConceptoLista" nillable="true" type="tns:ArrayOfVConceptoLista" />
+  <xs:complexType name="VConceptoLista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AjusteCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoMovimiento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VConceptoLista" nillable="true" type="tns:VConceptoLista" />
 </xs:schema>

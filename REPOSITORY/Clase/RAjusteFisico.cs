@@ -1,4 +1,5 @@
 ﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.inv.Ajuste.Report;
 using ENTITY.inv.Ajuste.View;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
@@ -97,7 +98,9 @@ namespace REPOSITORY.Clase
                 using (var db = GetEsquema())
                 {
                     var query = db.Ajuste
-                        .Where(a => db.TCI001.Where(z=> z.cptipo == (int)ENConcepto.CONCEPTO_TIPO_AJUSTE ).Select(z=>z.cpnumi).Contains(a.IdConcepto))
+                        .Where(a => db.TCI001.Where(z => z.cptipo == (int)ENConcepto.CONCEPTO_TIPO_AJUSTE && a.Estado != (int)ENEstado.ELIMINAR)
+                        .Select(z => z.cpnumi)
+                        .Contains(a.IdConcepto))
                         .OrderByDescending(a => a.Id);
                     return query.Select(CONVERT_LIST_VALUE).ToList();
                 }
@@ -128,6 +131,39 @@ namespace REPOSITORY.Clase
                             Observacion = a.Observacion,
                         }).FirstOrDefault();
                     return query;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VAjusteTicket> ReporteAjuste(int ajusteId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.Report_AjusteFisico
+                        .Where(x => x.AjusteId == ajusteId)
+                        .Select(ti => new VAjusteTicket
+                        {
+                            AjusteId = ti.AjusteId,
+                            FechaReg = ti.FechaReg,
+                            concepto = ti.concepto,
+                            almDestino = ti.almDestino,
+                            alamcen = ti.alamcen,
+                            RecibidoPor = ti.RecibidoPor, 
+                            Cliente = ti.Cliente,
+                            TransportadoPor = ti.TransportadoPor,
+                            detalleId = ti.detalleId,
+                            Producto = ti.Producto,
+                            Diferencia = ti.Diferencia,
+                            Precio = ti.Precio,
+                            Total = ti.Total
+                        }).ToList();
+
+                    return listResult;
                 }
             }
             catch (Exception ex)

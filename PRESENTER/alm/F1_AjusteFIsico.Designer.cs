@@ -101,6 +101,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtiFecha)).BeginInit();
             this.SuspendLayout();
             // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
             // btnPrimero
             // 
             this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
