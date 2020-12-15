@@ -8,6 +8,7 @@ namespace UTILITY.Enum
 {
    public enum ENProducto
     {
-        SIN_SELECCION = 507
+        SIN_SELECCION = 507,
+        SEGUNDA = 383
     }
 }

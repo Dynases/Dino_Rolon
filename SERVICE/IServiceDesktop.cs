@@ -33,6 +33,7 @@ using ENTITY.Cliente.View;
 using ENTITY.com.CompraIngreso.Filter;
 using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.TI001.VIew;
+using ENTITY.ven.Report;
 
 namespace SERVICE
 {
@@ -495,6 +496,8 @@ namespace SERVICE
 
         [OperationContract]
         List<VVenta> TraerVentas(int usuarioId);
+        [OperationContract]
+        List<VVentaTicket> ReporteVenta(int ventaId);
 
         [OperationContract]
         List<VVenta_01> TraerDetalleVentaVacio(int VentaId);

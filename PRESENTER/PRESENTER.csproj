@@ -503,6 +503,12 @@
       <DependentUpon>RTraspasoTicket.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\RVentaTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RVentaTicket.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\R_KardexInventarioGeneralResumen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -635,6 +641,10 @@
     <EmbeddedResource Include="Report\RTraspasoTicket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RTraspasoTicket.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RVentaTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RVentaTicket.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\R_KardexInventarioGeneralResumen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -821,6 +831,9 @@
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceDesktop\ServiceDesktop40.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceDesktop\ServiceDesktop5.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -904,6 +917,7 @@
     <None Include="Properties\DataSources\ENTITY.Rol.View.VRol_01.datasource" />
     <None Include="Properties\DataSources\ENTITY.Usuario.View.VUsuario.datasource" />
     <None Include="Properties\DataSources\ENTITY.Usuario.View.VUsuario_01.datasource" />
+    <None Include="Properties\DataSources\ENTITY.ven.Report.VVentaTicket.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta.datasource" />
     <None Include="Properties\DataSources\ENTITY.ven.view.VVenta_01.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />

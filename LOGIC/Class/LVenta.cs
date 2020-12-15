@@ -1,4 +1,5 @@
-﻿using ENTITY.ven.view;
+﻿using ENTITY.ven.Report;
+using ENTITY.ven.view;
 using REPOSITORY.Clase;
 using REPOSITORY.Clase.DiSoft;
 using REPOSITORY.Interface;
@@ -164,10 +165,21 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public List<VVentaTicket> ReporteVenta(int ventaId)
+        {
+            try
+            {
+                return this.iVenta.ReporteVenta(ventaId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verfiicacion
 
-      
+
         #endregion
 
     }

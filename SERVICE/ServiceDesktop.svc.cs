@@ -33,6 +33,7 @@ using ENTITY.com.CompraIngreso_03.View;
 using ENTITY.com.CompraIngreso.Filter;
 using ENTITY.com.Seleccion.Report;
 using ENTITY.inv.TI001.VIew;
+using ENTITY.ven.Report;
 
 namespace SERVICE
 {
@@ -1797,6 +1798,17 @@ namespace SERVICE
             try
             {
                 return new LVenta().TraerVentas(usuarioId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VVentaTicket> ReporteVenta(int ventaId)
+        {
+            try
+            {
+                return new LVenta().ReporteVenta(ventaId);
             }
             catch (Exception ex)
             {

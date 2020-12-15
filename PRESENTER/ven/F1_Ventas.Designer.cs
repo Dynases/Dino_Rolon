@@ -48,6 +48,8 @@
             this.Dgv_DetalleVenta = new Janus.Windows.GridEX.GridEX();
             this.PanelArriba = new System.Windows.Forms.Panel();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.LblIdCompaIngreso = new DevComponents.DotNetBar.LabelX();
+            this.LblCompraIngreso = new DevComponents.DotNetBar.LabelX();
             this.tbMontoCredito = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbMontoDisponible = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lblMontoDisponible = new DevComponents.DotNetBar.LabelX();
@@ -89,8 +91,6 @@
             this.Tb_Observaciones = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.lblId = new DevComponents.DotNetBar.LabelX();
-            this.LblCompraIngreso = new DevComponents.DotNetBar.LabelX();
-            this.LblIdCompaIngreso = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -122,6 +122,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Cb_EncTransporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Cliente)).BeginInit();
             this.SuspendLayout();
+            // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
             // btnPrimero
             // 
@@ -171,7 +175,7 @@
             // PanelContenidoBuscar
             // 
             this.PanelContenidoBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1215, 670);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -191,7 +195,7 @@
             // GMPanel_Buscardor
             // 
             this.GMPanel_Buscardor.Margin = new System.Windows.Forms.Padding(4);
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1215, 670);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -224,7 +228,7 @@
             // Dgv_GBuscador
             // 
             this.Dgv_GBuscador.Margin = new System.Windows.Forms.Padding(4);
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1209, 644);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.Dgv_GBuscador_FormattingRow);
             this.Dgv_GBuscador.Click += new System.EventHandler(this.Dgv_GBuscador_Click);
             // 
@@ -578,6 +582,40 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 1;
             this.GPanel_DatosGenerales.Text = "DATOS GENERALES";
+            // 
+            // LblIdCompaIngreso
+            // 
+            this.LblIdCompaIngreso.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LblIdCompaIngreso.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblIdCompaIngreso.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblIdCompaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.LblIdCompaIngreso.Location = new System.Drawing.Point(1081, 3);
+            this.LblIdCompaIngreso.Name = "LblIdCompaIngreso";
+            this.LblIdCompaIngreso.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.LblIdCompaIngreso.Size = new System.Drawing.Size(116, 23);
+            this.LblIdCompaIngreso.TabIndex = 408;
+            this.LblIdCompaIngreso.Text = "-";
+            this.LblIdCompaIngreso.Visible = false;
+            // 
+            // LblCompraIngreso
+            // 
+            this.LblCompraIngreso.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LblCompraIngreso.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblCompraIngreso.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCompraIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
+            this.LblCompraIngreso.Location = new System.Drawing.Point(951, 3);
+            this.LblCompraIngreso.Name = "LblCompraIngreso";
+            this.LblCompraIngreso.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.LblCompraIngreso.Size = new System.Drawing.Size(116, 23);
+            this.LblCompraIngreso.TabIndex = 407;
+            this.LblCompraIngreso.Text = "Compra Ingreso:";
+            this.LblCompraIngreso.Visible = false;
             // 
             // tbMontoCredito
             // 
@@ -1223,40 +1261,6 @@
             this.lblId.Size = new System.Drawing.Size(37, 18);
             this.lblId.TabIndex = 346;
             this.lblId.Text = "[lblId]";
-            // 
-            // LblCompraIngreso
-            // 
-            this.LblCompraIngreso.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.LblCompraIngreso.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblCompraIngreso.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCompraIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LblCompraIngreso.Location = new System.Drawing.Point(951, 3);
-            this.LblCompraIngreso.Name = "LblCompraIngreso";
-            this.LblCompraIngreso.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.LblCompraIngreso.Size = new System.Drawing.Size(116, 23);
-            this.LblCompraIngreso.TabIndex = 407;
-            this.LblCompraIngreso.Text = "Compra Ingreso:";
-            this.LblCompraIngreso.Visible = false;
-            // 
-            // LblIdCompaIngreso
-            // 
-            this.LblIdCompaIngreso.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.LblIdCompaIngreso.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblIdCompaIngreso.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIdCompaIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(139)))));
-            this.LblIdCompaIngreso.Location = new System.Drawing.Point(1081, 3);
-            this.LblIdCompaIngreso.Name = "LblIdCompaIngreso";
-            this.LblIdCompaIngreso.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.LblIdCompaIngreso.Size = new System.Drawing.Size(116, 23);
-            this.LblIdCompaIngreso.TabIndex = 408;
-            this.LblIdCompaIngreso.Text = "-";
-            this.LblIdCompaIngreso.Visible = false;
             // 
             // F1_Ventas
             // 

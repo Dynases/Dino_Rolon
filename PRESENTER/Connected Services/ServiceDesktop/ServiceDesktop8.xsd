@@ -10,6 +10,7 @@
       <xs:element minOccurs="0" name="EncVenta" type="xs:int" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="FacturaEmpresa" type="xs:int" />
+      <xs:element minOccurs="0" name="FacturaExterna" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaVenta" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />

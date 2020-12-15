@@ -1,4 +1,5 @@
 ﻿using DATA.EntityDataModel.DiAvi;
+using ENTITY.ven.Report;
 using ENTITY.ven.view;
 using REPOSITORY.Base;
 using REPOSITORY.Interface;
@@ -50,6 +51,7 @@ namespace REPOSITORY.Clase
                     venta.Usuario = VVenta.Usuario;
                     venta.IdPedidoDisoft = 0;
                     venta.IdCompraIngreso = VVenta.IdCompraIngreso;
+                    venta.FacturaExterna = VVenta.FacturaExterna;
                     db.SaveChanges();
                     id = venta.Id;
                     return true;
@@ -167,9 +169,45 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+        public List<VVentaTicket> ReporteVenta(int ventaId)
+        {
+            try
+            {
+                using (var db = this.GetEsquema())
+                {
+                    var listResult = db.Report_Venta
+                        .Where(x => x.ventaId == ventaId)
+                        .Select(ti => new VVentaTicket
+                        {
+                            ventaId = ti.ventaId,
+                            FechaVenta = ti.FechaVenta,
+                            alamcen = ti.alamcen,                        
+                            Cliente = ti.Cliente,
+                            Nit = ti.Nit,
+                            FacturaExterna = ti.FacturaExterna,
+                            IdCompraIngreso = ti.IdCompraIngreso,
+                            EncEntrega = ti.EncEntrega,
+                            encVenta = ti.encVenta,
+                            encTransporte = ti.encTransporte,
+                            detalleId = ti.detalleId,
+                            Producto = ti.Producto,
+                            Cantidad = ti.Cantidad,
+                            Precio = ti.Precio,
+                            Total = ti.Total.Value,
+                            TotalUnidad = ti.TotalUnidad
+                        }).ToList();
+
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
         #region Verificaciones
-   
+
         #endregion
     }
 }

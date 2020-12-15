@@ -42,5 +42,6 @@ namespace ENTITY.ven.view
         public string Usuario { get; set; }
         public int IdCategoriaCliente { get; set; }
         public int IdCompraIngreso { get; set; }
+        public string FacturaExterna { get; set; }
     }
 }

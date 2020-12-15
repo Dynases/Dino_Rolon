@@ -1738,8 +1738,7 @@ namespace PRESENTER.com
                             cb_Recibido.Value = registro.Recibido;
                             Tb_Edad.Text = registro.CantidadSemanas;
                             Tb_Entregado.Text = registro.Entregado;
-                            Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
-                            Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
+                   
                             Tb_TotalFisico.Value = Convert.ToDouble(registro.Total);
                             Sw_Tipo.Value = registro.TipoCompra == 1 ? true : false;
                             Tb_CantidadCajas.Value = Convert.ToDouble(registro.CantidadCaja);
@@ -1752,6 +1751,8 @@ namespace PRESENTER.com
                             Sw_Devolucion.Value = registro.Devolucion == 1 ? true : false;
                             MP_ObtenerCalculoResultado();
                             MP_ObtenerCalculo();
+                            Tb_TotalEnviado.Value = Convert.ToDouble(registro.TotalRecibido);
+                            Tb_TotalVendido.Value = Convert.ToDouble(registro.TotalVendido);
                         }
                         LblPaginacion.Text = Convert.ToString(_Pos + 1) + "/" + Convert.ToString(Dgv_GBuscador.RowCount - 1);
                     }

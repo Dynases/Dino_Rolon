@@ -12,6 +12,7 @@ using Janus.Windows.GridEX.EditControls;
 using PRESENTER.frm;
 using PRESENTER.Properties;
 using PRESENTER.reg;
+using PRESENTER.Report;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,6 +20,7 @@ using System.Drawing;
 using System.Linq;
 using System.ServiceModel;
 using System.Windows.Forms;
+using UTILITY;
 using UTILITY.Enum;
 using UTILITY.Enum.EnEstado;
 using UTILITY.Enum.EnEstaticos;
@@ -69,7 +71,7 @@ namespace PRESENTER.ven
             var productos = MP_ObtenerProductos(vCompraIngreso.IdAlmacen, idCategoriaPrecio);
             Cb_Origen.Value = vCompraIngreso.IdAlmacen;
             Cb_Origen.ReadOnly = true;
-            var productoId = productos.Where(x => x.Producto.Contains("SIN SELECCION")).ToList().First().IdProducto;
+            var productoId = productos.Where(x => x.Producto.Contains("Segunda")).ToList().First().IdProducto;
             var idDetalle = listaDetalleVenta.First().Id;
             Dgv_Producto.DataSource = productos;
             MP_ValidarLotesInsertarProductosDetalle(productoId, 0, idDetalle, Convert.ToInt32(vCompraIngreso.TotalVendido));
@@ -594,7 +596,41 @@ namespace PRESENTER.ven
                 TbEncEntrega.Text = almacen.Encargado;
             }
         }
+        private void MP_Reporte(int idVenta)
+        {
 
+            try
+            {
+                if (idVenta == 0)
+                {
+                    throw new Exception("No existen registros");
+                }
+                if (UTGlobal.visualizador != null)
+                {
+                    UTGlobal.visualizador.Close();
+                }
+                UTGlobal.visualizador = new Visualizador();
+                var lista = new ServiceDesktop.ServiceDesktopClient().ReporteVenta(idVenta).ToList();
+                if (lista != null)
+                {
+                    var ObjetoReport = new RVentaTicket();
+                    ObjetoReport.SetDataSource(lista);
+                    UTGlobal.visualizador.ReporteGeneral.ReportSource = ObjetoReport;
+                    ObjetoReport.SetParameterValue("Titulo", "VENTA");
+                    UTGlobal.visualizador.ShowDialog();
+                    UTGlobal.visualizador.BringToFront();
+                }
+                else
+                    throw new Exception("No se encontraron registros");
+
+
+            }
+            catch (Exception ex)
+            {
+                MP_MostrarMensajeError(ex.Message);
+            }
+
+        }
         private void MP_CargarBuscador()
         {
             try
@@ -1138,7 +1174,8 @@ namespace PRESENTER.ven
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = lblUsuario.Text,
-                    IdCompraIngreso = idCompraIngreso
+                    IdCompraIngreso = idCompraIngreso,
+                    FacturaExterna = TbNumFacturaExterna.Text == string.Empty  ? "0" : TbNumFacturaExterna.Text
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;
@@ -1149,25 +1186,24 @@ namespace PRESENTER.ven
                 {                  
                     if (new ServiceDesktop.ServiceDesktopClient().VentaGuardar(vVenta, detalle, ref id, ref LMensaje))
                     {
+                        MP_Reporte(id);
                         if (idAux == 0)//Registar
-                        {
-                           
+                        {                           
                             this.MP_Filtrar(1);
                             this.MP_Reiniciar();
-                            _Limpiar = true;
-                            ToastNotification.Show(this, GLMensaje.Nuevo_Exito("VENTAS", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                            return true;
+                            _Limpiar = true;                           
                         }
                         else
                         {
                             this.MP_Filtrar(2);
                             this.MP_InHabilitar();
                             _Limpiar = false;
-                            MH_Habilitar();//El menu  
-                            ToastNotification.Show(this, GLMensaje.Modificar_Exito("VENTAS", id.ToString()), Resources.GRABACION_EXITOSA, (int)GLMensajeTamano.Chico, eToastGlowColor.Green, eToastPosition.TopCenter);
-                            return true;
-                        }                      
-
+                            MH_Habilitar();//El menu                              
+                        }
+                        string mensaje = idAux == 0 ? GLMensaje.Nuevo_Exito("VENTAS", id.ToString()) :
+                                                      GLMensaje.Modificar_Exito("VENTAS", id.ToString());
+                        MP_MostrarMensajeExito(mensaje);
+                        return true;
                     }
                     else
                     {
@@ -1585,8 +1621,16 @@ namespace PRESENTER.ven
         }
 
 
+
         #endregion
 
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (Tb_Observaciones.ReadOnly == true)
+            {
+                MP_Reporte(Convert.ToInt32(Tb_Cod.Text));
+            }
+        }
    
     }
 }

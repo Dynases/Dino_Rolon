@@ -238,6 +238,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerVentas", ReplyAction="http://tempuri.org/IServiceDesktop/TraerVentasResponse")]
         System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync(int usuarioId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteVentaResponse")]
+        ENTITY.ven.Report.VVentaTicket[] ReporteVenta(int ventaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteVenta", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteVentaResponse")]
+        System.Threading.Tasks.Task<ENTITY.ven.Report.VVentaTicket[]> ReporteVentaAsync(int ventaId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacio", ReplyAction="http://tempuri.org/IServiceDesktop/TraerDetalleVentaVacioResponse")]
         ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId);
         
@@ -2390,6 +2396,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.ven.view.VVenta[]> TraerVentasAsync(int usuarioId) {
             return base.Channel.TraerVentasAsync(usuarioId);
+        }
+        
+        public ENTITY.ven.Report.VVentaTicket[] ReporteVenta(int ventaId) {
+            return base.Channel.ReporteVenta(ventaId);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.ven.Report.VVentaTicket[]> ReporteVentaAsync(int ventaId) {
+            return base.Channel.ReporteVentaAsync(ventaId);
         }
         
         public ENTITY.ven.view.VVenta_01[] TraerDetalleVentaVacio(int VentaId) {
