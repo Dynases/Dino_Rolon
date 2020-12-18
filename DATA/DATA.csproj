@@ -276,6 +276,18 @@
     <Compile Include="EntityDataModel\DiSoft\TO001.cs">
       <DependentUpon>DiSoftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TO0011.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TO001A.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TO001A1.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\DiSoft\TO001C.cs">
+      <DependentUpon>DiSoftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

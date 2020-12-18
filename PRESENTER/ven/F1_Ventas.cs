@@ -45,10 +45,11 @@ namespace PRESENTER.ven
         private static int idCategoriaPrecio;
         private bool _Limpiar = false;
         public  int idCompraIngreso;
+        private static int pedidoId = 0;
         #endregion
 
         #region Metodos Privados
- 
+
         private void inicioDesdeCompraIngreso()
         {
             if (idCompraIngreso != 0)
@@ -165,9 +166,9 @@ namespace PRESENTER.ven
             {
                 UTGlobal.MG_ArmarComboClientes(cb_Cliente,servicio.TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);  
                 
-                UTGlobal.MG_ArmarCombos(Cb_EncPreVenta, servicio.PersonalCombo().ToList());
+                UTGlobal.MG_ArmarCombos(Cb_EncPreVenta, servicio.PersonalCombo().Where(x=> x.Categoria == (int)ENPersonalCategoria.PREVENDEDOR).ToList());
 
-                UTGlobal.MG_ArmarCombos(Cb_EncVenta, servicio.PersonalCombo().ToList());
+                UTGlobal.MG_ArmarCombos(Cb_EncVenta, servicio.PersonalCombo().Where(x => x.Categoria == (int)ENPersonalCategoria.PREVENDEDOR).ToList());
 
                 UTGlobal.MG_ArmarCombos(Cb_EncTransporte, servicio.PersonalCombo().ToList());
 
@@ -368,6 +369,7 @@ namespace PRESENTER.ven
                 this.MP_ObtenerCalculo();
                 this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
                 ingresarMontoCreditoCliente(venta.IdCliente);
+                pedidoId = venta.IdPedidoDisoft;
             }
             catch (Exception ex)
             {
@@ -566,6 +568,8 @@ namespace PRESENTER.ven
             tbMontoDisponible.Text = "0";
             tbTotalCantidad.Text = "0";
             Dgv_DetalleVenta.Enabled = true;
+            idCompraIngreso = 0;
+            pedidoId = 0;           
             if (_Limpiar == false)    
             {                
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
@@ -1170,12 +1174,14 @@ namespace PRESENTER.ven
                     IdAlmacen = Convert.ToInt32(this.Cb_Origen.Value),
                     IdCliente = Convert.ToInt32(this.cb_Cliente.Value),
                     Observaciones = this.Tb_Observaciones.Text,
-                    Tipo = 1,
+                    Tipo = Sw_TipoVenta.Value ? 1 : 2,
                     Fecha = DateTime.Now.Date,
                     Hora = DateTime.Now.ToString("hh:mm"),
                     Usuario = lblUsuario.Text,
                     IdCompraIngreso = idCompraIngreso,
-                    FacturaExterna = TbNumFacturaExterna.Text == string.Empty  ? "0" : TbNumFacturaExterna.Text
+                    FacturaExterna = TbNumFacturaExterna.Text == string.Empty ? "0" : TbNumFacturaExterna.Text,
+                    IdPedidoDisoft = pedidoId,
+                    EsFActuracion = TbNumFacturaExterna.Text != string.Empty ? true : false
                 };
                 int id = Tb_Cod.Text == string.Empty ? 0 : Convert.ToInt32(Tb_Cod.Text);
                 int idAux = id;

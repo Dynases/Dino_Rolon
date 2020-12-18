@@ -220,11 +220,13 @@
     <Compile Include="Enum\EnCarpetas\ENSubCarpetas.cs" />
     <Compile Include="Enum\ENCategoriaPrecio.cs" />
     <Compile Include="Enum\ENConcepto\ENConcepto.cs" />
+    <Compile Include="Enum\ENEstadoPedido.cs" />
     <Compile Include="Enum\EnEstado\ENEstado.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosGrupo.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosLibreria.cs" />
     <Compile Include="Enum\EnEstaticos\ENEstaticosOrden.cs" />
     <Compile Include="Enum\ENConceptoPlantilla.cs" />
+    <Compile Include="Enum\ENPersonalCategoria.cs" />
     <Compile Include="Enum\ENProducto.cs" />
     <Compile Include="Enum\ENProductoEstado.cs" />
     <Compile Include="Enum\EnTipoCategoria.cs" />

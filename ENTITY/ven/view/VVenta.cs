@@ -43,5 +43,7 @@ namespace ENTITY.ven.view
         public int IdCategoriaCliente { get; set; }
         public int IdCompraIngreso { get; set; }
         public string FacturaExterna { get; set; }
+        public int IdPedidoDisoft { get; set; }
+        public bool EsFActuracion { get; set; }
     }
 }

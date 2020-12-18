@@ -17,12 +17,14 @@ namespace REPOSITORY.Clase.DiSoft
             {
                 using (var db = GetEsquema())
                 {
+                    //Filtrar solo el personal registrado, excluye el configurado por defecto
                     var listResult = (from a in db.TC002
-                                      where a.cbcat != 2
+                                      where a.cbcat != 2 && a.cbnumi != 1 && a.cbnumi != 2 && a.cbnumi != 3 && a.cbnumi != 4
                                       select new VPersonalCombo
                                       {
                                           Id = a.cbnumi,
-                                          Descripcion = a.cbdesc,                                        
+                                          Descripcion = a.cbdesc,
+                                          Categoria = a.cbcat.Value
                                       }).ToList();
                     return listResult;
                 }

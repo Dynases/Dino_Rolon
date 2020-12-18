@@ -61,8 +61,7 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }
-
+        }        
         public bool ModificarEstado(int IdVenta, int estado)
         {
             try
@@ -75,6 +74,24 @@ namespace REPOSITORY.Clase
                     db.Entry(venta).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void GuardarIdPedido(int IdVenta, int idPedido)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var venta = db.Venta.Where(c => c.Id.Equals(IdVenta)).FirstOrDefault();
+                    venta.IdPedidoDisoft = idPedido;
+                    db.Venta.Attach(venta);
+                    db.Entry(venta).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -115,7 +132,8 @@ namespace REPOSITORY.Clase
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
                                  IdCategoriaCliente=  v.Cliente.IdCategoria,
-                                 IdCompraIngreso = v.IdCompraIngreso
+                                 IdCompraIngreso = v.IdCompraIngreso,
+                                 IdPedidoDisoft= v.IdPedidoDisoft
                              }).FirstOrDefault();
                 }
             }
@@ -160,7 +178,8 @@ namespace REPOSITORY.Clase
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
                                  IdCategoriaCliente = v.Cliente.IdCategoria,
-                                  IdCompraIngreso= v.IdCompraIngreso
+                                 IdCompraIngreso= v.IdCompraIngreso,
+                                 IdPedidoDisoft = v.IdPedidoDisoft
                              }).ToList();
                 }
             }

@@ -67,6 +67,8 @@
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_Lista.cs" />
     <Compile Include="com\Seleccion_01\View\VSeleccion_01_ListaDet.cs" />
     <Compile Include="DiSoft\Libreria\VLibreriaD.cs" />
+    <Compile Include="DiSoft\Pedido\View\VPedidoProductoD.cs" />
+    <Compile Include="DiSoft\Pedido\View\VPedidoD.cs" />
     <Compile Include="DiSoft\Personal\VPersonalCombo.cs" />
     <Compile Include="DiSoft\Zona\VZona.cs" />
     <Compile Include="inv\Ajuste\Report\VAjusteTicket.cs" />

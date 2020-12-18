@@ -182,6 +182,50 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
           <Property Name="oahact" Type="nvarchar" MaxLength="5" />
           <Property Name="oauact" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TO0011">
+          <Key>
+            <PropertyRef Name="IdPedidoDetalle" />
+          </Key>
+          <Property Name="obnumi" Type="int" Nullable="false" />
+          <Property Name="obcprod" Type="nvarchar" MaxLength="10" />
+          <Property Name="obpcant" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="obpbase" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="obptot" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="obdesc" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="obtotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="obfamilia" Type="int" />
+          <Property Name="obcampo1" Type="int" />
+          <Property Name="obcampo2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IdPedidoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TO001A">
+          <Key>
+            <PropertyRef Name="oaanumi" />
+          </Key>
+          <Property Name="oaanumi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oaato1numi" Type="int" />
+          <Property Name="oaanumiprev" Type="int" />
+          <Property Name="oaaentrega" Type="int" />
+          <Property Name="oaacaja" Type="int" />
+        </EntityType>
+        <EntityType Name="TO001A1">
+          <Key>
+            <PropertyRef Name="ognumi" />
+          </Key>
+          <Property Name="ognumi" Type="int" Nullable="false" />
+          <Property Name="ogcred" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TO001C">
+          <Key>
+            <PropertyRef Name="oacnumi" />
+          </Key>
+          <Property Name="oacnumi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oacoanumi" Type="int" Nullable="false" />
+          <Property Name="oaccbnumi" Type="int" Nullable="false" />
+          <Property Name="oacnrofac" Type="bigint" />
+          <Property Name="oacnconc" Type="int" />
+          <Property Name="oacfdoc" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="App_Listado_CobrosPendientes">
@@ -206,6 +250,10 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <EntitySet Name="TC0051" EntityType="Self.TC0051" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TL001" EntityType="Self.TL001" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TO001" EntityType="Self.TO001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TO0011" EntityType="Self.TO0011" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TO001A" EntityType="Self.TO001A" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TO001A1" EntityType="Self.TO001A1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TO001C" EntityType="Self.TO001C" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TC0041" EntityType="Self.TC0041" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TC0041].[chnumi] AS [chnumi], 
@@ -253,6 +301,10 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
           <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
           <EntitySet Name="App_Listado_CobrosPendientes" EntityType="BDDistBHF_RolonModel.App_Listado_CobrosPendientes" />
+          <EntitySet Name="TO001A1" EntityType="BDDistBHF_RolonModel.TO001A1" />
+          <EntitySet Name="TO001C" EntityType="BDDistBHF_RolonModel.TO001C" />
+          <EntitySet Name="TO0011" EntityType="BDDistBHF_RolonModel.TO0011" />
+          <EntitySet Name="TO001A" EntityType="BDDistBHF_RolonModel.TO001A" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -441,6 +493,50 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <Property Name="FechaPedido" Type="DateTime" Precision="0" />
           <Property Name="totalfactura" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="pendiente" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="TO001A1">
+          <Key>
+            <PropertyRef Name="ognumi" />
+          </Key>
+          <Property Name="ognumi" Type="Int32" Nullable="false" />
+          <Property Name="ogcred" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TO001C">
+          <Key>
+            <PropertyRef Name="oacnumi" />
+          </Key>
+          <Property Name="oacnumi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oacoanumi" Type="Int32" Nullable="false" />
+          <Property Name="oaccbnumi" Type="Int32" Nullable="false" />
+          <Property Name="oacnrofac" Type="Int64" />
+          <Property Name="oacnconc" Type="Int32" />
+          <Property Name="oacfdoc" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="TO0011">
+          <Key>
+            <PropertyRef Name="IdPedidoDetalle" />
+          </Key>
+          <Property Name="obnumi" Type="Int32" Nullable="false" />
+          <Property Name="obcprod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="obpcant" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="obpbase" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="obptot" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="obdesc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="obtotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="obfamilia" Type="Int32" />
+          <Property Name="obcampo1" Type="Int32" />
+          <Property Name="obcampo2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdPedidoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TO001A">
+          <Key>
+            <PropertyRef Name="oaanumi" />
+          </Key>
+          <Property Name="oaanumi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oaato1numi" Type="Int32" />
+          <Property Name="oaanumiprev" Type="Int32" />
+          <Property Name="oaaentrega" Type="Int32" />
+          <Property Name="oaacaja" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -642,6 +738,54 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
                 <ScalarProperty Name="cliente" ColumnName="cliente" />
                 <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
                 <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO001A1">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001A1">
+              <MappingFragment StoreEntitySet="TO001A1">
+                <ScalarProperty Name="ogcred" ColumnName="ogcred" />
+                <ScalarProperty Name="ognumi" ColumnName="ognumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO001C">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001C">
+              <MappingFragment StoreEntitySet="TO001C">
+                <ScalarProperty Name="oacfdoc" ColumnName="oacfdoc" />
+                <ScalarProperty Name="oacnconc" ColumnName="oacnconc" />
+                <ScalarProperty Name="oacnrofac" ColumnName="oacnrofac" />
+                <ScalarProperty Name="oaccbnumi" ColumnName="oaccbnumi" />
+                <ScalarProperty Name="oacoanumi" ColumnName="oacoanumi" />
+                <ScalarProperty Name="oacnumi" ColumnName="oacnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO0011">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO0011">
+              <MappingFragment StoreEntitySet="TO0011">
+                <ScalarProperty Name="IdPedidoDetalle" ColumnName="IdPedidoDetalle" />
+                <ScalarProperty Name="obcampo2" ColumnName="obcampo2" />
+                <ScalarProperty Name="obcampo1" ColumnName="obcampo1" />
+                <ScalarProperty Name="obfamilia" ColumnName="obfamilia" />
+                <ScalarProperty Name="obtotal" ColumnName="obtotal" />
+                <ScalarProperty Name="obdesc" ColumnName="obdesc" />
+                <ScalarProperty Name="obptot" ColumnName="obptot" />
+                <ScalarProperty Name="obpbase" ColumnName="obpbase" />
+                <ScalarProperty Name="obpcant" ColumnName="obpcant" />
+                <ScalarProperty Name="obcprod" ColumnName="obcprod" />
+                <ScalarProperty Name="obnumi" ColumnName="obnumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO001A">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001A">
+              <MappingFragment StoreEntitySet="TO001A">
+                <ScalarProperty Name="oaacaja" ColumnName="oaacaja" />
+                <ScalarProperty Name="oaaentrega" ColumnName="oaaentrega" />
+                <ScalarProperty Name="oaanumiprev" ColumnName="oaanumiprev" />
+                <ScalarProperty Name="oaato1numi" ColumnName="oaato1numi" />
+                <ScalarProperty Name="oaanumi" ColumnName="oaanumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

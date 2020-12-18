@@ -1,4 +1,5 @@
-﻿using ENTITY.ven.Report;
+﻿using ENTITY.DiSoft.Pedido.View;
+using ENTITY.ven.Report;
 using ENTITY.ven.view;
 using REPOSITORY.Clase;
 using REPOSITORY.Clase.DiSoft;
@@ -19,12 +20,14 @@ namespace LOGIC.Class
         protected IVenta_01 iVenta_01;
         protected IProducto iProducto;
         protected IClienteD iClienteD;
+        protected IPedidoD iPedidoD;
         public LVenta()
         {
             iVenta = new RVenta();
             iVenta_01 = new RVenta_01();
             iProducto = new RProducto();
             iClienteD = new RClienteD();
+            iPedidoD = new RPedidoD();
         }
         #region Transacciones
 
@@ -35,8 +38,33 @@ namespace LOGIC.Class
                 bool result = false;
                 using (var scope = new TransactionScope())
                 {
+                    VPedidoD pedido = null;
+                    List<VPedidoProductoD> pedidoDetalle = null;
                     int aux = IdVenta;
+                    int pedidoId = vVenta.IdPedidoDisoft;
+
                     result = iVenta.Guardar(vVenta, ref IdVenta);
+
+                    pedido = LlenarPedido(vVenta, pedidoId);
+                    pedidoDetalle = LlenarPedidoDetalle(detalle, pedidoId);
+
+                    iPedidoD.Guardar(pedido,ref pedidoId, vVenta.Usuario);
+                    iPedidoD.GuardarDetalle(pedidoDetalle, pedidoId, vVenta.Tipo);
+                    iPedidoD.GuardarExtencionPedido(pedidoId, vVenta.EncPrVenta);
+
+                    //Venta directa
+                    if (vVenta.EsFActuracion)
+                    {
+                        //Id estatido de Enc de distribucion
+                        iPedidoD.GuardarPedidoDirecto(pedidoId, 4);
+                        iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.ENTREGADO);
+                    }
+                    else iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.DICTADO);
+
+                    //Actualiza la venta con el IdPedido
+                    iVenta.GuardarIdPedido(IdVenta, pedidoId);
+
+
                     if (aux == 0)//Nuevo
                     {
                         var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta,vVenta.IdAlmacen);
@@ -45,31 +73,23 @@ namespace LOGIC.Class
                     {
                         foreach (var i in detalle)
                         {
-                            if (i.Estado == (int)ENEstado.NUEVO)
+                            switch (i.Estado)
                             {
-                                List<VVenta_01> detalleNuevo = new List<VVenta_01>();
-                                detalleNuevo.Add(i);                            
-                                if (!new LVenta_01().Nuevo(detalleNuevo, IdVenta,vVenta.IdAlmacen))
-                                {
-                                    return false;
-                                }
-                            }
-                            if (i.Estado == (int)ENEstado.MODIFICAR)
-                            {                            
-                                if (!new LVenta_01().Modificar(i, IdVenta,vVenta.IdAlmacen))
-                                {
-                                    return false;
-                                }
-                            }
-                            if (i.Estado == (int)ENEstado.ELIMINAR)
-                            {                                
-                                if (!new LVenta_01().Eliminar(IdVenta, i.Id,vVenta.IdAlmacen, ref lMensaje))
-                                {
-                                    return false;
-                                }
-                            }
+                                case (int)ENEstado.NUEVO:
+                                    List<VVenta_01> detalleNuevo = new List<VVenta_01>();
+                                    detalleNuevo.Add(i);
+                                    new LVenta_01().Nuevo(detalleNuevo, IdVenta, vVenta.IdAlmacen);
+                                    break;
+                                case (int)ENEstado.MODIFICAR:
+                                    new LVenta_01().Modificar(i, IdVenta, vVenta.IdAlmacen);
+                                    break;
+                                case (int)ENEstado.ELIMINAR:
+                                    new LVenta_01().Eliminar(IdVenta, i.Id, vVenta.IdAlmacen, ref lMensaje);
+                                    break;
+                            }                           
                         }
                     }
+
                     scope.Complete();
                     return true;
                 }
@@ -78,6 +98,37 @@ namespace LOGIC.Class
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private List<VPedidoProductoD> LlenarPedidoDetalle(List<VVenta_01> detalle, int idPedido)
+        {
+            List<VPedidoProductoD> lista = new List<VPedidoProductoD>();
+            foreach (var item in detalle)
+            {
+                VPedidoProductoD itemDetalle = new VPedidoProductoD();
+                itemDetalle.PedidoId = idPedido;
+                itemDetalle.ProductoId = item.IdProducto.ToString();
+                itemDetalle.Cantidad = item.Cantidad;
+                itemDetalle.Precio = item.PrecioCosto;
+                itemDetalle.SubTotal = item.SubTotal;
+                itemDetalle.Descuento = 0;
+                itemDetalle.Total = item.SubTotal;                
+                lista.Add(itemDetalle);
+            }
+            return lista;
+        }
+
+        private VPedidoD LlenarPedido(VVenta venta, int IdPedido)
+        {        
+            var pedido = new VPedidoD();
+            pedido.Id = IdPedido;
+            pedido.FechaReg = venta.FechaVenta;
+            pedido.ClienteId = venta.IdCliente;
+            pedido.VendedorId = venta.EncPrVenta;
+            pedido.Observacion = venta.Observaciones;
+            //pedido.EstadoPedido = venta.EsFActuracion ? (int)ENEstadoPedido.DICTADO : (int)ENEstadoPedido.ENTREGADO;
+            pedido.Observacion = venta.Observaciones;
+            return pedido;
         }
         public bool ModificarEstado(int IdVenta, int estado, ref List<string> lMensaje)
         {

@@ -288,6 +288,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+     
         public bool Eliminar(int IdCliente)
         {
             try
