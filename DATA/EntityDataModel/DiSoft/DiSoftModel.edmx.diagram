@@ -15,10 +15,10 @@
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.TC004" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.TC004B" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.App_Listado_CobrosPendientes" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="BDDistBHF_RolonModel.TO001A1" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.TO001C" Width="1.5" PointX="11.375" PointY="3.75" />
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.TO0011" Width="1.5" PointX="3.375" PointY="11.75" />
         <EntityTypeShape EntityType="BDDistBHF_RolonModel.TO001A" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BDDistBHF_RolonModel.TO001A1" Width="1.5" PointX="9.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

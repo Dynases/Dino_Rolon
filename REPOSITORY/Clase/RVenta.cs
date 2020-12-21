@@ -13,6 +13,7 @@ namespace REPOSITORY.Clase
 {
     public class RVenta : BaseConexion, IVenta
     {
+        #region Venta
         #region Trasanciones
 
         public bool Guardar(VVenta VVenta, ref int id)
@@ -61,13 +62,13 @@ namespace REPOSITORY.Clase
             {
                 throw new Exception(ex.Message);
             }
-        }        
+        }
         public bool ModificarEstado(int IdVenta, int estado)
         {
             try
             {
                 using (var db = GetEsquema())
-                {                   
+                {
                     var venta = db.Venta.Where(c => c.Id.Equals(IdVenta)).FirstOrDefault();
                     venta.Estado = estado;
                     db.Venta.Attach(venta);
@@ -131,9 +132,9 @@ namespace REPOSITORY.Clase
                                  Tipo = v.Tipo,
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
-                                 IdCategoriaCliente=  v.Cliente.IdCategoria,
+                                 IdCategoriaCliente = v.Cliente.IdCategoria,
                                  IdCompraIngreso = v.IdCompraIngreso,
-                                 IdPedidoDisoft= v.IdPedidoDisoft
+                                 IdPedidoDisoft = v.IdPedidoDisoft
                              }).FirstOrDefault();
                 }
             }
@@ -142,7 +143,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
-     
+
         /********** VARIOS REGISTROS ***********/
         public List<VVenta> TraerVentas(int usuarioId)
         {
@@ -178,7 +179,7 @@ namespace REPOSITORY.Clase
                                  Usuario = v.Usuario,
                                  Hora = v.Hora,
                                  IdCategoriaCliente = v.Cliente.IdCategoria,
-                                 IdCompraIngreso= v.IdCompraIngreso,
+                                 IdCompraIngreso = v.IdCompraIngreso,
                                  IdPedidoDisoft = v.IdPedidoDisoft
                              }).ToList();
                 }
@@ -200,7 +201,7 @@ namespace REPOSITORY.Clase
                         {
                             ventaId = ti.ventaId,
                             FechaVenta = ti.FechaVenta,
-                            alamcen = ti.alamcen,                        
+                            alamcen = ti.alamcen,
                             Cliente = ti.Cliente,
                             Nit = ti.Nit,
                             FacturaExterna = ti.FacturaExterna,
@@ -227,6 +228,65 @@ namespace REPOSITORY.Clase
         #endregion
         #region Verificaciones
 
+        #endregion
+
+        #endregion
+
+        #region Detalle
+        public void GuardarDetalle(List<VVenta_01> detalle, int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    Venta_01 data;
+                    foreach (var item in detalle)
+                    {
+                        switch (item.Estado)
+                        {
+                            case (int)ENEstado.NUEVO:
+                                data = new Venta_01();
+                                data.IdVenta = id;
+                                data.IdProducto = item.IdProducto;
+                                data.Estado = (int)ENEstado.GUARDADO;
+                                data.Unidad = item.Unidad;
+                                data.Cantidad = item.Cantidad;
+                                data.Precio = item.PrecioVenta;
+                                data.PrecioCosto = item.PrecioCosto;
+                                data.Contenido = item.Contenido;
+                                data.Lote = item.Lote;
+                                data.FechaVencimiento = item.FechaVencimiento;
+                                data.TotalUnidad = item.TotalContenido;
+                                db.Venta_01.Add(data);
+                                db.SaveChanges();
+                                break;
+                            case (int)ENEstado.MODIFICAR:
+                                data = db.Venta_01.Where(a => a.Id == item.Id).FirstOrDefault();
+                                data.IdProducto = item.IdProducto;
+                                data.Estado = (int)ENEstado.GUARDADO;
+                                data.Unidad = item.Unidad;
+                                data.Cantidad = item.Cantidad;
+                                data.Precio = item.PrecioVenta;
+                                data.PrecioCosto = item.PrecioCosto;
+                                data.Contenido = item.Contenido;
+                                data.Lote = item.Lote;
+                                data.FechaVencimiento = item.FechaVencimiento;
+                                data.TotalUnidad = item.TotalContenido;
+                                break;
+                            case (int)ENEstado.ELIMINAR:
+                                data = db.Venta_01.Where(a => a.Id == item.Id).FirstOrDefault();
+                                db.Venta_01.Remove(data);
+                                break;
+                        }
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

@@ -44,52 +44,43 @@ namespace LOGIC.Class
                     int pedidoId = vVenta.IdPedidoDisoft;
 
                     result = iVenta.Guardar(vVenta, ref IdVenta);
-
-                    pedido = LlenarPedido(vVenta, pedidoId);
-                    pedidoDetalle = LlenarPedidoDetalle(detalle, pedidoId);
-
-                    iPedidoD.Guardar(pedido,ref pedidoId, vVenta.Usuario);
-                    iPedidoD.GuardarDetalle(pedidoDetalle, pedidoId, vVenta.Tipo);
-                    iPedidoD.GuardarExtencionPedido(pedidoId, vVenta.EncPrVenta);
-
-                    //Venta directa
-                    if (vVenta.EsFActuracion)
+                    if (aux == 0)
                     {
-                        //Id estatido de Enc de distribucion
-                        iPedidoD.GuardarPedidoDirecto(pedidoId, 4);
-                        iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.ENTREGADO);
-                    }
-                    else iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.DICTADO);
+                        pedido = LlenarPedido(vVenta, pedidoId);
+                        pedidoDetalle = LlenarPedidoDetalle(detalle, pedidoId);
 
-                    //Actualiza la venta con el IdPedido
-                    iVenta.GuardarIdPedido(IdVenta, pedidoId);
+                        iPedidoD.Guardar(pedido, ref pedidoId, vVenta.Usuario);
+                        iPedidoD.GuardarDetalle(pedidoDetalle, pedidoId, vVenta.Tipo);
+                        iPedidoD.GuardarExtencionPedido(pedidoId, vVenta.EncPrVenta);
 
-
-                    if (aux == 0)//Nuevo
-                    {
-                        var resultDetalle = new LVenta_01().Nuevo(detalle, IdVenta,vVenta.IdAlmacen);
-                    }
-                    else//Modificar
-                    {
-                        foreach (var i in detalle)
+                        //Actualiza la venta con el IdPedido
+                        iVenta.GuardarIdPedido(IdVenta, pedidoId);
+                        //Venta directa
+                        if (vVenta.EsFActuracion)
                         {
-                            switch (i.Estado)
-                            {
-                                case (int)ENEstado.NUEVO:
-                                    List<VVenta_01> detalleNuevo = new List<VVenta_01>();
-                                    detalleNuevo.Add(i);
-                                    new LVenta_01().Nuevo(detalleNuevo, IdVenta, vVenta.IdAlmacen);
-                                    break;
-                                case (int)ENEstado.MODIFICAR:
-                                    new LVenta_01().Modificar(i, IdVenta, vVenta.IdAlmacen);
-                                    break;
-                                case (int)ENEstado.ELIMINAR:
-                                    new LVenta_01().Eliminar(IdVenta, i.Id, vVenta.IdAlmacen, ref lMensaje);
-                                    break;
-                            }                           
+                            //Id estatido de Enc de distribucion
+                            iPedidoD.GuardarPedidoDirecto(pedidoId, 4);
+                            iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.ENTREGADO);
+                        }
+                        else iPedidoD.ModificarEstadoPedido(pedidoId, (int)ENEstadoPedido.DICTADO);
+                    }
+                    foreach (var i in detalle)
+                    {
+                        switch (i.Estado)
+                        {
+                            case (int)ENEstado.NUEVO:
+                                List<VVenta_01> detalleNuevo = new List<VVenta_01>();
+                                detalleNuevo.Add(i);
+                                new LVenta_01().Nuevo(detalleNuevo, IdVenta, vVenta.IdAlmacen, vVenta.DescripcionCliente, vVenta.EsFActuracion);
+                                break;
+                            case (int)ENEstado.MODIFICAR:
+                                new LVenta_01().Modificar(i, IdVenta, vVenta.IdAlmacen, vVenta.DescripcionCliente, vVenta.EsFActuracion);
+                                break;
+                            case (int)ENEstado.ELIMINAR:
+                                new LVenta_01().Eliminar(IdVenta, i.Id, vVenta.IdAlmacen, ref lMensaje, vVenta.EsFActuracion);
+                                break;
                         }
                     }
-
                     scope.Complete();
                     return true;
                 }
@@ -140,6 +131,7 @@ namespace LOGIC.Class
                     //Trae el detalle de venta completo
                     var venta = this.TraerVenta(IdVenta);
                     var venta_01 = this.iVenta_01.TraerVentas_01(IdVenta);
+                    iPedidoD.Eliminar(venta.IdPedidoDisoft);
                     foreach (var vventa_01 in venta_01)
                     {
                         if (venta_01 == null) { return false; }

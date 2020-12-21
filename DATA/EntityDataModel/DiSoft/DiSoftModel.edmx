@@ -210,10 +210,11 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.TC0041' no tiene definid
         </EntityType>
         <EntityType Name="TO001A1">
           <Key>
-            <PropertyRef Name="ognumi" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ognumi" Type="int" Nullable="false" />
+          <Property Name="ognumi" Type="int" />
           <Property Name="ogcred" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="TO001C">
           <Key>
@@ -301,10 +302,10 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <EntitySet Name="TC004" EntityType="BDDistBHF_RolonModel.TC004" />
           <EntitySet Name="TC004B" EntityType="BDDistBHF_RolonModel.TC004B" />
           <EntitySet Name="App_Listado_CobrosPendientes" EntityType="BDDistBHF_RolonModel.App_Listado_CobrosPendientes" />
-          <EntitySet Name="TO001A1" EntityType="BDDistBHF_RolonModel.TO001A1" />
           <EntitySet Name="TO001C" EntityType="BDDistBHF_RolonModel.TO001C" />
           <EntitySet Name="TO0011" EntityType="BDDistBHF_RolonModel.TO0011" />
           <EntitySet Name="TO001A" EntityType="BDDistBHF_RolonModel.TO001A" />
+          <EntitySet Name="TO001A1" EntityType="BDDistBHF_RolonModel.TO001A1" />
         </EntityContainer>
         <EntityType Name="TC0051">
           <Key>
@@ -494,13 +495,6 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <Property Name="totalfactura" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="pendiente" Type="Decimal" Precision="38" Scale="2" />
         </EntityType>
-        <EntityType Name="TO001A1">
-          <Key>
-            <PropertyRef Name="ognumi" />
-          </Key>
-          <Property Name="ognumi" Type="Int32" Nullable="false" />
-          <Property Name="ogcred" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="TO001C">
           <Key>
             <PropertyRef Name="oacnumi" />
@@ -537,6 +531,14 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
           <Property Name="oaanumiprev" Type="Int32" />
           <Property Name="oaaentrega" Type="Int32" />
           <Property Name="oaacaja" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TO001A1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ognumi" Type="Int32" />
+          <Property Name="ogcred" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -741,14 +743,6 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TO001A1">
-            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001A1">
-              <MappingFragment StoreEntitySet="TO001A1">
-                <ScalarProperty Name="ogcred" ColumnName="ogcred" />
-                <ScalarProperty Name="ognumi" ColumnName="ognumi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TO001C">
             <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001C">
               <MappingFragment StoreEntitySet="TO001C">
@@ -786,6 +780,15 @@ advertencia 6002: La tabla o vista 'BDDistBHF_Rolon.dbo.App_Listado_CobrosPendie
                 <ScalarProperty Name="oaanumiprev" ColumnName="oaanumiprev" />
                 <ScalarProperty Name="oaato1numi" ColumnName="oaato1numi" />
                 <ScalarProperty Name="oaanumi" ColumnName="oaanumi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TO001A1">
+            <EntityTypeMapping TypeName="BDDistBHF_RolonModel.TO001A1">
+              <MappingFragment StoreEntitySet="TO001A1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ogcred" ColumnName="ogcred" />
+                <ScalarProperty Name="ognumi" ColumnName="ognumi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

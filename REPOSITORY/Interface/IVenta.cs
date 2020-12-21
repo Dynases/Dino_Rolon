@@ -12,5 +12,7 @@ namespace REPOSITORY.Interface
         List<VVenta> TraerVentas(int usuarioId);
         List<VVentaTicket> ReporteVenta(int ventaId);
         void GuardarIdPedido(int IdVenta, int idPedido);
+
+        void GuardarDetalle(List<VVenta_01> detalle, int id);
     }
 }

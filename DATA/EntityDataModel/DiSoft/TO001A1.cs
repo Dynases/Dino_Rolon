@@ -14,7 +14,8 @@ namespace DATA.EntityDataModel.DiSoft
     
     public partial class TO001A1
     {
-        public int ognumi { get; set; }
+        public Nullable<int> ognumi { get; set; }
         public Nullable<decimal> ogcred { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -1113,6 +1113,7 @@ namespace PRESENTER.ven
         }
         public override void MH_Modificar()
         {
+            
             MP_Habilitar();
         }
         public override void MH_Salir()
