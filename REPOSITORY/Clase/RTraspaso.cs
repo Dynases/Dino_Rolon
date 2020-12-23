@@ -108,6 +108,7 @@ namespace REPOSITORY.Clase
                                .Where(b => b.IdUsuario == usuarioId &&
                                            b.Acceso == true)
                                .Select(d => d.IdAlmacen)).Contains(x.IdAlmacenOrigen))
+                        .OrderByDescending(a=>a.Id)
                         .Select(ti => new VTraspaso
                         {
                             Id = ti.Id,

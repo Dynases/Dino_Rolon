@@ -1014,8 +1014,8 @@ namespace PRESENTER.com
                     TipoVenta = Sw_TipoVenta.Value == true ? 1 : 2,
                     FechaVen = Tb_FechaVenc.Value,
                     TipoFactura = Sw_Emision.Value == true ? 1 : 2,
-                    Factura = Sw_Emision.Value? "0" : Tb_NFactura.Text,
-                    Recibo = Sw_Emision.Value? Tb_Recibo.Text:"0",
+                    Factura = Sw_Emision.Value? Tb_NFactura.Text: "0" ,
+                    Recibo = Sw_Emision.Value? "0": Tb_Recibo.Text,
                     Observ = Tb_Observacion.Text,            
                     Descu = Convert.ToDecimal(Tb_MDesc.Value),                  
                     Total = Convert.ToDecimal(Tb_Total.Value),
@@ -1042,7 +1042,7 @@ namespace PRESENTER.com
                     }
                     else//Modificar
                     {
-                        MP_Filtrar(2);
+                        MP_Filtrar(1);
                         MP_InHabilitar();
                         MH_Habilitar();                 
                     }
@@ -1178,7 +1178,7 @@ namespace PRESENTER.com
                     Tb_Proveedor.BackColor = Color.White;
                 if (Sw_Emision.Value)
                 {
-                    if (Tb_NFactura.Text != string.Empty)
+                    if (Tb_NFactura.Text == string.Empty)
                     {
                         Tb_NFactura.BackColor = Color.Red;
                         _Error = true;
@@ -1189,7 +1189,7 @@ namespace PRESENTER.com
                 }
                 else
                 {
-                    if (Tb_Recibo.Text != string.Empty)
+                    if (Tb_Recibo.Text == string.Empty)
                     {
                         Tb_Recibo.BackColor = Color.Red;
                         _Error = true;
@@ -1206,9 +1206,6 @@ namespace PRESENTER.com
                 return _Error;
             }
         }
-
-
-
         #endregion
     }
 }

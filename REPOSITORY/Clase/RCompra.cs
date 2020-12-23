@@ -134,7 +134,8 @@ namespace REPOSITORY.Clase
                                       join e in db.Almacen on a.IdAlmacen equals e.Id
                                       join d in db.Usuario_01 on e.Id equals d.IdAlmacen
                                       where a.Estado != (int)ENEstado.ELIMINAR &&
-                                            d.IdUsuario == usuarioId && d.Acceso == true                                      
+                                            d.IdUsuario == usuarioId && d.Acceso == true  
+                                      orderby a.Id descending
                                       select new VCompraLista
                                       {
                                           Id = a.Id,

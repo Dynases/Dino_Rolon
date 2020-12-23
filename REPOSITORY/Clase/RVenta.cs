@@ -158,6 +158,7 @@ namespace REPOSITORY.Clase
                                .Where(b => b.IdUsuario == usuarioId &&
                                            b.Acceso == true)
                                .Select(d => d.IdAlmacen)).Contains(x.IdAlmacen))
+                            .OrderByDescending(a=>a.Id)
                              .Select(v => new VVenta
                              {
                                  DescripcionAlmacen = v.Almacen.Descrip,

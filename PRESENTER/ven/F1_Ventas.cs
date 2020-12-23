@@ -365,6 +365,7 @@ namespace PRESENTER.ven
                     LblCompraIngreso.Visible = false;
                     LblIdCompaIngreso.Visible = false;
                 }
+                TbNumFacturaExterna.Text = venta.FacturaExterna;
                 this.MP_CargarDetalleRegistro(venta.Id, 1);
                 this.MP_ObtenerCalculo();
                 this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
