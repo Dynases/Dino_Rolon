@@ -825,6 +825,18 @@ namespace SERVICE
                 throw new Exception(ex.Message);
             }
         }
+        public VAlmacenCombo AlmacenListarPorId(int almacenID)
+        {
+            try
+            {
+                var listResult = new LAlmacen().ListarPorId(almacenID);
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public List<VAlmacenLista> AlmacenListar()
         {

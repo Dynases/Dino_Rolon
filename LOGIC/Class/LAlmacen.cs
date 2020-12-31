@@ -30,6 +30,17 @@ namespace LOGIC.Class
                 throw new Exception(ex.Message);
             }
         }
+        public VAlmacenCombo ListarPorId(int AlmacenId)
+        {
+            try
+            {
+                return iAlmacen.TraerPorId(AlmacenId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public List<VAlmacenLista> ListarAlmacenes()
         {

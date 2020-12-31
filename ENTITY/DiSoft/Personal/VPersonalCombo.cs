@@ -11,5 +11,6 @@ namespace ENTITY.DiSoft.Personal
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public int Categoria { get; set; }
+        public int AlmacenRelacionado { get; set; }
     }
 }

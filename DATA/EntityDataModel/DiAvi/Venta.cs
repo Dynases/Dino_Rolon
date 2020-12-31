@@ -29,7 +29,6 @@ namespace DATA.EntityDataModel.DiAvi
         public string Observaciones { get; set; }
         public int EncPrVenta { get; set; }
         public int EncVenta { get; set; }
-        public int EncTransporte { get; set; }
         public string EncEntrega { get; set; }
         public int EmpresaFactura { get; set; }
         public System.DateTime Fecha { get; set; }

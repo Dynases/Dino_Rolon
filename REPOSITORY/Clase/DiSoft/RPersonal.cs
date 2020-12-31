@@ -24,7 +24,8 @@ namespace REPOSITORY.Clase.DiSoft
                                       {
                                           Id = a.cbnumi,
                                           Descripcion = a.cbdesc,
-                                          Categoria = a.cbcat.Value
+                                          Categoria = a.cbcat.Value,
+                                          AlmacenRelacionado = a.cbreloj.Value
                                       }).ToList();
                     return listResult;
                 }

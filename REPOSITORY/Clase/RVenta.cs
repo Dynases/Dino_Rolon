@@ -43,7 +43,7 @@ namespace REPOSITORY.Clase
                     venta.Tipo = VVenta.Tipo;
                     venta.Observaciones = VVenta.Observaciones;
                     venta.EncPrVenta = VVenta.EncPrVenta;
-                    venta.EncTransporte = VVenta.EncTransporte;
+                   
                     venta.EncEntrega = VVenta.EncEntrega;
                     venta.EmpresaFactura = VVenta.FacturaEmpresa;
                     venta.EncVenta = VVenta.EncVenta;
@@ -119,7 +119,7 @@ namespace REPOSITORY.Clase
                                  EncEntrega = v.EncEntrega,
                                  EncPrVenta = v.EncPrVenta,
                                  FacturaEmpresa = v.EmpresaFactura,
-                                 EncTransporte = v.EncTransporte,
+                               
                                  EncVenta = v.EncVenta,
                                  Estado = v.Estado,
                                  Fecha = v.Fecha,
@@ -134,7 +134,8 @@ namespace REPOSITORY.Clase
                                  Hora = v.Hora,
                                  IdCategoriaCliente = v.Cliente.IdCategoria,
                                  IdCompraIngreso = v.IdCompraIngreso,
-                                 IdPedidoDisoft = v.IdPedidoDisoft
+                                 IdPedidoDisoft = v.IdPedidoDisoft,
+                                 FacturaExterna = v.FacturaExterna
                              }).FirstOrDefault();
                 }
             }
@@ -165,8 +166,7 @@ namespace REPOSITORY.Clase
                                  DescripcionCliente = v.Cliente.Descrip,
                                  EncEntrega = v.EncEntrega,
                                  EncPrVenta = v.EncPrVenta,
-                                 FacturaEmpresa = v.EmpresaFactura,
-                                 EncTransporte = v.EncTransporte,
+                                 FacturaEmpresa = v.EmpresaFactura,                              
                                  EncVenta = v.EncVenta,
                                  Estado = v.Estado,
                                  Fecha = v.Fecha,
@@ -181,6 +181,7 @@ namespace REPOSITORY.Clase
                                  Hora = v.Hora,
                                  IdCategoriaCliente = v.Cliente.IdCategoria,
                                  IdCompraIngreso = v.IdCompraIngreso,
+                                 FacturaExterna = v.FacturaExterna,
                                  IdPedidoDisoft = v.IdPedidoDisoft
                              }).ToList();
                 }
@@ -208,8 +209,7 @@ namespace REPOSITORY.Clase
                             FacturaExterna = ti.FacturaExterna,
                             IdCompraIngreso = ti.IdCompraIngreso,
                             EncEntrega = ti.EncEntrega,
-                            encVenta = ti.encVenta,
-                            encTransporte = ti.encTransporte,
+                            encVenta = ti.encVenta,                            
                             detalleId = ti.detalleId,
                             Producto = ti.Producto,
                             Cantidad = ti.Cantidad,

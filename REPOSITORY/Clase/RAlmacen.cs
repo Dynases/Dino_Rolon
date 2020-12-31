@@ -79,7 +79,7 @@ namespace REPOSITORY.Clase
             }
         }
         #endregion
-        #region Transacciones
+        #region Consulta
 
         public List<VAlmacenCombo> Listar(int usuarioId)
         {
@@ -96,6 +96,27 @@ namespace REPOSITORY.Clase
                                           IdLibreria = a.Id,
                                           Descripcion = a.Descrip + " | Sucursal : " + a.Sucursal.Descrip
                                       }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public VAlmacenCombo TraerPorId(int id)
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult =  (from a in db.Almacen
+                                       where a.Id == id
+                                      select new VAlmacenCombo
+                                      {
+                                          IdLibreria = a.Id,
+                                          Descripcion = a.Descrip
+                                      }).FirstOrDefault();
                     return listResult;
                 }
             }

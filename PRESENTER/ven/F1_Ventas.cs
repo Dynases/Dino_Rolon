@@ -46,6 +46,7 @@ namespace PRESENTER.ven
         private bool _Limpiar = false;
         public  int idCompraIngreso;
         private static int pedidoId = 0;
+        int EncVentaId = 0;
         #endregion
 
         #region Metodos Privados
@@ -166,11 +167,9 @@ namespace PRESENTER.ven
             {
                 UTGlobal.MG_ArmarComboClientes(cb_Cliente,servicio.TraerClienteCombo().ToList(), ENEstado.NOCARGARPRIMERFILA);  
                 
-                UTGlobal.MG_ArmarCombos(Cb_EncPreVenta, servicio.PersonalCombo().Where(x=> x.Categoria == (int)ENPersonalCategoria.PREVENDEDOR).ToList());
+                UTGlobal.MG_ArmarCombos(Cb_EncPreVenta, servicio.PersonalCombo().ToList());
 
-                UTGlobal.MG_ArmarCombos(Cb_EncVenta, servicio.PersonalCombo().Where(x => x.Categoria == (int)ENPersonalCategoria.PREVENDEDOR).ToList());
-
-                UTGlobal.MG_ArmarCombos(Cb_EncTransporte, servicio.PersonalCombo().ToList());
+   
 
                 UTGlobal.MG_ArmarCombo(cbFacturaEmpresa, servicio.LibreriaListarCombo(Convert.ToInt32(ENEstaticosGrupo.CLIENTE),
                                                                                       Convert.ToInt32(ENEstaticosOrden.FACTURACION_CLIENTE)).ToList());
@@ -238,9 +237,9 @@ namespace PRESENTER.ven
             this.sw_estado.Enabled = false;
             this.Sw_TipoVenta.IsReadOnly = true;
             cbFacturaEmpresa.ReadOnly = true;
-            Cb_EncVenta.ReadOnly = true;
+      
             Cb_EncPreVenta.ReadOnly = true;
-            Cb_EncTransporte.ReadOnly = true;           
+         
             this.TbEncEntrega.ReadOnly = true;           
             this.Tb_Observaciones.ReadOnly = true;           
             this.TbNitCliente.ReadOnly = true;
@@ -260,9 +259,9 @@ namespace PRESENTER.ven
         private void MP_Habilitar()
         {
             cbFacturaEmpresa.ReadOnly = false;
-            Cb_EncVenta.ReadOnly = false;
+           
             Cb_EncPreVenta.ReadOnly = false;
-            Cb_EncTransporte.ReadOnly = false;
+
             this.lblFechaRegistro.Visible = false;
             this.Dt_FechaVenta.Enabled = true;
             this.cb_Cliente.ReadOnly = false;
@@ -345,9 +344,9 @@ namespace PRESENTER.ven
                 // Sw_TipoVenta.Value = true;
                 sw_estado.Value = true;
                 cbFacturaEmpresa.Value = venta.FacturaEmpresa;
-                Cb_EncVenta.Value = venta.EncVenta;
+              
                 Cb_EncPreVenta.Value = venta.EncPrVenta;
-                Cb_EncTransporte.Value = venta.EncTransporte;
+       
                 TbEncEntrega.Text = venta.EncEntrega;
                 Tb_Observaciones.Text = venta.Observaciones;
                 lblFechaRegistro.Text = venta.Fecha.ToString();
@@ -371,6 +370,9 @@ namespace PRESENTER.ven
                 this.LblPaginacion.Text = (index + 1) + "/" + Dgv_GBuscador.RowCount.ToString() + " Ventas";
                 ingresarMontoCreditoCliente(venta.IdCliente);
                 pedidoId = venta.IdPedidoDisoft;
+                EncVentaId = venta.EncVenta;
+                lblEncVenta.Text = new ServiceDesktop.ServiceDesktopClient().AlmacenListarPorId(EncVentaId).Descripcion;
+
             }
             catch (Exception ex)
             {
@@ -575,11 +577,12 @@ namespace PRESENTER.ven
             {                
                 UTGlobal.MG_SeleccionarComboCliente(cb_Cliente);
                 UTGlobal.MG_SeleccionarCombo(cbFacturaEmpresa);
-                UTGlobal.MG_SeleccionarCombos(Cb_EncVenta);
+                
                 UTGlobal.MG_SeleccionarCombos(Cb_EncPreVenta);
-                UTGlobal.MG_SeleccionarCombos(Cb_EncTransporte);
+              
                 UTGlobal.MG_SeleccionarCombo_Almacen(Cb_Origen);
             }
+            EncVentaId = 0;
             index = 0;
             listaDetalleVenta.Clear();
             this.Dgv_DetalleVenta.DataSource = null;
@@ -691,7 +694,7 @@ namespace PRESENTER.ven
                 Dgv_GBuscador.RootTable.Columns["Observaciones"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["EncPrVenta"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["EncVenta"].Visible = false;
-                Dgv_GBuscador.RootTable.Columns["EncTransporte"].Visible = false;
+                //Dgv_GBuscador.RootTable.Columns["EncTransporte"].Visible = false;
                 Dgv_GBuscador.RootTable.Columns["FacturaEmpresa"].Visible = false;
 
 
@@ -1165,12 +1168,10 @@ namespace PRESENTER.ven
             {
                 var vVenta = new VVenta
                 {
-
                     EncEntrega = this.TbEncEntrega.Text,
                     EncPrVenta = Convert.ToInt32(this.Cb_EncPreVenta.Value),
-                    FacturaEmpresa = Convert.ToInt32(this.cbFacturaEmpresa.Value),
-                    EncTransporte = Convert.ToInt32(this.Cb_EncTransporte.Value),
-                    EncVenta = Convert.ToInt32(this.Cb_EncVenta.Value),
+                    FacturaEmpresa = Convert.ToInt32(this.cbFacturaEmpresa.Value),             
+                    EncVenta = EncVentaId,
                     Estado = (int)ENEstado.GUARDADO,
                     FechaVenta = this.Dt_FechaVenta.Value,
                     IdAlmacen = Convert.ToInt32(this.Cb_Origen.Value),
@@ -1639,6 +1640,21 @@ namespace PRESENTER.ven
                 MP_Reporte(Convert.ToInt32(Tb_Cod.Text));
             }
         }
-   
+
+        private void Cb_EncPreVenta_ValueChanged(object sender, EventArgs e)
+        {
+            if (Tb_Observaciones.ReadOnly == false)
+            {
+                var EncPreventaId = Convert.ToInt32(Cb_EncPreVenta.Value);
+
+                var personal = new ServiceDesktop.ServiceDesktopClient().PersonalCombo()
+                    .ToList()
+                    .Where(x=> x.Id == EncPreventaId)
+                    .FirstOrDefault();
+
+                var EncVenta = new ServiceDesktop.ServiceDesktopClient().AlmacenListarPorId(personal.AlmacenRelacionado);
+                lblEncVenta.Text = EncVenta.Descripcion;
+            }
+        }
     }
 }

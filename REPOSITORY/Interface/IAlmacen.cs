@@ -13,5 +13,6 @@ namespace REPOSITORY.Interface
         void Eliminar(int Id);
         List<VAlmacenCombo> Listar(int usuarioId);
         List<VAlmacenLista> ListarAlmacenes();
+        VAlmacenCombo TraerPorId(int id);
     }
 }

@@ -30,7 +30,7 @@ namespace ENTITY.ven.view
 
         public int EncVenta { get; set; }
 
-        public int EncTransporte { get; set; }
+
 
         public string EncEntrega { get; set; }
 

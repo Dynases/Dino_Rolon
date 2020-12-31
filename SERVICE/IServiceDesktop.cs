@@ -246,9 +246,12 @@ namespace SERVICE
         [OperationContract]
         List<VAlmacenLista> AlmacenListar();
 
+        [OperationContract]
+        VAlmacenCombo AlmacenListarPorId(int almacenID);
+
         #endregion
         /********** TIPO DE ALMACEN *********/
-      
+
         #region Tipo de Almacen
 
         [OperationContract]

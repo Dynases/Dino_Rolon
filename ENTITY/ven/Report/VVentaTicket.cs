@@ -17,7 +17,6 @@ namespace ENTITY.ven.Report
         public string alamcen { get; set; }
         public string EncEntrega { get; set; }
         public string encVenta { get; set; }
-        public string encTransporte { get; set; }
         public int detalleId { get; set; }
         public string Producto { get; set; }
         public int Cantidad { get; set; }

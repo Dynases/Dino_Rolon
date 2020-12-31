@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
+        ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
+        System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/ReporteHistoricoSeleccionResponse")]
         System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta);
         
@@ -789,6 +795,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenLista[]> AlmacenListarAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarPorId", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarPorIdResponse")]
+        ENTITY.inv.Almacen.View.VAlmacenCombo AlmacenListarPorId(int almacenID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarPorId", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarPorIdResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo> AlmacenListarPorIdAsync(int almacenID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardar", ReplyAction="http://tempuri.org/IServiceDesktop/TipoAlmacenGuardarResponse")]
         PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse TipoAlmacenGuardar(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request);
         
@@ -1060,12 +1072,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
-        ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2137,6 +2143,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public ServiceDesktopClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion) {
+            return base.Channel.NotaSeleccion(idSeleccion);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion) {
+            return base.Channel.NotaSeleccionAsync(idSeleccion);
         }
         
         public System.Data.DataTable ReporteHistoricoSeleccion(System.Nullable<System.DateTime> fechaDesde, System.Nullable<System.DateTime> fechaHasta) {
@@ -3241,6 +3255,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.AlmacenListarAsync();
         }
         
+        public ENTITY.inv.Almacen.View.VAlmacenCombo AlmacenListarPorId(int almacenID) {
+            return base.Channel.AlmacenListarPorId(almacenID);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo> AlmacenListarPorIdAsync(int almacenID) {
+            return base.Channel.AlmacenListarPorIdAsync(almacenID);
+        }
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         PRESENTER.ServiceDesktop.TipoAlmacenGuardarResponse PRESENTER.ServiceDesktop.IServiceDesktop.TipoAlmacenGuardar(PRESENTER.ServiceDesktop.TipoAlmacenGuardarRequest request) {
             return base.Channel.TipoAlmacenGuardar(request);
@@ -3662,14 +3684,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion) {
             return base.Channel.TraerSeleccionAsync(idSeleccion);
-        }
-        
-        public ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion) {
-            return base.Channel.NotaSeleccion(idSeleccion);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.Report.RSeleccionNota[]> NotaSeleccionAsync(int idSeleccion) {
-            return base.Channel.NotaSeleccionAsync(idSeleccion);
         }
     }
 }
