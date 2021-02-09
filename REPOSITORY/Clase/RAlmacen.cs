@@ -91,6 +91,28 @@ namespace REPOSITORY.Clase
                                       join c in db.Usuario_01 on b.IdUsuario equals c.IdUsuario
                                       join a in db.Almacen on c.IdAlmacen equals a.Id
                                       where b.IdUsuario == usuarioId && c.Acceso == true
+                                      orderby a.Id
+                                      select new VAlmacenCombo
+                                      {
+                                          IdLibreria = a.Id,
+                                          Descripcion = a.Descrip + " | Sucursal : " + a.Sucursal.Descrip
+                                      }).ToList();
+                    return listResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<VAlmacenCombo> ListarTodos()
+        {
+            try
+            {
+                using (var db = GetEsquema())
+                {
+                    var listResult = (from a in db.Almacen
+                                      orderby a.Id
                                       select new VAlmacenCombo
                                       {
                                           IdLibreria = a.Id,

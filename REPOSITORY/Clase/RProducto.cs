@@ -345,7 +345,8 @@ namespace REPOSITORY.Clase
                                           EsLote = p.EsLote,
                                           Contenido =db.Libreria.FirstOrDefault(x => x.IdGrupo == (int)ENEstaticosGrupo.PRODUCTO &&
                                                                                      x.IdOrden == (int)ENEstaticosOrden.PRODUCTO_GRUPO5 &&
-                                                                                     x.IdLibrer == p.Grupo5).Descrip
+                                                                                     x.IdLibrer == p.Grupo5).Descrip,
+                                          EsMateriaPrima  = p.Tipo
                                       }).Distinct().ToList();
                     return listResult;
                 }

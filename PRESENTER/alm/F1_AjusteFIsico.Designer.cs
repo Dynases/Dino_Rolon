@@ -66,6 +66,7 @@
             this.tbObs = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.tbCodigo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -386,6 +387,7 @@
             // 
             this.PanelTotal.AutoScroll = true;
             this.PanelTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(35)))), ((int)(((byte)(65)))));
+            this.PanelTotal.Controls.Add(this.labelX10);
             this.PanelTotal.Controls.Add(this.Panel4);
             this.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelTotal.Location = new System.Drawing.Point(0, 411);
@@ -866,6 +868,22 @@
             this.tbCodigo.TabIndex = 0;
             this.tbCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // labelX10
+            // 
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.ForeColor = System.Drawing.Color.White;
+            this.labelX10.Location = new System.Drawing.Point(3, 3);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX10.Size = new System.Drawing.Size(297, 23);
+            this.labelX10.TabIndex = 236;
+            this.labelX10.Text = "Eliminar Fila del detalle con la tabla SCAPE";
+            // 
             // F1_AjusteFIsico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -947,5 +965,6 @@
         internal DevComponents.DotNetBar.LabelX LabelX3;
         internal DevComponents.DotNetBar.Controls.TextBoxX tbCodigo;
         private System.Windows.Forms.BindingSource vAjusteFisicoBindingSource;
+        internal DevComponents.DotNetBar.LabelX labelX10;
     }
 }

@@ -250,6 +250,7 @@ namespace PRESENTER.alm
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.Contenido));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMaxVenta));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMinVenta));
+                dgjProducto.ColNoVisible(nameof(VProductoListaStock.EsMateriaPrima));
 
                 dgjProducto.ColAL(nameof(VProductoListaStock.CodigoProducto), "Código", 80);
                 dgjProducto.ColAL(nameof(VProductoListaStock.Producto), "Producto", 180);
@@ -1213,17 +1214,21 @@ namespace PRESENTER.alm
         private void cbConcepto_ValueChanged(object sender, EventArgs e)
         {
             var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
-            if (conceptos.Where(a => a.Id == _ajuste.IdConcepto).FirstOrDefault().AjusteCliente == 1)
+            if (conceptos != null && _ajuste.IdConcepto != 0)
             {
-                cb_Cliente.Visible = true;
-                lblCliente.Visible = true;
-                MP_CargarCliente();
+                if (conceptos.Where(a => a.Id == _ajuste.IdConcepto).FirstOrDefault().AjusteCliente == 1)
+                {
+                    cb_Cliente.Visible = true;
+                    lblCliente.Visible = true;
+                    MP_CargarCliente();
+                }
+                else
+                {
+                    cb_Cliente.Visible = true;
+                    lblCliente.Visible = true;
+                }
             }
-            else
-            {
-                cb_Cliente.Visible = true;
-                lblCliente.Visible = true;
-            }
+          
 
         }
     }

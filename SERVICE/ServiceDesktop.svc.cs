@@ -823,6 +823,19 @@ namespace SERVICE
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+
+            }
+        }
+        public List<VAlmacenCombo> AlmacenListarComboTodos()
+        {
+            try
+            {
+                var listResult = new LAlmacen().ListarTodos();
+                return listResult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
         public VAlmacenCombo AlmacenListarPorId(int almacenID)

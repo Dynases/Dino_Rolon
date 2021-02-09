@@ -18,7 +18,8 @@ namespace ENTITY.inv.Transformacion_01.View
         public string Producto_Mat_Prima { get; set; }    
         public decimal TotalProd { get; set; }
         public decimal Cantidad { get; set; }
-        public decimal Total { get; set; }     
-      
+        public decimal Total { get; set; }
+        public decimal Stock { get; set; }
+
     }
 }

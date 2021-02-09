@@ -242,6 +242,8 @@ namespace SERVICE
         bool EliminarAlmacen(int Id, ref List<string> mensaje);
         [OperationContract]
         List<VAlmacenCombo> AlmacenListarCombo(int usuarioId);
+        [OperationContract]
+        List<VAlmacenCombo> AlmacenListarComboTodos();
 
         [OperationContract]
         List<VAlmacenLista> AlmacenListar();

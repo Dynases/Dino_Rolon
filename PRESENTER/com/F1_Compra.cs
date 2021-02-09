@@ -554,8 +554,8 @@ namespace PRESENTER.com
             {
                 List<ENTITY.Producto.View.VProductoLista> result;
                 //Productos materia prima
-                GPanel_Producto.Text = "PRODUCTOS DE COMERCIALES";
-                result = new ServiceDesktop.ServiceDesktopClient().ProductoListar().Where(p => p.Tipo.Equals(1)).ToList();
+                GPanel_Producto.Text = "LISTA DE PRODUCTOS";
+                result = new ServiceDesktop.ServiceDesktopClient().ProductoListar().ToList();
                 MP_CargarProducto(result);
                 MP_HabilitarProducto();
             }
