@@ -154,7 +154,7 @@
       <HintPath>C:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.TreeGX.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
-      <HintPath>..\..\..\..\..\..\..\librerias\FlashControlV71.dll</HintPath>
+      <HintPath>C:\libreriasDiego\FlashControlV71.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
