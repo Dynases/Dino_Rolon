@@ -256,6 +256,7 @@ namespace PRESENTER.alm
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMaxVenta));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.PrecioMinVenta));
                 dgjProducto.ColNoVisible(nameof(VProductoListaStock.UnidadVenta));
+                dgjProducto.ColNoVisible(nameof(VProductoListaStock.EsMateriaPrima));
 
                 dgjProducto.ColAL(nameof(VProductoListaStock.CodigoProducto), "Código", 60);
                 dgjProducto.ColAL(nameof(VProductoListaStock.Producto), "Producto", 150);

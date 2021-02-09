@@ -58,9 +58,10 @@ namespace PRESENTER.alm
                 {
                     var libreria = servicio.LibreriaListarCombo((int)ENEstaticosGrupo.TRASPASO, 
                                                                (int)ENEstaticosOrden.TRASPASO_TRASPASADOPOR).ToList();
-                    var almacenes = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
-                    UTGlobal.MG_ArmarComboAlmacen(Cb_Destino, almacenes);
-                    UTGlobal.MG_ArmarComboAlmacen(Cb_Origen, almacenes);
+                    var almacenXUsuario = new ServiceDesktop.ServiceDesktopClient().AlmacenListarCombo(UTGlobal.UsuarioId).ToList();
+                    var almacenTodos = new ServiceDesktop.ServiceDesktopClient().AlmacenListarComboTodos().ToList();
+                    UTGlobal.MG_ArmarComboAlmacen(Cb_Destino, almacenTodos);
+                    UTGlobal.MG_ArmarComboAlmacen(Cb_Origen, almacenXUsuario);
                     UTGlobal.MG_ArmarCombo(Cb_TransportePor, libreria);
                 }               
             }
@@ -550,7 +551,8 @@ namespace PRESENTER.alm
                 Dgv_Producto.RootTable.Columns["TipoProducto"].Visible = false;
                 Dgv_Producto.RootTable.Columns["CategoriaProducto"].Visible = false;
                 Dgv_Producto.RootTable.Columns["PrecioVenta"].Visible = false;
-                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Visible = false;
+                Dgv_Producto.RootTable.Columns["CategoriaPrecio"].Visible = false;   
+                Dgv_Producto.RootTable.Columns["EsMateriaPrima"].Visible = false;
 
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Caption = "Codigo";
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Width = 80;
@@ -622,9 +624,7 @@ namespace PRESENTER.alm
                         lProductosConStock = new List<VProductoListaStock>();
                     MP_CargarProducto(lProductosConStock);
                     MP_HabilitarProducto();
-                } 
-
-               
+                }                
             }
             catch (Exception ex)
             {

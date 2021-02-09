@@ -14,5 +14,6 @@ namespace REPOSITORY.Interface
         List<VAlmacenCombo> Listar(int usuarioId);
         List<VAlmacenLista> ListarAlmacenes();
         VAlmacenCombo TraerPorId(int id);
+        List<VAlmacenCombo> ListarTodos();
     }
 }

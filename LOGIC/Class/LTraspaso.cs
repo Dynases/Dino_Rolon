@@ -212,7 +212,7 @@ namespace LOGIC.Class
                     }
                 }
 
-                iInventario.EliminarTraspaso(ajusteId, (int)ENConcepto.TRANSFORMACION_SALIDA);
+                iInventario.EliminarTraspaso(ajusteId, (int)ENConcepto.TRASPASO_SALIDA);
                 if (estadoEnvio == (int)ENEstado.CONRECEPCION)
                     iInventario.EliminarTraspaso(ajusteId, (int)ENConcepto.TRASPASO_INGRESO);
                 

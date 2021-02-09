@@ -15,5 +15,7 @@
         public decimal Salidas { get; set; }
 
         public decimal Saldo { get; set; }
+        public decimal Precio { get; set; }
+        public decimal Total { get; set; }
     }
 }

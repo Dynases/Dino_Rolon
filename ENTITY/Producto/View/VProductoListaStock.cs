@@ -33,6 +33,7 @@ namespace ENTITY.Producto.View
         public string CategoriaPrecio { get; set; }
         public int EsLote { get; set; }
         public string Contenido { get; set; }
+        public int EsMateriaPrima { get; set; }
 
 
     }

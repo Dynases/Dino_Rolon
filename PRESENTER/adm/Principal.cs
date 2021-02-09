@@ -155,13 +155,19 @@ namespace PRESENTER.adm
         private void Metro_Ajuste_Click(object sender, EventArgs e)
         {
             MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
-            F1_AjusteFIsico frm = new F1_AjusteFIsico();
+            F1_Ajuste frm = new F1_Ajuste();
             frm.Show();
         }
         private void Metro_Concepto_Click(object sender, EventArgs e)
         {
             MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
             F1_Concepto frm = new F1_Concepto();
+            frm.Show();
+        }
+        private void Metro_AjusteFisico_Click(object sender, EventArgs e)
+        {
+            MODEL.ModeloF1._NombreProg = Metro_Ajuste.Name;
+            F1_AjusteFIsico frm = new F1_AjusteFIsico();
             frm.Show();
         }
         #endregion

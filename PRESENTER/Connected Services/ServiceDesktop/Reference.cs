@@ -78,6 +78,12 @@ namespace PRESENTER.ServiceDesktop {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceDesktop.IServiceDesktop")]
     public interface IServiceDesktop {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
+        ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
+        System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/NotaSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/NotaSeleccionResponse")]
         ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion);
         
@@ -789,6 +795,12 @@ namespace PRESENTER.ServiceDesktop {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarCombo", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarComboResponse")]
         System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo[]> AlmacenListarComboAsync(int usuarioId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarComboTodos", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarComboTodosResponse")]
+        ENTITY.inv.Almacen.View.VAlmacenCombo[] AlmacenListarComboTodos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListarComboTodos", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarComboTodosResponse")]
+        System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo[]> AlmacenListarComboTodosAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/AlmacenListar", ReplyAction="http://tempuri.org/IServiceDesktop/AlmacenListarResponse")]
         ENTITY.inv.Almacen.View.VAlmacenLista[] AlmacenListar();
         
@@ -1066,12 +1078,6 @@ namespace PRESENTER.ServiceDesktop {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSelecciones", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionesResponse")]
         System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
-        ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceDesktop/TraerSeleccion", ReplyAction="http://tempuri.org/IServiceDesktop/TraerSeleccionResponse")]
-        System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2143,6 +2149,14 @@ namespace PRESENTER.ServiceDesktop {
         
         public ServiceDesktopClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion) {
+            return base.Channel.TraerSeleccion(idSeleccion);
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion) {
+            return base.Channel.TraerSeleccionAsync(idSeleccion);
         }
         
         public ENTITY.com.Seleccion.Report.RSeleccionNota[] NotaSeleccion(int idSeleccion) {
@@ -3247,6 +3261,14 @@ namespace PRESENTER.ServiceDesktop {
             return base.Channel.AlmacenListarComboAsync(usuarioId);
         }
         
+        public ENTITY.inv.Almacen.View.VAlmacenCombo[] AlmacenListarComboTodos() {
+            return base.Channel.AlmacenListarComboTodos();
+        }
+        
+        public System.Threading.Tasks.Task<ENTITY.inv.Almacen.View.VAlmacenCombo[]> AlmacenListarComboTodosAsync() {
+            return base.Channel.AlmacenListarComboTodosAsync();
+        }
+        
         public ENTITY.inv.Almacen.View.VAlmacenLista[] AlmacenListar() {
             return base.Channel.AlmacenListar();
         }
@@ -3676,14 +3698,6 @@ namespace PRESENTER.ServiceDesktop {
         
         public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionEncabezado[]> TraerSeleccionesAsync(int usuarioId) {
             return base.Channel.TraerSeleccionesAsync(usuarioId);
-        }
-        
-        public ENTITY.com.Seleccion.View.VSeleccionLista TraerSeleccion(int idSeleccion) {
-            return base.Channel.TraerSeleccion(idSeleccion);
-        }
-        
-        public System.Threading.Tasks.Task<ENTITY.com.Seleccion.View.VSeleccionLista> TraerSeleccionAsync(int idSeleccion) {
-            return base.Channel.TraerSeleccionAsync(idSeleccion);
         }
     }
 }

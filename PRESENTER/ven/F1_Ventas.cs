@@ -829,6 +829,7 @@ namespace PRESENTER.ven
                 Dgv_Producto.RootTable.Columns["CategoriaProducto"].Visible = false;
                 Dgv_Producto.RootTable.Columns["EsLote"].Visible = false;
                 Dgv_Producto.RootTable.Columns["Contenido"].Visible = false;
+                Dgv_Producto.RootTable.Columns["EsMateriaPrima"].Visible = false;
 
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Caption = "Codigo";
                 Dgv_Producto.RootTable.Columns["CodigoProducto"].Width = 80;
@@ -1652,8 +1653,14 @@ namespace PRESENTER.ven
                     .Where(x=> x.Id == EncPreventaId)
                     .FirstOrDefault();
 
-                var EncVenta = new ServiceDesktop.ServiceDesktopClient().AlmacenListarPorId(personal.AlmacenRelacionado);
-                lblEncVenta.Text = EncVenta.Descripcion;
+                if (personal != null)
+                {
+                    var EncVenta = new ServiceDesktop.ServiceDesktopClient().AlmacenListarPorId(personal.AlmacenRelacionado);
+                    lblEncVenta.Text = EncVenta.Descripcion;
+                }
+                else
+                    lblEncVenta.Text ="";
+
             }
         }
     }
