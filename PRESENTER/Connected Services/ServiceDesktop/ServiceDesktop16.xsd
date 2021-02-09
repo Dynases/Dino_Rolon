@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.Report" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.Seleccion.Report" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfRSeleccionNota">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_03.View" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.com.CompraIngreso_03.View" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVCompraIngreso_03">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSeleccionNota" nillable="true" type="tns:RSeleccionNota" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VCompraIngreso_03" nillable="true" type="tns:VCompraIngreso_03" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfRSeleccionNota" nillable="true" type="tns:ArrayOfRSeleccionNota" />
-  <xs:complexType name="RSeleccionNota">
+  <xs:element name="ArrayOfVCompraIngreso_03" nillable="true" type="tns:ArrayOfVCompraIngreso_03" />
+  <xs:complexType name="VCompraIngreso_03">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Caja" type="xs:decimal" />
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
-      <xs:element minOccurs="0" name="DescripcionPlaca" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DescripcionRecibido" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Entregado" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FechaRec" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FechaReg" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="Grupo" type="xs:decimal" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdDetalle" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSpyre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MarcaTipo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Merma" type="xs:decimal" />
-      <xs:element minOccurs="0" name="MermaPorcentaje" type="xs:decimal" />
-      <xs:element minOccurs="0" name="NumNota" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Porcen" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IdCompra" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProduc" type="xs:int" />
+      <xs:element minOccurs="0" name="Maple" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrecioCost" type="xs:decimal" />
       <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalCant" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalMaple" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="RSeleccionNota" nillable="true" type="tns:RSeleccionNota" />
+  <xs:element name="VCompraIngreso_03" nillable="true" type="tns:VCompraIngreso_03" />
 </xs:schema>

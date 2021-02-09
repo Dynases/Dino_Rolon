@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Ajuste.Report" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Ajuste.Report" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVAjusteTicket">
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfstring">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VAjusteTicket" nillable="true" type="tns:VAjusteTicket" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVAjusteTicket" nillable="true" type="tns:ArrayOfVAjusteTicket" />
-  <xs:complexType name="VAjusteTicket">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AjusteId" type="xs:int" />
-      <xs:element minOccurs="0" name="Cliente" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Diferencia" type="xs:decimal" />
-      <xs:element minOccurs="0" name="FechaReg" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RecibidoPor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TransportadoPor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="alamcen" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="almDestino" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="concepto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="detalleId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="VAjusteTicket" nillable="true" type="tns:VAjusteTicket" />
+  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
 </xs:schema>

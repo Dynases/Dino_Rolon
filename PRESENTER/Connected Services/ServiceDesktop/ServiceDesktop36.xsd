@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.inv.Transformacion.Report" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfVTransformacionReport">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ENTITY.ven.Report" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ENTITY.ven.Report" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfVVentaTicket">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VTransformacionReport" nillable="true" type="tns:VTransformacionReport" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VVentaTicket" nillable="true" type="tns:VVentaTicket" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVTransformacionReport" nillable="true" type="tns:ArrayOfVTransformacionReport" />
-  <xs:complexType name="VTransformacionReport">
+  <xs:element name="ArrayOfVVentaTicket" nillable="true" type="tns:ArrayOfVVentaTicket" />
+  <xs:complexType name="VVentaTicket">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AlmacenIngreso" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AlmacenSalida" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Descrip" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="IdProducto_Mat" type="xs:int" />
-      <xs:element minOccurs="0" name="MateriaPrima" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Observ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Cliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EncEntrega" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacturaExterna" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaVenta" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCompraIngreso" type="xs:int" />
+      <xs:element minOccurs="0" name="Nit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Producto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalMateriaPrima" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalProd" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalUnidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="alamcen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="detalleId" type="xs:int" />
+      <xs:element minOccurs="0" name="encVenta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ventaId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VTransformacionReport" nillable="true" type="tns:VTransformacionReport" />
+  <xs:element name="VVentaTicket" nillable="true" type="tns:VVentaTicket" />
 </xs:schema>
