@@ -63,7 +63,7 @@ namespace PRESENTER.alm
                 MP_ArmarGrillas();
                 MP_InHabilitar();
                 MP_AsignarPermisos();
-                //MP_Limpiar(); //go-dev revisar
+                superTabControl1.SelectedTabIndex = 0;
             }
             catch (Exception ex)
             {
@@ -117,6 +117,7 @@ namespace PRESENTER.alm
             {
                 var conceptos = new ServiceDesktop.ServiceDesktopClient().TraerClienteCombo().ToList().ToList();
                 UTGlobal.MG_ArmarComboClientes(cb_Cliente,conceptos, ENEstado.NOCARGARPRIMERFILA);
+                cb_Cliente.SelecionarPrimero();
             }
             catch (Exception ex)
             {
@@ -128,7 +129,9 @@ namespace PRESENTER.alm
             try
             {
                 var conceptos = new ServiceDesktop.ServiceDesktopClient().Concepto_ListaComboAjuste().ToList();
-                UTGlobal.MG_ArmarComboConcepto(cbConcepto, conceptos);
+                //UTGlobal.MG_ArmarComboConcepto(cbConcepto, conceptos);
+                UTGlobal.MG_ArmarCombos(cbConcepto, conceptos.ToList());
+                cbConcepto.SelecionarPrimero();
             }
             catch (Exception ex)
             {
@@ -142,6 +145,7 @@ namespace PRESENTER.alm
                 var trasportadoPor = new ServiceDesktop.ServiceDesktopClient().LibreriaListarCombo((int)ENEstaticosGrupo.TRASPASO,
                                                             (int)ENEstaticosOrden.TRASPASO_TRASPASADOPOR).ToList();
                 UTGlobal.MG_ArmarCombo(Cb_TransportePor, trasportadoPor);
+                Cb_TransportePor.SelecionarPrimero();
             }
             catch (Exception ex)
             {
@@ -304,7 +308,8 @@ namespace PRESENTER.alm
                         listado = new List<EntList>();
                     _listado.Clear();
                     _listado.AddRange(listado);
-                    Dgv_GBuscador.Refetch();
+                    MP_ArmarGrillaListado();
+                    //Dgv_GBuscador.Refetch();
                 }
             }
             catch (Exception ex)
@@ -1213,22 +1218,29 @@ namespace PRESENTER.alm
 
         private void cbConcepto_ValueChanged(object sender, EventArgs e)
         {
-            var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
-            if (conceptos != null && _ajuste.IdConcepto != 0)
+            try
             {
-                if (conceptos.Where(a => a.Id == _ajuste.IdConcepto).FirstOrDefault().AjusteCliente == 1)
+                var conceptos = (List<VConceptoCombo>)cbConcepto.DataSource;
+                if (conceptos != null && _ajuste.IdConcepto != 0)
                 {
-                    cb_Cliente.Visible = true;
-                    lblCliente.Visible = true;
-                    MP_CargarCliente();
-                }
-                else
-                {
-                    cb_Cliente.Visible = true;
-                    lblCliente.Visible = true;
+                    if (conceptos.Where(a => a.Id == Convert.ToInt32(cbConcepto.Value)).FirstOrDefault().AjusteCliente == 2)
+                    {
+                        cb_Cliente.Visible = true;
+                        lblCliente.Visible = true;
+                        MP_CargarCliente();
+                    }
+                    else
+                    {
+                        cb_Cliente.Visible = false;
+                        lblCliente.Visible = false;
+                    }
                 }
             }
-          
+            catch (Exception ex)
+            {
+
+                MP_MostrarMensajeError(ex.Message);
+            }
 
         }
     }

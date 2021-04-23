@@ -116,6 +116,7 @@ namespace LOGIC.Class
         {
             if (vCompraIngreso.TotalVendido > 0)
             {
+                bool EsAjuste = true;
                 VAjuste ajusteInventario = null;
                 List<VAjusteDetalle> ajusteDetalle = null;
 
@@ -127,7 +128,7 @@ namespace LOGIC.Class
 
 
                 iAjuste.Guardar(ajusteInventario, ref idInventario, vCompraIngreso.Usuario);
-                iAjuste.GuardarDetalle(ajusteDetalle, idInventario);
+                iAjuste.GuardarDetalle(ajusteDetalle, idInventario, EsAjuste);
 
                 if (idAux == 0)//Nuevo
                 {

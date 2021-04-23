@@ -100,7 +100,7 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = true;
 
-                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns.Add("Descripcion").Width = 280;
                 combo.DropDownList.Columns[1].Caption = "Descripcion";
                 combo.DropDownList.Columns[1].Visible = true;
 
@@ -123,7 +123,7 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Id";
                 combo.DropDownList.Columns[0].Visible = true;
 
-                combo.DropDownList.Columns.Add("Descripcion").Width = 150;
+                combo.DropDownList.Columns.Add("Descripcion").Width = 280;
                 combo.DropDownList.Columns[1].Caption = "Descripción";
                 combo.DropDownList.Columns[1].Visible = true;
 
@@ -214,7 +214,7 @@ namespace UTILITY.Global
                 combo.DropDownList.Columns[0].Caption = "Cod";
                 combo.DropDownList.Columns[0].Visible = false;
 
-                combo.DropDownList.Columns.Add("Cliente").Width = 180;
+                combo.DropDownList.Columns.Add("Cliente").Width = 350;
                 combo.DropDownList.Columns[1].Caption = "Cliente";
                 combo.DropDownList.Columns[1].Visible = true;
 

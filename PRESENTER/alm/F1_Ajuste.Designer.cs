@@ -151,7 +151,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1199, 631);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -167,7 +167,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1199, 631);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -199,7 +199,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(1193, 605);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged_1);
             // 
             // PanelContenidoRegistro
@@ -613,6 +613,7 @@
             this.Cb_TransportePor.Size = new System.Drawing.Size(194, 22);
             this.Cb_TransportePor.TabIndex = 399;
             this.Cb_TransportePor.Tag = "1";
+            this.Cb_TransportePor.Visible = false;
             this.Cb_TransportePor.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.Cb_TransportePor.ValueChanged += new System.EventHandler(this.Cb_TransportePor_ValueChanged);
             // 
@@ -631,6 +632,7 @@
             this.labelX9.Size = new System.Drawing.Size(125, 23);
             this.labelX9.TabIndex = 398;
             this.labelX9.Text = "Transportado por:";
+            this.labelX9.Visible = false;
             // 
             // cbCategoriaPrecio
             // 

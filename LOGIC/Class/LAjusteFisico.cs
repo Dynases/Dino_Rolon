@@ -37,7 +37,7 @@ namespace LOGIC.Class
                 {
                     
                     int idCOncepto = 0;
-
+                    bool EsAjusteFisico = true;
                     VAjusteFisico ajusteAnterior = null;
                     List<VAjusteFisicoProducto> detalleAnterior = null;
                     VAjuste ajusteInventario = null;
@@ -68,7 +68,7 @@ namespace LOGIC.Class
 
 
                     iAjuste.Guardar(ajusteInventario, ref idInventario, usuario);
-                    iAjuste.GuardarDetalle(ajusteDetalle, idInventario);
+                    iAjuste.GuardarDetalle(ajusteDetalle, idInventario, EsAjusteFisico);
                     if (ajusteAnterior != null)
                     {
                         accionAnterior = iConcepto.ObternerPorId(ajusteAnterior.IdConcepto).TipoMovimiento;

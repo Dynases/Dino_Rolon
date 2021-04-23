@@ -948,6 +948,7 @@ namespace PRESENTER.alm
         {
             MP_InHabilitar();
             MP_Filtrar(2);
+            MP_InHabilitarProducto();
         }
 
         public override bool MH_Validar()
@@ -1278,9 +1279,9 @@ namespace PRESENTER.alm
         {
             if (tbObs.ReadOnly == false)
             {
-                //MP_LimpiarDetalle();
-                //MP_AddFila();
-                //MP_InHabilitarProducto();
+                MP_LimpiarDetalle();
+                MP_AddFila();
+                MP_InHabilitarProducto();
             }               
         }
 

@@ -30,6 +30,7 @@ namespace LOGIC.Class
             {
                 using (var scope = new TransactionScope())
                 {
+                    bool EsAjusteFisico = false;
                     VAjuste ajusteAnterior = null;
                     List<VAjusteDetalle> detalleAnterior = null;
                     if (ajuste.Id > 0)
@@ -41,7 +42,7 @@ namespace LOGIC.Class
                     int id = ajuste.Id;
                     //Ajuste
                     iAjuste.Guardar(ajuste, ref id, usuario);
-                    iAjuste.GuardarDetalle(detalle, id);
+                    iAjuste.GuardarDetalle(detalle, id, EsAjusteFisico);
 
                     //Saldo
                     var accionAnterior = 0;

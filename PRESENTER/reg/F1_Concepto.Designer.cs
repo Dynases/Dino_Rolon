@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Janus.Windows.GridEX.GridEXLayout Cb_TipoAjuste_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F1_Concepto));
             this.PanelFondo = new System.Windows.Forms.Panel();
             this.GPanel_Buscador = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Dgv_Buscador2 = new Janus.Windows.GridEX.GridEX();
             this.GPanel_DatosGenerales = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Cb_TipoAjuste = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.Sw_Estado = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.VConceptosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -64,6 +66,7 @@
             this.GPanel_Buscador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).BeginInit();
             this.GPanel_DatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_TipoAjuste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VConceptosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +116,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(849, 489);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             // 
             // btnMin
             // 
@@ -129,7 +132,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(849, 489);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -161,7 +164,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(843, 463);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             // 
             // PanelContenidoRegistro
             // 
@@ -285,6 +288,7 @@
             // 
             this.GPanel_DatosGenerales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.GPanel_DatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.GPanel_DatosGenerales.Controls.Add(this.Cb_TipoAjuste);
             this.GPanel_DatosGenerales.Controls.Add(this.Sw_Estado);
             this.GPanel_DatosGenerales.Controls.Add(this.labelX4);
             this.GPanel_DatosGenerales.Controls.Add(this.Sw_Cliente);
@@ -331,6 +335,26 @@
             this.GPanel_DatosGenerales.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.GPanel_DatosGenerales.TabIndex = 79;
             this.GPanel_DatosGenerales.Text = "DATOS GENERELAES";
+            // 
+            // Cb_TipoAjuste
+            // 
+            this.Cb_TipoAjuste.BackColor = System.Drawing.Color.White;
+            Cb_TipoAjuste_DesignTimeLayout.LayoutString = resources.GetString("Cb_TipoAjuste_DesignTimeLayout.LayoutString");
+            this.Cb_TipoAjuste.DesignTimeLayout = Cb_TipoAjuste_DesignTimeLayout;
+            this.Cb_TipoAjuste.DisabledBackColor = System.Drawing.Color.Blue;
+            this.Cb_TipoAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cb_TipoAjuste.ImageHorizontalAlignment = Janus.Windows.GridEX.ImageHorizontalAlignment.Far;
+            this.Cb_TipoAjuste.Location = new System.Drawing.Point(508, 101);
+            this.Cb_TipoAjuste.Name = "Cb_TipoAjuste";
+            this.Cb_TipoAjuste.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
+            this.Cb_TipoAjuste.Office2007CustomColor = System.Drawing.Color.DodgerBlue;
+            this.Cb_TipoAjuste.SelectedIndex = -1;
+            this.Cb_TipoAjuste.SelectedItem = null;
+            this.Cb_TipoAjuste.Size = new System.Drawing.Size(194, 22);
+            this.Cb_TipoAjuste.TabIndex = 400;
+            this.Cb_TipoAjuste.Tag = "1";
+            this.Cb_TipoAjuste.Visible = false;
+            this.Cb_TipoAjuste.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // Sw_Estado
             // 
@@ -547,6 +571,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Buscador2)).EndInit();
             this.GPanel_DatosGenerales.ResumeLayout(false);
             this.GPanel_DatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Cb_TipoAjuste)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VConceptosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -569,5 +594,6 @@
         internal DevComponents.DotNetBar.Controls.GroupPanel GPanel_Buscador;
         private Janus.Windows.GridEX.GridEX Dgv_Buscador2;
         private System.Windows.Forms.BindingSource VConceptosBindingSource;
+        internal Janus.Windows.GridEX.EditControls.MultiColumnCombo Cb_TipoAjuste;
     }
 }

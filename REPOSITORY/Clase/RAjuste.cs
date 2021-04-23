@@ -65,7 +65,7 @@ namespace REPOSITORY.Clase
                     var detalle = db.TI0021.Where(c => c.icibid == IdAjuste).ToList();
                     foreach (var fila in detalle)
                     {
-                        var detallePrecio = db.TI0021A.Where(c => c.IdTI0021 == fila.icid).FirstOrDefault();
+                        var detallePrecio = db.TI0021A.Where(c => c.IdTI0021 == fila.id).FirstOrDefault();
                         db.TI0021A.Remove(detallePrecio);
                         db.TI0021.Remove(fila);                        
                     }
@@ -138,26 +138,29 @@ namespace REPOSITORY.Clase
 
         #region AjusteDetalle
         #region Transacciones
-        public void GuardarDetalle(List<VAjusteDetalle> detalle, int id)
+        public void GuardarDetalle(List<VAjusteDetalle> detalle, int id, bool EsAjuste)
         {
             try
             {
                 using (var db = GetEsquema())
                 {
                     TI0021 data;
-                   // TI0021A data2;
+                    TI0021A data2;
                     foreach (var item in detalle)
                     {
                         switch (item.Estado)
                         {
                             case (int)ENEstado.NUEVO:
                                 data = new TI0021();
-                                //data2 = new TI0021A();
-
-                                //data2.Precio = item.Precio;
-                                //data2.TI0021 = data;
-                                //data2.Unidad = item.Unidad;
-                                //data2.Contenido = item.Contenido;
+                                if (!EsAjuste)
+                                {
+                                    data2 = new TI0021A();
+                                    data2.Precio = item.Precio;
+                                    data2.Unidad = item.Unidad;
+                                    data2.Contenido = item.Contenido;
+                                    data2.TI0021 = data;
+                                    db.TI0021A.Add(data2);
+                                }                                
 
                                 data.icid = db.TI0021.Select(a => a.icid).DefaultIfEmpty(0).Max() + 1;
                                 data.icibid = id;
@@ -167,17 +170,27 @@ namespace REPOSITORY.Clase
                                 data.icfvenc = item.FechaVen;
 
                                 db.TI0021.Add(data);
-                               // db.TI0021A.Add(data2);
+                                
                                 db.SaveChanges();
                                 break;
                             case (int)ENEstado.MODIFICAR:
                                 data = db.TI0021.Where(a => a.icibid == item.IdAjuste && a.iccprod == item.IdProducto).FirstOrDefault();
+                                if (!EsAjuste)
+                                {
+                                    data2 = data.TI0021A;
+
+                                    data2.Precio = item.Precio;
+                                    data2.TI0021 = data;
+                                    data2.Unidad = item.Unidad;
+                                    data2.Contenido = item.Contenido;
+                                }
+
                                 //data2 = data.TI0021A;
 
                                 //data2.Precio = item.Precio;
                                 //data2.TI0021 = data;
                                 //data2.Unidad = item.Unidad;
-                                //data2.Contenido = item.Contenido;
+                                //data2.Contenido = item.Contenido;                                                        
 
                                 data.iccprod = item.IdProducto;
                                 data.iccant = item.Cantidad;
@@ -187,8 +200,11 @@ namespace REPOSITORY.Clase
                                 break;
                             case (int)ENEstado.ELIMINAR:
                                 data = db.TI0021.Where(a => a.icibid == item.IdAjuste && a.iccprod == item.IdProducto).FirstOrDefault();
-                                //data2 = data.TI0021A;
-                                //db.TI0021A.Remove(data2);
+                                if (!EsAjuste)
+                                {
+                                    data2 = data.TI0021A;
+                                    db.TI0021A.Remove(data2);
+                                }
                                 db.TI0021.Remove(data);
                                 break;
                         }
@@ -201,6 +217,7 @@ namespace REPOSITORY.Clase
                 throw new Exception(ex.Message);
             }
         }
+     
         #endregion
 
         #region Consultas

@@ -35,7 +35,7 @@ namespace PRESENTER.adm
         public Login()
         {
             InitializeComponent();
-           
+            txtUsuario.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,7 +45,6 @@ namespace PRESENTER.adm
                 e.Handled = true;
                 SendKeys.Send("{TAB}");
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -58,7 +57,7 @@ namespace PRESENTER.adm
             try
             {
 
-                string usu = txtUsuario.Text;
+                string usu = txtUsuario.Text.ToUpper();
                 string pass = txtPassword.Text;
                 
 

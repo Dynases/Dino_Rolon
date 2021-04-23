@@ -18,7 +18,7 @@ namespace REPOSITORY.Interface
 
         #region AjusteDetalle
         List<VAjusteDetalle> ListaDetalle(int id);
-        void GuardarDetalle(List<VAjusteDetalle> detalle, int id);
+        void GuardarDetalle(List<VAjusteDetalle> detalle, int id, bool EsAjuste);
         #endregion
     }
 }
