@@ -1,23 +1,18 @@
 ﻿using DevComponents.DotNetBar;
-using ENTITY.Cliente.View;
 using ENTITY.inv.Almacen.View;
 using ENTITY.inv.Concepto.View;
 using ENTITY.inv.TI001.VIew;
 using ENTITY.Libreria.View;
 using ENTITY.Producto.View;
-using ENTITY.reg.PrecioCategoria.View;
 using Janus.Windows.GridEX;
 using Janus.Windows.GridEX.EditControls;
 using PRESENTER.frm;
 using PRESENTER.Report;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UTILITY;
 using UTILITY.Enum;
@@ -491,8 +486,7 @@ namespace PRESENTER.alm
                 if (itemVacio > 0 && _detalles.Count > 0)
                 {
                     return;
-                }
-                var fechaVencimiento = Convert.ToDateTime("2017-01-01");
+                }              
                 var nuevo = new EntDet()
                 {
                     Id = 0,
@@ -504,8 +498,8 @@ namespace PRESENTER.alm
                     Fisico = 0,
                     Precio = 0,
                     Total = 0,
-                    Lote = "20170101",
-                    FechaVen = fechaVencimiento,
+                    Lote = UTGlobal.lote,
+                    FechaVen = UTGlobal.fechaVencimiento,
                     Estado = (int)ENEstado.NUEVO                  
                 };
                 _detalles.Add(nuevo);
@@ -1292,6 +1286,11 @@ namespace PRESENTER.alm
                 MP_Reporte(_ajuste.Id);
             }
             
+        }
+
+        private void BtnAtras_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

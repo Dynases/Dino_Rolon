@@ -342,20 +342,15 @@ namespace REPOSITORY.Clase
                 {
                     if (!this.ExisteProducto(detalle.IdProducto, idAlmacen, detalle.Lote, detalle.FechaVencimiento))
                     {
-                        if (!this.Nuevo(idAlmacen, detalle.IdProducto, detalle.Cantidad,detalle.Lote, detalle.FechaVencimiento))
+                        if (!this.Nuevo(idAlmacen, detalle.IdProducto, detalle.Cantidad, detalle.Lote, detalle.FechaVencimiento))
                         {
                             return false;
                         }
                     }
-                    if (!this.ActualizarInventario(detalle.IdProducto,
-                                                     idAlmacen,
-                                                     accion,
-                                                     detalle.Cantidad,
-                                                     detalle.Lote,
-                                                     detalle.FechaVencimiento))
-                    {
-                        return false;
-                    }                    
+                    else
+                        this.ActualizarInventario(detalle.IdProducto,idAlmacen,accion,detalle.Cantidad,
+                                                  detalle.Lote,detalle.FechaVencimiento);
+                                  
                     //NUEVO DETALLE DE MOVIMIENTO
                     if (!this.tI0021.Guardar(idEncabezado, detalle.IdProducto,
                                           detalle.Cantidad,

@@ -41,6 +41,7 @@
             this.GPanel_Producto = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dgjProducto = new Janus.Windows.GridEX.GridEX();
             this.PanelTotal = new System.Windows.Forms.Panel();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.tb_TotalUnidad = new DevComponents.Editors.DoubleInput();
             this.Tb_Total = new DevComponents.Editors.DoubleInput();
@@ -66,7 +67,6 @@
             this.tbObs = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LabelX3 = new DevComponents.DotNetBar.LabelX();
             this.tbCodigo = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.MEP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubbleBarUsuario)).BeginInit();
             this.PanelUsuario.SuspendLayout();
@@ -105,6 +105,10 @@
             // BtnImprimir
             // 
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            // 
+            // BtnAtras
+            // 
+            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
             // 
             // btnPrimero
             // 
@@ -152,7 +156,7 @@
             // 
             // PanelContenidoBuscar
             // 
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(1199, 631);
             // 
             // btnMin
             // 
@@ -168,7 +172,7 @@
             // 
             // GMPanel_Buscardor
             // 
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(1199, 631);
             // 
             // 
             // 
@@ -200,7 +204,7 @@
             // 
             // Dgv_GBuscador
             // 
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(1193, 605);
             this.Dgv_GBuscador.SelectionChanged += new System.EventHandler(this.Dgv_GBuscador_SelectionChanged);
             // 
             // PanelContenidoRegistro
@@ -394,6 +398,22 @@
             this.PanelTotal.Name = "PanelTotal";
             this.PanelTotal.Size = new System.Drawing.Size(1199, 84);
             this.PanelTotal.TabIndex = 388;
+            // 
+            // labelX10
+            // 
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.ForeColor = System.Drawing.Color.White;
+            this.labelX10.Location = new System.Drawing.Point(3, 3);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
+            this.labelX10.Size = new System.Drawing.Size(297, 23);
+            this.labelX10.TabIndex = 236;
+            this.labelX10.Text = "Eliminar Fila del detalle con la tabla SCAPE";
             // 
             // Panel4
             // 
@@ -867,22 +887,6 @@
             this.tbCodigo.Size = new System.Drawing.Size(70, 22);
             this.tbCodigo.TabIndex = 0;
             this.tbCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelX10
-            // 
-            this.labelX10.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX10.ForeColor = System.Drawing.Color.White;
-            this.labelX10.Location = new System.Drawing.Point(3, 3);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.SingleLineColor = System.Drawing.SystemColors.Control;
-            this.labelX10.Size = new System.Drawing.Size(297, 23);
-            this.labelX10.TabIndex = 236;
-            this.labelX10.Text = "Eliminar Fila del detalle con la tabla SCAPE";
             // 
             // F1_AjusteFIsico
             // 

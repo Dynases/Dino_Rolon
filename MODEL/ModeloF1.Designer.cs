@@ -354,8 +354,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.PanelContenidoRegistro);
             this.superTabControl1.Controls.Add(this.PanelContenidoBuscar);
+            this.superTabControl1.Controls.Add(this.PanelContenidoRegistro);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.ForeColor = System.Drawing.Color.Black;
             this.superTabControl1.HorizontalText = false;
@@ -620,7 +620,7 @@
             this.PanelContenidoBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenidoBuscar.Location = new System.Drawing.Point(0, 33);
             this.PanelContenidoBuscar.Name = "PanelContenidoBuscar";
-            this.PanelContenidoBuscar.Size = new System.Drawing.Size(837, 516);
+            this.PanelContenidoBuscar.Size = new System.Drawing.Size(958, 516);
             this.PanelContenidoBuscar.TabIndex = 0;
             this.PanelContenidoBuscar.TabItem = this.SuperTabBuscar;
             // 
@@ -635,7 +635,7 @@
             this.GMPanel_Buscardor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GMPanel_Buscardor.Location = new System.Drawing.Point(0, 0);
             this.GMPanel_Buscardor.Name = "GMPanel_Buscardor";
-            this.GMPanel_Buscardor.Size = new System.Drawing.Size(837, 516);
+            this.GMPanel_Buscardor.Size = new System.Drawing.Size(958, 516);
             // 
             // 
             // 
@@ -672,7 +672,7 @@
             this.Dgv_GBuscador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_GBuscador.Location = new System.Drawing.Point(0, 0);
             this.Dgv_GBuscador.Name = "Dgv_GBuscador";
-            this.Dgv_GBuscador.Size = new System.Drawing.Size(831, 490);
+            this.Dgv_GBuscador.Size = new System.Drawing.Size(952, 490);
             this.Dgv_GBuscador.TabIndex = 0;
             this.Dgv_GBuscador.DoubleClick += new System.EventHandler(this.Dgv_GBuscador_DoubleClick);
             // 
